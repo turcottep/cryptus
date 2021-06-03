@@ -15,6 +15,7 @@ bower_components
 .sw
 ./idea
 *.sublime*
+.env
 
 psd
 thumb
