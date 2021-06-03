@@ -14,7 +14,7 @@ export default function LandingPage() {
               <img
                 draggable="false"
                 className="w-32 flex-1 h-32"
-                src="express.svg"
+                src="bighead.svg"
               />
             </div>
             <div className="text-center">
