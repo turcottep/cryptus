@@ -9,7 +9,7 @@ export default async function (req:NextApiRequest, res: NextApiResponse){
             email: req.body.email,
             createdAt: new Date(),
         });
-        console.log(result.ops[0]);
+        // console.log(result.ops[0]);
         res.status(201);
         res.json({});
     } catch(e){

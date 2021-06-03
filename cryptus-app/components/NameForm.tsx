@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // async function fetchLeadsRequest() {
 //   const response = await fetch("/api/leads");
