@@ -12,7 +12,7 @@ export default function LandingPage() {
           <div className="flex justify-between flex-col w-full md:justify-around items-center text-center md:h-full my-4">
             <div className="flex-shrink w-auto md:w-full">
               <h1 className="mx-auto h-auto">
-                <img draggable="false" className="w-full" src="express.svg" />
+                <img draggable="false" className="w-full" src="title.svg" />
               </h1>
             </div>
             <div className="text-center">
