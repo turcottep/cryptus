@@ -4,12 +4,7 @@ import Navbar from "./Navbar";
 
 export default function LandingPage() {
   return (
-    <div
-      className="h-screen relative bg-coquille w-full"
-      // style={{
-      //   backgroundImage: "url('./nourriture_spaced.svg')",
-      // }}
-    >
+    <div className="h-screen relative bg-coquille w-full">
       <div className="h-screen justify-between px-3 md:px-10 2xl:px-20 md:mx-auto flex flex-col items-center">
         <Navbar />
 
