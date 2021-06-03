@@ -10,12 +10,10 @@ export default function LandingPage() {
 
         <div className="flex h-full justify-evenly md:justify-between flex-col w-full items-center md:flex-row">
           <div className="flex justify-between flex-col w-full md:justify-around items-center text-center md:h-full my-4">
-            <div className="flex-shrink w-auto md:w-full min-w-32 min-h-32">
-              <img
-                draggable="false"
-                className="w-32 flex-1 h-32"
-                src="bighead.svg"
-              />
+            <div className="flex-shrink w-auto md:w-full">
+              <h1 className="mx-auto h-auto">
+                <img draggable="false" className="w-full" src="title.svg" />
+              </h1>
             </div>
             <div className="text-center">
               <p className="md:block leading-normal text-gray-600 text-2xl md:text-3xl xl:text-3xl ">
