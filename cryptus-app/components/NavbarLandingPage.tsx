@@ -1,7 +1,7 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
 
-export default function Navbar() {
+export default function NavbarLandingPage() {
   const [session, loading] = useSession();
 
   return (

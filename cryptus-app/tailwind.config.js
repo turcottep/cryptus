@@ -53,6 +53,9 @@ module.exports = {
       coquille: {
         DEFAULT: "#FFFDF5",
       },
+      instagram: {
+        DEFAULT: "#FBFAFB",
+      },
     },
   },
   variants: {
