@@ -6,6 +6,17 @@ export default function Feed() {
 
   return (
     <div id="header" className=" w-full h-full text-black bg-instagram">
+      <div className="flex items-center py-2 px-1">
+        <img
+          className="w-10 h-10 rounded-full  mx-2"
+          src="../icons/icon-192x192.png"
+          alt="icon"
+        />
+        <span className="text-center text-gray-700 font-semibold text-3xl lg:text-2xl">
+          Lafleur
+        </span>
+      </div>
+
       <div className="h-full flex justify-between flex-col">
         <div className="">
           <img

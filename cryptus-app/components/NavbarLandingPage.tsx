@@ -10,7 +10,7 @@ export default function NavbarLandingPage() {
         <div className="flex items-center md:items-end">
           <a
             className="toggleColour text-gray-700 no-underline hover:no-underline font-bold text-xl lg:text-2xl"
-            href="#"
+            href=""
           >
             {/* <Link href="/">Salsa</Link> */}
             Public Wallet
