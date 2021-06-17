@@ -18,7 +18,7 @@ function validateEmail(email) {
 async function createLeadRequest(mail: string) {
   console.log("trygin to post this man:", mail);
 
-  const response = await fetch("/api/leads/create", {
+  const response = await fetch("/api/prismatest/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@prisma/client": "^2.25.0",
     "autoprefixer": "^10.1.0",
     "mongodb": "^3.6.3",
     "next": "10.0.3",
@@ -28,6 +29,7 @@
     "@types/react": "^17.0.0",
     "@types/react-pdf": "^5.0.0",
     "postcss": "^8.2.8",
+    "prisma": "^2.25.0",
     "tailwindcss": "^2.0.4",
     "typescript": "^4.1.3"
   }
