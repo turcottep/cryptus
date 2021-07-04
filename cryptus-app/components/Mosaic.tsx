@@ -8,7 +8,7 @@ export default function Mosaic() {
   return (
     <div id="header" className=" w-full h-full text-black bg-instagram">
       <Link href="/lafleur/feed">
-        <div className="h-full grid grid-cols-3 gap-0">
+        <div className="h-full grid grid-cols-3 gap-1">
           <div className="">
             <img
               className="w-full flex-1 min-w-0 min-h-0"

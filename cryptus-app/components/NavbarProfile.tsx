@@ -6,7 +6,7 @@ export default function NavbarProfile() {
 
   return (
     <div id="header" className="fixed w-full top-0 text-black bg-instagram">
-      <div className="w-full flex items-center flex-row justify-between h-full px-4 py-2 md:py-4 border-b-2 border-black">
+      <div className="w-full flex items-center flex-row justify-between h-full px-4 py-2 md:py-4 border-b border-gray-400">
         <a
           className="toggleColour text-gray-700 no-underline hover:no-underline font-bold text-xl lg:text-2xl"
           href="/"
