@@ -12,7 +12,7 @@ export default function post(props) {
       <main className="xl:max-w-xl">
         <div className="flex flex-col">
           <NavbarProfile />
-          <div className="mt-14">
+          <div className="mt-24">
             <Profile />
           </div>
           <Mosaic />

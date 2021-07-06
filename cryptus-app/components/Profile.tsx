@@ -7,37 +7,6 @@ export default function NavbarLandingPage() {
   return (
     <div id="header" className=" w-full top-0 text-black bg-instagram">
       <div className="w-full flex flex-col justify-center h-full md:py-4">
-        <div className="flex justify-between bg-instagram w-full border-b border-gray-400 py-2 px-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          <span className="font-bold">Lafleur</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </div>
         <div className="flex w-full justify-between items-center md:items-end py-4">
           <img
             className="self-start w-20 h-20 rounded-full border-black border-2 mx-2"
@@ -106,6 +75,7 @@ export default function NavbarLandingPage() {
             fill="none"
             viewBox="0 0 24 24"
             stroke="#999999"
+            id="heart-emoji"
           >
             <path
               stroke-linecap="round"
