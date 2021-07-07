@@ -2,11 +2,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import Feed from "../../components/Feed";
+import { FetchNfts } from "../../components/fetchNfts";
 import NavbarProfile from "../../components/NavbarProfile";
 
-export default function post({ pokemon }) {
+export default function post(props) {
   const router = useRouter();
-  console.log(router, "routes");
+
   return (
     <div className="bg-instagram">
       <main className="xl:max-w-xl">
@@ -14,9 +15,12 @@ export default function post({ pokemon }) {
         <div className="pt-24">
           <Feed title="Lafleur">
             <ul>
-              {pokemon.map((pokeman, index) => (
+              {props.data.assets.map((pokeman, index) => (
                 <li key={index}>
-                  <a className="h-full flex justify-between flex-col">
+                  <a
+                    id={`NFT${index + 1}`}
+                    className="pt-24 -mt-24 h-full flex justify-between flex-col"
+                  >
                     <div className="">
                       <div className="">
                         <img
@@ -81,19 +85,14 @@ export default function post({ pokemon }) {
 }
 
 export async function getStaticProps(context) {
-  try {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=150");
-    const { results } = await res.json();
-    const pokemon = results.map((pokeman, index) => {
-      const paddedId = ("00" + (index + 1)).slice(-3);
+  console.log("...://");
 
-      const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${paddedId}.png`;
-      return { ...pokeman, image };
-    });
-    return {
-      props: { pokemon },
-    };
+  const owner = "0x0da2f3401296427d302326cdf208b79f83abc995";
+  try {
+    const props = await FetchNfts(owner);
+    return props;
   } catch (err) {
+    console.log("riiip");
     console.error(err);
   }
 }

@@ -1,8 +1,10 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
+import { useRouter } from "next/router";
 
 export default function NavbarProfile() {
   const [session, loading] = useSession();
+  const router = useRouter();
 
   return (
     <div id="header" className="fixed w-full top-0 text-black bg-instagram">
@@ -18,20 +20,22 @@ export default function NavbarProfile() {
         </button>
       </div>
       <div className="flex justify-between bg-instagram w-full border-b border-gray-400 py-2 px-2">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
+        <div id="backButton" className="" onClick={() => router.back()}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </div>
         <span className="font-bold">Lafleur</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,9 +45,9 @@ export default function NavbarProfile() {
           stroke="currentColor"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M4 6h16M4 12h16M4 18h16"
           />
         </svg>

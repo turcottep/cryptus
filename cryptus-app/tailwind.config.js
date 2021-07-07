@@ -18,7 +18,11 @@ module.exports = {
       0: "50%",
       16: "4rem",
     },
-    extend: {},
+    extend: {
+      gap: {
+        0.1: "0.1rem",
+      },
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",
