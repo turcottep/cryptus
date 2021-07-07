@@ -10,7 +10,7 @@ export default function post(props) {
 
   return (
     <div className="bg-instagram">
-      <main className="xl:max-w-xl">
+      <main className="sm:max-w-lg mx-auto">
         <NavbarProfile />
         <div className="pt-24">
           <Feed title="Lafleur">

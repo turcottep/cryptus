@@ -10,7 +10,7 @@ export default function post(props) {
   // const { Mosaic, pageProps } = props;
   return (
     <div className="bg-instagram">
-      <main className="xl:max-w-xl">
+      <main className="sm:max-w-lg mx-auto">
         <div className="flex flex-col items-center">
           <NavbarProfile />
           <div className="mt-24">

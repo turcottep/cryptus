@@ -13,7 +13,7 @@ export default class Mosaic extends React.Component<MyProps, MyState> {
       <div id="header" className=" w-full h-full text-black bg-instagram">
         <div className="h-full grid grid-cols-3 gap-0.1">
           {this.props.assets.map((asset, index) => (
-            <a id={`NFT${index + 1}`} className="">
+            <a key={`NFT${index + 1}`} id={`NFT${index + 1}`} className="">
               <Link href={`/lafleur/feed#NFT${index + 1}`}>
                 <div className="flex flex-col justify-around w-full h-full overflow-hidden">
                   <img

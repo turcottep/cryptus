@@ -7,7 +7,10 @@ export default function NavbarProfile() {
   const router = useRouter();
 
   return (
-    <div id="header" className="fixed w-full top-0 text-black bg-instagram">
+    <div
+      id="header"
+      className="fixed w-full top-0 text-black bg-instagram sm:max-w-lg mx-auto"
+    >
       <div className="w-full flex items-center flex-row justify-between h-full px-4 py-2 md:py-4 border-b border-gray-400">
         <a
           className="toggleColour text-gray-700 no-underline hover:no-underline font-bold text-xl lg:text-2xl"
