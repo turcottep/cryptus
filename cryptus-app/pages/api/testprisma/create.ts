@@ -1,12 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient } from '@prisma/client';
+import prisma from "../../../lib/prisma";
 
 
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-    console.log("maaan");
-    const prisma = new PrismaClient()
-    console.log("yooooooo");
+    console.log("maaan")
 
     try {
         await prisma.user.create({
@@ -21,6 +19,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         })
         res.status(201);
         res.json({});
+        console.log("NEW USER")
     } catch (e) {
         res.status(500);
         res.json({ error: "Unable to add lead" })

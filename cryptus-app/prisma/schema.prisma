@@ -1,3 +1,6 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 // schema.prisma
 datasource db {
     provider = "postgresql"
@@ -50,3 +53,4 @@ model Wallet {
     User   User?   @relation(fields: [userId], references: [id])
     userId String?
 }
+

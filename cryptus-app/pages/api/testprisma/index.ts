@@ -1,14 +1,16 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { connect_to_db } from "../../../utils/database";
+import { PrismaClient } from '@prisma/client'
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
-    try {
-        const { db } = await connect_to_db();
-        const leads = await db.collection("leads").find().toArray();
-        console.log(leads);
-        res.json({ leads })
-    } catch (error) {
-        res.status(500);
-        res.json({ error: "unable to fetch leads" })
-    }
+const prisma = new PrismaClient()
+
+async function main() {
+    const allUsers = await prisma.user.findMany()
+    console.log(allUsers)
 }
+
+main()
+  .catch((e) => {
+    throw e
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
