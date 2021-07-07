@@ -6,7 +6,6 @@ import NavbarProfile from "../../components/NavbarProfile";
 
 export default function post(props) {
   const router = useRouter();
-  console.log(props.data.assets);
 
   return (
     <div className="bg-instagram">
