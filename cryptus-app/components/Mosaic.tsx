@@ -6,8 +6,6 @@ type MyProps = { assets };
 type MyState = {};
 
 export default class Mosaic extends React.Component<MyProps, MyState> {
-  // const [session, loading] = useSession();
-
   render() {
     return (
       <div id="header" className=" w-full h-full text-black bg-instagram">

@@ -12,17 +12,10 @@ export default function NavbarLandingPage() {
             className="toggleColour text-gray-700 no-underline hover:no-underline font-bold text-xl lg:text-2xl"
             href=""
           >
-            {/* <Link href="/">Salsa</Link> */}
             Public Wallet
           </a>
-          {/* <img
-            className="w-4 h-4 mx-2"
-            src="./icons/icon-192x192.png"
-            alt="icon"
-          /> */}
         </div>
       </div>
-      {/* <hr className="border-b border-red-400 opacity-25 my-0 py-0" /> */}
     </div>
   );
 }

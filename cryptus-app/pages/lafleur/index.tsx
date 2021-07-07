@@ -7,7 +7,6 @@ import Profile from "../../components/Profile";
 export default function post(props) {
   const router = useRouter();
 
-  // const { Mosaic, pageProps } = props;
   return (
     <div className="bg-instagram">
       <main className="sm:max-w-lg mx-auto">

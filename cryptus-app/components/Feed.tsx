@@ -5,8 +5,6 @@ import Link from "next/link";
 type MyProps = { children; title };
 type MyState = {};
 export default class NameForm extends React.Component<MyProps, MyState> {
-  // const [session, loading] = useSession();
-
   render() {
     return (
       <div className="bg-instagram">
