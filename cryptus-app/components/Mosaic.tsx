@@ -15,9 +15,9 @@ export default class Mosaic extends React.Component<MyProps, MyState> {
           {this.props.assets.map((asset, index) => (
             <a id={`NFT${index + 1}`} className="">
               <Link href={`/lafleur/feed#NFT${index + 1}`}>
-                <div className="w-full">
+                <div className="flex flex-col justify-around w-full h-full overflow-hidden">
                   <img
-                    className="flex-1 min-w-0 min-h-0"
+                    className="my-auto wh-full min-w-0 min-h-0"
                     draggable="false"
                     src={asset.image_url}
                   />
