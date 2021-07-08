@@ -1,5 +1,6 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
+import Link from "next/link";
 
 export default function NavbarLandingPage() {
   const [session, loading] = useSession();
@@ -14,14 +15,16 @@ export default function NavbarLandingPage() {
           >
             Public Wallet
           </a>
-          <button onClick={() => findWalletByUsername()}>BUTTOONNN</button>
+          <Link href="/loginpage">
+          <button onClick={() => signIn()}>BUTTOONNN</button>
+          </Link>
         </div>
       </div>
     </div>
   );
 }
 // onClick={() => signIn()} a garder TODO pour nextAuth
-async function findWalletByUsername(){
+async function findWalletByUsername(user){
   const username = "Alice"
 
   const response = await fetch('/api/users/' + username);

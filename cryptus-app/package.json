@@ -8,14 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next-auth/prisma-adapter": "^0.5.2",
     "@prisma/client": "^2.26.0",
     "autoprefixer": "^10.1.0",
-    "postcss": "^8.0.0",
     "mongodb": "^3.6.3",
     "next": "10.0.3",
     "next-auth": "^3.27.2",
     "next-pwa": "^5.0.5",
-    "prisma": "^2.26.0",
+    "postcss": "^8.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-dropzone": "^11.2.4",
