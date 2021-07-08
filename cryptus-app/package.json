@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-tailwind/react": "0.3.4",
     "autoprefixer": "^10.1.0",
     "mongodb": "^3.6.3",
     "next": "10.0.3",

@@ -7,24 +7,22 @@ export default function PhoneNavbar() {
   return (
     <div id="header" className="w-full top-0 text-black bg-coquille">
       <div className="w-full h-full py-2">
-        <div className="grid grid-cols-2 justify-center" >
-            <div className="col-start-1 col-span-1">
-                <a
-                    className="align-middle toggleColour text-gray-700 no-underline hover:no-underline font-bold text-xl lg:text-2xl"
-                    href="#"
-                >
-                Public Wallet
-                </a>
+        <div className="grid grid-cols-6 justify-center">
+          <div className="col-start-1 col-span-1">
+            <a
+              className="toggleColour text-black no-underline hover:no-underline font-bold text-3xl ml-4"
+              href="#"
+            >
+              &lt;
+            </a>
           </div>
-          <div className="col-start-2 col-span-1 ">
-              <div className="float-right w-full">
-              <button
-                type="submit"
-                className="submit 2xl:text-xl text-center bg-black text-white font-bold rounded-lg w-3/6 float-right py-2"
-                >
-                Sign up
-            </button>
-              </div>
+          <div className="col-start-2 col-span-4 text-center m-auto">
+            <a
+              className="toggleColour text-black no-underline hover:no-underline font-bold text-xl"
+              href="#"
+            >
+              O Public Wallet
+            </a>
           </div>
         </div>
       </div>

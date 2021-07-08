@@ -53,6 +53,9 @@ module.exports = {
       coquille: {
         DEFAULT: "#FFFDF5",
       },
+      brown: {
+        DEFAULT: "#4D2100",
+      },
     },
   },
   variants: {
