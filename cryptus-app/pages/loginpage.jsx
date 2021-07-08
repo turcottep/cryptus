@@ -57,7 +57,12 @@ export default function post(props) {
                 //   onChange={this.handleChange}
                   required
                 />
-                <button
+                {/*#TODO
+                 {/* Calls NextAuth SignIn function CsrfToken is handled automatically
+                 signIn('credentials', { redirect: false, password: 'password' })
+                 You can specify a different callbackUrl :
+                 signIn(null, { callbackUrl: 'http://localhost:3000/foo' })*/}
+                <button onClick={() => signIn()}
                   type="submit"
                   className="submit mt-12 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-black text-white font-bold rounded-lg w-full lg:w-2/5 px-2 py-2"
                   >

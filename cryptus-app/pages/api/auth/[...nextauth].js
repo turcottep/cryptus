@@ -20,7 +20,7 @@ const options = {
       // You can specify whatever fields you are expecting to be submitted.
       // e.g. domain, username, password, 2FA token, etc.
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        username: { label: "Username", type: "text", placeholder: "Username" },
         password: {  label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
@@ -39,7 +39,6 @@ const options = {
         }
       }
     })
-
         // ...add more providers here
   ],
 
