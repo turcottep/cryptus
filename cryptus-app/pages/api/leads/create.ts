@@ -1,20 +1,28 @@
-import { connect } from "mongodb";
 import { NextApiRequest, NextApiResponse } from "next";
-import { connect_to_db } from "../../../utils/database";
+import prisma from "../../../lib/prisma";
 
-export default async function (req:NextApiRequest, res: NextApiResponse){
-    try{
-        const {db} = await connect_to_db()
-        const result = await db.collection("leads").insertOne({
-            email: req.body.email,
-            createdAt: new Date(),
-        });
-        // console.log(result.ops[0]);
+export default async function (req: NextApiRequest, res: NextApiResponse) {
+
+    try {
+        await prisma.user.create({
+            data: {
+                username: 'Alice',
+                email: req.body.email,
+                description: 'yoooo',
+                views: 5,
+                likes: 2
+
+            },
+        })
+
         res.status(201);
         res.json({});
-    } catch(e){
+        console.log("NEW USER")
+    } catch (e) {
         res.status(500);
-        res.json({error: "Unable to add lead"})
+        res.json({ error: "Unable to add lead" })
+    } finally {
+        await prisma.$disconnect()
     }
 
-} 
+}
