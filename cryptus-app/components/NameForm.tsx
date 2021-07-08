@@ -1,14 +1,5 @@
 import React from "react";
 
-// async function fetchLeadsRequest() {
-//   const response = await fetch("/api/leads");
-//   const { leads } = await response.json();
-//   return leads.map((lead) => ({
-//     email: lead.email,
-//     field: lead.field_study,
-//   }));
-// }
-
 function validateEmail(email) {
   const re =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

@@ -3,15 +3,15 @@ import React from "react";
 import PhoneNavbar from "../components/PhoneNavbar";
 
 import Link from "next/link";
-import { signIn, signOut, useSession, providers, getSession, csrfToken } from "next-auth/client";
+import { signIn, signOut, useSession, providers, getSession, csrfToken, getCsrfToken  } from "next-auth/client";
 
 
-export default function post(props) {
+export default function SignIn(props, csrfToken) {
 
   // const [ session, loading ] = useSession()
-
   const router = useRouter();
   console.log(router, "routes");
+
   return (
     <div className="bg-instagram">
       <main className="xl:max-w-xl">
@@ -24,10 +24,12 @@ export default function post(props) {
           </div>
           <div className="flex flex-col mt-12">
           <form
+              method='post'
+              action='/api/auth/callback/credentials'
               id="form"
               className="form w-full"
-            //   onSubmit={this.handleSubmit}
             >
+              <input name='csrfToken' type='hidden' defaultValue={csrfToken}/>
               <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
                 <label 
                     className="toggleColour text-gray-700 no-underline hover:no-underline font-bold text-xl lg:text-2xl text-left" 
@@ -35,12 +37,10 @@ export default function post(props) {
                     Username
                 </label>
                 <input
-                  type="username"
+                  type="text"
                   className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
-                  name="entry.217945379"
+                  name="username"
                   id="username"
-                //   value={this.state.value}
-                //   onChange={this.handleChange}
                   required
                 />
                 <label 
@@ -51,18 +51,16 @@ export default function post(props) {
                 <input
                   type="password"
                   className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
-                  name="entry.217945379"
+                  name="password"
                   id="password"
-                //   value={this.state.value}
-                //   onChange={this.handleChange}
                   required
                 />
                 {/*#TODO
                  {/* Calls NextAuth SignIn function CsrfToken is handled automatically
                  signIn('credentials', { redirect: false, password: 'password' })
                  You can specify a different callbackUrl :
-                 signIn(null, { callbackUrl: 'http://localhost:3000/foo' })*/}
-                <button onClick={() => signIn()}
+                 signIn(null, { callbackUrl: 'http://localhost:3000/foo' })*/} 
+                <button
                   type="submit"
                   className="submit mt-12 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-black text-white font-bold rounded-lg w-full lg:w-2/5 px-2 py-2"
                   >
@@ -75,4 +73,11 @@ export default function post(props) {
       </main>
     </div>
   );
+}
+// Bug avec les CsrfToken
+// Await CsrfToken (Needed for User Auth)
+SignIn.getInitialProps = async (context) => {
+  return {
+    csrfToken: await getCsrfToken(context)
+  }
 }

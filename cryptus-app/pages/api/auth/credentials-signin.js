@@ -5,14 +5,14 @@ export default function SignIn({ csrfToken }) {
     <form method='post' action='/api/auth/callback/credentials'>
       <input name='csrfToken' type='hidden' defaultValue={csrfToken}/>
       <label>
-        Username
+        Username123
         <input name='username' type='text'/>
       </label>
       <label>
-        Password
+        Password123
         <input name='password' type='password'/>
       </label>
-      <button type='submit'>Sign in</button>
+      <button type='submit'>test!!!</button>
     </form>
   )
 }

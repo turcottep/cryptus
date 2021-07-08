@@ -20,6 +20,12 @@ export default function Navbar() {
             src="./icons/icon-192x192.png"
             alt="icon"
           /> */}
+          <button onClick={() => signIn()}
+                  type="submit"
+                  className="submit mt-12 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-black text-white font-bold rounded-lg w-full lg:w-2/5 px-2 py-2"
+                  >
+                  Login
+                </button>
         </div>
       </div>
       {/* <hr className="border-b border-red-400 opacity-25 my-0 py-0" /> */}

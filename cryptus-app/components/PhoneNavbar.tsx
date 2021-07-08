@@ -18,7 +18,7 @@ export default function PhoneNavbar() {
           </div>
           <div className="col-start-2 col-span-1 ">
               <div className="float-right w-full">
-              <button
+              <button 
                 type="submit"
                 className="submit 2xl:text-xl text-center bg-black text-white font-bold rounded-lg w-3/6 float-right py-2"
                 >
