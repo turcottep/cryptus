@@ -7,12 +7,15 @@ const prisma = new PrismaClient()
 
 const options = {
   // Configure one or more authentication providers
+  // pages:{
+  //   signIn: '/loginPage'
+  // },
   providers: [
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET
     }),
-
+    
     Providers.Credentials({
       // The name to display on the sign in form (e.g. 'Sign in with...')
       name: 'Credentials',
