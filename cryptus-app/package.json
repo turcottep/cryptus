@@ -8,10 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@next-auth/prisma-adapter": "^0.5.2",
-=======
->>>>>>> origin/dev
     "@prisma/client": "^2.26.0",
     "autoprefixer": "^10.1.0",
     "mongodb": "^3.6.3",
