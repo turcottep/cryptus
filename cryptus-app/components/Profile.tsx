@@ -1,8 +1,10 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
+// import router from "next/router";
 
-export default function NavbarLandingPage() {
+export default function Profile() {
   const [session, loading] = useSession();
+  // const { userId } = router.query;
 
   return (
     <div id="header" className=" w-full top-0 text-black bg-instagram">

@@ -1,18 +1,21 @@
 import { useRouter } from "next/router";
+
 import React from "react";
 import Mosaic from "../../components/Mosaic";
 import NavbarProfile from "../../components/NavbarProfile";
 import Profile from "../../components/Profile";
+import { getStaticProps } from "../lafleur/feed";
 
 export default function post(props) {
   const router = useRouter();
-  const newProps = { assets: props.data.assets, userId: "lafleur" };
+  const { userId } = router.query;
+  const newProps = { assets: props.data.assets, userId: userId };
 
   return (
     <div className="bg-instagram">
       <main className="sm:max-w-lg mx-auto">
         <div className="flex flex-col items-center">
-          <NavbarProfile name="lafleur" />
+          <NavbarProfile name={userId} />
           <div className="mt-24">
             <Profile />
           </div>
@@ -23,11 +26,13 @@ export default function post(props) {
   );
 }
 
-export async function getStaticProps(context) {
-  const owner = "0x0da2f3401296427d302326cdf208b79f83abc995";
+export async function getServerSideProps(context) {
+  const { userId } = context.query;
+
+  const wallet = "0x0d7c9db889858b9f6954608e36199104dd530da0";
   const url =
     "https://api.opensea.io/api/v1/assets?owner=" +
-    owner +
+    wallet +
     "&order_direction=asc&offset=0&limit=50";
 
   try {
