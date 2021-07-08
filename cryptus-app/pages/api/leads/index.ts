@@ -1,14 +1,14 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { connect_to_db } from "../../../utils/database";
+import prisma from "../../../lib/prisma";
 
-export default async function (req:NextApiRequest, res:NextApiResponse){
-    try {
-        const {db} = await connect_to_db();
-        const leads = await db.collection("leads").find().toArray();
-        console.log(leads);
-        res.json({leads})
-    } catch (error) {
-        res.status(500);
-        res.json({error:"unable to fetch leads"})
-    }
-} 
+async function main() {
+    const allUsers = await prisma.user.findMany()
+    console.log(allUsers)
+}
+
+main()
+  .catch((e) => {
+    throw e
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
