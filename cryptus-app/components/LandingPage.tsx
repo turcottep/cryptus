@@ -1,12 +1,12 @@
 import React from "react";
 import NameForm from "./NameForm";
-import Navbar from "./Navbar";
+import NavbarLandingPage from "./NavbarLandingPage";
 
 export default function LandingPage() {
   return (
     <div className="h-screen relative bg-coquille w-full">
       <div className="h-screen justify-between px-3 md:px-10 2xl:px-20 md:mx-auto flex flex-col items-center">
-        <Navbar />
+        <NavbarLandingPage />
 
         <div className="flex h-full justify-evenly md:justify-between flex-col w-full items-center md:flex-row">
           <div className="flex justify-between flex-col w-full md:justify-around items-center text-center md:h-full my-4">
