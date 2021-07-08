@@ -10,6 +10,7 @@
   "dependencies": {
     "@prisma/client": "^2.26.0",
     "autoprefixer": "^10.1.0",
+    "postcss": "^8.0.0",
     "mongodb": "^3.6.3",
     "next": "10.0.3",
     "next-auth": "^3.27.2",
@@ -22,6 +23,7 @@
     "react-pdf": "^5.1.0"
   },
   "devDependencies": {
+    "@ky-is/tailwindcss-plugin-width-height": "^1.0.0",
     "@tailwindcss/jit": "^0.1.4",
     "@types/jquery": "^3.5.5",
     "@types/mongodb": "^3.6.3",

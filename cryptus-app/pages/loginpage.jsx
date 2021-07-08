@@ -12,6 +12,14 @@ export default function SignIn(props, csrfToken) {
   const router = useRouter();
   console.log(router, "routes");
 
+  // https://github.com/nextauthjs/next-auth/issues/642 possible solution for 
+  // "Error: Callback for provider type credentials not supported"
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // "username-login" matches the id for the credential
+    signIn("username-login", { username, password });
+  };
+
   return (
     <div className="bg-instagram">
       <main className="xl:max-w-xl">
