@@ -4,12 +4,7 @@ import Navbar from "./Navbar";
 
 export default function LandingPage() {
   return (
-    <div
-      className="h-screen relative bg-coquille w-full"
-      // style={{
-      //   backgroundImage: "url('./nourriture_spaced.svg')",
-      // }}
-    >
+    <div className="h-screen relative bg-coquille w-full">
       <div className="h-screen justify-between px-3 md:px-10 2xl:px-20 md:mx-auto flex flex-col items-center">
         <Navbar />
 
@@ -17,7 +12,7 @@ export default function LandingPage() {
           <div className="flex justify-between flex-col w-full md:justify-around items-center text-center md:h-full my-4">
             <div className="flex-shrink w-auto md:w-full">
               <h1 className="mx-auto h-auto">
-                <img draggable="false" className="w-full" src="express.svg" />
+                <img draggable="false" className="w-full" src="title.svg" />
               </h1>
             </div>
             <div className="text-center">

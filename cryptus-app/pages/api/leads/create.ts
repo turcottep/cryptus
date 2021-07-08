@@ -14,6 +14,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
             },
         })
+
         res.status(201);
         res.json({});
         console.log("NEW USER")
