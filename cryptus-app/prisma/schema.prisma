@@ -13,7 +13,7 @@ generator client {
 model User {
     id          String   @id @default(uuid())
     email       String   @unique
-    username    String
+    username    String   @unique
     nfts_order  Int[]
     description String
     views       Int

@@ -14,8 +14,17 @@ export default function NavbarLandingPage() {
           >
             Public Wallet
           </a>
+          <button onClick={() => findWalletByUsername()}>BUTTOONNN</button>
         </div>
       </div>
     </div>
   );
+}
+
+async function findWalletByUsername(){
+  const username = "Alice"
+
+  const response = await fetch('/api/users/' + username);
+  const data = await response.json();
+  console.log(data);
 }
