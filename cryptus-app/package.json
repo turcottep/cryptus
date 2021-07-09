@@ -8,19 +8,23 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next-auth/prisma-adapter": "^0.5.2",
     "@prisma/client": "^2.26.0",
     "autoprefixer": "^10.1.0",
-    "postcss": "^8.0.0",
+    "compression-webpack-plugin": "^6.0.5",
+    "js-sha256": "^0.9.0",
     "mongodb": "^3.6.3",
-    "next": "10.0.3",
-    "next-auth": "^3.1.0",
+    "next": "^10.0.3",
+    "next-auth": "^3.27.2",
     "next-pwa": "^5.0.5",
-    "prisma": "^2.26.0",
+    "node": "^16.4.0",
+    "pg": "^8.6.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-dropzone": "^11.2.4",
     "react-dropzone-uploader": "^2.11.0",
-    "react-pdf": "^5.1.0"
+    "react-pdf": "^5.1.0",
+    "webpack": "^4.46.0"
   },
   "devDependencies": {
     "@ky-is/tailwindcss-plugin-width-height": "^1.0.0",
@@ -31,7 +35,8 @@
     "@types/node": "^14.14.14",
     "@types/react": "^17.0.0",
     "@types/react-pdf": "^5.0.0",
-    "postcss": "^8.2.8",
+    "postcss": "^8.3.5",
+    "prisma": "^2.26.0",
     "tailwindcss": "^2.0.4",
     "typescript": "^4.1.3"
   }

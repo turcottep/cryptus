@@ -35,19 +35,13 @@ export default function Home() {
       </Head>
 
       <main className="">
-        {!session && (
-          <>
-            <LandingPage />
-          </>
-        )}
+        {!session && <></>}
         {session && (
           <>
-            <div> Logged In </div>
-            <a className="rounded bg-blue-500" href="/showroom">
-              Go to showroom
-            </a>
+            <div> Logged In As {session.user.name}</div>
           </>
         )}
+        <LandingPage />
       </main>
     </div>
   );
