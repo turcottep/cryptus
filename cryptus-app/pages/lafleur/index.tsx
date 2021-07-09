@@ -9,13 +9,15 @@ export default function post(props) {
 
   return (
     <div className="bg-instagram">
-      <main className="sm:max-w-lg mx-auto">
+      <main className="">
         <div className="flex flex-col items-center">
           <NavbarProfile />
-          <div className="mt-24">
-            <Profile />
+          <div className="mt-24 w-full">
+            <Profile {...props.data} />
           </div>
-          <Mosaic {...props.data} />
+          <div className=" sm:max-w-lg mx-auto">
+            <Mosaic {...props.data} />
+          </div>
         </div>
       </main>
     </div>

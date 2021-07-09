@@ -9,16 +9,16 @@ export default function NavbarProfile() {
   return (
     <div
       id="header"
-      className="fixed w-full top-0 text-black bg-instagram sm:max-w-lg mx-auto"
+      className="fixed w-full top-0 text-black bg-instagram mx-auto"
     >
-      <div className="w-full flex items-center flex-row justify-between h-full px-4 py-2 md:py-4 border-b border-gray-400">
+      <div className="w-full flex items-center flex-row justify-between h-full px-4 py-2 border-b border-gray-400">
         <a
-          className="toggleColour text-gray-700 no-underline hover:no-underline font-bold text-xl lg:text-2xl"
+          className="toggleColour text-gray-700 no-underline hover:no-underline font-bold text-lg"
           href="/"
         >
           Public Wallet
         </a>
-        <button className="w-40 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:w-2/5 px-2 py-2">
+        <button className=" text-sm text-center whitespace-nowrap bg-dirt text-white font-bold rounded-md lg:w-2/5 px-2 py-1">
           Get Early Access
         </button>
       </div>
