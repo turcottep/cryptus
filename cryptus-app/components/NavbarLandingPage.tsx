@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function NavbarLandingPage() {
   const [session, loading] = useSession();
-  
-  console.log(process.env.GITHUB_ID, process.env.GITHUB_SECRET)
+
+  console.log(process.env.GITHUB_ID, process.env.GITHUB_SECRET);
 
   return (
     <div id="header" className=" w-full top-0 text-black bg-coquille">
@@ -18,7 +18,16 @@ export default function NavbarLandingPage() {
             Public Wallet
           </a>
           {/* <Link href="/loginpage"> */}
-          <button onClick={() => signIn()}>BUTTOONNN</button>
+          {!session && (
+            <>
+              <button onClick={() => signIn()}>SignIn</button>
+            </>
+          )}
+          {session && (
+            <>
+              <button onClick={() => signOut()}>SignOut</button>
+            </>
+          )}
           {/* </Link> */}
         </div>
       </div>
@@ -26,10 +35,10 @@ export default function NavbarLandingPage() {
   );
 }
 // onClick={() => signIn()} a garder TODO pour nextAuth
-async function findWalletByUsername(user){
-  const username = "Alice"
+async function findWalletByUsername(user) {
+  const username = "Alice";
 
-  const response = await fetch('/api/users/' + username);
+  const response = await fetch("/api/users/" + username);
   const data = await response.json();
   console.log(data);
 }

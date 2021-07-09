@@ -35,11 +35,7 @@ export default function Home() {
       </Head>
 
       <main className="">
-        {!session && (
-          <>
-            <LandingPage />
-          </>
-        )}
+        {!session && <></>}
         {session && (
           <>
             <div> Logged In </div>
@@ -48,6 +44,7 @@ export default function Home() {
             </a>
           </>
         )}
+        <LandingPage />
       </main>
     </div>
   );

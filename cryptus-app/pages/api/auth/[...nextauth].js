@@ -3,6 +3,7 @@ import Providers from "next-auth/providers";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import jwt from "next-auth/jwt";
+import { sha256 } from "js-sha256";
 
 const prisma = new PrismaClient();
 
@@ -12,38 +13,51 @@ const options = {
   //   signIn: '/loginpage'
   // },
   providers: [
-    Providers.Facebook({
-      clientId: process.env.FACEBOOK_CLIENT_ID,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    }),
-    Providers.Google({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-    Providers.Email({
-      server: process.env.EMAIL_SERVER,
-      from: process.env.EMAIL_FROM,
-      maxAge: 24 * 60 * 60, // 24h (in seconds)
+    Providers.Credentials({
+      name: "Credentials",
+      credentials: {
+        username: {
+          label: "Username",
+          type: "text",
+          placeholder: "Username",
+        },
+        password: {
+          label: "Password",
+          type: "password",
+        },
+      },
+
+      async authorize(credentials) {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/users/" + credentials.username,
+            {
+              method: "POST",
+              body: JSON.stringify(credentials),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const user = await res.json();
+          const password_hash = sha256(credentials.password);
+          console.log("hashes comparator : ", password_hash, user.hash);
+          if (user.hash == password_hash) {
+            return user;
+          }
+        } catch (e) {
+          console.error("Erreur :", e);
+          return null;
+        }
+        return null;
+      },
     }),
     // ...add more providers here
   ],
 
   session: {
     jwt: true,
-    // Seconds - How long until an idle session expires and is no longer valid.
-    maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-
-  // adapter: PrismaAdapter(prisma),
-
-  debug: process.env.NODE_ENV === "development",
-  secret: process.env.AUTH_SECRET,
-  jwt: {
-    signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
-    secret: process.env.JWT_SECRET,
-  },
-  // A database is optional, but required to persist accounts in a database
-  database: process.env.DATABASE_URL,
 };
 
-export default (req, res) => NextAuth(req, res, options);
+export default NextAuth(options);
