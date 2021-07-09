@@ -7,11 +7,7 @@ import { useSession } from "next-auth/client";
 
 export default function Home() {
   const [session, loading] = useSession();
-  console.log("ALLLOOO");
-  if (session) {
-    console.log(session.user);
-    console.log("YOOO", session.user.username);
-  }
+
   return (
     <div className="bg-coquille">
       <Head>

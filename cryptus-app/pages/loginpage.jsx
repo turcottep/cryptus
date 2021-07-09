@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import React from "react";
-import PhoneNavbar from "../components/PhoneNavbar";
 
 import Link from "next/link";
 import {
@@ -22,7 +21,6 @@ export default function SignIn(props, csrfToken) {
     <div className="bg-instagram">
       <main className="xl:max-w-xl">
         <div className="flex flex-col">
-          <PhoneNavbar />
           <div className="flex flex-col items-center">
             <h2 className="toggleColour mt-12 text-gray-700 no-underline hover:no-underline font-bold text-3xl lg:text-2xl">
               Login
@@ -89,10 +87,3 @@ export default function SignIn(props, csrfToken) {
     </div>
   );
 }
-// Bug avec les CsrfToken
-// Await CsrfToken (Needed for User Auth)
-// SignIn.getInitialProps = async (context) => {
-//   return {
-//     csrfToken: await getCsrfToken(context),
-//   };
-// };
