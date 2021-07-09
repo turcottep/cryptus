@@ -14,11 +14,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     });
     res.status(201);
     res.json(user);
-    console.log(user);
   } catch (e) {
     res.status(500);
     res.json({ error: "Unable to add lead" });
-    console.log(e);
+    console.error(e);
   } finally {
     await prisma.$disconnect();
   }

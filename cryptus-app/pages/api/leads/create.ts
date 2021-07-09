@@ -17,7 +17,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
         res.status(201);
         res.json({});
-        console.log("NEW USER")
     } catch (e) {
         res.status(500);
         res.json({ error: "Unable to add lead" })

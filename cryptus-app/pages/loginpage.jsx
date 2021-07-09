@@ -15,7 +15,6 @@ import {
 export default function SignIn(props, csrfToken) {
   // const [ session, loading ] = useSession()
   const router = useRouter();
-  console.log(router, "routes");
 
   return (
     <div className="bg-instagram">

@@ -31,7 +31,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     res.json({});
 
-    console.log("NEW USER");
   } catch (e) {
     res.status(500);
 

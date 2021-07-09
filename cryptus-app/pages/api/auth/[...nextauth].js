@@ -41,7 +41,6 @@ const options = {
           );
           const user = await res.json();
           const password_hash = sha256(credentials.password);
-          console.log("hashes comparator : ", password_hash, user.hash);
           if (user.hash == password_hash) {
             const newuser = {
               name: user.username,
