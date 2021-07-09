@@ -4,6 +4,7 @@ import prisma from "../../../lib/prisma";
 export default async function (req: NextApiRequest, res: NextApiResponse) {
 
   try {
+      prisma.$connect()
       const user = await prisma.user.findUnique({
         include: {
           wallets: true,

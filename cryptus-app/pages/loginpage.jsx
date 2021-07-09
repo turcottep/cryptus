@@ -84,8 +84,8 @@ export default function SignIn(props, csrfToken) {
 }
 // Bug avec les CsrfToken
 // Await CsrfToken (Needed for User Auth)
-SignIn.getInitialProps = async (context) => {
-  return {
-    csrfToken: await getCsrfToken(context),
-  };
-};
+// SignIn.getInitialProps = async (context) => {
+//   return {
+//     csrfToken: await getCsrfToken(context),
+//   };
+// };

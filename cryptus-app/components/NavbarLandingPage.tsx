@@ -4,6 +4,8 @@ import Link from "next/link";
 
 export default function NavbarLandingPage() {
   const [session, loading] = useSession();
+  
+  console.log(process.env.GITHUB_ID, process.env.GITHUB_SECRET)
 
   return (
     <div id="header" className=" w-full top-0 text-black bg-coquille">
@@ -15,9 +17,9 @@ export default function NavbarLandingPage() {
           >
             Public Wallet
           </a>
-          <Link href="/loginpage">
+          {/* <Link href="/loginpage"> */}
           <button onClick={() => signIn()}>BUTTOONNN</button>
-          </Link>
+          {/* </Link> */}
         </div>
       </div>
     </div>
