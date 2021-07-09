@@ -71,7 +71,14 @@ export default function SignIn(props, csrfToken) {
               </div>
             </form>
             <button
-              onClick={() => signIn()}
+              onClick={() =>
+                signIn("credentials", {
+                  redirect: true,
+                  username: document.getElementById("username").value,
+                  password: document.getElementById("password").value,
+                  callbackUrl: "http://localhost:3000/",
+                })
+              }
               className="submit mt-12 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-black text-white font-bold rounded-lg w-full lg:w-2/5 px-2 py-2"
             >
               Login

@@ -9,9 +9,9 @@ const prisma = new PrismaClient();
 
 const options = {
   // Configure one or more authentication providers
-  // pages:{
-  //   signIn: '/loginpage'
-  // },
+  pages: {
+    signIn: "/loginpage",
+  },
   providers: [
     Providers.Credentials({
       name: "Credentials",
@@ -43,7 +43,12 @@ const options = {
           const password_hash = sha256(credentials.password);
           console.log("hashes comparator : ", password_hash, user.hash);
           if (user.hash == password_hash) {
-            return user;
+            const newuser = {
+              name: user.username,
+              email: user.email,
+              image: "test",
+            };
+            return newuser;
           }
         } catch (e) {
           console.error("Erreur :", e);
