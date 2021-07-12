@@ -18,7 +18,11 @@ module.exports = {
       0: "50%",
       16: "4rem",
     },
-    extend: {},
+    extend: {
+      gap: {
+        0.1: "0.1rem",
+      },
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",
@@ -56,10 +60,17 @@ module.exports = {
       brown: {
         DEFAULT: "#4D2100",
       },
+      instagram: {
+        DEFAULT: "#FBFAFB",
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require("@ky-is/tailwindcss-plugin-width-height")({
+      variants: ["responsive"],
+    }),
+  ],
 };

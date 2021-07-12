@@ -1,9 +1,8 @@
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
 import LandingPage from "../components/LandingPage";
-import Navbar from "../components/Navbar";
 import React from "react";
-//import Link from "next/link";
+import Link from "next/link";
 import { useSession } from "next-auth/client";
 
 export default function Home() {
@@ -19,6 +18,7 @@ export default function Home() {
         <meta name="description" content="" />
         <meta name="keywords" content="" />
         <meta name="author" content="" />
+        <meta name="theme-color" content="" />
         <meta
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           name="viewport"
@@ -35,19 +35,13 @@ export default function Home() {
       </Head>
 
       <main className="">
-        {!session && (
-          <>
-            <LandingPage />
-          </>
-        )}
+        {!session && <></>}
         {session && (
           <>
-            <div> Logged In </div>
-            <a className="rounded bg-blue-500" href="/showroom">
-              Go to showroom
-            </a>
+            <div> Logged In As {session.user.name}</div>
           </>
         )}
+        <LandingPage />
       </main>
     </div>
   );
