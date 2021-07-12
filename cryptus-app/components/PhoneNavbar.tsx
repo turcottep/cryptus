@@ -1,27 +1,38 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
+import { useRouter } from "next/router";
 
 export default function PhoneNavbar() {
   const [session, loading] = useSession();
-
+  const router = useRouter();
   return (
     <div id="header" className="w-full top-0 text-black bg-coquille">
       <div className="w-full h-full py-2">
         <div className="grid grid-cols-6 justify-center">
-          <div className="col-start-1 col-span-1">
-            <a
-              className="toggleColour text-black no-underline hover:no-underline font-bold text-3xl ml-4"
-              href="#"
-            >
-              &lt;
-            </a>
+          <div className="col-start-1 col-span-1 px-2">
+            <div id="backButton" className="" onClick={() => router.back()}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </div>
           </div>
           <div className="col-start-2 col-span-4 text-center m-auto">
             <a
               className="toggleColour text-black no-underline hover:no-underline font-bold text-xl"
               href="#"
             >
-              O Public Wallet
+              Public Wallet
             </a>
           </div>
         </div>

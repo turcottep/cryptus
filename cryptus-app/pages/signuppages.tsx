@@ -3,7 +3,9 @@ import React from "react";
 import { useState } from "react";
 import PhoneNavbar from "../components/PhoneNavbar";
 import Input from "@material-tailwind/react/Input";
-import Checkbox from "@material-tailwind/react/Checkbox"
+import Checkbox from "@material-tailwind/react/Checkbox";
+import Link from "next/link";
+import WalletSignUp from "../components/WalletSignUp";
 
 export default function post(props) {
   const router = useRouter();
@@ -25,25 +27,16 @@ export default function post(props) {
       <main className="xl:max-w-xl">
         <div className="flex flex-col">
           <PhoneNavbar />
-          {page!==3 && <StepperOne />}
-          {page===3 && <StepperTwo />}
+          {page !== 3 && <StepperOne />}
+          {page === 3 && <StepperTwo />}
 
-          {page===1 && (
-            <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-20">
-              <button
-                onClick={NextPage2}
-                className="text-xl text-center whitespace-nowrap bg-white text-brown border-4 border-brown rounded-lg w-full px-4 py-8"
-              >
-                Metamask
-              </button>
-            </div>
-          )}
-          
-          {page===1 && <WalletPage />}
-          {page===2 && <SignupPage />}
-          {page===3 && <AccountinfoPage />}
+          {page === 1 && <WalletSignUp />}
 
-          {page===1 && (
+          {page === 1 && <WalletPage />}
+          {page === 2 && <SignupPage />}
+          {page === 3 && <AccountinfoPage />}
+
+          {page === 1 && (
             <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-4">
               <button
                 onClick={NextPage}
@@ -52,8 +45,8 @@ export default function post(props) {
                 I don't have a wallet
               </button>
             </div>
-          )} 
-          {page===2 && (
+          )}
+          {page === 2 && (
             <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-4">
               <button
                 onClick={NextPage}
@@ -63,8 +56,8 @@ export default function post(props) {
                 Sign up
               </button>
             </div>
-          )}  
-          {page===3 && (
+          )}
+          {page === 3 && (
             <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
               <button
                 type="submit"
@@ -72,11 +65,11 @@ export default function post(props) {
               >
                 Continue
               </button>
-            </div>    
+            </div>
           )}
 
-          {page!==3 && <FooterOne />}
-          {page===3 && <FooterTwo />}
+          {page !== 3 && <FooterOne />}
+          {page === 3 && <FooterTwo />}
         </div>
       </main>
     </div>
@@ -88,20 +81,14 @@ function StepperOne() {
     <div className="flex flex-col mt-8">
       <div className="grid grid-cols-2 justify-center">
         <div className="col-start-1 col-span-1">
-          <p className="text-brown text-3xl float-right mr-2">
-            &#9679;
-          </p>
+          <p className="text-brown text-3xl float-right mr-2">&#9679;</p>
         </div>
         <div className="col-start-2 col-span-1">
-          <p className="text-gray-500 text-3xl float-left ml-2">
-            &#9679;
-          </p>
+          <p className="text-gray-500 text-3xl float-left ml-2">&#9679;</p>
         </div>
       </div>
       <div className="flex flex-col mt-4">
-        <p className="text-black text-lg text-center">
-          Create Account
-        </p>
+        <p className="text-black text-lg text-center">Create Account</p>
       </div>
     </div>
   );
@@ -112,20 +99,14 @@ function StepperTwo() {
     <div className="flex flex-col mt-8">
       <div className="grid grid-cols-2 justify-center">
         <div className="col-start-1 col-span-1">
-          <p className="text-gray-500 text-3xl float-right mr-2">
-            &#9679;
-          </p>
+          <p className="text-gray-500 text-3xl float-right mr-2">&#9679;</p>
         </div>
         <div className="col-start-2 col-span-1">
-          <p className="text-brown text-3xl float-left ml-2">
-            &#9679;
-          </p>
+          <p className="text-brown text-3xl float-left ml-2">&#9679;</p>
         </div>
       </div>
       <div className="flex flex-col mt-4">
-        <p className="text-black text-lg text-center">
-          User Information
-        </p>
+        <p className="text-black text-lg text-center">User Information</p>
       </div>
     </div>
   );
@@ -136,8 +117,12 @@ function WalletPage() {
     <div className="flex flex-col">
       <div className="mt-32 grid grid-cols-7 justify-center text-center">
         <div className="col-start-2 col-span-2 divide-y divide-black">
-          <div><text>&emsp;</text></div>
-          <div><text>&emsp;</text></div>
+          <div>
+            <text>&emsp;</text>
+          </div>
+          <div>
+            <text>&emsp;</text>
+          </div>
         </div>
         <div className="col-start-4 col-span-1 m-auto">
           <text className="toggleColour text-2xl text-black no-underline hover:no-underline">
@@ -145,8 +130,12 @@ function WalletPage() {
           </text>
         </div>
         <div className="col-start-5 col-span-2 divide-y divide-black">
-          <div><text>&emsp;</text></div>
-          <div><text>&emsp;</text></div>
+          <div>
+            <text>&emsp;</text>
+          </div>
+          <div>
+            <text>&emsp;</text>
+          </div>
         </div>
       </div>
     </div>
@@ -157,65 +146,64 @@ function SignupPage() {
   return (
     <div className="flex flex-col mt-16">
       <form
-          id="form"
-          className="form w-full"
+        id="form"
+        className="form w-full"
         //   onSubmit={this.handleSubmit}
-        >
-          <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
-            <Input
-              type="username"
-              // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
-              // name="entry.217945379"
-              id="username"
-              placeholder="Email or mobile number"
-              outline={true}
-              size="lg"
-              color="brown"
+      >
+        <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
+          <Input
+            type="username"
+            // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
+            // name="entry.217945379"
+            id="username"
+            placeholder="Email or mobile number"
+            outline={true}
+            size="lg"
+            color="brown"
             //   value={this.state.value}
             //   onChange={this.handleChange}
-              required
-            />
-          </div>
-          <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
-            <Input
-              type="password"
-              // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
-              name="entry.217945379"
-              id="password"
-              placeholder="Password"
-              outline={true}
-              size="lg"
-              color="brown"
+            required
+          />
+        </div>
+        <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
+          <Input
+            type="password"
+            // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
+            name="entry.217945379"
+            id="password"
+            placeholder="Password"
+            outline={true}
+            size="lg"
+            color="brown"
             //   value={this.state.value}
             //   onChange={this.handleChange}
-              required
-            />
-          </div>
-          <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
-            <Input
-              type="confirmpassword"
-              // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
-              name="entry.217945379"
-              id="confirmpassword"
-              placeholder="Confirm Password"
-              outline={true}
-              size="lg"
-              color="brown"
+            required
+          />
+        </div>
+        <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
+          <Input
+            type="confirmpassword"
+            // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
+            name="entry.217945379"
+            id="confirmpassword"
+            placeholder="Confirm Password"
+            outline={true}
+            size="lg"
+            color="brown"
             //   value={this.state.value}
             //   onChange={this.handleChange}
-              required
-            />
-          </div>
-          <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-16">
-            <Checkbox
-              color="brown"
-              text="I have read and accept the terms"
-              id="checkbox"
-            />
-          </div>
-          
-        </form>
-      </div>
+            required
+          />
+        </div>
+        <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-16">
+          <Checkbox
+            color="brown"
+            text="I have read and accept the terms"
+            id="checkbox"
+          />
+        </div>
+      </form>
+    </div>
   );
 }
 
@@ -223,65 +211,64 @@ function AccountinfoPage() {
   return (
     <div className="flex flex-col mt-20">
       <form
-          id="form"
-          className="form w-full"
+        id="form"
+        className="form w-full"
         //   onSubmit={this.handleSubmit}
-        >
-          <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
-            <Input
-              // type="username"
-              // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
-              // name="entry.217945379"
-              id="username"
-              placeholder="Username"
-              outline={true}
-              size="lg"
-              color="brown"
+      >
+        <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
+          <Input
+            // type="username"
+            // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
+            // name="entry.217945379"
+            id="username"
+            placeholder="Username"
+            outline={true}
+            size="lg"
+            color="brown"
             //   value={this.state.value}
             //   onChange={this.handleChange}
-              required
-            />
-          </div>
-          <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
-            <Input
-              // type="name"
-              // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
-              // name="entry.217945379"
-              id="name"
-              placeholder="Name"
-              outline={true}
-              size="lg"
-              color="brown"
+            required
+          />
+        </div>
+        <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
+          <Input
+            // type="name"
+            // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
+            // name="entry.217945379"
+            id="name"
+            placeholder="Name"
+            outline={true}
+            size="lg"
+            color="brown"
             //   value={this.state.value}
             //   onChange={this.handleChange}
-              required
-            />
-          </div>
-          
-        </form>
-        
-      </div>
+            required
+          />
+        </div>
+      </form>
+    </div>
   );
 }
 
 function FooterOne() {
-  return(
-    <div className="text-center pt-48"> 
-      <a 
-        href="../loginpage2"
-        className="toggleColour text-black no-underline hover:no-underline">
+  return (
+    <div className="text-center pt-48">
+      <Link href="/loginpage">
+        <a className="toggleColour text-black underline hover:no-underline">
           Have an account? Log in
-      </a>
+        </a>
+      </Link>
     </div>
   );
 }
 
 function FooterTwo() {
-  return(
-    <div className="text-center pt-64 mt-16"> 
-      <a 
+  return (
+    <div className="text-center pt-64 mt-16">
+      <a
         href="../loginpage2"
-        className="toggleColour text-gray-700 no-underline hover:no-underline">
+        className="toggleColour text-gray-700 no-underline hover:no-underline"
+      >
         &gt;&gt; Skip this step &gt;&gt;
       </a>
     </div>

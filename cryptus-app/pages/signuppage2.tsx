@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import PhoneNavbar from "../components/PhoneNavbar";
 import Input from "@material-tailwind/react/Input";
-import Checkbox from "@material-tailwind/react/Checkbox"
+import Checkbox from "@material-tailwind/react/Checkbox";
 
 export default function post(props) {
   const router = useRouter();
@@ -13,23 +13,23 @@ export default function post(props) {
         <div className="flex flex-col">
           <PhoneNavbar />
           <div className="flex flex-col mt-28">
-          <form
+            <form
               id="form"
               className="form w-full"
-            //   onSubmit={this.handleSubmit}
+              //   onSubmit={this.handleSubmit}
             >
               <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
                 <Input
-                  type="username"
+                  type="email"
                   // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
                   // name="entry.217945379"
-                  id="username"
+                  id="email"
                   placeholder="Email or mobile number"
                   outline={true}
                   size="lg"
                   color="brown"
-                //   value={this.state.value}
-                //   onChange={this.handleChange}
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
                   required
                 />
               </div>
@@ -43,14 +43,14 @@ export default function post(props) {
                   outline={true}
                   size="lg"
                   color="brown"
-                //   value={this.state.value}
-                //   onChange={this.handleChange}
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
                   required
                 />
               </div>
               <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
                 <Input
-                  type="confirmpassword"
+                  type="password"
                   // className="w-full bg-white lg:text-left rounded-lg px-2 py-2 border border-gray-500 "
                   name="entry.217945379"
                   id="confirmpassword"
@@ -58,8 +58,8 @@ export default function post(props) {
                   outline={true}
                   size="lg"
                   color="brown"
-                //   value={this.state.value}
-                //   onChange={this.handleChange}
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
                   required
                 />
               </div>
@@ -80,9 +80,9 @@ export default function post(props) {
               </div>
             </form>
             {/* I tried making it stick to the bottom, but failed */}
-            <div className="text-center pt-64"> 
+            <div className="text-center pt-64">
               <a className="toggleColour text-black no-underline hover:no-underline">
-                  Have an account? Log in
+                Have an account? Log in
               </a>
             </div>
           </div>
