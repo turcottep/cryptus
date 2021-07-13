@@ -58,7 +58,7 @@ export default class NameForm extends React.Component<MyProps, MyState> {
                   type="email"
                   className="email w-full text-center bg-white lg:text-left rounded-t-xl lg:rounded-r-none lg:rounded-l-xl px-2 py-2"
                   name="entry.217945379"
-                  id="email_landing_page"
+                  id="email"
                   placeholder="Email"
                   value={this.state.value}
                   onChange={this.handleChange}
