@@ -1,6 +1,6 @@
 import { withRouter, NextRouter } from "next/router";
 import React from "react";
-import PhoneNavbar from "../components/PhoneNavbar";
+import PhoneNavbar from "../components/UserForm/FormNavbar";
 import Input from "@material-tailwind/react/Input";
 import { signIn } from "next-auth/client";
 import Link from "next/link";
@@ -52,7 +52,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
 
   handleErrors() {
     if (this.state.loading) return null;
-    const error = this.props.router.query.error;
+    const error = this.props.router.query.error as string;
     // const error = String(this.props.router.query);
     const errorMessage = error && (errors[error] ?? errors.default);
     console.log(error, errorMessage);
@@ -77,7 +77,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
       <div className="bg-instagram">
         <main className="xl:max-w-xl">
           <div className="flex flex-col">
-            <PhoneNavbar />
+            {/* <PhoneNavbar /> */}
             {this.state.loading ? (
               <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
                 <Loading />
@@ -164,7 +164,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                   </div>
                 </div>
               </div>
-              <Link href="/signuppage2">
+              <Link href="/signuppage">
                 <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-4  text-center whitespace-nowrap bg-white border border-brown rounded-lg px-2 py-2">
                   <button className="text-brown text-xl font-bold">
                     Sign up

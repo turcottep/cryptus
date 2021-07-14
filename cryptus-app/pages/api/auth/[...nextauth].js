@@ -5,8 +5,6 @@ import { PrismaClient } from "@prisma/client";
 import jwt from "next-auth/jwt";
 import { sha256 } from "js-sha256";
 
-const prisma = new PrismaClient();
-
 const options = {
   pages: {
     signIn: "/loginpage",

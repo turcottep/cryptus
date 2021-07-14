@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
-import PhoneNavbar from "../components/PhoneNavbar";
+import PhoneNavbar from "../components/UserForm/FormNavbar";
 import Input from "@material-tailwind/react/Input";
 
 export default function post(props) {
@@ -10,12 +10,12 @@ export default function post(props) {
     <div className="bg-instagram h-screen">
       <main className="xl:max-w-xl">
         <div className="flex flex-col">
-          <PhoneNavbar />
+          {/* <PhoneNavbar /> */}
           <div className="flex flex-col mt-48">
-          <form
+            <form
               id="form"
               className="form w-full"
-            //   onSubmit={this.handleSubmit}
+              //   onSubmit={this.handleSubmit}
             >
               <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
                 <Input
@@ -27,8 +27,8 @@ export default function post(props) {
                   outline={true}
                   size="lg"
                   color="brown"
-                //   value={this.state.value}
-                //   onChange={this.handleChange}
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
                   required
                 />
               </div>
@@ -42,8 +42,8 @@ export default function post(props) {
                   outline={true}
                   size="lg"
                   color="brown"
-                //   value={this.state.value}
-                //   onChange={this.handleChange}
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
                   required
                 />
               </div>
@@ -57,7 +57,7 @@ export default function post(props) {
               </div>
             </form>
             {/* I tried making it stick to the bottom, but failed */}
-            <div className="text-center pt-64 mt-16"> 
+            <div className="text-center pt-64 mt-16">
               <a className="toggleColour text-gray-700 no-underline hover:no-underline">
                 &gt;&gt; Skip this step &gt;&gt;
               </a>
