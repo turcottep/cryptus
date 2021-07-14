@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Input from "@material-tailwind/react/Input";
-import TextArea from "@material-tailwind/react/TextArea";
-import Image from "@material-tailwind/react/Image";
+import Textarea from "@material-tailwind/react/Textarea";
 
 import FormHeader from "./FormHeader";
 import { FormValuesProps } from "./UserForm";
@@ -54,7 +52,7 @@ export default class PictureDescription extends Component<FormValuesProps> {
             <span className="pt-2 text-gray-600">Profile Picture</span>
           </div>
           <div className="flex xl:text-xl bg-white flex-col lg:flex-row mx-12 mt-8">
-            <TextArea
+            <Textarea
               type="text"
               id="description"
               onChange={this.props.handleChange}
