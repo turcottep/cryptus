@@ -4,14 +4,16 @@ import TextArea from "@material-tailwind/react/TextArea";
 import Image from "@material-tailwind/react/Image";
 
 import FormHeader from "./FormHeader";
+import { FormValuesProps } from "./UserForm";
 
 export default class PictureDescription extends Component<FormValuesProps> {
   continue = (e) => {
     console.log(this.props.values);
 
-    //@Guillaume Validate here
+    //@Guillaume Validate and send to database here
     const email = this.props.values.email;
     if (true) {
+      //prsima.update...
       this.props.nextStep();
     }
 

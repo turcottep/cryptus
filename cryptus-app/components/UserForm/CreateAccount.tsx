@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import Input from "@material-tailwind/react/Input";
 import Checkbox from "@material-tailwind/react/Checkbox";
 import FormHeader from "./FormHeader";
+import { FormValuesProps } from "./UserForm";
 
 export default class CreateAccount extends Component<FormValuesProps> {
   continue = (e) => {
     console.log(this.props.values);
 
-    //@Guillaume Validate here
+    //@Guillaume Validate and send to database here
     const email = this.props.values.email;
     if (true) {
+      //prsima.create...
       this.props.nextStep();
     }
 
