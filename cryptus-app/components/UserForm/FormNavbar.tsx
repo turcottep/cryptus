@@ -42,16 +42,12 @@ export default class FormNavBar extends Component<FormValuesProps> {
               </div>
             </div>
             <div className="col-start-2 col-span-4 text-center m-auto">
-              <a
-                className="toggleColour text-black no-underline hover:no-underline font-bold text-xl"
-                href="#"
-              >
+              <span className="toggleColour text-black no-underline hover:no-underline font-bold text-xl">
                 Public Wallet
-              </a>
+              </span>
             </div>
           </div>
         </div>
-        {/* <hr className="border-b border-red-400 opacity-25 my-0 py-0" /> */}
       </div>
     );
   }
