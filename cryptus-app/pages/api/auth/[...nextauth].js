@@ -5,12 +5,10 @@ import { PrismaClient } from "@prisma/client";
 import jwt from "next-auth/jwt";
 import { sha256 } from "js-sha256";
 
-const prisma = new PrismaClient();
-
 const options = {
-  // Configure one or more authentication providers
   pages: {
     signIn: "/loginpage",
+    error: "/loginpage",
   },
   providers: [
     Providers.Credentials({
@@ -51,12 +49,12 @@ const options = {
           }
         } catch (e) {
           console.error("Erreur :", e);
+          // Promise.reject(new Error("Unable to connect to server"));
           return null;
         }
         return null;
       },
     }),
-    // ...add more providers here
   ],
 
   session: {

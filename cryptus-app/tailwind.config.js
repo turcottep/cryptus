@@ -57,6 +57,9 @@ module.exports = {
       coquille: {
         DEFAULT: "#FFFDF5",
       },
+      brown: {
+        DEFAULT: "#4D2100",
+      },
       instagram: {
         DEFAULT: "#FBFAFB",
       },
@@ -65,9 +68,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [
-    require("@ky-is/tailwindcss-plugin-width-height")({
-      variants: ["responsive"],
-    }),
-  ],
+  plugins: [],
 };
