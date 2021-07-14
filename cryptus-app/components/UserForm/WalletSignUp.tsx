@@ -20,11 +20,10 @@ export default class WalletSignUp extends Component<FormValuesProps> {
       <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
         <FormHeader title="Connect Wallet" step={this.props.step} />
 
-        <div
-          // onClick={this.continue}
+        <button
+          onClick={this.continue}
           className="relative text-xl text-center whitespace-nowrap bg-white text-brown border-4 border-brown rounded-lg w-full px-4 py-8 mt-20"
         >
-          <div className="absolute bg-black w-full h-24 self-center bg-opacity-80 rounded-lg -ml-6 -mt-10 "></div>
           <div className="flex justify-between items-center">
             <img
               className="flex-shrink w-12 h-12"
@@ -47,7 +46,7 @@ export default class WalletSignUp extends Component<FormValuesProps> {
               />
             </svg>
           </div>
-        </div>
+        </button>
         <div className="flex xl:text-xl flex-col items-center w-full mt-48">
           <div className="flex w-full flex-col">
             <div className=" w-full grid grid-cols-7 justify-center text-center">
