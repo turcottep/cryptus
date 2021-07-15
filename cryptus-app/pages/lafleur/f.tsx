@@ -6,7 +6,14 @@ import NavbarProfile from "../../components/NavbarProfile";
 
 export default function post(props) {
   const router = useRouter();
-
+  const cleanNames = [];
+  props.data.assets.forEach((asset) => {
+    if (asset.name) {
+      cleanNames.push(encodeURI(asset.name.replace(/\s+/g, "") + asset.id));
+    } else {
+      cleanNames.push(asset.id);
+    }
+  });
   return (
     <div className="bg-instagram">
       <main className="">
@@ -17,7 +24,7 @@ export default function post(props) {
               {props.data.assets.map((asset, index) => (
                 <li key={index}>
                   <a
-                    id={encodeURI(asset.name + asset.id)}
+                    id={cleanNames[index]}
                     className="pt-24 -mt-24 h-full flex justify-between flex-col"
                   >
                     <div className="">
