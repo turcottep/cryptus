@@ -18,11 +18,11 @@ export default function NavbarProfile() {
         >
           Public Wallet
         </a>
-        <button className=" text-sm text-center whitespace-nowrap bg-dirt text-white font-bold rounded-md  px-2 py-1">
+        <button className=" text-sm text-center whitespace-nowrap bg-dirt text-white font-bold rounded-md  px-2 py-1 ">
           Get Early Access
         </button>
       </div>
-      <div className="flex justify-between bg-instagram w-full border-b border-gray-400 py-2 px-2">
+      <div className="flex justify-between bg-instagram w-full border-b border-gray-400 py-2 px-2 sm:max-w-lg mx-auto">
         <div id="backButton" className="" onClick={() => router.back()}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
