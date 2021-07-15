@@ -3,18 +3,19 @@ import Input from "@material-tailwind/react/Input";
 import Checkbox from "@material-tailwind/react/Checkbox";
 import FormHeader from "./FormHeader";
 import { FormValuesProps } from "./UserForm";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export default class AccountInformation extends Component<FormValuesProps> {
   continue = (e) => {
     console.log(this.props.values);
-
-    //@Guillaume Validate and send to database here
     const email = this.props.values.email;
-    if (true) {
-      //prsima.update...
-      this.props.nextStep();
+    const username = this.props.values.username;
+    const displayName = this.props.values.name
+    try {
+      updateUser(email, username, displayName).then(this.props.nextStep())
+    } catch (error) {
+      alert("Please accept the terms and conditions")
     }
-
     e.preventDefault();
   };
 
@@ -69,4 +70,14 @@ export default class AccountInformation extends Component<FormValuesProps> {
       </div>
     );
   }
+}
+
+async function updateUser(email, username, displayName) {
+  const response = await fetch("/api/leads/updateUsername", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email: email, username: username, displayName: displayName }),
+  });
 }

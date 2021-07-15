@@ -24,6 +24,7 @@ export class UserForm extends Component {
     password: "",
     confirmpassword: "",
     description: "",
+    checkbox: false
   };
 
   // Proceed to next step
@@ -45,7 +46,7 @@ export class UserForm extends Component {
   handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     const target_id = e.target.id;
-    this.setState({ [target_id]: e.target.value });
+    this.setState({ [target_id]: newValue });
   };
 
   render() {
