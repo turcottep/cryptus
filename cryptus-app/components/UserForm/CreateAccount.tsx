@@ -3,16 +3,29 @@ import Input from "@material-tailwind/react/Input";
 import Checkbox from "@material-tailwind/react/Checkbox";
 import FormHeader from "./FormHeader";
 import { FormValuesProps } from "./UserForm";
+import { sha256 } from "js-sha256";
 
 export default class CreateAccount extends Component<FormValuesProps> {
   continue = (e) => {
     console.log(this.props.values);
-
-    //@Guillaume Validate and send to database here
     const email = this.props.values.email;
-    if (true) {
-      //prsima.create...
-      this.props.nextStep();
+    const password = this.props.values.password;
+    const confirmedPassword = this.props.values.confirmpassword;
+    const checkbox = this.props.values.checkbox
+    
+    if (validateEmail(email)) {
+      if (password == confirmedPassword) {
+        if (checkbox == "on") {
+          const hashedPassword = sha256(password)
+          createUser(email, hashedPassword).then(this.props.nextStep())
+        } else {
+          alert("Please accept the terms and conditions")
+        }
+      } else {
+        alert("Please input the same password")
+      }
+    } else {
+      alert("Please input a valid email")
     }
 
     e.preventDefault();
@@ -70,6 +83,7 @@ export default class CreateAccount extends Component<FormValuesProps> {
           </div>
           <div className="flex xl:text-xl  flex-col lg:flex-row mx-12 mt-8">
             <Checkbox
+              onChange={this.props.handleChange}
               color="brown"
               text="I have read and accept the terms"
               id="checkbox"
@@ -87,4 +101,20 @@ export default class CreateAccount extends Component<FormValuesProps> {
       </div>
     );
   }
+}
+
+async function createUser(email, hashedPassword) {
+  const response = await fetch("/api/leads/create", {
+    method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email, hash: hashedPassword }),
+    });
+}
+
+function validateEmail(email) {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
