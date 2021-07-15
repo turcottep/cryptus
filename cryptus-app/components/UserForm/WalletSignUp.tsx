@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import FormHeader from "./FormHeader";
 import { FormValuesProps } from "./UserForm";
 
+declare let window: any;
+
 export default class WalletSignUp extends Component<FormValuesProps> {
   continue = (e) => {
     e.preventDefault();
@@ -15,13 +17,40 @@ export default class WalletSignUp extends Component<FormValuesProps> {
     this.props.prevStep();
   };
 
+  handleClick = async () => {
+    if (!(window as any).ethereum) {
+      window.alert("Please install MetaMask first.");
+      return;
+    }
+
+    await (window as any).ethereum.enable();
+    console.log("enabled ethereum");
+
+    const accounts = await window.ethereum.request({ method: "eth_accounts" });
+    const account = accounts[0];
+
+    const publicAddress = account.toLowerCase(); //coinbase.toLowerCase();
+    console.log(publicAddress);
+
+    this.props.changeState("blockchain_wallet", publicAddress);
+    console.log(this.props.values);
+
+    try {
+      updateWallet(this.props.values.email, publicAddress).then(
+        this.props.nextStep()
+      );
+    } catch (error) {
+      alert("Please accept the terms and conditions");
+    }
+  };
+
   render() {
     return (
       <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
         <FormHeader title="Connect Wallet" step={this.props.step} />
 
         <button
-          onClick={this.continue}
+          onClick={this.handleClick}
           className="relative text-xl text-center whitespace-nowrap bg-white text-brown border-4 border-brown rounded-lg w-full px-4 py-8 mt-20"
         >
           <div className="flex justify-between items-center">
@@ -83,4 +112,22 @@ export default class WalletSignUp extends Component<FormValuesProps> {
       </div>
     );
   }
+}
+
+async function updateWallet(email, blockchain_wallet) {
+  const response = await fetch("/api/leads/updateWallet", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email,
+      blockchain_wallet: blockchain_wallet,
+      external_url:
+        "https://api.opensea.io/api/v1/assets?owner=" +
+        blockchain_wallet +
+        "&order_direction=asc&offset=0&limit=50",
+      blockchain_id: "ETH",
+    }),
+  });
 }

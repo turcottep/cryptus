@@ -37,10 +37,10 @@ model Nft {
 }
 
 model Wallet {
-  id                String  @id @default(uuid())
-  blockchain_id     String?
-  blockchain_wallet String?
-  external_url      String?
-  User              User?   @relation(fields: [userId], references: [id])
-  userId            String?
+  id            String  @id @default(uuid())
+  blockchain_id String?
+  address       String? @unique
+  external_url  String? @unique
+  User          User?   @relation(fields: [userId], references: [id])
+  userId        String?
 }

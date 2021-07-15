@@ -26,7 +26,13 @@ const options = {
       },
 
       async authorize(credentials) {
-        try {
+        console.log("logging in the old fashion ");
+        console.log(credentials);
+        if (credentials.address) {
+          console.log("loggin in metamask");
+        } else if (credentials.username) {
+          // console.log("loggin in crednetials");
+                try {
           const res = await fetch(
             "http://localhost:3000/api/users/" + credentials.username,
             {
@@ -52,6 +58,8 @@ const options = {
           // Promise.reject(new Error("Unable to connect to server"));
           return null;
         }
+        }
+  
         return null;
       },
     }),
