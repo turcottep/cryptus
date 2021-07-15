@@ -11,40 +11,36 @@ generator client {
 }
 
 model User {
-    id          String   @id @default(uuid())
-    email       String   @unique
-    username    String
-    nfts_order  Int[]
-    description String
-    views       Int
-    likes       Int
-    wallets     Wallet[]
-    profile_pic Nft[]
-    // content   String?
-    // published Boolean @default(false)
-    // author    User?   @relation(fields: [authorId], references: [id])
-    // authorId  Int?
+  id          String   @id @default(uuid())
+  email       String   @unique
+  username    String   @unique
+  displayName String
+  nfts_order  Int[]
+  description String
+  views       Int
+  likes       Int
+  wallets     Wallet[]
+  profile_pic Nft[]
+  hash        String
 }
 
 model Nft {
-    id                String   @id @default(uuid())
-    description       String?
-    collection        String?
-    tags              String[]
-    blockchain_id     String?
-    blockchain_wallet String?
-    external_url      String?
-    // createdAt   DateTime @default(now()) @map(name: "created_at")
-    // updatedAt   DateTime @updatedAt @map(name: "updated_at")
-    User   User?   @relation(fields: [userId], references: [id])
-    userId String?
+  id                String   @id @default(uuid())
+  description       String?
+  collection        String?
+  tags              String[]
+  blockchain_id     String?
+  blockchain_wallet String?
+  external_url      String?
+  User              User?    @relation(fields: [userId], references: [id])
+  userId            String?
 }
 
 model Wallet {
-    id                String  @id @default(uuid())
-    blockchain_id     String?
-    blockchain_wallet String?
-    external_url      String?
-    User   User?   @relation(fields: [userId], references: [id])
-    userId String?
+  id                String  @id @default(uuid())
+  blockchain_id     String?
+  blockchain_wallet String?
+  external_url      String?
+  User              User?   @relation(fields: [userId], references: [id])
+  userId            String?
 }

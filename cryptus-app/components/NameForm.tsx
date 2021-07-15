@@ -1,14 +1,5 @@
 import React from "react";
 
-// async function fetchLeadsRequest() {
-//   const response = await fetch("/api/leads");
-//   const { leads } = await response.json();
-//   return leads.map((lead) => ({
-//     email: lead.email,
-//     field: lead.field_study,
-//   }));
-// }
-
 function validateEmail(email) {
   const re =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -16,8 +7,6 @@ function validateEmail(email) {
 }
 
 async function createLeadRequest(mail: string) {
-  console.log("trygin to post this man:", mail);
-
   const response = await fetch("/api/leads/create", {
     method: "POST",
     headers: {
@@ -26,7 +15,6 @@ async function createLeadRequest(mail: string) {
     body: JSON.stringify({ email: mail }),
   });
   const data = await response.json();
-  console.log(data);
 }
 
 type MyProps = {};
@@ -46,7 +34,6 @@ export default class NameForm extends React.Component<MyProps, MyState> {
 
   handleSubmit(event) {
     const email = this.state.value;
-    // console.log("An email was submitted: " + email);
     if (validateEmail(email)) {
       createLeadRequest(email);
       this.setState({ showForm: false });

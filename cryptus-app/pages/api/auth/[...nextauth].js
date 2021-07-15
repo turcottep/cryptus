@@ -1,22 +1,65 @@
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { PrismaClient } from "@prisma/client";
+import jwt from "next-auth/jwt";
+import { sha256 } from "js-sha256";
 
 const options = {
-  // Configure one or more authentication providers
-  providers: [
-    Providers.GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET
-    }),
-    // ...add more providers here
-  ],
-  debug: process.env.NODE_ENV === "development",
-  secret: process.env.AUTH_SECRET,
-  jwt: {
-    secret: process.env.JWT_SECRET,
+  pages: {
+    signIn: "/loginpage",
+    error: "/loginpage",
   },
-  // A database is optional, but required to persist accounts in a database
-  database: process.env.DATABASE_URL,
-}
+  providers: [
+    Providers.Credentials({
+      name: "Credentials",
+      credentials: {
+        username: {
+          label: "Username",
+          type: "text",
+          placeholder: "Username",
+        },
+        password: {
+          label: "Password",
+          type: "password",
+        },
+      },
 
-export default (req, res) => NextAuth(req, res, options)
+      async authorize(credentials) {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/users/" + credentials.username,
+            {
+              method: "POST",
+              body: JSON.stringify(credentials),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const user = await res.json();
+          const password_hash = sha256(credentials.password);
+          if (user.hash == password_hash) {
+            const newuser = {
+              name: user.username,
+              email: user.email,
+              image: "test",
+            };
+            return newuser;
+          }
+        } catch (e) {
+          console.error("Erreur :", e);
+          // Promise.reject(new Error("Unable to connect to server"));
+          return null;
+        }
+        return null;
+      },
+    }),
+  ],
+
+  session: {
+    jwt: true,
+  },
+};
+
+export default NextAuth(options);
