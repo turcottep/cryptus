@@ -9,9 +9,9 @@ export default function post(props) {
 
   return (
     <div className="bg-instagram">
-      <main className="sm:max-w-lg mx-auto">
+      <main className="">
         <NavbarProfile />
-        <div className="pt-24">
+        <div className="pt-24 sm:max-w-lg mx-auto">
           <Feed title="Lafleur">
             <ul>
               {props.data.assets.map((asset, index) => (

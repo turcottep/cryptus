@@ -9,7 +9,7 @@ export default function post(props) {
 
   return (
     <div className="bg-instagram">
-      <main className="">
+      <main className="sm:max-w-lg mx-auto">
         <div className="flex flex-col items-center">
           <NavbarProfile />
           <div className="mt-24 w-full">

@@ -18,7 +18,7 @@ export default function NavbarProfile() {
         >
           Public Wallet
         </a>
-        <button className=" text-sm text-center whitespace-nowrap bg-dirt text-white font-bold rounded-md lg:w-2/5 px-2 py-1">
+        <button className=" text-sm text-center whitespace-nowrap bg-dirt text-white font-bold rounded-md  px-2 py-1">
           Get Early Access
         </button>
       </div>
