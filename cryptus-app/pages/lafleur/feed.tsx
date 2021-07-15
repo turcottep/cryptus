@@ -17,7 +17,7 @@ export default function post(props) {
               {props.data.assets.map((asset, index) => (
                 <li key={index}>
                   <a
-                    id={`NFT${index + 1}`}
+                    id={encodeURI(asset.name + asset.id)}
                     className="pt-24 -mt-24 h-full flex justify-between flex-col"
                   >
                     <div className="">

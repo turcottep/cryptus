@@ -7,12 +7,18 @@ type MyState = {};
 
 export default class Mosaic extends React.Component<MyProps, MyState> {
   render() {
+    console.log(this.props.assets);
+
     return (
       <div id="header" className=" w-full h-full text-black bg-instagram">
         <div className="h-full grid grid-cols-3 gap-0.1">
           {this.props.assets.map((asset, index) => (
-            <a key={`NFT${index + 1}`} id={`NFT${index + 1}`} className="">
-              <Link href={`/lafleur/feed#NFT${index + 1}`}>
+            <a
+              key={encodeURI(asset.name + asset.id)}
+              id={encodeURI(asset.name + asset.id)}
+              className=""
+            >
+              <Link href={`/lafleur/feed#${encodeURI(asset.name + asset.id)}`}>
                 <div className="flex flex-col justify-around w-full h-full overflow-hidden">
                   <img
                     className="my-auto wh-full min-w-0 min-h-0"
