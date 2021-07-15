@@ -7,8 +7,6 @@ type MyState = {};
 
 export default class Mosaic extends React.Component<MyProps, MyState> {
   render() {
-    console.log(this.props.assets);
-
     return (
       <div id="header" className=" w-full h-full text-black bg-instagram">
         <div className="h-full grid grid-cols-3 gap-0.1">
