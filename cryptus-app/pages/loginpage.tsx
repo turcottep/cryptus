@@ -1,6 +1,6 @@
 import { withRouter, NextRouter } from "next/router";
 import React from "react";
-import PhoneNavbar from "../components/UserForm/FormNavbar";
+import FormNavbar from "../components/UserForm/FormNavbar";
 import Input from "@material-tailwind/react/Input";
 import { signIn } from "next-auth/client";
 import Link from "next/link";
@@ -77,17 +77,68 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
       <div className="bg-instagram">
         <main className="xl:max-w-xl">
           <div className="flex flex-col">
-            {/* <PhoneNavbar /> */}
+            {/* <FormNavbar /> */}
             {this.state.loading ? (
               <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
                 <Loading />
               </div>
             ) : null}
-            <div className="flex flex-col items-center">
-              <span className="toggleColour mt-24 text-black no-underline hover:no-underline font-bold">
-                {/* To continue, log in to Public Wallet */}
-              </span>
+
+
+            <div className="flex flex-col mx-12 items-center">
+              <button
+                // onClick={this.continue}
+                className="relative text-xl text-center whitespace-nowrap bg-brown text-white border-4 border-brown rounded-lg w-full px-4 py-8 mt-20"
+              >
+                <div className="flex justify-between items-center">
+                  <img
+                    className="flex-shrink w-12 h-12"
+                    src="../MetaMask_Fox.svg"
+                    alt="MetaMask Fox Logo"
+                  />
+                  <span>Metamask</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </div>
+              </button>
             </div>
+            <div className="mt-4 grid grid-cols-7 justify-center text-center">
+              <div className="col-start-2 col-span-2 divide-y divide-black">
+                <div>
+                  <text>&emsp;</text>
+                </div>
+                <div>
+                  <text>&emsp;</text>
+                </div>
+              </div>
+              <div className="col-start-4 col-span-1 m-auto">
+                <text className="toggleColour text-2xl text-black no-underline hover:no-underline">
+                  OR
+                </text>
+              </div>
+              <div className="col-start-5 col-span-2 divide-y divide-black">
+                <div>
+                  <text>&emsp;</text>
+                </div>
+                <div>
+                  <text>&emsp;</text>
+                </div>
+              </div>
+            </div>
+
+
             <div className="flex flex-col mt-4">
               <form
                 id="form"
@@ -136,11 +187,13 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                   </button>
                 </div>
               </form>
-              <div className="flex flex-col items-center">
-                <a className="toggleColour mt-4 text-black no-underline hover:no-underline">
-                  Forgot your Password?
-                </a>
-              </div>
+              <Link href="/forgotpassword">
+                <div className="flex flex-col items-center">
+                  <button className="toggleColour mt-4 text-black no-underline hover:no-underline">
+                    Forgot your Password?
+                  </button>
+                </div>
+              </Link>
               <div className="mt-4 grid grid-cols-7 justify-center text-center">
                 <div className="col-start-2 col-span-2 divide-y divide-black">
                   <div>
