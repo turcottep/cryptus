@@ -30,36 +30,62 @@ const options = {
         console.log(credentials);
         if (credentials.address) {
           console.log("loggin in metamask");
+          try {
+            const res = await fetch(
+              "http://localhost:3000/api/walletaddresss" + credentials.address,
+              {
+                method: "POST",
+                body: JSON.stringify(credentials),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            const user = await res.json();
+            const password_hash = sha256(credentials.password);
+            if (user.hash == password_hash) {
+              const newuser = {
+                name: user.username,
+                email: user.email,
+                image: "test",
+              };
+              return newuser;
+            }
+          } catch (e) {
+            console.error("Erreur :", e);
+            // Promise.reject(new Error("Unable to connect to server"));
+            return null;
+          }
         } else if (credentials.username) {
           // console.log("loggin in crednetials");
-                try {
-          const res = await fetch(
-            "http://localhost:3000/api/users/" + credentials.username,
-            {
-              method: "POST",
-              body: JSON.stringify(credentials),
-              headers: {
-                "Content-Type": "application/json",
-              },
+          try {
+            const res = await fetch(
+              "http://localhost:3000/api/users/" + credentials.username,
+              {
+                method: "POST",
+                body: JSON.stringify(credentials),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            const user = await res.json();
+            const password_hash = sha256(credentials.password);
+            if (user.hash == password_hash) {
+              const newuser = {
+                name: user.username,
+                email: user.email,
+                image: "test",
+              };
+              return newuser;
             }
-          );
-          const user = await res.json();
-          const password_hash = sha256(credentials.password);
-          if (user.hash == password_hash) {
-            const newuser = {
-              name: user.username,
-              email: user.email,
-              image: "test",
-            };
-            return newuser;
+          } catch (e) {
+            console.error("Erreur :", e);
+            // Promise.reject(new Error("Unable to connect to server"));
+            return null;
           }
-        } catch (e) {
-          console.error("Erreur :", e);
-          // Promise.reject(new Error("Unable to connect to server"));
-          return null;
         }
-        }
-  
+
         return null;
       },
     }),
