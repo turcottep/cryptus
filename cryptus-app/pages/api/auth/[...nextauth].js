@@ -26,13 +26,12 @@ const options = {
       },
 
       async authorize(credentials) {
-        console.log("logging in the old fashion ");
         console.log(credentials);
         if (credentials.address) {
           console.log("loggin in metamask");
           try {
             const res = await fetch(
-              "http://localhost:3000/api/walletaddresss" + credentials.address,
+              "http://localhost:3000/api/leads/walletaddress",
               {
                 method: "POST",
                 body: JSON.stringify(credentials),
@@ -41,15 +40,31 @@ const options = {
                 },
               }
             );
-            const user = await res.json();
-            const password_hash = sha256(credentials.password);
-            if (user.hash == password_hash) {
+            const wallet = await res.json();
+            if (!wallet.id) {
+              console.log("don't know who this man is");
+              return null;
+            }
+            try {
+              const res = await fetch("http://localhost:3000/api/users/id", {
+                method: "POST",
+                body: JSON.stringify({ id: wallet.userId }),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+              const user = await res.json();
+              console.log("found User!", user);
               const newuser = {
                 name: user.username,
                 email: user.email,
                 image: "test",
               };
               return newuser;
+            } catch (e) {
+              console.error("Erreur :", e);
+              // Promise.reject(new Error("Unable to connect to server"));
+              return null;
             }
           } catch (e) {
             console.error("Erreur :", e);

@@ -9,7 +9,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         wallets: true,
       },
       where: {
-        username: req.body.username,
+        id: req.body.id,
       },
     });
     res.status(201);
