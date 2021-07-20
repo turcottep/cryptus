@@ -1,27 +1,24 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model User {
   id          String   @id @default(uuid())
-  email       String?  @unique
-  username    String?  @unique
-  displayName String?  @default("")
+  email       String   @unique
+  username    String   @unique
+  displayName String
   nfts_order  Int[]
-  description String   @default("")
-  views       Int      @default(0)
-  likes       Int      @default(0)
-  wallets     Wallet[]
+  description String
+  views       Int
+  likes       Int
+  hash        String
   profile_pic Nft[]
-  hash        String?
+  wallets     Wallet[]
 }
 
 model Nft {
@@ -32,8 +29,8 @@ model Nft {
   blockchain_id     String?
   blockchain_wallet String?
   external_url      String?
-  User              User?    @relation(fields: [userId], references: [id])
   userId            String?
+  User              User?    @relation(fields: [userId], references: [id])
 }
 
 model Wallet {
@@ -41,6 +38,6 @@ model Wallet {
   blockchain_id String @default("ETH")
   address       String @unique
   external_url  String @unique
-  User          User   @relation(fields: [userId], references: [id])
   userId        String
+  User          User   @relation(fields: [userId], references: [id])
 }
