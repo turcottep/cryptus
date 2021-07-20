@@ -9,7 +9,8 @@ import { getStaticProps } from "../lafleur/feed";
 export default function post(props) {
   const router = useRouter();
   const { userId } = router.query;
-  const newProps = { assets: props.data.assets, userId: userId };
+  const user = getUser(userId)
+  const newProps = { assets: props.data.assets, user: user };
 
   return (
     <div className="bg-instagram">
@@ -17,7 +18,7 @@ export default function post(props) {
         <div className="flex flex-col items-center">
           <NavbarProfile name={userId} />
           <div className="mt-24">
-            <Profile />
+            <Profile {...newProps}/>
           </div>
           <Mosaic {...newProps} />
         </div>
@@ -28,7 +29,8 @@ export default function post(props) {
 
 export async function getServerSideProps(context) {
   const { userId } = context.query;
-
+  const user = await getUser(userId)
+  console.log(user)
   const wallet = "0x0d7c9db889858b9f6954608e36199104dd530da0";
   const url =
     "https://api.opensea.io/api/v1/assets?owner=" +
@@ -36,8 +38,12 @@ export async function getServerSideProps(context) {
     "&order_direction=asc&offset=0&limit=50";
 
   try {
-    const res = await fetch(url);
-    const data = await res.json();
+    var data
+    for await(const wallet of user.wallets){
+      const res = await fetch(wallet.external_url);
+      data = await res.json();
+    }
+    
 
     return {
       props: { data },
@@ -45,4 +51,19 @@ export async function getServerSideProps(context) {
   } catch (err) {
     console.error(err);
   }
+}
+
+
+async function getUser(userId) {
+  const res = await fetch(
+    "http://localhost:3000/api/users/" + userId,
+    {
+      method: "GET",
+      body: JSON.stringify(userId),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return res.json();
 }

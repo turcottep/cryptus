@@ -1,7 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import router from "next/router";
 import prisma from "../../../lib/prisma";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
+  const {username} = router.query;
   try {
     prisma.$connect();
     const user = await prisma.user.findUnique({
@@ -9,7 +11,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         wallets: true,
       },
       where: {
-        username: "laflow3r",
+        username: String(username),
       },
     });
     res.status(201);
