@@ -7,14 +7,13 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default class AccountInformation extends Component<FormValuesProps> {
   continue = (e) => {
-    console.log(this.props.values);
     const email = this.props.values.email;
     const username = this.props.values.username;
-    const displayName = this.props.values.name
+    const displayName = this.props.values.name;
     try {
-      updateUser(email, username, displayName).then(this.props.nextStep())
+      updateUser(email, username, displayName).then(this.props.nextStep());
     } catch (error) {
-      alert("Please accept the terms and conditions")
+      alert("Please accept the terms and conditions");
     }
     e.preventDefault();
   };
@@ -26,7 +25,6 @@ export default class AccountInformation extends Component<FormValuesProps> {
 
   render() {
     const { values, handleChange } = this.props;
-    console.log(values);
 
     return (
       <div className="flex flex-col ">
@@ -78,6 +76,10 @@ async function updateUser(email, username, displayName) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email: email, username: username, displayName: displayName }),
+    body: JSON.stringify({
+      email: email,
+      username: username,
+      displayName: displayName,
+    }),
   });
 }

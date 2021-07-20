@@ -26,32 +26,76 @@ const options = {
       },
 
       async authorize(credentials) {
-        try {
-          const res = await fetch(
-            "http://localhost:3000/api/users/" + credentials.username,
-            {
-              method: "POST",
-              body: JSON.stringify(credentials),
-              headers: {
-                "Content-Type": "application/json",
-              },
+        if (credentials.address) {
+          try {
+            const res = await fetch(
+              "http://localhost:3000/api/leads/walletaddress",
+              {
+                method: "POST",
+                body: JSON.stringify(credentials),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            const wallet = await res.json();
+            if (!wallet.id) {
+              return null;
             }
-          );
-          const user = await res.json();
-          const password_hash = sha256(credentials.password);
-          if (user.hash == password_hash) {
-            const newuser = {
-              name: user.username,
-              email: user.email,
-              image: "test",
-            };
-            return newuser;
+            try {
+              const res = await fetch("http://localhost:3000/api/users/id", {
+                method: "POST",
+                body: JSON.stringify({ id: wallet.userId }),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+              const user = await res.json();
+              const newuser = {
+                name: user.username,
+                email: user.email,
+                image: "test",
+              };
+              return newuser;
+            } catch (e) {
+              console.error("Erreur :", e);
+              // Promise.reject(new Error("Unable to connect to server"));
+              return null;
+            }
+          } catch (e) {
+            console.error("Erreur :", e);
+            // Promise.reject(new Error("Unable to connect to server"));
+            return null;
           }
-        } catch (e) {
-          console.error("Erreur :", e);
-          // Promise.reject(new Error("Unable to connect to server"));
-          return null;
+        } else if (credentials.username) {
+          try {
+            const res = await fetch(
+              "http://localhost:3000/api/users/" + credentials.username,
+              {
+                method: "POST",
+                body: JSON.stringify(credentials),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            const user = await res.json();
+            const password_hash = sha256(credentials.password);
+            if (user.hash == password_hash) {
+              const newuser = {
+                name: user.username,
+                email: user.email,
+                image: "test",
+              };
+              return newuser;
+            }
+          } catch (e) {
+            console.error("Erreur :", e);
+            // Promise.reject(new Error("Unable to connect to server"));
+            return null;
+          }
         }
+
         return null;
       },
     }),

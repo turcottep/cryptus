@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@material-tailwind/react": "0.3.4",
+    "@metamask/detect-provider": "^1.2.0",
     "@next-auth/prisma-adapter": "^0.5.2",
     "@prisma/client": "^2.26.0",
     "autoprefixer": "^10.1.0",
+    "clean": "^4.0.2",
     "js-sha256": "^0.9.0",
     "mongodb": "^3.6.3",
     "next": "^10.0.3",
@@ -23,6 +25,7 @@
     "react-dropzone": "^11.2.4",
     "react-pdf": "^5.1.0",
     "tailwind": "^4.0.0",
+    "web3": "^1.4.0",
     "webpack": "^4.46.0"
   },
   "devDependencies": {
