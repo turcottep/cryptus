@@ -20,6 +20,36 @@ const errors = {
   default: "Unable to sign in.",
 };
 
+declare let window: any;
+
+const or = () => {
+  return (
+    <div className="mt-4 grid grid-cols-7 justify-center text-center">
+      <div className="col-start-2 col-span-2 divide-y divide-black">
+        <div>
+          <span>&emsp;</span>
+        </div>
+        <div>
+          <span>&emsp;</span>
+        </div>
+      </div>
+      <div className="col-start-4 col-span-1 m-auto">
+        <span className="toggleColour text-2xl text-black no-underline hover:no-underline">
+          OR
+        </span>
+      </div>
+      <div className="col-start-5 col-span-2 divide-y divide-black">
+        <div>
+          <span>&emsp;</span>
+        </div>
+        <div>
+          <span>&emsp;</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // type MyProps = { csrfToken };
 type MyState = { password: String; username: String; loading: Boolean };
 
@@ -53,15 +83,12 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
   handleErrors() {
     if (this.state.loading) return null;
     const error = this.props.router.query.error as string;
-    // const error = String(this.props.router.query);
     const errorMessage = error && (errors[error] ?? errors.default);
-    console.log(error, errorMessage);
 
     return error ? errorMessage : null;
   }
 
   handleSubmit(event) {
-    console.log("yoo");
     this.setState({ loading: true });
     signIn("credentials", {
       redirect: true,
@@ -71,6 +98,22 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
     });
     event.preventDefault();
   }
+
+  handleClick = async () => {
+    this.setState({ loading: true });
+
+    await window.ethereum.enable();
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    const account = accounts[0];
+
+    signIn("credentials", {
+      redirect: true,
+      address: account,
+      callbackUrl: "http://localhost:3000/",
+    });
+  };
 
   render() {
     return (
@@ -83,11 +126,38 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                 <Loading />
               </div>
             ) : null}
-            <div className="flex flex-col items-center">
-              <span className="toggleColour mt-24 text-black no-underline hover:no-underline font-bold">
-                {/* To continue, log in to Public Wallet */}
-              </span>
+            <div className="mx-12">
+              <button
+                onClick={this.handleClick}
+                className="text-xl text-center bg-white text-brown border-4 border-brown rounded-lg w-full px-4 py-8 mt-20"
+              >
+                <div className="flex justify-between items-center">
+                  <img
+                    className="flex-shrink w-12 h-12"
+                    src="../MetaMask_Fox.svg"
+                    alt="MetaMask Fox Logo"
+                  />
+                  <span>Metamask</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </div>
+              </button>
             </div>
+
+            {or()}
+
             <div className="flex flex-col mt-4">
               <form
                 id="form"
@@ -141,29 +211,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                   Forgot your Password?
                 </a>
               </div>
-              <div className="mt-4 grid grid-cols-7 justify-center text-center">
-                <div className="col-start-2 col-span-2 divide-y divide-black">
-                  <div>
-                    <text>&emsp;</text>
-                  </div>
-                  <div>
-                    <text>&emsp;</text>
-                  </div>
-                </div>
-                <div className="col-start-4 col-span-1 m-auto">
-                  <text className="toggleColour text-2xl text-black no-underline hover:no-underline">
-                    OR
-                  </text>
-                </div>
-                <div className="col-start-5 col-span-2 divide-y divide-black">
-                  <div>
-                    <text>&emsp;</text>
-                  </div>
-                  <div>
-                    <text>&emsp;</text>
-                  </div>
-                </div>
-              </div>
+              {or()}
               <Link href="/signuppage">
                 <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-4  text-center whitespace-nowrap bg-white border border-brown rounded-lg px-2 py-2">
                   <button className="text-brown text-xl font-bold">

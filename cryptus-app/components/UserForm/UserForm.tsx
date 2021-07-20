@@ -11,6 +11,7 @@ export type FormValuesProps = {
   prevStep: Function;
   nextStep: Function;
   handleChange: Function;
+  changeState: Function;
   values: any;
   step: Number;
 };
@@ -24,7 +25,8 @@ export class UserForm extends Component {
     password: "",
     confirmpassword: "",
     description: "",
-    checkbox: false
+    blockchain_wallet: "",
+    checkbox: false,
   };
 
   // Proceed to next step
@@ -43,6 +45,10 @@ export class UserForm extends Component {
     });
   };
 
+  changeState = (target_id, newValue) => {
+    this.setState({ [target_id]: newValue });
+  };
+
   handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     const target_id = e.target.id;
@@ -56,6 +62,7 @@ export class UserForm extends Component {
       nextStep: this.nextStep,
       prevStep: this.prevStep,
       handleChange: this.handleChange,
+      changeState: this.changeState,
       values: this.state,
       step: this.state.step,
     };
@@ -63,9 +70,9 @@ export class UserForm extends Component {
     const body = () => {
       switch (step) {
         case 1:
-          return <WalletSignUp {...newProps} />;
-        case 2:
           return <CreateAccount {...newProps} />;
+        case 2:
+          return <WalletSignUp {...newProps} />;
         case 3:
           return <AccountInformation {...newProps} />;
         case 4:

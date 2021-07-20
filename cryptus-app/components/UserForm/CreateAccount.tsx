@@ -7,25 +7,24 @@ import { sha256 } from "js-sha256";
 
 export default class CreateAccount extends Component<FormValuesProps> {
   continue = (e) => {
-    console.log(this.props.values);
     const email = this.props.values.email;
     const password = this.props.values.password;
     const confirmedPassword = this.props.values.confirmpassword;
-    const checkbox = this.props.values.checkbox
-    
+    const checkbox = this.props.values.checkbox;
+
     if (validateEmail(email)) {
       if (password == confirmedPassword) {
         if (checkbox == "on") {
-          const hashedPassword = sha256(password)
-          createUser(email, hashedPassword).then(this.props.nextStep())
+          const hashedPassword = sha256(password);
+          createUser(email, hashedPassword).then(this.props.nextStep());
         } else {
-          alert("Please accept the terms and conditions")
+          alert("Please accept the terms and conditions");
         }
       } else {
-        alert("Please input the same password")
+        alert("Please input the same password");
       }
     } else {
-      alert("Please input a valid email")
+      alert("Please input a valid email");
     }
 
     e.preventDefault();
@@ -38,7 +37,6 @@ export default class CreateAccount extends Component<FormValuesProps> {
 
   render() {
     const { values, handleChange } = this.props;
-    console.log(values);
 
     return (
       <div className="flex flex-col ">
@@ -106,11 +104,11 @@ export default class CreateAccount extends Component<FormValuesProps> {
 async function createUser(email, hashedPassword) {
   const response = await fetch("/api/leads/create", {
     method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: email, hash: hashedPassword }),
-    });
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email: email, hash: hashedPassword }),
+  });
 }
 
 function validateEmail(email) {
