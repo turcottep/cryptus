@@ -4,6 +4,7 @@ import LandingPage from "../components/LandingPage";
 import React from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/client";
+import router from "next/router";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -35,12 +36,8 @@ export default function Home() {
       </Head>
 
       <main className="">
-        {!session && <></>}
-        {session && (
-          <>
-            <div> Logged In As {session.user.name}</div>
-          </>
-        )}
+        {/* {!session && <></>} */}
+        {session && router.push("/" + session.user.name)}
         <LandingPage />
       </main>
     </div>
