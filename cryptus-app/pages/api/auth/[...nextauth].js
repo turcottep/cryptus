@@ -26,9 +26,7 @@ const options = {
       },
 
       async authorize(credentials) {
-        console.log(credentials);
         if (credentials.address) {
-          console.log("loggin in metamask");
           try {
             const res = await fetch(
               "http://localhost:3000/api/leads/walletaddress",
@@ -42,7 +40,6 @@ const options = {
             );
             const wallet = await res.json();
             if (!wallet.id) {
-              console.log("don't know who this man is");
               return null;
             }
             try {
@@ -54,7 +51,6 @@ const options = {
                 },
               });
               const user = await res.json();
-              console.log("found User!", user);
               const newuser = {
                 name: user.username,
                 email: user.email,
@@ -72,7 +68,6 @@ const options = {
             return null;
           }
         } else if (credentials.username) {
-          // console.log("loggin in crednetials");
           try {
             const res = await fetch(
               "http://localhost:3000/api/users/" + credentials.username,

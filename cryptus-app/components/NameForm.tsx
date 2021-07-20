@@ -7,7 +7,7 @@ function validateEmail(email) {
 }
 
 async function createLeadRequest(mail: string) {
-  const response = await fetch("/api/leads/seedLafleur", {
+  const response = await fetch("/api/leads/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

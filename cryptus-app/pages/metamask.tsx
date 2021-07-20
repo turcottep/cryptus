@@ -70,7 +70,6 @@ export default function Login({ onLoggedIn }: Props): JSX.Element {
 
   const handleClick = async () => {
     // Check if MetaMask is installed
-    console.log(window.ethereum);
 
     if (!(window as any).ethereum) {
       window.alert("Please install MetaMask first.");
@@ -81,7 +80,6 @@ export default function Login({ onLoggedIn }: Props): JSX.Element {
     //   try {
     //     // Request account access if needed
     //     await (window as any).ethereum.enable();
-    //     console.log("enabled ethereum");
 
     //     // We don't know window.web3 version, so we use our own instance of Web3
     //     // with the injected provider given by MetaMask
@@ -93,11 +91,9 @@ export default function Login({ onLoggedIn }: Props): JSX.Element {
     // }
 
     await (window as any).ethereum.enable();
-    console.log("enabled ethereum");
 
     const accounts = await window.ethereum.request({ method: "eth_accounts" });
     const account = accounts[0];
-    console.log(account);
 
     // if (!coinbase) {
     //   window.alert("Please activate MetaMask first. No coinbase ://");

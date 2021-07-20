@@ -6,13 +6,12 @@ import { FormValuesProps } from "./UserForm";
 
 export default class PictureDescription extends Component<FormValuesProps> {
   continue = (e) => {
-    console.log(this.props.values);
     const email = this.props.values.email;
     const description = this.props.values.description;
     try {
-      updateUser(email, description).then(this.props.nextStep())
+      updateUser(email, description).then(this.props.nextStep());
     } catch (error) {
-      alert("Please accept the terms and conditions")
+      alert("Please accept the terms and conditions");
     }
 
     e.preventDefault();
@@ -25,7 +24,6 @@ export default class PictureDescription extends Component<FormValuesProps> {
 
   render() {
     const { values, handleChange } = this.props;
-    console.log(values);
 
     return (
       <div className="flex flex-col ">
@@ -81,9 +79,9 @@ export default class PictureDescription extends Component<FormValuesProps> {
 async function updateUser(email, description) {
   const response = await fetch("/api/leads/updateDescriptionAndProfilePic", {
     method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: email, description: description }),
-    });
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email: email, description: description }),
+  });
 }

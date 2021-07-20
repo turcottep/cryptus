@@ -24,16 +24,13 @@ export default class WalletSignUp extends Component<FormValuesProps> {
     }
 
     await (window as any).ethereum.enable();
-    console.log("enabled ethereum");
 
     const accounts = await window.ethereum.request({ method: "eth_accounts" });
     const account = accounts[0];
 
     const publicAddress = account.toLowerCase(); //coinbase.toLowerCase();
-    console.log(publicAddress);
 
     this.props.changeState("blockchain_wallet", publicAddress);
-    console.log(this.props.values);
 
     try {
       updateWallet(this.props.values.email, publicAddress).then(

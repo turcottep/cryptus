@@ -83,15 +83,12 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
   handleErrors() {
     if (this.state.loading) return null;
     const error = this.props.router.query.error as string;
-    // const error = String(this.props.router.query);
     const errorMessage = error && (errors[error] ?? errors.default);
-    // console.log(error, errorMessage);
 
     return error ? errorMessage : null;
   }
 
   handleSubmit(event) {
-    console.log("yoo");
     this.setState({ loading: true });
     signIn("credentials", {
       redirect: true,
@@ -103,7 +100,6 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
   }
 
   handleClick = async () => {
-    console.log("yoo?");
     this.setState({ loading: true });
 
     await window.ethereum.enable();
@@ -111,7 +107,6 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
       method: "eth_requestAccounts",
     });
     const account = accounts[0];
-    console.log(account);
 
     signIn("credentials", {
       redirect: true,

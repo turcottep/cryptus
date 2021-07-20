@@ -5,8 +5,6 @@ import { FormValuesProps } from "./UserForm";
 
 export default class FormNavBar extends Component<FormValuesProps> {
   continue = (e) => {
-    console.log(this.props.values);
-
     e.preventDefault();
     this.props.nextStep();
   };
