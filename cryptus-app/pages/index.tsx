@@ -37,7 +37,7 @@ export default function Home() {
 
       <main className="">
         {/* {!session && <></>} */}
-        {session && router.push("/" + session.user.name)}
+        {session && <div>logged in as {session.user.name}</div>}
         <LandingPage />
       </main>
     </div>
