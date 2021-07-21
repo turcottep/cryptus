@@ -16,7 +16,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     res.json(user);
   } catch (e) {
     res.status(500);
-    res.json({ error: "Unable to find user" });
+    res.json({ error: "Unable to find user", e });
     console.error(e);
   } finally {
     await prisma.$disconnect();

@@ -1,15 +1,13 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
-// import router from "next/router";
 
 type MyProps = { assets: any; user: any };
 type MyState = {};
-const [session, loading] = useSession();
 export default class Profile extends React.Component<MyProps, MyState> {
   // const { userId } = router.query;
   render() {
     return (
-      <div id="header" className=" w-full top-0 text-black bg-instagram">
+      <div id="header" className=" w-screen top-0 text-black bg-instagram">
         <div className="w-full flex flex-col justify-center h-full md:py-4">
           <div className="flex w-full justify-between items-center md:items-end py-4">
             <img
@@ -19,28 +17,26 @@ export default class Profile extends React.Component<MyProps, MyState> {
             />
             <div className="flex w-full h-full justify-between flex-col">
               <span className="w-full text-left align-top text-gray-700 font-semibold text-2xl lg:text-2xl pb-1 pl-4">
-                ${this.props.user.displayName}
+                {this.props.user.displayName}
               </span>
               <div className="w-full text-sm px-4 pb-2">
-                is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since
-                the
+                {this.props.user.description}
               </div>
             </div>
           </div>
           <div className="flex w-full justify-around flex-row text-center border-b border-t border-gray-400 ">
             <div className="flex-col ">
-              <span className="font-bold">7</span>
+              <span className="font-bold">{this.props.assets.length}</span>
               <br />
               <span className="text-gray-400">Owned</span>
             </div>
             <div className="flex-col">
-              <span className="font-bold">3</span>
+              <span className="font-bold">0</span>
               <br />
               <span className="text-gray-400">On sale</span>
             </div>
             <div className="flex-col">
-              <span className="font-bold">24</span>
+              <span className="font-bold">0</span>
               <br />
               <span className="text-gray-400">Sold</span>
             </div>

@@ -4,23 +4,21 @@ import React from "react";
 import Mosaic from "../../components/Mosaic";
 import NavbarProfile from "../../components/NavbarProfile";
 import Profile from "../../components/Profile";
-import { getStaticProps } from "../lafleur/feed";
+import getUserByUsername from "../../lib/getUserByUsername";
 
 export default function post(props) {
   const router = useRouter();
-  const { userId } = router.query;
-  const user = getUser(userId)
-  const newProps = { assets: props.data.assets, user: user };
+  const { username } = router.query;
 
   return (
     <div className="bg-instagram">
       <main className="sm:max-w-lg mx-auto">
         <div className="flex flex-col items-center">
-          <NavbarProfile name={userId} />
+          <NavbarProfile name={username} />
           <div className="mt-24">
-            <Profile {...newProps}/>
+            <Profile {...props}/>
           </div>
-          <Mosaic {...newProps} />
+          <Mosaic {...props} />
         </div>
       </main>
     </div>
@@ -28,14 +26,8 @@ export default function post(props) {
 }
 
 export async function getServerSideProps(context) {
-  const { userId } = context.query;
-  const user = await getUser(userId)
-  console.log(user)
-  const wallet = "0x0d7c9db889858b9f6954608e36199104dd530da0";
-  const url =
-    "https://api.opensea.io/api/v1/assets?owner=" +
-    wallet +
-    "&order_direction=asc&offset=0&limit=50";
+  const username = context.query.userId;
+  const user = await getUserByUsername(username)
 
   try {
     var data
@@ -43,27 +35,11 @@ export async function getServerSideProps(context) {
       const res = await fetch(wallet.external_url);
       data = await res.json();
     }
-    
-
     return {
-      props: { data },
+      props: { assets: data.assets, user: user },
     };
   } catch (err) {
     console.error(err);
   }
-}
-
-
-async function getUser(userId) {
-  const res = await fetch(
-    "http://localhost:3000/api/users/" + userId,
-    {
-      method: "GET",
-      body: JSON.stringify(userId),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  return res.json();
+  return null
 }

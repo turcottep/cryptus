@@ -70,7 +70,7 @@ const options = {
         } else if (credentials.username) {
           try {
             const res = await fetch(
-              "http://localhost:3000/api/users/" + credentials.username,
+              "http://localhost:3000/api/users/username",
               {
                 method: "POST",
                 body: JSON.stringify(credentials),

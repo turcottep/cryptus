@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
-import { useRouter } from "next/router";
 import { FormValuesProps } from "./UserForm";
 
 export default class FormNavBar extends Component<FormValuesProps> {

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React, { useLayoutEffect } from "react";
 import Feed from "../../components/Feed";
 import NavbarProfile from "../../components/NavbarProfile";
+import getUserByUsername from "../../lib/getUserByUsername";
 
 export default function post(props) {
   const router = useRouter();
@@ -16,7 +17,7 @@ export default function post(props) {
         <div className="pt-24">
           <Feed title={userId}>
             <ul>
-              {props.data.assets.map((asset, index) => (
+              {props.assets.map((asset, index) => (
                 <li key={index}>
                   <a
                     id={`NFT${index + 1}`}
@@ -95,22 +96,22 @@ export default function post(props) {
 }
 
 export async function getServerSideProps(context) {
-  const { userId } = context.query;
-
-  const wallet = "0x0d7c9db889858b9f6954608e36199104dd530da0";
-  const url =
-    "https://api.opensea.io/api/v1/assets?owner=" +
-    wallet +
-    "&order_direction=asc&offset=0&limit=50";
+  const username = context.query.userId;
+  console.log("getServerSide\n\n\n\n\n\n\n username=", username);
+  const user = await getUserByUsername(username)
 
   try {
-    const res = await fetch(url);
-    const data = await res.json();
-
+    var data
+    for await(const wallet of user.wallets){
+      const res = await fetch(wallet.external_url);
+      data = await res.json();
+    }
     return {
-      props: { data },
+      props: { assets: data.assets, user: user },
     };
   } catch (err) {
     console.error(err);
   }
+  console.log("RIIIPPPPP");
+  return null
 }

@@ -119,6 +119,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
     return (
       <div className="bg-instagram">
         <main className="xl:max-w-xl">
+          {/* {session && router.push("/" + session.user.name)} */}
           <div className="flex flex-col">
             {/* <FormNavbar /> */}
             {this.state.loading ? (
