@@ -15,8 +15,8 @@ export default function post(props) {
       <main className="sm:max-w-lg mx-auto">
         <div className="flex flex-col items-center">
           <NavbarProfile name={username} />
-          <div className="mt-24">
-            <Profile {...props}/>
+          <div className="mt-24 w-full">
+            <Profile {...props} />
           </div>
           <Mosaic {...props} />
         </div>
@@ -27,11 +27,11 @@ export default function post(props) {
 
 export async function getServerSideProps(context) {
   const username = context.query.userId;
-  const user = await getUserByUsername(username)
+  const user = await getUserByUsername(username);
 
   try {
-    var data
-    for await(const wallet of user.wallets){
+    var data;
+    for (const wallet of user.wallets) {
       const res = await fetch(wallet.external_url);
       data = await res.json();
     }
@@ -41,5 +41,5 @@ export async function getServerSideProps(context) {
   } catch (err) {
     console.error(err);
   }
-  return null
+  return null;
 }
