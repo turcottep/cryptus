@@ -1,15 +1,19 @@
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
 import LandingPage from "../components/LandingPage";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/client";
+import router from "next/router";
 
 export default function Home() {
   const [session, loading] = useSession();
+  useEffect(() => {
+    if (session) router.push(`/${session.user.name}`);
+  }, [session]);
 
   return (
-    <div className="container">
+    <div className="bg-coquille">
       <Head>
         <title>Public Wallet</title>
         <meta charSet="utf-8" />
@@ -22,7 +26,6 @@ export default function Home() {
         <meta name="keywords" content="" />
         <meta name="author" content="" />
         <meta name="theme-color" content="#FFFDF5" />
-        <title>Next.js PWA Example</title>
         <meta name="keywords" content="Keywords" />
         <meta name="description" content="Description" />
 
@@ -56,12 +59,7 @@ export default function Home() {
       </Head>
 
       <main className="">
-        {!session && <></>}
-        {session && (
-          <>
-            <div> Logged In As {session.user.name}</div>
-          </>
-        )}
+        {session && <div>Logged in as {session.user.name}</div>}
         <LandingPage />
       </main>
     </div>
