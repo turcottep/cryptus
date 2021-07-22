@@ -1,8 +1,5 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
-import jwt from "next-auth/jwt";
 import { sha256 } from "js-sha256";
 
 const options = {
@@ -23,9 +20,10 @@ const options = {
           label: "Password",
           type: "password",
         },
+
       },
 
-      async authorize(credentials) {
+      async authorize(credentials: any) {
         var user;
         if (credentials.address) {
           user = authorizeWithMetamaskAddress(credentials.address);
@@ -43,6 +41,25 @@ const options = {
   session: {
     jwt: true,
   },
+
+  callbacks: {
+    async signIn(user, account, profile) {
+      console.log("callback user=", user);
+      // console.log("callback account=", account);
+      // console.log("callback profile=", profile);
+
+      if (user.image == "newFromMetamask") {
+        console.log("i'm new from metamask");
+        return '/lafleur';
+      } else {
+        console.log("i'm a regular user");
+        // Return false to display a default error message
+        // Or you can return a URL to redirect to:
+        // return '/unauthorized'
+        return true;
+      }
+    },
+  },
 };
 
 export default NextAuth(options);
@@ -56,11 +73,11 @@ async function authorizeWithMetamaskAddress(wallet_address) {
     const newuser = {
       name: user.username,
       email: user.email,
-      image: "test",
+      image: "newFromMetamask",
     };
     return newuser;
   } else {
-    const user = GetUserFromUserId(userId);
+    const user = await GetUserFromUserId(userId);
     if (!user) {
       console.log("unable to find user #2");
       return null;
@@ -129,7 +146,7 @@ async function FindUserIdFromWalletAdress(wallet_address) {
       },
     });
     const wallet = await res.json();
-    return wallet.id;
+    return wallet.userId;
   } catch (e) {
     console.error("Erreur :", e);
     // Promise.reject(new Error("Unable to connect to server"));
