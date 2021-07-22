@@ -1,6 +1,7 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function NavbarProfile({ name }) {
   const [session, loading] = useSession();
@@ -18,9 +19,21 @@ export default function NavbarProfile({ name }) {
         >
           Public Wallet
         </a>
-        <button className="w-40 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:w-2/5 px-2 py-2">
-          Get Early Access
-        </button>
+        {session && (
+          <button
+            onClick={() => signOut}
+            className="w-40 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:w-2/5 px-2 py-2"
+          >
+            Sign Out
+          </button>
+        )}
+        {!session && (
+          <Link href="/">
+            <button className="w-40 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:w-2/5 px-2 py-2">
+              Get Early Access
+            </button>
+          </Link>
+        )}
       </div>
       <div className="flex justify-between bg-instagram w-full border-b border-gray-400 py-2 px-2">
         <div id="backButton" className="" onClick={() => router.back()}>

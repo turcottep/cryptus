@@ -39,7 +39,7 @@ export default function Home() {
       </Head>
 
       <main className="">
-        {/* {!session && <></>} */}
+        {session && <div>Logged in as {session.user.name}</div>}
         <LandingPage />
       </main>
     </div>
