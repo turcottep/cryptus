@@ -1,13 +1,17 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
 
-export default function NavbarLandingPage() {
-  const [session, loading] = useSession();
-
-  return (
-    <div id="header" className=" w-full top-0 text-black bg-instagram">
-      <div className="w-full flex flex-col justify-center h-full md:py-4">
-        <div className="flex w-full justify-between items-center md:items-end py-4">
+type MyProps = { assets: any; user: any };
+type MyState = {};
+export default class Profile extends React.Component<MyProps, MyState> {
+  // const { userId } = router.query;
+  render() {
+    return (
+      <div
+        id="header"
+        className="w-full flex flex-col justify-center h-full bg-instagram"
+      >
+        <div className="flex w-full justify-between items-center py-4">
           <img
             className="self-start w-20 h-20 rounded-full border-black border-2 mx-2"
             src="./icons/icon-192x192.png"
@@ -15,28 +19,26 @@ export default function NavbarLandingPage() {
           />
           <div className="flex w-full h-full justify-between flex-col">
             <span className="w-full text-left align-top text-gray-700 font-semibold text-2xl lg:text-2xl pb-1 pl-4">
-              Alexandre Lafleur
+              {this.props.user.displayName}
             </span>
             <div className="w-full text-sm px-4 pb-2">
-              is simply dummy text of the printing and typesetting industry.
-              Lorem Ipsum has been the industry's standard dummy text ever since
-              the
+              {this.props.user.description}
             </div>
           </div>
         </div>
         <div className="flex w-full justify-around flex-row text-center border-b border-t border-gray-400 ">
           <div className="flex-col ">
-            <span className="font-bold">7</span>
+            <span className="font-bold">{this.props.assets.length}</span>
             <br />
             <span className="text-gray-400">Owned</span>
           </div>
           <div className="flex-col">
-            <span className="font-bold">3</span>
+            <span className="font-bold">0</span>
             <br />
             <span className="text-gray-400">On sale</span>
           </div>
           <div className="flex-col">
-            <span className="font-bold">24</span>
+            <span className="font-bold">0</span>
             <br />
             <span className="text-gray-400">Sold</span>
           </div>
@@ -86,6 +88,6 @@ export default function NavbarLandingPage() {
           </svg>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }

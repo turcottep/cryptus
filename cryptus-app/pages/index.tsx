@@ -1,13 +1,16 @@
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
 import LandingPage from "../components/LandingPage";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/client";
 import router from "next/router";
 
 export default function Home() {
   const [session, loading] = useSession();
+  useEffect(() => {
+    if (session) router.push(`/${session.user.name}`);
+  }, [session]);
 
   return (
     <div className="bg-coquille">
@@ -36,8 +39,7 @@ export default function Home() {
       </Head>
 
       <main className="">
-        {/* {!session && <></>} */}
-        {session && router.push("/" + session.user.name)}
+        {session && <div>Logged in as {session.user.name}</div>}
         <LandingPage />
       </main>
     </div>

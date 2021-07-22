@@ -6,7 +6,7 @@ type MyProps = {
   step: Number;
 };
 
-export default class FormHeader extends Component<MyProps> {
+export default class ForgotPWHeader extends Component<MyProps> {
   render() {
     return (
       <div className="flex flex-col mt-8">
@@ -25,12 +25,6 @@ export default class FormHeader extends Component<MyProps> {
               <p className="text-gray-500 text-3xl float-left mx-2">&#9679;</p>
             ) : null}
             {this.props.step >= 3 ? (
-              <p className="text-brown text-3xl float-left mx-2">&#9679;</p>
-            ) : null}
-            {this.props.step < 4 ? (
-              <p className="text-gray-500 text-3xl float-left mx-2">&#9679;</p>
-            ) : null}
-            {this.props.step >= 4 ? (
               <p className="text-brown text-3xl float-left mx-2">&#9679;</p>
             ) : null}
           </div>
