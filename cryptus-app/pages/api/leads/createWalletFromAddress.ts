@@ -5,8 +5,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     console.log("creating a new man from wallet", req.body);
 
     try {
-        const currentNumberOfUsers = await prisma.user.count();
-        const username = "user" + String(currentNumberOfUsers);
+        const username = "user" + Date.now();
         const user = await prisma.user.create({
             data: {
                 username: username,

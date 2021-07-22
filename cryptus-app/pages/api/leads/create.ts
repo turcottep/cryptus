@@ -4,10 +4,10 @@ import prisma from "../../../lib/prisma";
 export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     try {
-        var currentNumberOfUsers = await prisma.user.count()
+        const username = "user" + Date.now();
         await prisma.user.create({
             data: {
-                username: "user" + String(currentNumberOfUsers),
+                username: username,
                 email: req.body.email,
                 displayName: "",
                 description: "",
