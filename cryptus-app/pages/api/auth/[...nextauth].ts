@@ -20,7 +20,6 @@ const options = {
           label: "Password",
           type: "password",
         },
-
       },
 
       async authorize(credentials: any) {
@@ -50,7 +49,7 @@ const options = {
 
       if (user.image == "newFromMetamask") {
         console.log("i'm new from metamask");
-        return '/lafleur';
+        return "/lafleur";
       } else {
         console.log("i'm a regular user");
         // Return false to display a default error message
@@ -94,7 +93,7 @@ async function authorizeWithMetamaskAddress(wallet_address) {
 async function GetUserFromUserId(userId) {
   console.log("id:", userId);
   try {
-    const res = await fetch("http://localhost:3000/api/users/id", {
+    const res = await fetch(process.env.BASE_URL + "api/users/id", {
       method: "POST",
       body: JSON.stringify({ id: userId }),
       headers: {
@@ -112,7 +111,7 @@ async function GetUserFromUserId(userId) {
 
 async function authorizeWithCredentials(username, password) {
   try {
-    const res = await fetch("http://localhost:3000/api/users/" + username, {
+    const res = await fetch(process.env.BASE_URL + "api/users/username", {
       method: "POST",
       body: JSON.stringify({ username: username }),
       headers: {
@@ -138,7 +137,7 @@ async function authorizeWithCredentials(username, password) {
 
 async function FindUserIdFromWalletAdress(wallet_address) {
   try {
-    const res = await fetch("http://localhost:3000/api/leads/walletaddress", {
+    const res = await fetch(process.env.BASE_URL + "/api/leads/walletaddress", {
       method: "POST",
       body: JSON.stringify({ address: wallet_address }),
       headers: {
@@ -157,7 +156,7 @@ async function FindUserIdFromWalletAdress(wallet_address) {
 async function CreateAccountFromWalletAddress(wallet_address) {
   console.log("lil finction");
   const res = await fetch(
-    "http://localhost:3000/api/leads/createWalletFromAddress",
+    process.env.BASE_URL + "/api/leads/createWalletFromAddress",
     {
       method: "POST",
       headers: {

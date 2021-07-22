@@ -94,7 +94,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
       redirect: true,
       username: this.state.username,
       password: this.state.password,
-      callbackUrl: "http://localhost:3000/",
+      callbackUrl: String(process.env.BASE_URL),
     });
     event.preventDefault();
   }
@@ -111,7 +111,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
     signIn("credentials", {
       redirect: true,
       address: account,
-      callbackUrl: "http://localhost:3000/",
+      callbackUrl: String(process.env.BASE_URL),
     });
   };
 
