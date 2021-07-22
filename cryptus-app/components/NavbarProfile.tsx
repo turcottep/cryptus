@@ -2,7 +2,7 @@ import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 
-export default function NavbarProfile() {
+export default function NavbarProfile({ name }) {
   const [session, loading] = useSession();
   const router = useRouter();
 
@@ -39,7 +39,7 @@ export default function NavbarProfile() {
             />
           </svg>
         </div>
-        <span className="font-bold">Lafleur</span>
+        <span className="font-bold">{name}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"

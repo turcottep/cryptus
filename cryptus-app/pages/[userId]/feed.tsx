@@ -1,20 +1,23 @@
+import { GetStaticPaths } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import Feed from "../../components/Feed";
 import NavbarProfile from "../../components/NavbarProfile";
+import getUserByUsername from "../../lib/getUserByUsername";
 
 export default function post(props) {
   const router = useRouter();
+  const { userId } = router.query;
 
   return (
     <div className="bg-instagram">
       <main className="sm:max-w-lg mx-auto">
-        <NavbarProfile />
+        <NavbarProfile name={userId} />
         <div className="pt-24">
-          <Feed title="Lafleur">
+          <Feed title={userId}>
             <ul>
-              {props.data.assets.map((asset, index) => (
+              {props.assets.map((asset, index) => (
                 <li key={index}>
                   <a
                     id={`NFT${index + 1}`}
@@ -31,9 +34,12 @@ export default function post(props) {
                       <div className="flex flex-col text-gray-700 p-2">
                         <div className="flex justify-between items-center">
                           <div className="flex">
-                            <span className="text-xl font-bold pr-6">
-                              {asset.name}
-                            </span>
+                            <div className="flex flex-col">
+                              <span className="text-xl font-bold pr-6">
+                                {asset.name}
+                              </span>
+                            </div>
+
                             <div className="font-bold flex items-center">
                               <img
                                 className="h-4 w-4 pr-1"
@@ -89,21 +95,23 @@ export default function post(props) {
   );
 }
 
-export async function getStaticProps(context) {
-  const owner = "0x0da2f3401296427d302326cdf208b79f83abc995";
-  const url =
-    "https://api.opensea.io/api/v1/assets?owner=" +
-    owner +
-    "&order_direction=asc&offset=0&limit=50";
+export async function getServerSideProps(context) {
+  const username = context.query.userId;
+  console.log("getServerSide\n\n\n\n\n\n\n username=", username);
+  const user = await getUserByUsername(username)
 
   try {
-    const res = await fetch(url);
-    const data = await res.json();
-
+    var data
+    for await(const wallet of user.wallets){
+      const res = await fetch(wallet.external_url);
+      data = await res.json();
+    }
     return {
-      props: { data },
+      props: { assets: data.assets, user: user },
     };
   } catch (err) {
     console.error(err);
   }
+  console.log("RIIIPPPPP");
+  return null
 }

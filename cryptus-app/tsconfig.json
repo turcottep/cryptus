@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/api/auth/[...nextauth].js", "pages/index.tsx", "pages/loginpage.tsx", "pages/loginpage2.jsx", "components/UserForm/UserDetails.jsx", "components/UserForm/UserDetails.jsx"  ],
+, "pages/api/auth/[...nextauth].js", "pages/index.jsx", "pages/loginpage.tsx", "pages/loginpage2.jsx", "components/UserForm/UserDetails.jsx", "components/UserForm/UserDetails.jsx"  ],
   "exclude": [
     "node_modules"
   ]

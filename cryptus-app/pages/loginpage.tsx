@@ -1,6 +1,6 @@
 import { withRouter, NextRouter } from "next/router";
 import React from "react";
-import PhoneNavbar from "../components/UserForm/FormNavbar";
+import FormNavbar from "../components/UserForm/FormNavbar";
 import Input from "@material-tailwind/react/Input";
 import { signIn } from "next-auth/client";
 import Link from "next/link";
@@ -119,8 +119,9 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
     return (
       <div className="bg-instagram">
         <main className="xl:max-w-xl">
+          {/* {session && router.push("/" + session.user.name)} */}
           <div className="flex flex-col">
-            {/* <PhoneNavbar /> */}
+            {/* <FormNavbar /> */}
             {this.state.loading ? (
               <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
                 <Loading />

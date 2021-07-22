@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
-import { FormValuesProps } from "./UserForm";
+import { ForgotPWValuesProps } from "./ForgotPassword";
 
-export default class FormNavBar extends Component<FormValuesProps> {
+export default class FormNavBar extends Component<ForgotPWValuesProps> {
   continue = (e) => {
+    console.log(this.props.values);
+
     e.preventDefault();
     this.props.nextStep();
   };
@@ -40,7 +42,7 @@ export default class FormNavBar extends Component<FormValuesProps> {
             </div>
             <div className="col-start-2 col-span-4 text-center m-auto">
               <span className="toggleColour text-black no-underline hover:no-underline font-bold text-xl">
-                Public Wallet
+                Forgot your password
               </span>
             </div>
           </div>
