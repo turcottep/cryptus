@@ -4,8 +4,8 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Cryptus",
-  "short_name": "cryptus",
+  "name": "Public Wallet",
+  "short_name": "PublicWallet",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",

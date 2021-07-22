@@ -12,7 +12,12 @@ export default function LandingPage() {
           <div className="flex justify-between flex-col w-full md:justify-around items-center text-center md:h-full my-4">
             <div className="flex-shrink w-auto md:w-full">
               <h1 className="mx-auto h-auto">
-                <img draggable="false" className="w-full" src="title.svg" />
+                <img
+                  draggable="false"
+                  alt="Title:Express Yourself"
+                  className="w-full"
+                  src="title.svg"
+                />
               </h1>
             </div>
             <div className="text-center">
@@ -30,6 +35,7 @@ export default function LandingPage() {
             <img
               className="w-full flex-1 min-w-0 min-h-0"
               draggable="false"
+              alt="Guide showing statue to visitors"
               src="museum.svg"
             />
           </div>
