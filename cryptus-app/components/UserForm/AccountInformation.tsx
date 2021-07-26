@@ -71,7 +71,7 @@ export default class AccountInformation extends Component<FormValuesProps> {
 }
 
 async function updateUser(email, username, displayName) {
-  const response = await fetch("/api/leads/updateUsername", {
+  const response = await fetch("api/leads/updateUsername", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

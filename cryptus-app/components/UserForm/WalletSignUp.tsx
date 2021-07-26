@@ -111,7 +111,7 @@ export default class WalletSignUp extends Component<FormValuesProps> {
 }
 
 async function updateWallet(email, blockchain_wallet) {
-  const response = await fetch("/api/leads/updateWallet", {
+  const response = await fetch("api/leads/updateWallet", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

@@ -102,7 +102,7 @@ export default class CreateAccount extends Component<FormValuesProps> {
 }
 
 async function createUser(email, hashedPassword) {
-  const response = await fetch("/api/leads/create", {
+  const response = await fetch("api/leads/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -8,9 +8,9 @@ import router from "next/router";
 
 export default function Home() {
   const [session, loading] = useSession();
-  useEffect(() => {
-    if (session) router.push(`/${session.user.name}`);
-  }, [session]);
+  // useEffect(() => {
+  //   if (session) router.push(`/${session.user.name}`);
+  // }, [session]);
 
   return (
     <div className="bg-coquille">

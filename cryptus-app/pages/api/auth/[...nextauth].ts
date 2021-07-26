@@ -137,7 +137,7 @@ async function authorizeWithCredentials(username, password) {
 
 async function FindUserIdFromWalletAdress(wallet_address) {
   try {
-    const res = await fetch(process.env.BASE_URL + "/api/leads/walletaddress", {
+    const res = await fetch(process.env.BASE_URL + "api/leads/walletaddress", {
       method: "POST",
       body: JSON.stringify({ address: wallet_address }),
       headers: {
@@ -156,7 +156,7 @@ async function FindUserIdFromWalletAdress(wallet_address) {
 async function CreateAccountFromWalletAddress(wallet_address) {
   console.log("lil finction");
   const res = await fetch(
-    process.env.BASE_URL + "/api/leads/createWalletFromAddress",
+    process.env.BASE_URL + "api/leads/createWalletFromAddress",
     {
       method: "POST",
       headers: {

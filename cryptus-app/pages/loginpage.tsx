@@ -1,4 +1,4 @@
-import { withRouter, NextRouter } from "next/router";
+import router, { withRouter, NextRouter } from "next/router";
 import React from "react";
 import FormNavbar from "../components/UserForm/FormNavbar";
 import Input from "@material-tailwind/react/Input";
@@ -12,6 +12,7 @@ const errors = {
   OAuthCallback: "Try signing with a different account.",
   OAuthCreateAccount: "Try signing with a different account.",
   EmailCreateAccount: "Try signing with a different account.",
+  CancelMetamask: "Metamask sign-in cancelled",
   Callback: "Try signing with a different account.",
   OAuthAccountNotLinked:
     "To confirm your identity, sign in with the same account you used originally.",
@@ -69,7 +70,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleErrors = this.handleErrors.bind(this);
+    this.handleCredentialsErrors = this.handleCredentialsErrors.bind(this);
   }
 
   handleChangeUsername(e: React.ChangeEvent<HTMLInputElement>) {
@@ -80,7 +81,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
     this.setState({ password: e.target.value });
   }
 
-  handleErrors() {
+  handleCredentialsErrors() {
     if (this.state.loading) return null;
     const error = this.props.router.query.error as string;
     const errorMessage = error && (errors[error] ?? errors.default);
@@ -100,19 +101,31 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
   }
 
   handleClick = async () => {
+    router.push("loginpage?");
     this.setState({ loading: true });
+    // if (!window.ethereum) {
+    //   console.log("please donwload MetaMask");
+    //   window.open("https://metamask.io/", "_blank").focus();
+    //   this.setState({ loading: false });
+    // } else {
+    try {
+      await window.ethereum.enable();
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      const account = accounts[0];
 
-    await window.ethereum.enable();
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-    const account = accounts[0];
-
-    signIn("credentials", {
-      redirect: true,
-      address: account,
-      callbackUrl: String(process.env.BASE_URL),
-    });
+      signIn("credentials", {
+        redirect: true,
+        address: account,
+        callbackUrl: String(process.env.BASE_URL),
+      });
+    } catch (error) {
+      // console.error(error);
+      this.setState({ loading: false });
+      router.push("loginpage?error=CancelMetamask");
+    }
+    // }
   };
 
   render() {
@@ -180,7 +193,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                     outline={true}
                     size="lg"
                     color="brown"
-                    error={this.handleErrors()}
+                    error={this.handleCredentialsErrors()}
                     required
                   />
                 </div>
@@ -194,7 +207,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                     outline={true}
                     size="lg"
                     color="brown"
-                    error={this.handleErrors()}
+                    error={this.handleCredentialsErrors()}
                     required
                   />
                 </div>

@@ -28,11 +28,12 @@ export default function NavbarProfile({ name }) {
           </button>
         )}
         {!session && (
-          <Link href="/">
-            <button className="w-40 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:w-2/5 px-2 py-2">
-              Get Early Access
-            </button>
-          </Link>
+          <button
+            onClick={() => signIn()}
+            className="w-40 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:w-2/5 px-2 py-2"
+          >
+            Sign In
+          </button>
         )}
       </div>
       <div className="flex justify-between bg-instagram w-full border-b border-gray-400 py-2 px-2">

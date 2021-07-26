@@ -77,7 +77,7 @@ export default class PictureDescription extends Component<FormValuesProps> {
 }
 
 async function updateUser(email, description) {
-  const response = await fetch("/api/leads/updateDescriptionAndProfilePic", {
+  const response = await fetch("api/leads/updateDescriptionAndProfilePic", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
