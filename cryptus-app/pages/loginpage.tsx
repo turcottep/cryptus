@@ -5,6 +5,8 @@ import Input from "@material-tailwind/react/Input";
 import { signIn } from "next-auth/client";
 import Link from "next/link";
 import Loading from "../components/Loading";
+import FindUserIdFromWalletAdress from "../lib/findUserIdFromWalletAdress";
+import CreateAccountFromWalletAddress from "../lib/createAccountFromWalletAddress";
 
 const errors = {
   Signin: "Try signing with a different account.",
@@ -113,13 +115,26 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
-      const account = accounts[0];
+      const wallet_address = accounts[0];
+      console.log("in login, trying to find account");
+      console.log("env=", process.env.BASE_URL);
 
-      signIn("credentials", {
-        redirect: true,
-        address: account,
-        callbackUrl: String(process.env.BASE_URL),
-      });
+      const userId = await FindUserIdFromWalletAdress(wallet_address, false);
+      if (!userId) {
+        //Create Account with this wallet address
+        console.log("Creating new acount");
+        const user = await CreateAccountFromWalletAddress(
+          wallet_address,
+          false
+        );
+        router.push("signuppage?step=3");
+      } else {
+        signIn("credentials", {
+          redirect: true,
+          address: wallet_address,
+          callbackUrl: String(process.env.BASE_URL + "profile"),
+        });
+      }
     } catch (error) {
       // console.error(error);
       this.setState({ loading: false });
@@ -129,9 +144,11 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
   };
 
   render() {
+    console.log("npm install:", process.env.YO);
+
     return (
       <div className="bg-instagram">
-        <main className="xl:max-w-xl">
+        <main className="sm:max-w-lg mx-auto">
           {/* {session && router.push("/" + session.user.name)} */}
           <div className="flex flex-col">
             {/* <FormNavbar /> */}

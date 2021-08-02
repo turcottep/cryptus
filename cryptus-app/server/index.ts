@@ -13,6 +13,6 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true);
     handle(req, res, parsedUrl);
   }).listen(port, () => {
-    console.log("> Ready on " + process.env.BASE_URL);
+    console.log("> Ready or not, here I come: " + process.env.BASE_URL);
   });
 });

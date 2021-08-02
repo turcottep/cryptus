@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 import { sha256 } from "js-sha256";
+import CreateAccountFromWalletAddress from "../../../lib/createAccountFromWalletAddress";
+import FindUserIdFromWalletAdress from "../../../lib/findUserIdFromWalletAdress";
 
 const options = {
   pages: {
@@ -66,15 +68,17 @@ export default NextAuth(options);
 async function authorizeWithMetamaskAddress(wallet_address) {
   const userId = await FindUserIdFromWalletAdress(wallet_address);
   if (!userId) {
-    //Create Account with this wallet address
-    console.log("Creating new acount");
-    const user = await CreateAccountFromWalletAddress(wallet_address);
-    const newuser = {
-      name: user.username,
-      email: user.email,
-      image: "newFromMetamask",
-    };
-    return newuser;
+    // //Create Account with this wallet address
+    // console.log("Creating new acount");
+    // const user = await CreateAccountFromWalletAddress(wallet_address);
+    // const newuser = {
+    //   name: user.username,
+    //   email: user.email,
+    //   image: "newFromMetamask",
+    // };
+    // return newuser;
+    console.error("User not found from metamask")
+    return null
   } else {
     const user = await GetUserFromUserId(userId);
     if (!user) {
@@ -135,44 +139,6 @@ async function authorizeWithCredentials(username, password) {
   }
 }
 
-async function FindUserIdFromWalletAdress(wallet_address) {
-  try {
-    const res = await fetch(process.env.BASE_URL + "api/leads/walletaddress", {
-      method: "POST",
-      body: JSON.stringify({ address: wallet_address }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const wallet = await res.json();
-    return wallet.userId;
-  } catch (e) {
-    console.error("Erreur :", e);
-    // Promise.reject(new Error("Unable to connect to server"));
-    return null;
-  }
-}
 
-async function CreateAccountFromWalletAddress(wallet_address) {
-  console.log("lil finction");
-  const res = await fetch(
-    process.env.BASE_URL + "api/leads/createWalletFromAddress",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        address: wallet_address,
-        external_url:
-          "https://api.opensea.io/api/v1/assets?owner=" +
-          wallet_address +
-          "&order_direction=asc&offset=0&limit=50",
-        blockchain_id: "ETH",
-      }),
-    }
-  );
-  const user = await res.json();
-  console.log("this is the man I received:", user);
-  return user;
-}
+
+

@@ -6,6 +6,8 @@ import CreateAccount from "./CreateAccount";
 import AccountInformation from "./AccountInformation";
 import PictureDescription from "./PictureDescription";
 import SucessScreen from "./SucessScreen";
+import router, { NextRouter, withRouter } from "next/router";
+import { getServerSideProps } from "../../pages/[userId]/feed";
 
 export type FormValuesProps = {
   prevStep: Function;
@@ -16,19 +18,40 @@ export type FormValuesProps = {
   step: Number;
 };
 
-export class UserForm extends Component {
-  state = {
-    step: 1,
-    name: "",
-    username: "",
-    email: "",
-    password: "",
-    confirmpassword: "",
-    description: "",
-    blockchain_wallet: "",
-    checkbox: false,
-  };
+interface WithRouterProps {
+  router: NextRouter;
+  csrfToken;
+}
 
+interface MyComponentProps extends WithRouterProps {}
+
+type MyState = {
+  step: number;
+  name: String;
+  username: String;
+  email: String;
+  password: String;
+  confirmpassword: String;
+  description: String;
+  blockchain_wallet: String;
+  checkbox: false;
+};
+
+export class UserForm extends Component<MyComponentProps, MyState> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      step: 1,
+      name: "",
+      username: "",
+      email: "",
+      password: "",
+      confirmpassword: "",
+      description: "",
+      blockchain_wallet: "",
+      checkbox: false,
+    };
+  }
   // Proceed to next step
   nextStep = () => {
     const { step } = this.state;
@@ -45,19 +68,19 @@ export class UserForm extends Component {
     });
   };
 
-  changeState = (target_id, newValue) => {
-    this.setState({ [target_id]: newValue });
-  };
+  changeState(target_id: any, newValue: any) {
+    const newState = { [target_id]: newValue } as Pick<MyState, keyof MyState>;
+    this.setState(newState);
+  }
 
   handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     const target_id = e.target.id;
-    this.setState({ [target_id]: newValue });
+    this.changeState(target_id, newValue);
   };
 
   render() {
-    const { step } = this.state;
-
+    var { step } = this.state;
     const newProps = {
       nextStep: this.nextStep,
       prevStep: this.prevStep,
@@ -66,7 +89,13 @@ export class UserForm extends Component {
       values: this.state,
       step: this.state.step,
     };
-
+    const desiredStep = parseInt(this.props.router.query.step as string);
+    console.log("desiredStep:", desiredStep);
+    if (desiredStep) {
+      newProps.step = desiredStep;
+      step = desiredStep;
+      // router.push("/signuppage");
+    }
     const body = () => {
       switch (step) {
         case 1:
@@ -96,4 +125,4 @@ export class UserForm extends Component {
   }
 }
 
-export default UserForm;
+export default withRouter(UserForm);

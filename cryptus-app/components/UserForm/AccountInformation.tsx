@@ -4,10 +4,15 @@ import Checkbox from "@material-tailwind/react/Checkbox";
 import FormHeader from "./FormHeader";
 import { FormValuesProps } from "./UserForm";
 import { NextApiRequest, NextApiResponse } from "next";
+import { useSession } from "next-auth/client";
 
 export default class AccountInformation extends Component<FormValuesProps> {
   continue = (e) => {
+    // const { session, loading } = this.props;
+
     const email = this.props.values.email;
+    // console.log("email=", email);
+
     const username = this.props.values.username;
     const displayName = this.props.values.name;
     try {
@@ -70,6 +75,23 @@ export default class AccountInformation extends Component<FormValuesProps> {
   }
 }
 
+const withSession = (Component) => (props) => {
+  const [session, loading] = useSession();
+
+  // if the component has a render property, we are good
+  if (Component.prototype.render) {
+    return <Component session={session} loading={loading} {...props} />;
+  }
+
+  // if the passed component is a function component, there is no need for this wrapper
+  throw new Error(
+    [
+      "You passed a function component, `withSession` is not needed.",
+      "You can `useSession` directly in your component.",
+    ].join("\n")
+  );
+};
+
 async function updateUser(email, username, displayName) {
   const response = await fetch("api/leads/updateUsername", {
     method: "PUT",
@@ -83,3 +105,5 @@ async function updateUser(email, username, displayName) {
     }),
   });
 }
+
+const ClassComponentWithSession = withSession(AccountInformation);
