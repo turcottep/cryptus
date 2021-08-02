@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import WalletSignUp from "./WalletSignUp";
-import FormHeader from "./FormHeader";
 import FormNavBar from "./FormNavbar";
 import CreateAccount from "./CreateAccount";
 import AccountInformation from "./AccountInformation";
 import PictureDescription from "./PictureDescription";
 import SucessScreen from "./SucessScreen";
 import router, { NextRouter, withRouter } from "next/router";
-import { getServerSideProps } from "../../pages/[userId]/feed";
 
 export type FormValuesProps = {
   prevStep: Function;
@@ -40,6 +38,10 @@ type MyState = {
 export class UserForm extends Component<MyComponentProps, MyState> {
   constructor(props) {
     super(props);
+    this.nextStep = this.nextStep.bind(this);
+    this.prevStep = this.prevStep.bind(this);
+    this.changeState = this.changeState.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       step: 1,
       name: "",
@@ -89,13 +91,13 @@ export class UserForm extends Component<MyComponentProps, MyState> {
       values: this.state,
       step: this.state.step,
     };
-    const desiredStep = parseInt(this.props.router.query.step as string);
-    console.log("desiredStep:", desiredStep);
-    if (desiredStep) {
-      newProps.step = desiredStep;
-      step = desiredStep;
-      // router.push("/signuppage");
-    }
+    // const desiredStep = parseInt(this.props.router.query.step as string);
+    // console.log("desiredStep:", desiredStep);
+    // if (desiredStep) {
+    //   newProps.step = desiredStep;
+    //   step = desiredStep;
+    //   // router.push("/signuppage");
+    // }
     const body = () => {
       switch (step) {
         case 1:

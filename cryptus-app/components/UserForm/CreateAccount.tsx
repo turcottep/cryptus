@@ -4,8 +4,21 @@ import Checkbox from "@material-tailwind/react/Checkbox";
 import FormHeader from "./FormHeader";
 import { FormValuesProps } from "./UserForm";
 import { sha256 } from "js-sha256";
+import { error } from "jquery";
+import router from "next/router";
 
-export default class CreateAccount extends Component<FormValuesProps> {
+const errors = {
+  UniqueEmail: "This email is already in use!",
+  default: "Unable to sign in.",
+};
+type MyState = { error: String };
+
+export default class CreateAccount extends Component<FormValuesProps, MyState> {
+  constructor(props) {
+    super(props);
+    this.state = { error: "" };
+    this.handleErrorEmail = this.handleErrorEmail.bind(this);
+  }
   continue = (e) => {
     const email = this.props.values.email;
     const password = this.props.values.password;
@@ -16,7 +29,13 @@ export default class CreateAccount extends Component<FormValuesProps> {
       if (password == confirmedPassword) {
         if (checkbox == "on") {
           const hashedPassword = sha256(password);
-          createUser(email, hashedPassword).then(this.props.nextStep());
+          const res = createUser(email, hashedPassword).then((res) => {
+            if (res.status == 202) {
+              this.setState({ error: "UniqueEmail" });
+            } else {
+              this.props.nextStep();
+            }
+          });
         } else {
           alert("Please accept the terms and conditions");
         }
@@ -35,6 +54,13 @@ export default class CreateAccount extends Component<FormValuesProps> {
     this.props.prevStep();
   };
 
+  handleErrorEmail() {
+    const error = String(this.state.error);
+    const errorMessage = error && (errors[error] ?? errors.default);
+
+    return error ? errorMessage : null;
+  }
+
   render() {
     const { values, handleChange } = this.props;
 
@@ -52,6 +78,7 @@ export default class CreateAccount extends Component<FormValuesProps> {
               outline={true}
               size="lg"
               color="brown"
+              error={this.handleErrorEmail()}
               required
             />
           </div>
@@ -109,6 +136,7 @@ async function createUser(email, hashedPassword) {
     },
     body: JSON.stringify({ email: email, hash: hashedPassword }),
   });
+  return response;
 }
 
 function validateEmail(email) {

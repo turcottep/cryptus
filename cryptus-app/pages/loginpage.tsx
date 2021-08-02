@@ -97,7 +97,8 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
       redirect: true,
       username: this.state.username,
       password: this.state.password,
-      callbackUrl: String(process.env.BASE_URL),
+      // callbackUrl: String(process.env.BASE_URL),
+      callbackUrl: `${window.location.origin}/` + this.state.username,
     });
     event.preventDefault();
   }
@@ -132,7 +133,8 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
         signIn("credentials", {
           redirect: true,
           address: wallet_address,
-          callbackUrl: String(process.env.BASE_URL + "profile"),
+          // callbackUrl: String(process.env.BASE_URL + "profile"),
+          callbackUrl: `${window.location.origin}/` + this.state.username,
         });
       }
     } catch (error) {

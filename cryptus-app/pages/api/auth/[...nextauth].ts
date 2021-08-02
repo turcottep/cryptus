@@ -1,12 +1,12 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 import { sha256 } from "js-sha256";
-import CreateAccountFromWalletAddress from "../../../lib/createAccountFromWalletAddress";
 import FindUserIdFromWalletAdress from "../../../lib/findUserIdFromWalletAdress";
 
 const options = {
   pages: {
     signIn: "/loginpage",
+    signOut: "/",
     error: "/loginpage",
   },
   providers: [
@@ -60,6 +60,9 @@ const options = {
         return true;
       }
     },
+    async signOut() {
+      return true;
+    },
   },
 };
 
@@ -77,8 +80,8 @@ async function authorizeWithMetamaskAddress(wallet_address) {
     //   image: "newFromMetamask",
     // };
     // return newuser;
-    console.error("User not found from metamask")
-    return null
+    console.error("User not found from metamask");
+    return null;
   } else {
     const user = await GetUserFromUserId(userId);
     if (!user) {
@@ -138,7 +141,3 @@ async function authorizeWithCredentials(username, password) {
     return null;
   }
 }
-
-
-
-

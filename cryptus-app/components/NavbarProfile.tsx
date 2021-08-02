@@ -7,6 +7,18 @@ export default function NavbarProfile({ name }) {
   const [session, loading] = useSession();
   const router = useRouter();
 
+  const handleClickSignOut = async () => {
+    try {
+      signOut({
+        redirect: true,
+        // callbackUrl: String(process.env.BASE_URL + "profile"),
+        callbackUrl: `${window.location.hostname}`,
+      });
+    } catch (error) {
+      // console.error(error);
+    }
+  };
+
   return (
     <div
       id="header"
@@ -21,7 +33,7 @@ export default function NavbarProfile({ name }) {
         </a>
         {session && (
           <button
-            onClick={() => signOut()}
+            onClick={() => handleClickSignOut()}
             className="w-40 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:w-2/5 px-2 py-2"
           >
             Sign Out
