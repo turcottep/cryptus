@@ -35,24 +35,25 @@ export default class AccountInformation extends Component<
       this.setState({ error: "InvalidUsername" });
 
       return false;
+    } else {
+      const displayName = this.props.values.name;
+      try {
+        this.props.changeState("loading", true);
+
+        const res = updateUser(email, username, displayName).then((res) => {
+          this.props.changeState("loading", false);
+
+          if (res.status == 202) {
+            this.setState({ error: "UniqueUsername" });
+          } else {
+            this.props.nextStep();
+          }
+        });
+      } catch (error) {
+        alert("Please accept the terms and conditions");
+      }
     }
 
-    const displayName = this.props.values.name;
-    try {
-      this.props.changeState("loading", true);
-
-      const res = updateUser(email, username, displayName).then((res) => {
-        this.props.changeState("loading", false);
-
-        if (res.status == 202) {
-          this.setState({ error: "UniqueUsername" });
-        } else {
-          this.props.nextStep();
-        }
-      });
-    } catch (error) {
-      alert("Please accept the terms and conditions");
-    }
     e.preventDefault();
   };
 
