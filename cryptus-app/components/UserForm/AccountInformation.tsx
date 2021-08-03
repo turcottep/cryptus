@@ -76,7 +76,7 @@ export default class AccountInformation extends Component<
         <FormHeader title="Account Information" step={this.props.step} />
 
         <form id="form" className="form w-full mt-16">
-          <div className="flex xl:text-xl bg-white flex-col lg:flex-row mx-12 ">
+          <div className="flex xl:text-xl bg-white flex-col mx-12 ">
             <Input
               type="username"
               id="username"
@@ -89,7 +89,7 @@ export default class AccountInformation extends Component<
               required
             />
           </div>
-          <div className="flex xl:text-xl bg-white flex-col lg:flex-row mx-12 mt-8">
+          <div className="flex xl:text-xl bg-white flex-col mx-12 mt-8">
             <Input
               type="name"
               id="name"
@@ -102,7 +102,7 @@ export default class AccountInformation extends Component<
             />
           </div>
 
-          <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-60">
+          <div className="flex xl:text-xl flex-col mx-12 mt-60">
             <button
               onClick={this.continue}
               className="text-xl text-center whitespace-nowrap bg-brown text-white font-bold rounded-lg w-full px-2 py-2 mt-2"

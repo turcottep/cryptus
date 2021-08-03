@@ -19,7 +19,7 @@ export default class SucessScreen extends Component<MyProps> {
           Account Creation Sucessful !
         </span>
         <Link href={"/" + this.props.values.username}>
-          <div className=" flex xl:text-xl flex-col lg:flex-row mx-12 mt-28">
+          <div className=" flex xl:text-xl flex-col mx-12 mt-28">
             <button className="text-xl text-center whitespace-nowrap bg-brown text-white font-bold rounded-lg w-full px-2 py-2">
               Go To My Profile Page
             </button>

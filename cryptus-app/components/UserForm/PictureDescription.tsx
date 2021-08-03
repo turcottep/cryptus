@@ -45,7 +45,7 @@ export default class PictureDescription extends Component<FormValuesProps> {
         <FormHeader title="Picture and Description" step={this.props.step} />
 
         <form id="form" className="form w-full mt-16">
-          <div className="flex xl:text-xl flex-col items-center lg:flex-row mx-12 ">
+          <div className="flex xl:text-xl flex-col items-center mx-12 ">
             <div className="w-24 h-24 flex items-center justify-center bg-white rounded-full border-gray-300 border">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@ export default class PictureDescription extends Component<FormValuesProps> {
             </div>
             <span className="pt-2 text-gray-600">Profile Picture</span>
           </div>
-          <div className="flex xl:text-xl bg-white flex-col lg:flex-row mx-12 mt-8">
+          <div className="flex xl:text-xl bg-white flex-col mx-12 mt-8">
             <Textarea
               type="text"
               id="description"
@@ -77,7 +77,7 @@ export default class PictureDescription extends Component<FormValuesProps> {
             />
           </div>
 
-          <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
+          <div className="flex xl:text-xl flex-col mx-12 mt-8">
             <button
               onClick={this.continue}
               className="text-xl text-center whitespace-nowrap bg-brown text-white font-bold rounded-lg w-full px-2 py-2 mt-2"

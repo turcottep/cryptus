@@ -199,7 +199,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                   type="hidden"
                   defaultValue={this.props.csrfToken}
                 />
-                <div className="flex xl:text-xl flex-col lg:flex-row mx-12">
+                <div className="flex xl:text-xl flex-col mx-12">
                   <Input
                     type="username"
                     id="username"
@@ -213,7 +213,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                     required
                   />
                 </div>
-                <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
+                <div className="flex xl:text-xl flex-col mx-12 mt-8">
                   <Input
                     type="password"
                     id="password"
@@ -227,7 +227,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                     required
                   />
                 </div>
-                <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
+                <div className="flex xl:text-xl flex-col mx-12 mt-8">
                   <button
                     type="submit"
                     className="text-xl text-center whitespace-nowrap bg-brown text-white font-bold rounded-lg w-full px-2 py-2"
@@ -243,7 +243,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
               </div>
               {or()}
               <Link href="/signuppage">
-                <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-4  text-center whitespace-nowrap bg-white border border-brown rounded-lg px-2 py-2">
+                <div className="flex xl:text-xl flex-col mx-12 mt-4  text-center whitespace-nowrap bg-white border border-brown rounded-lg px-2 py-2">
                   <button className="text-brown text-center text-xl font-bold">
                     Sign up
                   </button>

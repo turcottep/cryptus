@@ -19,12 +19,12 @@ export default class NewPassword extends Component<ForgotPWValuesProps> {
 
   render() {
     return (
-      <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
+      <div className="flex xl:text-xl flex-col mx-12 ">
         <ForgotPWHeader
           title="Enter your new password"
           step={this.props.step}
         />
-        <div className="flex xl:text-xl flex-col lg:flex-row mt-20">
+        <div className="flex xl:text-xl flex-col mt-20">
           <Input
             type="password"
             id="password"
@@ -36,7 +36,7 @@ export default class NewPassword extends Component<ForgotPWValuesProps> {
             required
           />
         </div>
-        <div className="flex xl:text-xl flex-col lg:flex-row mt-8">
+        <div className="flex xl:text-xl flex-col mt-8">
           <Input
             type="password"
             id="confirmpassword"

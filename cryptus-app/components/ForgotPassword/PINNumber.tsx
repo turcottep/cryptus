@@ -17,12 +17,12 @@ export default class PINNumber extends Component<ForgotPWValuesProps> {
 
   render() {
     return (
-      <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
+      <div className="flex xl:text-xl flex-col mx-12 ">
         <ForgotPWHeader
           title="A 6 digit pin number was sent to your email or phone number"
           step={this.props.step}
         />
-        <div className="flex xl:text-xl flex-col lg:flex-row mt-12">
+        <div className="flex xl:text-xl flex-col mt-12">
           <Input
             type="pinnumber"
             id="PINNumber"
