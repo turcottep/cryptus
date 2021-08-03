@@ -20,34 +20,37 @@ export default class NewPassword extends Component<ForgotPWValuesProps> {
   render() {
     return (
       <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
-        <ForgotPWHeader title="Enter your new password" step={this.props.step} />
+        <ForgotPWHeader
+          title="Enter your new password"
+          step={this.props.step}
+        />
         <div className="flex xl:text-xl flex-col lg:flex-row mt-20">
-            <Input
-                type="password"
-                id="password"
-                onChange={this.props.handleChange}
-                placeholder="Password"
-                outline={true}
-                size="lg"
-                color="brown"
-                required
-            />
-          </div>
-          <div className="flex xl:text-xl flex-col lg:flex-row mt-8">
-            <Input
-                type="password"
-                id="confirmpassword"
-                onChange={this.props.handleChange}
-                placeholder="Confirm Password"
-                outline={true}
-                size="lg"
-                color="brown"
-                required
-            />
+          <Input
+            type="password"
+            id="password"
+            onChange={this.props.handleChange}
+            placeholder="Password"
+            outline={true}
+            size="lg"
+            color="brown"
+            required
+          />
+        </div>
+        <div className="flex xl:text-xl flex-col lg:flex-row mt-8">
+          <Input
+            type="password"
+            id="confirmpassword"
+            onChange={this.props.handleChange}
+            placeholder="Confirm Password"
+            outline={true}
+            size="lg"
+            color="brown"
+            required
+          />
         </div>
         <button
-        //   onClick={this.continue}
-          className="relative text-lg text-center whitespace-nowrap bg-brown text-white rounded-lg w-full px-4 py-2 mt-12"
+          //   onClick={this.continue}
+          className=" text-lg text-center whitespace-nowrap bg-brown text-white rounded-lg w-full px-4 py-2 mt-12"
         >
           Set new password
         </button>

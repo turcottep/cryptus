@@ -67,7 +67,7 @@ interface MyComponentProps extends WithRouterProps {}
 class LoginPage extends React.Component<MyComponentProps, MyState> {
   constructor(props) {
     super(props);
-    this.state = { password: "", username: "", loading: false };
+    this.state = { password: "", username: "", loading: true };
     const error = props.router;
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -98,7 +98,6 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
       redirect: true,
       username: this.state.username,
       password: this.state.password,
-      // callbackUrl: String(process.env.BASE_URL),
       callbackUrl: `${window.location.origin}/` + this.state.username,
     });
     event.preventDefault();
@@ -106,7 +105,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
 
   handleClick = async () => {
     router.push("loginpage?");
-    this.setState({ loading: true });
+    this.setState({ loading: false });
     // if (!window.ethereum) {
     //   console.log("please donwload MetaMask");
     //   window.open("https://metamask.io/", "_blank").focus();
@@ -133,7 +132,6 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
         signIn("credentials", {
           redirect: true,
           address: wallet_address,
-          // callbackUrl: String(process.env.BASE_URL + "profile"),
           callbackUrl: `${window.location.origin}/` + user.username,
         });
       }
@@ -148,15 +146,16 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
   render() {
     return (
       <div className="bg-instagram">
+        {this.state.loading ? (
+          <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
+            <Loading />
+          </div>
+        ) : null}
         <main className="sm:max-w-lg mx-auto">
+          {/* <FormNavbar /> */}
+
           {/* {session && router.push("/" + session.user.name)} */}
           <div className="flex flex-col">
-            {/* <FormNavbar /> */}
-            {this.state.loading ? (
-              <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
-                <Loading />
-              </div>
-            ) : null}
             <div className="mx-12">
               <button
                 onClick={this.handleClick}

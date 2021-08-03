@@ -4,7 +4,7 @@ export default function Loading() {
   return (
     <div
       id="header"
-      className="w-full h-full flex justify-around items-center bg-opacity-80 bg-black"
+      className=" w-screen h-screen flex justify-around items-center bg-opacity-80 bg-black"
     >
       <div className="flex flex-col">
         <img

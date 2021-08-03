@@ -120,12 +120,12 @@ export class UserForm extends Component<MyComponentProps, MyState> {
 
     return (
       <main>
-        <div>
-          {this.state.loading ? (
-            <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
-              <Loading />
-            </div>
-          ) : null}
+        {this.state.loading ? (
+          <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
+            <Loading />
+          </div>
+        ) : null}
+        <div className="sm:max-w-lg mx-auto">
           <FormNavBar {...newProps} />
           <div className="">{body()}</div>
         </div>

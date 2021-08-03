@@ -78,7 +78,7 @@ export default class WalletSignUp extends Component<FormValuesProps, MyState> {
 
         <button
           onClick={this.handleClick}
-          className="relative text-xl text-center whitespace-nowrap bg-white text-brown border-4 border-brown rounded-lg w-full px-4 py-8 mt-20"
+          className="text-xl text-center whitespace-nowrap bg-white text-brown border-4 border-brown rounded-lg w-full px-4 py-8 mt-20"
         >
           <div className="flex justify-between items-center">
             <img

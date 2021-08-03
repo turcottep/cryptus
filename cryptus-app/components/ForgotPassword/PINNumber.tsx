@@ -38,7 +38,7 @@ export default class PINNumber extends Component<ForgotPWValuesProps> {
         </div>
         <button
           onClick={this.continue}
-          className="relative text-lg text-center whitespace-nowrap bg-brown text-white rounded-lg w-full px-4 py-2 mt-8"
+          className="text-lg text-center whitespace-nowrap bg-brown text-white rounded-lg w-full px-4 py-2 mt-8"
         >
           Validate
         </button>
