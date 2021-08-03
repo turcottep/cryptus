@@ -27,7 +27,6 @@ export default class AccountInformation extends Component<
     // const { session, loading } = this.props;
 
     const email = this.props.values.email;
-    // console.log("email=", email);
 
     let username = this.props.values.username;
     // username = username.toLowerCase();

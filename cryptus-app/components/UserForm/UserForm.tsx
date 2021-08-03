@@ -74,8 +74,6 @@ export class UserForm extends Component<MyComponentProps, MyState> {
   };
 
   changeState(target_id: any, newValue: any) {
-    console.log("tryining to change state", target_id, newValue);
-
     const newState = { [target_id]: newValue } as Pick<MyState, keyof MyState>;
     this.setState(newState);
   }
@@ -97,7 +95,6 @@ export class UserForm extends Component<MyComponentProps, MyState> {
       step: this.state.step,
     };
     // const desiredStep = parseInt(this.props.router.query.step as string);
-    // console.log("desiredStep:", desiredStep);
     // if (desiredStep) {
     //   newProps.step = desiredStep;
     //   step = desiredStep;

@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  console.log("creating a new man from wallet", req.body);
 
   try {
     const username = "user" + Date.now();

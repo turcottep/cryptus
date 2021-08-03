@@ -1,6 +1,5 @@
 export default async function CreateAccountFromWalletAddress(wallet_address, absolute = true) {
   const base_url = absolute ? process.env.BASE_URL : '/'
-  console.log("lil finction");
   const res = await fetch(
     base_url + "api/leads/createWalletFromAddress",
     {
@@ -19,6 +18,5 @@ export default async function CreateAccountFromWalletAddress(wallet_address, abs
     }
   );
   const user = await res.json();
-  console.log("this is the man I received:", user);
   return user;
 }

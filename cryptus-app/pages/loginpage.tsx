@@ -118,21 +118,18 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
         method: "eth_requestAccounts",
       });
       const wallet_address = accounts[0];
-      console.log("in login, trying to find account");
-      console.log("env=", process.env.BASE_URL);
 
       const userId = await FindUserIdFromWalletAdress(wallet_address, false);
 
       if (!userId) {
         //Create Account with this wallet address
-        console.log("Creating new acount");
         const user = await CreateAccountFromWalletAddress(
           wallet_address,
           false
         );
         router.push("signuppage?step=3");
       } else {
-        const user = await FindUserFromUserId(userId, false, false)
+        const user = await FindUserFromUserId(userId, false, false);
         signIn("credentials", {
           redirect: true,
           address: wallet_address,
@@ -149,8 +146,6 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
   };
 
   render() {
-    console.log("npm install:", process.env.YO);
-
     return (
       <div className="bg-instagram">
         <main className="sm:max-w-lg mx-auto">

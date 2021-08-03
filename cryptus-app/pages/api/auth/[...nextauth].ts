@@ -45,27 +45,23 @@ const options = {
     jwt: true,
   },
 
-  callbacks: {
-    async signIn(user, account, profile) {
-      console.log("callback user=", user);
-      // console.log("callback account=", account);
-      // console.log("callback profile=", profile);
+  // callbacks: {
+  //   async signIn(user, account, profile) {
 
-      if (user.image == "newFromMetamask") {
-        console.log("i'm new from metamask");
-        return "/lafleur";
-      } else {
-        console.log("i'm a regular user");
-        // Return false to display a default error message
-        // Or you can return a URL to redirect to:
-        // return '/unauthorized'
-        return true;
-      }
-    },
-    async signOut() {
-      return true;
-    },
-  },
+
+  //     if (user.image == "newFromMetamask") {
+  //       return "/lafleur";
+  //     } else {
+  //       // Return false to display a default error message
+  //       // Or you can return a URL to redirect to:
+  //       // return '/unauthorized'
+  //       return true;
+  //     }
+  //   },
+  //   async signOut() {
+  //     return true;
+  //   },
+  // },
 };
 
 export default NextAuth(options);

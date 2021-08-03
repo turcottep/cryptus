@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  console.log("trying to find user with this id:", req.body.id);
 
   try {
     prisma.$connect();

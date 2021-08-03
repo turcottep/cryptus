@@ -5,7 +5,6 @@ import Input from "@material-tailwind/react/Input";
 
 export default class PINNumber extends Component<ForgotPWValuesProps> {
   continue = (e) => {
-    // console.log(this.props.values);
     // const pinnumber = this.props.values.pinnumber;
     e.preventDefault();
     this.props.nextStep();
@@ -24,7 +23,7 @@ export default class PINNumber extends Component<ForgotPWValuesProps> {
           step={this.props.step}
         />
         <div className="flex xl:text-xl flex-col lg:flex-row mt-12">
-            <Input
+          <Input
             type="pinnumber"
             id="PINNumber"
             // value={this.state.pinnumber}
@@ -35,7 +34,7 @@ export default class PINNumber extends Component<ForgotPWValuesProps> {
             color="brown"
             // error={this.handleErrors()}
             required
-            />
+          />
         </div>
         <button
           onClick={this.continue}
