@@ -7,18 +7,6 @@ export default function NavbarProfile({ name }) {
   const [session, loading] = useSession();
   const router = useRouter();
 
-  const handleClickSignOut = async () => {
-    try {
-      signOut({
-        redirect: true,
-        // callbackUrl: String(process.env.BASE_URL + "profile"),
-        callbackUrl: `${window.location.hostname}`,
-      });
-    } catch (error) {
-      // console.error(error);
-    }
-  };
-
   return (
     <div
       id="header"
@@ -33,7 +21,12 @@ export default function NavbarProfile({ name }) {
         </a>
         {session && (
           <button
-            onClick={() => handleClickSignOut()}
+            onClick={() => {
+              signOut({
+                redirect: true,
+                callbackUrl: `${window.location.hostname}`,
+              });
+            }}
             className="w-40 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:w-2/5 px-2 py-2"
           >
             Sign Out
@@ -43,13 +36,13 @@ export default function NavbarProfile({ name }) {
           <div className="flex">
             <button
               onClick={() => signIn()}
-              className=" md:px-4 text-sm 2xl:text-xl text-center whitespace-nowrap text-gray-600 font-bold rounded-xl lg:w-2/5 px-2 py-2"
+              className=" md:px-4 text-sm  text-center whitespace-nowrap text-gray-600 font-bold rounded-xl  px-2 py-2"
             >
               Sign In
             </button>
             <button
               onClick={() => router.push("/signuppage")}
-              className=" md:px-4 text-sm 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:w-2/5 px-2 py-2"
+              className="w-contain md:px-4 text-sm 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl px-2 py-2"
             >
               Get Early Access
             </button>
