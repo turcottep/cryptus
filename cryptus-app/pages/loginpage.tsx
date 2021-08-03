@@ -67,7 +67,7 @@ interface MyComponentProps extends WithRouterProps {}
 class LoginPage extends React.Component<MyComponentProps, MyState> {
   constructor(props) {
     super(props);
-    this.state = { password: "", username: "", loading: true };
+    this.state = { password: "", username: "", loading: false };
     const error = props.router;
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -105,7 +105,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
 
   handleClick = async () => {
     router.push("loginpage?");
-    this.setState({ loading: false });
+    this.setState({ loading: true });
     // if (!window.ethereum) {
     //   console.log("please donwload MetaMask");
     //   window.open("https://metamask.io/", "_blank").focus();
