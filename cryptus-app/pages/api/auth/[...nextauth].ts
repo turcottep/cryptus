@@ -2,6 +2,8 @@ import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 import { sha256 } from "js-sha256";
 import FindUserIdFromWalletAdress from "../../../lib/findUserIdFromWalletAdress";
+import FindUserFromUserId from "../../../lib/findUserFromUserId";
+import getUserByUsername from "../../../lib/getUserByUsername";
 
 const options = {
   pages: {
@@ -83,7 +85,7 @@ async function authorizeWithMetamaskAddress(wallet_address) {
     console.error("User not found from metamask");
     return null;
   } else {
-    const user = await GetUserFromUserId(userId);
+    const user = await FindUserFromUserId(userId, false);
     if (!user) {
       console.log("unable to find user #2");
       return null;
@@ -97,35 +99,9 @@ async function authorizeWithMetamaskAddress(wallet_address) {
   }
 }
 
-async function GetUserFromUserId(userId) {
-  console.log("id:", userId);
-  try {
-    const res = await fetch(process.env.BASE_URL + "api/users/id", {
-      method: "POST",
-      body: JSON.stringify({ id: userId }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const user = await res.json();
-    return user;
-  } catch (e) {
-    console.error("Erreur :", e);
-    // Promise.reject(new Error("Unable to connect to server"));
-    return null;
-  }
-}
-
 async function authorizeWithCredentials(username, password) {
   try {
-    const res = await fetch(process.env.BASE_URL + "api/users/username", {
-      method: "POST",
-      body: JSON.stringify({ username: username }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const user = await res.json();
+    const user = await getUserByUsername(username, false);
     const password_hash = sha256(password);
     if (user.hash == password_hash) {
       const newuser = {

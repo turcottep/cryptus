@@ -6,7 +6,19 @@ import { FormValuesProps } from "./UserForm";
 import { NextApiRequest, NextApiResponse } from "next";
 import { useSession } from "next-auth/client";
 
-export default class AccountInformation extends Component<FormValuesProps> {
+const errors = {
+  UniqueUsername: "This username is already in use!",
+  default: "Unable to sign in.",
+};
+
+type MyState = { error: String };
+
+export default class AccountInformation extends Component<FormValuesProps, MyState> {
+  constructor(props) {
+    super(props);
+    this.state = { error: "" };
+    this.handleErrorUsername = this.handleErrorUsername.bind(this);
+  }
   continue = (e) => {
     // const { session, loading } = this.props;
 
@@ -16,7 +28,13 @@ export default class AccountInformation extends Component<FormValuesProps> {
     const username = this.props.values.username;
     const displayName = this.props.values.name;
     try {
-      updateUser(email, username, displayName).then(this.props.nextStep());
+      const res = updateUser(email, username, displayName).then((res) => {
+        if (res.status == 202) {
+          this.setState({ error: "UniqueUsername" });
+        } else {
+          this.props.nextStep();
+        }
+      });
     } catch (error) {
       alert("Please accept the terms and conditions");
     }
@@ -27,6 +45,13 @@ export default class AccountInformation extends Component<FormValuesProps> {
     e.preventDefault();
     this.props.prevStep();
   };
+
+  handleErrorUsername() {
+    const error = String(this.state.error);
+    const errorMessage = error && (errors[error] ?? errors.default);
+  
+    return error ? errorMessage : null;
+  }
 
   render() {
     const { values, handleChange } = this.props;
@@ -45,6 +70,7 @@ export default class AccountInformation extends Component<FormValuesProps> {
               outline={true}
               size="lg"
               color="brown"
+              error={this.handleErrorUsername()}
               required
             />
           </div>
@@ -75,6 +101,7 @@ export default class AccountInformation extends Component<FormValuesProps> {
   }
 }
 
+
 const withSession = (Component) => (props) => {
   const [session, loading] = useSession();
 
@@ -104,6 +131,7 @@ async function updateUser(email, username, displayName) {
       displayName: displayName,
     }),
   });
+  return response;
 }
 
 const ClassComponentWithSession = withSession(AccountInformation);

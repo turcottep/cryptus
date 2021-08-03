@@ -6,7 +6,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     prisma.$connect();
     const user = await prisma.user.findUnique({
       include: {
-        wallets: true,
+        wallets: req.body.withWallets,
       },
       where: {
         username: req.body.username,

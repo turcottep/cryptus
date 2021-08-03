@@ -7,6 +7,7 @@ import Link from "next/link";
 import Loading from "../components/Loading";
 import FindUserIdFromWalletAdress from "../lib/findUserIdFromWalletAdress";
 import CreateAccountFromWalletAddress from "../lib/createAccountFromWalletAddress";
+import FindUserFromUserId from "../lib/findUserFromUserId";
 
 const errors = {
   Signin: "Try signing with a different account.",
@@ -121,6 +122,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
       console.log("env=", process.env.BASE_URL);
 
       const userId = await FindUserIdFromWalletAdress(wallet_address, false);
+
       if (!userId) {
         //Create Account with this wallet address
         console.log("Creating new acount");
@@ -130,11 +132,12 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
         );
         router.push("signuppage?step=3");
       } else {
+        const user = await FindUserFromUserId(userId, false, false)
         signIn("credentials", {
           redirect: true,
           address: wallet_address,
           // callbackUrl: String(process.env.BASE_URL + "profile"),
-          callbackUrl: `${window.location.origin}/` + this.state.username,
+          callbackUrl: `${window.location.origin}/` + user.username,
         });
       }
     } catch (error) {
@@ -247,7 +250,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
               {or()}
               <Link href="/signuppage">
                 <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-4  text-center whitespace-nowrap bg-white border border-brown rounded-lg px-2 py-2">
-                  <button className="text-brown text-xl font-bold">
+                  <button className="text-brown text-center text-xl font-bold">
                     Sign up
                   </button>
                 </div>

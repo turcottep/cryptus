@@ -27,8 +27,7 @@ export default function post(props) {
 
 export async function getServerSideProps(context) {
   const username = context.query.userId;
-  const user = await getUserByUsername(username);
-  console.log("user data : ", user);
+  const user = await getUserByUsername(username, true);
 
   try {
     var data;
@@ -41,7 +40,6 @@ export async function getServerSideProps(context) {
         props: { assets: [], user: user },
       };
     }
-    console.log("data response : ", data.assets);
     return {
       props: { assets: data.assets, user: user },
     };

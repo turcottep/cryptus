@@ -98,7 +98,7 @@ export default function post(props) {
 export async function getServerSideProps(context) {
   const username = context.query.userId;
   console.log("getServerSide\n\n\n\n\n\n\n username=", username);
-  const user = await getUserByUsername(username)
+  const user = await getUserByUsername(username, true)
 
   try {
     var data
