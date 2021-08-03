@@ -27,13 +27,18 @@ export default function post(props) {
 
 export async function getServerSideProps(context) {
   const username = context.query.userId;
-  const user = await getUserByUsername(username);
+  const user = await getUserByUsername(username, true);
 
   try {
     var data;
     for (const wallet of user.wallets) {
       const res = await fetch(wallet.external_url);
       data = await res.json();
+    }
+    if (!data) {
+      return {
+        props: { assets: [], user: user },
+      };
     }
     return {
       props: { assets: data.assets, user: user },

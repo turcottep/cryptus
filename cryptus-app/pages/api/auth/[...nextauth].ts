@@ -1,10 +1,14 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 import { sha256 } from "js-sha256";
+import FindUserIdFromWalletAdress from "../../../lib/findUserIdFromWalletAdress";
+import FindUserFromUserId from "../../../lib/findUserFromUserId";
+import getUserByUsername from "../../../lib/getUserByUsername";
 
 const options = {
   pages: {
     signIn: "/loginpage",
+    signOut: "/",
     error: "/loginpage",
   },
   providers: [
@@ -20,7 +24,6 @@ const options = {
           label: "Password",
           type: "password",
         },
-
       },
 
       async authorize(credentials: any) {
@@ -42,24 +45,23 @@ const options = {
     jwt: true,
   },
 
-  callbacks: {
-    async signIn(user, account, profile) {
-      console.log("callback user=", user);
-      // console.log("callback account=", account);
-      // console.log("callback profile=", profile);
+  // callbacks: {
+  //   async signIn(user, account, profile) {
 
-      if (user.image == "newFromMetamask") {
-        console.log("i'm new from metamask");
-        return '/lafleur';
-      } else {
-        console.log("i'm a regular user");
-        // Return false to display a default error message
-        // Or you can return a URL to redirect to:
-        // return '/unauthorized'
-        return true;
-      }
-    },
-  },
+
+  //     if (user.image == "newFromMetamask") {
+  //       return "/lafleur";
+  //     } else {
+  //       // Return false to display a default error message
+  //       // Or you can return a URL to redirect to:
+  //       // return '/unauthorized'
+  //       return true;
+  //     }
+  //   },
+  //   async signOut() {
+  //     return true;
+  //   },
+  // },
 };
 
 export default NextAuth(options);
@@ -67,17 +69,19 @@ export default NextAuth(options);
 async function authorizeWithMetamaskAddress(wallet_address) {
   const userId = await FindUserIdFromWalletAdress(wallet_address);
   if (!userId) {
-    //Create Account with this wallet address
-    console.log("Creating new acount");
-    const user = await CreateAccountFromWalletAddress(wallet_address);
-    const newuser = {
-      name: user.username,
-      email: user.email,
-      image: "newFromMetamask",
-    };
-    return newuser;
+    // //Create Account with this wallet address
+    // console.log("Creating new acount");
+    // const user = await CreateAccountFromWalletAddress(wallet_address);
+    // const newuser = {
+    //   name: user.username,
+    //   email: user.email,
+    //   image: "newFromMetamask",
+    // };
+    // return newuser;
+    console.error("User not found from metamask");
+    return null;
   } else {
-    const user = await GetUserFromUserId(userId);
+    const user = await FindUserFromUserId(userId, false);
     if (!user) {
       console.log("unable to find user #2");
       return null;
@@ -91,35 +95,9 @@ async function authorizeWithMetamaskAddress(wallet_address) {
   }
 }
 
-async function GetUserFromUserId(userId) {
-  console.log("id:", userId);
-  try {
-    const res = await fetch("http://localhost:3000/api/users/id", {
-      method: "POST",
-      body: JSON.stringify({ id: userId }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const user = await res.json();
-    return user;
-  } catch (e) {
-    console.error("Erreur :", e);
-    // Promise.reject(new Error("Unable to connect to server"));
-    return null;
-  }
-}
-
 async function authorizeWithCredentials(username, password) {
   try {
-    const res = await fetch("http://localhost:3000/api/users/" + username, {
-      method: "POST",
-      body: JSON.stringify({ username: username }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const user = await res.json();
+    const user = await getUserByUsername(username, false);
     const password_hash = sha256(password);
     if (user.hash == password_hash) {
       const newuser = {
@@ -134,46 +112,4 @@ async function authorizeWithCredentials(username, password) {
     // Promise.reject(new Error("Unable to connect to server"));
     return null;
   }
-}
-
-async function FindUserIdFromWalletAdress(wallet_address) {
-  try {
-    const res = await fetch("http://localhost:3000/api/leads/walletaddress", {
-      method: "POST",
-      body: JSON.stringify({ address: wallet_address }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const wallet = await res.json();
-    return wallet.userId;
-  } catch (e) {
-    console.error("Erreur :", e);
-    // Promise.reject(new Error("Unable to connect to server"));
-    return null;
-  }
-}
-
-async function CreateAccountFromWalletAddress(wallet_address) {
-  console.log("lil finction");
-  const res = await fetch(
-    "http://localhost:3000/api/leads/createWalletFromAddress",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        address: wallet_address,
-        external_url:
-          "https://api.opensea.io/api/v1/assets?owner=" +
-          wallet_address +
-          "&order_direction=asc&offset=0&limit=50",
-        blockchain_id: "ETH",
-      }),
-    }
-  );
-  const user = await res.json();
-  console.log("this is the man I received:", user);
-  return user;
 }

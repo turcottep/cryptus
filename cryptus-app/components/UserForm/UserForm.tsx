@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import WalletSignUp from "./WalletSignUp";
-import FormHeader from "./FormHeader";
 import FormNavBar from "./FormNavbar";
 import CreateAccount from "./CreateAccount";
 import AccountInformation from "./AccountInformation";
 import PictureDescription from "./PictureDescription";
 import SucessScreen from "./SucessScreen";
+import router, { NextRouter, withRouter } from "next/router";
+import Loading from "../Loading";
 
 export type FormValuesProps = {
   prevStep: Function;
@@ -16,19 +17,46 @@ export type FormValuesProps = {
   step: Number;
 };
 
-export class UserForm extends Component {
-  state = {
-    step: 1,
-    name: "",
-    username: "",
-    email: "",
-    password: "",
-    confirmpassword: "",
-    description: "",
-    blockchain_wallet: "",
-    checkbox: false,
-  };
+interface WithRouterProps {
+  router: NextRouter;
+  csrfToken;
+}
 
+interface MyComponentProps extends WithRouterProps {}
+
+type MyState = {
+  step: number;
+  name: String;
+  username: String;
+  email: String;
+  password: String;
+  confirmpassword: String;
+  description: String;
+  blockchain_wallet: String;
+  checkbox: Boolean;
+  loading: Boolean;
+};
+
+export class UserForm extends Component<MyComponentProps, MyState> {
+  constructor(props) {
+    super(props);
+    this.nextStep = this.nextStep.bind(this);
+    this.prevStep = this.prevStep.bind(this);
+    this.changeState = this.changeState.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      step: 1,
+      name: "",
+      username: "",
+      email: "",
+      password: "",
+      confirmpassword: "",
+      description: "",
+      blockchain_wallet: "",
+      checkbox: false,
+      loading: false,
+    };
+  }
   // Proceed to next step
   nextStep = () => {
     const { step } = this.state;
@@ -45,19 +73,19 @@ export class UserForm extends Component {
     });
   };
 
-  changeState = (target_id, newValue) => {
-    this.setState({ [target_id]: newValue });
-  };
+  changeState(target_id: any, newValue: any) {
+    const newState = { [target_id]: newValue } as Pick<MyState, keyof MyState>;
+    this.setState(newState);
+  }
 
   handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     const target_id = e.target.id;
-    this.setState({ [target_id]: newValue });
+    this.changeState(target_id, newValue);
   };
 
   render() {
-    const { step } = this.state;
-
+    var { step } = this.state;
     const newProps = {
       nextStep: this.nextStep,
       prevStep: this.prevStep,
@@ -66,7 +94,12 @@ export class UserForm extends Component {
       values: this.state,
       step: this.state.step,
     };
-
+    // const desiredStep = parseInt(this.props.router.query.step as string);
+    // if (desiredStep) {
+    //   newProps.step = desiredStep;
+    //   step = desiredStep;
+    //   // router.push("/signuppage");
+    // }
     const body = () => {
       switch (step) {
         case 1:
@@ -87,7 +120,12 @@ export class UserForm extends Component {
 
     return (
       <main>
-        <div>
+        {this.state.loading ? (
+          <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
+            <Loading />
+          </div>
+        ) : null}
+        <div className="sm:max-w-lg mx-auto">
           <FormNavBar {...newProps} />
           <div className="">{body()}</div>
         </div>
@@ -96,4 +134,4 @@ export class UserForm extends Component {
   }
 }
 
-export default UserForm;
+export default withRouter(UserForm);

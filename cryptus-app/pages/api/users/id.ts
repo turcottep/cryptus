@@ -2,13 +2,12 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  console.log("trying to find user with this id:", req.body.id);
 
   try {
     prisma.$connect();
     const user = await prisma.user.findUnique({
       include: {
-        wallets: true,
+        wallets: req.body.withWallets,
       },
       where: {
         id: req.body.id,

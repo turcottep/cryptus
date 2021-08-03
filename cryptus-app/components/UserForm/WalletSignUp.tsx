@@ -5,7 +5,20 @@ import { FormValuesProps } from "./UserForm";
 
 declare let window: any;
 
-export default class WalletSignUp extends Component<FormValuesProps> {
+const errors = {
+  UniqueEmail: "This email is already in use!",
+  default: "Unable to connect wallet.",
+};
+
+type MyState = { error: String };
+
+export default class WalletSignUp extends Component<FormValuesProps, MyState> {
+  constructor(props) {
+    super(props);
+    this.state = { error: "" };
+    this.handleErrorEmail = this.handleErrorEmail.bind(this);
+  }
+
   continue = (e) => {
     e.preventDefault();
     this.props.nextStep();
@@ -15,6 +28,13 @@ export default class WalletSignUp extends Component<FormValuesProps> {
     e.preventDefault();
     this.props.prevStep();
   };
+
+  handleErrorEmail() {
+    const error = String(this.state.error);
+    const errorMessage = error && (errors[error] ?? errors.default);
+
+    return error ? errorMessage : null;
+  }
 
   handleClick = async () => {
     if (!(window as any).ethereum) {
@@ -32,8 +52,19 @@ export default class WalletSignUp extends Component<FormValuesProps> {
     this.props.changeState("blockchain_wallet", publicAddress);
 
     try {
-      updateWallet(this.props.values.email, publicAddress).then(
-        this.props.nextStep()
+      this.props.changeState("loading", true);
+
+      const res = updateWallet(this.props.values.email, publicAddress).then(
+        (res) => {
+          this.props.changeState("loading", false);
+
+          if (res.status == 202) {
+            alert("Wallet already in use, try loggin in");
+            this.setState({ error: "UniqueWallet" });
+          } else {
+            this.props.nextStep();
+          }
+        }
       );
     } catch (error) {
       alert("Please accept the terms and conditions");
@@ -42,12 +73,12 @@ export default class WalletSignUp extends Component<FormValuesProps> {
 
   render() {
     return (
-      <div className="flex xl:text-xl flex-col lg:flex-row mx-12 ">
+      <div className="flex xl:text-xl flex-col mx-12 ">
         <FormHeader title="Connect Wallet" step={this.props.step} />
 
         <button
           onClick={this.handleClick}
-          className="relative text-xl text-center whitespace-nowrap bg-white text-brown border-4 border-brown rounded-lg w-full px-4 py-8 mt-20"
+          className="text-xl text-center whitespace-nowrap bg-white text-brown border-4 border-brown rounded-lg w-full px-4 py-8 mt-20"
         >
           <div className="flex justify-between items-center">
             <img
@@ -111,7 +142,7 @@ export default class WalletSignUp extends Component<FormValuesProps> {
 }
 
 async function updateWallet(email, blockchain_wallet) {
-  const response = await fetch("/api/leads/updateWallet", {
+  const response = await fetch("api/leads/updateWallet", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -126,4 +157,5 @@ async function updateWallet(email, blockchain_wallet) {
       blockchain_id: "ETH",
     }),
   });
+  return response;
 }

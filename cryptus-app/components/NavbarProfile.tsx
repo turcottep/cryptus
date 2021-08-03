@@ -21,18 +21,32 @@ export default function NavbarProfile({ name }) {
         </a>
         {session && (
           <button
-            onClick={() => signOut}
+            onClick={() => {
+              signOut({
+                redirect: true,
+                callbackUrl: `${window.location.hostname}`,
+              });
+            }}
             className="w-40 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:w-2/5 px-2 py-2"
           >
             Sign Out
           </button>
         )}
         {!session && (
-          <Link href="/">
-            <button className="w-40 md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:w-2/5 px-2 py-2">
+          <div className="flex">
+            <button
+              onClick={() => signIn()}
+              className=" md:px-4 text-sm  text-center whitespace-nowrap text-gray-600 font-bold rounded-xl  px-2 py-2"
+            >
+              Sign In
+            </button>
+            <button
+              onClick={() => router.push("/signuppage")}
+              className="w-contain md:px-4 text-sm 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl px-2 py-2"
+            >
               Get Early Access
             </button>
-          </Link>
+          </div>
         )}
       </div>
       <div className="flex justify-between bg-instagram w-full border-b border-gray-400 py-2 px-2">

@@ -1,10 +1,13 @@
-import { withRouter, NextRouter } from "next/router";
+import router, { withRouter, NextRouter } from "next/router";
 import React from "react";
 import FormNavbar from "../components/UserForm/FormNavbar";
 import Input from "@material-tailwind/react/Input";
 import { signIn } from "next-auth/client";
 import Link from "next/link";
 import Loading from "../components/Loading";
+import FindUserIdFromWalletAdress from "../lib/findUserIdFromWalletAdress";
+import CreateAccountFromWalletAddress from "../lib/createAccountFromWalletAddress";
+import FindUserFromUserId from "../lib/findUserFromUserId";
 
 const errors = {
   Signin: "Try signing with a different account.",
@@ -12,6 +15,7 @@ const errors = {
   OAuthCallback: "Try signing with a different account.",
   OAuthCreateAccount: "Try signing with a different account.",
   EmailCreateAccount: "Try signing with a different account.",
+  CancelMetamask: "Metamask sign-in cancelled",
   Callback: "Try signing with a different account.",
   OAuthAccountNotLinked:
     "To confirm your identity, sign in with the same account you used originally.",
@@ -69,7 +73,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleErrors = this.handleErrors.bind(this);
+    this.handleCredentialsErrors = this.handleCredentialsErrors.bind(this);
   }
 
   handleChangeUsername(e: React.ChangeEvent<HTMLInputElement>) {
@@ -80,7 +84,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
     this.setState({ password: e.target.value });
   }
 
-  handleErrors() {
+  handleCredentialsErrors() {
     if (this.state.loading) return null;
     const error = this.props.router.query.error as string;
     const errorMessage = error && (errors[error] ?? errors.default);
@@ -94,39 +98,64 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
       redirect: true,
       username: this.state.username,
       password: this.state.password,
-      callbackUrl: "http://localhost:3000/",
+      callbackUrl: `${window.location.origin}/` + this.state.username,
     });
     event.preventDefault();
   }
 
   handleClick = async () => {
+    router.push("loginpage?");
     this.setState({ loading: true });
+    // if (!window.ethereum) {
+    //   console.log("please donwload MetaMask");
+    //   window.open("https://metamask.io/", "_blank").focus();
+    //   this.setState({ loading: false });
+    // } else {
+    try {
+      await window.ethereum.enable();
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      const wallet_address = accounts[0];
 
-    await window.ethereum.enable();
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-    const account = accounts[0];
+      const userId = await FindUserIdFromWalletAdress(wallet_address, false);
 
-    signIn("credentials", {
-      redirect: true,
-      address: account,
-      callbackUrl: "http://localhost:3000/",
-    });
+      if (!userId) {
+        //Create Account with this wallet address
+        const user = await CreateAccountFromWalletAddress(
+          wallet_address,
+          false
+        );
+        router.push("signuppage?step=3");
+      } else {
+        const user = await FindUserFromUserId(userId, false, false);
+        signIn("credentials", {
+          redirect: true,
+          address: wallet_address,
+          callbackUrl: `${window.location.origin}/` + user.username,
+        });
+      }
+    } catch (error) {
+      // console.error(error);
+      this.setState({ loading: false });
+      router.push("loginpage?error=CancelMetamask");
+    }
+    // }
   };
 
   render() {
     return (
       <div className="bg-instagram">
-        <main className="xl:max-w-xl">
+        {this.state.loading ? (
+          <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
+            <Loading />
+          </div>
+        ) : null}
+        <main className="sm:max-w-lg mx-auto">
+          {/* <FormNavbar /> */}
+
           {/* {session && router.push("/" + session.user.name)} */}
           <div className="flex flex-col">
-            {/* <FormNavbar /> */}
-            {this.state.loading ? (
-              <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
-                <Loading />
-              </div>
-            ) : null}
             <div className="mx-12">
               <button
                 onClick={this.handleClick}
@@ -170,7 +199,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                   type="hidden"
                   defaultValue={this.props.csrfToken}
                 />
-                <div className="flex xl:text-xl flex-col lg:flex-row mx-12">
+                <div className="flex xl:text-xl flex-col mx-12">
                   <Input
                     type="username"
                     id="username"
@@ -180,11 +209,11 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                     outline={true}
                     size="lg"
                     color="brown"
-                    error={this.handleErrors()}
+                    error={this.handleCredentialsErrors()}
                     required
                   />
                 </div>
-                <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
+                <div className="flex xl:text-xl flex-col mx-12 mt-8">
                   <Input
                     type="password"
                     id="password"
@@ -194,11 +223,11 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                     outline={true}
                     size="lg"
                     color="brown"
-                    error={this.handleErrors()}
+                    error={this.handleCredentialsErrors()}
                     required
                   />
                 </div>
-                <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-8">
+                <div className="flex xl:text-xl flex-col mx-12 mt-8">
                   <button
                     type="submit"
                     className="text-xl text-center whitespace-nowrap bg-brown text-white font-bold rounded-lg w-full px-2 py-2"
@@ -214,8 +243,8 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
               </div>
               {or()}
               <Link href="/signuppage">
-                <div className="flex xl:text-xl flex-col lg:flex-row mx-12 mt-4  text-center whitespace-nowrap bg-white border border-brown rounded-lg px-2 py-2">
-                  <button className="text-brown text-xl font-bold">
+                <div className="flex xl:text-xl flex-col mx-12 mt-4  text-center whitespace-nowrap bg-white border border-brown rounded-lg px-2 py-2">
+                  <button className="text-brown text-center text-xl font-bold">
                     Sign up
                   </button>
                 </div>

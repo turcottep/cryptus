@@ -4,8 +4,6 @@ import { ForgotPWValuesProps } from "./ForgotPassword";
 
 export default class FormNavBar extends Component<ForgotPWValuesProps> {
   continue = (e) => {
-    console.log(this.props.values);
-
     e.preventDefault();
     this.props.nextStep();
   };

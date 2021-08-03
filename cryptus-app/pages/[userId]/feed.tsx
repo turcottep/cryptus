@@ -98,13 +98,18 @@ export default function post(props) {
 export async function getServerSideProps(context) {
   const username = context.query.userId;
   console.log("getServerSide\n\n\n\n\n\n\n username=", username);
-  const user = await getUserByUsername(username)
+  const user = await getUserByUsername(username, true);
 
   try {
-    var data
-    for await(const wallet of user.wallets){
+    var data;
+    for await (const wallet of user.wallets) {
       const res = await fetch(wallet.external_url);
       data = await res.json();
+    }
+    if (!data) {
+      return {
+        props: { assets: [], user: user },
+      };
     }
     return {
       props: { assets: data.assets, user: user },
@@ -113,5 +118,5 @@ export async function getServerSideProps(context) {
     console.error(err);
   }
   console.log("RIIIPPPPP");
-  return null
+  return null;
 }
