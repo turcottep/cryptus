@@ -3,13 +3,28 @@ import Textarea from "@material-tailwind/react/Textarea";
 
 import FormHeader from "./FormHeader";
 import { FormValuesProps } from "./UserForm";
+import { signIn } from "next-auth/client";
+import Loading from "../Loading";
 
 export default class PictureDescription extends Component<FormValuesProps> {
   continue = (e) => {
     const email = this.props.values.email;
     const description = this.props.values.description;
     try {
-      updateUser(email, description).then(this.props.nextStep());
+      updateUser(email, description).then(() => {
+        this.props.changeState("loading", true);
+
+        signIn("credentials", {
+          redirect: true,
+          username: this.props.values.username,
+          password: this.props.values.password,
+          // callbackUrl: String(process.env.BASE_URL),
+          callbackUrl:
+            `${window.location.origin}/` + this.props.values.username,
+        });
+
+        // this.props.nextStep();
+      });
     } catch (error) {
       alert("Please accept the terms and conditions");
     }

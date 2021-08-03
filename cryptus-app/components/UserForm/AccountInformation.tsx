@@ -4,16 +4,20 @@ import Checkbox from "@material-tailwind/react/Checkbox";
 import FormHeader from "./FormHeader";
 import { FormValuesProps } from "./UserForm";
 import { NextApiRequest, NextApiResponse } from "next";
-import { useSession } from "next-auth/client";
+import { signIn, useSession } from "next-auth/client";
 
 const errors = {
   UniqueUsername: "This username is already in use!",
+  InvalidUsername: "Only alphanumeric characters are allowed",
   default: "Unable to sign in.",
 };
 
 type MyState = { error: String };
 
-export default class AccountInformation extends Component<FormValuesProps, MyState> {
+export default class AccountInformation extends Component<
+  FormValuesProps,
+  MyState
+> {
   constructor(props) {
     super(props);
     this.state = { error: "" };
@@ -25,10 +29,22 @@ export default class AccountInformation extends Component<FormValuesProps, MySta
     const email = this.props.values.email;
     // console.log("email=", email);
 
-    const username = this.props.values.username;
+    let username = this.props.values.username;
+    // username = username.toLowerCase();
+
+    if (!username.match(/^[0-9a-z]+$/)) {
+      this.setState({ error: "InvalidUsername" });
+
+      return false;
+    }
+
     const displayName = this.props.values.name;
     try {
+      this.props.changeState("loading", true);
+
       const res = updateUser(email, username, displayName).then((res) => {
+        this.props.changeState("loading", false);
+
         if (res.status == 202) {
           this.setState({ error: "UniqueUsername" });
         } else {
@@ -49,7 +65,7 @@ export default class AccountInformation extends Component<FormValuesProps, MySta
   handleErrorUsername() {
     const error = String(this.state.error);
     const errorMessage = error && (errors[error] ?? errors.default);
-  
+
     return error ? errorMessage : null;
   }
 
@@ -100,7 +116,6 @@ export default class AccountInformation extends Component<FormValuesProps, MySta
     );
   }
 }
-
 
 const withSession = (Component) => (props) => {
   const [session, loading] = useSession();

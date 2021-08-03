@@ -22,8 +22,14 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         res.status(201);
         res.json({});
     } catch (e) {
-        res.status(500);
-        res.json({ error: "Unable to add lead" })
+        if (e.code == "P2002") {
+            res.status(202);
+            res.json({ error: "Unique Wallet  :" + e })
+        } else {
+            res.status(500);
+            res.json({ error: "Unable to add lead" + e })
+        }
+
     } finally {
         await prisma.$disconnect()
     }

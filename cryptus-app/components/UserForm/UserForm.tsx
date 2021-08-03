@@ -6,6 +6,7 @@ import AccountInformation from "./AccountInformation";
 import PictureDescription from "./PictureDescription";
 import SucessScreen from "./SucessScreen";
 import router, { NextRouter, withRouter } from "next/router";
+import Loading from "../Loading";
 
 export type FormValuesProps = {
   prevStep: Function;
@@ -32,7 +33,8 @@ type MyState = {
   confirmpassword: String;
   description: String;
   blockchain_wallet: String;
-  checkbox: false;
+  checkbox: Boolean;
+  loading: Boolean;
 };
 
 export class UserForm extends Component<MyComponentProps, MyState> {
@@ -52,6 +54,7 @@ export class UserForm extends Component<MyComponentProps, MyState> {
       description: "",
       blockchain_wallet: "",
       checkbox: false,
+      loading: false,
     };
   }
   // Proceed to next step
@@ -71,6 +74,8 @@ export class UserForm extends Component<MyComponentProps, MyState> {
   };
 
   changeState(target_id: any, newValue: any) {
+    console.log("tryining to change state", target_id, newValue);
+
     const newState = { [target_id]: newValue } as Pick<MyState, keyof MyState>;
     this.setState(newState);
   }
@@ -119,6 +124,11 @@ export class UserForm extends Component<MyComponentProps, MyState> {
     return (
       <main>
         <div>
+          {this.state.loading ? (
+            <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
+              <Loading />
+            </div>
+          ) : null}
           <FormNavBar {...newProps} />
           <div className="">{body()}</div>
         </div>

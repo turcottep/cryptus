@@ -16,6 +16,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     res.json(user);
   } catch (e) {
     res.status(500);
+    console.error("There was an error")
     res.json({ error: "Unable to find user", e });
     console.error(e);
   } finally {

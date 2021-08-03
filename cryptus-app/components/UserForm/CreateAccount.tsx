@@ -4,7 +4,6 @@ import Checkbox from "@material-tailwind/react/Checkbox";
 import FormHeader from "./FormHeader";
 import { FormValuesProps } from "./UserForm";
 import { sha256 } from "js-sha256";
-import { error } from "jquery";
 import router from "next/router";
 
 const errors = {
@@ -28,8 +27,12 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
     if (validateEmail(email)) {
       if (password == confirmedPassword) {
         if (checkbox == "on") {
+          this.props.changeState("loading", true);
+
           const hashedPassword = sha256(password);
           const res = createUser(email, hashedPassword).then((res) => {
+            this.props.changeState("loading", false);
+
             if (res.status == 202) {
               this.setState({ error: "UniqueEmail" });
             } else {
@@ -69,7 +72,7 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
         <FormHeader title="Create Account" step={this.props.step} />
 
         <form id="form" className="form w-full mt-16">
-          <div className="flex xl:text-xl bg-white flex-col lg:flex-row mx-12 ">
+          <div className="flex xl:text-xl bg-white flex-col  mx-12 ">
             <Input
               type="email"
               id="email"
@@ -82,7 +85,7 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
               required
             />
           </div>
-          <div className="flex xl:text-xl bg-white flex-col lg:flex-row mx-12 mt-8">
+          <div className="flex xl:text-xl bg-white flex-col  mx-12 mt-8">
             <Input
               type="password"
               id="password"
@@ -94,7 +97,7 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
               required
             />
           </div>
-          <div className="flex xl:text-xl bg-white flex-col lg:flex-row mx-12 mt-8">
+          <div className="flex xl:text-xl bg-white flex-col  mx-12 mt-8">
             <Input
               type="password"
               id="confirmpassword"
@@ -106,7 +109,7 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
               required
             />
           </div>
-          <div className="flex xl:text-xl  flex-col lg:flex-row mx-12 mt-8">
+          <div className="flex xl:text-xl  flex-col  mx-12 mt-8">
             <Checkbox
               onChange={this.props.handleChange}
               color="brown"
@@ -114,12 +117,22 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
               id="checkbox"
             />
           </div>
-          <div className=" flex xl:text-xl flex-col lg:flex-row mx-12 mt-28">
+          <div className=" flex xl:text-xl flex-col  mx-12 mt-28">
             <button
               onClick={this.continue}
               className="text-xl text-center whitespace-nowrap bg-brown text-white font-bold rounded-lg w-full px-2 py-2"
             >
               Sign up
+            </button>
+          </div>
+          <div className=" flex xl:text-xl flex-col  mx-12 mt-4">
+            <button
+              onClick={() => {
+                router.push("/loginpage");
+              }}
+              className="text-sm text-center whitespace-nowrap  text-black  rounded-lg px-2 py-2"
+            >
+              Have an account? Login
             </button>
           </div>
         </form>
