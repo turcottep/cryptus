@@ -8,7 +8,7 @@ import { signIn, useSession } from "next-auth/client";
 
 const errors = {
   UniqueUsername: "This username is already in use!",
-  InvalidUsername: "Only lowercase alphanumeric characters are allowed",
+  InvalidUsername: "Only alphanumeric characters are allowed",
   default: "Unable to sign in.",
 };
 
@@ -24,7 +24,7 @@ export default class AccountInformation extends Component<
     this.handleErrorUsername = this.handleErrorUsername.bind(this);
   }
   continue = (e) => {
-    e.preventDefault();
+    // const { session, loading } = this.props;
 
     const email = this.props.values.email;
 
@@ -33,6 +33,8 @@ export default class AccountInformation extends Component<
 
     if (!username.match(/^[0-9a-z]+$/)) {
       this.setState({ error: "InvalidUsername" });
+
+      return false;
     } else {
       const displayName = this.props.values.name;
       try {
@@ -51,6 +53,8 @@ export default class AccountInformation extends Component<
         alert("Please accept the terms and conditions");
       }
     }
+
+    e.preventDefault();
   };
 
   back = (e) => {
