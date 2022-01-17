@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -21,8 +21,15 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "pages/api/auth/[...nextauth].ts", "pages/index.tsx", "pages/loginpage.tsx", "pages/loginpage2.jsx", "components/UserForm/UserDetails.jsx", "components/UserForm/UserDetails.jsx"  ],
+    "**/*.tsx",
+    "pages/api/auth/[...nextauth].ts",
+    "pages/index.tsx",
+    "pages/loginpage.tsx",
+    "pages/loginpage2.jsx",
+    "components/UserForm/UserDetails.jsx",
+    "components/UserForm/UserDetails.jsx",
+    "__tests__/emailTest.spec.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
