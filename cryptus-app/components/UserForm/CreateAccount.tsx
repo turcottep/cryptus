@@ -71,11 +71,13 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
       <div className="flex flex-col ">
         <FormHeader title="Create Account" step={this.props.step} />
 
-        <form id="form" className="form w-full mt-16">
+        <form id="form" data-testid="create-account" className="form w-full mt-16">
           <div className="flex xl:text-xl bg-white flex-col  mx-12 ">
             <Input
               type="email"
+              name="email"
               id="email"
+              data-testid="email-test"
               onChange={this.props.handleChange}
               placeholder="Email"
               outline={true}
@@ -88,6 +90,7 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
           <div className="flex xl:text-xl bg-white flex-col  mx-12 mt-8">
             <Input
               type="password"
+              name="password"
               id="password"
               onChange={this.props.handleChange}
               placeholder="Password"
@@ -100,6 +103,7 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
           <div className="flex xl:text-xl bg-white flex-col  mx-12 mt-8">
             <Input
               type="password"
+              name="confirmpassword"
               id="confirmpassword"
               onChange={this.props.handleChange}
               placeholder="Confirm Password"
@@ -111,6 +115,7 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
           </div>
           <div className="flex xl:text-xl  flex-col  mx-12 mt-8">
             <Checkbox
+              data-testid="terms"
               onChange={this.props.handleChange}
               color="brown"
               text="I have read and accept the terms"
