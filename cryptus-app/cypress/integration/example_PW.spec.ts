@@ -4,7 +4,7 @@ export {}
 it("Can login.", () => {
     const username = Cypress.env("USERNAME")
     const password = Cypress.env("PASSWORD")
-    cy.visit("http://localhost:3000/");
+    cy.visit(Cypress.env("SITE_NAME"));
     cy.contains('Sign In').click()
     cy.get('#username').type(`${username}`)
     cy.get('#password').type(`${password}`)

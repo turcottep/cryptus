@@ -17,6 +17,7 @@ bower_components
 *.sublime*
 .env
 .env.local
+.cypress.env.json
 
 psd
 thumb
