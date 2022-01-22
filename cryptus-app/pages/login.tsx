@@ -1,7 +1,9 @@
 import React from "react";
-import ForgotPassword from "../components/forgotpassword/forgotpassword";
+import router, { withRouter, NextRouter } from "next/router";
 
-export default function Home({ data }) {
+import Login from "../components/login/login";
+
+function LoginPage() {
   return (
     <div className="">
       <title>Mecene Studio</title>
@@ -23,8 +25,10 @@ export default function Home({ data }) {
       />
 
       <main>
-        <ForgotPassword />
+        <Login router={router} csrfToken="test" />
       </main>
     </div>
   );
 }
+
+export default withRouter(LoginPage);

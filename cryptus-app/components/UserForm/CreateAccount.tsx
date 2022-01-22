@@ -128,7 +128,7 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
           <div className=" flex xl:text-xl flex-col  mx-12 mt-4">
             <button
               onClick={() => {
-                router.push("/loginpage");
+                router.push("/login");
               }}
               className="text-sm text-center whitespace-nowrap  text-black  rounded-lg px-2 py-2"
             >

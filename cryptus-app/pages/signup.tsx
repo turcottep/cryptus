@@ -1,7 +1,7 @@
 import React from "react";
-import ForgotPassword from "../components/forgotpassword/forgotpassword";
+import Signup from "../components/signup/signup";
 
-export default function Home({ data }) {
+export default function SignupPage({ data }) {
   return (
     <div className="">
       <title>Mecene Studio</title>
@@ -23,7 +23,7 @@ export default function Home({ data }) {
       />
 
       <main>
-        <ForgotPassword />
+        <Signup />
       </main>
     </div>
   );

@@ -1,10 +1,11 @@
+import React, { useEffect } from "react";
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
-import LandingPage from "../components/LandingPage";
-import React, { useEffect } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/client";
 import router from "next/router";
+
+import LandingPage from "../components/LandingPage";
 
 export default function Home() {
   const [session, loading] = useSession();
@@ -58,7 +59,7 @@ export default function Home() {
         />
       </Head>
 
-      <main className="">
+      <main>
         {session && <div>Logged in as {session.user.name}</div>}
         <LandingPage />
       </main>
