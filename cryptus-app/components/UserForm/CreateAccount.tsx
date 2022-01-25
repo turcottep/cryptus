@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Input from "@material-tailwind/react/Input";
 import Checkbox from "@material-tailwind/react/Checkbox";
 import FormHeader from "./FormHeader";
-import { FormValuesProps } from "./UserForm";
+import { FormValuesProps } from "../signup/signup";
 import { sha256 } from "js-sha256";
 import router from "next/router";
 
