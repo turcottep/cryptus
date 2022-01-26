@@ -1,5 +1,5 @@
 import React from "react";
-import ForgotPassword from "../components/forgotpassword/forgotpassword";
+import { ForgotPassword } from "../components/ForgotPassword/ForgotPassword";
 
 export default function Home({ data }) {
   return (
