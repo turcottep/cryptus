@@ -4,7 +4,7 @@ import Textarea from "@material-tailwind/react/Textarea";
 import FormHeader from "./form_header";
 import { FormValuesProps } from "../signup";
 import { signIn } from "next-auth/client";
-import Loading from "../../utils/Loading";
+import Loading from "../../utils/loading";
 
 export default class PictureDescription extends Component<FormValuesProps> {
   continue = (e) => {

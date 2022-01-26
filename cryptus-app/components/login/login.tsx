@@ -6,7 +6,7 @@ import FormNavbar from "../signup/user_form/form_navbar";
 import Input from "@material-tailwind/react/Input";
 import { signIn } from "next-auth/client";
 import Link from "next/link";
-import Loading from "../utils/Loading";
+import Loading from "../utils/loading";
 import FindUserIdFromWalletAdress from "../../lib/findUserIdFromWalletAdress";
 import CreateAccountFromWalletAddress from "../../lib/createAccountFromWalletAddress";
 import FindUserFromUserId from "../../lib/findUserFromUserId";

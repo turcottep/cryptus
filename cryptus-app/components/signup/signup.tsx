@@ -6,7 +6,7 @@ import AccountInformation from "./user_form/account_information";
 import PictureDescription from "./user_form/picture_description";
 import SucessScreen from "./user_form/sucess_screen";
 import router, { NextRouter, withRouter } from "next/router";
-import Loading from "../utils/Loading";
+import Loading from "../utils/loading";
 
 export type FormValuesProps = {
   prevStep: Function;
