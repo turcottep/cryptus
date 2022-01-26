@@ -64,13 +64,12 @@ interface WithRouterProps {
   csrfToken;
 }
 
-interface MyComponentProps extends WithRouterProps {}
+interface MyComponentProps extends WithRouterProps { }
 
 export default class Login extends React.Component<MyComponentProps, MyState> {
   constructor(props) {
     super(props);
     this.state = { password: "", username: "", loading: false };
-    const error = props.router;
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -88,7 +87,9 @@ export default class Login extends React.Component<MyComponentProps, MyState> {
 
   handleCredentialsErrors() {
     if (this.state.loading) return null;
-    const error = this.props.router.query.error as string;
+
+
+    const error = typeof window !== 'undefined' ? this.props.router.query.error as string : '';
     const errorMessage = error && (errors[error] ?? errors.default);
 
     return error ? errorMessage : null;
