@@ -17,7 +17,7 @@ const errors = {
   OAuthCallback: "Try signing with a different account.",
   OAuthCreateAccount: "Try signing with a different account.",
   EmailCreateAccount: "Try signing with a different account.",
-  CancelMetamask: "Metamask sign-in cancelled",
+  CancelMetamask: "Metamask sign-in error.",
   Callback: "Try signing with a different account.",
   OAuthAccountNotLinked:
     "To confirm your identity, sign in with the same account you used originally.",

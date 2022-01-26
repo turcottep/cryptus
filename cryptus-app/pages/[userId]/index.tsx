@@ -28,11 +28,19 @@ export default function post(props) {
 export async function getServerSideProps(context) {
   const username = context.query.userId;
   const user = await getUserByUsername(username, true);
-
+  let res;
   try {
     var data;
     for (const wallet of user.wallets) {
-      const res = await fetch(wallet.external_url);
+      const address = wallet.address;
+      //fetch nfts from opensea
+      res = await fetch("https://api.opensea.io/api/v1/assets?owner=" + address + "&order_direction=asc&offset=0&limit=50", {
+        headers: {
+          "Accept": "application/json",
+          "X-API-KEY": process.env.OPENSEA_API_KEY,
+        },
+      });
+      // res = await fetch(wallet.external_url);
       data = await res.json();
     }
     if (!data) {
@@ -45,6 +53,14 @@ export async function getServerSideProps(context) {
     };
   } catch (err) {
     console.error(err);
+    console.error(err);
+    console.log("respons = ", res);
+    console.log("DEEZ");
+
+    return {
+      props: { assets: null, user: user },
+    };
   }
+  console.log("no data");
   return null;
 }
