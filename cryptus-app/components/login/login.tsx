@@ -2,11 +2,11 @@ import React from "react";
 import s from "./login.module.scss";
 
 import router, { withRouter, NextRouter } from "next/router";
-import FormNavbar from "../../components/UserForm/FormNavbar";
+import FormNavbar from "../signup/user_form/form_navbar";
 import Input from "@material-tailwind/react/Input";
 import { signIn } from "next-auth/client";
 import Link from "next/link";
-import Loading from "../../components/Loading";
+import Loading from "../utils/Loading";
 import FindUserIdFromWalletAdress from "../../lib/findUserIdFromWalletAdress";
 import CreateAccountFromWalletAddress from "../../lib/createAccountFromWalletAddress";
 import FindUserFromUserId from "../../lib/findUserFromUserId";

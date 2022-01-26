@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
-import FormHeader from "./FormHeader";
-import { FormValuesProps } from "../signup/signup";
+import FormHeader from "../form_header";
+import { FormValuesProps } from "../../signup";
 
 declare let window: any;
 

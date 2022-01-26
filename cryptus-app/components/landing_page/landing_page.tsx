@@ -1,6 +1,6 @@
 import React from "react";
-import NameForm from "./NameForm";
-import NavbarLandingPage from "./NavbarLandingPage";
+import NameForm from "./name_form";
+import NavbarLandingPage from "../navbars/navbar_landing_page/navbar_landing_page";
 
 export default function LandingPage() {
   return (

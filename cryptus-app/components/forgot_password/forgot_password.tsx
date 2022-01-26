@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Recovery from "./Recovery";
-import PINNumber from "./PINNumber";
-import NewPassword from "./NewPassword";
-import ForgotPWNavBar from "./ForgotPWNavbar";
+import Recovery from "./recovery";
+import PINNumber from "./pin";
+import NewPassword from "./new_password";
+import ForgotPWNavBar from "./forgot_password_navbar";
 
 export type ForgotPWValuesProps = {
   prevStep: Function;
@@ -72,7 +72,7 @@ export class ForgotPassword extends Component {
       <main>
         <div>
           <ForgotPWNavBar {...newProps} />
-          <div className="">{body()}</div>
+          <div >{body()}</div>
         </div>
       </main>
     );

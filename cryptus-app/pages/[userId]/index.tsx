@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 
 import React from "react";
-import Mosaic from "../../components/Mosaic";
-import NavbarProfile from "../../components/NavbarProfile";
-import Profile from "../../components/Profile";
+import Mosaic from "../../components/viewer/Mosaic";
+import NavbarProfile from "../../components/navbars/navbar_profile/navbar_profile";
+import Profile from "../../components/profile/profile";
 import getUserByUsername from "../../lib/getUserByUsername";
 
 export default function post(props) {

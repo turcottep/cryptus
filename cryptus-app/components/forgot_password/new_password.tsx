@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import ForgotPWHeader from "./ForgotPWHeader";
+import ForgotPWHeader from "./forgot_password_header";
 import Input from "@material-tailwind/react/Input";
-import { ForgotPWValuesProps } from "./ForgotPassword";
+import { ForgotPWValuesProps } from "./forgot_password";
 
 export default class NewPassword extends Component<ForgotPWValuesProps> {
   continue = (e) => {
-    // console.log(this.props.values);
-    // const password = this.props.values.password;
-    // const confirmedPassword = this.props.values.confirmpassword;
     e.preventDefault();
     this.props.nextStep();
   };
@@ -49,7 +46,6 @@ export default class NewPassword extends Component<ForgotPWValuesProps> {
           />
         </div>
         <button
-          //   onClick={this.continue}
           className=" text-lg text-center whitespace-nowrap bg-brown text-white rounded-lg w-full px-4 py-2 mt-12"
         >
           Set new password

@@ -26,8 +26,8 @@
     "pages/index.tsx",
     "pages/login.tsx",
     "pages/loginpage2.jsx",
-    "components/UserForm/UserDetails.jsx",
-    "components/UserForm/UserDetails.jsx"
+    "components/user_form/UserDetails.jsx",
+    "components/user_form/UserDetails.jsx"
   ],
   "exclude": [
     "node_modules"

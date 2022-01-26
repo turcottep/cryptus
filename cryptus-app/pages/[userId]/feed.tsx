@@ -2,8 +2,8 @@ import { GetStaticPaths } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useLayoutEffect } from "react";
-import Feed from "../../components/Feed";
-import NavbarProfile from "../../components/NavbarProfile";
+import Feed from "../../components/viewer/Feed";
+import NavbarProfile from "../../components/navbars/navbar_profile/navbar_profile";
 import getUserByUsername from "../../lib/getUserByUsername";
 
 export default function post(props) {
