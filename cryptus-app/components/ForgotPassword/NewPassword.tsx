@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ForgotPWHeader from "./ForgotPWHeader";
-import { ForgotPWValuesProps } from "./ForgotPassword";
 import Input from "@material-tailwind/react/Input";
+import { ForgotPWValuesProps } from "./ForgotPassword";
 
 export default class NewPassword extends Component<ForgotPWValuesProps> {
   continue = (e) => {

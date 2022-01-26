@@ -1,0 +1,73 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+
+  display: grid;
+
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(12, 1fr);
+  gap: 16px;
+
+  grid-template-areas: "1 2 3 4 5 6 7 8 9 10 11 12";
+  justify-items: center;
+
+  padding: 32px;
+  width: v.$mobile;
+  background-color: lightblue;
+}
+
+.griditem {
+  height: 48px;
+  width: 100%;
+  background-color: lightcoral;
+}
+
+.grid1 {
+  @extend .griditem;
+  grid-area: 1;
+}
+.grid2 {
+  @extend .griditem;
+  grid-area: 2;
+}
+.grid3 {
+  @extend .griditem;
+  grid-area: 3;
+}
+.grid4 {
+  @extend .griditem;
+  grid-area: 4;
+}
+.grid5 {
+  @extend .griditem;
+  grid-area: 5;
+}
+.grid6 {
+  @extend .griditem;
+  grid-area: 6;
+}
+.grid7 {
+  @extend .griditem;
+  grid-area: 7;
+}
+.grid8 {
+  @extend .griditem;
+  grid-area: 8;
+}
+.grid9 {
+  @extend .griditem;
+  grid-area: 9;
+}
+.grid10 {
+  @extend .griditem;
+  grid-area: 10;
+}
+.grid11 {
+  @extend .griditem;
+  grid-area: 11;
+}
+.grid12 {
+  @extend .griditem;
+  grid-area: 12;
+}

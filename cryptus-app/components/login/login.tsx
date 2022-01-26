@@ -1,13 +1,15 @@
-import router, { withRouter, NextRouter } from "next/router";
 import React from "react";
-import FormNavbar from "../components/UserForm/FormNavbar";
+import s from "./login.module.scss";
+
+import router, { withRouter, NextRouter } from "next/router";
+import FormNavbar from "../../components/UserForm/FormNavbar";
 import Input from "@material-tailwind/react/Input";
 import { signIn } from "next-auth/client";
 import Link from "next/link";
-import Loading from "../components/Loading";
-import FindUserIdFromWalletAdress from "../lib/findUserIdFromWalletAdress";
-import CreateAccountFromWalletAddress from "../lib/createAccountFromWalletAddress";
-import FindUserFromUserId from "../lib/findUserFromUserId";
+import Loading from "../../components/Loading";
+import FindUserIdFromWalletAdress from "../../lib/findUserIdFromWalletAdress";
+import CreateAccountFromWalletAddress from "../../lib/createAccountFromWalletAddress";
+import FindUserFromUserId from "../../lib/findUserFromUserId";
 
 const errors = {
   Signin: "Try signing with a different account.",
@@ -64,11 +66,10 @@ interface WithRouterProps {
 
 interface MyComponentProps extends WithRouterProps { }
 
-class LoginPage extends React.Component<MyComponentProps, MyState> {
+export default class Login extends React.Component<MyComponentProps, MyState> {
   constructor(props) {
     super(props);
     this.state = { password: "", username: "", loading: false };
-    const error = props.router;
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -86,7 +87,9 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
 
   handleCredentialsErrors() {
     if (this.state.loading) return null;
-    const error = this.props.router.query.error as string;
+
+
+    const error = typeof window !== 'undefined' ? this.props.router.query.error as string : '';
     const errorMessage = error && (errors[error] ?? errors.default);
 
     return error ? errorMessage : null;
@@ -104,7 +107,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
   }
 
   handleClick = async () => {
-    router.push("loginpage?");
+    router.push("login?");
     this.setState({ loading: true });
     // if (!window.ethereum) {
     //   console.log("please donwload MetaMask");
@@ -126,7 +129,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
           wallet_address,
           false
         );
-        router.push("signuppage?step=3");
+        router.push("signup?step=3");
       } else {
         const user = await FindUserFromUserId(userId, false, false);
         signIn("credentials", {
@@ -138,7 +141,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
     } catch (error) {
       // console.error(error);
       this.setState({ loading: false });
-      router.push("loginpage?error=CancelMetamask");
+      router.push("login?error=CancelMetamask");
     }
     // }
   };
@@ -242,7 +245,7 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
                 </a>
               </div>
               {or()}
-              <Link href="/signuppage">
+              <Link href="/signup">
                 <div className="flex xl:text-xl flex-col mx-12 mt-4  text-center whitespace-nowrap bg-white border border-brown rounded-lg px-2 py-2">
                   <button className="text-brown text-center text-xl font-bold">
                     Sign up
@@ -256,5 +259,3 @@ class LoginPage extends React.Component<MyComponentProps, MyState> {
     );
   }
 }
-
-export default withRouter(LoginPage);

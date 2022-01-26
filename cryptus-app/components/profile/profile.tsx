@@ -1,8 +1,6 @@
-import Link from "next/link";
 import React from "react";
-import UserForm from "../components/UserForm/UserForm";
 
-export default function signup(props) {
+export default function Profile(props) {
   return (
     <div className="bg-instagram">
       <main className="sm:max-w-lg mx-auto">

@@ -41,7 +41,7 @@ export default function NavbarProfile({ name }) {
               Sign In
             </button>
             <button
-              onClick={() => router.push("/signuppage")}
+              onClick={() => router.push("/signup")}
               className="w-contain md:px-4 text-sm 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl px-2 py-2"
             >
               Get Early Access

@@ -1,5 +1,5 @@
 import React from "react";
-import { ForgotPassword } from "../components/ForgotPassword/ForgotPassword";
+import FeatureIamTesting from "../components/template/pagetemplate/pagetemplate";
 
 export default function Home({ data }) {
   return (
@@ -23,7 +23,7 @@ export default function Home({ data }) {
       />
 
       <main>
-        <ForgotPassword />
+        <FeatureIamTesting />
       </main>
     </div>
   );

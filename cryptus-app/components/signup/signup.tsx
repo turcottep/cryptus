@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import WalletSignUp from "./WalletSignUp";
-import FormNavBar from "./FormNavbar";
-import CreateAccount from "./CreateAccount";
-import AccountInformation from "./AccountInformation";
-import PictureDescription from "./PictureDescription";
-import SucessScreen from "./SucessScreen";
+import WalletSignUp from "../UserForm/WalletSignUp";
+import FormNavBar from "../UserForm/FormNavbar";
+import CreateAccount from "../UserForm/CreateAccount";
+import AccountInformation from "../UserForm/AccountInformation";
+import PictureDescription from "../UserForm/PictureDescription";
+import SucessScreen from "../UserForm/SucessScreen";
 import router, { NextRouter, withRouter } from "next/router";
 import Loading from "../Loading";
 
@@ -98,7 +98,7 @@ export class UserForm extends Component<MyComponentProps, MyState> {
     // if (desiredStep) {
     //   newProps.step = desiredStep;
     //   step = desiredStep;
-    //   // router.push("/signuppage");
+    //   // router.push("/signup");
     // }
     const body = () => {
       switch (step) {

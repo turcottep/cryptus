@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Textarea from "@material-tailwind/react/Textarea";
 
 import FormHeader from "./FormHeader";
-import { FormValuesProps } from "./UserForm";
+import { FormValuesProps } from "../signup/signup";
 import { signIn } from "next-auth/client";
 import Loading from "../Loading";
 

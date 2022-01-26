@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Input from "@material-tailwind/react/Input";
 import Checkbox from "@material-tailwind/react/Checkbox";
 import FormHeader from "./FormHeader";
-import { FormValuesProps } from "./UserForm";
+import { FormValuesProps } from "../signup/signup";
 import { sha256 } from "js-sha256";
 import router from "next/router";
 
@@ -128,7 +128,7 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
           <div className=" flex xl:text-xl flex-col  mx-12 mt-4">
             <button
               onClick={() => {
-                router.push("/loginpage");
+                router.push("/login");
               }}
               className="text-sm text-center whitespace-nowrap  text-black  rounded-lg px-2 py-2"
             >
