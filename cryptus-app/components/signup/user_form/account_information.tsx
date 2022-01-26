@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import Input from "@material-tailwind/react/Input";
-import Checkbox from "@material-tailwind/react/Checkbox";
-import FormHeader from "./FormHeader";
-import { FormValuesProps } from "../signup/signup";
-import { NextApiRequest, NextApiResponse } from "next";
+import FormHeader from "./form_header";
+import { FormValuesProps } from "../signup";
 import { signIn, useSession } from "next-auth/client";
 
 const errors = {
@@ -60,14 +58,12 @@ export default class AccountInformation extends Component<
 
   handleErrorUsername() {
     const error = String(this.state.error);
-    const errorMessage = error && (errors[error] ?? errors.default);
+    const errorMessage = error && (errors[error] ?? errors.default) as string;
 
     return error ? errorMessage : null;
   }
 
   render() {
-    const { values, handleChange } = this.props;
-
     return (
       <div className="flex flex-col ">
         <FormHeader title="Account Information" step={this.props.step} />
@@ -130,7 +126,7 @@ const withSession = (Component) => (props) => {
   );
 };
 
-async function updateUser(email, username, displayName) {
+async function updateUser(email: string, username: string, displayName: string) {
   const response = await fetch("api/leads/updateUsername", {
     method: "PUT",
     headers: {

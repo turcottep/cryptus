@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import WalletSignUp from "../UserForm/WalletSignUp";
-import FormNavBar from "../UserForm/FormNavbar";
-import CreateAccount from "../UserForm/CreateAccount";
-import AccountInformation from "../UserForm/AccountInformation";
-import PictureDescription from "../UserForm/PictureDescription";
-import SucessScreen from "../UserForm/SucessScreen";
+import WalletSignUp from "./user_form/wallet_signup/wallet_signup";
+import FormNavBar from "./user_form/form_navbar";
+import CreateAccount from "./user_form/create_account";
+import AccountInformation from "./user_form/account_information";
+import PictureDescription from "./user_form/picture_description";
+import SucessScreen from "./user_form/sucess_screen";
 import router, { NextRouter, withRouter } from "next/router";
-import Loading from "../Loading";
+import Loading from "../utils/loading";
 
 export type FormValuesProps = {
   prevStep: Function;
   nextStep: Function;
   handleChange: Function;
   changeState: Function;
-  values: any;
+  values: MyState;
   step: Number;
 };
 
@@ -22,19 +22,19 @@ interface WithRouterProps {
   csrfToken;
 }
 
-interface MyComponentProps extends WithRouterProps {}
+interface MyComponentProps extends WithRouterProps { }
 
 type MyState = {
   step: number;
-  name: String;
-  username: String;
-  email: String;
-  password: String;
-  confirmpassword: String;
-  description: String;
-  blockchain_wallet: String;
-  checkbox: Boolean;
-  loading: Boolean;
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  confirmpassword: string;
+  description: string;
+  blockchain_wallet: string;
+  checkbox: string;
+  loading: boolean;
 };
 
 export class UserForm extends Component<MyComponentProps, MyState> {
@@ -53,7 +53,7 @@ export class UserForm extends Component<MyComponentProps, MyState> {
       confirmpassword: "",
       description: "",
       blockchain_wallet: "",
-      checkbox: false,
+      checkbox: "off",
       loading: false,
     };
   }

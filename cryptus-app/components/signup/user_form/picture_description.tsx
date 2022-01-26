@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Textarea from "@material-tailwind/react/Textarea";
 
-import FormHeader from "./FormHeader";
-import { FormValuesProps } from "../signup/signup";
+import FormHeader from "./form_header";
+import { FormValuesProps } from "../signup";
 import { signIn } from "next-auth/client";
-import Loading from "../Loading";
+import Loading from "../../utils/loading";
 
 export default class PictureDescription extends Component<FormValuesProps> {
   continue = (e) => {
@@ -91,7 +91,7 @@ export default class PictureDescription extends Component<FormValuesProps> {
   }
 }
 
-async function updateUser(email, description) {
+async function updateUser(email: string, description: string) {
   const response = await fetch("api/leads/updateDescriptionAndProfilePic", {
     method: "PUT",
     headers: {

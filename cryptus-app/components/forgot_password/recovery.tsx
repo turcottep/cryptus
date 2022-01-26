@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import ForgotPWHeader from "./ForgotPWHeader";
-import { ForgotPWValuesProps } from "./ForgotPassword";
+import ForgotPWHeader from "./forgot_password_header";
+import { ForgotPWValuesProps } from "./forgot_password";
 import Input from "@material-tailwind/react/Input";
 
-export default class PINNumber extends Component<ForgotPWValuesProps> {
+export default class Recovery extends Component<ForgotPWValuesProps> {
   continue = (e) => {
-    // const pinnumber = this.props.values.pinnumber;
+    // console.log(this.props.values);
+    // const email = this.props.values.email;
     e.preventDefault();
     this.props.nextStep();
   };
@@ -19,28 +20,25 @@ export default class PINNumber extends Component<ForgotPWValuesProps> {
     return (
       <div className="flex xl:text-xl flex-col mx-12 ">
         <ForgotPWHeader
-          title="A 6 digit pin number was sent to your email or phone number"
+          title="Enter your recovery email or phone number"
           step={this.props.step}
         />
         <div className="flex xl:text-xl flex-col mt-12">
           <Input
-            type="pinnumber"
-            id="PINNumber"
-            // value={this.state.pinnumber}
-            // onChange={this.handleChange}
-            placeholder="Enter 6 digit PIN number"
+            type="email"
+            id="email"
+            placeholder="Phone number or email"
             outline={true}
             size="lg"
             color="brown"
-            // error={this.handleErrors()}
             required
           />
         </div>
         <button
           onClick={this.continue}
-          className="text-lg text-center whitespace-nowrap bg-brown text-white rounded-lg w-full px-4 py-2 mt-8"
+          className="relative text-lg text-center whitespace-nowrap bg-brown text-white rounded-lg w-full px-4 py-2 mt-8"
         >
-          Validate
+          Send recovery email/text
         </button>
       </div>
     );

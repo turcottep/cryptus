@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { signIn, signOut, useSession } from "next-auth/client";
-import { ForgotPWValuesProps } from "./ForgotPassword";
+import { ForgotPWValuesProps } from "./forgot_password";
 
 export default class FormNavBar extends Component<ForgotPWValuesProps> {
   continue = (e) => {
