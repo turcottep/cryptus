@@ -22,7 +22,7 @@ interface WithRouterProps {
   csrfToken;
 }
 
-interface MyComponentProps extends WithRouterProps {}
+interface MyComponentProps extends WithRouterProps { }
 
 type MyState = {
   step: number;
