@@ -5,6 +5,8 @@ import React, { useLayoutEffect } from "react";
 import Feed from "../../components/viewer/Feed";
 import NavbarProfile from "../../components/navbars/navbar_profile/navbar_profile";
 import getUserByUsername from "../../lib/getUserByUsername";
+import get_nfts_for_user from "../../lib/get_nfts_for_user";
+import update_nfts_for_user from "../../lib/update_nfts_for_user";
 
 export default function post(props) {
   const router = useRouter();
@@ -101,32 +103,41 @@ export default function post(props) {
 
 export async function getServerSideProps(context) {
   const username = context.query.userId;
-  console.log("getServerSide\n\n\n\n\n\n\n username=", username);
   const user = await getUserByUsername(username, true);
-
-  let res
-  try {
-    var data;
-    for await (const wallet of user.wallets) {
-      res = await fetch(wallet.external_url);
-      data = await res.json();
-    }
-    if (!data) {
-      return {
-        props: { assets: [], user: user },
-      };
-    }
+  if (!user) {
     return {
-      props: { assets: data.assets, user: user },
+      props: {
+        assets: [],
+        user: null,
+      },
     };
-  } catch (err) {
+  }
+  let res;
+  try {
+    let nfts = await update_nfts_for_user(username, user.wallets[0].address, user.userId);
+    if (!nfts) {
+      nfts =
+        await get_nfts_for_user(username);
+    }
+    nfts.sort((a, b) => {
+      return b.collection - a.collection;
+    });
+    // console.log("nfts===", nfts);
+    return {
+      props: { assets: nfts, user },
+    };
 
+
+  } catch (err) {
+    console.error(err);
     console.error(err);
     console.log("respons = ", res);
+    console.log("DEEZ");
+
     return {
       props: { assets: null, user: user },
     };
   }
-  // console.log("RIIIPPPPP");
-  // return null;
+  console.log("no data");
+  return null;
 }
