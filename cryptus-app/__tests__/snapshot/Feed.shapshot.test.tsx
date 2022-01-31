@@ -1,7 +1,7 @@
 // components/__tests__/button.snapshot.test.tsx
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Feed from "../../components/Feed"
+import Feed from "../../components/viewer/Feed"
 
 it('renders correctly', () => {
   const title = "A title"

@@ -3,8 +3,8 @@ import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import {FormValuesProps} from "../components/UserForm/UserForm";
-import CreateAccount from "../components/UserForm/CreateAccount";
+import {FormValuesProps} from "../components/signup/signup";
+import CreateAccount from "../components/signup/user_form/create_account";
 
 
 // Necessary props constant declaration
@@ -60,7 +60,7 @@ function renderUserForm(props: Partial<FormValuesProps> = {}) {
             confirmpassword: "",
             description: "",
             blockchain_wallet: "",
-            checkbox: false,
+            checkbox: "",
             loading: false,
         },
         step: 1

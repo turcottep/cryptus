@@ -1,7 +1,7 @@
 // components/__tests__/button.snapshot.test.tsx
 import React from 'react';
 import renderer from 'react-test-renderer';
-import ForgotPWHeader from "../../../components/ForgotPassword/ForgotPWHeader"
+import ForgotPWHeader from "../../../components/forgot_password/forgot_password_header"
 
 it('renders correctly', () => {
   const title = "A title"
