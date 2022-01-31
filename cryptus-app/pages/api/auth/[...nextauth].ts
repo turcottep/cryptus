@@ -7,9 +7,9 @@ import getUserByUsername from "../../../lib/getUserByUsername";
 
 const options = {
   pages: {
-    signIn: "/loginpage",
+    signIn: "/login",
     signOut: "/",
-    error: "/loginpage",
+    error: "/login",
   },
   providers: [
     Providers.Credentials({
@@ -47,7 +47,6 @@ const options = {
 
   // callbacks: {
   //   async signIn(user, account, profile) {
-
 
   //     if (user.image == "newFromMetamask") {
   //       return "/lafleur";

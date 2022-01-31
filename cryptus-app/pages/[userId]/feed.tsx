@@ -2,8 +2,8 @@ import { GetStaticPaths } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useLayoutEffect } from "react";
-import Feed from "../../components/Feed";
-import NavbarProfile from "../../components/NavbarProfile";
+import Feed from "../../components/viewer/Feed";
+import NavbarProfile from "../../components/navbars/navbar_profile/navbar_profile";
 import getUserByUsername from "../../lib/getUserByUsername";
 
 export default function post(props) {
@@ -17,7 +17,7 @@ export default function post(props) {
         <div className="pt-24">
           <Feed title={userId}>
             <ul>
-              {props.assets.map((asset, index) => (
+              {props.assets ? props.assets.map((asset, index) => (
                 <li key={index}>
                   <a
                     id={`NFT${index + 1}`}
@@ -49,8 +49,8 @@ export default function post(props) {
                               <span className="align-middle">
                                 {asset.last_sale
                                   ? String(
-                                      asset.last_sale.total_price * 10 ** -18
-                                    ).substring(0, 4)
+                                    asset.last_sale.total_price * 10 ** -18
+                                  ).substring(0, 4)
                                   : null}
                               </span>
                               <span>&nbsp;</span>
@@ -86,7 +86,11 @@ export default function post(props) {
                     </div>
                   </a>
                 </li>
-              ))}
+              )) : <div className="flex-col w-full mx-auto text-center h-32 justify-around my-auto">
+                <div className="mx-auto w-full text-gray-600 pt-12">
+                  This user has no NFTs ://
+                </div>
+              </div>}
             </ul>
           </Feed>
         </div>
@@ -100,10 +104,11 @@ export async function getServerSideProps(context) {
   console.log("getServerSide\n\n\n\n\n\n\n username=", username);
   const user = await getUserByUsername(username, true);
 
+  let res
   try {
     var data;
     for await (const wallet of user.wallets) {
-      const res = await fetch(wallet.external_url);
+      res = await fetch(wallet.external_url);
       data = await res.json();
     }
     if (!data) {
@@ -115,8 +120,13 @@ export async function getServerSideProps(context) {
       props: { assets: data.assets, user: user },
     };
   } catch (err) {
+
     console.error(err);
+    console.log("respons = ", res);
+    return {
+      props: { assets: null, user: user },
+    };
   }
-  console.log("RIIIPPPPP");
-  return null;
+  // console.log("RIIIPPPPP");
+  // return null;
 }
