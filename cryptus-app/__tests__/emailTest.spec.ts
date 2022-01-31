@@ -1,5 +1,5 @@
 // Import a function from our library and test input, output behavior
-import { validateEmail } from "../components/NameForm";
+import { validateEmail } from "../components/landing_page/name_form";
 
 describe("Verify Email", () => {
   test("it should be an email that has an @", () => {
