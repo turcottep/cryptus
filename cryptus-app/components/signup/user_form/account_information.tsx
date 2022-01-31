@@ -58,7 +58,7 @@ export default class AccountInformation extends Component<
 
   handleErrorUsername() {
     const error = String(this.state.error);
-    const errorMessage = error && (errors[error] ?? errors.default) as string;
+    const errorMessage = error && ((errors[error] ?? errors.default) as string);
 
     return error ? errorMessage : null;
   }
@@ -126,7 +126,11 @@ const withSession = (Component) => (props) => {
   );
 };
 
-async function updateUser(email: string, username: string, displayName: string) {
+async function updateUser(
+  email: string,
+  username: string,
+  displayName: string
+) {
   const response = await fetch("api/leads/updateUsername", {
     method: "PUT",
     headers: {
