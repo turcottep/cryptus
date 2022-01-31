@@ -17,10 +17,12 @@ bower_components
 *.sublime*
 .env
 .env.local
+.cypress.env.json
 
 psd
 thumb
 sketch
+cryptus-app/package-lock.json
 
 ### vscode ###
 .vscode/*
