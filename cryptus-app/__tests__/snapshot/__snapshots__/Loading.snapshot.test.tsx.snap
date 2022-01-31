@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className=" w-screen h-screen flex justify-around items-center bg-opacity-80 bg-black"
+  id="header"
+>
+  <div
+    className="flex flex-col"
+  >
+    <img
+      alt="PublicWallet Icon"
+      className="rounded-full border-2 bg-white border-black w-24 h-24"
+      src="../icons/icon-192x192.png"
+    />
+    <span
+      className=" text-white text-2xl font-bold"
+    >
+      Loading ...
+    </span>
+  </div>
+</div>
+`;
