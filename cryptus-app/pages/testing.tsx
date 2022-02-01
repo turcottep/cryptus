@@ -1,4 +1,5 @@
 import React from "react";
+import Graph from "../components/graph/graph";
 import FeatureIamTesting from "../components/template/pagetemplate/pagetemplate";
 
 export default function Home({ data }) {
@@ -23,7 +24,7 @@ export default function Home({ data }) {
       />
 
       <main>
-        <FeatureIamTesting />
+        <Graph />
       </main>
     </div>
   );

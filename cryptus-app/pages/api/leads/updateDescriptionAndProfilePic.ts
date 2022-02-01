@@ -8,18 +8,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             where: {
                 email: req.body.email
             },
-            data : {
+            data: {
                 description: req.body.description,
-                profile_pic: {
-                    create: {
-                        description: '',
-                        collection: '',
-                        tags: [''],
-                        blockchain_id: '',
-                        blockchain_wallet: '',
-                        external_url: ''
-                    }
-                }
+
             }
         })
 
