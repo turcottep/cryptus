@@ -35,6 +35,9 @@ model Nft {
   propreties        String[]
   userId            String?
   User              User?    @relation(fields: [userId], references: [id])
+
+  last_sale_price  Int?
+  last_sale_symbol String?
 }
 
 // model Collection {

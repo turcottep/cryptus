@@ -1,3 +1,4 @@
+import { assets } from "../pages/[userId]/feed";
 
 export default async function updateNftsForUser(username: string, address: string, userId: string, absolute = true) {
 
@@ -23,6 +24,8 @@ export default async function updateNftsForUser(username: string, address: strin
         return null;
     }
 
+    console.log("nfts_raw = ", nfts_raw);
+
     const nft_clean = nfts_raw.map(nft => {
         return {
             name: nft.name ?? nft.collection.name + " #" + nft.id,
@@ -31,7 +34,9 @@ export default async function updateNftsForUser(username: string, address: strin
             collection: nft.collection.name,
             collectionId: nft.id,
             external_url: nft.permalink,
-        }
+            last_sale_price: nft.last_sale ? nft.last_sale.price ?? 0 : 0,
+            last_sale_symbol: nft.last_sale ? nft.last_sale.payment_token.symbol : "ETH",
+        } as assets
     }
     );
 

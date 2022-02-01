@@ -8,7 +8,22 @@ import getUserByUsername from "../../lib/getUserByUsername";
 import get_nfts_for_user from "../../lib/get_nfts_for_user";
 import update_nfts_for_user from "../../lib/update_nfts_for_user";
 
-export default function post(props) {
+
+export interface profile_props {
+  user: any;
+  assets: assets[];
+}
+
+export interface assets {
+  image_url: string;
+  name: string;
+  last_sale_price: number;
+  last_sale_symbol: string;
+  collection: string;
+  description: string;
+}
+
+export default function post(props: profile_props) {
   const router = useRouter();
   const { userId } = router.query;
 
@@ -49,17 +64,11 @@ export default function post(props) {
                                 src="../eth_logo.png"
                               />
                               <span className="align-middle">
-                                {asset.last_sale
-                                  ? String(
-                                    asset.last_sale.total_price * 10 ** -18
-                                  ).substring(0, 4)
-                                  : null}
+                                {asset.last_sale_price}
                               </span>
                               <span>&nbsp;</span>
                               <span className="align-middle">
-                                {asset.last_sale
-                                  ? asset.last_sale.payment_token.symbol
-                                  : null}
+                                {asset.last_sale_symbol}
                               </span>
                             </div>
                           </div>
@@ -81,9 +90,9 @@ export default function post(props) {
                           </svg>
                         </div>
                         <span className="py-1 font-bold text-gray-500">
-                          {asset.collection.name}
+                          {asset.collection}
                         </span>
-                        <span>{asset.collection.description}</span>
+                        <span>{asset.description}</span>
                       </div>
                     </div>
                   </a>
@@ -114,14 +123,15 @@ export async function getServerSideProps(context) {
   }
   let res;
   try {
-    let nfts = await update_nfts_for_user(username, user.wallets[0].address, user.userId);
+    let nfts = await update_nfts_for_user(username, user.wallets[0].address, user.userId) as assets[];
     if (!nfts) {
       nfts =
         await get_nfts_for_user(username);
     }
     nfts.sort((a, b) => {
-      return b.collection - a.collection;
+      return b.last_sale_price - a.last_sale_price;
     });
+
     // console.log("nfts===", nfts);
     return {
       props: { assets: nfts, user },
