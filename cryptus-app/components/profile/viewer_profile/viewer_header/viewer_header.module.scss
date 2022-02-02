@@ -1,0 +1,6 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+  height: v.$header-h;
+}

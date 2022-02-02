@@ -1,0 +1,12 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+  display: flex;
+  justify-items: center;
+  background-color: v.$bg-color;
+}
+
+.menubutton {
+  flex: 1 1 auto;
+}

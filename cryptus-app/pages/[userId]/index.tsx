@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import Mosaic from "../../components/viewer/Mosaic";
 import NavbarProfile from "../../components/navbars/navbar_profile/navbar_profile";
-import Profile from "../../components/profile/profile";
+import Profile from "../../components/profile/profile_old";
 import getUserByUsername from "../../lib/getUserByUsername";
 
 export default function post(props) {
@@ -11,17 +11,7 @@ export default function post(props) {
   const { username } = router.query;
 
   return (
-    <div className="bg-instagram">
-      <main className="sm:max-w-lg mx-auto">
-        <div className="flex flex-col items-center">
-          <NavbarProfile name={username} />
-          <div className="mt-24 w-full">
-            <Profile {...props} />
-          </div>
-          <Mosaic {...props} />
-        </div>
-      </main>
-    </div>
+    <Profile {...props} />
   );
 }
 
