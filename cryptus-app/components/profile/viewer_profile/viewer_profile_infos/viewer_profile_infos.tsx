@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import s from "./viewer_profile.module.scss";
+import s from "./viewer_profile_infos.module.scss";
 
 import ViewerProfilePicture from "./viewer_profile_picture/viewer_profile_picture";
 import ViewerProfileName from "./viewer_profile_name/viewer_profile_name";
