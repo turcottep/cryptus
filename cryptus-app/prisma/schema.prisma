@@ -17,21 +17,35 @@ model User {
   views       Int
   likes       Int
   hash        String
-  profile_pic Nft[]
   wallets     Wallet[]
+  nfts        Nft[]
 }
 
 model Nft {
   id                String   @id @default(uuid())
+  name              String
   description       String?
-  collection        String?
+  collection        String? //Collection @relation(fields: [collectionId], references: [id])
+  collectionId      Int
   tags              String[]
   blockchain_id     String?
   blockchain_wallet String?
   external_url      String?
+  image_url         String?
+  propreties        String[]
   userId            String?
   User              User?    @relation(fields: [userId], references: [id])
+
+  last_sale_price  Int?
+  last_sale_symbol String?
 }
+
+// model Collection {
+//   id          String  @id @default(uuid())
+//   name        String  @unique
+//   description String?
+//   Nft         Nft[]
+// }
 
 model Wallet {
   id            String @id @default(uuid())
