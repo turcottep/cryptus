@@ -1,35 +1,37 @@
 @use "/styles/variables" as v;
 
 .container {
-    flex: 1;
-    flex-basis: 50%;
-    width: 50%;
-    width: fit-content;
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
 }
 
 .block {
-    margin: 6px;
-    display: flex;
-    flex-direction: column;
-    background-color: #eef8fd;
-    align-items: center;
-    border-width: 2px;
-    border-radius: 10px;
-    border-color: #15b3e4;
-    padding: min(10%, 128px);
-    white-space: nowrap;
+  flex: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+
+  margin: 6px;
+  padding: min(10%, 128px);
+  background-color: v.$primary-pale-color;
+
+  border: 2px solid v.$primary-color;
+  border-radius: v.$border-radius-l;
 }
 
 .name {
-    flex: 1 1 auto;
-    color: #15b3e4;
-    font-weight: bold;
-    font-size: small;
+  flex: none;
+  font-weight: bold;
+  color: v.$primary-color;
+  font-size: v.$font-size-xs;
 }
 
 .rarity {
-    flex: 1 1 auto;
-    color: #717b83;
-    font-weight: bold;
-    font-size: small;
+  flex: none;
+  font-weight: bold;
+  color: v.$secondary-color;
+  font-size: v.$font-size-xs;
 }

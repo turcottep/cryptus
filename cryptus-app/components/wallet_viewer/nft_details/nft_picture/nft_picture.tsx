@@ -5,14 +5,14 @@ import s from "./nft_picture.module.scss";
 //external exports
 
 //internal imports
-import { nft } from "../../../../lib/data_types";
 
-
-export default function NFTPicture(props: { nft: nft }) {
-    const { nft } = props;
-    return (
-        <div className={s.container}>
-            <img className={s.image} src={nft.image_url} alt={nft.description} />
-        </div>
-    );
+export default function NftPicture(props: {
+  image_url: string;
+  description: string;
+}) {
+  return (
+    <div className={s.container}>
+      <img className={s.image} src={props.image_url} alt={props.description} />
+    </div>
+  );
 }

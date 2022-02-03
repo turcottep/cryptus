@@ -7,28 +7,31 @@ import s from "./nft_details.module.scss";
 //internal imports
 import { nft } from "../../../lib/data_types";
 
-import NFTHeader from "./nft_header/nft_header";
-import NFTInfo from "./nft_infos/nft_info";
-import NFTPicture from "./nft_picture/nft_picture";
+import NftHeader from "./nft_header/nft_header";
+import NftInfo from "./nft_infos/nft_info";
+import NftPicture from "./nft_picture/nft_picture";
 import NFTProperties from "./nft_properties/nft_properties";
 import NFTRankInCollection from "./nft_rank_in_collection/nft_rank_in_collection";
 
 type nft_details_props = {
-    nft: nft,
-    rank_props: {
-        position: number,
-        total: number
-    }
+  nft: nft;
+  rank_props: {
+    position: number;
+    total: number;
+  };
 };
 
 export default function NFTDetails(props: nft_details_props) {
-    return (
-        <div className={s.container}>
-            <NFTHeader />
-            <NFTPicture {...props} />
-            <NFTInfo {...props} />
-            <NFTRankInCollection {...props.rank_props} />
-            <NFTProperties {...props} />
-        </div>
-    );
+  return (
+    <div className={s.container}>
+      <NftHeader />
+      <NftPicture
+        image_url={props.nft.image_url}
+        description={props.nft.description}
+      />
+      <NftInfo {...props} />
+      <NFTRankInCollection {...props.rank_props} />
+      <NFTProperties properties_string={props.nft.properties} />
+    </div>
+  );
 }

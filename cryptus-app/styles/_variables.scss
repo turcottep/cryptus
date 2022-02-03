@@ -1,10 +1,24 @@
-$mobile: 768px;
+$mobile: 375px;
 
 $header-h: 64px;
 $footer-h: 128px;
 $title-h: 200px;
 $title-h-sm: 76px;
 
-$bg-color: #fbf8ee;
+$font-size-xl: 48px;
+$font-size-l: 36px;
+$font-size-m: 24px;
+$font-size-s: 18px;
+$font-size-xs: small;
+
+$bg-color: #fff;
 $text-color: #292929;
 $header-color: #acacac;
+
+$primary-color: #15b3e4;
+$primary-pale-color: #eef8fd;
+$secondary-color: rgba(128, 128, 128);
+$secondary-pale-color: #eee2e5;
+
+$border-radius-m: 5px;
+$border-radius-l: 10px;

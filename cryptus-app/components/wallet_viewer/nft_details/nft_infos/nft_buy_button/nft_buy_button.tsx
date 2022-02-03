@@ -5,43 +5,24 @@ import s from "./nft_buy_button.module.scss";
 //external exports
 
 //internal imports
-import { nft } from "../../../../../lib/data_types";
 
-export default function NFTBuyButton(props: { nft: nft }) {
-    const { last_sale_price, external_url } = props.nft;
-    const price = last_sale_price ? last_sale_price : 0;
-    return (
-        <a className={s.container} href={external_url} target="_blank" rel="noopener noreferrer">
-            <Eth />
-            <Price {...{ price }} />
-            <div className={s.line} />
-            <Opensea />
-        </a>
-    );
-}
+export default function NftBuyButton(props: { price: number; url: string }) {
+  const { price, url } = props;
+  const price_clean = price.toFixed(2);
 
-const Eth = () => {
-    return (
-        <div className={s.eth}>
-            <img src="/images/eth.png" alt="eth" />
-        </div>
-    );
-};
-
-
-const Price = (props: { price: Number }) => {
-    const { price } = props;
-    return (
+  return (
+    <a href={url} target="_blank" rel="noopener noreferrer">
+      <div className={s.container}>
         <div className={s.price}>
-            {price}
+          <img className={s.eth} src="/images/eth.png" alt="eth" />
+          <div>{price_clean}</div>
         </div>
-    );
-}
 
-const Opensea = () => {
-    return (
+        <div className={s.line} />
         <div className={s.opensea}>
-            <img src="/images/opensea.png" alt="opensea" />
+          <img src="/images/opensea.png" alt="" />
         </div>
-    );
+      </div>
+    </a>
+  );
 }
