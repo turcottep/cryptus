@@ -22,20 +22,16 @@ model User {
 }
 
 model Nft {
-  id                String   @id @default(uuid())
-  name              String
-  description       String?
-  collection        String? //Collection @relation(fields: [collectionId], references: [id])
-  collectionId      Int
-  tags              String[]
-  blockchain_id     String?
-  blockchain_wallet String?
-  external_url      String?
-  image_url         String?
-  propreties        String[]
-  userId            String?
-  User              User?    @relation(fields: [userId], references: [id])
-
+  id               String  @id @default(uuid())
+  name             String
+  description      String?
+  collection       String? //Collection @relation(fields: [collectionId], references: [id])
+  token_id         String
+  external_url     String?
+  image_url        String?
+  userId           String?
+  User             User?   @relation(fields: [userId], references: [id])
+  properties       String
   last_sale_price  Int?
   last_sale_symbol String?
 }

@@ -1,0 +1,35 @@
+@use "/styles/variables" as v;
+
+.container {
+    flex: 1;
+    flex-basis: 50%;
+    width: 50%;
+    width: fit-content;
+}
+
+.block {
+    margin: 6px;
+    display: flex;
+    flex-direction: column;
+    background-color: #eef8fd;
+    align-items: center;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: #15b3e4;
+    padding: min(10%, 128px);
+    white-space: nowrap;
+}
+
+.name {
+    flex: 1 1 auto;
+    color: #15b3e4;
+    font-weight: bold;
+    font-size: small;
+}
+
+.rarity {
+    flex: 1 1 auto;
+    color: #717b83;
+    font-weight: bold;
+    font-size: small;
+}

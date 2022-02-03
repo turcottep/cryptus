@@ -1,0 +1,10 @@
+@use "/styles/variables" as v;
+
+.container {
+    flex: 1 1 auto;
+    margin: 16px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

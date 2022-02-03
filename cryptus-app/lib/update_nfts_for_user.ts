@@ -1,4 +1,4 @@
-import { assets } from "../pages/[userId]/feed";
+import { nft } from "../lib/data_types";
 
 export default async function updateNftsForUser(username: string, address: string, userId: string, absolute = true) {
 
@@ -24,21 +24,28 @@ export default async function updateNftsForUser(username: string, address: strin
         return null;
     }
 
-    console.log("nfts_raw = ", nfts_raw);
+    // console.log("traits = ", nfts_raw[0]);
 
     const nft_clean = nfts_raw.map(nft => {
+        const properties = JSON.stringify(nft.traits.map((trait) => {
+            return {
+                name: trait.trait_type,
+                value: trait.value,
+                rarity: trait.trait_count / 10000, //TODO find the total number of nfts in a collection
+            };
+        }));
         return {
             name: nft.name ?? nft.collection.name + " #" + nft.id,
             image_url: nft.image_url,
             description: nft.description,
             collection: nft.collection.name,
-            collectionId: nft.id,
+            token_id: nft.token_id,
             external_url: nft.permalink,
             last_sale_price: nft.last_sale ? nft.last_sale.price ?? 0 : 0,
             last_sale_symbol: nft.last_sale ? nft.last_sale.payment_token.symbol : "ETH",
-        } as assets
-    }
-    );
+            properties: properties,
+        } as nft
+    });
 
     const base_url = absolute ? process.env.BASE_URL : '/'
     try {
