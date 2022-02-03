@@ -23,7 +23,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
                     // add every nft in req.body.nfts
                     createMany: {
                         data: req.body.nfts,
-                        skipDuplicates: true,
                     }
                 },
             },
