@@ -22,184 +22,6 @@ ChartJS.register(
     Legend
 );
 
-//internal imports
-import { data_raw } from "./data";
-import { type } from 'os';
-import { min } from 'cypress/types/lodash';
-
-
-// // parse data from "0     18462 2022-01-31 15:40:26         3.98           ETH    2549.53  0x63950ef80536bce5b4f0942ada77a5eeef7368ee9842af49ebbc2b6383e2bdde      1643661626" to "tokenid,timestamp_raw,total_price payment_token,usd_price,transaction_hash,timestamp_unix"
-const data_clean = data_raw.split('\n').map((row) => {
-    const [tx_id, tokenid, timestamp_day, timestamp_time, total_price, payment_token, usd_price, transaction_hash, timestamp_unix] = row.split(/\s+/);
-    return {
-        tx_id,
-        tokenid,
-        timestamp_day,
-        timestamp_time,
-        total_price,
-        payment_token,
-        usd_price,
-        transaction_hash,
-        timestamp_unix,
-    };
-});
-
-const all_prices = data_clean.map((row) => {
-    return parseFloat(row.total_price);
-});
-
-// console.log(data_clean);
-// console.log(all_prices);
-
-
-// ChartJS.register(
-//     CategoryScale,
-//     LinearScale,
-//     BarElement,
-//     PointElement,
-//     LineElement,
-//     Filler,
-//     Title,
-//     Tooltip,
-//     Legend
-// );
-
-// const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-// const temp_faranheit = [120, 100, 140, 100, 180, 185, 190];
-const labels = []
-
-let average = 0;
-for (let i = 0; i < data_clean.length; i++) {
-    console.log(all_prices[i]);
-
-    average += all_prices[i];
-    labels.push(data_clean[i].timestamp_day);
-}
-console.log(average);
-
-average = average / data_clean.length;
-
-const data_line = labels.map((_, i) => all_prices[i]);
-
-const data_average = []
-for (let i = 0; i < all_prices.length; i++) {
-    // if (i % 10 === 0) {
-    data_average.push(all_prices[all_prices.length - 1]);
-    // }
-    // else {
-    //     data_average.push(null);
-    // }
-}
-console.log(data_average);
-
-// const volume = [10, 20, 30, 40, 50, 20, 40];
-const data_bar = labels.map((_, i) => Math.random() * 100);
-
-
-export const optionsLine = {
-    responsive: true,
-    layout: {
-        padding: {
-            right: -50,
-        },
-    },
-    plugins: {
-        legend: {
-            display: false,
-            position: 'top' as const,
-        },
-        title: {
-            display: true,
-            text: 'Chart.js Line Chart',
-        },
-    },
-    scales: {
-        x: {
-            grid: {
-                display: false,
-            },
-            display: false,
-
-            // type: "linear",
-        },
-        y: {
-            grid: {
-                display: false
-            },
-            suggestedMin: Math.min(...data_line) * 0.9,
-            suggestedMax: Math.max(...data_line) * 1.05,
-            // beginAtZero: true,
-            position: 'right',
-            ticks: {
-                mirror: true,
-                backdropPadding: 2,
-                // backdropColor: 'rgba(200,200,200)',
-                showLabelBackdrop: true,
-                padding: -10,
-                // major: true,
-                // textStrokeColor: '#000',
-                // textStrokeWidth: 1,
-                callback: function (value, index, values) {
-                    // only return half of the values
-                    const total_amount = values.length;
-                    if ((index + 1) % 2 === 0 && index < total_amount - 1) {
-                        return `${value} ⧫`;
-                    }
-                },
-            },
-        }
-    },
-    spanGaps: true,
-    // ticks: {
-    //     
-    // },
-};
-
-export const optionsBar = {
-    responsive: true,
-    layout: {
-        padding: {
-            right: -50,
-        },
-    },
-    plugins: {
-        legend: {
-            display: false,
-            position: 'top' as const,
-        },
-        title: {
-            display: true,
-            text: 'Chart.js Line Chart',
-        },
-    },
-    scales: {
-        x: {
-            grid: {
-                display: false,
-            },
-            display: false,
-
-            // type: "linear",
-        },
-        y: {
-            grid: {
-                display: false
-            },
-            // suggestedMin: Math.min(...data_line) * 0.9,
-            // suggestedMax: Math.max(...data_line) * 1.05,
-            beginAtZero: true,
-            position: 'right',
-            ticks: {
-                display: false,
-            },
-        }
-    },
-    spanGaps: true,
-    // ticks: {
-    //     
-    // },
-};
-
 const color_graph = [53, 198, 90]
 
 const create_rgba = (color: number[], alpha: number) => {
@@ -211,7 +33,6 @@ function createGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
     const colorMid = create_rgba(color_graph, 0.4);
     const colorEnd = create_rgba(color_graph, 0.1);
 
-
     const gradient = ctx.createLinearGradient(0, area.top, 0, area.bottom);
 
     gradient.addColorStop(0, colorStart);
@@ -221,7 +42,123 @@ function createGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
     return gradient;
 }
 
-export default function App() {
+export default function Graph(props: { data: any, includeVolume: boolean }) {
+    const { data, includeVolume } = props;
+
+    const labels = []
+
+    let average = 0;
+    for (let i = 0; i < data.length; i++) {
+        console.log(data[i]);
+
+        average += data[i];
+        labels.push("");
+    }
+    console.log(average);
+
+    average = average / data.length;
+
+    const data_line = labels.map((_, i) => data[i]);
+
+    const data_average = []
+    for (let i = 0; i < data.length; i++) {
+        data_average.push(data[data.length - 1]);
+    }
+    console.log(data_average);
+
+    const data_bar = labels.map((_, i) => Math.random() * 100);
+
+    const optionsLine = {
+        responsive: true,
+        layout: {
+            padding: {
+                right: -50,
+            },
+        },
+        plugins: {
+            legend: {
+                display: false,
+                position: 'top' as const,
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Line Chart',
+            },
+        },
+        scales: {
+            x: {
+                grid: {
+                    display: false,
+                },
+                display: false,
+            },
+            y: {
+                grid: {
+                    display: false
+                },
+                suggestedMin: Math.min(...data_line) * 1.1,
+                suggestedMax: Math.max(...data_line) * 1.05,
+                position: 'right',
+                ticks: {
+                    mirror: true,
+                    backdropPadding: 2,
+                    // backdropColor: 'rgba(200,200,200)',
+                    showLabelBackdrop: true,
+                    padding: -10,
+                    // major: true,
+                    // textStrokeColor: '#000',
+                    // textStrokeWidth: 1,
+                    callback: function (value, index, values) {
+                        // only return half of the values
+                        const total_amount = values.length;
+                        if ((index + 1) % 2 === 0 && index < total_amount - 1) {
+                            return `${value} ⧫`;
+                        }
+                    },
+                },
+            }
+        },
+        spanGaps: true,
+    };
+
+    const optionsBar = {
+        responsive: true,
+        layout: {
+            padding: {
+                right: -50,
+            },
+        },
+        plugins: {
+            legend: {
+                display: false,
+                position: 'top' as const,
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Line Chart',
+            },
+        },
+        scales: {
+            x: {
+                grid: {
+                    display: false,
+                },
+                display: false,
+            },
+            y: {
+                grid: {
+                    display: false
+                },
+                beginAtZero: true,
+                position: 'right',
+                ticks: {
+                    display: false,
+                },
+            }
+        },
+        spanGaps: true,
+    };
+
     const chartRef = useRef<ChartJS>(null);
     const [chartDataLine, setChartDataLine] = useState<ChartData<'bar'>>({
         datasets: [],
@@ -243,9 +180,9 @@ export default function App() {
 
                 data: data_line,
                 borderColor: create_rgba(color_graph, 1),
-                fill: '+1',
+                // fill: '+1',
                 pointBackgroundColor: create_rgba(color_graph, 1),
-                backgroundColor: createGradient(chart.ctx, chart.chartArea),
+                // backgroundColor: createGradient(chart.ctx, chart.chartArea),
                 cubicInterpolationMode: 'monotone',
                 pointRadius: 0,
                 tension: 0.4,
@@ -258,10 +195,7 @@ export default function App() {
                 borderWidth: 2,
                 borderColor: 'rgba(0,0,0,0.5)', //create_rgba(color_graph, 1),
                 pointRadius: 0,
-            }
-
-            ],
-
+            }],
         } as any;
 
         const chartDataBar = {
@@ -298,9 +232,7 @@ export default function App() {
                 </span>
             </div>
             <Chart className='bg-white p' ref={chartRef} type='line' data={chartDataLine} options={optionsLine} />
-            {/* <div className='bg-green-100 h-12'> */}
-            {/* </div> */}
-            <Chart className='bg-white max-h-12' ref={chartRef} type='line' data={chartDataBar} options={optionsBar} />
+            {includeVolume ? <Chart className='bg-white max-h-12' ref={chartRef} type='line' data={chartDataBar} options={optionsBar} /> : null}
         </div >
     )
 }
