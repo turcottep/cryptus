@@ -5,8 +5,32 @@
   flex-direction: column;
   align-items: center;
 
-  width: 100vw;
   height: auto;
   background-color: v.$bg-color;
   color: v.$text-color;
+}
+
+.rectangle {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background: black;
+  border-radius: 25px;
+  opacity: 0.2;
+}
+
+.container {
+  height: 50%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20;
+}
+
+.items{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }

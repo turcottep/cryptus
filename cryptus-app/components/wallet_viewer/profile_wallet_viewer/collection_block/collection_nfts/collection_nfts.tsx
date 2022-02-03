@@ -11,7 +11,15 @@ export default function PageTemplate() {
   return (
     <div className={s.app}>
       NFTs are supposed to be here :
-      <NFT_picture_block_in_wallet />
+      <div className={s.rectangle}>
+        <div className={s.container}>
+
+          <div className={s.items}>
+            <NFT_picture_block_in_wallet />
+          </div>
+
+        </div>
+      </div>
     </div>
   );
 }

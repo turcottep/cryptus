@@ -10,7 +10,19 @@ export default function PageTemplate() {
 
   return (
     <div className={s.app}>
+
+      <div className={s.container}>
+        <div className={s.items}>
+        Profile wallet viewer 1
+          <Collection_block />
+        </div>
+      </div>
+
+      <div className={s.container}>
+      </div>
+
       <Collection_block />
+
     </div>
   );
 }

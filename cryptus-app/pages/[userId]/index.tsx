@@ -8,6 +8,8 @@ import getUserByUsername from "../../lib/getUserByUsername";
 import update_nfts_for_user from "../../lib/update_nfts_for_user";
 import get_nfts_for_user from "../../lib/get_nfts_for_user";
 
+import Profile_wallet_viewer from "../../components/wallet_viewer/profile_wallet_viewer/profile_wallet_viewer"
+
 export default function post(props) {
   const router = useRouter();
   const { userId } = router.query;
@@ -23,7 +25,8 @@ export default function post(props) {
               <div className="">
                 <Profile {...props} />
               </div>
-              <Mosaic {...props} />
+                {/* <Mosaic {...props} /> */}
+                <Profile_wallet_viewer />
             </div>
           ) : (
             <div className="flex flex-col items-center justified-center text-black ">
