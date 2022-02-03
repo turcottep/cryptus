@@ -1,36 +1,58 @@
 @use "/styles/variables" as v;
 
-.app {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
 
   height: auto;
-  background-color: v.$bg-color;
-  color: v.$text-color;
 }
 
-.rectangle {
-  display: inline-block;
-  width: 150px;
-  height: 150px;
-  background: black;
-  border-radius: 25px;
-  opacity: 0.2;
-}
 
-.container {
-  height: 50%;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20;
-}
-
-.items{
+.block {
+  margin: 6px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 100%;
+  background-color: #eef8fd;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: #cacaca;
+  // padding: min(10%, 128px);
+  white-space: nowrap;
+  width: 150px;
+  height: 150px;
+}
+
+.grid2x2 {
   height: 100%;
-  overflow: visible;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.grid2x2 > div {
+  display: flex; 
+  flex-basis: calc(50%);  
+  justify-content: center;
+  flex-direction: column;
+}
+
+.grid2x2 > div > div {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.img_b {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+}
+
+.img_s {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
 }

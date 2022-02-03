@@ -6,6 +6,9 @@
   align-items: center;
 
   height: auto;
-  background-color: v.$bg-color;
-  color: v.$text-color;
+
+  flex: 1;
+  flex-basis: 50%;
+  width: 50%;
+  width: fit-content;
 }

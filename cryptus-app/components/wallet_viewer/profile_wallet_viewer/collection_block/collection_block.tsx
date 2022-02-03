@@ -4,15 +4,20 @@ import s from "./collection_block.module.scss";
 import Collection_nfts from "./collection_nfts/collection_nfts";
 import Collection_block_name from "./collection_block_name/collection_block_name";
 
+//external imports
 
-export default function PageTemplate() {
-  const [myNumberState, setMyNumberState] = useState<Number>(0);
-  useEffect(() => {}, []);
+//internal imports
+import { nft } from "../../../../lib/data_types"
+
+export default function PageTemplate(props: { nft: nft }) {
+  const { nft } = props;
 
   return (
     <div className={s.app}>
-      <Collection_nfts />
-      <Collection_block_name />
+      <div>
+        <Collection_nfts {...props}/>
+        <Collection_block_name {...props}/>
+      </div>      
     </div>
   );
 }
