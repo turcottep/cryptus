@@ -8,7 +8,7 @@ type nft_props = {
   nft: nft,
 };
 
-export default function PageTemplate(props: nft_props) {
+export default function Profile_wallet_viewer(props: nft_props) {
 
   return (
     <div className={s.app}>

@@ -8,7 +8,7 @@ import s from "./nft_picture_block_in_wallet.module.scss";
 import { nft } from "../../../../../../lib/data_types"
 
 
-export default function nft_picture_block_in_wallet(props: { nft: nft , size: string }) {
+export default function NFT_picture_block_in_wallet(props: { nft: nft , size: string }) {
   const { nft, size } = props;
 
   return (

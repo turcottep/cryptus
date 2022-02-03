@@ -7,7 +7,7 @@ import s from "./collection_block_name.module.scss";
 //internal imports
 
 
-export default function PageTemplate(props: { nft: nft}) {
+export default function Collection_block_name(props: { nft: nft}) {
   const { nft } = props;
   return (
     <div className={s.container}>

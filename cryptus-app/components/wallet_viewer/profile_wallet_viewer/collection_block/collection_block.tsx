@@ -9,7 +9,7 @@ import Collection_block_name from "./collection_block_name/collection_block_name
 //internal imports
 import { nft } from "../../../../lib/data_types"
 
-export default function PageTemplate(props: { nft: nft }) {
+export default function Collection_block(props: { nft: nft }) {
   const { nft } = props;
 
   return (

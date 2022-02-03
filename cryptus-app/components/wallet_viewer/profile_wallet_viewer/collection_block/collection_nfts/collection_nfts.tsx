@@ -8,7 +8,7 @@ import NFT_picture_block_in_wallet from "./nft_picture_block_in_wallet/nft_pictu
 import { nft } from "../../../../../lib/data_types"
 
 
-export default function PageTemplate(props: { nft: nft }) {
+export default function Collection_NFTs(props: { nft: nft }) {
   const { nft } = props;
   
 
