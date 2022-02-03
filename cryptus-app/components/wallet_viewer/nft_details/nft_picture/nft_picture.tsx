@@ -12,7 +12,7 @@ export default function NFTPicture(props: { nft: nft }) {
     const { nft } = props;
     return (
         <div className={s.container}>
-            <img src={nft.image_url} alt={nft.description} />
+            <img className={s.image} src={nft.image_url} alt={nft.description} />
         </div>
     );
 }
