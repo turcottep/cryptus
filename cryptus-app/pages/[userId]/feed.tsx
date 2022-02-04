@@ -7,20 +7,12 @@ import NavbarProfile from "../../components/navbars/navbar_profile/navbar_profil
 import getUserByUsername from "../../lib/getUserByUsername";
 import get_nfts_for_user from "../../lib/get_nfts_for_user";
 import update_nfts_for_user from "../../lib/update_nfts_for_user";
+import { nft } from "../../lib/data_types";
 
 
 export interface profile_props {
   user: any;
-  assets: assets[];
-}
-
-export interface assets {
-  image_url: string;
-  name: string;
-  last_sale_price: number;
-  last_sale_symbol: string;
-  collection: string;
-  description: string;
+  assets: nft[];
 }
 
 export default function post(props: profile_props) {
@@ -123,7 +115,7 @@ export async function getServerSideProps(context) {
   }
   let res;
   try {
-    let nfts = await update_nfts_for_user(username, user.wallets[0].address, user.userId) as assets[];
+    let nfts = await update_nfts_for_user(username, user.wallets[0].address, user.userId) as nft[];
     if (!nfts) {
       nfts =
         await get_nfts_for_user(username);
