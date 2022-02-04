@@ -30,7 +30,10 @@ export default function NFTDetails(props: nft_details_props) {
         description={props.nft.description}
       />
       <NftInfo {...props} />
-      <NFTRankInCollection {...props.rank_props} />
+      <NFTRankInCollection
+        position={props.rank_props.position}
+        total={props.rank_props.total}
+      />
       <NFTProperties properties_string={props.nft.properties} />
     </div>
   );
