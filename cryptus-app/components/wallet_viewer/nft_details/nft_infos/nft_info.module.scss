@@ -1,24 +1,26 @@
 @use "/styles/variables" as v;
 
 .container {
-    flex: 1 1 auto;
-    margin-top: 24px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 4px;
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  width: 100%;
+  margin: 24px 0px 4px 0px;
 }
 
 .collection {
-    font-size: 16px;
-    font-weight: bold;
-    color: #338ae5;
+  font-weight: bold;
+  font-size: v.$font-size-s;
+  color: v.$primary-color;
 }
 
 .name {
-    font-size: 24px;
-    font-weight: bold;
-    color: v.$text-color;
+  font-weight: bold;
+  font-size: v.$font-size-m;
+  color: v.$text-color;
 }
