@@ -1,43 +1,48 @@
 @use "/styles/variables" as v;
 
 .container {
-    align-self: flex-start;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  flex: none;
 
-    width: fit-content;
-    background-color: #eee2e5;
-    padding-left: 8px;
-    padding-right: 8px;
-    border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  min-width: 100px;
+  height: 48px;
+  padding: 0px 8px;
+  margin-bottom: 8px;
+
+  background-color: v.$secondary-color-pale;
+  border-radius: v.$border-radius-m;
 }
 
 .price {
-    padding-left: 4px;
-    padding-right: 4px;
-    margin-top: -4px;
-    margin-bottom: -4px;
-    font-size: 30px;
-    font-weight: bold;
-    height: min-content;
-    color: v.$text-color;
+  flex: none;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+
+  font-weight: bold;
+  font-size: v.$font-size-l;
+  color: v.$text-color;
 }
 
 .opensea {
-    padding-left: 4px;
-    width: 30px;
+  flex: none;
+  width: 30px;
 }
 
 .eth {
-    width: 14px;
+  flex: none;
+  height: 24px;
 }
 
 .line {
-    margin-left: 4px;
-    margin-right: 4px;
-    width: 1px;
-    border-color: rgba(128, 128, 128, 0.459);
-    border-width: 1px;
-    height: 24px;
+  flex: none;
+  width: 1px;
+  border: v.$secondary-color solid 1px;
+  height: 24px;
 }

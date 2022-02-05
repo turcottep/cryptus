@@ -6,11 +6,11 @@ import s from "./nft_header.module.scss";
 
 //internal imports
 
-export default function NFTHeader() {
-    return (
-        <div className={s.container}>
-            <span className={s.placeholder}>{"<"}</span>
-            <span className={s.placeholder}>...</span>
-        </div>
-    );
+export default function NftHeader() {
+  return (
+    <div className={s.container}>
+      <div className={s.placeholder}>{"<"}</div>
+      <div className={s.placeholder}>...</div>
+    </div>
+  );
 }
