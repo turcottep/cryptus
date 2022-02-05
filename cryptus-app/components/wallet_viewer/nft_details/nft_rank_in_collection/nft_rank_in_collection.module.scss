@@ -1,0 +1,7 @@
+@use "/styles/variables" as v;
+
+.container {
+  font-weight: bold;
+  font-size: v.$font-size-s;
+  color: v.$text-color;
+}
