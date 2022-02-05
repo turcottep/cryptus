@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import s from "./viewer_profile_name.module.scss";
 
 
-export default function ViewerProfileName(props:{username:String}) {
+export default function ViewerProfileName(props) {
   return (
     <div className={s.container}>
-      {props.username}
+      {props.user.displayName}
     </div>
   );
 }

@@ -7,7 +7,7 @@ import ProfileMenuButton from "./profile_menu_button/profile_menu_button"
 
 export default function CreatorHeader() {
     return (
-    <div className={s.app}>
+    <div className={s.container}>
       {/* <BackButton />
       <ContextualPageName /> */}
       <ProfileMenuButton />

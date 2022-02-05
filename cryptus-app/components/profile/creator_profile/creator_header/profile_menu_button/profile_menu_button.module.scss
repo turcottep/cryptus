@@ -2,11 +2,14 @@
 
 .container {
   flex: 1 1 auto;
-  display: flex;
-  justify-items: center;
-  background-color: v.$bg-color;
 }
 
 .menubutton {
-  flex: 1 1 auto;
+  margin-top: 5px;
+  margin-right: 5px;
+
+  float: right;
+
+  background: url(../../../../../public/icons/outline_more_horiz_black_24dp.png);
 }
+

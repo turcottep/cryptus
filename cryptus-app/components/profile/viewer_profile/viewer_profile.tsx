@@ -13,6 +13,12 @@ export default function ViewerProfile(props) {
       <ViewerProfileInfos {...props} />
       {/* <ProfileWalletViewer />
       <Footer /> */}
+      <div className={s.wallet}>
+        WALLET VIEWER
+      </div>
+      <div className={s.footer}>
+        FOOTER
+      </div>
     </div>
   );
 }

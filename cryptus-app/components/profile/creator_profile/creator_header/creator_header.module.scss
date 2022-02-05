@@ -1,0 +1,10 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+  position: fixed;
+  height: v.$header-h;
+  width: 100%;
+  background: v.$text-color; //For waiting for header
+  color: v.$bg-color;
+}
