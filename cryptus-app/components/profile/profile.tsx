@@ -9,15 +9,13 @@ export default function Profile(props) {
   const [session] = useSession();
   return (
     <div className={s.app}>
-    
-      <CreatorProfile {...props}/>
+         {session ? (
+             <CreatorProfile {...props}/>
+         ) : (
+             <ViewerProfile {...props}/>
+         )}
     </div> 
     
   );
 }
 
-//     {session ? (
-    //         <CreatorProfile {...props}/>
-    //     ) : (
-    //         <ViewerProfile {...props}/>
-    //     )}
