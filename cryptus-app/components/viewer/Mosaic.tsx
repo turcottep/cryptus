@@ -24,7 +24,6 @@ export default class Mosaic extends React.Component<MyProps, MyState> {
               <a key={`NFT${index + 1}`} id={`NFT${index + 1}`} className="">
                 <Link
                   href={`/${this.props.user.username}/feed#NFT${index + 1}`}
-                  as={`/${this.props.user.username}`}
                 >
                   <div className="flex flex-col justify-around w-full h-full overflow-hidden rounded-sm">
                     <img
