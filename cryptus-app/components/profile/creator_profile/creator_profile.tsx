@@ -8,7 +8,7 @@ import CreatorHeader from "./creator_header/creator_header";
 
 export default function CreatorProfile(props) {
   return (
-    <div className={s.app}>
+    <div className={s.container}>
       <CreatorHeader />
       <CreatorProfileInfos {...props} />
       {/* <ProfileWalletViewer />

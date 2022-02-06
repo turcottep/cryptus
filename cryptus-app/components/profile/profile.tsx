@@ -8,13 +8,16 @@ import CreatorProfile from "./creator_profile/creator_profile";
 export default function Profile(props) {
   const [session] = useSession();
   return (
-    // <div>
-    //     {session ? (
+    <div className={s.app}>
+    
+      <CreatorProfile {...props}/>
+    </div> 
+    
+  );
+}
+
+//     {session ? (
     //         <CreatorProfile {...props}/>
     //     ) : (
     //         <ViewerProfile {...props}/>
     //     )}
-    // </div> 
-    <CreatorProfile {...props}/>
-  );
-}

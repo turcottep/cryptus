@@ -2,9 +2,16 @@
 
 .container {
   flex: 1 1 auto;
+
+  display: flex;
   position: fixed;
+  top: 0;
+  flex-direction: row;
+  align-items: center;
+
   height: v.$header-h;
-  width: 100%;
-  background: v.$text-color; //For waiting for header
-  color: v.$bg-color;
+  width: min(100vw, v.$mobile);
+  font-size: v.$font-size-m;
+
+  background: v.$bg-color;
 }

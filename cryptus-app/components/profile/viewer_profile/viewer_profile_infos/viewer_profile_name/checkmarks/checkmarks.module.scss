@@ -2,10 +2,13 @@
 
 .container {
   flex: 1 1 auto;
-  display: flex;
   flex-direction: row;
+  
+  row-gap: 2px;
+  margin-top: 8px;
+}
 
-  font-size: v.$font-size-m;
-  font-weight: bolder;
-  height: 50px;
+.checkmarks {
+  height: 20px;
+  width: 40px;
 }
