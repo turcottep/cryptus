@@ -1,0 +1,42 @@
+@use "/styles/variables" as v;
+
+.container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.header {
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  width: 100%;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: center;
+  padding: 0px 5px;
+  background-color: v.$header-color;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    flex: 1 1 auto;
+    text-align: center;
+    padding: v.$header-h 0px;
+  }
+
+.footer {
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: center;
+    background-color: v.$header-color;
+  }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import s from "./pagetemplate.module.scss";
 
 import GridTemplate from "../gridetemplate/gridtemplate";
-import Header from "../../header/header";
+import Header from "../../header/old_header";
 
 export default function PageTemplate() {
   const [myNumberState, setMyNumberState] = useState<Number>(0);

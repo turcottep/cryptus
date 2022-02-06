@@ -1,0 +1,16 @@
+@use "/styles/variables" as v;
+
+.container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(auto-fill, minmax(33%, 1fr));
+    justify-content: center;
+    align-items: center;
+}
+
+.block {
+    padding: 10px 10px;
+    justify-self: center;;
+}
+

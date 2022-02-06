@@ -1,0 +1,58 @@
+@use "/styles/variables" as v;
+
+.container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.name {
+    flex: 1 1 auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .number {
+    flex: 0 1 auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .empty {
+    flex: 100 1 auto; 
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .label {
+    flex: 1 1 auto;
+    display: flex;
+    height: 100%;
+    font-size: 40px; 
+    font-weight: 700;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px 10px;
+  }
+
+  .circle {
+    display: flex;
+    flex: 1 1 auto;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    border: 3px solid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px; 
+    font-weight: 400;
+  }
