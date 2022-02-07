@@ -54,8 +54,8 @@ export default function Graph(props: {
   const labels = [];
 
   let average = 0;
-  for (let i = 0; i < data_price.length; i++) {
-    average += data_price[i];
+  for (const price of data_price) {
+    average += price;
     labels.push(""); // TODO: add date
   }
   average = average / data_price.length;
@@ -63,7 +63,7 @@ export default function Graph(props: {
   const data_line = labels.map((_, i) => data_price[i]);
 
   const data_average = [];
-  for (let i = 0; i < data_price.length; i++) {
+  for (const _ of data_price) {
     data_average.push(data_price[data_price.length - 1]);
   }
 
