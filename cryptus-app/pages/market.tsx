@@ -36,6 +36,10 @@ export default function Home({ data }) {
     return parseFloat(row.total_price);
   });
 
+  const mock_volume = data_clean.map((row) => {
+    return Math.random() * 100;
+  });
+
   return (
     <div className="">
       <title>Public Wallet</title>
@@ -56,8 +60,12 @@ export default function Home({ data }) {
         rel="stylesheet"
       />
 
-      <main>
-        <Graph {...{ data: all_prices, includeVolume: true }} />
+      <main className="h-40 w-full mx-auto">
+        <Graph
+          data_price={all_prices}
+          data_volume={mock_volume}
+          detailled={true}
+        />
       </main>
     </div>
   );

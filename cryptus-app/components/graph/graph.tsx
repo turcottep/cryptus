@@ -1,4 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
+import s from "./graph.module.scss";
+
 import { ChartData, ChartArea, Filler, BarElement } from "chart.js";
 import {
   Chart as ChartJS,
@@ -42,26 +44,30 @@ function createGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
   return gradient;
 }
 
-export default function Graph(props: { data: any[]; includeVolume: boolean }) {
-  const { data, includeVolume } = props;
+export default function Graph(props: {
+  data_price: number[];
+  data_volume: number[];
+  detailled: boolean;
+}) {
+  const { data_price, data_volume, detailled: detailled } = props;
 
   const labels = [];
 
   let average = 0;
-  for (let i = 0; i < data.length; i++) {
-    average += data[i];
+  for (let i = 0; i < data_price.length; i++) {
+    average += data_price[i];
     labels.push(""); // TODO: add date
   }
-  average = average / data.length;
+  average = average / data_price.length;
 
-  const data_line = labels.map((_, i) => data[i]);
+  const data_line = labels.map((_, i) => data_price[i]);
 
   const data_average = [];
-  for (let i = 0; i < data.length; i++) {
-    data_average.push(data[data.length - 1]);
+  for (let i = 0; i < data_price.length; i++) {
+    data_average.push(data_price[data_price.length - 1]);
   }
 
-  const data_bar = labels.map((_, i) => Math.random() * 100);
+  const data_bar = data_volume ? labels.map((_, i) => data_volume[i]) : [];
 
   const optionsLine = {
     responsive: true,
@@ -89,10 +95,14 @@ export default function Graph(props: { data: any[]; includeVolume: boolean }) {
         grid: {
           display: false,
         },
+        beginAtZero: false,
+        display: detailled,
         suggestedMin: Math.min(...data_line) * 1.1,
         suggestedMax: Math.max(...data_line) * 1.05,
         position: "right",
+
         ticks: {
+          // display: false,
           mirror: true,
           backdropPadding: 2,
           showLabelBackdrop: true,
@@ -107,6 +117,7 @@ export default function Graph(props: { data: any[]; includeVolume: boolean }) {
         },
       },
     },
+    maintainAspectRatio: false,
     spanGaps: true,
   };
 
@@ -144,6 +155,7 @@ export default function Graph(props: { data: any[]; includeVolume: boolean }) {
         },
       },
     },
+    maintainAspectRatio: false,
     spanGaps: true,
   };
 
@@ -170,17 +182,18 @@ export default function Graph(props: { data: any[]; includeVolume: boolean }) {
           borderColor: create_rgba(color_graph, 1),
           // fill: '+1',
           pointBackgroundColor: create_rgba(color_graph, 1),
+          borderWidth: detailled ? 2 : 1,
           // backgroundColor: createGradient(chart.ctx, chart.chartArea),
           cubicInterpolationMode: "monotone",
           pointRadius: 0,
           tension: 0.4,
         },
-        {
+        detailled && {
           data: data_average,
           lineStyle: "dashed",
           fill: false,
           borderDash: [4, 5],
-          borderWidth: 2,
+          borderWidth: detailled ? 2 : 1,
           borderColor: "rgba(0,0,0,0.5)",
           pointRadius: 0,
         },
@@ -208,21 +221,17 @@ export default function Graph(props: { data: any[]; includeVolume: boolean }) {
   }, []);
 
   return (
-    <div className="flex flex-col  mx-4 ">
-      <div className="flex flex-col items-center">
-        <span>BAYC</span>
-        <span>Bored Ape Yacht Club</span>
-      </div>
+    <div className={s.container}>
       <Chart
-        className="bg-white p max-h-96 "
+        className={s.chart_line}
         ref={chartRef}
         type="line"
         data={chartDataLine}
         options={optionsLine}
       />
-      {includeVolume ? (
+      {data_volume ? (
         <Chart
-          className="bg-white max-h-12"
+          className={s.chart_bar}
           ref={chartRef}
           type="line"
           data={chartDataBar}

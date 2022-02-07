@@ -1,8 +1,18 @@
-.chart_body {
-    background: #00151c;
+.container {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
 }
 
-.chart {
-    background: #0e3040;
-    color: #67809f;
+.chart_line {
+  flex: 0 0 auto;
+}
+
+.chart_bar {
+  flex: 0 0 0 auto;
+  max-height: 32px;
 }
