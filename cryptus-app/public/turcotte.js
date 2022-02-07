@@ -20,7 +20,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"mouth","value":"soserious","rarity":21.4666},{"name":"pattern","value":"spangled","rarity":7.4398},{"name":"generation","value":0,"rarity":3.6557},{"name":"virginity","value":"non-virgin","rarity":98.0177},{"name":"fur","value":"selkirk","rarity":12.5531},{"name":"eye_colour","value":"sapphire","rarity":9.9027},{"name":"accent_colour","value":"icy","rarity":11.1475},{"name":"highlight_colour","value":"coffee","rarity":17.5505},{"name":"cooldown_timer","value":"Catatonic (1 week)","rarity":7.5665},{"name":"eye_shape","value":"chronic","rarity":9.3141},{"name":"base_colour","value":"mauveover","rarity":14.6124},{"name":"purrstige","value":"pu12","rarity":1.9202},{"name":"secret","value":"se6","rarity":1.3095}]',
+            '[{"name":"generation","value":0,"count":36557,"rarity":3.6557},{"name":"fur","value":"selkirk","count":125531,"rarity":12.5531},{"name":"eye_colour","value":"sapphire","count":99027,"rarity":9.9027},{"name":"accent_colour","value":"icy","count":111475,"rarity":11.1475},{"name":"highlight_colour","value":"coffee","count":175505,"rarity":17.5505},{"name":"cooldown_timer","value":"Catatonic (1 week)","count":75665,"rarity":7.5665},{"name":"eye_shape","value":"chronic","count":93141,"rarity":9.3141},{"name":"base_colour","value":"mauveover","count":146124,"rarity":14.6124},{"name":"virginity","value":"non-virgin","count":980177,"rarity":98.0177},{"name":"mouth","value":"soserious","count":214666,"rarity":21.4666},{"name":"pattern","value":"spangled","count":74398,"rarity":7.4398},{"name":"purrstige","value":"pu12","count":19202,"rarity":1.9202},{"name":"secret","value":"se6","count":13095,"rarity":1.3095}]',
           rarity_rank: 2164563,
         },
         {
@@ -36,7 +36,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"virginity","value":"non-virgin","rarity":98.0177},{"name":"mouth","value":"grim","rarity":11.6803},{"name":"pattern","value":"leopard","rarity":6.5926},{"name":"generation","value":0,"rarity":3.6557},{"name":"cooldown_timer","value":"Catatonic (1 week)","rarity":7.5665},{"name":"accent_colour","value":"sandalwood","rarity":10.1181},{"name":"base_colour","value":"greymatter","rarity":18.9253},{"name":"eye_colour","value":"thundergrey","rarity":9.6825},{"name":"eye_shape","value":"chronic","rarity":9.3141},{"name":"highlight_colour","value":"egyptiankohl","rarity":10.4331},{"name":"fur","value":"ragdoll","rarity":17.2998}]',
+            '[{"name":"mouth","value":"grim","count":116803,"rarity":11.6803},{"name":"pattern","value":"leopard","count":65926,"rarity":6.5926},{"name":"virginity","value":"non-virgin","count":980177,"rarity":98.0177},{"name":"generation","value":0,"count":36557,"rarity":3.6557},{"name":"cooldown_timer","value":"Catatonic (1 week)","count":75665,"rarity":7.5665},{"name":"eye_colour","value":"thundergrey","count":96825,"rarity":9.6825},{"name":"eye_shape","value":"chronic","count":93141,"rarity":9.3141},{"name":"highlight_colour","value":"egyptiankohl","count":104331,"rarity":10.4331},{"name":"fur","value":"ragdoll","count":172998,"rarity":17.2998},{"name":"accent_colour","value":"sandalwood","count":101181,"rarity":10.1181},{"name":"base_colour","value":"greymatter","count":189253,"rarity":18.9253}]',
           rarity_rank: 2032857,
         },
         {
@@ -52,7 +52,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"virginity","value":"non-virgin","rarity":98.0177},{"name":"mouth","value":"pouty","rarity":28.7234},{"name":"pattern","value":"rorschach","rarity":9.0036},{"name":"generation","value":0,"rarity":3.6557},{"name":"highlight_colour","value":"coffee","rarity":17.5505},{"name":"accent_colour","value":"frosting","rarity":8.6529},{"name":"eye_shape","value":"wonky","rarity":9.2209},{"name":"base_colour","value":"brownies","rarity":5.1175},{"name":"cooldown_timer","value":"Swift (2 min)","rarity":15.3618},{"name":"eye_colour","value":"olive","rarity":4.2166},{"name":"fur","value":"ragdoll","rarity":17.2998},{"name":"purrstige","value":"pu8","rarity":1.8783},{"name":"secret","value":"se14","rarity":0.6855}]',
+            '[{"name":"mouth","value":"pouty","count":287234,"rarity":28.7234},{"name":"pattern","value":"rorschach","count":90036,"rarity":9.0036},{"name":"generation","value":0,"count":36557,"rarity":3.6557},{"name":"virginity","value":"non-virgin","count":980177,"rarity":98.0177},{"name":"highlight_colour","value":"coffee","count":175505,"rarity":17.5505},{"name":"accent_colour","value":"frosting","count":86529,"rarity":8.6529},{"name":"eye_shape","value":"wonky","count":92209,"rarity":9.2209},{"name":"base_colour","value":"brownies","count":51175,"rarity":5.1175},{"name":"cooldown_timer","value":"Swift (2 min)","count":153618,"rarity":15.3618},{"name":"eye_colour","value":"olive","count":42166,"rarity":4.2166},{"name":"fur","value":"ragdoll","count":172998,"rarity":17.2998},{"name":"purrstige","value":"pu8","count":18783,"rarity":1.8783},{"name":"secret","value":"se14","count":6855,"rarity":0.6855}]',
           rarity_rank: 2193842,
         },
       ],
@@ -76,7 +76,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"building","value":"222 Second","rarity":0.0129},{"name":"city","value":"San Francisco","rarity":0.0378},{"name":"tokenId","value":"521","rarity":0.0001},{"name":"architect","value":"0xc6088d5794f5a568fa3bd70ef5ee2932cd389a33","rarity":0.0055},{"name":"heightClass","value":"High Rise","rarity":0.1458},{"name":"backgroundColorway","value":"blueblue","rarity":0.026},{"name":"roofWindowColorway","value":"Dark Grey","rarity":0.074},{"name":"windowType","value":"Glass Curtain","rarity":0.1072},{"name":"bodyWindowColorway","value":"Dark Grey","rarity":0.074},{"name":"rooftopType","value":"885 6th Ave","rarity":0.0312},{"name":"groundFloorType","value":"222 Second","rarity":0.0021},{"name":"groundFloorUse","value":"Business","rarity":0.0989},{"name":"rooftopUse","value":"Business","rarity":0.1577},{"name":"coreUse","value":"Business","rarity":0.1993},{"name":"height","value":393,"rarity":0.0005},{"name":"coreType","value":"Glass Curtain","rarity":0.1072},{"name":"exteriorColorway","value":"Light Grey","rarity":0.0451},{"name":"baseWindowColorway","value":"Dark Grey","rarity":0.073},{"name":"width","value":200,"rarity":0}]',
+            '[{"name":"heightClass","value":"High Rise","count":1458,"rarity":0.1458},{"name":"building","value":"222 Second","count":129,"rarity":0.0129},{"name":"city","value":"San Francisco","count":378,"rarity":0.0378},{"name":"tokenId","value":"521","count":1,"rarity":0.0001},{"name":"architect","value":"0xc6088d5794f5a568fa3bd70ef5ee2932cd389a33","count":55,"rarity":0.0055},{"name":"backgroundColorway","value":"blueblue","count":260,"rarity":0.026},{"name":"windowType","value":"Glass Curtain","count":1072,"rarity":0.1072},{"name":"roofWindowColorway","value":"Dark Grey","count":740,"rarity":0.074},{"name":"bodyWindowColorway","value":"Dark Grey","count":740,"rarity":0.074},{"name":"rooftopType","value":"885 6th Ave","count":312,"rarity":0.0312},{"name":"width","value":200,"count":0,"rarity":0},{"name":"groundFloorType","value":"222 Second","count":21,"rarity":0.0021},{"name":"groundFloorUse","value":"Business","count":989,"rarity":0.0989},{"name":"rooftopUse","value":"Business","count":1577,"rarity":0.1577},{"name":"coreUse","value":"Business","count":1993,"rarity":0.1993},{"name":"height","value":393,"count":5,"rarity":0.0005},{"name":"coreType","value":"Glass Curtain","count":1072,"rarity":0.1072},{"name":"exteriorColorway","value":"Light Grey","count":451,"rarity":0.0451},{"name":"baseWindowColorway","value":"Dark Grey","count":730,"rarity":0.073}]',
           rarity_rank: 11983,
         },
       ],
@@ -223,7 +223,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "WETH",
           properties:
-            '[{"name":"symbol","value":"CRO2","rarity":0.0001},{"name":"erc20","value":"0xE9A6A26598B05dB855483fF5eCc5f1d0C81140c8","rarity":0.0001},{"name":"artist","value":"Phneep","rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","rarity":0.0014}]',
+            '[{"name":"symbol","value":"CRO2","count":1,"rarity":0.0001},{"name":"erc20","value":"0xE9A6A26598B05dB855483fF5eCc5f1d0C81140c8","count":1,"rarity":0.0001},{"name":"artist","value":"Phneep","count":14,"rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","count":14,"rarity":0.0014}]',
           rarity_rank: 30,
         },
         {
@@ -239,7 +239,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "WETH",
           properties:
-            '[{"name":"symbol","value":"CRO3","rarity":0.0001},{"name":"erc20","value":"0x3f8131B6E62472CEea9cb8Aa67d87425248a3702","rarity":0.0001},{"name":"artist","value":"Phneep","rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","rarity":0.0014}]',
+            '[{"name":"symbol","value":"CRO3","count":1,"rarity":0.0001},{"name":"erc20","value":"0x3f8131B6E62472CEea9cb8Aa67d87425248a3702","count":1,"rarity":0.0001},{"name":"artist","value":"Phneep","count":14,"rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","count":14,"rarity":0.0014}]',
           rarity_rank: 30,
         },
         {
@@ -255,7 +255,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"symbol","value":"CRO7","rarity":0.0001},{"name":"erc20","value":"0x2647bd8777e0C66819D74aB3479372eA690912c3","rarity":0.0001},{"name":"artist","value":"Phneep","rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","rarity":0.0014}]',
+            '[{"name":"symbol","value":"CRO7","count":1,"rarity":0.0001},{"name":"erc20","value":"0x2647bd8777e0C66819D74aB3479372eA690912c3","count":1,"rarity":0.0001},{"name":"artist","value":"Phneep","count":14,"rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","count":14,"rarity":0.0014}]',
           rarity_rank: 30,
         },
         {
@@ -271,7 +271,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "WETH",
           properties:
-            '[{"name":"symbol","value":"CRO8","rarity":0.0001},{"name":"erc20","value":"0x2FCE2713a561bB019BC5A110BE0A19d10581ee9e","rarity":0.0001},{"name":"artist","value":"Phneep","rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","rarity":0.0014}]',
+            '[{"name":"symbol","value":"CRO8","count":1,"rarity":0.0001},{"name":"erc20","value":"0x2FCE2713a561bB019BC5A110BE0A19d10581ee9e","count":1,"rarity":0.0001},{"name":"artist","value":"Phneep","count":14,"rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","count":14,"rarity":0.0014}]',
           rarity_rank: 30,
         },
         {
@@ -287,7 +287,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"artist_url","value":"https://curio.cards/artist/phneep","rarity":0.0014},{"name":"artist","value":"Phneep","rarity":0.0014},{"name":"symbol","value":"CRO9","rarity":0.0001},{"name":"erc20","value":"0xbf4Cc966F1e726087c5C55aac374E687000d4d45","rarity":0.0001}]',
+            '[{"name":"artist_url","value":"https://curio.cards/artist/phneep","count":14,"rarity":0.0014},{"name":"artist","value":"Phneep","count":14,"rarity":0.0014},{"name":"symbol","value":"CRO9","count":1,"rarity":0.0001},{"name":"erc20","value":"0xbf4Cc966F1e726087c5C55aac374E687000d4d45","count":1,"rarity":0.0001}]',
           rarity_rank: 30,
         },
         {
@@ -303,7 +303,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"symbol","value":"CRO10","rarity":0.0001},{"name":"erc20","value":"0x72b34d637C0d14acE58359Ef1bF472E4b4c57125","rarity":0.0001},{"name":"artist","value":"Phneep","rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","rarity":0.0014}]',
+            '[{"name":"symbol","value":"CRO10","count":1,"rarity":0.0001},{"name":"erc20","value":"0x72b34d637C0d14acE58359Ef1bF472E4b4c57125","count":1,"rarity":0.0001},{"name":"artist","value":"Phneep","count":14,"rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","count":14,"rarity":0.0014}]',
           rarity_rank: 30,
         },
         {
@@ -319,7 +319,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "WETH",
           properties:
-            '[{"name":"artist_url","value":"https://curio.cards/artist/cryptograffiti","rarity":0.0003},{"name":"symbol","value":"CRO13","rarity":0.0001},{"name":"erc20","value":"0x2d922712f5e99428c65b44f09Ea389373d185bB3","rarity":0.0001},{"name":"artist","value":"Cryptograffiti","rarity":0.0003}]',
+            '[{"name":"artist_url","value":"https://curio.cards/artist/cryptograffiti","count":3,"rarity":0.0003},{"name":"symbol","value":"CRO13","count":1,"rarity":0.0001},{"name":"erc20","value":"0x2d922712f5e99428c65b44f09Ea389373d185bB3","count":1,"rarity":0.0001},{"name":"artist","value":"Cryptograffiti","count":3,"rarity":0.0003}]',
           rarity_rank: 8,
         },
         {
@@ -335,7 +335,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "WETH",
           properties:
-            '[{"name":"symbol","value":"CRO20","rarity":0.0001},{"name":"erc20","value":"0xD0ec99E99cE22f2487283A087614AEe37F6B1283","rarity":0.0001},{"name":"artist","value":"Phneep","rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","rarity":0.0014}]',
+            '[{"name":"symbol","value":"CRO20","count":1,"rarity":0.0001},{"name":"erc20","value":"0xD0ec99E99cE22f2487283A087614AEe37F6B1283","count":1,"rarity":0.0001},{"name":"artist","value":"Phneep","count":14,"rarity":0.0014},{"name":"artist_url","value":"https://curio.cards/artist/phneep","count":14,"rarity":0.0014}]',
           rarity_rank: 30,
         },
       ],
@@ -359,7 +359,8 @@ const props = {
             "https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/88279797468235369682781292521181259564906166118782937754463684835653860720641",
           last_sale_price: 0,
           last_sale_symbol: "ETH",
-          properties: '[{"name":"Gender","value":"Female","rarity":0.008}]',
+          properties:
+            '[{"name":"Gender","value":"Female","count":80,"rarity":0.008}]',
           rarity_rank: 80,
         },
       ],
@@ -407,7 +408,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Horns","value":"Quattuor acri","rarity":0.0438},{"name":"Magic","value":"Terra","rarity":0.1307},{"name":"Ears","value":"Hominum","rarity":0.0785},{"name":"Series","value":"Common","rarity":0.6587},{"name":"Mouth","value":"Tres secat","rarity":0.1051},{"name":"Hand","value":"Abscisum manibus","rarity":0.0726},{"name":"Base","value":"Masculum","rarity":0.3543},{"name":"Eyes","value":"Rimis oculus","rarity":0.0378},{"name":"Feature","value":"Non","rarity":0.2805}]',
+            '[{"name":"Horns","value":"Quattuor acri","count":438,"rarity":0.0438},{"name":"Magic","value":"Terra","count":1307,"rarity":0.1307},{"name":"Ears","value":"Hominum","count":785,"rarity":0.0785},{"name":"Series","value":"Common","count":6587,"rarity":0.6587},{"name":"Mouth","value":"Tres secat","count":1051,"rarity":0.1051},{"name":"Hand","value":"Abscisum manibus","count":726,"rarity":0.0726},{"name":"Base","value":"Masculum","count":3543,"rarity":0.3543},{"name":"Eyes","value":"Rimis oculus","count":378,"rarity":0.0378},{"name":"Feature","value":"Non","count":2805,"rarity":0.2805}]',
           rarity_rank: 17620,
         },
       ],
@@ -431,7 +432,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Shirt","value":"Sleeveless","rarity":0.1328},{"name":"Pants","value":"Chino","rarity":0.1506},{"name":"Background","value":"Dark Aqua","rarity":0.0996},{"name":"Necklace","value":"Gold Chain","rarity":0.0352},{"name":"Hair","value":"Cobain","rarity":0.0934},{"name":"Shoes","value":"Rain Boots","rarity":0.1005},{"name":"Base","value":"Fenced","rarity":0.1322},{"name":"Gravestone","value":"Medium","rarity":0.2087},{"name":"Hands","value":"Silver Scythe","rarity":0.0053},{"name":"Type","value":"Skeleton","rarity":0.2322},{"name":"Head","value":"Winter Hat","rarity":0.0096}]',
+            '[{"name":"Shirt","value":"Sleeveless","count":1328,"rarity":0.1328},{"name":"Pants","value":"Chino","count":1506,"rarity":0.1506},{"name":"Background","value":"Dark Aqua","count":996,"rarity":0.0996},{"name":"Necklace","value":"Gold Chain","count":352,"rarity":0.0352},{"name":"Hair","value":"Cobain","count":934,"rarity":0.0934},{"name":"Shoes","value":"Rain Boots","count":1005,"rarity":0.1005},{"name":"Base","value":"Fenced","count":1322,"rarity":0.1322},{"name":"Gravestone","value":"Medium","count":2087,"rarity":0.2087},{"name":"Hands","value":"Silver Scythe","count":53,"rarity":0.0053},{"name":"Type","value":"Skeleton","count":2322,"rarity":0.2322},{"name":"Head","value":"Winter Hat","count":96,"rarity":0.0096}]',
           rarity_rank: 12001,
         },
         {
@@ -446,7 +447,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Base","value":"Mushrooms","rarity":0.1573},{"name":"Background","value":"Green","rarity":0.0944},{"name":"Shirt","value":"T-Shirt","rarity":0.0608},{"name":"Gravestone","value":"Small","rarity":0.3513},{"name":"Type","value":"Human","rarity":0.5983},{"name":"Pants","value":"Basketball Shorts","rarity":0.1372},{"name":"Eyebrows","value":"Unibrow","rarity":0.1111},{"name":"Shoes","value":"Clogs","rarity":0.179},{"name":"Hair","value":"Low Bun","rarity":0.1307},{"name":"Head","value":"Cat Ears","rarity":0.0233}]',
+            '[{"name":"Base","value":"Mushrooms","count":1573,"rarity":0.1573},{"name":"Background","value":"Green","count":944,"rarity":0.0944},{"name":"Shirt","value":"T-Shirt","count":608,"rarity":0.0608},{"name":"Gravestone","value":"Small","count":3513,"rarity":0.3513},{"name":"Type","value":"Human","count":5983,"rarity":0.5983},{"name":"Pants","value":"Basketball Shorts","count":1372,"rarity":0.1372},{"name":"Eyebrows","value":"Unibrow","count":1111,"rarity":0.1111},{"name":"Shoes","value":"Clogs","count":1790,"rarity":0.179},{"name":"Hair","value":"Low Bun","count":1307,"rarity":0.1307},{"name":"Head","value":"Cat Ears","count":233,"rarity":0.0233}]',
           rarity_rank: 18434,
         },
         {
@@ -461,7 +462,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Eyewear","value":"MLG Glasses","rarity":0.0287},{"name":"Necklace","value":"Silver Skull","rarity":0.0403},{"name":"Shoes","value":"Boots","rarity":0.1352},{"name":"Background","value":"Green","rarity":0.0944},{"name":"Gravestone","value":"Small","rarity":0.3513},{"name":"Type","value":"Human","rarity":0.5983},{"name":"Eyebrows","value":"Curious","rarity":0.1158},{"name":"Facial Hair","value":"Beard","rarity":0.0449},{"name":"Shirt","value":"Basketball Jersey","rarity":0.1404},{"name":"Pants","value":"Skinny Pants","rarity":0.1677},{"name":"Base","value":"Skulls","rarity":0.2467},{"name":"Halo","value":"Flies","rarity":0.046},{"name":"Head","value":"Drivers Cap","rarity":0.0157}]',
+            '[{"name":"Eyewear","value":"MLG Glasses","count":287,"rarity":0.0287},{"name":"Necklace","value":"Silver Skull","count":403,"rarity":0.0403},{"name":"Shoes","value":"Boots","count":1352,"rarity":0.1352},{"name":"Background","value":"Green","count":944,"rarity":0.0944},{"name":"Gravestone","value":"Small","count":3513,"rarity":0.3513},{"name":"Type","value":"Human","count":5983,"rarity":0.5983},{"name":"Eyebrows","value":"Curious","count":1158,"rarity":0.1158},{"name":"Facial Hair","value":"Beard","count":449,"rarity":0.0449},{"name":"Shirt","value":"Basketball Jersey","count":1404,"rarity":0.1404},{"name":"Pants","value":"Skinny Pants","count":1677,"rarity":0.1677},{"name":"Base","value":"Skulls","count":2467,"rarity":0.2467},{"name":"Halo","value":"Flies","count":460,"rarity":0.046},{"name":"Head","value":"Drivers Cap","count":157,"rarity":0.0157}]',
           rarity_rank: 20254,
         },
         {
@@ -476,7 +477,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Background","value":"Green","rarity":0.0944},{"name":"Gravestone","value":"Cross","rarity":0.0475},{"name":"Base","value":"Venus Fly Traps","rarity":0.2009},{"name":"Shoes","value":"Dress Shoes","rarity":0.0613},{"name":"Type","value":"Human","rarity":0.5983},{"name":"Eyebrows","value":"Curious","rarity":0.1158},{"name":"Dress","value":"Kimono","rarity":0.0381},{"name":"Hair","value":"Side Mohawk","rarity":0.0364}]',
+            '[{"name":"Background","value":"Green","count":944,"rarity":0.0944},{"name":"Gravestone","value":"Cross","count":475,"rarity":0.0475},{"name":"Base","value":"Venus Fly Traps","count":2009,"rarity":0.2009},{"name":"Shoes","value":"Dress Shoes","count":613,"rarity":0.0613},{"name":"Type","value":"Human","count":5983,"rarity":0.5983},{"name":"Eyebrows","value":"Curious","count":1158,"rarity":0.1158},{"name":"Dress","value":"Kimono","count":381,"rarity":0.0381},{"name":"Hair","value":"Side Mohawk","count":364,"rarity":0.0364}]',
           rarity_rank: 11927,
         },
       ],
@@ -501,7 +502,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Shoes","value":"Dark Pink","rarity":0.0053},{"name":"Hand Accessory","value":"Gold Shuriken","rarity":0.0059},{"name":"Background","value":"White Black","rarity":0.0037},{"name":"Eye","value":"Sleepy","rarity":0.0035},{"name":"Hand","value":"Grey","rarity":0.0044},{"name":"Mouth","value":"Smiling","rarity":0.0375},{"name":"Back Accessory","value":"Rabbit Turquoise","rarity":0.0032},{"name":"Hat","value":"Pirate Hat","rarity":0.0026},{"name":"Body","value":"Robo","rarity":0.0022}]',
+            '[{"name":"Shoes","value":"Dark Pink","count":53,"rarity":0.0053},{"name":"Hand Accessory","value":"Gold Shuriken","count":59,"rarity":0.0059},{"name":"Background","value":"White Black","count":37,"rarity":0.0037},{"name":"Eye","value":"Sleepy","count":35,"rarity":0.0035},{"name":"Hand","value":"Grey","count":44,"rarity":0.0044},{"name":"Mouth","value":"Smiling","count":375,"rarity":0.0375},{"name":"Back Accessory","value":"Rabbit Turquoise","count":32,"rarity":0.0032},{"name":"Hat","value":"Pirate Hat","count":26,"rarity":0.0026},{"name":"Body","value":"Robo","count":22,"rarity":0.0022}]',
           rarity_rank: 683,
         },
         {
@@ -517,7 +518,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Shoes","value":"Dark Turquoise","rarity":0.0033},{"name":"Back Accessory","value":"Pink","rarity":0.0041},{"name":"Eye","value":"Neon Blue","rarity":0.0051},{"name":"Mouth","value":"Cool","rarity":0.0289},{"name":"Hand","value":"Brown","rarity":0.0043},{"name":"Background","value":"Dark Blue","rarity":0.006},{"name":"Hand Accessory","value":"Carrot","rarity":0.005},{"name":"Body","value":"Dark Grey","rarity":0.0043}]',
+            '[{"name":"Shoes","value":"Dark Turquoise","count":33,"rarity":0.0033},{"name":"Back Accessory","value":"Pink","count":41,"rarity":0.0041},{"name":"Eye","value":"Neon Blue","count":51,"rarity":0.0051},{"name":"Mouth","value":"Cool","count":289,"rarity":0.0289},{"name":"Hand","value":"Brown","count":43,"rarity":0.0043},{"name":"Background","value":"Dark Blue","count":60,"rarity":0.006},{"name":"Hand Accessory","value":"Carrot","count":50,"rarity":0.005},{"name":"Body","value":"Dark Grey","count":43,"rarity":0.0043}]',
           rarity_rank: 610,
         },
         {
@@ -533,7 +534,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Mouth","value":"Happy","rarity":0.0167},{"name":"Eye","value":"Antrasit","rarity":0.0051},{"name":"Hand Accessory","value":"Flame Staff","rarity":0.0055},{"name":"Hand","value":"Skin","rarity":0.0031},{"name":"Body","value":"Turquoise","rarity":0.0032},{"name":"Background","value":"Grey Pink","rarity":0.0046},{"name":"Shoes","value":"Blue Yellow","rarity":0.0038}]',
+            '[{"name":"Mouth","value":"Happy","count":167,"rarity":0.0167},{"name":"Eye","value":"Antrasit","count":51,"rarity":0.0051},{"name":"Hand Accessory","value":"Flame Staff","count":55,"rarity":0.0055},{"name":"Hand","value":"Skin","count":31,"rarity":0.0031},{"name":"Body","value":"Turquoise","count":32,"rarity":0.0032},{"name":"Background","value":"Grey Pink","count":46,"rarity":0.0046},{"name":"Shoes","value":"Blue Yellow","count":38,"rarity":0.0038}]',
           rarity_rank: 420,
         },
         {
@@ -549,7 +550,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Eye","value":"Dark Grey","rarity":0.0036},{"name":"Back Accessory","value":"Rabbit White","rarity":0.0042},{"name":"Background","value":"Greenish","rarity":0.004},{"name":"Shoes","value":"Pink Purple","rarity":0.0032},{"name":"Mouth","value":"Cool","rarity":0.0289},{"name":"Body","value":"White","rarity":0.0045},{"name":"Hat","value":"Blue Cap","rarity":0.0041}]',
+            '[{"name":"Eye","value":"Dark Grey","count":36,"rarity":0.0036},{"name":"Back Accessory","value":"Rabbit White","count":42,"rarity":0.0042},{"name":"Background","value":"Greenish","count":40,"rarity":0.004},{"name":"Shoes","value":"Pink Purple","count":32,"rarity":0.0032},{"name":"Mouth","value":"Cool","count":289,"rarity":0.0289},{"name":"Body","value":"White","count":45,"rarity":0.0045},{"name":"Hat","value":"Blue Cap","count":41,"rarity":0.0041}]',
           rarity_rank: 525,
         },
         {
@@ -565,7 +566,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Eye","value":"Antrasit","rarity":0.0051},{"name":"Body","value":"Orange","rarity":0.004},{"name":"Back Accessory","value":"Water Green","rarity":0.004},{"name":"Hand","value":"Turquoise","rarity":0.004},{"name":"Background","value":"Red White","rarity":0.0049},{"name":"Hand Accessory","value":"Tanto","rarity":0.005},{"name":"Mouth","value":"Smiling","rarity":0.0375},{"name":"Shoes","value":"Watermelon","rarity":0.0029}]',
+            '[{"name":"Eye","value":"Antrasit","count":51,"rarity":0.0051},{"name":"Body","value":"Orange","count":40,"rarity":0.004},{"name":"Back Accessory","value":"Water Green","count":40,"rarity":0.004},{"name":"Hand","value":"Turquoise","count":40,"rarity":0.004},{"name":"Background","value":"Red White","count":49,"rarity":0.0049},{"name":"Hand Accessory","value":"Tanto","count":50,"rarity":0.005},{"name":"Mouth","value":"Smiling","count":375,"rarity":0.0375},{"name":"Shoes","value":"Watermelon","count":29,"rarity":0.0029}]',
           rarity_rank: 674,
         },
       ],
@@ -590,7 +591,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Breed","value":"Ironlung","rarity":0.0767},{"name":"Lair","value":"Stalagmites - Silver","rarity":0.0109},{"name":"Mood","value":"Bashful","rarity":0.1498},{"name":"Body Pattern","value":"Spots","rarity":0.1534},{"name":"Breath","value":"None","rarity":0.1099},{"name":"Horns","value":"Webbed","rarity":0.1185},{"name":"Age","value":"Adult","rarity":0.7703}]',
+            '[{"name":"Breed","value":"Ironlung","count":767,"rarity":0.0767},{"name":"Lair","value":"Stalagmites - Silver","count":109,"rarity":0.0109},{"name":"Mood","value":"Bashful","count":1498,"rarity":0.1498},{"name":"Breath","value":"None","count":1099,"rarity":0.1099},{"name":"Body Pattern","value":"Spots","count":1534,"rarity":0.1534},{"name":"Horns","value":"Webbed","count":1185,"rarity":0.1185},{"name":"Age","value":"Adult","count":7703,"rarity":0.7703}]',
           rarity_rank: 13895,
         },
       ],
@@ -614,7 +615,7 @@ const props = {
             "https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/6167975107832852629549537813651082149587724395079060636444187256100982095873",
           last_sale_price: 0,
           last_sale_symbol: "ETH",
-          properties: '[{"name":"Rarity","value":1,"rarity":0}]',
+          properties: '[{"name":"Rarity","value":1,"count":0,"rarity":0}]',
           rarity_rank: 0,
         },
         {
@@ -629,7 +630,7 @@ const props = {
             "https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/6167975107832852629549537813651082149587724395079060636444187257200493723649",
           last_sale_price: 0,
           last_sale_symbol: "ETH",
-          properties: '[{"name":"Rarity","value":1,"rarity":0}]',
+          properties: '[{"name":"Rarity","value":1,"count":0,"rarity":0}]',
           rarity_rank: 0,
         },
         {
@@ -644,7 +645,7 @@ const props = {
             "https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/6167975107832852629549537813651082149587724395079060636444187258300005351425",
           last_sale_price: 0,
           last_sale_symbol: "ETH",
-          properties: '[{"name":"Rarity","value":1,"rarity":0}]',
+          properties: '[{"name":"Rarity","value":1,"count":0,"rarity":0}]',
           rarity_rank: 0,
         },
         {
@@ -660,7 +661,7 @@ const props = {
             "https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/6167975107832852629549537813651082149587724395079060636444187259399516979201",
           last_sale_price: 0,
           last_sale_symbol: "ETH",
-          properties: '[{"name":"Rarity","value":1,"rarity":0}]',
+          properties: '[{"name":"Rarity","value":1,"count":0,"rarity":0}]',
           rarity_rank: 0,
         },
         {
@@ -676,7 +677,7 @@ const props = {
             "https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/6167975107832852629549537813651082149587724395079060636444187260499028606977",
           last_sale_price: 0,
           last_sale_symbol: "ETH",
-          properties: '[{"name":"Rarity","value":1,"rarity":0}]',
+          properties: '[{"name":"Rarity","value":1,"count":0,"rarity":0}]',
           rarity_rank: 0,
         },
       ],
@@ -700,7 +701,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Type","value":"Unfused","rarity":0.2652},{"name":"Skin","value":"Purple","rarity":0.0673},{"name":"Headwear","value":"Horns","rarity":0.0052},{"name":"Mouth","value":"Spitting Ice","rarity":0.0161},{"name":"Background","value":"Blue","rarity":0.1306},{"name":"Eyes","value":"Rose Glasses","rarity":0.02},{"name":"Wings","value":"Closed","rarity":0.296}]',
+            '[{"name":"Type","value":"Unfused","count":2652,"rarity":0.2652},{"name":"Skin","value":"Purple","count":673,"rarity":0.0673},{"name":"Headwear","value":"Horns","count":52,"rarity":0.0052},{"name":"Mouth","value":"Spitting Ice","count":161,"rarity":0.0161},{"name":"Background","value":"Blue","count":1306,"rarity":0.1306},{"name":"Eyes","value":"Rose Glasses","count":200,"rarity":0.02},{"name":"Wings","value":"Closed","count":2960,"rarity":0.296}]',
           rarity_rank: 8004,
         },
       ],
@@ -725,7 +726,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"colored rectangles","value":9,"rarity":0},{"name":"luck","value":"normal","rarity":0.0679},{"name":"color scheme","value":"analogic","rarity":0.019},{"name":"color variation","value":"soft","rarity":0.0265},{"name":"density","value":"low","rarity":0.0522},{"name":"black","value":0,"rarity":0}]',
+            '[{"name":"colored rectangles","value":9,"count":0,"rarity":0},{"name":"black","value":0,"count":0,"rarity":0},{"name":"color variation","value":"soft","count":265,"rarity":0.0265},{"name":"density","value":"low","count":522,"rarity":0.0522},{"name":"color scheme","value":"analogic","count":190,"rarity":0.019},{"name":"luck","value":"normal","count":679,"rarity":0.0679}]',
           rarity_rank: 1656,
         },
       ],
@@ -749,7 +750,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"framed","value":"yay","rarity":0.7094},{"name":"rarity","value":"rare","rarity":0.2708},{"name":"name","value":"3","rarity":0.3821},{"name":"composition","value":"normal","rarity":0.2951},{"name":"complexity","value":"complex","rarity":0.1749},{"name":"seed","value":5623,"rarity":0},{"name":"tileSet","value":"shattered","rarity":0.0662}]',
+            '[{"name":"framed","value":"yay","count":7094,"rarity":0.7094},{"name":"rarity","value":"rare","count":2708,"rarity":0.2708},{"name":"name","value":"3","count":3821,"rarity":0.3821},{"name":"composition","value":"normal","count":2951,"rarity":0.2951},{"name":"complexity","value":"complex","count":1749,"rarity":0.1749},{"name":"seed","value":5623,"count":0,"rarity":0},{"name":"tileSet","value":"shattered","count":662,"rarity":0.0662}]',
           rarity_rank: 18985,
         },
       ],
@@ -774,7 +775,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"Accessories","value":"Revenge","rarity":0.0221},{"name":"Hair","value":"Fjord","rarity":0.072},{"name":"Reality Bites","value":"Pony party","rarity":0.0676},{"name":"Background","value":"Citrus","rarity":0.1121},{"name":"Limbs","value":"Polo wraps","rarity":0.0798},{"name":"Breed","value":"Zebruh","rarity":0.0842}]',
+            '[{"name":"Accessories","value":"Revenge","count":221,"rarity":0.0221},{"name":"Hair","value":"Fjord","count":720,"rarity":0.072},{"name":"Reality Bites","value":"Pony party","count":676,"rarity":0.0676},{"name":"Background","value":"Citrus","count":1121,"rarity":0.1121},{"name":"Limbs","value":"Polo wraps","count":798,"rarity":0.0798},{"name":"Breed","value":"Zebruh","count":842,"rarity":0.0842}]',
           rarity_rank: 4378,
         },
       ],
@@ -823,7 +824,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"type","value":"female","rarity":0.1913},{"name":"hands","value":"few rings","rarity":0.0159},{"name":"eyes","value":"patch","rarity":0.0158},{"name":"lips","value":"none","rarity":0.1238},{"name":"clothes","value":"none","rarity":0.1661},{"name":"neck","value":"none","rarity":0.2578},{"name":"NFT","value":"meebit","rarity":0.0533},{"name":"accessory","value":"earrings","rarity":0.0144},{"name":"background","value":"Apartment","rarity":0.1204},{"name":"head","value":"ladys hat","rarity":0.0171}]',
+            '[{"name":"type","value":"female","count":1913,"rarity":0.1913},{"name":"hands","value":"few rings","count":159,"rarity":0.0159},{"name":"eyes","value":"patch","count":158,"rarity":0.0158},{"name":"lips","value":"none","count":1238,"rarity":0.1238},{"name":"clothes","value":"none","count":1661,"rarity":0.1661},{"name":"neck","value":"none","count":2578,"rarity":0.2578},{"name":"NFT","value":"meebit","count":533,"rarity":0.0533},{"name":"accessory","value":"earrings","count":144,"rarity":0.0144},{"name":"background","value":"Apartment","count":1204,"rarity":0.1204},{"name":"head","value":"ladys hat","count":171,"rarity":0.0171}]',
           rarity_rank: 9759,
         },
         {
@@ -838,7 +839,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"type","value":"male","rarity":0.1901},{"name":"eyes","value":"none","rarity":0.1652},{"name":"facial hair","value":"none","rarity":0.1143},{"name":"hands","value":"ring","rarity":0.0168},{"name":"head","value":"outdated hairstyle","rarity":0.0096},{"name":"background","value":"Garage","rarity":0.0688},{"name":"clothes","value":"singlet","rarity":0.0118},{"name":"neck","value":"bow-tie","rarity":0.0123},{"name":"NFT","value":"Mainstream","rarity":0.1656}]',
+            '[{"name":"type","value":"male","count":1901,"rarity":0.1901},{"name":"eyes","value":"none","count":1652,"rarity":0.1652},{"name":"facial hair","value":"none","count":1143,"rarity":0.1143},{"name":"hands","value":"ring","count":168,"rarity":0.0168},{"name":"head","value":"outdated hairstyle","count":96,"rarity":0.0096},{"name":"background","value":"Garage","count":688,"rarity":0.0688},{"name":"clothes","value":"singlet","count":118,"rarity":0.0118},{"name":"neck","value":"bow-tie","count":123,"rarity":0.0123},{"name":"NFT","value":"Mainstream","count":1656,"rarity":0.1656}]',
           rarity_rank: 7545,
         },
         {
@@ -853,7 +854,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"type","value":"female","rarity":0.1913},{"name":"accessory","value":"none","rarity":0.0872},{"name":"lips","value":"none","rarity":0.1238},{"name":"clothes","value":"none","rarity":0.1661},{"name":"hands","value":"none","rarity":0.2408},{"name":"neck","value":"none","rarity":0.2578},{"name":"NFT","value":"meebit","rarity":0.0533},{"name":"background","value":"Dump","rarity":0.0347},{"name":"eyes","value":"sunglasses","rarity":0.1066},{"name":"head","value":"long blue","rarity":0.003}]',
+            '[{"name":"type","value":"female","count":1913,"rarity":0.1913},{"name":"accessory","value":"none","count":872,"rarity":0.0872},{"name":"lips","value":"none","count":1238,"rarity":0.1238},{"name":"clothes","value":"none","count":1661,"rarity":0.1661},{"name":"hands","value":"none","count":2408,"rarity":0.2408},{"name":"neck","value":"none","count":2578,"rarity":0.2578},{"name":"NFT","value":"meebit","count":533,"rarity":0.0533},{"name":"background","value":"Dump","count":347,"rarity":0.0347},{"name":"eyes","value":"sunglasses","count":1066,"rarity":0.1066},{"name":"head","value":"long blue","count":30,"rarity":0.003}]',
           rarity_rank: 12646,
         },
         {
@@ -868,7 +869,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"head","value":"none","rarity":0.1632},{"name":"type","value":"male","rarity":0.1901},{"name":"neck","value":"barbwire","rarity":0.044},{"name":"facial hair","value":"none","rarity":0.1143},{"name":"eyes","value":"monocle","rarity":0.0112},{"name":"hands","value":"none","rarity":0.2408},{"name":"clothes","value":"sweater","rarity":0.0206},{"name":"background","value":"Apartment","rarity":0.1204},{"name":"NFT","value":"Mainstream","rarity":0.1656}]',
+            '[{"name":"head","value":"none","count":1632,"rarity":0.1632},{"name":"type","value":"male","count":1901,"rarity":0.1901},{"name":"neck","value":"barbwire","count":440,"rarity":0.044},{"name":"facial hair","value":"none","count":1143,"rarity":0.1143},{"name":"eyes","value":"monocle","count":112,"rarity":0.0112},{"name":"hands","value":"none","count":2408,"rarity":0.2408},{"name":"clothes","value":"sweater","count":206,"rarity":0.0206},{"name":"background","value":"Apartment","count":1204,"rarity":0.1204},{"name":"NFT","value":"Mainstream","count":1656,"rarity":0.1656}]',
           rarity_rank: 10702,
         },
         {
@@ -883,7 +884,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"type","value":"female","rarity":0.1913},{"name":"eyes","value":"none","rarity":0.1652},{"name":"lips","value":"none","rarity":0.1238},{"name":"clothes","value":"none","rarity":0.1661},{"name":"NFT","value":"bored ape","rarity":0.0567},{"name":"neck","value":"none","rarity":0.2578},{"name":"background","value":"Apartment","rarity":0.1204},{"name":"accessory","value":"bright eyes","rarity":0.0112},{"name":"head","value":"ladys hat","rarity":0.0171},{"name":"hands","value":"old bracelet","rarity":0.0131}]',
+            '[{"name":"type","value":"female","count":1913,"rarity":0.1913},{"name":"eyes","value":"none","count":1652,"rarity":0.1652},{"name":"lips","value":"none","count":1238,"rarity":0.1238},{"name":"clothes","value":"none","count":1661,"rarity":0.1661},{"name":"NFT","value":"bored ape","count":567,"rarity":0.0567},{"name":"neck","value":"none","count":2578,"rarity":0.2578},{"name":"background","value":"Apartment","count":1204,"rarity":0.1204},{"name":"accessory","value":"bright eyes","count":112,"rarity":0.0112},{"name":"head","value":"ladys hat","count":171,"rarity":0.0171},{"name":"hands","value":"old bracelet","count":131,"rarity":0.0131}]',
           rarity_rank: 11227,
         },
         {
@@ -898,7 +899,7 @@ const props = {
           last_sale_price: 0,
           last_sale_symbol: "ETH",
           properties:
-            '[{"name":"type","value":"male","rarity":0.1901},{"name":"facial hair","value":"none","rarity":0.1143},{"name":"hands","value":"none","rarity":0.2408},{"name":"neck","value":"none","rarity":0.2578},{"name":"clothes","value":"hoodie","rarity":0.0147},{"name":"background","value":"Dump","rarity":0.0347},{"name":"eyes","value":"sunglasses","rarity":0.1066},{"name":"NFT","value":"0.00 ETH balance","rarity":0.0476},{"name":"head","value":"Football","rarity":0.0094}]',
+            '[{"name":"type","value":"male","count":1901,"rarity":0.1901},{"name":"facial hair","value":"none","count":1143,"rarity":0.1143},{"name":"hands","value":"none","count":2408,"rarity":0.2408},{"name":"neck","value":"none","count":2578,"rarity":0.2578},{"name":"clothes","value":"hoodie","count":147,"rarity":0.0147},{"name":"background","value":"Dump","count":347,"rarity":0.0347},{"name":"eyes","value":"sunglasses","count":1066,"rarity":0.1066},{"name":"NFT","value":"0.00 ETH balance","count":476,"rarity":0.0476},{"name":"head","value":"Football","count":94,"rarity":0.0094}]',
           rarity_rank: 10160,
         },
       ],
@@ -921,7 +922,8 @@ const props = {
             "https://opensea.io/assets/0x78f28143902e9346526933e3c2eda2662d1cd1f7/1429",
           last_sale_price: 0,
           last_sale_symbol: "ETH",
-          properties: '[{"name":"Number","value":"113","rarity":0.0001}]',
+          properties:
+            '[{"name":"Number","value":"113","count":1,"rarity":0.0001}]',
           rarity_rank: 1,
         },
       ],
