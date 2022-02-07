@@ -4,7 +4,7 @@
   flex: 1 1 auto;
 
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .editbutton {
@@ -17,7 +17,7 @@
 
   border-color: v.$header-color;
 }
-  
+
 .editbutton:hover {
   background: v.$header-color;
 }
