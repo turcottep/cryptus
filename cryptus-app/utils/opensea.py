@@ -69,22 +69,32 @@ def addCollectionDataToDb(name, data):
         )
 
 
-def getCollectionData(address):
+def getCollectionData(address, sales_collection, last_unix):
     print("Getting Opensea data on collection : ", address, ' ...')
-    sales_collection = []
     url = "https://api.opensea.io/api/v1/events"
-    # Query from opensea API
-    for i in range(0, 100):
+    # Query from opensea API occured_before the last added timestamp
+    for i in range(0, 35):
         print("Getting range of sales ", i)
-        querystring = {"asset_contract_address": address,
-                       "event_type": "successful",
-                       "only_opensea": "true",
-                       "offset": i * 300,
-                       "limit": "300"}
+        if last_unix is None:
+            print('Last unisx is None, FIRST PASS...')
+            querystring = {"asset_contract_address": address,
+                           "event_type": "successful",
+                           "only_opensea": "true",
+                           "offset": i * 300,
+                           "limit": "300"}
+        else:
+            print('Last unisx is None, SECOND PASS... with query before unix :', str(last_unix))
+            querystring = {"asset_contract_address": address,
+                           "event_type": "successful",
+                           "only_opensea": "true",
+                           "offset": i * 300,
+                           "limit": "300",
+                           "occurred_before" : str(last_unix)}
+
         headers = {"Accept": "application/json", "X-API-KEY": "fa7be7363a434196887472587f496844"}
         response = requests.request("GET", url, headers=headers, params=querystring)
         if response.status_code != 200:
-            print('API error')
+            print('API error # ', response.json(), response.status_code)
             break
         # Getting sales data
         sales = response.json()['asset_events']
@@ -95,10 +105,8 @@ def getCollectionData(address):
         # storing parsed data into list/df
         if parsed_sales is not None:
             sales_collection.extend(parsed_sales)
-    sales_df = pd.DataFrame(sales_collection)
-    df = sales_df
     print('\nDone!')
-    return df
+    return sales_collection
 
 
 ## to return the selected timeframe (can also be done directly with mongoDB
@@ -137,11 +145,21 @@ def getIndicator(df):
 
 if __name__ == '__main__':
     collectionname = 'boredapeyachtclub'
+    last_unix = None
+    data = []
     contract_address = dict[collectionname]
-    data = getCollectionData(contract_address)
-    data['timestamp_unix'] = data['timestamp_raw'].apply(lambda x: int(time.mktime(x.timetuple())))
-    print(data[-1].to_string())
-    insertpostgresql(collectionname, data)
+    data = getCollectionData(contract_address, data, last_unix)
+    sales_df = pd.DataFrame(data)
+    df = sales_df
+    df['timestamp_unix'] = df['timestamp_raw'].apply(lambda x: int(time.mktime(x.timetuple())))
+    last_unix = df['timestamp_unix'].iloc[-1]
+    print(df.to_string())
+    # Second pass
+    data = getCollectionData(contract_address, data, last_unix)
+    sales_df = pd.DataFrame(data)
+    df = sales_df
+    df['timestamp_unix'] = df['timestamp_raw'].apply(lambda x: int(time.mktime(x.timetuple())))
+    insertpostgresql(collectionname, df)
     # selected_data = getPastSales('week', data)
     # mean, volume, n_sales = getIndicator(data)
 
