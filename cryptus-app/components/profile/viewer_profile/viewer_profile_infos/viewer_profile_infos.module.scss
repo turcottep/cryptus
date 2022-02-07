@@ -1,0 +1,11 @@
+@use "/styles/variables" as v;
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 20vh; //For too long description
+  padding: 0px 12px 0px;
+  margin-top: v.$header-h;
+}

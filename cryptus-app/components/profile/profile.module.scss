@@ -1,0 +1,12 @@
+@use "/styles/variables" as v;
+
+.app {
+    flex: 1 1 auto;
+
+    display: flex;
+    width: min(100vw, v.$mobile);
+    margin: auto;
+  
+    background-color: v.$bg-color;
+    color: v.$text-color;
+  }
