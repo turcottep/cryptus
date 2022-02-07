@@ -41,7 +41,7 @@ export default async function updateNftsForUser(
         return {
           name: trait.trait_type,
           value: trait.value,
-          count: trait.count,
+          count: trait.trait_count,
           rarity: trait.trait_count / 10000, //TODO find the total number of nfts in a collection
         };
       })
