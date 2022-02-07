@@ -27,6 +27,7 @@ model Nft {
   description      String?
   collection       String? //Collection @relation(fields: [collectionId], references: [id])
   token_id         String
+  rarity_rank      Int?
   external_url     String?
   image_url        String?
   userId           String?
