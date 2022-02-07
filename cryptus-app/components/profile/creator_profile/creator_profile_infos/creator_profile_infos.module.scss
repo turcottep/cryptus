@@ -5,16 +5,23 @@
   flex-direction: column;
 
   width: 100%;
-  height: min(150px, 250px); //For too long description
+  height: 20vh;
   padding: 0px 12px 0px;
   margin-top: v.$header-h;
 }
 
+.row {
+  flex-direction: row;
+  display: flex;
+
+  width: 100%;
+}
 .edits {
   flex-direction: row;
   display: flex;
   
+  margin-right: 0;
   vertical-align: bottom;
-  width: 100%;
+  
   gap: 10px;
 }

@@ -11,14 +11,13 @@
   cursor: pointer;
 
   border: 2px solid;
-  border-radius: 10%;
+  border-radius: 2em;
   white-space: nowrap;
-  min-width: 85px;
+  padding: 2px 5px 2px;
 
-  border-color: v.$primary-color;
-  background-color: v.$primary-color-pale;
+  border-color: v.$header-color;
 }
   
 .editbutton:hover {
-  background: v.$primary-color;
+  background: v.$header-color;
 }

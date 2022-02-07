@@ -10,15 +10,15 @@
 .editbutton {
   cursor: pointer;
 
-  border-radius: 10%;
+  border-radius: 2em;
   white-space: nowrap;
   min-width: 85px;
   border: 2px solid;
+  padding: 2px 5px 2px;
 
-  border-color: v.$primary-color;
-  background-color: v.$primary-color-pale;
+  border-color: v.$header-color;
 }
   
 .editbutton:hover {
-  background: v.$primary-color;
+  background: v.$header-color;
 }
