@@ -7,11 +7,11 @@ import s from "./collection_block_name.module.scss";
 //internal imports
 
 
-export default function Collection_block_name(props: { nft: nft}) {
-  const { nft } = props;
+export default function CollectionBlockName(props: { name: string}) {
+  const { name } = props;
   return (
     <div className={s.container}>
-      {nft.collection.toLocaleUpperCase()}
+      <span>{name}</span>
     </div>
   );
 }

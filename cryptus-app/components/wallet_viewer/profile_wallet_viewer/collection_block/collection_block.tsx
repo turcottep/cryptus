@@ -7,16 +7,16 @@ import Collection_block_name from "./collection_block_name/collection_block_name
 //external imports
 
 //internal imports
-import { nft } from "../../../../lib/data_types"
+import { nft, nft_collection } from "../../../../lib/data_types"
 
-export default function Collection_block(props: { nft: nft }) {
+export default function CollectionBlock(props: { nft: nft_collection }) {
   const { nft } = props;
 
   return (
-    <div className={s.app}>
+    <div className={s.container}>
       <div>
-        <Collection_nfts {...props}/>
-        <Collection_block_name {...props}/>
+        <Collection_nfts nft={nft.nfts}/>
+        <Collection_block_name name={nft.name}/>
       </div>      
     </div>
   );

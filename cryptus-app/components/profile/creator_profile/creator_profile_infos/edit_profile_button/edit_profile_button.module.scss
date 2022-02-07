@@ -1,0 +1,23 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+
+  display: flex;
+  align-items: flex-end;
+}
+
+.editbutton {
+  cursor: pointer;
+
+  border: 2px solid;
+  border-radius: 2em;
+  white-space: nowrap;
+  padding: 2px 5px 2px;
+
+  border-color: v.$header-color;
+}
+
+.editbutton:hover {
+  background: v.$header-color;
+}

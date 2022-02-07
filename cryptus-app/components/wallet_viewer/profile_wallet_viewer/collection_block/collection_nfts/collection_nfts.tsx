@@ -5,12 +5,40 @@ import s from "./collection_nfts.module.scss";
 
 //internal imports
 import NFT_picture_block_in_wallet from "./nft_picture_block_in_wallet/nft_picture_block_in_wallet"
-import { nft } from "../../../../../lib/data_types"
+import { nft, nft_collection } from "../../../../../lib/data_types"
 
+  export default function CollectionNFTs(props: { nft: nft[] }) {
+    const empty_nft = {
+      id: 0,
+      collection: "",
+      name: "",
+      description: "",
+      external_url: "",
+      image_url: "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
+      properties: '',
+      last_sale_price: 0,
+      last_sale_symbol: "",
+      rarity_rank: 0,
+    } as nft
 
-export default function Collection_NFTs(props: { nft: nft }) {
-  const { nft } = props;
-  
+    const { nft } = props;
+    const nfts = [
+      empty_nft,
+      empty_nft,
+      empty_nft,
+      empty_nft,
+      empty_nft,
+      empty_nft,
+      empty_nft,
+    ]
+
+    for (let index = 0; index < nft.length; index++) {
+      nfts[index] = nft[index];      
+    }
+
+    const nfts_b = nfts.slice(0, 3)
+    const nfts_s = nfts.slice(3, 7)
+      
 
   return (
     <div className={s.container}>
@@ -18,35 +46,21 @@ export default function Collection_NFTs(props: { nft: nft }) {
       <div className={s.block}>
         <div className={s.grid2x2}>
 
-          <div>
-            <NFT_picture_block_in_wallet {...props} size={s.img_b}/>
-          </div>
-
-          <div>
-          <NFT_picture_block_in_wallet {...props} size={s.img_b}/>
-          </div>
-
-          <div>
-          <NFT_picture_block_in_wallet {...props} size={s.img_b}/>
-          </div>
+          {nfts_b.map((nft) => (
+            <div>
+              <NFT_picture_block_in_wallet nft={nft} size={s.img_b}/>
+            </div>
+          ))}
 
           <div>
             <div className={s.grid2x2}>
-              <div>
-              <NFT_picture_block_in_wallet {...props} size={s.img_s}/>
-              </div>
 
-              <div>
-              <NFT_picture_block_in_wallet {...props} size={s.img_s}/>
-              </div>
+              {nfts_s.map((nft) => (
+                <div>
+                  <NFT_picture_block_in_wallet nft={nft} size={s.img_s}/>
+                </div>
+              ))}
 
-              <div>
-              <NFT_picture_block_in_wallet {...props} size={s.img_s}/>
-              </div>
-
-              <div>
-              <NFT_picture_block_in_wallet {...props} size={s.img_s}/>
-              </div>
             </div>
           </div>
         </div>

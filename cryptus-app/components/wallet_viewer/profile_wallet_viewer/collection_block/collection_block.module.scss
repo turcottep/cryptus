@@ -1,14 +1,9 @@
 @use "/styles/variables" as v;
 
-.app {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  height: auto;
-
-  flex: 1;
-  flex-basis: 50%;
-  width: 50%;
-  width: fit-content;
+  flex: 1 0 50%;
 }

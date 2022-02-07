@@ -1,22 +1,11 @@
 @use "/styles/variables" as v;
 
-.app {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  align-items: center;
-
-  // width: 100vw;
-  height: auto;
-  margin: auto;
-  width: min(100vw, v.$mobile);
-}
-
 .container {
-  height: auto;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16;
+  width: min(100vw, v.$mobile);
+  margin: auto;
+  align-items: center;
 }
 
 .items{
@@ -24,8 +13,7 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 100%;
   overflow: hidden;
-  
+  vertical-align: top;
+  height: 100%;
 }
-
