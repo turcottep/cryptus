@@ -14,25 +14,7 @@ export default function post(props) {
   const username = userId
 
   return (
-    <div className="bg-instagram">
-      <main className="sm:max-w-lg mx-auto">
-        <div className="flex flex-col items-center">
-          <NavbarProfile name={username} />
-          {props.user ? (
-            <div className="mt-24 w-full">
-              <div className="">
-                <Profile {...props} />
-              </div>
-              <Mosaic {...props} />
-            </div>
-          ) : (
-            <div className="flex flex-col items-center justified-center text-black ">
-              User Not Found
-            </div>
-          )}
-        </div>
-      </main>
-    </div>
+    <Profile {...props} />
   );
 }
 
