@@ -1,0 +1,26 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  width: 100%;
+  margin: 24px 0px 4px 0px;
+}
+
+.collection {
+  font-weight: bold;
+  font-size: v.$font-size-s;
+  color: v.$primary-color;
+}
+
+.name {
+  font-weight: bold;
+  font-size: v.$font-size-m;
+  color: v.$text-color;
+}

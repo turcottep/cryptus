@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
+
   try {
     prisma.$connect();
     const user = await prisma.user.findUnique({
@@ -13,6 +14,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       },
     });
     res.status(201);
+    if (!user) throw new Error("User not found");
     res.json(user);
   } catch (e) {
     res.status(500);
