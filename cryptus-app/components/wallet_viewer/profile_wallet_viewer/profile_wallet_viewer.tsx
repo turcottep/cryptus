@@ -10,8 +10,8 @@ export default function ProfileWalletViewer(props: {collections: nft_collection[
   
   return (
       <div className={s.container}>
-        {collections.map((collection) => (
-          <div className={s.items}>
+        {collections.map((collection: nft_collection, index: number) => (
+          <div className={s.items} key={index}>
             <Collection_block nft={collection}/>
           </div>
         ))}

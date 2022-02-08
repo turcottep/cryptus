@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import s from "./collection_block.module.scss";
 
 import Collection_nfts from "./collection_nfts/collection_nfts";
-import Collection_block_name from "./collection_block_name/collection_block_name";
 
 //external imports
 
@@ -16,7 +15,9 @@ export default function CollectionBlock(props: { nft: nft_collection }) {
     <div className={s.container}>
       <div>
         <Collection_nfts nft={nft.nfts}/>
-        <Collection_block_name name={nft.name}/>
+        <div className={s.collection_name}>
+          {nft.name}
+        </div>
       </div>      
     </div>
   );
