@@ -1,0 +1,85 @@
+@use "/styles/variables" as v;
+
+.container {
+  display: flex;
+  position: sticky;
+  width: 100%;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-top: 2px solid
+}
+
+.title {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: flex-start;
+  height: 6.25%;
+  width: 100%;
+}
+
+.market {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+}
+
+.collection {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+}
+
+.header {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: flex-start;
+    height: 100%;
+    width: 100%;
+  }
+
+  .icon {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: flex-start;
+    height: auto;
+    width: 10%;
+  }
+
+  .label {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: flex-start;
+    height: 100%;
+    width: 90%;
+    font-weight: 600
+  }
+
+

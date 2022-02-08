@@ -1,0 +1,48 @@
+@use "/styles/variables" as v;
+
+.container {
+  display: flex;
+  position: sticky;
+  width: 100%;
+  height: v.$collection_height;
+  flex: 1 1 auto;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+
+.infos {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  height: v.$collection_height;
+  width: 35%
+}
+
+.graph {
+    flex: 10 1 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    height: v.$collection_height;
+    width: 50%;
+}
+
+.price {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    height: v.$collection_height;
+    width: 25%;
+}

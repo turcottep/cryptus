@@ -1,0 +1,82 @@
+@use "/styles/variables" as v;
+
+.container {
+  display: flex;
+  position: sticky;
+  width: 100%;
+  height: v.$collection_height;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.fp {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: left;
+  height: 66%;
+  width: 100%
+}
+
+.fpd {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: left;
+    height: 33%;
+    width: 100%
+  }
+
+.price {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: left;
+    height: 100%;
+    width: 100%;
+    font-size: 150%;
+    font-weight: 700
+}
+
+.green_delta {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: left;
+    height: 100%;
+    width: 100%;
+    font-size: 75%;
+    font-weight: 700;
+    color: rgb(53,199,90);
+}
+
+.red_delta {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: left;
+    height: 100%;
+    width: 100%;
+    font-size: 75%;
+    font-weight: 700;
+    color: red;
+}
+
+
