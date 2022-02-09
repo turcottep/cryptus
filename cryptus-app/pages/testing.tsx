@@ -1,6 +1,5 @@
 import React from "react";
 import FeatureIamTesting from "../components/template/pagetemplate/pagetemplate";
-// Import market_overwiew parent component to test here
 import NFTDetails from "../components/wallet_viewer/nft_details/nft_details";
 import { nft } from "../lib/data_types";
 
@@ -39,6 +38,7 @@ export default function Home() {
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
         rel="stylesheet"
       />
+
       <main>
         <NFTDetails
           nft={mock_nft}
