@@ -10,7 +10,7 @@ export default async function getCollectionToken(contractaddress: string) {
   const response = await fetch(url, { method: "POST", body: "a=1" });
   const data = await response.json();
 
-  console.log(data.result);
+  // console.log(data.result);
 
   return data.result;
 }
