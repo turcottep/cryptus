@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import s from "./header.module.scss";
 
+import BackButton from "./back_button/back_button"
+import ContextualMenuButton from "./contextual_menu_button/contextual_menu_button"
+import ContextualPageName from "./contextual_page_name/contextual_page_name"
+import ContextualUserName from "./contextual_username/contextual_username"
 
 export default function Header(props: { context: string }) {
   return (
@@ -31,27 +35,3 @@ function WhichLabel(props:{type: string}){
     return <ContextualPageName name=""/>;
   }
 }
-
-const BackButton = (props: { url: string }) => (
-  <a href={props.url} target="_blank" className={s.left_icon}>
-      <img src="icons/back_icon.png" />
-  </a>
-);
-
-const ContextualMenuButton = (props: { img: string; url: string }) => (
-  <a href={props.url} target="_blank" className={s.right_icon}>
-      <img src={props.img} />
-  </a>
-);
-
-const ContextualPageName = (props: { name: string }) => (
-  <div className={s.label}>
-      {props.name}
-  </div>
-);
-
-const ContextualUserName = (props: { name: string }) => (
-  <div className={s.label}>
-      {props.name}
-  </div>
-);
