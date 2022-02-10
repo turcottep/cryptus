@@ -1,0 +1,7 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+
+  font-size: v.$font-size-s;
+}

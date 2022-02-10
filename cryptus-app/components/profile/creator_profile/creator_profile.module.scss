@@ -1,0 +1,28 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.wallet { //Placeholder
+  height: 800px; //Just to see it scroll
+  margin-bottom: v.$footer-h;
+  width: 100%;
+
+  background-color: v.$text-color;
+  color: v.$bg-color;
+}
+
+.footer { //Placeholder
+  position: fixed;
+  bottom: 0;
+
+  width: min(100vw, v.$mobile);
+  height: v.$footer-h;
+
+  background-color: v.$bg-color;
+  color: v.$text-color;
+}
