@@ -29,9 +29,11 @@ export default function Home() {
       />
 
       <main>
+        {mock_nft.rarity_rank}
         <NFTDetails
           nft={mock_nft}
-          rank_props={{ position: 1677, total: 10000 }}
+          rank_props={{ position: mock_nft.rarity_rank, total: 2010858 }} // CryptoKitties (CK)
+          // rank_props={{ position: mock_nft.rarity_rank, total: 2010858 }}
         />
       </main>
     </div>

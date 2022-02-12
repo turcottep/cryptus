@@ -1,7 +1,11 @@
 import { IncomingMessage } from "http";
 import absoluteUrl from "next-absolute-url";
 
-export default async function getUserByUsername(username, withWallets, absoluteUrl = true) {
+export default async function getUserByUsername(
+  username,
+  withWallets,
+  absoluteUrl = true
+) {
   if (!username) {
     console.error("Username undefined");
     return null;
@@ -12,7 +16,7 @@ export default async function getUserByUsername(username, withWallets, absoluteU
     method: "POST",
     body: JSON.stringify({
       username: username,
-      withWallets: withWallets
+      withWallets: withWallets,
     }),
     headers: {
       "Content-Type": "application/json",

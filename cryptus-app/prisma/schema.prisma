@@ -40,6 +40,7 @@ model Nft {
 // model Collection {
 //   id          String  @id @default(uuid())
 //   name        String  @unique
+//   contract_address String @unique
 //   description String?
 //   Nft         Nft[]
 // }
