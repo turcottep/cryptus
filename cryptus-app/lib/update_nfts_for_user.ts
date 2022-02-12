@@ -84,8 +84,10 @@ export default async function updateNftsForUser(
     }
 
     // console.log(properties);
-    const nft_properties = JSON.stringify(properties);
+    // const nft_properties = JSON.stringify(properties);
+    const nft_properties = properties;
     let rarity_rank: number = 0;
+    // Implement something in case there is no trait
     if (properties.length > 0) {
       rarity_rank = properties[0].rarity * 2010863; //  CryptoKitties (CK)-- Algo is only based on it's rarest trait
     }
