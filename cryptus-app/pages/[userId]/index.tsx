@@ -49,8 +49,8 @@ export async function getServerSideProps(context) {
     };
 
     // //save to file sync
-    const file = `${process.cwd()}/public/${username}.json`;
-    fs.writeFileSync(file, JSON.stringify(returningProps));
+    // const file = `${process.cwd()}/public/${username}.json`;
+    // fs.writeFileSync(file, JSON.stringify(returningProps));
 
     return returningProps;
   } catch (err) {

@@ -110,26 +110,26 @@ export default async function updateNftsForUser(
   });
   //console.log("First NFT : ", nft_clean[0]);
 
-  // const base_url = absolute ? process.env.BASE_URL : "/";
-  // try {
-  //   const res = await fetch(base_url + "api/nfts/update", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       nfts: nft_clean,
-  //       username: username,
-  //       userId: userId,
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   if (res.status !== 200 && res.status !== 201) {
-  //     throw new Error("Error updating nfts for user");
-  //   }
-  // } catch (e) {
-  //   console.error("Erreur :", e);
-  //   return null;
-  // }
+  const base_url = absolute ? process.env.BASE_URL : "/";
+  try {
+    const res = await fetch(base_url + "api/nfts/update", {
+      method: "POST",
+      body: JSON.stringify({
+        nfts: nft_clean,
+        username: username,
+        userId: userId,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.status !== 200 && res.status !== 201) {
+      throw new Error("Error updating nfts for user");
+    }
+  } catch (e) {
+    console.error("Erreur :", e);
+    return null;
+  }
 
   return nft_clean;
 }
