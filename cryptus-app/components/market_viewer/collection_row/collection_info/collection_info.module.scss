@@ -2,77 +2,87 @@
 
 .container {
   display: flex;
-  position: sticky;
-  width: 100%;
-  height: v.$collection_height;
   flex: 1 1 auto;
   flex-direction: column;
   align-items: center;
   text-align: center;
+
+  width: 100%;
+  height: v.$collection_height;
+  position: sticky;
 }
 
 .first_row {
-  flex: 1 1 auto;
   display: flex;
+  flex: 1 1 auto;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
   text-align: left;
+
+  width: 100%;
   height: 66%;
-  width: 100%
 }
 
 .second_row {
-    flex: 1 1 auto;
     display: flex;
+    flex: 1 1 auto;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
     text-align: left;
+
+    width: 100%;
     height: 34%;
-    width: 100%
   }
 
 .logo {
-    flex: 1 1 auto;
     display: flex;
+    flex: 1 1 auto;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     text-align: left;
-    height: auto;
+
     max-width: 40%;
+    height: auto;
+    
     border-radius: 50%;
+
     overflow: hidden;
 }
 
 .ticker {
-    flex: 1 1 auto;
     display: flex;
+    flex: 1 1 auto;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
     text-align: left;
-    height: 100%;
+
     width: 60%;
+    height: 100%;
+    
     font-size: 150%;
-    font-weight: 400
+    font-weight: 400;
 }
 
 .name {
-    flex: 1 1 auto;
     display: flex;
+    flex: 1 1 auto;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: center;
     text-align: left;
-    height: 100%;
+
     width: 100%;
+    height: 100%;
+    
     font-size: 75%;
-    font-weight: 700
+    font-weight: 700;
 }

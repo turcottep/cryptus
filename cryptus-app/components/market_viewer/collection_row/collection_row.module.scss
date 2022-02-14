@@ -2,47 +2,51 @@
 
 .container {
   display: flex;
-  position: sticky;
-  width: 100%;
-  height: v.$collection_height;
   flex: 1 1 auto;
   flex-direction: row;
   align-items: center;
   text-align: center;
+
+  width: 100%;
+  height: v.$collection_height;
+  position: sticky;
 }
 
 .infos {
-  flex: 1 1 auto;
   display: flex;
+  flex: 1 1 auto;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
+
+  width: 35%;
   height: v.$collection_height;
-  width: 35%
 }
 
 .graph {
-    flex: 10 1 auto;
     display: flex;
+    flex: 10 1 auto;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     text-align: left;
-    height: v.$collection_height;
+
     width: 50%;
+    height: v.$collection_height;
 }
 
 .price {
-    flex: 1 1 auto;
     display: flex;
+    flex: 1 1 auto;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: center;
     text-align: right;
-    height: v.$collection_height;
+
     width: 25%;
+    height: v.$collection_height;
 }
