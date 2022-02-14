@@ -103,6 +103,7 @@ export default function Graph(props: {
 
         ticks: {
           // display: false,
+          z: 1,
           mirror: true,
           backdropPadding: 2,
           showLabelBackdrop: true,
