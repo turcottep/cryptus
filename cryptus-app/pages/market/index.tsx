@@ -4,38 +4,6 @@ import FeatureIamTesting from "../../components/template/pagetemplate/pagetempla
 import { data_raw } from "../../lib/data";
 
 export default function Home(props: { sale_prices: number[] }) {
-  //internal imports
-
-  // parse data from "0     18462 2022-01-31 15:40:26         3.98           ETH    2549.53  0x63950ef80536bce5b4f0942ada77a5eeef7368ee9842af49ebbc2b6383e2bdde      1643661626" to "tokenid,timestamp_raw,total_price payment_token,usd_price,transaction_hash,timestamp_unix"
-  // const data_clean = data_raw.split("\n").map((row) => {
-  //   const [
-  //     tx_id,
-  //     tokenid,
-  //     timestamp_day,
-  //     timestamp_time,
-  //     total_price,
-  //     payment_token,
-  //     usd_price,
-  //     transaction_hash,
-  //     timestamp_unix,
-  //   ] = row.split(/\s+/);
-  //   return {
-  //     tx_id,
-  //     tokenid,
-  //     timestamp_day,
-  //     timestamp_time,
-  //     total_price,
-  //     payment_token,
-  //     usd_price,
-  //     transaction_hash,
-  //     timestamp_unix,
-  //   };
-  // });
-
-  // const all_prices = data_clean.map((row) => {
-  //   return parseFloat(row.total_price);
-  // });
-
   const { sale_prices } = props;
 
   const mock_volume = sale_prices.map((row) => {
