@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
 import React from "react";
-import fs from "fs";
+// import fs from "fs";
 import Mosaic from "../../components/viewer/Mosaic";
 import NavbarProfile from "../../components/navbars/navbar_profile/navbar_profile";
 import Profile from "../../components/profile/profile";
@@ -10,8 +10,6 @@ import update_nfts_for_user from "../../lib/update_nfts_for_user";
 import get_nfts_for_user from "../../lib/get_nfts_for_user";
 import sortNftsIntoCollections from "../../lib/sort_nfts_into_collections";
 import { profile_props } from "../../lib/data_types";
-import getCollectionTokens from "../../lib/get_collection_token";
-import { props } from "cypress/types/bluebird";
 
 export default function post(props) {
   const router = useRouter();
@@ -58,9 +56,6 @@ export async function getServerSideProps(context) {
     console.error(err);
     console.log("respons = ", res);
     console.log("DEEZ");
-    // const tokens = getCollectionTokens(
-    //   "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"
-    // );
 
     return {
       props: { assets: null, user: user },
