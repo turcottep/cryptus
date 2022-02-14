@@ -62,7 +62,7 @@ export default function Home(props: { sale_prices: number[] }) {
         rel="stylesheet"
       />
 
-      <main className="h-40 w-full mx-auto">
+      <main>
         <Graph
           data_price={sale_prices}
           data_volume={mock_volume}
