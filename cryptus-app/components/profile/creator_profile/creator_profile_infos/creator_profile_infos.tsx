@@ -13,7 +13,7 @@ export default function CreatorProfileInfos(props: profile_props) {
     <div className={s.container}>
       <div className={s.row}>
         <ViewerProfilePicture />
-        <div className={s.edits}>  
+        <div className={s.edits}>
           <EditNftsButton />
           <EditProfileButton />
         </div>
