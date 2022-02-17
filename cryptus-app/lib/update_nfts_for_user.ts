@@ -41,10 +41,10 @@ export default async function updateNftsForUser(
   }
 
   let collection_tokens = [];
-  // Uncomment this section to generate the rarity rank
+  // Uncomment this section to generate the rarity rank for user.js mock file
   // for (const nft of nfts_raw) {
   //   const size = await GetCollectionTokens(nft.asset_contract.address);
-  //   // console.log("size", size);
+  //   console.log("size", size);
   //   // Etherscan only allow us to do 5 calls per seconds
   //   await new Promise((r) => setTimeout(r, 200));
   //   collection_tokens.push(size);
@@ -85,7 +85,8 @@ export default async function updateNftsForUser(
       image_url: nft.image_url,
       description: nft.description,
       collection: nft.collection.name,
-      collection_size: collection_size,
+      collection_size: 0,
+      collection_address: nft.asset_contract.address,
       token_id: nft.token_id,
       external_url: nft.permalink,
       last_sale_price: nft.last_sale ? nft.last_sale.price ?? 0 : 0,
@@ -98,42 +99,44 @@ export default async function updateNftsForUser(
     } as nft;
   });
 
-  // const nft_stringified = nft_clean.map((nft) => {
-  //   return (nft = {
-  //     traits: JSON.stringify(nft.properties),
-  //     user_id: userId,
-  //     collection: nft.collection,
-  //     last_sale_price: nft.last_sale_price,
-  //     last_sale_symbol: nft.last_sale_symbol,
-  //     rarity_rank: nft.rarity_rank,
-  //     image_url: nft.image_url,
-  //     external_url: nft.external_url,
-  //     description: nft.description,
-  //     name: nft.name,
-  //     token_id: nft.token_id,
-  //   });
-  // });
+  const nft_stringified = nft_clean.map((nft) => {
+    return (nft = {
+      properties: JSON.stringify(nft.properties),
+      user_id: userId,
+      collection: nft.collection,
+      collection_size: nft.collection_size,
+      collection_address: nft.collection_address,
+      last_sale_price: nft.last_sale_price,
+      last_sale_symbol: nft.last_sale_symbol,
+      rarity_rank: nft.rarity_rank,
+      image_url: nft.image_url,
+      external_url: nft.external_url,
+      description: nft.description,
+      name: nft.name,
+      token_id: nft.token_id,
+    });
+  });
 
-  // const base_url = absolute ? process.env.BASE_URL : "/";
-  // try {
-  //   const res = await fetch(base_url + "api/nfts/update", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       nfts: nft_stringified,
-  //       username: username,
-  //       userId: userId,
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   if (res.status !== 200 && res.status !== 201) {
-  //     throw new Error("Error updating nfts for user");
-  //   }
-  // } catch (e) {
-  //   console.error("Erreur :", e);
-  //   return null;
-  // }
+  const base_url = absolute ? process.env.BASE_URL : "/";
+  try {
+    const res = await fetch(base_url + "api/nfts/update", {
+      method: "POST",
+      body: JSON.stringify({
+        nfts: nft_stringified,
+        username: username,
+        userId: userId,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (res.status !== 200 && res.status !== 201) {
+      throw new Error("Error updating nfts for user");
+    }
+  } catch (e) {
+    console.error("Erreur :", e);
+    return null;
+  }
 
   return nft_clean;
 }
