@@ -7,6 +7,7 @@ export interface nft {
   last_sale_price: number;
   last_sale_symbol: string;
   collection: string;
+  collection_size: number;
   description: string;
 }
 

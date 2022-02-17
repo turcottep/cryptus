@@ -14,6 +14,7 @@ const props = {
           description:
             "G'day. My name is Couple 69 2/2. My favourite colour is green. I like to tell stories, which are often either lawful or vivacious. Are you a magician? Because whenever I look at you, everyone else disappears!",
           collection: "CryptoKitties",
+          collection_size: 2010927,
           token_id: "739367",
           external_url:
             "https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/739367",
@@ -24,67 +25,67 @@ const props = {
               name: "generation",
               value: 0,
               count: 36557,
-              rarity: 0.018179196141079355,
+              rarity: 0.018179178060665553,
             },
             {
               name: "pattern",
               value: "leopard",
               count: 65930,
-              rarity: 0.03278590698310479,
+              rarity: 0.03278587437535027,
             },
             {
               name: "cooldown_timer",
               value: "Catatonic (1 week)",
               count: 75674,
-              rarity: 0.03763143826845854,
+              rarity: 0.03763140084150245,
             },
             {
               name: "eye_shape",
               value: "chronic",
               count: 93145,
-              rarity: 0.046319479841366536,
+              rarity: 0.046319433773578056,
             },
             {
               name: "eye_colour",
               value: "thundergrey",
               count: 96833,
-              rarity: 0.048153461715379736,
+              rarity: 0.0481534138235749,
             },
             {
               name: "accent_colour",
               value: "sandalwood",
               count: 101193,
-              rarity: 0.050321618160796645,
+              rarity: 0.05032156811261672,
             },
             {
               name: "highlight_colour",
               value: "egyptiankohl",
               count: 104341,
-              rarity: 0.05188706689707473,
+              rarity: 0.051887015291952415,
             },
             {
               name: "mouth",
               value: "grim",
               count: 116805,
-              rarity: 0.05808520954287206,
+              rarity: 0.05808515177328665,
             },
             {
               name: "fur",
               value: "ragdoll",
               count: 173014,
-              rarity: 0.08603702276315627,
+              rarity: 0.08603693719364254,
             },
             {
               name: "base_colour",
               value: "greymatter",
               count: 189267,
-              rarity: 0.09411937292539503,
+              rarity: 0.09411927931744912,
             },
             {
               name: "virginity",
               value: "non-virgin",
-              count: 980291,
-              rarity: 0.48748262615463034,
+              count: 980293,
+              rarity: 0.4874831358870809,
             },
           ],
           rarity_rank: 235,
@@ -96,6 +97,7 @@ const props = {
           description:
             "Listen up! Savannah R1-R3, Sly R1 here. I'm here to enjoy licking doorknobs and kickboxing. When my owner isn't watching, I steal their mom jeans and hoard them in my litter box. I'm not sorry. Let's pawty!",
           collection: "CryptoKitties",
+          collection_size: 2010927,
           token_id: "492809",
           external_url:
             "https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/492809",
@@ -106,79 +108,79 @@ const props = {
               name: "secret",
               value: "se6",
               count: 13121,
-              rarity: 0.006524857963375064,
+              rarity: 0.0065248514739719545,
             },
             {
               name: "purrstige",
               value: "pu12",
               count: 19237,
-              rarity: 0.009566244390019518,
+              rarity: 0.009566234875756306,
             },
             {
               name: "generation",
               value: 0,
               count: 36557,
-              rarity: 0.018179196141079355,
+              rarity: 0.018179178060665553,
             },
             {
               name: "pattern",
               value: "spangled",
               count: 74400,
-              rarity: 0.036997898976839014,
+              rarity: 0.03699786217997968,
             },
             {
               name: "cooldown_timer",
               value: "Catatonic (1 week)",
               count: 75674,
-              rarity: 0.03763143826845854,
+              rarity: 0.03763140084150245,
             },
             {
               name: "eye_shape",
               value: "chronic",
               count: 93145,
-              rarity: 0.046319479841366536,
+              rarity: 0.046319433773578056,
             },
             {
               name: "eye_colour",
               value: "sapphire",
               count: 99039,
-              rarity: 0.049250469311386554,
+              rarity: 0.04925042032853505,
             },
             {
               name: "accent_colour",
               value: "icy",
               count: 111490,
-              rarity: 0.0554421472705347,
+              rarity: 0.05544209212964966,
             },
             {
               name: "fur",
               value: "selkirk",
               count: 125552,
-              rarity: 0.06243494909059264,
+              rarity: 0.06243488699490334,
             },
             {
               name: "base_colour",
               value: "mauveover",
               count: 146133,
-              rarity: 0.07266954262341957,
+              rarity: 0.07266947034874961,
             },
             {
               name: "highlight_colour",
               value: "coffee",
               count: 175517,
-              rarity: 0.08728172358491738,
+              rarity: 0.08728163677746631,
             },
             {
               name: "mouth",
               value: "soserious",
               count: 214676,
-              rarity: 0.10675485162300931,
+              rarity: 0.10675474544824352,
             },
             {
               name: "virginity",
               value: "non-virgin",
-              count: 980291,
-              rarity: 0.48748262615463034,
+              count: 980293,
+              rarity: 0.4874831358870809,
             },
           ],
           rarity_rank: 479,
@@ -190,6 +192,7 @@ const props = {
           description:
             "G'day. I am Cyborg+Springcrocus; Caffeine. I'm glad you've come. I can safely say that salsa is the greatest thing since sliced bread. Don't even try to convince me otherwise. I can't imagine being with any other breeder now that I've met you!",
           collection: "CryptoKitties",
+          collection_size: 2010927,
           token_id: "901479",
           external_url:
             "https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/901479",
@@ -200,79 +203,79 @@ const props = {
               name: "secret",
               value: "se14",
               count: 6867,
-              rarity: 0.0034148464015316335,
+              rarity: 0.0034148430052408666,
             },
             {
               name: "purrstige",
               value: "pu8",
               count: 18824,
-              rarity: 0.00936086626801099,
+              rarity: 0.009360856958009913,
             },
             {
               name: "generation",
               value: 0,
               count: 36557,
-              rarity: 0.018179196141079355,
+              rarity: 0.018179178060665553,
             },
             {
               name: "eye_colour",
               value: "olive",
               count: 42178,
-              rarity: 0.020974427191466614,
+              rarity: 0.020974406331010526,
             },
             {
               name: "base_colour",
               value: "brownies",
               count: 51182,
-              rarity: 0.02545196862140557,
+              rarity: 0.025451943307738173,
             },
             {
               name: "accent_colour",
               value: "frosting",
               count: 86540,
-              rarity: 0.04303492173999528,
+              rarity: 0.04303487893891723,
             },
             {
               name: "pattern",
               value: "rorschach",
               count: 90037,
-              rarity: 0.04477392244862439,
+              rarity: 0.04477387791799503,
             },
             {
               name: "eye_shape",
               value: "wonky",
               count: 92220,
-              rarity: 0.04585949252209804,
+              rarity: 0.04585944691179739,
             },
             {
               name: "cooldown_timer",
               value: "Swift (2 min)",
               count: 153623,
-              rarity: 0.07639419670052339,
+              rarity: 0.07639412072143842,
             },
             {
               name: "fur",
               value: "ragdoll",
               count: 173014,
-              rarity: 0.08603702276315627,
+              rarity: 0.08603693719364254,
             },
             {
               name: "highlight_colour",
               value: "coffee",
               count: 175517,
-              rarity: 0.08728172358491738,
+              rarity: 0.08728163677746631,
             },
             {
               name: "mouth",
               value: "pouty",
               count: 287247,
-              rarity: 0.1428432189166677,
+              rarity: 0.14284307684963204,
             },
             {
               name: "virginity",
               value: "non-virgin",
-              count: 980291,
-              rarity: 0.48748262615463034,
+              count: 980293,
+              rarity: 0.4874831358870809,
             },
           ],
           rarity_rank: 654,
@@ -292,6 +295,7 @@ const props = {
             "https://lh3.googleusercontent.com/lAEJYPMx83l-MoxDSBvPs1ME-XGJTp7YvqFHIhk1xezg2ysYz0WFUDgEj3yLrp1wNwNUvaFcuRzzB_pC31NImSVz",
           description: "#0521",
           collection: "BlockCities",
+          collection_size: 3232,
           token_id: "521",
           external_url:
             "https://opensea.io/assets/0x2f2d5aa0efdb9ca3c9bb789693d06bebea88792f/521",
@@ -426,6 +430,7 @@ const props = {
           description:
             'Purchasing 3 of “The Presentations" allows redemption of “The Message".',
           collection: "Justin Roiland",
+          collection_size: 575,
           token_id: "6300010166",
           external_url:
             "https://opensea.io/assets/0x43b557b1f923f1cb4ecd05ff3beac7b933bedb46/6300010166",
@@ -440,6 +445,7 @@ const props = {
             "https://lh3.googleusercontent.com/PdRUL4sekQqjt-csyjA-cdOPXBjn6HOqMPjqRWq05TYBsFN9vVbojcs-MiT1_JXrEhiG0dKIZi_kHA5Qm2t5PBUSrE2u3NfVtyLAii0",
           description: "Disobedient Reproduction by Justin Roiland",
           collection: "Justin Roiland",
+          collection_size: 575,
           token_id: "6300020073",
           external_url:
             "https://opensea.io/assets/0x43b557b1f923f1cb4ecd05ff3beac7b933bedb46/6300020073",
@@ -454,6 +460,7 @@ const props = {
             "https://lh3.googleusercontent.com/kuJ1kQ1MP13QXYiRIKwzNpzZg5eu_TaPgFCYf12xEZgSI0dTQRcYLXlckSCWh1fCTVxSgXMRIvoiJR226r9mODRj3-iuxPVvxKxw",
           description: "Identity by Justin Roiland",
           collection: "Justin Roiland",
+          collection_size: 1648,
           token_id: "31600050247",
           external_url:
             "https://opensea.io/assets/0xe628ef7988227e58ff93d9898706aa106aa5608c/31600050247",
@@ -468,6 +475,7 @@ const props = {
             "https://lh3.googleusercontent.com/kuJ1kQ1MP13QXYiRIKwzNpzZg5eu_TaPgFCYf12xEZgSI0dTQRcYLXlckSCWh1fCTVxSgXMRIvoiJR226r9mODRj3-iuxPVvxKxw",
           description: "Identity by Justin Roiland",
           collection: "Justin Roiland",
+          collection_size: 1648,
           token_id: "31600050289",
           external_url:
             "https://opensea.io/assets/0xe628ef7988227e58ff93d9898706aa106aa5608c/31600050289",
@@ -482,6 +490,7 @@ const props = {
             "https://lh3.googleusercontent.com/kuJ1kQ1MP13QXYiRIKwzNpzZg5eu_TaPgFCYf12xEZgSI0dTQRcYLXlckSCWh1fCTVxSgXMRIvoiJR226r9mODRj3-iuxPVvxKxw",
           description: "Identity by Justin Roiland",
           collection: "Justin Roiland",
+          collection_size: 1648,
           token_id: "31600050407",
           external_url:
             "https://opensea.io/assets/0xe628ef7988227e58ff93d9898706aa106aa5608c/31600050407",
@@ -496,6 +505,7 @@ const props = {
             "https://lh3.googleusercontent.com/TFCSJzzolDlOFa0-zOj9GlsYQ8_KmImlR3jRyCIXsgBV12yTEnWQjUR42UPatAnR51tIie6vE3JZZc3Zrl7-mkrKrakj8slQDmJy",
           description: "Dance or Die by Justin Roiland",
           collection: "Justin Roiland",
+          collection_size: null,
           token_id: "31600060114",
           external_url:
             "https://opensea.io/assets/0xe628ef7988227e58ff93d9898706aa106aa5608c/31600060114",
@@ -510,6 +520,7 @@ const props = {
             "https://lh3.googleusercontent.com/TFCSJzzolDlOFa0-zOj9GlsYQ8_KmImlR3jRyCIXsgBV12yTEnWQjUR42UPatAnR51tIie6vE3JZZc3Zrl7-mkrKrakj8slQDmJy",
           description: "Dance or Die by Justin Roiland",
           collection: "Justin Roiland",
+          collection_size: 1648,
           token_id: "31600060367",
           external_url:
             "https://opensea.io/assets/0xe628ef7988227e58ff93d9898706aa106aa5608c/31600060367",
@@ -524,6 +535,7 @@ const props = {
             "https://lh3.googleusercontent.com/f7Ox2rDAPeFoo50MuYL2dQgXjY9-NhtW3p-Rw_Ku_VecwYozqfDMHfV6UwuW5OVfAT1hnREG21Ub_vtzuodp1XhxhhGHYWz9A2lz",
           description: "The War on Drugs by Justin Roiland",
           collection: "Justin Roiland",
+          collection_size: 271,
           token_id: "24300020056",
           external_url:
             "https://opensea.io/assets/0xc8fc8647d48485f0d628bc692d72c89ee7581468/24300020056",
@@ -548,6 +560,7 @@ const props = {
           description:
             "The first 10 cards exist as a collection, and tell a story that has since been forgotten, unless you can track it down.",
           collection: "My Curio Cards",
+          collection_size: 0,
           token_id: "2",
           external_url:
             "https://opensea.io/assets/0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313/2",
@@ -578,6 +591,7 @@ const props = {
           description:
             "The first 10 cards exist as a collection, and tell a story that has since been forgotten, unless you can track it down.",
           collection: "My Curio Cards",
+          collection_size: 0,
           token_id: "3",
           external_url:
             "https://opensea.io/assets/0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313/3",
@@ -608,6 +622,7 @@ const props = {
           description:
             "The first 10 cards exist as a collection, and tell a story that has since been forgotten, unless you can track it down.",
           collection: "My Curio Cards",
+          collection_size: 0,
           token_id: "7",
           external_url:
             "https://opensea.io/assets/0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313/7",
@@ -638,6 +653,7 @@ const props = {
           description:
             "The first 10 cards exist as a collection, and tell a story that has since been forgotten, unless you can track it down.",
           collection: "My Curio Cards",
+          collection_size: 0,
           token_id: "8",
           external_url:
             "https://opensea.io/assets/0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313/8",
@@ -668,6 +684,7 @@ const props = {
           description:
             "The first 10 cards exist as a collection, and tell a story that has since been forgotten, unless you can track it down.",
           collection: "My Curio Cards",
+          collection_size: 0,
           token_id: "9",
           external_url:
             "https://opensea.io/assets/0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313/9",
@@ -698,6 +715,7 @@ const props = {
           description:
             "The first 10 cards exist as a collection, and tell a story that has since been forgotten, unless you can track it down.",
           collection: "My Curio Cards",
+          collection_size: 0,
           token_id: "10",
           external_url:
             "https://opensea.io/assets/0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313/10",
@@ -728,6 +746,7 @@ const props = {
           description:
             '"I used to put these logos on neighborhood ATMs. Repurposing banking materials has remained a theme in my work. I like the idea of using soon-to-be extinct items to help spread the new cryptocurrency movement." - Cryptograffiti',
           collection: "My Curio Cards",
+          collection_size: 0,
           token_id: "13",
           external_url:
             "https://opensea.io/assets/0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313/13",
@@ -758,6 +777,7 @@ const props = {
           description:
             "The MadBitcoins trading card. http://www.madbitcoins.com",
           collection: "My Curio Cards",
+          collection_size: null,
           token_id: "20",
           external_url:
             "https://opensea.io/assets/0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313/20",
@@ -796,6 +816,7 @@ const props = {
             "https://lh3.googleusercontent.com/R2zSiqgwR7E8YvplgrlWG2r2TbRFq5xVR_RxliQRjIxtcx_fsfzWosYyaJmQ4Dz20_S0DSND-v4NygLuq9y52Ctll13CII56Ya7cjw",
           description: null,
           collection: "SlayerX",
+          collection_size: 0,
           token_id:
             "88279797468235369682781292521181259564906166118782937754463684835653860720641",
           external_url:
@@ -823,6 +844,7 @@ const props = {
           description:
             "HashDemons is a collection of 6,666 NFTs Demons - unique digital collectibles living on the Ethereum blockchain.",
           collection: "HashDemons",
+          collection_size: 6666,
           token_id: "2697",
           external_url:
             "https://opensea.io/assets/0x032dd2a3c6d234aa9620d65eb618fcdc72be3dbb/2697",
@@ -901,6 +923,7 @@ const props = {
             "https://lh3.googleusercontent.com/qWz1FAnofwPb7MYGtR-_nQwG8Cmm6X4Bxr6zp6CCeMzhgS-YtXrSO443Z9uLO46AXN63Uy-XkcQnwqdjskBomw_jtWkZpyPJvbaVMg",
           description: null,
           collection: "DeadHeads",
+          collection_size: 10000,
           token_id: "1429",
           external_url:
             "https://opensea.io/assets/0x6fc355d4e0ee44b292e50878f49798ff755a5bbc/1429",
@@ -931,6 +954,7 @@ const props = {
             "https://lh3.googleusercontent.com/tyU3WX7vNZDVwEByXUptTavMFM1XYHde9iHYMxcYYOoWxJgHdDote0TqJTB6VEX6DZl7cEYYabBZRnmbLRywsFn5eln1RbCH3X8UFrE",
           description: null,
           collection: "DeadHeads",
+          collection_size: 10000,
           token_id: "3374",
           external_url:
             "https://opensea.io/assets/0x6fc355d4e0ee44b292e50878f49798ff755a5bbc/3374",
@@ -959,6 +983,7 @@ const props = {
             "https://lh3.googleusercontent.com/A5u8FSh79EihCYWi-c68oRa2-1kIzc32m_2Fh5T5O1arZpZwiSK-B509zwpFSIPY2hHvQjxApD8wcUOM7632nz7t1Dqt7UT40HsF",
           description: null,
           collection: "DeadHeads",
+          collection_size: 10000,
           token_id: "2659",
           external_url:
             "https://opensea.io/assets/0x6fc355d4e0ee44b292e50878f49798ff755a5bbc/2659",
@@ -1007,6 +1032,7 @@ const props = {
             "https://lh3.googleusercontent.com/6XQ6R_eimvW2aKotEP0QfXOxW6rnOwI2b_4dDLwEKTvW2w7b0hB4JHVCB3zV5gZcQYY4TMc79Pb54u_6ZkwXQVej3ZG0T88OUjZL0w",
           description: null,
           collection: "DeadHeads",
+          collection_size: 10000,
           token_id: "1185",
           external_url:
             "https://opensea.io/assets/0x6fc355d4e0ee44b292e50878f49798ff755a5bbc/1185",
@@ -1063,6 +1089,7 @@ const props = {
           description:
             "Cryptinies is a collection of 10.000 unique digital collectibles living on the Ethereum blockchain. Cryptinies have more than 180 differentiable properties.",
           collection: "Cryptinies",
+          collection_size: 1615,
           token_id: "366",
           external_url:
             "https://opensea.io/assets/0xcd223812722faf45848a431a6e0387de7ffbc2b2/366",
@@ -1121,6 +1148,7 @@ const props = {
           description:
             "Cryptinies is a collection of 10.000 unique digital collectibles living on the Ethereum blockchain. Cryptinies have more than 180 differentiable properties.",
           collection: "Cryptinies",
+          collection_size: 1615,
           token_id: "367",
           external_url:
             "https://opensea.io/assets/0xcd223812722faf45848a431a6e0387de7ffbc2b2/367",
@@ -1179,6 +1207,7 @@ const props = {
           description:
             "Cryptinies is a collection of 10.000 unique digital collectibles living on the Ethereum blockchain. Cryptinies have more than 180 differentiable properties.",
           collection: "Cryptinies",
+          collection_size: 1615,
           token_id: "365",
           external_url:
             "https://opensea.io/assets/0xcd223812722faf45848a431a6e0387de7ffbc2b2/365",
@@ -1243,6 +1272,7 @@ const props = {
           description:
             "Cryptinies is a collection of 10.000 unique digital collectibles living on the Ethereum blockchain. Cryptinies have more than 180 differentiable properties.",
           collection: "Cryptinies",
+          collection_size: 1615,
           token_id: "368",
           external_url:
             "https://opensea.io/assets/0xcd223812722faf45848a431a6e0387de7ffbc2b2/368",
@@ -1307,6 +1337,7 @@ const props = {
           description:
             "Cryptinies is a collection of 10.000 unique digital collectibles living on the Ethereum blockchain. Cryptinies have more than 180 differentiable properties.",
           collection: "Cryptinies",
+          collection_size: 1615,
           token_id: "364",
           external_url:
             "https://opensea.io/assets/0xcd223812722faf45848a431a6e0387de7ffbc2b2/364",
@@ -1386,6 +1417,7 @@ const props = {
           description:
             "Perhaps the most enigmatic breed, IRONLUNG whelps are a result of untamed magicks and science meeting. Not much is known about their abilities or origins and even their personalities tend to be a well-guarded secret.",
           collection: "[LEGACY EDITION] Whelps",
+          collection_size: 7777,
           token_id: "2613",
           external_url:
             "https://opensea.io/assets/0xa8934086a260f8ece9166296967d18bd9c8474a5/2613",
@@ -1452,6 +1484,7 @@ const props = {
             "https://lh3.googleusercontent.com/c25NbWli3FZ2Z8lYa6xUkf1EbGpYuFOOm6X5fgLGstu1-BgBQZADd1kiUP7bLJ4W2d56gn5sC8_TlH5cAHbPc2qntn4Bs48z321spec",
           description: "1/1 — !nside the m!nd @sampoirier_",
           collection: "INDIEN",
+          collection_size: 0,
           token_id:
             "6167975107832852629549537813651082149587724395079060636444187256100982095873",
           external_url:
@@ -1467,6 +1500,7 @@ const props = {
             "https://lh3.googleusercontent.com/QpHxfPzxyAkN1SaZiecpmnDC2kzTdU3tqj_u9mlEm2vyGKnP94UeNzNHI_Gr0N-s3QILLZzpQ8tURnWYjv-tjxGQDi5d23nCRDErPLc",
           description: "1/1 — !nside the m!nd @sampoirier_",
           collection: "INDIEN",
+          collection_size: 0,
           token_id:
             "6167975107832852629549537813651082149587724395079060636444187257200493723649",
           external_url:
@@ -1482,6 +1516,7 @@ const props = {
             "https://lh3.googleusercontent.com/NQVePltX5LS8djMDfPpS8MgkW8G94skLfd8Qzd5ozqgHeorQobnS_loTpBm6sLUqBWB6ZJ7vKVwmghS1rZ7EK-StDSHGMgsmXGUtPg",
           description: "1/1 — !nside the m!nd @sampoirier_",
           collection: "INDIEN",
+          collection_size: 0,
           token_id:
             "6167975107832852629549537813651082149587724395079060636444187258300005351425",
           external_url:
@@ -1498,6 +1533,7 @@ const props = {
           description:
             "1/1 — !nside the m!nd @sampoirier_\nRacists and rapists are the whackest people to ever be born, it’s time to shut them up",
           collection: "INDIEN",
+          collection_size: 0,
           token_id:
             "6167975107832852629549537813651082149587724395079060636444187259399516979201",
           external_url:
@@ -1514,6 +1550,7 @@ const props = {
           description:
             "1/1 — !nside the m!nd @sampoirier_ \nPart of the INDIEN collection",
           collection: "INDIEN",
+          collection_size: 0,
           token_id:
             "6167975107832852629549537813651082149587724395079060636444187260499028606977",
           external_url:
@@ -1538,6 +1575,7 @@ const props = {
             "https://lh3.googleusercontent.com/JNvblqyDugXzgCb67HMS-FOLdx_0Pwljp65ziCz2uAOuKdUApXH4SFgvu-RsPQFZv1aclq5gTEEc571OuYcXXbKCE-o0eifV4A62Pmk",
           description: "Stay Dizzy.",
           collection: "Dizzy Dragons",
+          collection_size: 5593,
           token_id: "3227",
           external_url:
             "https://opensea.io/assets/0x882a47e6070aca3f38ce6929501f4787803a072b/3227",
@@ -1605,6 +1643,7 @@ const props = {
           description:
             "'Orthogone' is a succession of main colored rectangles, echoed with white - sometimes black - rectangles. You may guess buildings or squared ricochets, and sense the underlying rhythm.",
           collection: "Orthogone by Pandelune",
+          collection_size: 153384,
           token_id: "88000689",
           external_url:
             "https://opensea.io/assets/0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270/88000689",
@@ -1617,25 +1656,25 @@ const props = {
               name: "color scheme",
               value: "analogic",
               count: 190,
-              rarity: 0.0012387291942392573,
+              rarity: 0.0012387211182391905,
             },
             {
               name: "color variation",
               value: "soft",
               count: 265,
-              rarity: 0.001727701244596859,
+              rarity: 0.0017276899807020288,
             },
             {
               name: "density",
               value: "low",
               count: 520,
-              rarity: 0.0033902062158127043,
+              rarity: 0.0033901841130756795,
             },
             {
               name: "luck",
               value: "normal",
               count: 679,
-              rarity: 0.004426826962570819,
+              rarity: 0.004426798101496897,
             },
           ],
           rarity_rank: null,
@@ -1655,6 +1694,7 @@ const props = {
             "https://lh3.googleusercontent.com/aJwE0xO9RfWgH1DKy7x1gRdwIqOaJJA0JIxXFcKaDRfvWEN5P2Ukw1vq1zPEUPZ_ydKLXNp8fMdJbE2GRMc7ILaJtrSqP8v42UtTZ9I",
           description: "In celebration of EIP-1559.",
           collection: "LONDON GIFT by POB",
+          collection_size: 0,
           token_id: "409",
           external_url:
             "https://opensea.io/assets/0x7645eec8bb51862a5aa855c40971b2877dae81af/409",
@@ -1687,6 +1727,7 @@ const props = {
           description:
             "Move over avatars we are making equine stars. This provocative generative art project spotlights the existential dread of our majestic friends and paves way for the dark comedy series The Glue Factory!",
           collection: "Glue Factory Show",
+          collection_size: 10000,
           token_id: "1164",
           external_url:
             "https://opensea.io/assets/0x15c2b137e59620552bd0d712fe7279cf1f47468d/1164",
@@ -1733,6 +1774,7 @@ const props = {
           description:
             "its an endless journey that only the mindless can endure ",
           collection: "SPACEMONKEY WORLD",
+          collection_size: 0,
           token_id:
             "27924270281123581347558680145632188646237271278990638796002432327768193630218",
           external_url:
@@ -1757,6 +1799,7 @@ const props = {
             "https://lh3.googleusercontent.com/pxTtRgsNVddTkBGt1yQLDXkq7wF4bHPSPDvxwyLtT0mSwU2jH8c3V5TXPQTza37G7QaFmoeQCWA6m9sbznBWsucIXOm0BDnZC8qdWg",
           description: "Nft image #2792",
           collection: "Art Stars Club Official",
+          collection_size: 3853,
           token_id: "2792",
           external_url:
             "https://opensea.io/assets/0xc00d444eed049ad0d858a4a8d6cac5417054405d/2792",
@@ -1826,6 +1869,7 @@ const props = {
             "https://lh3.googleusercontent.com/0VDDA_EorfBgUl-0yXHXol3tjNTXJOQ7MAemJneNljngBzIv-sXqnYgE2wDUfIWbtlxaJARXkgm3dPdwoR01jgAr9Umie-gZm4nX6Q",
           description: "Nft image #2798",
           collection: "Art Stars Club Official",
+          collection_size: 3853,
           token_id: "2798",
           external_url:
             "https://opensea.io/assets/0xc00d444eed049ad0d858a4a8d6cac5417054405d/2798",
@@ -1895,6 +1939,7 @@ const props = {
             "https://lh3.googleusercontent.com/3w85pQuyI17tB4J63YahMHXGSs3jLYElOhg7GFmzSA1X8gDoY6HgMWgg6caFuQWbPi7wojd4TGCvXA1CJjTso1XznoULcxVjR27fwJo",
           description: "Nft image #2793",
           collection: "Art Stars Club Official",
+          collection_size: 3853,
           token_id: "2793",
           external_url:
             "https://opensea.io/assets/0xc00d444eed049ad0d858a4a8d6cac5417054405d/2793",
@@ -1970,6 +2015,7 @@ const props = {
             "https://lh3.googleusercontent.com/lCdmd01z6FApvfevgm8wa8erntvqOs7OFv-ZXF1-33EGhXEcoFfMgoWGkoQsESJrPhmwj-cXXOqMo28OmmX2J3BO5XsWw3X7F_6y_g",
           description: "Nft image #2786",
           collection: "Art Stars Club Official",
+          collection_size: 3853,
           token_id: "2786",
           external_url:
             "https://opensea.io/assets/0xc00d444eed049ad0d858a4a8d6cac5417054405d/2786",
@@ -2045,6 +2091,7 @@ const props = {
             "https://lh3.googleusercontent.com/xQAYJYJf4MZ0Num7HQcPtCXs7fyX9DjX1VcLRajfuuYlifSbd6rBwgNwesu8M8J2PuoMM6MMyreA7IR9LG0Gqlv_O1AWLkg2LD6BCQ",
           description: "Nft image #2787",
           collection: "Art Stars Club Official",
+          collection_size: 3853,
           token_id: "2787",
           external_url:
             "https://opensea.io/assets/0xc00d444eed049ad0d858a4a8d6cac5417054405d/2787",
@@ -2114,6 +2161,7 @@ const props = {
             "https://lh3.googleusercontent.com/iNN8Sjc5R7z6AaukgtKxkm1koaGPn0UAPy7L5dJQZ_Ihns79ypqMgtMdL0NHbF8TYyQxccs4AMvGCHYKL0cMrOdOlPGf1yRIuLWfrg",
           description: "Nft image #2791",
           collection: "Art Stars Club Official",
+          collection_size: 3853,
           token_id: "2791",
           external_url:
             "https://opensea.io/assets/0xc00d444eed049ad0d858a4a8d6cac5417054405d/2791",
@@ -2198,6 +2246,7 @@ const props = {
             "https://lh3.googleusercontent.com/bbTFS4Gtha3_i8IZBmVT0hOZqcvJfoDekKyeTx3JHgUAF9EkswyYHNCTCS-CqTeevW2NKlPM9d7y8F2a2_MkdFZklW6i0dOpg_JODA",
           description: null,
           collection: "DeadTickets",
+          collection_size: 5461,
           token_id: "1429",
           external_url:
             "https://opensea.io/assets/0x78f28143902e9346526933e3c2eda2662d1cd1f7/1429",
@@ -2219,6 +2268,7 @@ const props = {
             "https://lh3.googleusercontent.com/9kEjwP8R40N9KYvUoGECG8VRjJxWXHEC_enRKVRy4kRsmu88JERHP6reANFEVU3Yd39Sp5ujYTznv6OtvpjZzwCmd54LLHyL-3O0klw",
           description: null,
           collection: "DeadTickets",
+          collection_size: 5461,
           token_id: "2659",
           external_url:
             "https://opensea.io/assets/0x78f28143902e9346526933e3c2eda2662d1cd1f7/2659",

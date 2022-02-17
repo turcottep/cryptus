@@ -41,24 +41,25 @@ export default async function updateNftsForUser(
   }
 
   let collection_tokens = [];
-  for (const nft of nfts_raw) {
-    const size = await GetCollectionTokens(nft.asset_contract.address);
-    console.log("size", size);
-    // Etherscan only allow us to do 5 calls per seconds
-    await new Promise((r) => setTimeout(r, 200));
-    collection_tokens.push(size);
-  }
-  console.log("traits = ", nfts_raw[0]);
+  // Uncomment this section to generate the rarity rank
+  // for (const nft of nfts_raw) {
+  //   const size = await GetCollectionTokens(nft.asset_contract.address);
+  //   // console.log("size", size);
+  //   // Etherscan only allow us to do 5 calls per seconds
+  //   await new Promise((r) => setTimeout(r, 200));
+  //   collection_tokens.push(size);
+  // }
+  // console.log("traits = ", nfts_raw[0]);
   const nft_clean = nfts_raw.map((nft, index: number) => {
     // Sort properties here
     let rarity_rank: any = 0;
     let traits_sorted = [];
+    const collection_size = parseInt(collection_tokens[index]);
     if (nft.traits.length > 0) {
       const traits = nft.traits.map((trait) => {
         let rarity = 0;
-        if (parseInt(collection_tokens[index].result) > 0) {
-          rarity =
-            trait.trait_count / parseInt(collection_tokens[index].result);
+        if (collection_size > 0) {
+          rarity = trait.trait_count / collection_size;
         }
         return {
           name: trait.trait_type,
@@ -84,6 +85,7 @@ export default async function updateNftsForUser(
       image_url: nft.image_url,
       description: nft.description,
       collection: nft.collection.name,
+      collection_size: collection_size,
       token_id: nft.token_id,
       external_url: nft.permalink,
       last_sale_price: nft.last_sale ? nft.last_sale.price ?? 0 : 0,

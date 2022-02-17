@@ -3,10 +3,13 @@ import FeatureIamTesting from "../components/template/pagetemplate/pagetemplate"
 import NFTDetails from "../components/wallet_viewer/nft_details/nft_details";
 import { nft, profile_props } from "../lib/data_types";
 import get_mock_props from "../lib/get_mock_props";
+import GetCollectionTokens from "../lib/get_collection_token";
 
 export default function Home() {
   const mock_props = get_mock_props() as profile_props;
   const mock_nft = mock_props.collections[0].nfts[0];
+
+  // const size = await GetCollectionTokens(nft.asset_contract.address);
 
   return (
     <div className="">
@@ -32,7 +35,10 @@ export default function Home() {
         {mock_nft.rarity_rank}
         <NFTDetails
           nft={mock_nft}
-          rank_props={{ position: mock_nft.rarity_rank, total: 2010858 }} // CryptoKitties (CK)
+          rank_props={{
+            position: mock_nft.rarity_rank,
+            total: mock_nft.collection_size,
+          }} // CryptoKitties (CK)
           // rank_props={{ position: mock_nft.rarity_rank, total: 2010858 }}
         />
       </main>
