@@ -3,15 +3,10 @@ import s from "./collection_viewer.module.scss";
 
 import NftBlock from "./nft_block/nft_block"
 
-//Need to add prop for collection
-export default function CollectionViewer() {
-  const collection = [
-    {name: "CryptoPunk #9998", nft:"images/cryptopunk.png", id:"1"},
-    {name: "CryptoPunk #9998", nft:"images/cryptopunk.png", id:"2"},
-    {name: "CryptoPunk #9998", nft:"images/cryptopunk.png", id:"3"},
-    {name: "CryptoPunk #9998", nft:"images/cryptopunk.png", id:"4"},
-    {name: "CryptoPunk #9998", nft:"images/cryptopunk.png", id:"5"},
-  ];
+import { nft } from "../collection_details";
+
+export default function CollectionViewer(props: { collection: nft[] }) {
+  const {collection} = props
   return (
     <div className={s.container}>
       {collection.map(({ name, nft, id }) => (

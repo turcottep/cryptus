@@ -4,12 +4,8 @@ import s from "./nft_block.module.scss";
 export default function NftBlock(props: { name: string; nft: string }) {
   return (
     <div className={s.container}>
-      <div className={s.none}>
-        <NftPictureBlockInCollection url= "login" nft= {props.nft}/>
-      </div>
-      <div className={s.none}>
+        <NftPictureBlockInCollection url="login" nft={props.nft}/>
         <NftBlockName name={props.name} />
-      </div>
     </div>
   );
 }

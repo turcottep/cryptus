@@ -4,12 +4,8 @@ import s from "./collection_infos.module.scss";
 export default function CollectionInfos(props: { name: string; number: number }) {
   return (
     <div className={s.container}>
-      <div className={s.name}>
-        <CollectionName name={props.name}/>
-      </div>
-      <div className={s.number}>
-        <OwnedNftsFromCollectionNumber number={props.number} />
-      </div>
+      <CollectionName name={props.name}/>
+      <OwnedNftsFromCollectionNumber number={props.number} />
       <div className={s.empty}></div>
     </div>
   );
