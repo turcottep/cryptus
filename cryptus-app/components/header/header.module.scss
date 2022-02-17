@@ -2,94 +2,47 @@
 
 .container {
   display: flex;
-  position: sticky;
-  width: 100%;
-  top: 0;
-  flex: 0 0 v.$header-h;
-  z-index: 100;
-  padding-left: 4px;
-  padding-right: 4px;
-  background-image: linear-gradient(
-    rgba($color: v.$bg-color, $alpha: 1),
-    rgba($color: v.$bg-color, $alpha: 0)
-  );
+  flex: 1 1 auto;
   flex-direction: row;
   align-items: center;
   text-align: center;
-}
 
-.home {
-  flex: 1 1 175px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 16px;
-  padding-left: 8px;
+  position: sticky;
+  top: 0px;
+  z-index: 100;
+
+  width: 100%;
   height: v.$header-h;
 }
 
 .title {
-  flex: 0 1 auto;
-
   display: flex;
-
-  height: 100%;
-  font-size: 30px;
-  font-weight: 700;
-  text-align: center;
-  align-items: center;
-}
-
-.title:hover {
-  //color: red;
-  opacity: 0.5;
-}
-
-.tabs {
-  flex: 4 1 auto;
-  display: flex;
+  flex: 1 1 auto;
   flex-direction: row;
-  align-items: center;
+  flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
+  text-align: center;
 
-  @media (max-width: v.$mobile) {
-    display: none;
-  }
+  height: v.$header-h;
 }
 
-.icons {
-  flex: 1 1 175px;
+.back_icon {
   display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  height: v.$header-h;
+}
+
+.menu_icon {
+  display: flex;
+  flex: 1 1 auto;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  gap: 16px;
-  padding-right: 32px;
-  z-index: 100;
-
-  @media (max-width: v.$mobile) {
-    padding-right: 8px;
-  }
-}
-
-.icon {
-  flex: 0 1 auto;
-
-  display: flex;
-  width: 24px;
-}
-.icon:hover {
-  opacity: 0.5;
-}
-
-.tab {
-  flex: 0 1 auto;
-  margin: 0 32px;
-  text-align: center;
-}
-.tab:hover {
-  //color: red;
-  opacity: 0.5;
+  
+  height: v.$header-h;
 }
