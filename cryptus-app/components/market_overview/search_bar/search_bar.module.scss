@@ -1,0 +1,34 @@
+@use "/styles/variables" as v;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+.container {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 24px;
+  background: #ebe7e3;
+}
+.magnifier {
+  color: v.$header-color;
+  padding: 4px;
+  width: v.$font-size-l;
+}
+
+.searchButton {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  height: v.$font-size-l;
+  text-align: center;
+  cursor: pointer;
+  font-size: v.$font-size-m;
+}
+
+.searchTerm {
+  background-color: rgba(0, 0, 0, 0);
+  border-right: none;
+  padding: v.$border-radius-m;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}

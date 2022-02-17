@@ -1,0 +1,10 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+  color: v.$header-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: v.$bg-color;
+}
