@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
 import React from "react";
-// import fs from "fs";
+import fs from "fs";
 import Mosaic from "../../components/viewer/Mosaic";
 import NavbarProfile from "../../components/navbars/navbar_profile/navbar_profile";
 import Profile from "../../components/profile/profile";
@@ -47,8 +47,8 @@ export async function getServerSideProps(context) {
     };
 
     // //save to file sync
-    // const file = `${process.cwd()}/public/${username}.json`;
-    // fs.writeFileSync(file, JSON.stringify(returningProps));
+    const file = `${process.cwd()}/public/${username}.json`;
+    fs.writeFileSync(file, JSON.stringify(returningProps));
 
     return returningProps;
   } catch (err) {

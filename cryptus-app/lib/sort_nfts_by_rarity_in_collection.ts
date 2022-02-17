@@ -11,7 +11,7 @@ export default function sortNFTsByRarityInCollection(
       external_url: collection.external_url,
       market_cap: collection.market_cap,
       nfts: collection.nfts.sort((a, b) => {
-        return b.rarity_rank - a.rarity_rank;
+        return a.rarity_rank - b.rarity_rank;
       }),
     };
   });
