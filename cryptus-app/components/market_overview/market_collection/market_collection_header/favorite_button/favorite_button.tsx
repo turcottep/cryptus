@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./favorite_button.module.scss";
 
-export default function FavoriteButton(props) {
+export default function FavoriteButton() {
   return (
-    <div className={s.container}>
-        <button></button>
-    </div>
+    <a href="login" target="_blank" className={s.icon}>
+      <img src="icons/favorite_icon.png" />
+    </a>
   );
 }

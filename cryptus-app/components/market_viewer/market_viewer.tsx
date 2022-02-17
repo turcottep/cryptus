@@ -13,6 +13,7 @@ export type collection = {
   floor_price: number;
   floor_price_delta: number;
   data_price: number[];
+  timestamp: string;
 };
 
 export default function MarketViewer(props: { collections: collection[] }) {

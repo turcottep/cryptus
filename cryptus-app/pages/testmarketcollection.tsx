@@ -1,16 +1,18 @@
 import React from "react";
 import FeatureIamTesting from "../components/template/pagetemplate/pagetemplate";
 import MarketCollection from "../components/market_overview/market_collection/market_collection";
+import { collection } from "../components/market_viewer/market_viewer";
 
 export default function Home() {
-  const mock_props = {
-    collection_name:'Bored Ape Yacht Club',
-    collection_logo:'./images/bayc-logo.png',
-    collection_ticker:'BAYC',
-    floor_price_live:80.69,
-    floor_price_delta:2.4,
-    floor_price_timestamp:"Friday"
-  }
+  const mock_props: collection = {
+    id: "1",
+    logo: "./images/BAYC.png",
+    ticker: "BAYC",
+    name: "Bored Ape Yacht Club",
+    floor_price: 164285 / 3130.43,
+    floor_price_delta: 6900 / 3130.43,
+    timestamp: "Friday"
+  };
 
   return (
     <div className="">
