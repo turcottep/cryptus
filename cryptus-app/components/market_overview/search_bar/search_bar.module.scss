@@ -1,0 +1,34 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.container {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 16px;
+  background: #ebe7e3;
+}
+.magnifier {
+  color: #a9a6a3;
+  padding: 4px;
+  width: 32px;
+}
+
+.searchButton {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  height: 36px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.searchTerm {
+  background-color: rgba(0, 0, 0, 0);
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
