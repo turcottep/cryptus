@@ -9,9 +9,13 @@ import NotificationBell from "./notification_bell/notification_bell"
 export default function MarketCollectionHeader(props) {
   return (
     <div className={s.container}>
-      <FavoriteButton/>
-      <NotificationBell/>
-      {/* <ContextualXButton/> */}
+      <div className={s.left_container}>
+        <FavoriteButton/>
+        <NotificationBell/>
+      </div>
+      <div className={s.right_container}>
+        {/* <ContextualXButton/> */}
+      </div>
     </div>
   );
 }

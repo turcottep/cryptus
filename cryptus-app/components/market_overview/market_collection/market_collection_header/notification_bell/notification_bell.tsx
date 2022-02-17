@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./notification_bell.module.scss";
 
-
-export default function NotificationBell(props) {
+export default function NotificationBell() {
   return (
-    <div className={s.container}>
-    </div>
+    <a href="login" target="_blank" className={s.icon}>
+      <img src="icons/notification_bell.png" />
+    </a>
   );
 }
