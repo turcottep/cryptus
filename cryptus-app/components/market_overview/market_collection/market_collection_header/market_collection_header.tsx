@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import s from "./market_collection_header.module.scss";
 
-//import ContextualXButton from "../../../header/contextual_x_button/contextual_x_button"
+import ContextualXButton from "../../../header/contextual_x_button/contextual_x_button"
 import FavoriteButton from "./favorite_button/favorite_button"
 import NotificationBell from "./notification_bell/notification_bell"
 
@@ -14,7 +14,7 @@ export default function MarketCollectionHeader(props) {
         <NotificationBell/>
       </div>
       <div className={s.right_container}>
-        {/* <ContextualXButton/> */}
+        <ContextualXButton {...props}/>
       </div>
     </div>
   );
