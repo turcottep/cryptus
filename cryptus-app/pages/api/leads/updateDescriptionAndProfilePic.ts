@@ -10,6 +10,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
             },
             data: {
                 description: req.body.description,
+
             }
         })
 
