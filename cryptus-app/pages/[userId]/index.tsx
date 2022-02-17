@@ -11,6 +11,9 @@ import get_nfts_for_user from "../../lib/get_nfts_for_user";
 import sortNftsIntoCollections from "../../lib/sort_nfts_into_collections";
 import { profile_props } from "../../lib/data_types";
 
+import Profile_wallet_viewer from "../../components/wallet_viewer/profile_wallet_viewer/profile_wallet_viewer"
+import { nft } from "../../lib/data_types"
+
 export default function post(props) {
   const router = useRouter();
   const { userId } = router.query;
