@@ -13,10 +13,11 @@
 }
 
 .ticker {
-    font-size: x-large;
+    font-size: v.$font-size-l;
     font-weight: bold;
 }
 
 .name {
-    font-size: large;
+    font-size: v.$font-size-s;
+    font-weight: bold;
 }

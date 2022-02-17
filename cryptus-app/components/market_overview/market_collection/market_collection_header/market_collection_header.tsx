@@ -6,7 +6,7 @@ import FavoriteButton from "./favorite_button/favorite_button"
 import NotificationBell from "./notification_bell/notification_bell"
 
 
-export default function MarketCollectionHeader(props) {
+export default function MarketCollectionHeader() {
   return (
     <div className={s.container}>
       <div className={s.left_container}>
@@ -14,7 +14,7 @@ export default function MarketCollectionHeader(props) {
         <NotificationBell/>
       </div>
       <div className={s.right_container}>
-        <ContextualXButton {...props}/>
+        <ContextualXButton/>
       </div>
     </div>
   );

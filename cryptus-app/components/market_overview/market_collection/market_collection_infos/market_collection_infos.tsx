@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import s from "./market_collection_infos.module.scss";
 
 
-
 export default function MarketCollectionInfos(props: {collection_logo:string, collection_ticker:string, collection_name:string}) {
   return (
     <div className={s.container}>

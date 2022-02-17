@@ -6,8 +6,8 @@
 
 .priceLive {
     display:inline-block;
-    font-size: xx-large;
-    font-weight: 900;
+    font-size: v.$font-size-xl;
+    font-weight: v.$collection-prices-font-weight;
     color: black;
 
     flex-direction: row;
@@ -16,5 +16,11 @@
 .currency {
     white-space: pre;
     display: inline-block;
-    font-size: x-large;
+    font-size: v.$font-size-m;
+}
+
+.delta {
+    font-size: v.$font-size-m;
+    font-weight: v.$collection-prices-font-weight;
+    flex-direction: row;
 }

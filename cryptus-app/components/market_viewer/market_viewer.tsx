@@ -11,6 +11,7 @@ export type collection = {
   name: string;
   floor_price: number;
   floor_price_delta: number;
+  timestamp: string;
 };
 
 const BAYC: collection = {
@@ -20,6 +21,7 @@ const BAYC: collection = {
   name: "Bored Ape Yacht Club",
   floor_price: 164285 / 3130.43,
   floor_price_delta: 6900 / 3130.43,
+  timestamp: "Friday"
 };
 
 const PUNK: collection = {
@@ -29,6 +31,7 @@ const PUNK: collection = {
   name: "CryptoPunks",
   floor_price: 164285 / 3130.43,
   floor_price_delta: -6900 / 3130.43,
+  timestamp: "Friday"
 };
 
 const BAYC2: collection = {
@@ -38,6 +41,7 @@ const BAYC2: collection = {
   name: "Bored Ape Yacht Club",
   floor_price: 164285 / 3130.43,
   floor_price_delta: 6900 / 3130.43,
+  timestamp: "Friday"
 };
 
 const PUNK2: collection = {
@@ -47,6 +51,7 @@ const PUNK2: collection = {
   name: "CryptoPunks",
   floor_price: 164285 / 3130.43,
   floor_price_delta: -6900 / 3130.43,
+  timestamp: "Friday"
 };
 
 export default function MarketViewer() {
