@@ -6,9 +6,18 @@
   flex-direction: row;
   align-items: center;
   text-align: center;
-
+  padding: 8px 8px;
   width: 100%;
-  height: v.$collection_height;
-  position: sticky;
 }
 
+.anchor {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: v.$border-radius-l;
+}
+
+.anchor:hover {
+  background-color: v.$secondary-color-pale;
+}

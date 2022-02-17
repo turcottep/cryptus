@@ -1,5 +1,6 @@
 import React from "react";
 import Graph from "../../components/graph/graph";
+import MarketCollection from "../../components/market_overview/market_collection/market_collection";
 import FeatureIamTesting from "../../components/template/pagetemplate/pagetemplate";
 import { data_raw } from "../../lib/data";
 
@@ -63,19 +64,25 @@ export default function Home(props: { sale_prices: number[] }) {
       />
 
       <main>
-        <Graph
-          data_price={sale_prices}
-          data_volume={mock_volume}
-          detailled={true}
-        />
+        <MarketCollection {...props} />
       </main>
     </div>
   );
 }
 
 export async function getServerSideProps(context) {
-  const address = context.query.address;
+  const address =
+    context.query.address ?? "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
   console.log("address", address);
+
+  const summary_props_mock = {
+    collection_name: "Bored Ape Yacht Club",
+    collection_logo: "./images/bayc-logo.png",
+    collection_ticker: "BAYC",
+    floor_price_live: 80.69,
+    floor_price_delta: 2.4,
+    floor_price_timestamp: "Friday",
+  };
 
   try {
     const res = await fetch(process.env.BASE_URL + "api/sales/", {
@@ -108,14 +115,19 @@ export async function getServerSideProps(context) {
       }
     }
 
-    return { props: { sale_prices: outpout_smoothed } };
+    return {
+      props: {
+        sale_prices: outpout_smoothed,
+        summary_props: summary_props_mock,
+      },
+    };
   } catch (err) {
     console.error(err);
     console.error(err);
     console.log("DEEZ");
 
     return {
-      props: { sale_prices: null },
+      props: { sale_prices: null, summary_props: null },
     };
   }
 }

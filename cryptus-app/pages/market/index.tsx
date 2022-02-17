@@ -1,15 +1,9 @@
 import React from "react";
-import Graph from "../../components/graph/graph";
-import FeatureIamTesting from "../../components/template/pagetemplate/pagetemplate";
-import { data_raw } from "../../lib/data";
+import MarketOverview from "../../components/market_overview/market_overview";
+import { collection } from "../../components/market_viewer/market_viewer";
+// Import market_overwiew parent component to test here
 
-export default function Home(props: { sale_prices: number[] }) {
-  const { sale_prices } = props;
-
-  const mock_volume = sale_prices.map((row) => {
-    return Math.random() * 100;
-  });
-
+export default function Home(props) {
   return (
     <div className="">
       <title>Public Wallet</title>
@@ -29,12 +23,11 @@ export default function Home(props: { sale_prices: number[] }) {
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
         rel="stylesheet"
       />
-
       <main>
-        <Graph
-          data_price={sale_prices}
-          data_volume={mock_volume}
-          detailled={true}
+        <MarketOverview
+          date={props.mock_data.date}
+          networth={props.mock_data.networth}
+          collections={props.collections}
         />
       </main>
     </div>
@@ -42,8 +35,74 @@ export default function Home(props: { sale_prices: number[] }) {
 }
 
 export async function getServerSideProps(context) {
-  const address = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
+  const address =
+    context.query.address ?? "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
   console.log("address", address);
+
+  const mock_data = {
+    date: "April 20",
+    networth: {
+      EthCad: 4000,
+      active: "day",
+      value: "1337,69 $ CAD",
+      change: "420.69 $ total",
+    },
+  };
+
+  const summary_props_mock = {
+    collection_name: "Bored Ape Yacht Club",
+    collection_logo: "./images/bayc-logo.png",
+    collection_ticker: "BAYC",
+    floor_price_live: 80.69,
+    floor_price_delta: 2.4,
+    floor_price_timestamp: "Friday",
+  };
+
+  const BAYC: collection = {
+    id: "1",
+    logo: "./images/BAYC.png",
+    ticker: "BAYC",
+    name: "Bored Ape Yacht Club",
+    address: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+    floor_price: 164285 / 3130.43,
+    floor_price_delta: 6900 / 3130.43,
+    data_price: [],
+  };
+
+  const PUNK: collection = {
+    id: "2",
+    logo: "./images/PUNK.png",
+    ticker: "PUNK",
+    name: "CryptoPunks",
+    address: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+    floor_price: 164285 / 3130.43,
+    floor_price_delta: -6900 / 3130.43,
+    data_price: [],
+  };
+
+  const BAYC2: collection = {
+    id: "3",
+    logo: "./images/BAYC.png",
+    ticker: "BAYC",
+    name: "Bored Ape Yacht Club",
+    address: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+    floor_price: 164285 / 3130.43,
+    floor_price_delta: 6900 / 3130.43,
+    data_price: [],
+  };
+
+  const PUNK2: collection = {
+    id: "4",
+    logo: "./images/PUNK.png",
+    ticker: "PUNK",
+    name: "CryptoPunks",
+    address: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+    floor_price: 164285 / 3130.43,
+    floor_price_delta: -6900 / 3130.43,
+    data_price: [],
+  };
+
+  const collections_mock = [BAYC, PUNK, BAYC2, PUNK2] as collection[];
 
   try {
     const res = await fetch(process.env.BASE_URL + "api/sales/", {
@@ -76,14 +135,29 @@ export async function getServerSideProps(context) {
       }
     }
 
-    return { props: { sale_prices: outpout_smoothed } };
+    for (const collection of collections_mock) {
+      collection.data_price = outpout_smoothed;
+    }
+
+    return {
+      props: {
+        summary_props: summary_props_mock,
+        collections: collections_mock,
+        mock_data: mock_data,
+      },
+    };
   } catch (err) {
     console.error(err);
     console.error(err);
     console.log("DEEZ");
 
     return {
-      props: { sale_prices: null },
+      props: {
+        sale_prices: null,
+        summary_props: null,
+        collections: null,
+        mock_data: null,
+      },
     };
   }
 }
