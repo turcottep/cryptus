@@ -11,9 +11,7 @@ export default function MarketCollections(props: {
 }) {
   return (
     <div id="market_collections" className={s.container}>
-      <div className={s.title}>
-        <MarketCollectionsHeader/>
-      </div>
+      <MarketCollectionsHeader/>
       <div className={s.market}>
         {props.collections.map((c) => (
           <div key={c.id} className={s.collection}>

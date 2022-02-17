@@ -10,15 +10,9 @@ import {collection} from "../market_viewer"
 export default function CollectionRow(props: {collection: collection}) {
   return (
     <div id="collection_row" className={s.container}>
-      <div className={s.infos}>
         <CollectionInfo collection={props.collection}/>
-      </div>
-      <div className={s.graph}>
         <PreviewGraph collection={props.collection}/>
-      </div>
-      <div className={s.price}>
         <PriceInfo collection={props.collection} currency="eth" />
-      </div>
     </div>
   );
 }

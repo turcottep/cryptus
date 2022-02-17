@@ -11,9 +11,7 @@ export default function FavoriteCollections(props: {
 }) {
   return (
     <div id="favorite_collections" className={s.container}>
-      <div className={s.title}>
-        <FavoriteCollectionsHeader/>
-      </div>
+      <FavoriteCollectionsHeader/>
       <div className={s.favorites}>
         {props.collections.map((c) => (
           <div key={c.id} className={s.collection}>
