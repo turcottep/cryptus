@@ -1,0 +1,29 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+
+  display: flex;
+  position: fixed;
+  top: 0;
+  flex-direction: row;
+  justify-content: space-between;
+
+  height: v.$header-h;
+  width: min(100vw, v.$mobile);
+  padding-left: 15px;
+  padding-right: 15px;
+
+  background: v.$bg-color;
+}
+
+.left_container {
+  display: flex;
+  flex-direction: row;
+  
+  gap: 5px;
+}
+
+.right_container {
+  display: flex;
+}

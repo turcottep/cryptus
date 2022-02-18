@@ -1,0 +1,12 @@
+@use "/styles/variables" as v;
+
+.icon {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+
+  width: v.$header-icon-width;
+}
+.icon:hover {
+  opacity: 0.5;
+}

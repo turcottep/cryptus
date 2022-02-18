@@ -1,0 +1,14 @@
+@use "/styles/variables" as v;
+
+.container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+
+  width: 100%;
+  height: v.$collection_height;
+  position: sticky;
+}
+

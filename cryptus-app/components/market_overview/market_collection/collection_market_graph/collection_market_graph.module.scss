@@ -1,0 +1,19 @@
+@use "/styles/variables" as v;
+
+.container { //Placeholder
+    width: 100%;
+    flex-direction: column;
+  
+    background-color: v.$text-color;
+    color: v.$bg-color;
+  }
+
+.timeinterval {
+    height: 40px;
+}
+
+.graph {
+  display: block;
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,18 @@
+@use "/styles/variables" as v;
+
+.label {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
+  height: 100%;
+
+  font-size: v.$header-label-font-size;
+  font-weight: v.$header-label-font-weight;
+}
+
+.label:hover {
+  opacity: 0.5;
+}

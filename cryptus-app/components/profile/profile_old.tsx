@@ -1,7 +1,10 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
 
-type MyProps = { assets: any[]; user: { displayName: string; description: string } };
+type MyProps = {
+  assets: any[];
+  user: { displayName: string; description: string };
+};
 type MyState = {};
 export default class Profile extends React.Component<MyProps, MyState> {
   // const { userId } = router.query;
@@ -28,7 +31,9 @@ export default class Profile extends React.Component<MyProps, MyState> {
         </div>
         <div className="flex w-full justify-around flex-row text-center border-b border-t border-gray-400 ">
           <div className="flex-col ">
-            <span className="font-bold">{this.props.assets ? this.props.assets.length : 0}</span>
+            <span className="font-bold">
+              {this.props.assets ? this.props.assets.length : 0}
+            </span>
             <br />
             <span className="text-gray-400">Owned</span>
           </div>

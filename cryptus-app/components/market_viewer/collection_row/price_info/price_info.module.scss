@@ -1,0 +1,42 @@
+@use "/styles/variables" as v;
+
+.container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+
+  width: 90px;
+  height: v.$collection_height;
+  position: sticky;
+}
+
+/*.fp {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: left;
+
+  width: 100%;
+  height: 40px;
+}*/
+
+/*.fpd {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: left;
+
+    width: 100%;
+    height: 20px;
+  }*/
+
+
