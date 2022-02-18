@@ -40,7 +40,7 @@ export default async function updateNftsForUser(
     return null;
   }
 
-  let collection_tokens = [];
+  // let collection_tokens = [];
   // Uncomment this section to generate the rarity rank for user.js mock file
   // for (const nft of nfts_raw) {
   //   const size = await GetCollectionTokens(nft.asset_contract.address);
@@ -54,13 +54,9 @@ export default async function updateNftsForUser(
     // Sort properties here
     let rarity_rank: any = 0;
     let traits_sorted = [];
-    const collection_size = parseInt(collection_tokens[index]);
+    let rarity = 0;
     if (nft.traits.length > 0) {
       const traits = nft.traits.map((trait) => {
-        let rarity = 0;
-        if (collection_size > 0) {
-          rarity = trait.trait_count / collection_size;
-        }
         return {
           name: trait.trait_type,
           value: trait.value,
@@ -72,13 +68,14 @@ export default async function updateNftsForUser(
         return a.rarity - b.rarity;
       });
       // The rarity rank still need to add rarity of non-existant traits add : 1/((total-nb_with_trait)/total)
-      rarity_rank = Math.round(
-        traits_sorted
-          .map((trait) => {
-            return 1 / trait.rarity;
-          })
-          .reduce((partialSum, a) => partialSum + a, 0)
-      );
+      // Rarity rank is calculated from it's traits and rounded the result. The equation is :sum(1/(nb_with_trait/total_count))
+      // rarity_rank = Math.round(
+      //   traits_sorted
+      //     .map((trait) => {
+      //       return 1 / trait.rarity;
+      //     })
+      //     .reduce((partialSum, a) => partialSum + a, 0)
+      // );
     }
     return {
       name: nft.name ?? nft.collection.name + " #" + nft.id,

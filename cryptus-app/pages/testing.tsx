@@ -19,7 +19,7 @@ export default function Home() {
           mock_nft.collection_address
         );
         setCollection_size(collectionSize);
-
+        // Rarity rank is calculated from it's traits and rounded the result. The equation is :sum(1/(nb_with_trait/total_count))
         const rarity = Math.round(
           mock_nft.properties
             .map((trait) => {
