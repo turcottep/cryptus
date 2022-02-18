@@ -1,4 +1,5 @@
 import { nft, nft_collection } from "./data_types";
+import sortNFTsByRarityInCollection from "./sort_nfts_by_rarity_in_collection";
 
 export default function sortNftsIntoCollections(nfts: nft[]): nft_collection[] {
   const collections: { [key: string]: nft_collection } = {};
@@ -16,5 +17,10 @@ export default function sortNftsIntoCollections(nfts: nft[]): nft_collection[] {
     }
     collections[collection].nfts.push(nft);
   }
-  return Object.values(collections);
+  const sorted_collections = sortNFTsByRarityInCollection(
+    Object.values(collections)
+  );
+  // console.log("sorted_collection : ", sorted_collections);
+  // console.log("Object.values(collections) : ", Object.values(collections));
+  return sorted_collections;
 }

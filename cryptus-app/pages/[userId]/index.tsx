@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 
 import React from "react";
-// import fs from "fs";
+import fs from "fs";
 import Mosaic from "../../components/viewer/Mosaic";
 import NavbarProfile from "../../components/navbars/navbar_profile/navbar_profile";
 import Profile from "../../components/profile/profile";
@@ -11,8 +11,8 @@ import get_nfts_for_user from "../../lib/get_nfts_for_user";
 import sortNftsIntoCollections from "../../lib/sort_nfts_into_collections";
 import { profile_props } from "../../lib/data_types";
 
-import Profile_wallet_viewer from "../../components/wallet_viewer/profile_wallet_viewer/profile_wallet_viewer"
-import { nft } from "../../lib/data_types"
+import Profile_wallet_viewer from "../../components/wallet_viewer/profile_wallet_viewer/profile_wallet_viewer";
+import { nft } from "../../lib/data_types";
 
 export default function post(props) {
   const router = useRouter();

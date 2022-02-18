@@ -1,12 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import FeatureIamTesting from "../components/template/pagetemplate/pagetemplate";
 import NFTDetails from "../components/wallet_viewer/nft_details/nft_details";
 import { nft, profile_props } from "../lib/data_types";
 import get_mock_props from "../lib/get_mock_props";
+import GetCollectionTokens from "../lib/get_collection_token";
 
 export default function Home() {
   const mock_props = get_mock_props() as profile_props;
   const mock_nft = mock_props.collections[0].nfts[0];
+
+  let [collection_size, setCollection_size] = useState(Number);
+  let [rarity_rank, setraRity_rank] = useState(Number);
+
+  useEffect(() => {
+    const collectionCall = async () => {
+      try {
+        const collectionSize: number = await GetCollectionTokens(
+          mock_nft.collection_address
+        );
+        setCollection_size(collectionSize);
+        // Rarity rank is calculated from it's traits and rounded the result. The equation is :sum(1/(nb_with_trait/total_count))
+        const rarity = Math.round(
+          mock_nft.properties
+            .map((trait) => {
+              return 1 / (trait.count / collection_size);
+            })
+            .reduce((partialSum, a) => partialSum + a, 0)
+        );
+        setraRity_rank(rarity);
+
+        console.log("rarity : ", rarity_rank);
+        console.log("collection_size : ", collection_size);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    collectionCall();
+  }, []);
 
   return (
     <div className="">
@@ -31,7 +61,10 @@ export default function Home() {
       <main>
         <NFTDetails
           nft={mock_nft}
-          rank_props={{ position: 1677, total: 10000 }}
+          rank_props={{
+            position: rarity_rank,
+            total: collection_size,
+          }}
         />
       </main>
     </div>
