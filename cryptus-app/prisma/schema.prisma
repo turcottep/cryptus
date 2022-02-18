@@ -26,6 +26,8 @@ model Nft {
   name             String
   description      String?
   collection       String? //Collection @relation(fields: [collectionId], references: [id])
+  collection_address String?
+  collection_size  Int?
   token_id         String
   rarity_rank      Int?
   external_url     String?
@@ -40,6 +42,7 @@ model Nft {
 // model Collection {
 //   id          String  @id @default(uuid())
 //   name        String  @unique
+//   contract_address String @unique
 //   description String?
 //   Nft         Nft[]
 // }
