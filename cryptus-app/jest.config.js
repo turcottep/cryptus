@@ -8,7 +8,7 @@ module.exports = {
   transform: {
     "^.+\\.tsx?$": "ts-jest",
   },
-
+  testPathIgnorePatterns: ["<rootDir>/cypress/"],
   // Test spec file resolution pattern
   // Matches parent folder `__tests__` and filename
   // should contain `test` or `spec`.
