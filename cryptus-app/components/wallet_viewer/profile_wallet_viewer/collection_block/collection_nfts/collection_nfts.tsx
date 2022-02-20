@@ -21,6 +21,7 @@ export default function CollectionNFTs(props: { nft: nft[] }) {
     rarity_rank: 0,
     collection_size: 0,
     collection_address: "",
+    token_id: "",
   } as nft;
 
   const { nft } = props;

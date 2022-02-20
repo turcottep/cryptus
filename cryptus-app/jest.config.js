@@ -7,6 +7,7 @@ module.exports = {
   // using ts-jest
   transform: {
     "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.scss$": "jest-scss-transform",
   },
 
   testPathIgnorePatterns: ["<rootDir>/cypress/"],
