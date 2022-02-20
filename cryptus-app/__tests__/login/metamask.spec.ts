@@ -1,7 +1,10 @@
 import FindUserIdFromWalletAdress from "../../lib/findUserIdFromWalletAdress"
 
-describe("Verify Email", () => {
-    test("it should be an email that has an @", () => {
+describe("Verify Metamask functions", () => {
+    beforeEach(() => {
+        process.env // Make a copy
+      });
+    test("findUserIdFromWalletAdress", () => {
       // Mocked Inputs
       const inputs = [
         {index:0, walletAdresse: "0x68c4d9e03d7d902053c428ca2d74b612db7f583a"},
@@ -16,6 +19,6 @@ describe("Verify Email", () => {
   
       // Test 1 should pass the test, Test 2 should fail the test...
       expect(FindUserIdFromWalletAdress(inputs[0].walletAdresse)).toEqual(outputs[0].userId);
-      expect(FindUserIdFromWalletAdress(inputs[1].walletAdresse)).toThrow("");
+      expect(FindUserIdFromWalletAdress(inputs[1].walletAdresse)).toThrow();
     });
   });
