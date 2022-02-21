@@ -7,8 +7,11 @@ module.exports = {
   // using ts-jest
   transform: {
     "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.scss$": "jest-scss-transform",
   },
+
   testPathIgnorePatterns: ["<rootDir>/cypress/"],
+
   // Test spec file resolution pattern
   // Matches parent folder `__tests__` and filename
   // should contain `test` or `spec`.
@@ -20,9 +23,9 @@ module.exports = {
   testEnvironment: "jsdom",
   globals: {
     // This is necessary because next.js forces { "jsx": "preserve" }, but ts-jest appears to require { "jsx": "react" }
-    'ts-jest': {
+    "ts-jest": {
       tsconfig: {
-        jsx: 'react',
+        jsx: "react",
       },
     },
   },
