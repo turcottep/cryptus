@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login renders correctly 1`] = `
+<div
+  className="bg-instagram"
+>
+  <main
+    className="sm:max-w-lg mx-auto"
+  >
+    <div
+      className="flex flex-col"
+    >
+      <div
+        className="mx-12"
+      >
+        <button
+          className="text-xl text-center bg-white text-brown border-4 border-brown rounded-lg w-full px-4 py-8 mt-20"
+          onClick={[Function]}
+        >
+          <div
+            className="flex justify-between items-center"
+          >
+            <img
+              alt="MetaMask Fox Logo"
+              className="flex-shrink w-12 h-12"
+              src="../MetaMask_Fox.svg"
+            />
+            <span>
+              Metamask
+            </span>
+            <svg
+              className="h-8 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
+            </svg>
+          </div>
+        </button>
+      </div>
+      <div
+        className="mt-4 grid grid-cols-7 justify-center text-center"
+      >
+        <div
+          className="col-start-2 col-span-2 divide-y divide-black"
+        >
+          <div>
+            <span>
+               
+            </span>
+          </div>
+          <div>
+            <span>
+               
+            </span>
+          </div>
+        </div>
+        <div
+          className="col-start-4 col-span-1 m-auto"
+        >
+          <span
+            className="toggleColour text-2xl text-black no-underline hover:no-underline"
+          >
+            OR
+          </span>
+        </div>
+        <div
+          className="col-start-5 col-span-2 divide-y divide-black"
+        >
+          <div>
+            <span>
+               
+            </span>
+          </div>
+          <div>
+            <span>
+               
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="flex flex-col mt-4"
+      >
+        <form
+          className="form w-full"
+          id="form"
+          onSubmit={[Function]}
+        >
+          <input
+            defaultValue="test"
+            name="csrfToken"
+            type="hidden"
+          />
+          <div
+            className="flex xl:text-xl flex-col mx-12"
+          >
+            <div
+              className="w-full relative h-12"
+            >
+              <input
+                className="w-full h-full text-gray-800 leading-normal shadow-none outline-none focus:outline-none focus:ring-0 focus:text-gray-800 px-3 pt-3.5 pb-2.5 mt-input-outline-red-500 border-red-500 mt-input-outline bg-transparent border border-1 border-gray-300 rounded-lg focus:border-2 focus:border-red-500 mt-input-outline-error undefined"
+                id="username"
+                onChange={[Function]}
+                placeholder=" "
+                required={true}
+                value=""
+              />
+              <label
+                className="text-gray-400 absolute left-0 -top-1.5 w-full h-full false border-red-500 pointer-events-none flex false leading-10 transition-all duration-300"
+              >
+                Email or mobile number
+              </label>
+              <span
+                className="block mt-1 text-xs text-red-500"
+              />
+            </div>
+          </div>
+          <div
+            className="flex xl:text-xl flex-col mx-12 mt-8"
+          >
+            <div
+              className="w-full relative h-12"
+            >
+              <input
+                className="w-full h-full text-gray-800 leading-normal shadow-none outline-none focus:outline-none focus:ring-0 focus:text-gray-800 px-3 pt-3.5 pb-2.5 mt-input-outline-red-500 border-red-500 mt-input-outline bg-transparent border border-1 border-gray-300 rounded-lg focus:border-2 focus:border-red-500 mt-input-outline-error undefined"
+                id="password"
+                onChange={[Function]}
+                placeholder=" "
+                required={true}
+                value=""
+              />
+              <label
+                className="text-gray-400 absolute left-0 -top-1.5 w-full h-full false border-red-500 pointer-events-none flex false leading-10 transition-all duration-300"
+              >
+                Password
+              </label>
+              <span
+                className="block mt-1 text-xs text-red-500"
+              />
+            </div>
+          </div>
+          <div
+            className="flex xl:text-xl flex-col mx-12 mt-8"
+          >
+            <div
+              className="text-xl text-center whitespace-nowrap bg-brown text-white font-bold rounded-lg w-full px-2 py-2"
+            >
+              <input
+                type="submit"
+              />
+            </div>
+          </div>
+        </form>
+        <div
+          className="flex flex-col items-center"
+        >
+          <a
+            className="toggleColour mt-4 text-black no-underline hover:no-underline"
+          >
+            Forgot your Password?
+          </a>
+        </div>
+        <div
+          className="mt-4 grid grid-cols-7 justify-center text-center"
+        >
+          <div
+            className="col-start-2 col-span-2 divide-y divide-black"
+          >
+            <div>
+              <span>
+                 
+              </span>
+            </div>
+            <div>
+              <span>
+                 
+              </span>
+            </div>
+          </div>
+          <div
+            className="col-start-4 col-span-1 m-auto"
+          >
+            <span
+              className="toggleColour text-2xl text-black no-underline hover:no-underline"
+            >
+              OR
+            </span>
+          </div>
+          <div
+            className="col-start-5 col-span-2 divide-y divide-black"
+          >
+            <div>
+              <span>
+                 
+              </span>
+            </div>
+            <div>
+              <span>
+                 
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="flex xl:text-xl flex-col mx-12 mt-4  text-center whitespace-nowrap bg-white border border-brown rounded-lg px-2 py-2"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <button
+            className="text-brown text-center text-xl font-bold"
+          >
+            Sign up
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+`;
