@@ -11,7 +11,9 @@ export default function Home() {
     name: "Bored Ape Yacht Club",
     floor_price: 164285 / 3130.43,
     floor_price_delta: 6900 / 3130.43,
-    timestamp: "Friday"
+    timestamp: "Friday",
+    address: "",
+    data_price: [],
   };
 
   return (
@@ -35,7 +37,7 @@ export default function Home() {
       />
 
       <main>
-        <MarketCollection {...mock_props}/>
+        <MarketCollection summary_props={undefined} graph_props={undefined} />
       </main>
     </div>
   );

@@ -14,16 +14,14 @@
   cursor: pointer;
 }
 
-.icon:hover {
-  top: -2px;
+.icon:hover:not(.active) {
   background-color: #ebe7e3;
-  color: #93918e;
+  color: v.$text-color;
   opacity: 1;
   visibility: visible;
 }
 
-.icon:checked {
-  top: -2px;
+.active {
   background-color: #ebe7e3;
   color: #93918e;
   opacity: 1;

@@ -33,7 +33,11 @@ export default function Home() {
         rel="stylesheet"
       />
       <main>
-        <MarketOverview date={mock_data.date} networth={mock_data.networth} />
+        <MarketOverview
+          date={mock_data.date}
+          networth={mock_data.networth}
+          collections={[]}
+        />
       </main>
     </div>
   );

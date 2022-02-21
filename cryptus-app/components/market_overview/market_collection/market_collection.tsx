@@ -5,8 +5,11 @@ import MarketCollectionHeader from "./market_collection_header/market_collection
 import MarketCollectionInfos from "./market_collection_infos/market_collection_infos";
 import CollectionFloorPrice from "./collection_floor_price/collection_floor_price";
 import CollectionMarketGraph from "./collection_market_graph/collection_market_graph";
+import { market_collection_props } from "../../../pages/market/[address]";
 
-export default function MarketCollection(props) {
+export default function MarketCollection(props: market_collection_props) {
+  console.log("MarketCollection props:", props);
+
   return (
     <div className={s.app}>
       <MarketCollectionHeader />
@@ -21,7 +24,7 @@ export default function MarketCollection(props) {
           floor_price_delta={props.floor_price_delta}
           floor_price_timestamp={props.floor_price_timestamp}
         />
-        <CollectionMarketGraph />
+        <CollectionMarketGraph data_price={props.data_price} data_volume={[]} />
       </div>
     </div>
   );

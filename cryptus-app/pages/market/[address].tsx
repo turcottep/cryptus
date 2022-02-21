@@ -4,42 +4,20 @@ import MarketCollection from "../../components/market_overview/market_collection
 import FeatureIamTesting from "../../components/template/pagetemplate/pagetemplate";
 import { data_raw } from "../../lib/data";
 
-export default function Home(props: { sale_prices: number[] }) {
-  //internal imports
+export type market_collection_props = {
+  collection_name: string;
+  collection_logo: string;
+  collection_ticker: string;
+  floor_price_live: number;
+  floor_price_delta: number;
+  floor_price_timestamp: string;
+  data_price: number[];
+};
 
-  // parse data from "0     18462 2022-01-31 15:40:26         3.98           ETH    2549.53  0x63950ef80536bce5b4f0942ada77a5eeef7368ee9842af49ebbc2b6383e2bdde      1643661626" to "tokenid,timestamp_raw,total_price payment_token,usd_price,transaction_hash,timestamp_unix"
-  // const data_clean = data_raw.split("\n").map((row) => {
-  //   const [
-  //     tx_id,
-  //     tokenid,
-  //     timestamp_day,
-  //     timestamp_time,
-  //     total_price,
-  //     payment_token,
-  //     usd_price,
-  //     transaction_hash,
-  //     timestamp_unix,
-  //   ] = row.split(/\s+/);
-  //   return {
-  //     tx_id,
-  //     tokenid,
-  //     timestamp_day,
-  //     timestamp_time,
-  //     total_price,
-  //     payment_token,
-  //     usd_price,
-  //     transaction_hash,
-  //     timestamp_unix,
-  //   };
-  // });
+export default function Home(props: market_collection_props) {
+  const { data_price } = props;
 
-  // const all_prices = data_clean.map((row) => {
-  //   return parseFloat(row.total_price);
-  // });
-
-  const { sale_prices } = props;
-
-  const mock_volume = sale_prices.map((row) => {
+  const mock_volume = data_price.map((row) => {
     return Math.random() * 100;
   });
 
@@ -72,7 +50,7 @@ export default function Home(props: { sale_prices: number[] }) {
 
 export async function getServerSideProps(context) {
   const address =
-    context.query.address ?? "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
+    context.query.address ?? "0x1a92f7381b9f03921564a437210bb9396471050c";
   console.log("address", address);
 
   const summary_props_mock = {
@@ -82,7 +60,8 @@ export async function getServerSideProps(context) {
     floor_price_live: 80.69,
     floor_price_delta: 2.4,
     floor_price_timestamp: "Friday",
-  };
+    data_price: [],
+  } as market_collection_props;
 
   try {
     const res = await fetch(process.env.BASE_URL + "api/sales/", {
@@ -115,10 +94,11 @@ export async function getServerSideProps(context) {
       }
     }
 
+    summary_props_mock.data_price = outpout_smoothed;
+
     return {
       props: {
-        sale_prices: outpout_smoothed,
-        summary_props: summary_props_mock,
+        ...summary_props_mock,
       },
     };
   } catch (err) {

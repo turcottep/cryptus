@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
+import Graph from "../../../graph/graph";
 import s from "./collection_market_graph.module.scss";
 
-import CollectionGraph from "./collection_graph/collection_graph";
-//import TimeInterval from "../../net_worth/time_interval/time_interval"
+import TimeInterval from "../../net_worth/time_interval/time_interval";
 
-export default function CollectionMarketGraph(props) {
+export default function CollectionMarketGraph(props: {
+  data_price: number[];
+  data_volume: number[];
+}) {
   return (
     <div className={s.container}>
-      <CollectionGraph />
-      {/* <TimeInterval/> */}
-      <div className={s.timeinterval}>TIME INTERVAL</div>
+      <div className={s.graph}>
+        <Graph
+          data_price={props.data_price}
+          data_volume={props.data_volume}
+          detailled={true}
+        />
+      </div>
+      <TimeInterval active={0} />
     </div>
   );
 }

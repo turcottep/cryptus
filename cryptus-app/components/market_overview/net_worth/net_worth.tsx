@@ -7,13 +7,13 @@ import s from "./net_worth.module.scss";
 
 //internal imports
 import CadEthExchangeButton from "./cad_eth_exchange_button/cad_eth_exchange_button";
-import TimeInterval from "./time_interval/time_interval";
+import TimeInterval, { intervals } from "./time_interval/time_interval";
 
 // Code  net_worth_number, net_worth_delta
 
 type net_worth_props = {
   EthCad: number;
-  active: string;
+  active: intervals;
   value: string;
   delta: string;
 };
