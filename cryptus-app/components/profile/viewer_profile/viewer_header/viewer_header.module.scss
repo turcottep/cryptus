@@ -1,18 +1,15 @@
 @use "/styles/variables" as v;
 
 .container {
-  flex: 1 1 auto;
+  position: sticky;
+  top: 0;
 
   display: flex;
-  position: fixed;
-  top: 0;
   flex-direction: row;
   align-items: center;
 
   height: v.$header-h;
   width: min(100vw, v.$mobile);
-  font-size: v.$font-size-m;
-
-  background: v.$text-color; //For waiting for header
-  color: v.$bg-color;
+  padding: 0px 8px;
+  background: v.$header-color;
 }

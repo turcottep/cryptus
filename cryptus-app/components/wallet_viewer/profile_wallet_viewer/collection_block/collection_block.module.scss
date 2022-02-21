@@ -4,15 +4,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  flex: 1 0 50%;
 }
 
 .collection_name {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex: 1 1 auto;
   text-align: center;
-
-  margin: 0px 20px;
 }

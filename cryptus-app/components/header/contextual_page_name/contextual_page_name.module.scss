@@ -9,8 +9,8 @@
 
   height: 100%;
 
-  font-size: v.$header-label-font-size;
-  font-weight: v.$header-label-font-weight;
+  font-size: v.$font-size-s;
+  color: v.$text-color;
 }
 
 .label:hover {

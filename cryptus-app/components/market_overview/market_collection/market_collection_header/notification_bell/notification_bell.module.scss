@@ -1,17 +1,16 @@
 @use "/styles/variables" as v;
 
-
 .icon {
   display: flex;
   flex: 1 1 auto;
   justify-content: center;
-  
-  height: v.$header-icon-width;
-  width: v.$header-icon-width;
 
-//   Not IMPLEMENTED
+  height: v.$icon-width;
+  width: v.$icon-width;
+
+  //   Not IMPLEMENTED
   opacity: 0.5;
 }
 .icon:hover {
   opacity: 0.5;
-} 
+}

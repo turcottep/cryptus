@@ -8,9 +8,12 @@
   text-align: center;
 
   position: sticky;
+  bottom: 0;
 
-  width: 100%;
-  height: v.$header-h;
+  height: v.$footer-h;
+  width: min(100vw, v.$mobile);
+  z-index: 100;
+  background-color: v.$header-color;
 }
 
 .button {
@@ -19,7 +22,19 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  
+
   height: v.$header-h;
 }
 
+.icon {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+}
+.icon:hover {
+  opacity: 0.5;
+}
+
+.image {
+  width: v.$icon-width;
+}
