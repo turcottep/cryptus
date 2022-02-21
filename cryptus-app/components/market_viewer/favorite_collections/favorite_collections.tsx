@@ -12,11 +12,15 @@ export default function FavoriteCollections(props: {
     <div id="favorite_collections" className={s.container}>
       <FavoriteCollectionsHeader />
       <div className={s.favorites}>
-        {props.collections.map((c) => (
-          <div key={c.id} className={s.collection}>
-            <CollectionRow collection={c} />
-          </div>
-        ))}
+        {props.collections ? (
+          props.collections.map((c) => (
+            <div key={c.id} className={s.collection}>
+              <CollectionRow collection={c} />
+            </div>
+          ))
+        ) : (
+          <div>No collections</div>
+        )}
       </div>
     </div>
   );

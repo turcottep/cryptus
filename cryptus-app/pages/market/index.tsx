@@ -34,9 +34,8 @@ export default function Home(props) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const address =
-    context.query.address ?? "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
+export async function getServerSideProps() {
+  const address = "0x1a92f7381b9f03921564a437210bb9396471050c";
   console.log("address", address);
 
   const mock_data = {
@@ -63,7 +62,7 @@ export async function getServerSideProps(context) {
     logo: "./images/BAYC.png",
     ticker: "BAYC",
     name: "Bored Ape Yacht Club",
-    address: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+    address: address,
     timestamp: "firday",
     floor_price: 164285 / 3130.43,
     floor_price_delta: 6900 / 3130.43,
@@ -76,7 +75,7 @@ export async function getServerSideProps(context) {
     ticker: "PUNK",
     name: "CryptoPunks",
     timestamp: "firday",
-    address: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+    address: address,
     floor_price: 164285 / 3130.43,
     floor_price_delta: -6900 / 3130.43,
     data_price: [],
@@ -88,7 +87,7 @@ export async function getServerSideProps(context) {
     ticker: "BAYC",
     name: "Bored Ape Yacht Club",
     timestamp: "firday",
-    address: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+    address: address,
     floor_price: 164285 / 3130.43,
     floor_price_delta: 6900 / 3130.43,
     data_price: [],
@@ -100,7 +99,7 @@ export async function getServerSideProps(context) {
     ticker: "PUNK",
     name: "CryptoPunks",
     timestamp: "firday",
-    address: "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+    address: address,
     floor_price: 164285 / 3130.43,
     floor_price_delta: -6900 / 3130.43,
     data_price: [],
@@ -160,7 +159,15 @@ export async function getServerSideProps(context) {
         sale_prices: null,
         summary_props: null,
         collections: null,
-        mock_data: null,
+        mock_data: {
+          date: "",
+          networth: {
+            EthCad: 0,
+            active: "day",
+            value: "0.00 $ CAD",
+            change: "00.00 $ total",
+          },
+        },
       },
     };
   }

@@ -17,9 +17,11 @@ export type market_collection_props = {
 export default function Home(props: market_collection_props) {
   const { data_price } = props;
 
-  const mock_volume = data_price.map((row) => {
-    return Math.random() * 100;
-  });
+  const mock_volume = data_price
+    ? data_price.map((row) => {
+        return Math.random() * 100;
+      })
+    : [];
 
   return (
     <div className="">
@@ -107,7 +109,15 @@ export async function getServerSideProps(context) {
     console.log("DEEZ");
 
     return {
-      props: { sale_prices: null, summary_props: null },
+      props: {
+        collection_name: "",
+        collection_logo: "",
+        collection_ticker: "",
+        floor_price_live: 0,
+        floor_price_delta: 0,
+        floor_price_timestamp: "",
+        data_price: [],
+      },
     };
   }
 }
