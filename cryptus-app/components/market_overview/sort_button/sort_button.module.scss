@@ -1,9 +1,10 @@
+@use "/styles/variables" as v;
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 .container {
   flex: 0 1 auto;
   gap: 4px;
-  width: min-content;
+  width: 76px;
   height: 32px;
   display: flex;
   align-items: center;
@@ -12,12 +13,11 @@
   background: #ebe7e3;
 }
 .text {
-  padding-right: 8px;
-  color: #767472;
-  padding-left: 4px;
+  padding: 0px 8px 0px 4px;
+  color: v.$header-color;
 }
 .menu {
-  color: #767472;
+  color: v.$header-color;
   padding-left: 8px;
   width: 32px;
 }

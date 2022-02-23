@@ -1,6 +1,9 @@
-export default async function FindUserIdFromWalletAdress(wallet_address, absolute = true) {
+export default async function FindUserIdFromWalletAdress(
+  wallet_address,
+  absolute = true
+) {
   console.log("base_url=", process.env.BASE_URL);
-  const base_url = absolute ? process.env.BASE_URL : '/'
+  const base_url = absolute ? process.env.BASE_URL : "/";
   try {
     const res = await fetch(base_url + "api/leads/walletaddress", {
       method: "POST",
@@ -13,7 +16,7 @@ export default async function FindUserIdFromWalletAdress(wallet_address, absolut
     return wallet.userId;
   } catch (e) {
     console.error("Erreur :", e);
-    // Promise.reject(new Error("Unable to connect to server"));
+    Promise.reject(new Error("Unable to connect to server"));
     return null;
   }
 }
