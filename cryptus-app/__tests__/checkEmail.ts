@@ -1,5 +1,6 @@
 // Import a function from our library and test input, output behavior
 import { validateEmail } from "../components/landing_page/name_form";
+import { expect } from "@jest/globals";
 
 describe("Verify Email", () => {
   test("it should be an email that has an @", () => {
@@ -25,6 +26,6 @@ describe("Verify Email", () => {
     expect(validateEmail(input[3].email)).toEqual(output_false);
     expect(validateEmail(input[4].email)).toEqual(output_false);
     expect(validateEmail(input[5].email)).toEqual(output_false);
-    expect(validateEmail(input[6].email)).toEqual(output_false);
+    expect(validateEmail(input[6].email)).toEqual(output_true);
   });
 });

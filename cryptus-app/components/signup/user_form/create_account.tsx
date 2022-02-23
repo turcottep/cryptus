@@ -71,7 +71,11 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
       <div className="flex flex-col ">
         <FormHeader title="Create Account" step={this.props.step} />
 
-        <form id="form" data-testid="create-account" className="form w-full mt-16">
+        <form
+          id="form"
+          data-testid="create-account"
+          className="form w-full mt-16"
+        >
           <div className="flex xl:text-xl bg-white flex-col  mx-12 ">
             <Input
               type="email"
@@ -146,7 +150,7 @@ export default class CreateAccount extends Component<FormValuesProps, MyState> {
   }
 }
 
-async function createUser(email, hashedPassword) {
+export async function createUser(email, hashedPassword) {
   const response = await fetch("api/leads/create", {
     method: "POST",
     headers: {
