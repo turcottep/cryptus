@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewerProfileName renders correctly 1`] = `
+<div>
+  <div>
+    Username123456
+  </div>
+  <div>
+    <img
+      src="./images/twitter_checkmark.png"
+    />
+  </div>
+</div>
+`;

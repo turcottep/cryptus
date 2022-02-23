@@ -10,6 +10,7 @@ export interface nft {
   collection_size: number;
   collection_address: string;
   description: string;
+  token_id: string;
 }
 
 export interface nft_collection {

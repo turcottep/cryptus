@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreatorProfileInfos renders correctly 1`] = `
+<div>
+  <div>
+    <div>
+      <img
+        alt="Avatar"
+        src="./icons/icon-192x192.png"
+      />
+    </div>
+    <div>
+      <div>
+        <button>
+          Edit NFTs
+        </button>
+      </div>
+      <div>
+        <button>
+          Edit Profile
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      Turcotte
+    </div>
+    <div>
+      <img
+        src="./images/twitter_checkmark.png"
+      />
+    </div>
+  </div>
+  <div>
+    Je vais a MTL pour chercher un bike
+  </div>
+</div>
+`;
