@@ -70,6 +70,7 @@ export default function Graph(props: {
   const data_bar = data_volume ? labels.map((_, i) => data_volume[i]) : [];
 
   const optionsLine = {
+    devicePixelRatio: detailled ? 4 : 1,
     responsive: true,
     layout: {
       padding: {
@@ -123,6 +124,7 @@ export default function Graph(props: {
   };
 
   const optionsBar = {
+    devicePixelRatio: detailled ? 4 : 1,
     responsive: true,
     layout: {
       padding: {

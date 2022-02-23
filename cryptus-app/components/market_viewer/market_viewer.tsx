@@ -9,60 +9,21 @@ export type collection = {
   logo: string;
   ticker: string;
   name: string;
+  address: string;
   floor_price: number;
   floor_price_delta: number;
+  data_price: number[];
   timestamp: string;
 };
 
-const BAYC: collection = {
-  id: "1",
-  logo: "./images/BAYC.png",
-  ticker: "BAYC",
-  name: "Bored Ape Yacht Club",
-  floor_price: 164285 / 3130.43,
-  floor_price_delta: 6900 / 3130.43,
-  timestamp: "Friday"
-};
-
-const PUNK: collection = {
-  id: "2",
-  logo: "./images/PUNK.png",
-  ticker: "PUNK",
-  name: "CryptoPunks",
-  floor_price: 164285 / 3130.43,
-  floor_price_delta: -6900 / 3130.43,
-  timestamp: "Friday"
-};
-
-const BAYC2: collection = {
-  id: "3",
-  logo: "./images/BAYC.png",
-  ticker: "BAYC",
-  name: "Bored Ape Yacht Club",
-  floor_price: 164285 / 3130.43,
-  floor_price_delta: 6900 / 3130.43,
-  timestamp: "Friday"
-};
-
-const PUNK2: collection = {
-  id: "4",
-  logo: "./images/PUNK.png",
-  ticker: "PUNK",
-  name: "CryptoPunks",
-  floor_price: 164285 / 3130.43,
-  floor_price_delta: -6900 / 3130.43,
-  timestamp: "Friday"
-};
-
-export default function MarketViewer() {
-  const user_collections: collection[] = [BAYC, PUNK, BAYC2, PUNK2];
+export default function MarketViewer(props: { collections: collection[] }) {
   return (
     <div id="market_viewer" className={s.container}>
       <div className={s.favorites}>
-        <FavoriteCollections collections={user_collections} />
+        <FavoriteCollections collections={props.collections} />
       </div>
       <div className={s.market}>
-        <MarketCollections collections={user_collections} />
+        <MarketCollections collections={props.collections} />
       </div>
     </div>
   );
