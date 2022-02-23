@@ -1,6 +1,7 @@
 import React from "react";
 import NameForm from "./name_form";
 import NavbarLandingPage from "../navbars/navbar_landing_page/navbar_landing_page";
+import { signIn } from "next-auth/client";
 
 export default function LandingPage() {
   return (
@@ -28,7 +29,12 @@ export default function LandingPage() {
               </p>
             </div>
             <div className="invisible w-full md:visible md:w-1/2 lg:w-4/5 my-4">
-              <NameForm />
+              <button
+                onClick={() => signIn()}
+                className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
+              >
+                Get Started!
+              </button>
             </div>
           </div>
           <div className="flex-shrink w-auto md:w-full min-w-0 min-h-0">
@@ -41,7 +47,13 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="md:hidden w-full sm:mx-0 md:w-2/5 lg:w-2/5 my-4">
-          <NameForm />
+          {/* <NameForm /> */}
+          <button
+            onClick={() => signIn()}
+            className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
+          >
+            Get Started!
+          </button>
         </div>
       </div>
     </div>
