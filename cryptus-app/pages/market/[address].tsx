@@ -57,7 +57,7 @@ export async function getServerSideProps(context) {
 
   const summary_props_mock = {
     collection_name: "Bored Ape Yacht Club",
-    collection_logo: "./images/bayc-logo.png",
+    collection_logo: "/images/bayc-logo.png",
     collection_ticker: "BAYC",
     floor_price_live: 80.69,
     floor_price_delta: 2.4,

@@ -50,7 +50,7 @@ export async function getServerSideProps() {
 
   const summary_props_mock = {
     collection_name: "Bored Ape Yacht Club",
-    collection_logo: "./images/bayc-logo.png",
+    collection_logo: "/images/bayc-logo.png",
     collection_ticker: "BAYC",
     floor_price_live: 80.69,
     floor_price_delta: 2.4,
@@ -59,7 +59,7 @@ export async function getServerSideProps() {
 
   const BAYC: collection = {
     id: "1",
-    logo: "./images/BAYC.png",
+    logo: "/images/BAYC.png",
     ticker: "BAYC",
     name: "Bored Ape Yacht Club",
     address: address,
@@ -71,7 +71,7 @@ export async function getServerSideProps() {
 
   const PUNK: collection = {
     id: "2",
-    logo: "./images/PUNK.png",
+    logo: "/images/PUNK.png",
     ticker: "PUNK",
     name: "CryptoPunks",
     timestamp: "firday",
@@ -83,7 +83,7 @@ export async function getServerSideProps() {
 
   const BAYC2: collection = {
     id: "3",
-    logo: "./images/BAYC.png",
+    logo: "/images/BAYC.png",
     ticker: "BAYC",
     name: "Bored Ape Yacht Club",
     timestamp: "firday",
@@ -95,7 +95,7 @@ export async function getServerSideProps() {
 
   const PUNK2: collection = {
     id: "4",
-    logo: "./images/PUNK.png",
+    logo: "/images/PUNK.png",
     ticker: "PUNK",
     name: "CryptoPunks",
     timestamp: "firday",
