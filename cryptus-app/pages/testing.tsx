@@ -23,14 +23,11 @@ export default function Home() {
         const rarity = Math.round(
           mock_nft.properties
             .map((trait) => {
-              return 1 / (trait.count / collection_size);
+              return 1 / (trait.count / collectionSize);
             })
             .reduce((partialSum, a) => partialSum + a, 0)
         );
         setraRity_rank(rarity);
-
-        console.log("rarity : ", rarity_rank);
-        console.log("collection_size : ", collection_size);
       } catch (error) {
         console.log(error);
       }

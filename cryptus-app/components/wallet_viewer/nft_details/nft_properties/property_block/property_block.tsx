@@ -1,4 +1,5 @@
 //react and css
+import { count } from "console";
 import React, { useState, useEffect } from "react";
 import s from "./property_block.module.scss";
 
@@ -9,10 +10,12 @@ import s from "./property_block.module.scss";
 export default function PropretyBlock(props: {
   name: string;
   value: string;
-  rarity: Number;
+  count: number;
+  rarity: number;
+  collection_size: number;
 }) {
-  const { name, value, rarity } = props;
-  const rarity_percentage = 100 * (rarity as any);
+  const { name, value, count, rarity } = props;
+  const rarity_percentage = (100 / props.collection_size) * (count as any);
   const rarity_clean =
     rarity_percentage > 1
       ? rarity_percentage.toFixed(0)

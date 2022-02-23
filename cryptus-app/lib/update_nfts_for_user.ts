@@ -1,5 +1,4 @@
 import { nft } from "../lib/data_types";
-import GetCollectionTokens from "../lib/get_collection_token";
 
 export default async function updateNftsForUser(
   username: string,
@@ -65,7 +64,7 @@ export default async function updateNftsForUser(
         };
       });
       traits_sorted = traits.sort((a, b) => {
-        return a.rarity - b.rarity;
+        return a.count - b.count;
       });
       // The rarity rank still need to add rarity of non-existant traits add : 1/((total-nb_with_trait)/total)
       // Rarity rank is calculated from it's traits and rounded the result. The equation is :sum(1/(nb_with_trait/total_count))
@@ -86,7 +85,9 @@ export default async function updateNftsForUser(
       collection_address: nft.asset_contract.address,
       token_id: nft.token_id,
       external_url: nft.permalink,
-      last_sale_price: nft.last_sale ? nft.last_sale.price ?? 0 : 0,
+      last_sale_price: nft.last_sale
+        ? parseInt(nft.last_sale.payment_token.eth_price) ?? 0
+        : 0,
       last_sale_symbol: nft.last_sale
         ? nft.last_sale.payment_token.symbol
         : "ETH",
