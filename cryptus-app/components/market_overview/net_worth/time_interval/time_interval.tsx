@@ -11,14 +11,15 @@ export enum intervals {
   week = 0,
   month = 1,
   three_months = 2,
-  six_months = 3,
-  year = 4,
+  year = 3,
+  alltime = 4,
 }
 
-export default function TimeInterval(props: { active: number }) {
+export default function TimeInterval(props: { active: number; callback: any }) {
   const [active, setActive] = useState(props.active);
   const select_interval = (index: number) => {
     setActive(index);
+    props.callback(index);
   };
 
   const interval = (index: number) => {
@@ -30,7 +31,7 @@ export default function TimeInterval(props: { active: number }) {
               s.icon + " " + (active == intervals.week ? s.active : "")
             }
             onClick={() => {
-              setActive(intervals.week);
+              select_interval(intervals.week);
             }}
           >
             1W
@@ -43,7 +44,7 @@ export default function TimeInterval(props: { active: number }) {
               s.icon + " " + (active == intervals.month ? s.active : "")
             }
             onClick={() => {
-              setActive(intervals.month);
+              select_interval(intervals.month);
             }}
           >
             1M
@@ -56,23 +57,10 @@ export default function TimeInterval(props: { active: number }) {
               s.icon + " " + (active == intervals.three_months ? s.active : "")
             }
             onClick={() => {
-              setActive(intervals.three_months);
+              select_interval(intervals.three_months);
             }}
           >
             3M
-          </div>
-        );
-      case intervals.six_months:
-        return (
-          <div
-            className={
-              s.icon + " " + (active == intervals.six_months ? s.active : "")
-            }
-            onClick={() => {
-              setActive(intervals.six_months);
-            }}
-          >
-            6M
           </div>
         );
       case intervals.year:
@@ -82,10 +70,23 @@ export default function TimeInterval(props: { active: number }) {
               s.icon + " " + (active == intervals.year ? s.active : "")
             }
             onClick={() => {
-              setActive(intervals.year);
+              select_interval(intervals.year);
             }}
           >
             1Y
+          </div>
+        );
+      case intervals.alltime:
+        return (
+          <div
+            className={
+              s.icon + " " + (active == intervals.alltime ? s.active : "")
+            }
+            onClick={() => {
+              select_interval(intervals.alltime);
+            }}
+          >
+            ALL
           </div>
         );
     }
