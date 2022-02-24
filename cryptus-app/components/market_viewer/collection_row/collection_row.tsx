@@ -12,7 +12,10 @@ export default function CollectionRow(props: { collection: collection }) {
     <a className={s.anchor} href={`/market/${props.collection.address}`}>
       <div id="collection_row" className={s.container}>
         <CollectionInfo collection={props.collection} />
-        <PreviewGraph data_price={props.collection.data_price} />
+        <PreviewGraph
+          data_price={props.collection.data_price}
+          data_volume={props.collection.data_volume}
+        />
         <PriceInfo collection={props.collection} currency="eth" />
       </div>
     </a>

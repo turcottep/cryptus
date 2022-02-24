@@ -13,15 +13,16 @@ export type collection = {
   floor_price: number;
   floor_price_delta: number;
   data_price: number[];
+  data_volume: number[];
   timestamp: string;
 };
 
 export default function MarketViewer(props: { collections: collection[] }) {
   return (
     <div id="market_viewer" className={s.container}>
-      <div className={s.favorites}>
+      {/* <div className={s.favorites}>
         <FavoriteCollections collections={props.collections} />
-      </div>
+      </div> */}
       <div className={s.market}>
         <MarketCollections collections={props.collections} />
       </div>
