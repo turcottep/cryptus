@@ -1,40 +1,139 @@
 from helpers import parse_sale_data
 import psycopg2
-from pymongo import MongoClient
+import random
+from decouple import config
 import requests
 import pandas as pd
 import time
 
-# Top 10 NFT projects with contract address
+#    "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d": "boredapeyachtclub",
+# Top 10 NFT projects with contract addresses
 dict = {
-    "boredapeyachtclub": "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
-    "cryptopunks": "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
-    "decentraland": '0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d',
-    "mutantapeyachtclub": '0x60e4d786628fea6478f785a6d7e704777c86a7c6',
-    "sandbox": '0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a',
-    "rarible": '0xd07dc4262bcdbf85190c01c996b4c06a461d2430',
-    "clonex": '0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b',
-    "curiocardswrapper": '0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313',
-    "meebits": '0x7bd29408f11d2bfc23c34f18275bbf23bb716bc7',
-    "coolcatsnft": '0x1a92f7381b9f03921564a437210bb9396471050c'
+    "0x1a92f7381b9f03921564a437210bb9396471050c": "cool-cats-nft",
+    "0x60e4d786628fea6478f785a6d7e704777c86a7c6": "mutantapeyachtclub",
+    "0x7bd29408f11d2bfc23c34f18275bbf23bb716bc7": "meebits",
+    "0x8a90cab2b38dba80c64b7734e58ee1db38b8992e": "doodles",
+    "0x1cb1a5e65610aeff2551a50f76a87a7d3fb649c6": "cryptoadz-by-gremplin",
+    "0xbd3531da5cf5857e7cfaa92426877b022e612cf8": "pudgypenguins",
+    "0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb": "veefriends",
+    "0xccc441ac31f02cd96c153db6fd5fe0a2f4e6a68d": "fluf-world",
+    "0xedb61f74b0d09b2558f1eeb79b247c1f363ae452": "guttercatgang",
+    "0x123b30e25973fecd8354dd5f41cc45a3065ef88c": "alienfrensnft",
 }
 
 
-def insertpostgresql(collectionname, data_collection):
-    global connection, cursor
-    print("Inserting into Database...")
+def getACollection(contract_address):
+    global df
+    print("\nGetting table...")
+    connection = psycopg2.connect(user=config('USER'),
+                                  password=config('PASSWORD'),
+                                  host=config('HOST'),
+                                  port=config('PORT'),
+                                  database=config('DB'))
+    cursor = connection.cursor()
+    # columns=['tokenid', 'total_price', 'timestamp_raw', 'payment_token', 'usd_price', 'transaction_hash', 'timestamp_unix']
     try:
-        connection = psycopg2.connect(user="qfmbqmtlqxivla",
-                                      password="f38c3b193a2d4697d112b4b3e272c484236217c93dc0d65517ac566584fb58cd",
-                                      host="ec2-3-215-57-87.compute-1.amazonaws.com",
-                                      port="5432",
-                                      database="d7i4a0k0e2jgts")
-        cursor = connection.cursor()
+        postgres_index_query = """SELECT * FROM marketsales.""" + contract_address
+        # dat = pd.read_sql_query(postgres_index_query, conn)
+        df = pd.read_sql_query(postgres_index_query, connection)
+        cursor.execute(postgres_index_query)
+        connection.commit()
+        count = cursor.rowcount
+        print(count, "Index added successfully from " + contract_address + " table")
+    except Exception as e:
+        print(e)
+    return df
 
-        postgres_insert_query = """ INSERT INTO marketsales.""" + collectionname + """ (tokenid, timestamp_raw, total_price, payment_token, usd_price, transaction_hash) VALUES (%s,%s,%s,%s,%s,%s) ON CONFLICT (transaction_hash) DO NOTHING"""
+
+def _addindexintable(contract_address):
+    print("\nAdding Index to table...")
+    connection = psycopg2.connect(user=config('USER'),
+                                  password=config('PASSWORD'),
+                                  host=config('HOST'),
+                                  port=config('PORT'),
+                                  database=config('DB'))
+    cursor = connection.cursor()
+    try:
+        postgres_index_query = """CREATE UNIQUE INDEX """ + contract_address + """_transaction_hash_idx ON marketsales.""" + contract_address + """ (transaction_hash);"""
+        cursor.execute(postgres_index_query)
+        connection.commit()
+        count = cursor.rowcount
+        print(count, "Index added successfully into " + contract_address + " table")
+    except Exception as e:
+        print(e)
+    finally:
+        # closing database connection.
+        if connection:
+            cursor.close()
+            connection.close()
+
+
+def _createtable(contract_address):
+    print("\nCreating table...")
+    print("contract_ :", contract_address)
+    connection = psycopg2.connect(user=config('USER'),
+                                  password=config('PASSWORD'),
+                                  host=config('HOST'),
+                                  port=config('PORT'),
+                                  database=config('DB'))
+    cursor = connection.cursor()
+    try:
+        postgres_insert_query = """ CREATE TABLE marketsales.""" + contract_address + """ (tokenid varchar NULL, total_price float8 NULL, timestamp_raw timestamp NULL, payment_token varchar NULL, usd_price float8 NULL, transaction_hash varchar NULL, timestamp_unix bigint NULL);"""
+        cursor.execute(postgres_insert_query)
+        connection.commit()
+        count = cursor.rowcount
+        print(count, "New Table inserted successfully into " + contract_address + " table")
+    except Exception as e:
+        print(e)
+    finally:
+        # closing database connection.
+        if connection:
+            cursor.close()
+            connection.close()
+
+
+def _createtable_averages(contract_address):
+    print("\nCreating average table...")
+    print("contract_ :", contract_address)
+    connection = psycopg2.connect(user=config('USER'),
+                                  password=config('PASSWORD'),
+                                  host=config('HOST'),
+                                  port=config('PORT'),
+                                  database=config('DB'))
+    cursor = connection.cursor()
+    try:
+        postgres_insert_query = """ CREATE TABLE marketsales.""" + contract_address + """ (timestamp_raw timestamp NULL, average_price varchar NULL, average_usd_price varchar NULL, count varchar NULL, volume_eth varchar NULL);"""
+        cursor.execute(postgres_insert_query)
+        connection.commit()
+        count = cursor.rowcount
+        print(count, "New Table inserted successfully into " + contract_address + " table average")
+    except Exception as e:
+        print(e)
+    finally:
+        # closing database connection.
+        if connection:
+            cursor.close()
+            connection.close()
+
+
+def insertpostgresql(collectionname, data_collection):
+    try:
+        _createtable(collectionname)
+        if 'day' in collectionname or 'week' in collectionname:
+            print('Deleting day or week...')
+            _deletecontentoftable(collectionname)
+        _addindexintable(collectionname)
+        connection = psycopg2.connect(user=config('USER'),
+                                      password=config('PASSWORD'),
+                                      host=config('HOST'),
+                                      port=config('PORT'),
+                                      database=config('DB'))
+        cursor = connection.cursor()
+        print("Inserting into Database...")
+        postgres_insert_query = """ INSERT INTO marketsales.""" + collectionname + """ (tokenid, timestamp_raw, total_price, payment_token, usd_price, transaction_hash, timestamp_unix) VALUES (%s,%s,%s,%s,%s,%s,%s) ON CONFLICT (transaction_hash) DO NOTHING;"""
         for l in data_collection.to_dict('records'):
             record_to_insert = (l['tokenid'], l['timestamp_raw'], l['total_price'], l['payment_token'], l['usd_price'],
-                                l['transaction_hash'])
+                                l['transaction_hash'], l['timestamp_unix'])
             cursor.execute(postgres_insert_query, record_to_insert)
 
         connection.commit()
@@ -42,69 +141,109 @@ def insertpostgresql(collectionname, data_collection):
         print(count, "Record inserted successfully into " + collectionname + " table")
 
     except (Exception, psycopg2.Error) as error:
-        print("Failed to insert record into " + collectionname + " table", error)
+        print("Failed to insert record into " + collectionname + " table, \nerror :", error)
 
     finally:
         # closing database connection.
         if connection:
             cursor.close()
             connection.close()
-            print("PostgreSQL connection is closed")
 
 
-# MONGODB
-def addCollectionDataToDb(name, data):
-    client = MongoClient(
-        'mongodb+srv://publicwalletadmin:GbTQpZGWOUHZP9jC@publicwallet.qyuie.mongodb.net/DataNFT?retryWrites=true&w=majority')
-    collection = client.NFT.get_collection(name)
-    # collection.insert_many(data.to_dict('records')) ## Can't upsert , filter these
-    for i, row in data.iterrows():
-        unique_id = i
-        txHash = row['transaction_hash']
-        print(unique_id, txHash, data.to_dict('records')[unique_id])
-        collection.update_one(
-            {'transaction_hash': txHash}, {"$set": data.to_dict('records')[unique_id]},
-            upsert=True,
-            array_filters=None
-        )
+def _deletecontentoftable(collectionname):
+    try:
+        connection = psycopg2.connect(user=config('USER'),
+                                      password=config('PASSWORD'),
+                                      host=config('HOST'),
+                                      port=config('PORT'),
+                                      database=config('DB'))
+        cursor = connection.cursor()
+        print("Deleting table Database...")
+        postgres_insert_query = """ DELETE FROM marketsales.""" + collectionname + """ """
+        cursor.execute(postgres_insert_query)
+        connection.commit()
+        count = cursor.rowcount
+        print(count, "Record deleted successfully " + collectionname + " table")
+
+    except (Exception, psycopg2.Error) as error:
+        print("Failed to delete " + collectionname + " table, \nerror :", error)
+
+
+def insertpostgresql_averages(collectionname, data_collection):
+    try:
+        _createtable_averages(collectionname)
+        _deletecontentoftable(collectionname)
+        connection = psycopg2.connect(user=config('USER'),
+                                      password=config('PASSWORD'),
+                                      host=config('HOST'),
+                                      port=config('PORT'),
+                                      database=config('DB'))
+        cursor = connection.cursor()
+        print("Inserting into Database...")
+        postgres_insert_query = """ INSERT INTO marketsales.""" + collectionname + """ (timestamp_raw, average_price, average_usd_price, count, volume_eth) VALUES (%s,%s,%s,%s,%s)"""
+        for l in data_collection.to_dict('records'):
+            record_to_insert = (
+            l['timestamp_raw'], l['average_price'], l['average_usd_price'], l['count'], l['volume_eth'])
+            cursor.execute(postgres_insert_query, record_to_insert)
+
+        connection.commit()
+        count = cursor.rowcount
+        print(count, "Record inserted successfully into " + collectionname + " table")
+
+    except (Exception, psycopg2.Error) as error:
+        print("Failed to insert record into " + collectionname + " table, \nerror :", error)
+
+    finally:
+        # closing database connection.
+        if connection:
+            cursor.close()
+            connection.close()
 
 
 def getCollectionData(address, sales_collection, last_unix):
     print("Getting Opensea data on collection : ", address, ' ...')
     url = "https://api.opensea.io/api/v1/events"
     # Query from opensea API occured_before the last added timestamp
-    for i in range(0, 35):
-        print("Getting range of sales ", i)
-        if last_unix is None:
-            print('Last unisx is None, FIRST PASS...')
-            querystring = {"asset_contract_address": address,
-                           "event_type": "successful",
-                           "only_opensea": "true",
-                           "offset": i * 300,
-                           "limit": "300"}
-        else:
-            print('Last unisx is None, SECOND PASS... with query before unix :', str(last_unix))
-            querystring = {"asset_contract_address": address,
-                           "event_type": "successful",
-                           "only_opensea": "true",
-                           "offset": i * 300,
-                           "limit": "300",
-                           "occurred_before" : str(last_unix)}
+    try:
+        for i in range(0, 50):
+            print("Getting range of sales ", i)
+            if last_unix is None:
+                print('Last unisx is None, FIRST PASS...')
+                querystring = {"asset_contract_address": address,
+                               "event_type": "successful",
+                               "only_opensea": "true",
+                               "offset": i * 300,
+                               "limit": "300"}
+            else:
+                print('Last unisx is None, SECOND PASS... with query before unix :', str(last_unix))
+                querystring = {"asset_contract_address": address,
+                               "event_type": "successful",
+                               "only_opensea": "true",
+                               "offset": i * 300,
+                               "limit": "300",
+                               "occurred_before": str(last_unix)}
 
-        headers = {"Accept": "application/json", "X-API-KEY": "fa7be7363a434196887472587f496844"}
-        response = requests.request("GET", url, headers=headers, params=querystring)
-        if response.status_code != 200:
-            print('API error # ', response.json(), response.status_code)
-            break
-        # Getting sales data
-        sales = response.json()['asset_events']
-        if not sales:
-            break
-        # Parsing sales data
-        parsed_sales = [parse_sale_data(sale) for sale in sales]
-        # storing parsed data into list/df
-        if parsed_sales is not None:
-            sales_collection.extend(parsed_sales)
+            headers = {
+                'referrer': url, "X-API-KEY": config('KEY')}
+            response = requests.request("GET", url, headers=headers, params=querystring)
+            if response.status_code != 200:
+                print('API error # ', response.json(), response.status_code)
+                print('BRoke  1')
+                break
+            # Getting sales data
+            sales = response.json()['asset_events']
+            if not sales:
+                print('BRoke  2')
+                break
+            # Parsing sales data
+            parsed_sales = [parse_sale_data(sale) for sale in sales]
+            # storing parsed data into list/df
+            if parsed_sales is not None:
+                sales_collection.extend(parsed_sales)
+    except Exception as e:
+        print("\nException :")
+        print(e)
+
     print('\nDone!')
     return sales_collection
 
@@ -124,7 +263,11 @@ def getPastSales(pastx, dataframe):
         selected = dataframe.loc[dataframe['timestamp_unix'] > pastSeconds]
     elif pastx == 'month':
         print('getting past month data...')
-        pastSeconds = current_unix - (3600 * 24 * 30)
+        pastSeconds = current_unix - (3600 * 24 * 31)
+        selected = dataframe.loc[dataframe['timestamp_unix'] > pastSeconds]
+    elif pastx == '3month':
+        print('getting past 3month data...')
+        pastSeconds = current_unix - (3600 * 24 * 31 * 3)
         selected = dataframe.loc[dataframe['timestamp_unix'] > pastSeconds]
     elif pastx == 'year':
         print('getting past year data...')
@@ -143,23 +286,99 @@ def getIndicator(df):
     return [mean, volume, n_sales]
 
 
-if __name__ == '__main__':
-    collectionname = 'boredapeyachtclub'
-    last_unix = None
-    data = []
-    contract_address = dict[collectionname]
-    data = getCollectionData(contract_address, data, last_unix)
-    sales_df = pd.DataFrame(data)
-    df = sales_df
-    df['timestamp_unix'] = df['timestamp_raw'].apply(lambda x: int(time.mktime(x.timetuple())))
-    last_unix = df['timestamp_unix'].iloc[-1]
-    print(df.to_string())
-    # Second pass
-    data = getCollectionData(contract_address, data, last_unix)
-    sales_df = pd.DataFrame(data)
-    df = sales_df
-    df['timestamp_unix'] = df['timestamp_raw'].apply(lambda x: int(time.mktime(x.timetuple())))
-    insertpostgresql(collectionname, df)
-    # selected_data = getPastSales('week', data)
-    # mean, volume, n_sales = getIndicator(data)
+def samplemonths(df):
+    # print(df.to_string())
+    count = df.resample('D', on='timestamp_raw', kind='timestamp').count()
+    count = count['tokenid']
+    test = df.resample('D', on='timestamp_raw', kind='timestamp').mean()
+    test = pd.DataFrame(test)
+    test.rename(columns={'total_price': 'average_price'}, inplace=True)
+    test.rename(columns={'usd_price': 'average_usd_price'}, inplace=True)
+    del test["timestamp_unix"]
+    test['count'] = count.array
+    test['volume_eth'] = round(test['count'] * test['average_price'], 2)
+    test['average_price'] = round(test['average_price'], 2)
+    test['average_usd_price'] = round(test['average_usd_price'], 2)
+    test.reset_index(level=0, inplace=True)
+    print('\n Test : \n ', test)
+    return test
 
+def sample3months(df):
+    # print(df.to_string())
+    count = df.resample('2D', on='timestamp_raw', kind='timestamp').count()
+    count = count['tokenid']
+    test = df.resample('2D', on='timestamp_raw', kind='timestamp').mean()
+    test = pd.DataFrame(test)
+    test.rename(columns={'total_price': 'average_price'}, inplace=True)
+    test.rename(columns={'usd_price': 'average_usd_price'}, inplace=True)
+    del test["timestamp_unix"]
+    test['count'] = count.array
+    test['volume_eth'] = round(test['count'] * test['average_price'], 2)
+    test['average_price'] = round(test['average_price'], 2)
+    test['average_usd_price'] = round(test['average_usd_price'], 2)
+    test.reset_index(level=0, inplace=True)
+    print('\n Test : \n ', test)
+    return test
+
+
+def sampleyear(df):
+    count = df.resample('W', on='timestamp_raw', kind='timestamp').count()
+    count = count['tokenid']
+    test = df.resample('W', on='timestamp_raw', kind='timestamp').mean()
+    test = pd.DataFrame(test)
+    test.rename(columns={'total_price': 'average_price'}, inplace=True)
+    test.rename(columns={'usd_price': 'average_usd_price'}, inplace=True)
+    del test["timestamp_unix"]
+    test['count'] = count.array
+    test['volume_eth'] = round(test['count'] * test['average_price'], 2)
+    test['average_price'] = round(test['average_price'], 2)
+    test['average_usd_price'] = round(test['average_usd_price'], 2)
+    test.reset_index(level=0, inplace=True)
+    print('\n Test : \n ', test.head(3))
+    return test
+
+
+if __name__ == '__main__':
+    # Parse data for views and add to DB
+    for i, (address_raw, collectionName) in enumerate(dict.items()):
+        collection = address_raw[1:]
+        df = getACollection(collection)
+        # day = getPastSales('day', df)
+        # week = getPastSales('week', df)
+        # month = getPastSales('month', df)
+        threemonth = getPastSales('3month', df)
+        # year = getPastSales('year', df)
+        # alltime = sampleyear(df)
+        # month = samplemonths(month)
+        threemonth = sample3months(threemonth)
+        # year = sampleyear(year)
+        # insertpostgresql(collection+ '_day', day)
+        # insertpostgresql(collection + '_week', week)
+        # insertpostgresql_averages(collection+'_month', month)
+        insertpostgresql_averages(collection+'_3month', threemonth)
+        # insertpostgresql_averages(collection + '_year', year)
+        # insertpostgresql_averages(collection + '_alltime', alltime)
+
+    # print( "count \n", count.array)
+
+    # Get Data from opensea and add to main tables
+    # try:
+    #     for i, (address_raw, collectionName) in enumerate(dict.items()):
+    #         address = address_raw[1:]
+    #         last_unix = None
+    #         data = []
+    #         data = getCollectionData(address_raw, data, last_unix)
+    #         sales_df = pd.DataFrame(data)
+    #         sales_df['timestamp_unix'] = sales_df['timestamp_raw'].apply(lambda x: int(time.mktime(x.timetuple())))
+    #         last_unix = sales_df['timestamp_unix'].iloc[-1]
+    #         # Second pass
+    #         data = getCollectionData(address_raw, data, last_unix)
+    #         sales_df = pd.DataFrame(data)
+    #         df = sales_df
+    #         df['timestamp_unix'] = df['timestamp_raw'].apply(lambda x: int(time.mktime(x.timetuple())))
+    #         print(df.to_string())
+    #         insertpostgresql(address, df)
+    #         # selected_data = getPastSales('week', data)
+    #         # mean, volume, n_sales = getIndicator(data)
+    # except Exception as e:
+    #     print(e)
