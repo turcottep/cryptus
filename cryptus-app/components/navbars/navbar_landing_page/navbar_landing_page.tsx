@@ -2,7 +2,7 @@ import React from "react";
 import { signIn, signOut, useSession } from "next-auth/client";
 import Link from "next/link";
 
-export default function NavbarLandingPage() {
+export default function NavbarLandingPage(props: { callback: Function }) {
   const [session, loading] = useSession();
 
   return (
@@ -27,7 +27,7 @@ export default function NavbarLandingPage() {
             <>
               <button
                 className="bg-dirt text-white px-2 py-1 font-bold rounded-full"
-                onClick={() => signIn()}
+                onClick={() => props.callback()}
               >
                 Sign In
               </button>
