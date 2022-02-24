@@ -22,6 +22,7 @@ const Collection = (props: { collection: coll }) => {
   const [b, setB] = useState([]);
   const [c, setC] = useState([]);
   const [collectionName, setCollectionName] = useState("");
+  const { userId } = router.query;
 
   useEffect(() => {
     const a = collection.nfts;
@@ -41,8 +42,9 @@ const Collection = (props: { collection: coll }) => {
   }, []);
 
   const onCollectionClick = (e) => {
-    console.log(collectionName);
-    //router.push(`/${collectionName}`);
+    const pushurl = `/${userId}/${collectionName}`;
+    console.log("pushurl", pushurl);
+    router.push(pushurl);
   };
 
   return (
@@ -67,6 +69,8 @@ const Collection = (props: { collection: coll }) => {
 const NftL = (props: { nft: nft; collectionName: string }) => {
   const { nft, collectionName } = props;
   const [urlName, setUrlName] = useState("");
+  const router = useRouter();
+  const { userId } = router.query;
 
   useEffect(() => {
     const urlname = nft.name
@@ -78,7 +82,7 @@ const NftL = (props: { nft: nft; collectionName: string }) => {
   }, []);
 
   const onNftClick = (e) => {
-    //router.push(`/${collectionName}/$urlName}`);
+    router.push(`${userId}/${collectionName}/${urlName}`);
     console.log(urlName);
 
     e.preventDefault();

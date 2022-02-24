@@ -8,10 +8,10 @@ export default function Footer() {
 
   return (
     <div id="footer" className={s.container}>
-      <FooterIcon src="icons/market_overview_icon.png" href="/" />
-      <FooterIcon src="icons/research_icon.png" href="/" />
-      <FooterIcon src="icons/notification_icon.png" href="/" />
-      <FooterIcon src="icons/profile_icon.png" href={userId} />
+      <FooterIcon src="/icons/market_overview_icon.png" href="/" />
+      <FooterIcon src="/icons/research_icon.png" href="/" />
+      <FooterIcon src="/icons/notification_icon.png" href="/" />
+      <FooterIcon src="/icons/profile_icon.png" href={userId} />
     </div>
   );
 }

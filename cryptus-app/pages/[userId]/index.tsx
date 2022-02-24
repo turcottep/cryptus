@@ -10,24 +10,13 @@ import update_nfts_for_user from "../../lib/update_nfts_for_user";
 import get_nfts_for_user from "../../lib/get_nfts_for_user";
 import sortNftsIntoCollections from "../../lib/sort_nfts_into_collections";
 import { profile_props } from "../../lib/data_types";
+import AnimatedDiv from "../../components/utils/animated_div";
 
 export default function post(props) {
-  const router = useRouter();
-  const { userId } = router.query;
-  const username = userId;
-
   return (
-    <AnimatePresence>
-      <motion.div
-        key="modal"
-        initial={{ x: "-100vw", opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ type: "spring", bounce: 0.25, duration: 0.8 }}
-        exit={{ opacity: 0 }}
-      >
-        <Profile {...props} />
-      </motion.div>
-    </AnimatePresence>
+    <AnimatedDiv>
+      <Profile {...props} />
+    </AnimatedDiv>
   );
 }
 
@@ -53,14 +42,9 @@ export async function getServerSideProps(context) {
       nfts = await get_nfts_for_user(username);
     }
     const nfts_collections = sortNftsIntoCollections(nfts);
-    // console.log("nfts===", nfts);
     const returningProps = {
       props: { collections: nfts_collections, user } as profile_props,
     };
-
-    // //save to file sync
-    // const file = `${process.cwd()}/public/${username}.json`;
-    // fs.writeFileSync(file, JSON.stringify(returningProps));
 
     return returningProps;
   } catch (err) {

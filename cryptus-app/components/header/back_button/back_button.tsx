@@ -7,7 +7,7 @@ import s from "./back_button.module.scss";
 export default function BackButton(props: { url: string }) {
   return (
     <a onClick={() => Router.back()} target="_blank" className={s.icon}>
-      <img src="icons/back_icon.png" className={s.image} />
+      <img src="/icons/back_icon.png" className={s.image} />
     </a>
   );
 }

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import s from "./favorite_collections.module.scss";
 
 import CollectionRow from "../collection_row/collection_row";
-import {collection} from "../market_viewer"
-
+import { collection } from "../market_viewer";
 
 // Need to add prop for collections
 export default function FavoriteCollections(props: {
@@ -11,7 +10,7 @@ export default function FavoriteCollections(props: {
 }) {
   return (
     <div id="favorite_collections" className={s.container}>
-      <FavoriteCollectionsHeader/>
+      <FavoriteCollectionsHeader />
       <div className={s.favorites}>
         {props.collections.map((c) => (
           <div key={c.id} className={s.collection}>
@@ -24,12 +23,10 @@ export default function FavoriteCollections(props: {
 }
 
 const FavoriteCollectionsHeader = () => (
-    <div className={s.header}>
-        <div className={s.icon}>
-            <img src="icons/star_icon.png" />
-        </div>
-        <div className={s.label}>
-            Favorites
-        </div>
+  <div className={s.header}>
+    <div className={s.icon}>
+      <img src="/icons/star_icon.png" />
     </div>
-  );
+    <div className={s.label}>Favorites</div>
+  </div>
+);
