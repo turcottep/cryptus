@@ -1,22 +1,23 @@
+import React from "react";
 import { useRouter } from "next/router";
 
-import React from "react";
-import fs from "fs";
+import { motion, AnimatePresence } from "framer-motion";
+
 import Profile from "../../components/profile/profile";
+
 import getUserByUsername from "../../lib/getUserByUsername";
 import update_nfts_for_user from "../../lib/update_nfts_for_user";
 import get_nfts_for_user from "../../lib/get_nfts_for_user";
 import sortNftsIntoCollections from "../../lib/sort_nfts_into_collections";
 import { profile_props } from "../../lib/data_types";
-
-import { nft } from "../../lib/data_types";
+import AnimatedDiv from "../../components/utils/animated_div";
 
 export default function post(props) {
-  const router = useRouter();
-  const { userId } = router.query;
-  const username = userId;
-
-  return <Profile {...props} />;
+  return (
+    <AnimatedDiv>
+      <Profile {...props} />
+    </AnimatedDiv>
+  );
 }
 
 export async function getServerSideProps(context) {
@@ -41,14 +42,9 @@ export async function getServerSideProps(context) {
       nfts = await get_nfts_for_user(username);
     }
     const nfts_collections = sortNftsIntoCollections(nfts);
-    // console.log("nfts===", nfts);
     const returningProps = {
       props: { collections: nfts_collections, user } as profile_props,
     };
-
-    // //save to file sync
-    // const file = `${process.cwd()}/public/${username}.json`;
-    // fs.writeFileSync(file, JSON.stringify(returningProps));
 
     return returningProps;
   } catch (err) {

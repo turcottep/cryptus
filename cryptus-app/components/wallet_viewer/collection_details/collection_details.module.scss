@@ -1,45 +1,8 @@
 @use "/styles/variables" as v;
 
 .container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    width: 100%;
-    min-height: 100vh;
+  width: 100%;
 }
-
-.header {
-    display: flex;
-    flex: 1 1 auto;
-    position: fixed;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: center;
-
-    z-index: 100;
-    top: 0px;
-
-    width: 100%;
-    padding: 0px 5px;
-
-    background-color: v.$header-color;
-  }
-
-  .infos {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    padding-top: v.$header-h;
-  }
-
-  .viewer {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }

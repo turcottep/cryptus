@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import s from "./favorite_collections.module.scss";
 
 import CollectionRow from "../collection_row/collection_row";
@@ -29,7 +29,7 @@ export default function FavoriteCollections(props: {
 const FavoriteCollectionsHeader = () => (
   <div className={s.header}>
     <div className={s.icon}>
-      <img src="icons/star_icon.png" />
+      <img src="/icons/star_icon.png" />
     </div>
     <div className={s.label}>Favorites</div>
   </div>

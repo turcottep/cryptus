@@ -1,11 +1,16 @@
 @use "/styles/variables" as v;
 
+$size: 72px;
+$gap: 8px;
+
 .container {
-  flex: 1 1 auto;
+  flex: 0 0 none;
 
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 
+  gap: $gap;
   width: 100%;
 }
