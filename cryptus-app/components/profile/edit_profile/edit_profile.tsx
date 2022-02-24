@@ -179,8 +179,6 @@ async function updateUser(
       description: description,
     }),
   });
-  console.log("response", response);
-  const data = await response.json();
-  console.log("data", data);
+  console.log("response edit_profile", response);
   return response;
 }
