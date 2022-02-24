@@ -9,6 +9,7 @@ export interface nft {
   collection: string;
   collection_size: number;
   collection_address: string;
+  token_id: string;
   description: string;
 }
 

@@ -19,6 +19,7 @@ export default function CollectionNFTs(props: { nft: nft[] }) {
     last_sale_price: 0,
     last_sale_symbol: "",
     rarity_rank: 0,
+    token_id: "",
     collection_size: 0,
     collection_address: "",
   } as nft;

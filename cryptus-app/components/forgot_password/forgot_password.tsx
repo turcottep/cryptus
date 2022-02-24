@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Recovery from "./recovery";
 import PINNumber from "./pin";
 import NewPassword from "./new_password";
@@ -9,74 +9,70 @@ export type ForgotPWValuesProps = {
   nextStep: Function;
   handleChange: Function;
   values: any;
-  step: Number;
+  step: number;
 };
 
-export class ForgotPassword extends Component {
-  state = {
-    step: 1,
+type state = {
+  email: "";
+  pinnumber: "";
+  password: "";
+  confirmpassword: "";
+};
+
+export default function ForgotPassword() {
+  const [step, setStep] = useState<number>(1);
+  const [state, setState] = useState<state>({
     email: "",
     pinnumber: "",
     password: "",
     confirmpassword: "",
-  };
+  });
+  useEffect(() => {}, []);
 
   // Proceed to next step
-  nextStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step + 1,
-    });
+  const nextStep = () => {
+    setStep(step + 1);
   };
 
   // Go back to prev step
-  prevStep = () => {
-    const { step } = this.state;
-    this.setState({
-      step: step - 1,
-    });
+  const prevStep = () => {
+    setStep(step - 1);
   };
 
-  handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     const target_id = e.target.id;
-    this.setState({ [target_id]: newValue });
+    setState({ ...state, [target_id]: newValue });
   };
 
-  render() {
-    const { step } = this.state;
+  const newProps = {
+    nextStep: nextStep,
+    prevStep: prevStep,
+    handleChange: handleChange,
+    values: state,
+    step: step,
+  };
 
-    const newProps = {
-      nextStep: this.nextStep,
-      prevStep: this.prevStep,
-      handleChange: this.handleChange,
-      values: this.state,
-      step: this.state.step,
-    };
+  const body = (step) => {
+    switch (step) {
+      case 1:
+        return <Recovery {...newProps} />;
+      case 2:
+        return <PINNumber {...newProps} />;
+      case 3:
+        return <NewPassword {...newProps} />;
 
-    const body = () => {
-      switch (step) {
-        case 1:
-          return <Recovery {...newProps} />;
-        case 2:
-          return <PINNumber {...newProps} />;
-        case 3:
-          return <NewPassword {...newProps} />;
+      default:
+        console.error("Error in ForgotPassword, unknown state");
+    }
+  };
 
-        default:
-          console.error("Error in ForgotPassword, unknown state");
-      }
-    };
-
-    return (
-      <main>
-        <div>
-          <ForgotPWNavBar {...newProps} />
-          <div >{body()}</div>
-        </div>
-      </main>
-    );
-  }
+  return (
+    <main>
+      <div>
+        <ForgotPWNavBar {...newProps} />
+        <div>{body(step)}</div>
+      </div>
+    </main>
+  );
 }
-
-export default ForgotPassword;

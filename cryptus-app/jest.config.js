@@ -9,7 +9,7 @@ module.exports = {
     "^.+\\.tsx?$": "ts-jest",
   },
 
-  testPathIgnorePatterns: ["<rootDir>/cypress/"],
+  testPathIgnorePatterns: ["<rootDir>/cypress/", "<rootDir>/pages/"],
 
   // Test spec file resolution pattern
   // Matches parent folder `__tests__` and filename
@@ -18,6 +18,10 @@ module.exports = {
 
   // Module file extensions for importing
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+
+  moduleNameMapper: {
+    "\\.(css|less|sass|scss)$": "<rootDir>/styleMock.js",
+  },
 
   testEnvironment: "jsdom",
   globals: {

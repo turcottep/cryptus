@@ -3,44 +3,41 @@ import ForgotPWHeader from "./forgot_password_header";
 import { ForgotPWValuesProps } from "./forgot_password";
 import Input from "@material-tailwind/react/Input";
 
-export default class Recovery extends Component<ForgotPWValuesProps> {
-  continue = (e) => {
+import s from "./recovery.module.scss";
+
+export default function Recovery(props) {
+  const next = (e) => {
     // console.log(this.props.values);
     // const email = this.props.values.email;
     e.preventDefault();
-    this.props.nextStep();
+    props.nextStep();
   };
 
-  back = (e) => {
+  const back = (e) => {
     e.preventDefault();
-    this.props.prevStep();
+    props.prevStep();
   };
 
-  render() {
-    return (
-      <div className="flex xl:text-xl flex-col mx-12 ">
-        <ForgotPWHeader
-          title="Enter your recovery email or phone number"
-          step={this.props.step}
+  return (
+    <div className={s.container}>
+      <ForgotPWHeader
+        title="Enter your recovery email or phone number"
+        step={props.step}
+      />
+      <div className={s.input}>
+        <Input
+          type="email"
+          id="email"
+          placeholder="Phone number or email"
+          outline={true}
+          size="lg"
+          color="brown"
+          required
         />
-        <div className="flex xl:text-xl flex-col mt-12">
-          <Input
-            type="email"
-            id="email"
-            placeholder="Phone number or email"
-            outline={true}
-            size="lg"
-            color="brown"
-            required
-          />
-        </div>
-        <button
-          onClick={this.continue}
-          className="relative text-lg text-center whitespace-nowrap bg-brown text-white rounded-lg w-full px-4 py-2 mt-8"
-        >
-          Send recovery email/text
-        </button>
       </div>
-    );
-  }
+      <button onClick={next} className={s.button}>
+        Send recovery email/text
+      </button>
+    </div>
+  );
 }

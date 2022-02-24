@@ -1,7 +1,7 @@
-define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
+define(['exports'], (function (exports) { 'use strict';
 
     try {
-      self['workbox:core:6.1.1'] && _();
+      self['workbox:core:6.4.1'] && _();
     } catch (e) {}
 
     /*
@@ -24,7 +24,8 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
         warn: `#f39c12`,
         error: `#c0392b`,
         groupCollapsed: `#3498db`,
-        groupEnd: null
+        groupEnd: null // No colored prefix on groupEnd
+
       };
 
       const print = function (method, args) {
@@ -53,7 +54,8 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
         if (method === 'groupEnd') {
           inGroup = false;
         }
-      };
+      }; // eslint-disable-next-line @typescript-eslint/ban-types
+
 
       const api = {};
       const loggerMethods = Object.keys(methodToColorMap);
@@ -111,25 +113,28 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
           throw new Error(`Unexpected input to 'incorrect-type' error.`);
         }
 
-        return `The parameter '${paramName}' passed into ` + `'${moduleName}.${className ? className + '.' : ''}` + `${funcName}()' must be of type ${expectedType}.`;
+        const classNameStr = className ? `${className}.` : '';
+        return `The parameter '${paramName}' passed into ` + `'${moduleName}.${classNameStr}` + `${funcName}()' must be of type ${expectedType}.`;
       },
       'incorrect-class': ({
-        expectedClass,
+        expectedClassName,
         paramName,
         moduleName,
         className,
         funcName,
         isReturnValueProblem
       }) => {
-        if (!expectedClass || !moduleName || !funcName) {
+        if (!expectedClassName || !moduleName || !funcName) {
           throw new Error(`Unexpected input to 'incorrect-class' error.`);
         }
 
+        const classNameStr = className ? `${className}.` : '';
+
         if (isReturnValueProblem) {
-          return `The return value from ` + `'${moduleName}.${className ? className + '.' : ''}${funcName}()' ` + `must be an instance of class ${expectedClass.name}.`;
+          return `The return value from ` + `'${moduleName}.${classNameStr}${funcName}()' ` + `must be an instance of class ${expectedClassName}.`;
         }
 
-        return `The parameter '${paramName}' passed into ` + `'${moduleName}.${className ? className + '.' : ''}${funcName}()' ` + `must be an instance of class ${expectedClass.name}.`;
+        return `The parameter '${paramName}' passed into ` + `'${moduleName}.${classNameStr}${funcName}()' ` + `must be an instance of class ${expectedClassName}.`;
       },
       'missing-a-method': ({
         expectedMethod,
@@ -157,16 +162,16 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
           throw new Error(`Unexpected input to ` + `'add-to-cache-list-duplicate-entries' error.`);
         }
 
-        return `Two of the entries passed to ` + `'workbox-precaching.PrecacheController.addToCacheList()' had the URL ` + `${firstEntry._entryId} but different revision details. Workbox is ` + `unable to cache and version the asset correctly. Please remove one ` + `of the entries.`;
+        return `Two of the entries passed to ` + `'workbox-precaching.PrecacheController.addToCacheList()' had the URL ` + `${firstEntry} but different revision details. Workbox is ` + `unable to cache and version the asset correctly. Please remove one ` + `of the entries.`;
       },
       'plugin-error-request-will-fetch': ({
-        thrownError
+        thrownErrorMessage
       }) => {
-        if (!thrownError) {
+        if (!thrownErrorMessage) {
           throw new Error(`Unexpected input to ` + `'plugin-error-request-will-fetch', error.`);
         }
 
-        return `An error was thrown by a plugins 'requestWillFetch()' method. ` + `The thrown error message was: '${thrownError.message}'.`;
+        return `An error was thrown by a plugins 'requestWillFetch()' method. ` + `The thrown error message was: '${thrownErrorMessage}'.`;
       },
       'invalid-cache-name': ({
         cacheNameId,
@@ -438,9 +443,11 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
       }
     };
 
-    const isInstance = (object, expectedClass, details) => {
+    const isInstance = (object, // Need the general type to do the check later.
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    expectedClass, details) => {
       if (!(object instanceof expectedClass)) {
-        details['expectedClass'] = expectedClass;
+        details['expectedClassName'] = expectedClass.name;
         throw new WorkboxError('incorrect-class', details);
       }
     };
@@ -452,7 +459,9 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
       }
     };
 
-    const isArrayOfClass = (value, expectedClass, details) => {
+    const isArrayOfClass = (value, // Need general type to do check later.
+    expectedClass, // eslint-disable-line
+    details) => {
       const error = new WorkboxError('not-array-of-class', details);
 
       if (!Array.isArray(value)) {
@@ -476,7 +485,7 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
     };
 
     try {
-      self['workbox:routing:6.1.1'] && _();
+      self['workbox:routing:6.4.1'] && _();
     } catch (e) {}
 
     /*
@@ -673,7 +682,7 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
 
           if (url.origin !== location.origin && result.index !== 0) {
             {
-              logger.debug(`The regular expression '${regExp}' only partially matched ` + `against the cross-origin URL '${url}'. RegExpRoute's will only ` + `handle cross-origin requests if they match the entire URL.`);
+              logger.debug(`The regular expression '${regExp.toString()}' only partially matched ` + `against the cross-origin URL '${url.toString()}'. RegExpRoute's will only ` + `handle cross-origin requests if they match the entire URL.`);
             }
 
             return;
@@ -798,7 +807,10 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
       addCacheListener() {
         // See https://github.com/Microsoft/TypeScript/issues/28357#issuecomment-436484705
         self.addEventListener('message', event => {
+          // event.data is type 'any'
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           if (event.data && event.data.type === 'CACHE_URLS') {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             const {
               payload
             } = event.data;
@@ -824,7 +836,7 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
             event.waitUntil(requestPromises); // If a MessageChannel was used, reply to the message on success.
 
             if (event.ports && event.ports[0]) {
-              requestPromises.then(() => event.ports[0].postMessage(true));
+              void requestPromises.then(() => event.ports[0].postMessage(true));
             }
           }
         });
@@ -964,7 +976,9 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
                   params
                 });
               } catch (catchErr) {
-                err = catchErr;
+                if (catchErr instanceof Error) {
+                  err = catchErr;
+                }
               }
             }
 
@@ -998,6 +1012,8 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
        *
        * @param {Object} options
        * @param {URL} options.url
+       * @param {boolean} options.sameOrigin The result of comparing `url.origin`
+       *     against the current origin.
        * @param {Request} options.request The request to match.
        * @param {Event} options.event The corresponding event.
        * @return {Object} An object with `route` and `params` properties.
@@ -1015,7 +1031,9 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
         const routes = this._routes.get(request.method) || [];
 
         for (const route of routes) {
-          let params;
+          let params; // route.match returns type any, not possible to change right now.
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
           const matchResult = route.match({
             url,
             sameOrigin,
@@ -1026,19 +1044,21 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
           if (matchResult) {
             {
               // Warn developers that using an async matchCallback is almost always
-              // not the right thing to do. 
+              // not the right thing to do.
               if (matchResult instanceof Promise) {
                 logger.warn(`While routing ${getFriendlyURL(url)}, an async ` + `matchCallback function was used. Please convert the ` + `following route to use a synchronous matchCallback function:`, route);
               }
             } // See https://github.com/GoogleChrome/workbox/issues/2079
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 
 
             params = matchResult;
 
-            if (Array.isArray(matchResult) && matchResult.length === 0) {
+            if (Array.isArray(params) && params.length === 0) {
               // Instead of passing an empty array in as params, use undefined.
               params = undefined;
-            } else if (matchResult.constructor === Object && Object.keys(matchResult).length === 0) {
+            } else if (matchResult.constructor === Object && // eslint-disable-line
+            Object.keys(matchResult).length === 0) {
               // Instead of passing an empty object in as params, use undefined.
               params = undefined;
             } else if (typeof matchResult === 'boolean') {
@@ -1249,7 +1269,7 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
         }) => {
           {
             if (url.pathname === captureUrl.pathname && url.origin !== captureUrl.origin) {
-              logger.debug(`${capture} only partially matches the cross-origin URL ` + `${url}. This route will only handle cross-origin requests ` + `if they match the entire URL.`);
+              logger.debug(`${capture} only partially matches the cross-origin URL ` + `${url.toString()}. This route will only handle cross-origin requests ` + `if they match the entire URL.`);
             }
           }
 
@@ -1279,24 +1299,38 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
       return route;
     }
 
+    try {
+      self['workbox:strategies:6.4.1'] && _();
+    } catch (e) {}
+
     /*
-      Copyright 2019 Google LLC
+      Copyright 2018 Google LLC
+
       Use of this source code is governed by an MIT-style
       license that can be found in the LICENSE file or at
       https://opensource.org/licenses/MIT.
     */
-    /**
-     * Returns a promise that resolves and the passed number of milliseconds.
-     * This utility is an async/await-friendly version of `setTimeout`.
-     *
-     * @param {number} ms
-     * @return {Promise}
-     * @private
-     */
+    const cacheOkAndOpaquePlugin = {
+      /**
+       * Returns a valid response (to allow caching) if the status is 200 (OK) or
+       * 0 (opaque).
+       *
+       * @param {Object} options
+       * @param {Response} options.response
+       * @return {Response|null}
+       *
+       * @private
+       */
+      cacheWillUpdate: async ({
+        response
+      }) => {
+        if (response.status === 200 || response.status === 0) {
+          return response;
+        }
 
-    function timeout(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
+        return null;
+      }
+    };
 
     /*
       Copyright 2018 Google LLC
@@ -1348,23 +1382,12 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
       }
     };
 
-    function _extends() {
-      _extends = Object.assign || function (target) {
-        for (var i = 1; i < arguments.length; i++) {
-          var source = arguments[i];
-
-          for (var key in source) {
-            if (Object.prototype.hasOwnProperty.call(source, key)) {
-              target[key] = source[key];
-            }
-          }
-        }
-
-        return target;
-      };
-
-      return _extends.apply(this, arguments);
-    }
+    /*
+      Copyright 2020 Google LLC
+      Use of this source code is governed by an MIT-style
+      license that can be found in the LICENSE file or at
+      https://opensource.org/licenses/MIT.
+    */
 
     function stripParams(fullURL, ignoreParams) {
       const strippedURL = new URL(fullURL);
@@ -1397,10 +1420,9 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
       } // Otherwise, match by comparing keys
 
 
-      const keysOptions = _extends({}, matchOptions, {
+      const keysOptions = Object.assign(Object.assign({}, matchOptions), {
         ignoreSearch: true
       });
-
       const cacheKeys = await cache.keys(request, keysOptions);
 
       for (const cacheKey of cacheKeys) {
@@ -1450,6 +1472,8 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
       license that can be found in the LICENSE file or at
       https://opensource.org/licenses/MIT.
     */
+    // Can't change Function type right now.
+    // eslint-disable-next-line @typescript-eslint/ban-types
 
     const quotaErrorCallbacks = new Set();
 
@@ -1486,9 +1510,32 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
       }
     }
 
-    try {
-      self['workbox:strategies:6.1.1'] && _();
-    } catch (e) {}
+    /*
+      Copyright 2019 Google LLC
+      Use of this source code is governed by an MIT-style
+      license that can be found in the LICENSE file or at
+      https://opensource.org/licenses/MIT.
+    */
+    /**
+     * Returns a promise that resolves and the passed number of milliseconds.
+     * This utility is an async/await-friendly version of `setTimeout`.
+     *
+     * @param {number} ms
+     * @return {Promise}
+     * @private
+     */
+
+    function timeout(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    /*
+      Copyright 2020 Google LLC
+
+      Use of this source code is governed by an MIT-style
+      license that can be found in the LICENSE file or at
+      https://opensource.org/licenses/MIT.
+    */
 
     function toRequest(input) {
       return typeof input === 'string' ? new Request(input) : input;
@@ -1605,85 +1652,85 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
        */
 
 
-      fetch(input) {
-        return this.waitUntil((async () => {
-          const {
-            event
-          } = this;
-          let request = toRequest(input);
+      async fetch(input) {
+        const {
+          event
+        } = this;
+        let request = toRequest(input);
 
-          if (request.mode === 'navigate' && event instanceof FetchEvent && event.preloadResponse) {
-            const possiblePreloadResponse = await event.preloadResponse;
+        if (request.mode === 'navigate' && event instanceof FetchEvent && event.preloadResponse) {
+          const possiblePreloadResponse = await event.preloadResponse;
 
-            if (possiblePreloadResponse) {
-              {
-                logger.log(`Using a preloaded navigation response for ` + `'${getFriendlyURL(request.url)}'`);
-              }
-
-              return possiblePreloadResponse;
-            }
-          } // If there is a fetchDidFail plugin, we need to save a clone of the
-          // original request before it's either modified by a requestWillFetch
-          // plugin or before the original request's body is consumed via fetch().
-
-
-          const originalRequest = this.hasCallback('fetchDidFail') ? request.clone() : null;
-
-          try {
-            for (const cb of this.iterateCallbacks('requestWillFetch')) {
-              request = await cb({
-                request: request.clone(),
-                event
-              });
-            }
-          } catch (err) {
-            throw new WorkboxError('plugin-error-request-will-fetch', {
-              thrownError: err
-            });
-          } // The request can be altered by plugins with `requestWillFetch` making
-          // the original request (most likely from a `fetch` event) different
-          // from the Request we make. Pass both to `fetchDidFail` to aid debugging.
-
-
-          const pluginFilteredRequest = request.clone();
-
-          try {
-            let fetchResponse; // See https://github.com/GoogleChrome/workbox/issues/1796
-
-            fetchResponse = await fetch(request, request.mode === 'navigate' ? undefined : this._strategy.fetchOptions);
-
-            if ("development" !== 'production') {
-              logger.debug(`Network request for ` + `'${getFriendlyURL(request.url)}' returned a response with ` + `status '${fetchResponse.status}'.`);
-            }
-
-            for (const callback of this.iterateCallbacks('fetchDidSucceed')) {
-              fetchResponse = await callback({
-                event,
-                request: pluginFilteredRequest,
-                response: fetchResponse
-              });
-            }
-
-            return fetchResponse;
-          } catch (error) {
+          if (possiblePreloadResponse) {
             {
-              logger.error(`Network request for ` + `'${getFriendlyURL(request.url)}' threw an error.`, error);
-            } // `originalRequest` will only exist if a `fetchDidFail` callback
-            // is being used (see above).
-
-
-            if (originalRequest) {
-              await this.runCallbacks('fetchDidFail', {
-                error,
-                event,
-                originalRequest: originalRequest.clone(),
-                request: pluginFilteredRequest.clone()
-              });
+              logger.log(`Using a preloaded navigation response for ` + `'${getFriendlyURL(request.url)}'`);
             }
 
-            throw error;
+            return possiblePreloadResponse;
           }
-        })());
+        } // If there is a fetchDidFail plugin, we need to save a clone of the
+        // original request before it's either modified by a requestWillFetch
+        // plugin or before the original request's body is consumed via fetch().
+
+
+        const originalRequest = this.hasCallback('fetchDidFail') ? request.clone() : null;
+
+        try {
+          for (const cb of this.iterateCallbacks('requestWillFetch')) {
+            request = await cb({
+              request: request.clone(),
+              event
+            });
+          }
+        } catch (err) {
+          if (err instanceof Error) {
+            throw new WorkboxError('plugin-error-request-will-fetch', {
+              thrownErrorMessage: err.message
+            });
+          }
+        } // The request can be altered by plugins with `requestWillFetch` making
+        // the original request (most likely from a `fetch` event) different
+        // from the Request we make. Pass both to `fetchDidFail` to aid debugging.
+
+
+        const pluginFilteredRequest = request.clone();
+
+        try {
+          let fetchResponse; // See https://github.com/GoogleChrome/workbox/issues/1796
+
+          fetchResponse = await fetch(request, request.mode === 'navigate' ? undefined : this._strategy.fetchOptions);
+
+          if ("development" !== 'production') {
+            logger.debug(`Network request for ` + `'${getFriendlyURL(request.url)}' returned a response with ` + `status '${fetchResponse.status}'.`);
+          }
+
+          for (const callback of this.iterateCallbacks('fetchDidSucceed')) {
+            fetchResponse = await callback({
+              event,
+              request: pluginFilteredRequest,
+              response: fetchResponse
+            });
+          }
+
+          return fetchResponse;
+        } catch (error) {
+          {
+            logger.log(`Network request for ` + `'${getFriendlyURL(request.url)}' threw an error.`, error);
+          } // `originalRequest` will only exist if a `fetchDidFail` callback
+          // is being used (see above).
+
+
+          if (originalRequest) {
+            await this.runCallbacks('fetchDidFail', {
+              error: error,
+              event,
+              originalRequest: originalRequest.clone(),
+              request: pluginFilteredRequest.clone()
+            });
+          }
+
+          throw error;
+        }
       }
       /**
        * Calls `this.fetch()` and (in the background) runs `this.cachePut()` on
@@ -1700,7 +1747,7 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
       async fetchAndCachePut(input) {
         const response = await this.fetch(input);
         const responseClone = response.clone();
-        this.waitUntil(this.cachePut(input, responseClone));
+        void this.waitUntil(this.cachePut(input, responseClone));
         return response;
       }
       /**
@@ -1717,42 +1764,38 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
        */
 
 
-      cacheMatch(key) {
-        return this.waitUntil((async () => {
-          const request = toRequest(key);
-          let cachedResponse;
-          const {
+      async cacheMatch(key) {
+        const request = toRequest(key);
+        let cachedResponse;
+        const {
+          cacheName,
+          matchOptions
+        } = this._strategy;
+        const effectiveRequest = await this.getCacheKey(request, 'read');
+        const multiMatchOptions = Object.assign(Object.assign({}, matchOptions), {
+          cacheName
+        });
+        cachedResponse = await caches.match(effectiveRequest, multiMatchOptions);
+
+        {
+          if (cachedResponse) {
+            logger.debug(`Found a cached response in '${cacheName}'.`);
+          } else {
+            logger.debug(`No cached response found in '${cacheName}'.`);
+          }
+        }
+
+        for (const callback of this.iterateCallbacks('cachedResponseWillBeUsed')) {
+          cachedResponse = (await callback({
             cacheName,
-            matchOptions
-          } = this._strategy;
-          const effectiveRequest = await this.getCacheKey(request, 'read');
+            matchOptions,
+            cachedResponse,
+            request: effectiveRequest,
+            event: this.event
+          })) || undefined;
+        }
 
-          const multiMatchOptions = _extends({}, matchOptions, {
-            cacheName
-          });
-
-          cachedResponse = await caches.match(effectiveRequest, multiMatchOptions);
-
-          {
-            if (cachedResponse) {
-              logger.debug(`Found a cached response in '${cacheName}'.`);
-            } else {
-              logger.debug(`No cached response found in '${cacheName}'.`);
-            }
-          }
-
-          for (const callback of this.iterateCallbacks('cachedResponseWillBeUsed')) {
-            cachedResponse = (await callback({
-              cacheName,
-              matchOptions,
-              cachedResponse,
-              request: effectiveRequest,
-              event: this.event
-            })) || undefined;
-          }
-
-          return cachedResponse;
-        })());
+        return cachedResponse;
       }
       /**
        * Puts a request/response pair in the cache (and invokes any applicable
@@ -1784,6 +1827,13 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
               url: getFriendlyURL(effectiveRequest.url),
               method: effectiveRequest.method
             });
+          } // See https://github.com/GoogleChrome/workbox/issues/2818
+
+
+          const vary = response.headers.get('Vary');
+
+          if (vary) {
+            logger.debug(`The response for ${getFriendlyURL(effectiveRequest.url)} ` + `has a 'Vary: ${vary}' header. ` + `Consider setting the {ignoreVary: true} option on your strategy ` + `to ensure cache matching and deletion works as expected.`);
           }
         }
 
@@ -1825,12 +1875,14 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
         try {
           await cache.put(effectiveRequest, hasCacheUpdateCallback ? responseToCache.clone() : responseToCache);
         } catch (error) {
-          // See https://developer.mozilla.org/en-US/docs/Web/API/DOMException#exception-QuotaExceededError
-          if (error.name === 'QuotaExceededError') {
-            await executeQuotaErrorCallbacks();
-          }
+          if (error instanceof Error) {
+            // See https://developer.mozilla.org/en-US/docs/Web/API/DOMException#exception-QuotaExceededError
+            if (error.name === 'QuotaExceededError') {
+              await executeQuotaErrorCallbacks();
+            }
 
-          throw error;
+            throw error;
+          }
         }
 
         for (const callback of this.iterateCallbacks('cacheDidUpdate')) {
@@ -1859,7 +1911,9 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
 
 
       async getCacheKey(request, mode) {
-        if (!this._cacheKeys[mode]) {
+        const key = `${request.url} | ${mode}`;
+
+        if (!this._cacheKeys[key]) {
           let effectiveRequest = request;
 
           for (const callback of this.iterateCallbacks('cacheKeyWillBeUsed')) {
@@ -1867,14 +1921,16 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
               mode,
               request: effectiveRequest,
               event: this.event,
-              params: this.params
+              // params has a type any can't change right now.
+              params: this.params // eslint-disable-line
+
             }));
           }
 
-          this._cacheKeys[mode] = effectiveRequest;
+          this._cacheKeys[key] = effectiveRequest;
         }
 
-        return this._cacheKeys[mode];
+        return this._cacheKeys[key];
       }
       /**
        * Returns true if the strategy has at least one plugin with the given
@@ -1936,11 +1992,10 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
             const state = this._pluginStateMap.get(plugin);
 
             const statefulCallback = param => {
-              const statefulParam = _extends({}, param, {
+              const statefulParam = Object.assign(Object.assign({}, param), {
                 state
               }); // TODO(philipwalton): not sure why `any` is needed. It seems like
               // this should work with `as WorkboxPluginCallbackParam[C]`.
-
 
               return plugin[name](statefulParam);
             };
@@ -1995,7 +2050,7 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
 
 
       destroy() {
-        this._handlerDeferred.resolve();
+        this._handlerDeferred.resolve(null);
       }
       /**
        * This method will call cacheWillUpdate on the available plugins (or use
@@ -2215,22 +2270,24 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
             });
           }
         } catch (error) {
-          for (const callback of handler.iterateCallbacks('handlerDidError')) {
-            response = await callback({
-              error,
-              event,
-              request
-            });
+          if (error instanceof Error) {
+            for (const callback of handler.iterateCallbacks('handlerDidError')) {
+              response = await callback({
+                error,
+                event,
+                request
+              });
 
-            if (response) {
-              break;
+              if (response) {
+                break;
+              }
             }
           }
 
           if (!response) {
             throw error;
           } else {
-            logger.log(`While responding to '${getFriendlyURL(request.url)}', ` + `an ${error} error occurred. Using a fallback response provided by ` + `a handlerDidError plugin.`);
+            logger.log(`While responding to '${getFriendlyURL(request.url)}', ` + `an ${error instanceof Error ? error.toString() : ''} error occurred. Using a fallback response provided by ` + `a handlerDidError plugin.`);
           }
         }
 
@@ -2264,14 +2321,16 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
           });
           await handler.doneWaiting();
         } catch (waitUntilError) {
-          error = waitUntilError;
+          if (waitUntilError instanceof Error) {
+            error = waitUntilError;
+          }
         }
 
         await handler.runCallbacks('handlerDidComplete', {
           event,
           request,
           response,
-          error
+          error: error
         });
         handler.destroy();
 
@@ -2316,6 +2375,237 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
         }
       }
     };
+
+    /*
+      Copyright 2018 Google LLC
+
+      Use of this source code is governed by an MIT-style
+      license that can be found in the LICENSE file or at
+      https://opensource.org/licenses/MIT.
+    */
+    /**
+     * An implementation of a
+     * [network first]{@link https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#network-falling-back-to-cache}
+     * request strategy.
+     *
+     * By default, this strategy will cache responses with a 200 status code as
+     * well as [opaque responses]{@link https://developers.google.com/web/tools/workbox/guides/handle-third-party-requests}.
+     * Opaque responses are are cross-origin requests where the response doesn't
+     * support [CORS]{@link https://enable-cors.org/}.
+     *
+     * If the network request fails, and there is no cache match, this will throw
+     * a `WorkboxError` exception.
+     *
+     * @extends module:workbox-strategies.Strategy
+     * @memberof module:workbox-strategies
+     */
+
+    class NetworkFirst extends Strategy {
+      /**
+       * @param {Object} [options]
+       * @param {string} [options.cacheName] Cache name to store and retrieve
+       * requests. Defaults to cache names provided by
+       * [workbox-core]{@link module:workbox-core.cacheNames}.
+       * @param {Array<Object>} [options.plugins] [Plugins]{@link https://developers.google.com/web/tools/workbox/guides/using-plugins}
+       * to use in conjunction with this caching strategy.
+       * @param {Object} [options.fetchOptions] Values passed along to the
+       * [`init`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)
+       * of [non-navigation](https://github.com/GoogleChrome/workbox/issues/1796)
+       * `fetch()` requests made by this strategy.
+       * @param {Object} [options.matchOptions] [`CacheQueryOptions`](https://w3c.github.io/ServiceWorker/#dictdef-cachequeryoptions)
+       * @param {number} [options.networkTimeoutSeconds] If set, any network requests
+       * that fail to respond within the timeout will fallback to the cache.
+       *
+       * This option can be used to combat
+       * "[lie-fi]{@link https://developers.google.com/web/fundamentals/performance/poor-connectivity/#lie-fi}"
+       * scenarios.
+       */
+      constructor(options = {}) {
+        super(options); // If this instance contains no plugins with a 'cacheWillUpdate' callback,
+        // prepend the `cacheOkAndOpaquePlugin` plugin to the plugins list.
+
+        if (!this.plugins.some(p => 'cacheWillUpdate' in p)) {
+          this.plugins.unshift(cacheOkAndOpaquePlugin);
+        }
+
+        this._networkTimeoutSeconds = options.networkTimeoutSeconds || 0;
+
+        {
+          if (this._networkTimeoutSeconds) {
+            finalAssertExports.isType(this._networkTimeoutSeconds, 'number', {
+              moduleName: 'workbox-strategies',
+              className: this.constructor.name,
+              funcName: 'constructor',
+              paramName: 'networkTimeoutSeconds'
+            });
+          }
+        }
+      }
+      /**
+       * @private
+       * @param {Request|string} request A request to run this strategy for.
+       * @param {module:workbox-strategies.StrategyHandler} handler The event that
+       *     triggered the request.
+       * @return {Promise<Response>}
+       */
+
+
+      async _handle(request, handler) {
+        const logs = [];
+
+        {
+          finalAssertExports.isInstance(request, Request, {
+            moduleName: 'workbox-strategies',
+            className: this.constructor.name,
+            funcName: 'handle',
+            paramName: 'makeRequest'
+          });
+        }
+
+        const promises = [];
+        let timeoutId;
+
+        if (this._networkTimeoutSeconds) {
+          const {
+            id,
+            promise
+          } = this._getTimeoutPromise({
+            request,
+            logs,
+            handler
+          });
+
+          timeoutId = id;
+          promises.push(promise);
+        }
+
+        const networkPromise = this._getNetworkPromise({
+          timeoutId,
+          request,
+          logs,
+          handler
+        });
+
+        promises.push(networkPromise);
+        const response = await handler.waitUntil((async () => {
+          // Promise.race() will resolve as soon as the first promise resolves.
+          return (await handler.waitUntil(Promise.race(promises))) || ( // If Promise.race() resolved with null, it might be due to a network
+          // timeout + a cache miss. If that were to happen, we'd rather wait until
+          // the networkPromise resolves instead of returning null.
+          // Note that it's fine to await an already-resolved promise, so we don't
+          // have to check to see if it's still "in flight".
+          await networkPromise);
+        })());
+
+        {
+          logger.groupCollapsed(messages.strategyStart(this.constructor.name, request));
+
+          for (const log of logs) {
+            logger.log(log);
+          }
+
+          messages.printFinalResponse(response);
+          logger.groupEnd();
+        }
+
+        if (!response) {
+          throw new WorkboxError('no-response', {
+            url: request.url
+          });
+        }
+
+        return response;
+      }
+      /**
+       * @param {Object} options
+       * @param {Request} options.request
+       * @param {Array} options.logs A reference to the logs array
+       * @param {Event} options.event
+       * @return {Promise<Response>}
+       *
+       * @private
+       */
+
+
+      _getTimeoutPromise({
+        request,
+        logs,
+        handler
+      }) {
+        let timeoutId;
+        const timeoutPromise = new Promise(resolve => {
+          const onNetworkTimeout = async () => {
+            {
+              logs.push(`Timing out the network response at ` + `${this._networkTimeoutSeconds} seconds.`);
+            }
+
+            resolve(await handler.cacheMatch(request));
+          };
+
+          timeoutId = setTimeout(onNetworkTimeout, this._networkTimeoutSeconds * 1000);
+        });
+        return {
+          promise: timeoutPromise,
+          id: timeoutId
+        };
+      }
+      /**
+       * @param {Object} options
+       * @param {number|undefined} options.timeoutId
+       * @param {Request} options.request
+       * @param {Array} options.logs A reference to the logs Array.
+       * @param {Event} options.event
+       * @return {Promise<Response>}
+       *
+       * @private
+       */
+
+
+      async _getNetworkPromise({
+        timeoutId,
+        request,
+        logs,
+        handler
+      }) {
+        let error;
+        let response;
+
+        try {
+          response = await handler.fetchAndCachePut(request);
+        } catch (fetchError) {
+          if (fetchError instanceof Error) {
+            error = fetchError;
+          }
+        }
+
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+
+        {
+          if (response) {
+            logs.push(`Got response from network.`);
+          } else {
+            logs.push(`Unable to get a response from the network. Will respond ` + `with a cached response.`);
+          }
+        }
+
+        if (error || !response) {
+          response = await handler.cacheMatch(request);
+
+          {
+            if (response) {
+              logs.push(`Found a cached response in the '${this.cacheName}'` + ` cache.`);
+            } else {
+              logs.push(`No response found in the '${this.cacheName}' cache.`);
+            }
+          }
+        }
+
+        return response;
+      }
+
+    }
 
     /*
       Copyright 2018 Google LLC
@@ -2390,7 +2680,9 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
             throw new Error(`Timed out the network response after ` + `${this._networkTimeoutSeconds} seconds.`);
           }
         } catch (err) {
-          error = err;
+          if (err instanceof Error) {
+            error = err;
+          }
         }
 
         {
@@ -2436,9 +2728,10 @@ define("./workbox-d6d90c3a.js",['exports'], function (exports) { 'use strict';
       self.addEventListener('activate', () => self.clients.claim());
     }
 
+    exports.NetworkFirst = NetworkFirst;
     exports.NetworkOnly = NetworkOnly;
     exports.clientsClaim = clientsClaim;
     exports.registerRoute = registerRoute;
 
-});
-//# sourceMappingURL=workbox-d6d90c3a.js.map
+}));
+//# sourceMappingURL=workbox-9a8b0a38.js.map

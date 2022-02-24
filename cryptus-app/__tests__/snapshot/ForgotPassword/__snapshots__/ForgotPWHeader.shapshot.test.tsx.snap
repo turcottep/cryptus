@@ -1,44 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div
-  className="flex flex-col mt-8"
->
-  <div
-    className="flex justify-center mx-auto"
-  >
-    <div
-      className=""
-    >
-      <p
-        className="text-brown text-3xl float-right mx-2 "
-      >
-        ●
-      </p>
-    </div>
-    <div
-      className=""
-    >
-      <p
-        className="text-brown text-3xl float-left mx-2"
-      >
-        ●
-      </p>
-      <p
-        className="text-gray-500 text-3xl float-left mx-2"
-      >
-        ●
-      </p>
-    </div>
-  </div>
-  <div
-    className="flex flex-col mt-4"
-  >
-    <p
-      className="text-black text-lg text-center"
-    >
-      A title
+<div>
+  <div>
+    <p>
+      ●
     </p>
+    <p>
+      ●
+    </p>
+    <p>
+      ●
+    </p>
+  </div>
+  <div>
+    A title
   </div>
 </div>
 `;

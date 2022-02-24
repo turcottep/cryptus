@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PropertyBlock /> should display all the correct properties 1`] = `
+<div>
+  <div>
+    <div>
+      SAVANNAH R1-R3, SLY R1
+    </div>
+    <div>
+      0
+    </div>
+    <div>
+      0.00% have this trait
+    </div>
+  </div>
+</div>
+`;

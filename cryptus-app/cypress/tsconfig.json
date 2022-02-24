@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "baseUrl": "../node_modules",
+    "paths": {
+      "~/*": ["../src/*"]
+    },
+    "jsx": "react",
+    "target": "es6",
+    "lib": ["es6", "dom", "es2017.string"],
+    "types": ["cypress"],
+    "moduleResolution": "node"
+  },
+  "include": ["**/*.ts"]
+}
