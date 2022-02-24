@@ -3,7 +3,7 @@ import absoluteUrl from "next-absolute-url";
 
 export default async function getUserByUsername(
   username,
-  withWallets,
+  withWallets = false,
   absoluteUrl = true
 ) {
   if (!username) {
@@ -11,8 +11,8 @@ export default async function getUserByUsername(
     return null;
   }
 
-  const BASE_URL = process.env.BASE_URL + "api/users/username";
-  const res = await fetch(BASE_URL, {
+  const base_url = absoluteUrl ? process.env.BASE_URL : "/";
+  const res = await fetch(base_url + "api/users/username", {
     method: "POST",
     body: JSON.stringify({
       username: username,

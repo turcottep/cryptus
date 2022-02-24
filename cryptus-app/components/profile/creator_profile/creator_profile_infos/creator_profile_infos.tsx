@@ -18,7 +18,7 @@ export default function CreatorProfileInfos(props: profile_props) {
           <EditProfileButton />
         </div>
       </div>
-      <ViewerProfileName displayName={props.user.displayName} />
+      <ViewerProfileName displayName={props.user.username} />
       <ViewerProfileDescription description={props.user.description} />
     </div>
   );

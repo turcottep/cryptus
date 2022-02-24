@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-
   try {
     prisma.$connect();
     const user = await prisma.user.findUnique({
@@ -13,6 +12,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         id: req.body.id,
       },
     });
+    console.log("user backend", user);
+
     res.status(201);
     res.json(user);
   } catch (e) {

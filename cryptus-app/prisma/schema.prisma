@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL_PROD")
 }
 
 model User {
@@ -17,35 +17,25 @@ model User {
   views       Int
   likes       Int
   hash        String
-  wallets     Wallet[]
   nfts        Nft[]
+  wallets     Wallet[]
 }
 
 model Nft {
   id               String  @id @default(uuid())
   name             String
   description      String?
-  collection       String? //Collection @relation(fields: [collectionId], references: [id])
-  collection_address String?
-  collection_size  Int?
-  token_id         String
-  rarity_rank      Int?
+  collection       String?
   external_url     String?
   image_url        String?
   userId           String?
-  User             User?   @relation(fields: [userId], references: [id])
-  properties       String
   last_sale_price  Int?
   last_sale_symbol String?
+  properties       String
+  token_id         String
+  rarity_rank      Int?
+  User             User?   @relation(fields: [userId], references: [id])
 }
-
-// model Collection {
-//   id          String  @id @default(uuid())
-//   name        String  @unique
-//   contract_address String @unique
-//   description String?
-//   Nft         Nft[]
-// }
 
 model Wallet {
   id            String @id @default(uuid())

@@ -10,7 +10,7 @@ export default function ViewerProfileInfos(props: profile_props) {
   return (
     <div className={s.container}>
       <ViewerProfilePicture />
-      <ViewerProfileName displayName={props.user.displayName} />
+      <ViewerProfileName displayName={props.user.username} />
       <ViewerProfileDescription description={props.user.description} />
     </div>
   );
