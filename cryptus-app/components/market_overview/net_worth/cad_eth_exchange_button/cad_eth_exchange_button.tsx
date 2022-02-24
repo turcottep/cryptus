@@ -6,11 +6,14 @@ import s from "./cad_eth_exchange_button.module.scss";
 
 //internal imports
 
-export default function CadEthExchangeButton(props: { EthCad: number }) {
+export default function CadEthExchangeButton(props: {
+  EthCad: number;
+  callback: any;
+}) {
   return (
     <div className={s.container}>
-      <div className={s.block}>
-        {/* <div className={s.name}>{props.EthCad}</div> */}
+      <div className={s.button} onClick={props.callback}>
+        Switch
       </div>
     </div>
   );

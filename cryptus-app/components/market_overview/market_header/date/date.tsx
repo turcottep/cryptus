@@ -6,7 +6,7 @@ import s from "./date.module.scss";
 
 //internal imports
 
-export default function Date(props: { date: string }) {
+export default function DateComponent(props: { date: string }) {
   const { date } = props;
   return (
     <div className={s.container}>

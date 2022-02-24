@@ -1,18 +1,108 @@
 @use "/styles/variables" as v;
+$size: 72px;
+$size-s: 36px;
+$gap: 8px;
+$gap-s: 4px;
+$block-color: rgb(165, 165, 165);
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  column-gap: calc($gap * 3);
+  row-gap: $gap;
+
   width: min(100vw, v.$mobile);
-  margin: auto;
-  align-items: center;
 }
 
-.items{
+.collandname {
+  flex: 0 0 none;
   display: flex;
   flex-direction: column;
+  gap: $gap-s;
+}
+
+.collname {
+  flex: 0 0 none;
+  font-size: v.$font-size-xs;
+  text-align: center;
+}
+
+.collection_container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $gap;
+  padding: $gap;
+
+  width: calc($size * 2 + $gap * 3);
+  height: calc($size * 2 + $gap * 3);
+
+  border-radius: v.$border-radius-xl;
+  background-color: rgba($block-color, 0.1);
+}
+
+.nft_container {
+  flex: 0 0 none;
+
+  display: flex;
+  align-items: center;
   justify-content: center;
-  width: 100%;
-  overflow: hidden;
-  height: 100%;
+
+  width: $size;
+  height: $size;
+  z-index: 2;
+
+  border-radius: v.$border-radius-l;
+  background-color: rgba($block-color, 0.1);
+}
+
+.collection_preview_container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $gap-s;
+
+  width: $size;
+  height: $size;
+}
+
+.nft_preview_container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(($size - $gap-s) / 2);
+  height: calc(($size - $gap-s) / 2);
+  z-index: 2;
+
+  border-radius: v.$border-radius-s;
+  background-color: rgba($block-color, 0.1);
+}
+
+.imgsmall {
+  flex: 0 0 none;
+  object-fit: fill;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: v.$border-radius-m;
+}
+
+.imglarge {
+  flex: 0 0 none;
+  object-fit: fill;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: v.$border-radius-l;
 }

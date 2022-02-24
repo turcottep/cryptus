@@ -3,5 +3,6 @@
 .container {
   flex: 1 1 auto;
 
-  font-size: v.$font-size-s;
+  font-size: v.$font-size-xs;
+  color: v.$text-color-dark;
 }

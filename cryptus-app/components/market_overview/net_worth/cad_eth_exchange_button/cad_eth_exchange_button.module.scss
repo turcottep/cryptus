@@ -1,0 +1,9 @@
+@use "/styles/variables" as v;
+
+.button {
+  background-color: v.$secondary-color-pale;
+  padding: 4px;
+  outline-style: initial;
+  border-radius: 100px;
+  cursor: pointer;
+}

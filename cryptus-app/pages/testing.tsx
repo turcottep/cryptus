@@ -58,15 +58,7 @@ export default function Home() {
         rel="stylesheet"
       />
 
-      <main>
-        <NFTDetails
-          nft={mock_nft}
-          rank_props={{
-            position: rarity_rank,
-            total: collection_size,
-          }}
-        />
-      </main>
+      <main></main>
     </div>
   );
 }

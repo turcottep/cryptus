@@ -10,4 +10,9 @@
   width: 100%;
   height: 100%;
   font-size: v.$font-size-l;
+
+  background: linear-gradient(
+    rgba(v.$header-color, 1),
+    rgba(v.$header-color, 0)
+  );
 }

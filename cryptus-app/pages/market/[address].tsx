@@ -2,6 +2,7 @@ import React from "react";
 import Graph from "../../components/graph/graph";
 import MarketCollection from "../../components/market_overview/market_collection/market_collection";
 import FeatureIamTesting from "../../components/template/pagetemplate/pagetemplate";
+import collectionDictionary from "../../lib/collectionDictionary";
 import { data_raw } from "../../lib/data";
 
 export type market_collection_props = {
@@ -12,6 +13,9 @@ export type market_collection_props = {
   floor_price_delta: number;
   floor_price_timestamp: string;
   data_price: number[];
+  count: number[];
+  volume: number[];
+  address: string;
 };
 
 export default function Home(props: market_collection_props) {
@@ -53,16 +57,21 @@ export default function Home(props: market_collection_props) {
 export async function getServerSideProps(context) {
   const address =
     context.query.address ?? "0x1a92f7381b9f03921564a437210bb9396471050c";
+  const viewingmode = "alltime";
   console.log("address", address);
-
+  const collection_dict = collectionDictionary;
+  const collection = collection_dict[address];
   const summary_props_mock = {
-    collection_name: "Bored Ape Yacht Club",
-    collection_logo: "/images/bayc-logo.png",
-    collection_ticker: "BAYC",
-    floor_price_live: 80.69,
-    floor_price_delta: 2.4,
-    floor_price_timestamp: "Friday",
+    collection_name: collection.name,
+    collection_logo: collection.logo,
+    collection_ticker: collection.ticker,
+    floor_price_live: collection.floor_price,
+    floor_price_delta: collection.floor_price_delta,
+    floor_price_timestamp: collection.timestamp,
     data_price: [],
+    count: null,
+    volume: null,
+    address: address,
   } as market_collection_props;
 
   try {
@@ -73,30 +82,14 @@ export async function getServerSideProps(context) {
       },
       body: JSON.stringify({
         address,
+        viewingmode,
       }),
     });
-    const data = await res.json();
-    const sale_prices = data
-      .map((row) => {
-        return parseFloat(row.total_price);
-      })
-      .reverse();
+    const { price, count, volume } = await res.json();
 
-    //  average of 10 data points
-    const nb_data = 200;
-    const sales_smoothed = [0];
-    const outpout_smoothed = [0];
-    const alpha = 0.01;
-    for (let i = 0; i < sale_prices.length; i++) {
-      const new_value =
-        sales_smoothed[i] * (1 - alpha) + sale_prices[i] * alpha;
-      sales_smoothed.push(new_value);
-      if (i % Math.floor(sale_prices.length / nb_data) === 0) {
-        outpout_smoothed.push(new_value);
-      }
-    }
-
-    summary_props_mock.data_price = outpout_smoothed;
+    summary_props_mock.data_price = price;
+    summary_props_mock.count = count;
+    summary_props_mock.volume = volume;
 
     return {
       props: {

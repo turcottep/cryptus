@@ -6,38 +6,35 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 4px;
 
-  min-width: 100px;
+  width: 108px;
   height: 48px;
-  padding: 0px 8px;
+
   margin-bottom: 8px;
+  background-color: yellow;
 
   background-color: v.$secondary-color-pale;
-  border-radius: v.$border-radius-m;
+  border-radius: v.$border-radius-s;
 }
 
 .price {
   flex: none;
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 2px;
-
   font-weight: bold;
-  font-size: v.$font-size-l;
+  font-size: v.$font-size-s;
   color: v.$text-color;
 }
 
 .opensea {
   flex: none;
-  width: 30px;
+  width: 24px;
 }
 
 .eth {
   flex: none;
-  height: 24px;
+  height: 18px;
 }
 
 .line {
@@ -45,4 +42,5 @@
   width: 1px;
   border: v.$secondary-color solid 1px;
   height: 24px;
+  margin: 0px 4px;
 }

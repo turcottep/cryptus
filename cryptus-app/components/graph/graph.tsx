@@ -50,132 +50,136 @@ export default function Graph(props: {
   detailled: boolean;
 }) {
   const { data_price, data_volume, detailled: detailled } = props;
-
-  const labels = [];
-
-  let average = 0;
-  for (const price of data_price) {
-    average += price;
-    labels.push(""); // TODO: add date
-  }
-  average = average / data_price.length;
-
-  const data_line = labels.map((_, i) => data_price[i]);
-
-  const data_average = [];
-  for (const _ of data_price) {
-    data_average.push(data_price[data_price.length - 1]);
-  }
-
-  const data_bar = data_volume ? labels.map((_, i) => data_volume[i]) : [];
-
-  const optionsLine = {
-    devicePixelRatio: detailled ? 4 : 1,
-    responsive: true,
-    layout: {
-      padding: {
-        right: -50,
-      },
-    },
-    plugins: {
-      legend: {
-        display: false,
-      },
-      title: {
-        display: false,
-      },
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false,
-        },
-        display: false,
-      },
-      y: {
-        grid: {
-          display: false,
-        },
-        beginAtZero: false,
-        display: detailled,
-        suggestedMin: Math.min(...data_line) * 1.1,
-        suggestedMax: Math.max(...data_line) * 1.05,
-        position: "right",
-
-        ticks: {
-          // display: false,
-          z: 1,
-          mirror: true,
-          backdropPadding: 2,
-          showLabelBackdrop: true,
-          padding: -10,
-          callback: function (value, index, values) {
-            // only return half of the values
-            const total_amount = values.length;
-            if ((index + 1) % 2 === 0 && index < total_amount - 1) {
-              return `${value} ⧫`;
-            }
-          },
-        },
-      },
-    },
-    maintainAspectRatio: false,
-    spanGaps: true,
-  };
-
-  const optionsBar = {
-    devicePixelRatio: detailled ? 4 : 1,
-    responsive: true,
-    layout: {
-      padding: {
-        right: -50,
-      },
-    },
-    plugins: {
-      legend: {
-        display: false,
-        position: "top" as const,
-      },
-      title: {
-        display: false,
-      },
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false,
-        },
-        display: false,
-      },
-      y: {
-        grid: {
-          display: false,
-        },
-        beginAtZero: true,
-        position: "right",
-        ticks: {
-          display: false,
-        },
-      },
-    },
-    maintainAspectRatio: false,
-    spanGaps: true,
-  };
-
   const chartRef = useRef<ChartJS>(null);
   const [chartDataLine, setChartDataLine] = useState<ChartData<"line">>({
     datasets: [],
   });
+  const [optionsBar, setoptionsBar] = useState<any>();
+  const [optionsLine, setoptionsLine] = useState<any>();
   const [chartDataBar, setChartDataBar] = useState<ChartData<"bar">>({
     datasets: [],
   });
 
   useEffect(() => {
-    const chart = chartRef.current;
+    console.log("fuck meeeee");
 
+    const { data_price, data_volume, detailled: detailled } = props;
+
+    const labels = [];
+
+    let average = 0;
+    for (const price of data_price) {
+      average += price;
+      labels.push(""); // TODO: add date
+    }
+    average = average / data_price.length;
+
+    const data_line = labels.map((_, i) => data_price[i]);
+
+    const data_average = [];
+    for (const _ of data_price) {
+      data_average.push(data_price[data_price.length - 1]);
+    }
+
+    const data_bar = data_volume ? labels.map((_, i) => data_volume[i]) : [];
+
+    const optionsLine = {
+      devicePixelRatio: detailled ? 4 : 1,
+      responsive: true,
+      layout: {
+        padding: {
+          right: -50,
+        },
+      },
+      plugins: {
+        legend: {
+          display: false,
+        },
+        title: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          grid: {
+            display: false,
+          },
+          display: false,
+        },
+        y: {
+          grid: {
+            display: false,
+          },
+          beginAtZero: false,
+          display: detailled,
+          suggestedMin: Math.min(...data_line) * 1.1,
+          suggestedMax: Math.max(...data_line) * 1.05,
+          position: "right",
+
+          ticks: {
+            // display: false,
+            z: 1,
+            mirror: true,
+            backdropPadding: 2,
+            showLabelBackdrop: true,
+            padding: -10,
+            callback: function (value, index, values) {
+              // only return half of the values
+              const total_amount = values.length;
+              if ((index + 1) % 2 === 0 && index < total_amount - 1) {
+                return `${value} ⧫`;
+              }
+            },
+          },
+        },
+      },
+      maintainAspectRatio: false,
+      spanGaps: true,
+    };
+
+    const optionsBartemp = {
+      devicePixelRatio: detailled ? 4 : 1,
+      responsive: true,
+      layout: {
+        padding: {
+          right: -50,
+        },
+      },
+      plugins: {
+        legend: {
+          display: false,
+          position: "top" as const,
+        },
+        title: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          grid: {
+            display: false,
+          },
+          display: false,
+        },
+        y: {
+          grid: {
+            display: false,
+          },
+          beginAtZero: true,
+          position: "right",
+          ticks: {
+            display: false,
+          },
+        },
+      },
+      maintainAspectRatio: false,
+      spanGaps: true,
+    };
+    const chart = chartRef.current;
     if (!chart) {
       return;
     }
+    console.log("data_line", data_line);
 
     const chartDataLine = {
       labels,
@@ -219,9 +223,11 @@ export default function Graph(props: {
         },
       ],
     } as any;
+    setoptionsLine(optionsLine);
+    setoptionsBar(optionsBartemp);
     setChartDataLine(chartDataLine);
     setChartDataBar(chartDataBar);
-  }, []);
+  }, [props]);
 
   return (
     <div className={s.container}>
@@ -229,6 +235,7 @@ export default function Graph(props: {
         className={s.chart_line}
         ref={chartRef}
         type="line"
+        key={Math.random()}
         data={chartDataLine}
         options={optionsLine}
       />
@@ -237,6 +244,7 @@ export default function Graph(props: {
           className={s.chart_bar}
           ref={chartRef}
           type="line"
+          key={Math.random()}
           data={chartDataBar}
           options={optionsBar}
         />

@@ -4,8 +4,12 @@
   display: flex;
   flex: 1 1 auto;
 
-  width: v.$header-icon-width;
+  width: v.$icon-width;
 }
 .icon:hover {
   opacity: 0.5;
+}
+
+.image {
+  width: v.$icon-width;
 }

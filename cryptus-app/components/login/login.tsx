@@ -20,6 +20,9 @@ import {
   errors,
 } from "./login_components/login_components";
 import useInput from "../utils/use_input";
+import FindUserIdFromWalletAdress from "../../lib/findUserIdFromWalletAdress";
+import CreateAccountFromWalletAddress from "../../lib/createAccountFromWalletAddress";
+import FindUserFromUserId from "../../lib/findUserFromUserId";
 
 declare let window: any;
 
@@ -75,6 +78,47 @@ export default function Login1(props) {
     return error ? errorMessage : null;
   };
 
+  const connectMetamask = async () => {
+    router.push("login?");
+    // this.setState({ loading: true });
+    // if (!window.ethereum) {
+    //   console.log("please donwload MetaMask");
+    //   window.open("https://metamask.io/", "_blank").focus();
+    //   this.setState({ loading: false });
+    // } else {
+    try {
+      await window.ethereum.enable();
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      const wallet_address = accounts[0];
+
+      const userId = await FindUserIdFromWalletAdress(wallet_address, false);
+
+      if (!userId) {
+        //Create Account with this wallet address
+        const user = await CreateAccountFromWalletAddress(
+          wallet_address,
+          false
+        );
+        router.push("signup?step=3");
+      } else {
+        const user = await FindUserFromUserId(userId, false, false);
+        signIn("credentials", {
+          redirect: true,
+          address: wallet_address,
+          callbackUrl: `${window.location.origin}/` + user.username,
+        });
+      }
+    } catch (error) {
+      // console.error(error);
+      this.setState({ loading: false });
+      router.push("login?error=CancelMetamask");
+    }
+    // }
+  };
+  // connectMetamask();
+
   return (
     <div className="bg-instagram">
       {loading ? (
@@ -83,13 +127,17 @@ export default function Login1(props) {
         </div>
       ) : null}
       <main className="sm:max-w-lg mx-auto">
-        {/* <FormNavbar /> */}
+        {/* <div className="flex flex-col"> */}
+        {/* <MetamaskButton router={router} /> */}
+        <button
+          onClick={() => {
+            connectMetamask();
+          }}
+        >
+          click here
+        </button>
 
-        {/* {session && router.push("/" + session.user.name)} */}
-        <div className="flex flex-col">
-          <MetamaskButton router={router} />
-
-          {Or()}
+        {/* {Or()}
 
           <div className="flex flex-col mt-4">
             <form id="form" className="form w-full" onSubmit={handleSubmit}>
@@ -122,7 +170,7 @@ export default function Login1(props) {
             <Or />
             <SignupButton />
           </div>
-        </div>
+        </div> */}
       </main>
     </div>
   );

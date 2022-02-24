@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import s from "./notification_bell.module.scss";
 
 export default function NotificationBell() {

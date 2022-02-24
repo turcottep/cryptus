@@ -1,25 +1,26 @@
 @use "/styles/variables" as v;
 
-.container {
-  flex: 1 1 50%;
-  display: flex;
-  flex-direction: column;
-}
+$size: 72px;
+$gap: 8px;
 
-.block {
-  flex: none;
+.container {
+  flex: 0 0 none;
+
+  width: calc($size * 2 + $gap * 3);
+  height: calc($size * 1 + $gap * 3);
 
   display: flex;
   flex-direction: column;
   align-items: center;
   white-space: nowrap;
 
-  margin: 6px;
-  padding: min(10%, 128px);
-  background-color: v.$primary-color-pale;
+  padding: $gap;
+  overflow: hidden;
+  white-space: nowrap;
 
+  background-color: v.$primary-color-pale;
   border: 2px solid v.$primary-color;
-  border-radius: v.$border-radius-l;
+  border-radius: v.$border-radius-m;
 }
 
 .name {
@@ -27,6 +28,14 @@
   font-weight: bold;
   color: v.$primary-color;
   font-size: v.$font-size-xs;
+}
+
+.value {
+  display: inline-block;
+  max-width: calc(100% - 16px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .rarity {

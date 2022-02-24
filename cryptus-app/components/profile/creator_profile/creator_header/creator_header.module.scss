@@ -13,5 +13,9 @@
   width: min(100vw, v.$mobile);
   font-size: v.$font-size-m;
 
-  background: v.$bg-color;
+  background: linear-gradient(
+    rgba(v.$header-color, 1),
+    rgba(v.$header-color, 0)
+  );
+  z-index: 100;
 }
