@@ -9,12 +9,12 @@ import ContextualPageName from "../../../header/contextual_page_name/contextual_
 
 export default function CreatorHeader() {
   const router = useRouter();
-  const name = router.pathname.replace("/", "");
+  const { userId } = router.query;
 
   return (
     <div className={s.container}>
-      <BackButton url={`/${name}`} />
-      <ContextualPageName name={name} />
+      <BackButton url={`/${userId}`} />
+      <ContextualPageName name={userId.toString()} />
       <ContextualMenuButton img="/icons/more_icon.png" />
     </div>
   );

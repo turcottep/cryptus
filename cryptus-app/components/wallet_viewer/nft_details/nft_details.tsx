@@ -1,10 +1,7 @@
 //react and css
-import React, { useState, useEffect } from "react";
+import React from "react";
 import s from "./nft_details.module.scss";
 
-//external exports
-
-//internal imports
 import { nft } from "../../../lib/data_types";
 
 import NftHeader from "./nft_header/nft_header";

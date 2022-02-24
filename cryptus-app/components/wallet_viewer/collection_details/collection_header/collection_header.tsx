@@ -12,7 +12,7 @@ export default function CollectionHeader() {
 
   return (
     <div className={s.container}>
-      <BackButton url={`/${userId}`} />
+      <BackButton />
       <ContextualMenuButton img="/icons/more_icon.png" />
     </div>
   );

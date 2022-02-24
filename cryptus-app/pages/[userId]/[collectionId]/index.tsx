@@ -10,11 +10,11 @@ import sortNftsIntoCollections from "../../../lib/sort_nfts_into_collections";
 import { nft_collection, profile_props } from "../../../lib/data_types";
 
 import CollectionDetails from "../../../components/wallet_viewer/collection_details/collection_details";
-import { collection } from "../../../components/market_viewer/market_viewer";
+
 import getMockProps from "../../../lib/get_mock_props";
 import AnimatedDiv from "../../../components/utils/animated_div";
 
-export default function post(props: { user; collection: collection }) {
+export default function post(props: { user; collection: nft_collection }) {
   const { collection, user } = props;
   AnimatedDiv;
   return (
@@ -62,6 +62,7 @@ export async function getServerSideProps(context) {
           .replace(/\s/g, "")
           .toLowerCase()
     );
+    console.log("collection", goodcollection);
 
     const returningProps = {
       props: { user: userName, collection: goodcollection },

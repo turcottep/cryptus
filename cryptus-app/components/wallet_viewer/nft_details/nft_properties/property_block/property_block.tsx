@@ -23,11 +23,9 @@ export default function PropretyBlock(props: {
 
   return (
     <div className={s.container}>
-      <div className={s.block}>
-        <div className={s.name}>{props.name.toUpperCase()}</div>
-        <div className={s.value}>{props.value}</div>
-        <div className={s.rarity}>{`${rarity_clean}% have this trait`}</div>
-      </div>
+      <div className={s.name}>{props.name.toUpperCase()}</div>
+      <div className={s.value}>{props.value}</div>
+      <div className={s.rarity}>{`${rarity_clean}% have this trait`}</div>
     </div>
   );
 }

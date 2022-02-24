@@ -12,7 +12,7 @@ export default function NftHeader() {
 
   return (
     <div className={s.container}>
-      <BackButton url={`/${userId}/${collectionId}`} />
+      <BackButton />
       <ContextualMenuButton img="/icons/more_icon.png" />
     </div>
   );
