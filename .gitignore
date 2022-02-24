@@ -34,3 +34,5 @@ cryptus-app/package-lock.json
 
 # End of https://www.toptal.com/developers/gitignore/api/vscode,react
 cryptus-app/public/sw.js.map
+
+cryptus-app/public/sw.js
