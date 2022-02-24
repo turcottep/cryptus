@@ -27,9 +27,15 @@ type market_overview_props = {
 
 export default function MarketOverview(props: market_overview_props) {
   const [price, setPrice] = useState([]);
+  // const [interval, setInterval] = useState(props.networth.active);
   const [newPropCollection, setnewPropCollection] = useState(props.collections);
-  const callbackGraph = async (childData) => {
-    let viewingmode = intervals[childData];
+
+  useEffect(() => {
+    updatePrice(props.networth.active);
+  }, []);
+
+  const updatePrice = async (interval: intervals) => {
+    let viewingmode = intervals[interval];
     if (viewingmode == "three_months") {
       viewingmode = "3month";
     }
@@ -39,6 +45,7 @@ export default function MarketOverview(props: market_overview_props) {
     const adresses = props.collections.map((c) => {
       return c.address;
     });
+
     const res = await fetch("/api/sales/batch", {
       method: "POST",
       headers: {
@@ -49,16 +56,24 @@ export default function MarketOverview(props: market_overview_props) {
         viewingmode,
       }),
     });
+
     const { prices, counts } = await res.json();
-    const newPropCollection = [];
+    const newPropCollectionTemp = [];
+
     for (let i = 0; i < props.collections.length; i++) {
       const element = props.collections[i];
       element.data_price = prices[i];
-      newPropCollection.push(element);
+      newPropCollectionTemp.push(element);
     }
-    setnewPropCollection(newPropCollection);
-    console.log("new price !", price);
+
+    setnewPropCollection(newPropCollectionTemp);
   };
+
+  const callbackGraph = async (interval) => {
+    // setInterval(interval);
+    updatePrice(interval);
+  };
+
   return (
     <div className={s.container}>
       <MarketHeader date={props.date} />

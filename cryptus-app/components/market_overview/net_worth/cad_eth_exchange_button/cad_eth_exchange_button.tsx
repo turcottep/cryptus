@@ -12,7 +12,9 @@ export default function CadEthExchangeButton(props: {
 }) {
   return (
     <div className={s.container}>
-      <div className={s.button}>Switch</div>
+      <div className={s.button} onClick={props.callback}>
+        Switch
+      </div>
     </div>
   );
 }
