@@ -1,12 +1,11 @@
 @use "/styles/variables" as v;
 
 .container {
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: row;
 
-  font-size: v.$font-size-m;
+  font-size: v.$font-size-s;
   color: v.$text-color-dark;
-  font-weight: bolder;
-  height: 50px;
+  font-weight: 400;
 }

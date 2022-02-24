@@ -14,13 +14,16 @@
   padding-left: 15px;
   padding-right: 15px;
 
-  background: v.$bg-color;
+  background: linear-gradient(
+    rgba(v.$header-color, 1),
+    rgba(v.$header-color, 0)
+  );
 }
 
 .left_container {
   display: flex;
   flex-direction: row;
-  
+
   gap: 5px;
 }
 

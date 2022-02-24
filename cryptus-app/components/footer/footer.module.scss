@@ -13,7 +13,14 @@
   height: v.$footer-h;
   width: min(100vw, v.$mobile);
   z-index: 100;
-  background-color: v.$header-color;
+
+  background: linear-gradient(
+    rgba(v.$header-color, 0),
+    rgba(v.$header-color, 0.75),
+    rgba(v.$header-color, 1),
+    rgba(v.$header-color, 1),
+    rgba(v.$header-color, 1)
+  );
 }
 
 .button {

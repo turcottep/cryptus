@@ -46,17 +46,20 @@ const Collection = (props: { collection: coll }) => {
   };
 
   return (
-    <div onClick={onCollectionClick} className={s.collection_container}>
-      {b.map((nft) => (
-        <NftL nft={nft} collectionName={collectionName} />
-      ))}
-      {c ? (
-        <div className={s.collection_preview_container}>
-          {c.map((nft) => (
-            <NftS nft={nft} />
-          ))}
-        </div>
-      ) : null}
+    <div className={s.collandname}>
+      <div onClick={onCollectionClick} className={s.collection_container}>
+        {b.map((nft) => (
+          <NftL nft={nft} collectionName={collectionName} />
+        ))}
+        {c ? (
+          <div className={s.collection_preview_container}>
+            {c.map((nft) => (
+              <NftS nft={nft} />
+            ))}
+          </div>
+        ) : null}
+      </div>
+      <div className={s.collname}>{collection.name}</div>
     </div>
   );
 };
@@ -86,7 +89,7 @@ const NftL = (props: { nft: nft; collectionName: string }) => {
 
   return (
     <div onClick={onNftClick} className={s.nft_container}>
-      <img className={s.img1} src={nft.image_url} />
+      <img className={s.imglarge} src={nft.image_url} />
     </div>
   );
 };
@@ -96,7 +99,7 @@ const NftS = (props: { nft: nft }) => {
 
   return (
     <div onClick={(e) => {}} className={s.nft_preview_container}>
-      <img className={s.img1} src={nft.image_url} />
+      <img className={s.imgsmall} src={nft.image_url} />
     </div>
   );
 };

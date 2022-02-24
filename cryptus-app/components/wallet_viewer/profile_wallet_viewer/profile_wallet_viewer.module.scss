@@ -12,9 +12,24 @@ $block-color: rgb(165, 165, 165);
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  gap: calc($gap * 3);
+
+  column-gap: calc($gap * 3);
+  row-gap: $gap;
 
   width: min(100vw, v.$mobile);
+}
+
+.collandname {
+  flex: 0 0 none;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-s;
+}
+
+.collname {
+  flex: 0 0 none;
+  font-size: v.$font-size-xs;
+  text-align: center;
 }
 
 .collection_container {
@@ -42,7 +57,7 @@ $block-color: rgb(165, 165, 165);
 
   width: $size;
   height: $size;
-  z-index: 101;
+  z-index: 2;
 
   border-radius: v.$border-radius-l;
   background-color: rgba($block-color, 0.1);
@@ -70,16 +85,24 @@ $block-color: rgb(165, 165, 165);
 
   width: calc(($size - $gap-s) / 2);
   height: calc(($size - $gap-s) / 2);
-  z-index: 101;
+  z-index: 2;
 
   border-radius: v.$border-radius-s;
   background-color: rgba($block-color, 0.1);
 }
 
-.img1 {
+.imgsmall {
   flex: 0 0 none;
   object-fit: fill;
   max-width: 100%;
   max-height: 100%;
-  border-radius: v.$border-radius-s;
+  border-radius: v.$border-radius-m;
+}
+
+.imglarge {
+  flex: 0 0 none;
+  object-fit: fill;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: v.$border-radius-l;
 }
