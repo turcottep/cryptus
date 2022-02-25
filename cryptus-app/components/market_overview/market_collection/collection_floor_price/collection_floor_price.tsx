@@ -16,11 +16,15 @@ export default function MarketCollectionHeader(props: {
         <div className={s.currency}> ETH</div>
       </div>
       <div className={s.delta}>
-        {props.floor_price_delta.toFixed(2)} Ξ ({delta_percent} %) total
+        <span className={props.floor_price_delta > 0 ? s.green : s.red}>
+          {props.floor_price_delta.toFixed(2)}
+        </span>
+        Ξ (
+        <span className={props.floor_price_delta > 0 ? s.green : s.red}>
+          {delta_percent}
+        </span>
+        %)
       </div>
-      {/* <div>
-        {props.floor_price_timestamp}
-      </div> */}
     </div>
   );
 }

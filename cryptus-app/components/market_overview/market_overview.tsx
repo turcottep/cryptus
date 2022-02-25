@@ -76,7 +76,7 @@ export default function MarketOverview(props: market_overview_props) {
 
   return (
     <div className={s.container}>
-      <MarketHeader date={props.date} />
+      <MarketHeader />
       <NetWorth
         value={props.networth.value}
         delta={props.networth.change}

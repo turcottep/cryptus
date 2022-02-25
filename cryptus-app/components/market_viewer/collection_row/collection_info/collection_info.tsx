@@ -18,9 +18,7 @@ export default function CollectionInfo(props: { collection: collection }) {
 }
 
 const CollectionLogo = (props: { logo: string }) => (
-  <div className={s.logo}>
-    <img src={props.logo} />
-  </div>
+  <img className={s.logo} src={props.logo} />
 );
 
 const CollectionTicker = (props: { ticker: string }) => (

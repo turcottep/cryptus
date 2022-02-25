@@ -3,8 +3,8 @@ import s from "./favorite_button.module.scss";
 
 export default function FavoriteButton() {
   return (
-    <a href="login" target="_blank" className={s.icon}>
-      <img src="/icons/favorite_icon.png" />
+    <a href="login" target="_blank">
+      <img className={s.icon} src="/icons/favorite_icon.png" />
     </a>
   );
 }

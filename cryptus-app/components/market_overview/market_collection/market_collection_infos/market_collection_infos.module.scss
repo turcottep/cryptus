@@ -1,23 +1,24 @@
 @use "/styles/variables" as v;
 
 .container {
-    text-align: center;
+  text-align: center;
 }
 
 .image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80px;
-    height: 80px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
 .ticker {
-    font-size: v.$font-size-l;
-    font-weight: bold;
+  font-size: v.$font-size-l;
+  font-weight: bold;
 }
 
 .name {
-    font-size: v.$font-size-s;
-    font-weight: bold;
+  font-size: v.$font-size-s;
+  font-weight: bold;
 }
