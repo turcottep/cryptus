@@ -9,17 +9,18 @@ import ViewerProfileDescription from "../../viewer_profile/viewer_profile_infos/
 import { profile_props } from "../../../../lib/data_types";
 
 export default function CreatorProfileInfos(props: profile_props) {
+  const { description, username } = props.user;
+  console.log("props", props);
   return (
     <div className={s.container}>
       <div className={s.row}>
         <ViewerProfilePicture />
         <div className={s.edits}>
-          <EditNftsButton />
           <EditProfileButton />
         </div>
       </div>
-      <ViewerProfileName displayName={props.user.username} />
-      <ViewerProfileDescription description={props.user.description} />
+      <ViewerProfileName displayName={username} />
+      <ViewerProfileDescription description={description} />
     </div>
   );
 }

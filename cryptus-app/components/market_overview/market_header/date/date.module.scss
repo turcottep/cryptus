@@ -2,9 +2,8 @@
 
 .container {
   flex: 1 1 auto;
-  color: v.$header-color;
+  color: v.$text-color;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: v.$bg-color;
 }

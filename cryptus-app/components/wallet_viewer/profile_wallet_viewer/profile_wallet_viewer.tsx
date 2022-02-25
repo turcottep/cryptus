@@ -3,19 +3,21 @@ import s from "./profile_wallet_viewer.module.scss";
 
 import { useRouter } from "next/router";
 
-import { nft_collection as coll, nft } from "../../../lib/data_types";
+import { nft, nft_collection } from "../../../lib/data_types";
 
-export default function ProfileWalletViewer(props: { collections: coll[] }) {
+export default function ProfileWalletViewer(props: {
+  collections: nft_collection[];
+}) {
   return (
     <div className={s.container}>
-      {props.collections.map((collection: coll, i) => (
+      {props.collections.map((collection: nft_collection, i) => (
         <Collection collection={collection} />
       ))}
     </div>
   );
 }
 
-const Collection = (props: { collection: coll }) => {
+const Collection = (props: { collection: nft_collection }) => {
   const { collection } = props;
   const router = useRouter();
   const [a, setA] = useState([]);

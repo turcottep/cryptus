@@ -26,7 +26,6 @@ export default function MarketHeader(props: market_header_props) {
   return (
     <div className={s.container}>
       <DateComponent date={day} />
-      <ModifyFavoriteCollectionsButton />
     </div>
   );
 }
