@@ -1,25 +1,54 @@
 import React, { useEffect, useState } from "react";
 import s from "./footer.module.scss";
-import { useRouter } from "next/router";
+import { useSession } from "next-auth/client";
 
 export default function Footer() {
-  const router = useRouter();
-  const { userId } = router.query;
+  const [session, status] = useSession();
+  const [username, setUsername] = useState<string>("");
+  useEffect(() => {
+    if (session) {
+      setUsername(session.user.name);
+    }
+  }, [status]);
 
   return (
     <div id="footer" className={s.container}>
-      <FooterIcon src="/icons/market_overview_icon.png" href="/market" />
-      <FooterIcon src="/icons/research_icon.png" href="/market" />
-      <FooterIcon src="/icons/notification_icon.png" href="/market" />
-      <FooterIcon src="/icons/profile_icon.png" href={`/${userId}`} />
+      <FooterIcon
+        src="/icons/market_overview_icon.png"
+        href="/market"
+        active={true}
+      />
+      <FooterIcon
+        src="/icons/research_icon.png"
+        href="/market"
+        active={false}
+      />
+      <FooterIcon
+        src="/icons/notification_icon.png"
+        href="/market"
+        active={false}
+      />
+      <FooterIcon
+        src="/icons/profile_icon.png"
+        href={`/${username}`}
+        active={true}
+      />
     </div>
   );
 }
 
-const FooterIcon = (props: { src: string; href }) => {
-  return (
-    <a href={props.href} className={s.icon}>
-      <img src={props.src} className={s.image} />
-    </a>
-  );
+const FooterIcon = (props: { src: string; href; active: boolean }) => {
+  if (props.active) {
+    return (
+      <a href={props.href} className={s.icon}>
+        <img src={props.src} className={s.image} />
+      </a>
+    );
+  } else {
+    return (
+      <a className={s.icon_inactive}>
+        <img src={props.src} className={s.image} />
+      </a>
+    );
+  }
 };

@@ -11,7 +11,6 @@ import NftBuyButton from "./nft_buy_button/nft_buy_button";
 export default function NftInfo(props: { nft: nft }) {
   const { name, last_sale_price, external_url, collection } = props.nft;
   const collection_stripped = collection.replace(/\s/g, ""); // remove all spaces from collection name
-
   return (
     <div className={s.container}>
       <div className={s.left}>

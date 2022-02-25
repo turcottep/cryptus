@@ -42,6 +42,13 @@
   opacity: 0.5;
 }
 
+.icon_inactive {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  opacity: 0.1;
+}
+
 .image {
   width: v.$icon-width;
 }

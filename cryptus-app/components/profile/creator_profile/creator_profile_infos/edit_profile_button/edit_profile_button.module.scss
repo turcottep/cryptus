@@ -15,9 +15,10 @@
   min-width: 85px;
   border: 2px solid;
   padding: 2px 5px 2px;
-
-  border-color: v.$primary-color;
-  background: v.$primary-color-pale;
+  // color: #000;
+  color: v.$text-color;
+  border-color: v.$secondary-color;
+  // background: v.$secondary-color-pale;
 }
 
 .editbutton:hover {
