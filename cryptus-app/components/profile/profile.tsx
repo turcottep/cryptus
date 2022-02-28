@@ -4,30 +4,34 @@ import s from "./profile.module.scss";
 
 import ViewerProfile from "./viewer_profile/viewer_profile";
 import CreatorProfile from "./creator_profile/creator_profile";
-import { profile_props } from "../../lib/data_types";
-import router from "next/router";
+import { nft_collection, profile_props } from "../../lib/data_types";
+import { useRouter } from "next/router";
 
-export default function Profile(props: profile_props) {
+export default function Profile(props: {
+  collections: nft_collection[];
+  user: any;
+}) {
+  const { collections, user } = props;
+
   const [session, status] = useSession();
   const [is_my_profile, setIsMyProfile] = useState<Boolean>(false);
 
+  const router = useRouter();
+  const { userId: userName } = router.query;
+
   useEffect(() => {
-    const user_name = router.query.userId;
-    console.log("user_name", user_name);
-    console.log("session", session);
-
-    const is_my_profile = user_name && user_name === session?.user?.name;
-    console.log("is_my_profile", is_my_profile);
-
+    const is_my_profile = userName && userName === session?.user?.name;
     setIsMyProfile(is_my_profile);
+
+    console.log("is_my_profile", is_my_profile);
   }, [session]);
 
   return (
     <div className={s.app}>
       {is_my_profile ? (
-        <CreatorProfile {...props} />
+        <CreatorProfile collections={collections} user={user} />
       ) : (
-        <ViewerProfile {...props} />
+        <ViewerProfile collections={collections} user={user} />
       )}
     </div>
   );

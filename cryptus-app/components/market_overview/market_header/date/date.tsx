@@ -8,11 +8,5 @@ import s from "./date.module.scss";
 
 export default function DateComponent(props: { date: string }) {
   const { date } = props;
-  return (
-    <div className={s.container}>
-      <div className={s.block}>
-        <div className={s.name}>{props.date}</div>
-      </div>
-    </div>
-  );
+  return <div className={s.name}>{props.date}</div>;
 }

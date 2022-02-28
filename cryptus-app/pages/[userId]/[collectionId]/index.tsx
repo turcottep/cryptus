@@ -29,7 +29,8 @@ export async function getServerSideProps(context) {
   const mock_props = getMockProps() as profile_props;
   const mock_collections = mock_props.collections;
 
-  // const user = await getUserByUsername(userName, true);
+  const user = await getUserByUsername(userName, true);
+  console.log("user", user);
   // if (!user) {
   //   return {
   //     props: {
@@ -65,7 +66,7 @@ export async function getServerSideProps(context) {
     console.log("collection", goodcollection);
 
     const returningProps = {
-      props: { user: userName, collection: goodcollection },
+      props: { user: user, collection: goodcollection },
     };
 
     return returningProps;

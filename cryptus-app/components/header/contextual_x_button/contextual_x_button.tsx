@@ -12,8 +12,8 @@ import s from "./contextual_x_button.module.scss";
 // }
 export default function ContextualXButton() {
   return (
-    <a onClick={() => Router.back()} target="_blank" className={s.icon}>
-      <img src="/icons/x_icon.png" />
+    <a onClick={() => Router.back()} target="_blank">
+      <img className={s.icon} src="/icons/x_icon.png" />
     </a>
   );
 }

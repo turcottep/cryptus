@@ -37,6 +37,7 @@ export default function CollectionMarketGraph(props: {
     setVolume(volume);
     console.log("new price !", price);
   };
+
   return (
     <div className={s.container}>
       <div className={s.graph}>

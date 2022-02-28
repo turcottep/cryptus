@@ -51,7 +51,7 @@ const collections_dict = {
     id: "6",
     logo: "/images/toadz.gif",
     ticker: "TOADz",
-    name: "CrypToadz by GREMPLIN",
+    name: "CrypToadz",
     timestamp: "firday",
     address: "0x1cb1a5e65610aeff2551a50f76a87a7d3fb649c6",
     floor_price: 9.99,

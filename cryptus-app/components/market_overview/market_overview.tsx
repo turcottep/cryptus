@@ -13,6 +13,7 @@ import SortButton from "./sort_button/sort_button";
 import MarketViewer, { collection } from "../market_viewer/market_viewer";
 import { intervals } from "./net_worth/time_interval/time_interval";
 import { each } from "jquery";
+import Footer from "../footer/footer";
 
 type market_overview_props = {
   date: string;
@@ -76,7 +77,7 @@ export default function MarketOverview(props: market_overview_props) {
 
   return (
     <div className={s.container}>
-      <MarketHeader date={props.date} />
+      <MarketHeader />
       <NetWorth
         value={props.networth.value}
         delta={props.networth.change}
@@ -89,6 +90,7 @@ export default function MarketOverview(props: market_overview_props) {
         <SortButton />
       </div>
       <MarketViewer collections={newPropCollection} />
+      <Footer />
     </div>
   );
 }

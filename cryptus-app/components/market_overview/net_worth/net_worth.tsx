@@ -35,10 +35,10 @@ export default function NetWorth(props: net_worth_props) {
         <div className={s.arrowdown}> </div>
         <div className={s.delta}>{props.delta}</div>
       </div>
-      <CadEthExchangeButton
+      {/* <CadEthExchangeButton
         EthCad={props.EthCad}
         callback={callbackPriceSwitch}
-      />
+      /> */}
       <TimeInterval active={props.active} callback={props.callbackGraph} />
     </div>
   );

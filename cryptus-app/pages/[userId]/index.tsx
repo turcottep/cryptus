@@ -11,50 +11,57 @@ import get_nfts_for_user from "../../lib/get_nfts_for_user";
 import sortNftsIntoCollections from "../../lib/sort_nfts_into_collections";
 import { profile_props } from "../../lib/data_types";
 import AnimatedDiv from "../../components/utils/animated_div";
+import getMockProps from "../../lib/get_mock_props";
 
 export default function post(props) {
+  const { collections, user } = props;
+  console.log("collections", collections);
   return (
     <AnimatedDiv>
-      <Profile {...props} />
+      <Profile collections={collections} user={user} />
     </AnimatedDiv>
   );
 }
 
 export async function getServerSideProps(context) {
-  const username = context.query.userId;
-  const user = await getUserByUsername(username, true);
-  if (!user) {
-    return {
-      props: {
-        assets: [],
-        user: null,
-      },
-    };
-  }
-  let res;
+  const { userId: userName } = context.query;
+  const mock_props = getMockProps() as profile_props;
+  const mock_collections = mock_props.collections;
+
+  const user = await getUserByUsername(userName, true);
+  // if (!user) {
+  //   return {
+  //     props: {
+  //       assets: [],
+  //       user: null,
+  //     },
+  //   };
+  // }
+  // let res;
+  // try {
+  //   let nfts = await update_nfts_for_user(
+  //     userName,
+  //     user.wallets[0].address,
+  //     user.userId
+  //   );
+  //   if (!nfts) {
+  //     nfts = await get_nfts_for_user(userName);
+  //   }
+  //   const nfts_collections = sortNftsIntoCollections(nfts);
   try {
-    let nfts = await update_nfts_for_user(
-      username,
-      user.wallets[0].address,
-      user.userId
-    );
-    if (!nfts) {
-      nfts = await get_nfts_for_user(username);
-    }
-    const nfts_collections = sortNftsIntoCollections(nfts);
     const returningProps = {
-      props: { collections: nfts_collections, user } as profile_props,
+      props: { collections: mock_collections, user: user } as profile_props,
     };
 
     return returningProps;
   } catch (err) {
     console.error(err);
     console.error(err);
-    console.log("respons = ", res);
+    console.log("respons = ", err);
     console.log("DEEZ");
 
     return {
-      props: { assets: null, user: user },
+      props: { assets: null, user: userName },
     };
   }
 }

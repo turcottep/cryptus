@@ -6,73 +6,73 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-
   width: 100%;
-  border-top: 2px solid
 }
 
 .market {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  background-color: v.$secondary-color-pale;
+  padding: 4px 4px 8px 4px;
+  // border-top: 2px solid rgb(143, 143, 143);
 
-    width: 100%;
+  gap: 4px;
+  width: 100%;
 }
 
 .collection {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: left;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
 
-    width: 100%;
+  width: 100%;
 }
 
 .header {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: flex-start;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: flex-start;
 
-    width: 100%;
-    height: 25px;
-  }
+  width: 100%;
+  height: 25px;
+}
 
-  .icon {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: flex-start;
+.icon {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: flex-start;
 
-    width: 25px;
-  }
+  width: 25px;
+}
 
-  .label {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: flex-start;
+.label {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: flex-start;
 
-    width: 360px;
-    height: 100%;
-    
-    font-weight: v.$collection-group-name-font-weight
-  }
+  width: 360px;
+  height: 100%;
 
-
+  font-weight: v.$collection-group-name-font-weight;
+}

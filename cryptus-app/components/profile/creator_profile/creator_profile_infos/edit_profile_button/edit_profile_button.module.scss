@@ -1,7 +1,7 @@
 @use "/styles/variables" as v;
 
 .container {
-  flex: 1 1 auto;
+  flex: 0 0 none;
 
   display: flex;
   align-items: flex-end;
@@ -10,14 +10,17 @@
 .editbutton {
   cursor: pointer;
 
-  border: 2px solid;
   border-radius: 2em;
   white-space: nowrap;
+  min-width: 85px;
+  border: 2px solid;
   padding: 2px 5px 2px;
-
-  border-color: v.$header-color;
+  // color: #000;
+  color: v.$text-color;
+  border-color: v.$secondary-color;
+  // background: v.$secondary-color-pale;
 }
 
 .editbutton:hover {
-  background: v.$header-color;
+  opacity: 0.5;
 }
