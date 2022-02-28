@@ -8,8 +8,10 @@ import { collection } from "../market_viewer";
 
 // Need to add prop for collection
 export default function CollectionRow(props: { collection: collection }) {
+  const collection_name = props.collection.name.replace(/\s/g, "");
   return (
-    <a className={s.anchor} href={`/market/${props.collection.address}`}>
+    // <a className={s.anchor} href={`/market/${props.collection.address}`}>
+    <a className={s.anchor} href={`/market/${collection_name}`}>
       <div id="collection_row" className={s.container}>
         <CollectionInfo collection={props.collection} />
         <PreviewGraph

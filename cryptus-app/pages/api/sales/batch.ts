@@ -32,7 +32,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       prisma.$queryRaw(queries[8]),
       prisma.$queryRaw(queries[9]),
     ]);
-    console.log(answer);
+    // console.log(answer);
     // const data = await prisma.$queryRaw(query);
     // console.log("data : ", data);
     const prices = [];
@@ -62,7 +62,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       volumes.push(volume);
     });
 
-    console.log(answer.length);
+    // console.log(answer.length);
 
     // end timer
     const end = new Date().getTime();
