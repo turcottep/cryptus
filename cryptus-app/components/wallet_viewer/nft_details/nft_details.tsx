@@ -24,7 +24,7 @@ export default function NFTDetails(props: nft_details_props) {
   let properties = nft.properties;
 
   let [collection_size, setCollection_size] = useState(Number);
-  let [rarity_rank, setraRity_rank] = useState(Number);
+  let [rarity_rank, setRarity_rank] = useState(Number);
 
   useEffect(() => {
     const collectionCall = async () => {
@@ -45,7 +45,7 @@ export default function NFTDetails(props: nft_details_props) {
             })
             .reduce((partialSum, a) => partialSum + a, 0)
         );
-        setraRity_rank(rarity);
+        setRarity_rank(rarity);
 
         console.log("rarity : ", rarity);
         console.log("collection_size : ", collectionSize);

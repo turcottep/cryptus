@@ -1,5 +1,5 @@
 export default async function getCollectionToken(contractaddress: string) {
-  const api_url = process.env.ETHERSCAN_API_KEY;
+  const api_url = process.env.NEXT_PUBLIC_ETHERSCAN_API_KEY;
 
   const url =
     "https://api.etherscan.io/api" +

@@ -21,12 +21,11 @@ export default function NftInfo(props: { nft: nft }) {
 
   const collectionCall = async () => {
     try {
-      setListed_price(
-        await getNFTListedPrice(
-          props.nft.collection_address,
-          props.nft.token_id
-        )
+      const listed_price_temp = await getNFTListedPrice(
+        props.nft.collection_address,
+        props.nft.token_id
       );
+      setListed_price(listed_price_temp);
     } catch (error) {
       console.log(error);
     }
