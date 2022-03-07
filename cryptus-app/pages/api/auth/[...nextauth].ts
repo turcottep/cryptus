@@ -80,7 +80,7 @@ async function authorizeWithMetamaskAddress(wallet_address) {
     console.error("User not found from metamask");
     return null;
   } else {
-    const user = await FindUserFromUserId(userId, false);
+    const user = await FindUserFromUserId(userId, true);
     if (!user) {
       console.log("unable to find user #2");
       return null;
