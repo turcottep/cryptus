@@ -61,8 +61,6 @@ export default function Graph(props: {
   });
 
   useEffect(() => {
-    // console.log("fuck meeeee");
-
     const { data_price, data_volume, detailled: detailled } = props;
 
     const labels = [];
@@ -179,7 +177,6 @@ export default function Graph(props: {
     if (!chart) {
       return;
     }
-    // console.log("data_line", data_line);
 
     const chartDataLine = {
       labels,
