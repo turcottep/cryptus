@@ -32,7 +32,8 @@ export default function MarketOverview(props: market_overview_props) {
   const [newPropCollection, setnewPropCollection] = useState(props.collections);
 
   useEffect(() => {
-    updatePrice(props.networth.active);
+    // updatePrice(props.networth.active);
+    updateDelta(props.networth.active);
   }, []);
 
   const updatePrice = async (interval: intervals) => {
@@ -59,6 +60,7 @@ export default function MarketOverview(props: market_overview_props) {
     });
 
     const { prices, counts } = await res.json();
+
     const newPropCollectionTemp = [];
 
     for (let i = 0; i < props.collections.length; i++) {
@@ -70,9 +72,46 @@ export default function MarketOverview(props: market_overview_props) {
     setnewPropCollection(newPropCollectionTemp);
   };
 
+  const updateDelta = async (interval: intervals) => {
+    let viewingmode = intervals[interval];
+    if (viewingmode == "three_months") {
+      viewingmode = "3month";
+    }
+    console.log("new viewingmode : ", viewingmode);
+
+    const adresses = props.collections.map((c) => {
+      return c.address;
+    });
+
+    const res_diff = await fetch("/api/sales/batch_diffs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        adresses,
+        viewingmode,
+      }),
+    });
+
+    const delta = await res_diff.json();
+    console.log("turcotte !!!!!", delta);
+
+    const newPropCollectionTemp = [];
+
+    for (let i = 0; i < props.collections.length; i++) {
+      const element = props.collections[i];
+      element.floor_price_delta = delta[i];
+      newPropCollectionTemp.push(element);
+    }
+
+    setnewPropCollection(newPropCollectionTemp);
+  };
+
   const callbackGraph = async (interval) => {
     // setInterval(interval);
     updatePrice(interval);
+    updateDelta(interval);
   };
 
   return (
