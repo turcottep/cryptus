@@ -1,5 +1,4 @@
 import React from "react";
-import Signup from "../components/signup/signup";
 import EditProfile from "../components/profile/edit_profile/edit_profile";
 
 export default function SignupPage({ data }) {
