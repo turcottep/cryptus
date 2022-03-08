@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-import "tailwindcss/tailwind.css";
 import Link from "next/link";
 import { useSession } from "next-auth/client";
 import router from "next/router";
@@ -48,11 +47,6 @@ export default function Home() {
           name="viewport"
         />
         <link rel="manifest" href="/manifest.json" />
-
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/tailwindcss/dist/tailwind.min.css"
-        />
         <link
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
           rel="stylesheet"
