@@ -22,10 +22,10 @@ type net_worth_props = {
 export default function NetWorth(props: net_worth_props) {
   const [price, setPrice] = useState(props.EthCad);
   const callbackPriceSwitch = async (childData) => {
-    console.log("old price ", childData);
+    // console.log("old price ", childData);
     let newPrice = await getUSDFromETH(childData);
     setPrice(newPrice);
-    console.log("new price !", newPrice);
+    // console.log("new price !", newPrice);
   };
 
   return (
