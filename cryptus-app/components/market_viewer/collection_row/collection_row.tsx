@@ -5,10 +5,11 @@ import CollectionInfo from "./collection_info/collection_info";
 import PreviewGraph from "./preview_graph/preview_graph";
 import PriceInfo from "./price_info/price_info";
 import { collection } from "../market_viewer";
+import GetNameWithoutSpaces from "../../../lib/get_name_without_spaces";
 
 // Need to add prop for collection
 export default function CollectionRow(props: { collection: collection }) {
-  const collection_name = props.collection.name.replace(/\s/g, "");
+  const collection_name = GetNameWithoutSpaces(props.collection.name);
   return (
     // <a className={s.anchor} href={`/market/${props.collection.address}`}>
     <a className={s.anchor} href={`/market/${collection_name}`}>
