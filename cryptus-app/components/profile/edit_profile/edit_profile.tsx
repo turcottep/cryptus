@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Textarea from "@material-tailwind/react/Textarea";
-import Input from "@material-tailwind/react/Input";
 
 import { signIn, useSession } from "next-auth/client";
 import Loading from "../../utils/loading";
@@ -8,6 +6,7 @@ import Loading from "../../utils/loading";
 import getUserByUsername from "../../../lib/getUserByUsername";
 import router from "next/router";
 import CreatorHeader from "../creator_profile/creator_header/creator_header";
+import { Button, Input, TextField } from "@mui/material";
 
 const errors = {
   UniqueUsername: "This username is already in use!",
@@ -17,7 +16,7 @@ const errors = {
 
 declare let window: any;
 
-export default function PictureDescription() {
+export default function EditProfile() {
   const [session, sessionLoading] = useSession();
   const [loading, setLoading] = useState(false);
   const [user_name, setUserName] = useState("");
@@ -119,41 +118,37 @@ export default function PictureDescription() {
       <form id="form" className="form w-full">
         <div className="text-xl  text-center  py-8">Edit Profile</div>
         <div className="flex xl:text-xl bg-white flex-col mx-12 ">
-          <Input
+          <TextField
             type="username"
-            id="username"
+            id="outlined-basic"
             onChange={handleChange}
-            placeholder="Username"
+            label="Username"
             defaultValue={user_name}
-            outline={true}
-            size="lg"
-            color="gray"
-            error={handleErrorUsername()}
+            error={!!handleErrorUsername()}
             required
           />
         </div>
         <div className="flex xl:text-xl bg-white flex-col mx-12 mt-8">
-          <Textarea
-            type="text"
-            id="description"
+          <TextField
+            type="textarea"
+            id="outlined-basic"
             onChange={handleChange}
-            placeholder="Description"
-            defaultValue={description}
-            outline={true}
-            size="lg"
-            color="gray"
+            // placeholder="Description"
+            label="Description"
+            defaultValue={"deez"}
             required
           />
         </div>
 
         <div className="flex xl:text-xl flex-col mx-12 mt-8">
-          <button
+          <Button
             type="button"
+            variant="contained"
             onClick={() => next_step()}
             className="text-xl text-center whitespace-nowrap bg-gray-600 text-white font-bold rounded-lg w-full px-2 py-2 mt-2"
           >
             Apply
-          </button>
+          </Button>
         </div>
       </form>
     </div>

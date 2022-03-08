@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ForgotPWHeader from "./forgot_password_header";
 import { ForgotPWValuesProps } from "./forgot_password";
-import Input from "@material-tailwind/react/Input";
 
 export default class PINNumber extends Component<ForgotPWValuesProps> {
   continue = (e) => {
@@ -22,12 +21,10 @@ export default class PINNumber extends Component<ForgotPWValuesProps> {
           step={this.props.step}
         />
         <div className="flex xl:text-xl flex-col mt-12">
-          <Input
+          <input
             type="pinnumber"
             id="PINNumber"
             placeholder="Enter 6 digit PIN number"
-            outline={true}
-            size="lg"
             color="brown"
             required
           />
