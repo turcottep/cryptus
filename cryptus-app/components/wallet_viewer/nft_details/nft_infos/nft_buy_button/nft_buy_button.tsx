@@ -8,7 +8,7 @@ import s from "./nft_buy_button.module.scss";
 
 export default function NftBuyButton(props: { price: number; url: string }) {
   const { price, url } = props;
-  const price_clean = price.toFixed(2);
+  const price_clean = price ? price.toFixed(2) : " - ";
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">

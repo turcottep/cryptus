@@ -9,28 +9,10 @@ import getNFTListedPrice from "../../../../lib/get_nft_listed_price";
 import { nft } from "../../../../lib/data_types";
 import NftBuyButton from "./nft_buy_button/nft_buy_button";
 
-export default function NftInfo(props: { nft: nft }) {
+export default function NftInfo(props: { nft: nft; listed_price: number }) {
   const { name, last_sale_price, external_url, collection } = props.nft;
+  const listed_price = props.listed_price;
   const collection_stripped = collection.replace(/\s/g, ""); // remove all spaces from collection name
-
-  let [listed_price, setListed_price] = useState(0);
-
-  useEffect(() => {
-    collectionCall();
-  }, []);
-
-  const collectionCall = async () => {
-    try {
-      setListed_price(
-        await getNFTListedPrice(
-          props.nft.collection_address,
-          props.nft.token_id
-        )
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className={s.container}>

@@ -9,7 +9,6 @@ import NftInfo from "./nft_infos/nft_info";
 import NftPicture from "./nft_picture/nft_picture";
 import NFTProperties from "./nft_properties/nft_properties";
 import NFTRankInCollection from "./nft_rank_in_collection/nft_rank_in_collection";
-import GetCollectionTokens from "../../../lib/get_collection_token";
 
 type nft_details_props = {
   nft: nft;
@@ -17,51 +16,19 @@ type nft_details_props = {
     position: number;
     total: number;
   };
+  listed_price: number;
 };
 
 export default function NFTDetails(props: nft_details_props) {
-  const { nft, rank } = props;
+  const { nft, rank, listed_price } = props;
   let properties = nft.properties;
-
-  let [collection_size, setCollection_size] = useState(Number);
-  let [rarity_rank, setraRity_rank] = useState(Number);
-
-  useEffect(() => {
-    const collectionCall = async () => {
-      try {
-        const collectionSize: number = await GetCollectionTokens(
-          nft.collection_address
-        );
-        setCollection_size(collectionSize);
-        // Rarity rank is calculated from it's traits and rounded the result. The equation is :sum(1/(nb_with_trait/total_count))
-        const sorted_traits = nft.properties.sort((a, b) => {
-          return a.count - b.count;
-        });
-        const rarity = Math.round(
-          sorted_traits
-            .map((trait) => {
-              trait.rarity = trait.count / collectionSize;
-              return 1 / trait.rarity;
-            })
-            .reduce((partialSum, a) => partialSum + a, 0)
-        );
-        setraRity_rank(rarity);
-
-        console.log("rarity : ", rarity);
-        console.log("collection_size : ", collectionSize);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    collectionCall();
-  }, []);
 
   return (
     <div className={s.container}>
       <NftHeader />
       <NftPicture image_url={nft.image_url} description={nft.description} />
-      <NftInfo {...props} />
-      <NFTRankInCollection position={rarity_rank} total={collection_size} />
+      <NftInfo nft={props.nft} listed_price={listed_price} />
+      <NFTRankInCollection position={rank.position} total={rank.total} />
       <NFTProperties properties={properties} />
     </div>
   );
