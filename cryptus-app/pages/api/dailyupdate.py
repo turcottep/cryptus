@@ -42,6 +42,6 @@ class handler(BaseHTTPRequestHandler):
     def do_differentials(self):
         #Update each differentials for each view for each collection
         #SERVERLESS #3 : Done Daily!
-        for i, (address_raw, collectionName) in enumerate(dict_test.items()):
+        for i, (address_raw, collectionName) in enumerate(dict.items()):
             collection = address_raw[1:]
             getAndAddDifferentials(collection)
