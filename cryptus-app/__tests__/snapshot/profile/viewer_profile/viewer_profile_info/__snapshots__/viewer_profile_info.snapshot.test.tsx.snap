@@ -10,12 +10,7 @@ exports[`ViewerProfileInfos renders correctly 1`] = `
   </div>
   <div>
     <div>
-      Turcotte
-    </div>
-    <div>
-      <img
-        src="./images/twitter_checkmark.png"
-      />
+      turcotte
     </div>
   </div>
   <div>

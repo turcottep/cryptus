@@ -2,8 +2,10 @@
 
 exports[`EditProfileButton renders correctly 1`] = `
 <div>
-  <button>
+  <a
+    href="/edit_profile"
+  >
     Edit Profile
-  </button>
+  </a>
 </div>
 `;

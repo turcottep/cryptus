@@ -72,38 +72,12 @@ exports[`renders correctly 1`] = `
         <div
           className="invisible w-full md:visible md:w-1/2 lg:w-4/5 my-4"
         >
-          <div
-            className="text-gray-600"
+          <button
+            className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
+            onClick={[Function]}
           >
-            <div>
-              <form
-                className="form w-full "
-                id="form"
-                onSubmit={[Function]}
-              >
-                <div
-                  className="flex xl:text-xl flex-col lg:flex-row "
-                >
-                  <input
-                    className="email w-full text-center bg-white lg:text-left rounded-t-xl lg:rounded-r-none lg:rounded-l-xl px-2 py-2"
-                    id="email"
-                    name="entry.217945379"
-                    onChange={[Function]}
-                    placeholder="Email"
-                    required={true}
-                    type="email"
-                    value=""
-                  />
-                  <button
-                    className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-b-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
-                    type="submit"
-                  >
-                    Get Early Access
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+            Get Started!
+          </button>
         </div>
       </div>
       <div
@@ -120,38 +94,12 @@ exports[`renders correctly 1`] = `
     <div
       className="md:hidden w-full sm:mx-0 md:w-2/5 lg:w-2/5 my-4"
     >
-      <div
-        className="text-gray-600"
+      <button
+        className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
+        onClick={[Function]}
       >
-        <div>
-          <form
-            className="form w-full "
-            id="form"
-            onSubmit={[Function]}
-          >
-            <div
-              className="flex xl:text-xl flex-col lg:flex-row "
-            >
-              <input
-                className="email w-full text-center bg-white lg:text-left rounded-t-xl lg:rounded-r-none lg:rounded-l-xl px-2 py-2"
-                id="email"
-                name="entry.217945379"
-                onChange={[Function]}
-                placeholder="Email"
-                required={true}
-                type="email"
-                value=""
-              />
-              <button
-                className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-b-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
-                type="submit"
-              >
-                Get Early Access
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
+        Get Started!
+      </button>
     </div>
   </div>
 </div>

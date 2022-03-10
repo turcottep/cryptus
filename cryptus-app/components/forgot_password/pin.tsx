@@ -3,42 +3,39 @@ import ForgotPWHeader from "./forgot_password_header";
 import { ForgotPWValuesProps } from "./forgot_password";
 import Input from "@material-tailwind/react/Input";
 
-export default class PINNumber extends Component<ForgotPWValuesProps> {
-  continue = (e) => {
+import s from "./pin.module.scss";
+
+export default function PINNumber(props) {
+  const next = (e) => {
     e.preventDefault();
-    this.props.nextStep();
+    props.nextStep();
   };
 
-  back = (e) => {
+  const back = (e) => {
     e.preventDefault();
-    this.props.prevStep();
+    props.prevStep();
   };
 
-  render() {
-    return (
-      <div className="flex xl:text-xl flex-col mx-12 ">
-        <ForgotPWHeader
-          title="A 6 digit pin number was sent to your email or phone number"
-          step={this.props.step}
+  return (
+    <div className={s.container}>
+      <ForgotPWHeader
+        title="A 6 digit pin number was sent to your email or phone number"
+        step={props.step}
+      />
+      <div className={s.input}>
+        <Input
+          type="pinnumber"
+          id="PINNumber"
+          placeholder="Enter 6 digit PIN number"
+          outline={true}
+          size="lg"
+          color="brown"
+          required
         />
-        <div className="flex xl:text-xl flex-col mt-12">
-          <Input
-            type="pinnumber"
-            id="PINNumber"
-            placeholder="Enter 6 digit PIN number"
-            outline={true}
-            size="lg"
-            color="brown"
-            required
-          />
-        </div>
-        <button
-          onClick={this.continue}
-          className="text-lg text-center whitespace-nowrap bg-brown text-white rounded-lg w-full px-4 py-2 mt-8"
-        >
-          Validate
-        </button>
       </div>
-    );
-  }
+      <button onClick={next} className={s.button}>
+        Validate
+      </button>
+    </div>
+  );
 }

@@ -1,37 +1,23 @@
 import React, { Component } from "react";
 
+import s from "./forgot_password_header.module.scss";
+
 type MyProps = {
   title: String;
   step: Number;
 };
 
-export default class ForgotPWHeader extends Component<MyProps> {
-  render() {
-    return (
-      <div className="flex flex-col mt-8">
-        <div className="flex justify-center mx-auto">
-          <div className="">
-            <p className="text-brown text-3xl float-right mx-2 ">&#9679;</p>
-          </div>
-          <div className="">
-            {this.props.step < 2 ? (
-              <p className="text-gray-500 text-3xl float-left mx-2">&#9679;</p>
-            ) : null}
-            {this.props.step >= 2 ? (
-              <p className="text-brown text-3xl float-left mx-2">&#9679;</p>
-            ) : null}
-            {this.props.step < 3 ? (
-              <p className="text-gray-500 text-3xl float-left mx-2">&#9679;</p>
-            ) : null}
-            {this.props.step >= 3 ? (
-              <p className="text-brown text-3xl float-left mx-2">&#9679;</p>
-            ) : null}
-          </div>
-        </div>
-        <div className="flex flex-col mt-4">
-          <p className="text-black text-lg text-center">{this.props.title}</p>
-        </div>
+export default function ForgotPWHeader(props) {
+  return (
+    <div className={s.container}>
+      <div className={s.dot_container}>
+        <p className={s.active_dot}>&#9679;</p>
+        {props.step < 2 ? <p className={s.gray_dot}>&#9679;</p> : null}
+        {props.step >= 2 ? <p className={s.active_dot}>&#9679;</p> : null}
+        {props.step < 3 ? <p className={s.gray_dot}>&#9679;</p> : null}
+        {props.step >= 3 ? <p className={s.active_dot}>&#9679;</p> : null}
       </div>
-    );
-  }
+      <div className={s.title}>{props.title}</div>
+    </div>
+  );
 }

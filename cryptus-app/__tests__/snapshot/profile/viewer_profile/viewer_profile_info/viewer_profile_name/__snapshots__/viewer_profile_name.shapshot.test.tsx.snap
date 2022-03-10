@@ -5,10 +5,5 @@ exports[`ViewerProfileName renders correctly 1`] = `
   <div>
     Username123456
   </div>
-  <div>
-    <img
-      src="./images/twitter_checkmark.png"
-    />
-  </div>
 </div>
 `;
