@@ -21,7 +21,9 @@ type nft_details_props = {
 
 export default function NFTDetails(props: nft_details_props) {
   const { nft, rank, listed_price } = props;
-  let properties = nft.properties;
+  let properties = nft.properties.sort((a, b) => {
+    return a.count - b.count;
+  });
 
   return (
     <div className={s.container}>
@@ -29,7 +31,7 @@ export default function NFTDetails(props: nft_details_props) {
       <NftPicture image_url={nft.image_url} description={nft.description} />
       <NftInfo nft={props.nft} listed_price={listed_price} />
       <NFTRankInCollection position={rank.position} total={rank.total} />
-      <NFTProperties properties={properties} />
+      <NFTProperties properties={properties} collectionSize={rank.total} />
     </div>
   );
 }

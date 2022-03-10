@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import fs from "fs";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -10,6 +11,7 @@ import sortNftsIntoCollections from "../../../../lib/sort_nfts_into_collections"
 import { profile_props, nft_collection, nft } from "../../../../lib/data_types";
 import getCollectionToken from "../../../../lib/get_collection_token";
 import getNFTListedPrice from "../../../../lib/get_nft_listed_price";
+import GetNameWithoutSpaces from "../../../../lib/get_name_without_spaces";
 
 import NFTDetails from "../../../../components/wallet_viewer/nft_details/nft_details";
 import getMockProps from "../../../../lib/get_mock_props";
@@ -95,21 +97,33 @@ export async function getServerSideProps(context) {
           .toLowerCase()
     );
 
-    const collectionSize: number = await getCollectionToken(
-      goodnft.collection_address
-    );
-    // Rarity rank is calculated from it's traits and rounded the result. The equation is :sum(1/(nb_with_trait/total_count))
-    const sorted_traits = goodnft.properties.sort((a, b) => {
-      return a.count - b.count;
-    });
-    const rarity = Math.round(
-      sorted_traits
-        .map((trait) => {
-          trait.rarity = trait.count / collectionSize;
-          return 1 / trait.rarity;
-        })
-        .reduce((partialSum, a) => partialSum + a, 0)
-    );
+    const path =
+      "./scripts/nft_rank/" +
+      GetNameWithoutSpaces(goodnft.collection) +
+      ".json";
+    let collectionSize: number = 0;
+    let rarity: number = 0;
+    if (fs.existsSync(path)) {
+      const all_nfts = JSON.parse(fs.readFileSync(path, "utf8"));
+      collectionSize =
+        all_nfts[goodnft.collection_address][goodnft.token_id].Collection_size;
+      rarity =
+        all_nfts[goodnft.collection_address][goodnft.token_id].Rarity_rank;
+    } else {
+      collectionSize = await getCollectionToken(goodnft.collection_address);
+      // Rarity rank is calculated from it's traits and rounded the result. The equation is :sum(1/(nb_with_trait/total_count))
+      const sorted_traits = goodnft.properties.sort((a, b) => {
+        return a.count - b.count;
+      });
+      rarity = Math.round(
+        sorted_traits
+          .map((trait) => {
+            trait.rarity = trait.count / collectionSize;
+            return 1 / trait.rarity;
+          })
+          .reduce((partialSum, a) => partialSum + a, 0)
+      );
+    }
 
     // console.log("rarity real : ", rarity);
     // console.log("collection_size : ", collectionSize);

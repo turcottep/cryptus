@@ -13,14 +13,14 @@ async function generateRarity(
   const totalNum = nfts.total;
   const pageSize = nfts.page_size;
   let allNfts = nfts.result;
-  // console.log("total num : ", totalNum);
+  console.log("total num : ", totalNum);
   // console.log("Page size : ", pageSize);
   // console.log("First nft : ", allNfts[0]);
-  // console.log("First nft metadata: ", JSON.parse(allNfts[0].metadata));
+  console.log("First nft metadata: ", JSON.parse(allNfts[0].metadata));
 
   if (
-    JSON.parse(allNfts[0].metadata).attributes.trait_type &&
-    JSON.parse(allNfts[0].metadata).attributes.value
+    JSON.parse(allNfts[0].metadata).attributes[0].trait_type &&
+    JSON.parse(allNfts[0].metadata).attributes[0].value
   ) {
     for (let i = pageSize; i < totalNum; i += pageSize) {
       console.log("i : ", i);
