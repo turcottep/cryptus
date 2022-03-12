@@ -1,0 +1,28 @@
+@use "/styles/variables" as v;
+
+.container {
+    flex: 1 1 auto;
+
+    flex-direction: column;
+
+    opacity: 0.5;
+  }
+
+.settingCol {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: v.$font-size-m;
+}
+
+.icon {
+    transform: scaleX(-1);
+    width: v.$icon-width;
+    height: v.$icon-width;
+}
+
+.icon:hover {
+    opacity: 0.5;
+  }

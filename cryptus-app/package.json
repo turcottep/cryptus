@@ -33,6 +33,7 @@
     "react-dom": "17.0.1",
     "react-dropzone": "^11.2.4",
     "react-pdf": "^5.1.0",
+    "react-switch": "^6.0.0",
     "react-test-renderer": "^16.13.1",
     "sass": "^1.49.7",
     "tailwind": "^4.0.0",

@@ -10,7 +10,7 @@ export default function MarketHeader() {
   return (
     <div className={s.container}>
       <img src="magnifier.svg" className={s.magnifier} />
-      <input type="text" className={s.searchTerm} placeholder="Search" />
+      <input type="text" className={s.searchTerm} placeholder="Search coming soon!" />
     </div>
   );
 }
