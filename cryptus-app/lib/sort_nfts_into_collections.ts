@@ -7,6 +7,7 @@ export default function sortNftsIntoCollections(nfts: nft[]): nft_collection[] {
     const collection = nft.collection;
     if (!collections[collection]) {
       collections[collection] = {
+        id: 0,
         name: collection,
         description: "",
         image_url: "",

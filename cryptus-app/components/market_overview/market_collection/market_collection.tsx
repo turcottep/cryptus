@@ -8,7 +8,7 @@ import CollectionMarketGraph from "./collection_market_graph/collection_market_g
 import { market_collection_props } from "../../../pages/market/[address]";
 
 export default function MarketCollection(props: market_collection_props) {
-  console.log("MarketCollection props:", props);
+  //console.log("MarketCollection props:", props);
   return (
     <div className={s.app}>
       <MarketCollectionHeader />

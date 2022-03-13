@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Recovery from "./recovery";
+/* import Recovery from "./recovery";
 import PINNumber from "./pin";
 import NewPassword from "./new_password";
 import ForgotPWNavBar from "./forgot_password_navbar";
@@ -80,3 +80,4 @@ export class ForgotPassword extends Component {
 }
 
 export default ForgotPassword;
+ */

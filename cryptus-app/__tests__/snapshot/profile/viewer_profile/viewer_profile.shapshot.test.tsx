@@ -3,19 +3,21 @@ import React from "react";
 import renderer from "react-test-renderer";
 import ViewerProfile from "../../../../components/profile/viewer_profile/viewer_profile";
 import { profile_props, nft_collection, nft } from "../../../../lib/data_types";
+
 import { mockNextUseRouter } from "../../../../utils/test_util";
 
 describe("<ViewerProfile />", () => {
   mockNextUseRouter({
     route: "",
     pathname: "",
-    query: "",
+    query: { userId: "test" },
     asPath: ``,
   });
 
   it("ViewerProfile renders correctly", () => {
     const collections: nft_collection[] = [
       {
+        id: 1,
         name: "CryptoKitties",
         description: "",
         image_url: "",
@@ -196,6 +198,7 @@ describe("<ViewerProfile />", () => {
         ],
       },
       {
+        id: 2,
         name: "BlockCities",
         description: "",
         image_url: "",
@@ -327,6 +330,11 @@ describe("<ViewerProfile />", () => {
       user: user,
       collections: collections,
     };
+
+    /* const useRouter = jest.spyOn(require("next/router"), "useRouter");
+    useRouter.mockImplementationOnce(() => ({
+      query: { userId: "test" },
+    })); */
 
     const tree = renderer.create(<ViewerProfile {...mock_props} />).toJSON();
     expect(tree).toMatchSnapshot();

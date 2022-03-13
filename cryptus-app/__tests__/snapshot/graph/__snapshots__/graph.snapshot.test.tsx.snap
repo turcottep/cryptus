@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Graph /> should display properly 1`] = `
+<div>
+  <canvas
+    height={150}
+    role="img"
+    width={300}
+  />
+  <canvas
+    height={150}
+    role="img"
+    width={300}
+  />
+</div>
+`;

@@ -23,7 +23,7 @@ exports[`<NftInfo /> should display the correct NFT information 1`] = `
         src="/images/eth.png"
       />
       <div>
-        1.40
+        5.00
       </div>
       <div />
       <div>

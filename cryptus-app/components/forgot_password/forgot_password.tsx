@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Recovery from "./recovery";
-import PINNumber from "./pin";
-import NewPassword from "./new_password";
-import ForgotPWNavBar from "./forgot_password_navbar";
+import Recovery from "./forgot_password_components/recovery";
+import PINNumber from "./forgot_password_components/pin";
+import NewPassword from "./forgot_password_components/new_password";
+import ForgotPWNavBar from "./forgot_password_components/forgot_password_navbar";
 
 export type ForgotPWValuesProps = {
   prevStep: Function;

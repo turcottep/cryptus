@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ForgotPWValuesProps } from "./forgot_password";
+/* import { ForgotPWValuesProps } from "./forgot_password";
 
 export default class FormNavBar extends Component<ForgotPWValuesProps> {
   continue = (e) => {
@@ -48,3 +48,4 @@ export default class FormNavBar extends Component<ForgotPWValuesProps> {
     );
   }
 }
+ */

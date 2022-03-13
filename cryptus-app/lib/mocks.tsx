@@ -1,6 +1,7 @@
 import { nft, nft_collection } from "./data_types";
 
 export const mock_collection: nft_collection = {
+  id: 1,
   name: "CryptoKitties",
   description: "",
   image_url: "",
@@ -222,3 +223,105 @@ export const mock_nft: nft = {
   ],
   rarity_rank: null,
 };
+
+import React, { useState, useEffect } from "react";
+
+type State = {
+  email: "";
+  pinnumber: "";
+  password: "";
+  confirmpassword: "";
+};
+
+export function getMockProps(StepID: number) {
+  const [step, setStep] = useState<number>(StepID);
+  const [state, setState] = useState<State>({
+    email: "",
+    pinnumber: "",
+    password: "",
+    confirmpassword: "",
+  });
+
+  // Proceed to next step
+  const nextStep = () => {
+    setStep(step + 1);
+  };
+
+  // Go back to prev step
+  const prevStep = () => {
+    setStep(step - 1);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    const target_id = e.target.id;
+    setState({ ...state, [target_id]: newValue });
+  };
+
+  return {
+    nextStep: nextStep,
+    prevStep: prevStep,
+    handleChange: handleChange,
+    values: state,
+    step: step,
+  };
+}
+
+// DO NOT DELETE PLEASE THANK YOU
+/* import { signIn } from "next-auth/client";
+import FindUserIdFromWalletAdress from "../lib/findUserIdFromWalletAdress";
+import CreateAccountFromWalletAddress from "../lib/createAccountFromWalletAddress";
+import FindUserFromUserId from "../lib/findUserFromUserId";
+declare var window: any;
+
+export function getMockCallback(LoadState) {
+  const [loading, setLoading] = useState<Boolean>(LoadState);
+
+  const connectMetamask = async () => {
+    // router.push("login?");
+    setLoading(true);
+    if (!window.ethereum) {
+      console.log("please donwload MetaMask");
+      window.open("https://metamask.io/", "_blank").focus();
+      setLoading(false);
+    } else {
+      try {
+        await window.ethereum.enable();
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        const wallet_address = accounts[0];
+
+        const userId = await FindUserIdFromWalletAdress(wallet_address, false);
+
+        if (!userId) {
+          //Create Account with this wallet address
+          const user = await CreateAccountFromWalletAddress(
+            wallet_address,
+            false
+          );
+          signIn("credentials", {
+            redirect: true,
+            address: wallet_address,
+            callbackUrl: `${window.location.origin}/edit_profile`,
+          });
+        } else {
+          const user = await FindUserFromUserId(userId, false, false);
+          signIn("credentials", {
+            redirect: true,
+            address: wallet_address,
+            callbackUrl: `${window.location.origin}/` + user.username,
+          });
+        }
+      } catch (error) {
+        // console.error(error);
+        setLoading(false);
+        // router.push("login?error=CancelMetamask");
+      }
+    }
+  };
+
+  return {
+    cb: connectMetamask,
+  };
+} */

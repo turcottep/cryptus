@@ -8,16 +8,17 @@ import Profile from "../../../components/profile/profile";
 // import Props from "./mock_profile";
 
 describe("<Profile />", () => {
-  /* mockNextUseRouter({
+  mockNextUseRouter({
     route: "",
     pathname: "",
-    query: "",
+    query: { userId: "test" },
     asPath: ``,
-  }); */
+  });
 
   it("Profile renders correctly", () => {
     const collections: nft_collection[] = [
       {
+        id: 1,
         name: "CryptoKitties",
         description: "",
         image_url: "",
@@ -198,6 +199,7 @@ describe("<Profile />", () => {
         ],
       },
       {
+        id: 2,
         name: "BlockCities",
         description: "",
         image_url: "",

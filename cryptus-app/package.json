@@ -6,11 +6,12 @@
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
+    "@material-tailwind/react": "0.3.4",
     "@metamask/detect-provider": "^1.2.0",
     "@mui/material": "^5.5.0",
     "@next-auth/prisma-adapter": "^0.5.2",

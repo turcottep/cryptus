@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div>
+    <div>
+      <p>
+        ●
+      </p>
+      <p>
+        ●
+      </p>
+      <p>
+        ●
+      </p>
+    </div>
+    <div>
+      Enter your recovery email or phone number
+    </div>
+  </div>
+  <div>
+    <div
+      className="w-full relative h-12"
+    >
+      <input
+        className="w-full h-full text-gray-800 leading-normal shadow-none outline-none focus:outline-none focus:ring-0 focus:text-gray-800 px-3 pt-3.5 pb-2.5 mt-input-outline-brown-500 border-gray-300 mt-input-outline bg-transparent border border-1 border-gray-300 rounded-lg focus:border-2 focus:border-brown-500 undefined undefined"
+        id="email"
+        placeholder=" "
+        required={true}
+        type="email"
+      />
+      <label
+        className="text-gray-400 absolute left-0 -top-1.5 w-full h-full false border-gray-300 pointer-events-none flex false leading-10 transition-all duration-300"
+      >
+        Phone number or email
+      </label>
+    </div>
+  </div>
+  <button
+    onClick={[Function]}
+  >
+    Send recovery email/text
+  </button>
+</div>
+`;

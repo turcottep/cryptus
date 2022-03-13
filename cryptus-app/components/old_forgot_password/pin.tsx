@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ForgotPWHeader from "./forgot_password_header";
+/* import ForgotPWHeader from "./forgot_password_header";
 import { ForgotPWValuesProps } from "./forgot_password";
 import Input from "@material-tailwind/react/Input";
 
@@ -42,3 +42,4 @@ export default class PINNumber extends Component<ForgotPWValuesProps> {
     );
   }
 }
+ */

@@ -9,13 +9,14 @@ describe("<CreatorProfile />", () => {
   mockNextUseRouter({
     route: "",
     pathname: "",
-    query: "",
+    query: { userId: "test" },
     asPath: ``,
   });
 
   it("CreatorProfile renders correctly", () => {
     const collections: nft_collection[] = [
       {
+        id: 1,
         name: "CryptoKitties",
         description: "",
         image_url: "",
@@ -196,6 +197,7 @@ describe("<CreatorProfile />", () => {
         ],
       },
       {
+        id: 2,
         name: "BlockCities",
         description: "",
         image_url: "",

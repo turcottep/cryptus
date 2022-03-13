@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotificationBell /> should display properly 1`] = `
+<a
+  href="login"
+  target="_blank"
+>
+  <img
+    src="/icons/notification_icon.png"
+  />
+</a>
+`;

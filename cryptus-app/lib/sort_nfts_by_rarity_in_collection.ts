@@ -5,6 +5,7 @@ export default function sortNFTsByRarityInCollection(
 ) {
   const new_collections = collections.map((collection) => {
     return {
+      id: collection.id,
       name: collection.name,
       description: collection.description,
       image_url: collection.image_url,

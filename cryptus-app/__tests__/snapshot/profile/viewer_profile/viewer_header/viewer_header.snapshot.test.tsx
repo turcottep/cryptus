@@ -8,7 +8,7 @@ describe("<ViewerHeader />", () => {
   mockNextUseRouter({
     route: "",
     pathname: "",
-    query: "",
+    query: { userId: "test" },
     asPath: ``,
   });
 
