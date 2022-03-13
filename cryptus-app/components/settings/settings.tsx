@@ -15,10 +15,7 @@ import NotificationSetting from "./notification_setting/notification_setting";
 import DarkThemeSetting from "./dark_theme_setting/dark_theme_setting";
 import SupportSetting from "./support_setting/support_setting"
 
-export default function Settings(props: {
-  user: any;
-}) {
-  const { user } = props;
+export default function Settings() {
 
   const [session, status] = useSession();
   const username = session?.user?.name

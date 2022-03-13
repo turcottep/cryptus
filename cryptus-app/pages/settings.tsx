@@ -28,7 +28,7 @@ export default function Home({ data }) {
       />
 
       <main>
-        <Settings user = {props}/>
+        <Settings />
       </main>
     </div>
   );
