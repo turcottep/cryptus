@@ -8,17 +8,16 @@ import BackButton from "../header/back_button/back_button";
 import UsenameSetting from "./username_setting/username_setting";
 import AccountLink from "./account_link/account_link";
 import LogoutSetting from "./logout_setting/logout_setting";
-import SearchBar from "../market_overview/search_bar/search_bar"
+import SearchBar from "../market_overview/search_bar/search_bar";
 import WalletManagerSetting from "./wallet_manager_setting/wallet_manager_setting";
 //import ResetPasswordSetting from "./reset_password_setting/reset_password_setting";
 import NotificationSetting from "./notification_setting/notification_setting";
 import DarkThemeSetting from "./dark_theme_setting/dark_theme_setting";
-import SupportSetting from "./support_setting/support_setting"
+import SupportSetting from "./support_setting/support_setting";
 
 export default function Settings() {
-
   const [session, status] = useSession();
-  const username = session?.user?.name
+  const username = session?.user?.name;
 
   return (
     <div className={s.container}>
@@ -27,26 +26,23 @@ export default function Settings() {
         <SearchBar />
       </div>
       <div className={s.settingRows}>
-        <UsenameSetting username={username}/>
-        <AccountLink username={username}/>
+        <UsenameSetting username={username} />
+        <AccountLink username={username} />
         <WalletManagerSetting />
         <NotificationSetting />
         <DarkThemeSetting />
         <SupportSetting />
         <LogoutSetting />
       </div>
-        
-      </div>
+    </div>
   );
 }
 
 const SettingsHeader = () => (
-    <div className={s.header}>
-      <BackButton />
-      <div className={s.settingsTitle}>
-        Settings
-      </div>
-      
-      <div className={s.blankButton}/>
-    </div>
-  );
+  <div className={s.header}>
+    <BackButton />
+    <div className={s.settingsTitle}>Settings</div>
+
+    <div className={s.blankButton} />
+  </div>
+);
