@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ForgotPWHeader from "./forgot_password_header";
 import { ForgotPWValuesProps } from "./forgot_password";
-import Input from "@material-tailwind/react/Input";
 
 export default class Recovery extends Component<ForgotPWValuesProps> {
   continue = (e) => {
@@ -24,12 +23,10 @@ export default class Recovery extends Component<ForgotPWValuesProps> {
           step={this.props.step}
         />
         <div className="flex xl:text-xl flex-col mt-12">
-          <Input
+          <input
             type="email"
             id="email"
             placeholder="Phone number or email"
-            outline={true}
-            size="lg"
             color="brown"
             required
           />
