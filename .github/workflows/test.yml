@@ -15,6 +15,6 @@ jobs:
       - name: Install dependencies, build & test
         working-directory: ./cryptus-app
         run: |
-          npm ci
+          npm install
           npm run build
           npm test
