@@ -1,11 +1,11 @@
 import React from "react";
-import Settings from "../components/settings/settings";
+import WalletManager from "../components/wallet_manager/wallet_manager";
 import { nft, profile_props } from "../lib/data_types";
 import getMockProps from "../lib/get_mock_props";
 
 export default function Home({ data }) {
   const mock_props = getMockProps() as profile_props;
-  const props = mock_props.user
+  const props = {"user":mock_props.user}
   console.log(props)
   return (
     <div className="">
@@ -28,7 +28,7 @@ export default function Home({ data }) {
       />
 
       <main>
-        <WalletManager user = {props}/>
+        <WalletManager {...props}/>
       </main>
     </div>
   );
