@@ -16,5 +16,4 @@ jobs:
         working-directory: ./cryptus-app
         run: |
           npm install
-          npm run build
           npm test
