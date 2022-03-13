@@ -1,6 +1,7 @@
 import fetch from "node-fetch";
 import fs from "fs";
 import Moralis from "moralis/node.js";
+import prisma from "../lib/prisma";
 
 async function generateRarity(
   collectionAddress: string,
@@ -13,10 +14,6 @@ async function generateRarity(
   const totalNum = nfts.total;
   const pageSize = nfts.page_size;
   let allNfts = nfts.result;
-  console.log("total num : ", totalNum);
-  // console.log("Page size : ", pageSize);
-  // console.log("First nft : ", allNfts[0]);
-  console.log("First nft metadata: ", JSON.parse(allNfts[0].metadata));
 
   if (
     JSON.parse(allNfts[0].metadata).attributes[0].trait_type &&
@@ -29,7 +26,7 @@ async function generateRarity(
         offset: i,
       })) as any;
       allNfts.push(...nfts.result);
-      await new Promise((resolve) => setTimeout(resolve, 5000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
     }
 
     let metadata = allNfts.map((e) => JSON.parse(e.metadata).attributes);
@@ -70,6 +67,7 @@ async function generateRarity(
     const collectionAttributes = Object.keys(tally);
     let nftArr = [];
     let nftDictByTokenId = {};
+    let nftOrderedList = [];
 
     for (let j = 0; j < metadata.length; j++) {
       let current = metadata[j];
@@ -116,22 +114,30 @@ async function generateRarity(
         Attributes: JSON.stringify(current),
         Rarity: totalRarity,
         token_id: allNfts[j].token_id,
-        collection_size: totalNum,
       });
     }
 
     nftArr.sort((a, b) => b.Rarity - a.Rarity);
 
     nftArr.forEach((nft, index) => {
-      nftDictByTokenId[nft.token_id] = {
+      nftOrderedList.push({
         Attributes: nft.Attributes,
         Rarity: nft.Rarity,
-        Collection_size: nft.collection_size,
-        Rarity_rank: index,
-      };
+        Rarity_rank: index + 1,
+        Token_id: nft.token_id,
+      });
     });
+    return nftOrderedList;
 
-    const nftsToSave = { [collectionAddress]: nftDictByTokenId };
+    // nftArr.forEach((nft, index) => {nftDictByTokenId
+    //   [nft.token_id] = {
+    //     Attributes: nft.Attributes,
+    //     Rarity: nft.Rarity,
+    //     Rarity_rank: index,
+    //   };
+    // });
+
+    // const nftsToSave = { [collectionAddress]: nftDictByTokenId };
     // save to file
     // fs.writeFileSync(
     //   "./scripts/nft_rank/" + collectionName + ".json",
@@ -139,12 +145,43 @@ async function generateRarity(
     // );
     // console.log("metadata : ", metadata[0]);
     // console.log("nftArr : ", nftArr[0]);
-    return nftsToSave;
+    // return nftsToSave;
   } else {
     console.log(
       "The metadata of this collection is not written in the right way"
     );
     return null;
+  }
+}
+
+async function writeDataInDB(nfts: any[], contractAdress: string) {
+  type collectionRarityCreateInput = {
+    attributes: string;
+    rarity: number;
+    rarity_rank: number;
+    token_id: string;
+  };
+  try {
+    let collectionData: collectionRarityCreateInput[] = [];
+    nfts.forEach((nft) => {
+      collectionData.push({
+        attributes: nft.Attributes,
+        rarity: Math.trunc(Number(nft.Rarity)),
+        rarity_rank: Number(nft.Rarity_rank),
+        token_id: nft.Token_id,
+      });
+    });
+    const nftsToPush = JSON.stringify(collectionData);
+    await prisma.collectionRarity.create({
+      data: {
+        contract_address: contractAdress,
+        nfts_rarity: nftsToPush,
+      },
+    });
+  } catch (e) {
+    console.error("Unable write data : ", e);
+  } finally {
+    await prisma.$disconnect();
   }
 }
 
@@ -157,8 +194,13 @@ async function main(collectionAddress: string, collectionName: string) {
 
   Moralis.start({ serverUrl, appId });
 
-  const nftsWithRarity = generateRarity(collectionAddress, collectionName);
-  // return nftsWithRarity;
+  const nftsWithRarity = await generateRarity(
+    collectionAddress,
+    collectionName
+  );
+  if (nftsWithRarity) {
+    await writeDataInDB(nftsWithRarity, collectionAddress);
+  }
 }
 
 export default main;

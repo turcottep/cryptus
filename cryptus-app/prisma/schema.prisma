@@ -22,19 +22,20 @@ model User {
 }
 
 model Nft {
-  id               String  @id @default(uuid())
-  name             String
-  description      String?
-  collection       String?
-  external_url     String?
-  image_url        String?
-  userId           String?
-  last_sale_price  Int?
-  last_sale_symbol String?
-  properties       String
-  token_id         String
-  rarity_rank      Int?
-  User             User?   @relation(fields: [userId], references: [id])
+  id                 String  @id @default(uuid())
+  name               String
+  description        String?
+  collection         String?
+  external_url       String?
+  image_url          String?
+  userId             String?
+  last_sale_price    Int?
+  last_sale_symbol   String?
+  properties         String
+  token_id           String
+  rarity_rank        Int?
+  collection_address String?
+  User               User?   @relation(fields: [userId], references: [id])
 }
 
 model Wallet {
@@ -44,4 +45,21 @@ model Wallet {
   external_url  String @unique
   userId        String
   User          User   @relation(fields: [userId], references: [id])
+}
+
+// model NftRarity {
+//   id               String @id @default(uuid())
+//   attributes       String?
+//   rarity           Int?
+//   rarity_rank      Int?
+//   token_id         String @unique
+//   collectionID     String
+//   CollectionRarity CollectionRarity @relation(fields: [collectionID], references: [id])
+// }
+
+model CollectionRarity {
+  id               String     @id @default(uuid())
+  contract_address String     @unique
+  nfts_rarity      String?
+  // nfts_rarity      NftRarity?
 }

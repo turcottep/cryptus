@@ -82,7 +82,6 @@ export default async function updateNftsForUser(
       image_url: nft.image_url,
       description: nft.description,
       collection: nft.collection.name,
-      collection_size: 0,
       collection_address: nft.asset_contract.address,
       token_id: nft.token_id,
       external_url: nft.permalink,

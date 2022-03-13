@@ -101,16 +101,15 @@ export async function getServerSideProps(context) {
       "./scripts/nft_rank/" +
       GetNameWithoutSpaces(goodnft.collection) +
       ".json";
-    let collectionSize: number = 0;
+    let collectionSize: number = await getCollectionToken(
+      goodnft.collection_address
+    );
     let rarity: number = 0;
     if (fs.existsSync(path)) {
       const all_nfts = JSON.parse(fs.readFileSync(path, "utf8"));
-      collectionSize =
-        all_nfts[goodnft.collection_address][goodnft.token_id].Collection_size;
       rarity =
         all_nfts[goodnft.collection_address][goodnft.token_id].Rarity_rank;
     } else {
-      collectionSize = await getCollectionToken(goodnft.collection_address);
       // Rarity rank is calculated from it's traits and rounded the result. The equation is :sum(1/(nb_with_trait/total_count))
       const sorted_traits = goodnft.properties.sort((a, b) => {
         return a.count - b.count;
@@ -124,9 +123,6 @@ export async function getServerSideProps(context) {
           .reduce((partialSum, a) => partialSum + a, 0)
       );
     }
-
-    // console.log("rarity real : ", rarity);
-    // console.log("collection_size : ", collectionSize);
 
     const listed_price_temp = await getNFTListedPrice(
       goodnft.collection_address,
