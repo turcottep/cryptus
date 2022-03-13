@@ -71,7 +71,7 @@ export async function getServerSideProps(context) {
     data_price: [],
     count: null,
     volume: null,
-    address: address,
+    address: collection.address,
   } as market_collection_props;
 
   try {
@@ -81,7 +81,7 @@ export async function getServerSideProps(context) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        address,
+        address: summary_props_mock.address,
         viewingmode,
       }),
     });
