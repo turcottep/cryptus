@@ -12,6 +12,9 @@ jobs:
         uses: actions/setup-node@v3.0.0
         with:
           node-version: "14"
-      - run: npm ci --prefix cryptus-app
-      - run: npm run build
-      - run: npm test
+      - name: Install dependencies, build & test
+        working-directory: ./cryptus-app
+        run: |
+          npm ci
+          npm run build
+          npm test
