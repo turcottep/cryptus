@@ -20,21 +20,26 @@ async function get_price_for_token_ids(
         "X-API-KEY": opensea_api_key,
       },
     });
-    // console.log("response", response);
 
     const data = (await response.json()) as any;
-    // console.log("data", data);
 
-    // for (const order of data.orders) {
-    //   console.log( order.base_price / 10 ** 18);
-    // }
+    for (const order of data.orders) {
+      if (
+        order.taker.address === "0x0000000000000000000000000000000000000000"
+      ) {
+        const floor_price = order.base_price / 10 ** 18;
+        if (floor_price < 0.1) {
+          console.log("order", order);
+          console.log("real money marker");
+          console.log(data.orders[1]);
+          console.log("normal for comparison");
+        }
+        console.log("sale kind", order.sale_kind);
 
-    const floor_price = data.orders[0].base_price / 10 ** 18;
-    if (floor_price < 1) {
-      console.log(data.orders[0]);
+        console.log("floor_price: ", floor_price);
+        return floor_price > 0.001 ? floor_price : null;
+      }
     }
-
-    return floor_price;
   } catch (error) {
     console.log("response", response);
     console.log(error);
@@ -62,7 +67,7 @@ async function get_price_for_token_ids_wrapper(
         floor_price = Math.min(floor_price, price);
       }
     }
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
   }
   return floor_price;
 }
@@ -92,7 +97,7 @@ async function get_all_tokens_from_collection(collection_address: string) {
     await new Promise((resolve) => setTimeout(resolve, 5000));
   }
 
-  console.log("all_nfts", all_nfts.length);
+  // console.log("all_nfts", all_nfts.length);
 
   // save to file
   fs.writeFileSync(
@@ -124,7 +129,7 @@ function get_traits_dict_from_json() {
       }
     }
   }
-  console.log("all_traits", all_traits);
+  // console.log("all_traits", all_traits);
   fs.writeFileSync(
     "./scripts/all_traits.json",
     JSON.stringify(all_traits, null, 2)
