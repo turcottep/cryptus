@@ -156,8 +156,8 @@ async function generateRarity(
 
 async function writeDataInDB(nfts: any[], contractAdress: string) {
   type collectionRarityCreateInput = {
-    attributes: string;
-    rarity: number;
+    // attributes: string;
+    // rarity: number;
     rarity_rank: number;
     token_id: string;
   };
@@ -165,17 +165,17 @@ async function writeDataInDB(nfts: any[], contractAdress: string) {
     let collectionData: collectionRarityCreateInput[] = [];
     nfts.forEach((nft) => {
       collectionData.push({
-        attributes: nft.Attributes,
-        rarity: Math.trunc(Number(nft.Rarity)),
+        // attributes: nft.Attributes,
+        // rarity: Math.trunc(Number(nft.Rarity)),
         rarity_rank: Number(nft.Rarity_rank),
         token_id: nft.Token_id,
       });
     });
-    const nftsToPush = JSON.stringify(collectionData);
+    const nftsInfoToPush = JSON.stringify(collectionData);
     await prisma.collectionRarity.create({
       data: {
         contract_address: contractAdress,
-        nfts_rarity: nftsToPush,
+        nfts_rarity: nftsInfoToPush,
       },
     });
   } catch (e) {

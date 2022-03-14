@@ -15,7 +15,6 @@ import getMockProps from "../../lib/get_mock_props";
 
 export default function post(props) {
   const { collections, user } = props;
-  console.log("collections", collections);
   return (
     <AnimatedDiv>
       <Profile collections={collections} user={user} />
