@@ -67,7 +67,6 @@ async function generateRarity(
     }
     const collectionAttributes = Object.keys(tally);
     let nftArr = [];
-    let nftDictByTokenId = {};
     let nftOrderedList = [];
 
     for (let j = 0; j < metadata.length; j++) {

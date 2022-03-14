@@ -1,5 +1,6 @@
 export default async function FindCollectionRarityData(
   collectionAddress,
+  token_id = "",
   withNfts = false,
   absolute = true
 ) {
@@ -11,14 +12,15 @@ export default async function FindCollectionRarityData(
       body: JSON.stringify({
         collection_address: collectionAddress,
         withNfts: withNfts,
+        token_id: token_id,
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
-    const collection = await res.json();
-    // console.log("Collection", collection);
 
+    const collection = await res.json();
+    // console.log("Collection : ", collection);
     return collection;
   } catch (e) {
     console.error("Erreur :", e);
