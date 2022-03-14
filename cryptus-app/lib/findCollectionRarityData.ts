@@ -1,5 +1,6 @@
 export default async function FindCollectionRarityData(
   collectionAddress,
+  withNfts = false,
   absolute = true
 ) {
   const base_url = absolute ? process.env.BASE_URL : "/";
@@ -9,6 +10,7 @@ export default async function FindCollectionRarityData(
       method: "POST",
       body: JSON.stringify({
         collection_address: collectionAddress,
+        withNfts: withNfts,
       }),
       headers: {
         "Content-Type": "application/json",

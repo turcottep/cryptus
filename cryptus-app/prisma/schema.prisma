@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["referentialActions"]
 }
 
 datasource db {
@@ -8,17 +9,18 @@ datasource db {
 }
 
 model User {
-  id          String   @id @default(uuid())
-  email       String   @unique
-  username    String   @unique
-  displayName String
-  nfts_order  Int[]
-  description String
-  views       Int
-  likes       Int
-  hash        String
-  nfts        Nft[]
-  wallets     Wallet[]
+  id                 String   @id @default(uuid())
+  email              String   @unique
+  username           String   @unique
+  displayName        String
+  nfts_order         Int[]
+  description        String
+  views              Int
+  likes              Int
+  hash               String
+  collections_filter String[]
+  nfts               Nft[]
+  wallets            Wallet[]
 }
 
 model Nft {
@@ -35,6 +37,7 @@ model Nft {
   token_id           String
   rarity_rank        Int?
   collection_address String?
+  collection_size    Int?
   User               User?   @relation(fields: [userId], references: [id])
 }
 
@@ -47,19 +50,25 @@ model Wallet {
   User          User   @relation(fields: [userId], references: [id])
 }
 
-// model NftRarity {
-//   id               String @id @default(uuid())
-//   attributes       String?
-//   rarity           Int?
-//   rarity_rank      Int?
-//   token_id         String @unique
-//   collectionID     String
-//   CollectionRarity CollectionRarity @relation(fields: [collectionID], references: [id])
-// }
+model NftRarity {
+  id               String @id @default(uuid())
+  // attributes       String?
+  // rarity           Int?
+  rarity_rank      Int?
+  token_id         String @unique
+  collectionID     String
+  CollectionRarity CollectionRarity @relation(fields: [collectionID], references: [id], onDelete: Cascade)
+}
 
 model CollectionRarity {
   id               String     @id @default(uuid())
   contract_address String     @unique
-  nfts_rarity      String?
-  // nfts_rarity      NftRarity?
+  // nfts_rarity      String?
+  nfts_rarity      NftRarity[]
+}
+
+model collectiontraitfloor {
+  id               String @id
+  address          String @unique
+  trait_floor_dict String
 }

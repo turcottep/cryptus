@@ -30,7 +30,10 @@ export default function NFTDetails(props: nft_details_props) {
       <NftHeader />
       <NftPicture image_url={nft.image_url} description={nft.description} />
       <NftInfo nft={props.nft} listed_price={listed_price} />
-      <NFTRankInCollection position={rank.position} total={rank.total} />
+      {rank.position ? (
+        <NFTRankInCollection position={rank.position} total={rank.total} />
+      ) : null}
+
       <NFTProperties properties={properties} collectionSize={rank.total} />
     </div>
   );

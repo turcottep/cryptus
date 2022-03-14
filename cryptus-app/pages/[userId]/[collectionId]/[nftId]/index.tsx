@@ -104,15 +104,13 @@ export async function getServerSideProps(context) {
     );
 
     const CollectionRarityData = await FindCollectionRarityData(
-      goodnft.collection_address
+      goodnft.collection_address,
+      true
     );
     if (CollectionRarityData) {
-      console.log(
-        "Log index collection : ",
-        CollectionRarityData.contract_address
-      );
-      const rarityDict = JSON.parse(CollectionRarityData.nfts_rarity);
-      findTokenID: for (const rarity of rarityDict) {
+      // console.log("Log index collection : ", CollectionRarityData);
+      // const rarityDict = JSON.parse(CollectionRarityData.nfts_rarity);
+      findTokenID: for (const rarity of CollectionRarityData.nfts_rarity) {
         if (rarity.token_id == goodnft.token_id) {
           rarity_rank = rarity.rarity_rank;
           break findTokenID;

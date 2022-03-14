@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import fs from "fs";
 import Moralis from "moralis/node.js";
 import prisma from "../lib/prisma";
+import FindCollectionRarityData from "../lib/findCollectionRarityData";
 
 async function generateRarity(
   collectionAddress: string,
@@ -129,6 +130,7 @@ async function generateRarity(
     });
     return nftOrderedList;
 
+    // save to file
     // nftArr.forEach((nft, index) => {nftDictByTokenId
     //   [nft.token_id] = {
     //     Attributes: nft.Attributes,
@@ -138,7 +140,7 @@ async function generateRarity(
     // });
 
     // const nftsToSave = { [collectionAddress]: nftDictByTokenId };
-    // save to file
+
     // fs.writeFileSync(
     //   "./scripts/nft_rank/" + collectionName + ".json",
     //   JSON.stringify(nftsToSave, null, 2)
@@ -171,13 +173,32 @@ async function writeDataInDB(nfts: any[], contractAdress: string) {
         token_id: nft.Token_id,
       });
     });
-    const nftsInfoToPush = JSON.stringify(collectionData);
-    await prisma.collectionRarity.create({
-      data: {
+
+    const CollectionRarityData = await FindCollectionRarityData(contractAdress);
+    if (CollectionRarityData) {
+      await prisma.collectionRarity.delete({
+        where: { contract_address: contractAdress },
+      });
+    }
+
+    await prisma.collectionRarity.upsert({
+      where: { contract_address: contractAdress },
+      update: { contract_address: contractAdress },
+      create: { contract_address: contractAdress },
+    });
+    await prisma.collectionRarity.update({
+      where: {
         contract_address: contractAdress,
-        nfts_rarity: nftsInfoToPush,
+      },
+      data: {
+        nfts_rarity: {
+          createMany: {
+            data: collectionData,
+          },
+        },
       },
     });
+    console.log("WRITING WORKED!");
   } catch (e) {
     console.error("Unable write data : ", e);
   } finally {
