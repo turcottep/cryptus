@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import main from "../../../../scripts/get_attributes_from_collection";
+import get_trait_floor_for_collection from "../../../../scripts/get_trait_floor_for_collection";
 import prisma from "../../../../lib/prisma";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
@@ -16,9 +16,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     const address = req.query.address as string;
     console.log("address", address);
 
-    // const contract_address = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
-
-    const trait_floor_dict = await main(address);
+    const trait_floor_dict = await get_trait_floor_for_collection(address);
 
     console.log("saving to db...");
 
@@ -39,7 +37,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     const data = { trait_floor_dict: trait_floor_dict };
 
-    // console.log("user: ", user);
     res.json(data);
   } catch (e) {
     res.status(500);

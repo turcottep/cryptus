@@ -5,7 +5,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
     prisma.$connect();
     const collections = req.body.collections as string[];
-    // console.log("trying to get from db user with username: ", username);
 
     const collection_floors = await prisma.collectiontraitfloor.findMany({
       where: {
@@ -14,8 +13,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         },
       },
     });
-
-    // console.log("collection_floors : ", collection_floors);
 
     res.status(201);
     res.json(collection_floors);
