@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 import { sha256 } from "js-sha256";
-import FindUserIdFromWalletAdress from "../../../lib/findUserIdFromWalletAdress";
-import FindUserFromUserId from "../../../lib/findUserFromUserId";
-import getUserByUsername from "../../../lib/getUserByUsername";
+import FindUserIdFromWalletAdress from "../../lib/findUserIdFromWalletAdress";
+import FindUserFromUserId from "../../lib/findUserFromUserId";
+import getUserByUsername from "../../lib/getUserByUsername";
 
 const options = {
   pages: {
