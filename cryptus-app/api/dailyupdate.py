@@ -2,6 +2,13 @@ from ressources import *
 from http.server import BaseHTTPRequestHandler
 
 class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/plain')
+        self.end_headers()
+        self.wfile.write(str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')).encode())
+        return
+        
     def do_update(self):
         # # SERVERLESS #1 : Done Daily!
         # # Get Data from opensea and update main table
