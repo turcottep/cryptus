@@ -28,6 +28,8 @@ export async function getServerSideProps(context) {
   const { userId: userName } = context.query;
 
   const user = await getUserByUsername(userName, true);
+  console.log("user", user);
+
   if (!user) {
     return {
       props: {
@@ -46,7 +48,10 @@ export async function getServerSideProps(context) {
       nfts = await get_nfts_for_user(userName);
     }
 
-    const nfts_collections = sortNftsIntoCollections(nfts);
+    const nfts_collections = sortNftsIntoCollections(
+      nfts,
+      user.collections_filter
+    );
 
     console.log("nfts_collections", nfts_collections);
 
