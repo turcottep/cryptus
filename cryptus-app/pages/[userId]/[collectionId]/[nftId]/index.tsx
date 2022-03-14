@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
+import { useRouter } from "next/router";
+import { isMobile as mobile } from "react-device-detect";
 import { motion, AnimatePresence } from "framer-motion";
 
 import getUserByUsername from "../../../../lib/getUserByUsername";
@@ -18,9 +19,21 @@ import AnimatedDiv from "../../../../components/utils/animated_div";
 export default function post(props: { nft: nft; rank; listed_price }) {
   const { nft, rank, listed_price } = props;
 
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(mobile);
+    console.log("isMobile", isMobile);
+  }, [mobile]);
+
   return (
     <AnimatedDiv>
-      <NFTDetails nft={nft} rank={rank} listed_price={listed_price} />
+      <NFTDetails
+        nft={nft}
+        rank={rank}
+        listed_price={listed_price}
+        isMobile={isMobile}
+      />
     </AnimatedDiv>
   );
 }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
+import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
+import { isMobile as mobile } from "react-device-detect";
 
 import getUserByUsername from "../../../lib/getUserByUsername";
 import update_nfts_for_user from "../../../lib/update_nfts_for_user";
@@ -14,12 +15,22 @@ import CollectionDetails from "../../../components/wallet_viewer/collection_deta
 import getMockProps from "../../../lib/get_mock_props";
 import AnimatedDiv from "../../../components/utils/animated_div";
 
-export default function post(props: { user; collection: nft_collection }) {
+export default function CollectionDetailsPage(props: {
+  user;
+  collection: nft_collection;
+}) {
   const { collection, user } = props;
-  AnimatedDiv;
+
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(mobile);
+    console.log("isMobile", isMobile);
+  }, [mobile]);
+
   return (
     <AnimatedDiv>
-      <CollectionDetails collection={collection} />
+      <CollectionDetails collection={collection} isMobile={isMobile} />
     </AnimatedDiv>
   );
 }

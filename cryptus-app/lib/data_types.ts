@@ -26,3 +26,9 @@ export interface profile_props {
   user: any;
   collections: nft_collection[];
 }
+
+export enum tabs {
+  market = "market",
+  research = "research",
+  profile = "profile",
+}

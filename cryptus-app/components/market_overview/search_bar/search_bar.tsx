@@ -9,8 +9,10 @@ import s from "./search_bar.module.scss";
 export default function MarketHeader() {
   return (
     <div className={s.container}>
-      <img src="magnifier.svg" className={s.magnifier} />
-      <input type="text" className={s.searchTerm} placeholder="Search" />
+      <div className={s.box}>
+        <img src="magnifier.svg" className={s.magnifier} />
+        <input type="text" className={s.searchTerm} placeholder="Search" />
+      </div>
     </div>
   );
 }

@@ -1,7 +1,8 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { isMobile as mobile } from "react-device-detect";
+import { useRouter } from "next/router";
 
 import Profile from "../../components/profile/profile";
 
@@ -15,10 +16,17 @@ import getMockProps from "../../lib/get_mock_props";
 
 export default function post(props) {
   const { collections, user } = props;
-  console.log("collections", collections);
+
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(mobile);
+    console.log("isMobile", isMobile);
+  }, [mobile]);
+
   return (
     <AnimatedDiv>
-      <Profile collections={collections} user={user} />
+      <Profile collections={collections} user={user} isMobile={isMobile} />
     </AnimatedDiv>
   );
 }
