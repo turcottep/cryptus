@@ -6,9 +6,39 @@ import MarketCollectionInfos from "./market_collection_infos/market_collection_i
 import CollectionFloorPrice from "./collection_floor_price/collection_floor_price";
 import CollectionMarketGraph from "./collection_market_graph/collection_market_graph";
 import { market_collection_props } from "../../../pages/market/[address]";
+import { intervals } from "../net_worth/time_interval/time_interval";
 
 export default function MarketCollection(props: market_collection_props) {
   console.log("MarketCollection props:", props);
+
+  const [price, setPrice] = useState(props.data_price);
+  const [volume, setVolume] = useState(props.volume);
+  const [delta, setDelta] = useState(props.floor_price_delta);
+
+  const callbackFunction = async (childData) => {
+    let viewingmode = intervals[childData];
+    if (viewingmode == "three_months") {
+      viewingmode = "3month";
+    }
+    const address = props.address;
+    console.log("new viewingmode : ", viewingmode);
+    const res = await fetch("/api/sales/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        address,
+        viewingmode,
+      }),
+    });
+    const { price, count, volume, delta } = await res.json();
+    setPrice(price);
+    setVolume(volume);
+    setDelta(delta);
+    console.log("new price !", price);
+  };
+
   return (
     <div className={s.app}>
       <MarketCollectionHeader />
@@ -20,12 +50,13 @@ export default function MarketCollection(props: market_collection_props) {
         />
         <CollectionFloorPrice
           floor_price_live={props.floor_price_live}
-          floor_price_delta={props.floor_price_delta}
+          floor_price_delta={delta}
           floor_price_timestamp={props.floor_price_timestamp}
         />
         <CollectionMarketGraph
-          data_price={props.data_price}
-          data_volume={props.volume}
+          callback={callbackFunction}
+          data_price={price}
+          data_volume={volume}
           address={props.address}
         />
       </div>

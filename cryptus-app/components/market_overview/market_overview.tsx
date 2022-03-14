@@ -32,8 +32,7 @@ export default function MarketOverview(props: market_overview_props) {
   const [newPropCollection, setnewPropCollection] = useState(props.collections);
 
   useEffect(() => {
-    // updatePrice(props.networth.active);
-    updateDelta(props.networth.active);
+    updatePrice(props.networth.active);
   }, []);
 
   const updatePrice = async (interval: intervals) => {
@@ -59,59 +58,24 @@ export default function MarketOverview(props: market_overview_props) {
       }),
     });
 
-    const { prices, counts } = await res.json();
+    const { prices, counts, delta } = await res.json();
 
-    const newPropCollectionTemp = [];
+    if (prices) {
+      const newPropCollectionTemp = [];
 
-    for (let i = 0; i < props.collections.length; i++) {
-      const element = props.collections[i];
-      element.data_price = prices[i];
-      newPropCollectionTemp.push(element);
+      for (let i = 0; i < props.collections.length; i++) {
+        const element = props.collections[i];
+        element.data_price = prices[i];
+        element.floor_price_delta = delta[i];
+        newPropCollectionTemp.push(element);
+      }
+      setnewPropCollection(newPropCollectionTemp);
     }
-
-    setnewPropCollection(newPropCollectionTemp);
-  };
-
-  const updateDelta = async (interval: intervals) => {
-    let viewingmode = intervals[interval];
-    if (viewingmode == "three_months") {
-      viewingmode = "3month";
-    }
-    console.log("new viewingmode : ", viewingmode);
-
-    const adresses = props.collections.map((c) => {
-      return c.address;
-    });
-
-    const res_diff = await fetch("/api/sales/batch_diffs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        adresses,
-        viewingmode,
-      }),
-    });
-
-    const delta = await res_diff.json();
-    console.log("turcotte !!!!!", delta);
-
-    const newPropCollectionTemp = [];
-
-    for (let i = 0; i < props.collections.length; i++) {
-      const element = props.collections[i];
-      element.floor_price_delta = delta[i];
-      newPropCollectionTemp.push(element);
-    }
-
-    setnewPropCollection(newPropCollectionTemp);
   };
 
   const callbackGraph = async (interval) => {
     // setInterval(interval);
     updatePrice(interval);
-    updateDelta(interval);
   };
 
   return (
