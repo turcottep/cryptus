@@ -7,13 +7,14 @@ import ViewerProfileDescription from "./viewer_profile_description/viewer_profil
 import { profile_props } from "../../../../lib/data_types";
 
 export default function ViewerProfileInfos(props: profile_props) {
-  const { username, description } = props.user;
+  const { username, description, networth } = props.user;
 
   return (
     <div className={s.container}>
       <ViewerProfilePicture />
       <ViewerProfileName displayName={username} />
       <ViewerProfileDescription description={description} />
+      <div>{`NETWORTH:${networth} eth`}</div>
     </div>
   );
 }

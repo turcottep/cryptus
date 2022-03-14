@@ -9,7 +9,7 @@ import ViewerProfileDescription from "../../viewer_profile/viewer_profile_infos/
 import { profile_props } from "../../../../lib/data_types";
 
 export default function CreatorProfileInfos(props: profile_props) {
-  const { description, username } = props.user;
+  const { description, username, networth } = props.user;
   console.log("props", props);
   return (
     <div className={s.container}>
@@ -21,6 +21,7 @@ export default function CreatorProfileInfos(props: profile_props) {
       </div>
       <ViewerProfileName displayName={username} />
       <ViewerProfileDescription description={description} />
+      <div>{`NETWORTH:${networth}`}</div>
     </div>
   );
 }

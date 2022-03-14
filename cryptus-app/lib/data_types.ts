@@ -1,4 +1,5 @@
 export interface nft {
+  [x: string]: any;
   properties: any;
   rarity_rank: number;
   image_url: string;
@@ -10,19 +11,27 @@ export interface nft {
   collection_size: number;
   collection_address: string;
   description: string;
+  value?: number;
   token_id: string;
 }
 
 export interface nft_collection {
   name: string;
+  address: string;
   description: string;
   image_url: string;
   external_url: string;
+  value?: number;
   market_cap: number;
   nfts: nft[];
 }
 
 export interface profile_props {
-  user: any;
+  user: {
+    networth?: number;
+    description?: string;
+    username: string;
+    address: string;
+  };
   collections: nft_collection[];
 }

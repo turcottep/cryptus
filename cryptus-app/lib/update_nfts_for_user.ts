@@ -1,5 +1,6 @@
 import { nft } from "../lib/data_types";
 import GetCollectionTokens from "../lib/get_collection_token";
+import get_base_url from "./get_base_url";
 
 export default async function updateNftsForUser(
   username: string,
@@ -114,9 +115,9 @@ export default async function updateNftsForUser(
     });
   });
 
-  const base_url = absolute ? process.env.BASE_URL : "/";
+  const base_url = get_base_url();
   try {
-    const res = await fetch(base_url + "api/nfts/update", {
+    const res = await fetch(base_url + "/api/nfts/update", {
       method: "POST",
       body: JSON.stringify({
         nfts: nft_stringified,

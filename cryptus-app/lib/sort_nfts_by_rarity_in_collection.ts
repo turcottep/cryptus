@@ -10,6 +10,7 @@ export default function sortNFTsByRarityInCollection(
       image_url: collection.image_url,
       external_url: collection.external_url,
       market_cap: collection.market_cap,
+      address: collection.address,
       nfts: collection.nfts.sort((a, b) => {
         return a.rarity_rank - b.rarity_rank;
       }),
