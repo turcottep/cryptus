@@ -34,6 +34,12 @@
   justify-content: flex-start;
   align-items: center;
   text-align: left;
+
+  width: 100vw;
+
+  @media (max-width: v.$mobile) {
+    width: 100%;
+  }
 }
 
 .header {
