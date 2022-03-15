@@ -13,8 +13,6 @@ import MyProfInfos from "./creator_profile/creator_profile_infos/creator_profile
 import ViewerHeader from "./viewer_profile/viewer_header/viewer_header";
 import ViewProfInfos from "./viewer_profile/viewer_profile_infos/viewer_profile_infos";
 
-import ViewerProfile from "./viewer_profile/viewer_profile";
-import CreatorProfile from "./creator_profile/creator_profile";
 import DesktopHeader from "../header/desktop_header/desktop_header";
 
 export default function Profile(props: {

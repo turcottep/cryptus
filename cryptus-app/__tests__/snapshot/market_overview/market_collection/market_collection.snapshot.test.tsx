@@ -8,17 +8,20 @@ import MarketCollection from "../../../../components/market_overview/market_coll
 
 describe("<MarketCollection />", () => {
   it("should display properly", async () => {
-    const test_props: market_collection_props = {
-      collection_name: mock_collection.name,
-      collection_logo: mock_collection.image_url,
-      collection_ticker: "KITT",
-      floor_price_live: 7.79,
-      floor_price_delta: 0.01,
-      floor_price_timestamp: "week",
-      data_price: [],
-      count: [],
-      volume: [],
-      address: "",
+    const test_props = {
+      market_collection_props: {
+        collection_name: mock_collection.name,
+        collection_logo: mock_collection.image_url,
+        collection_ticker: "KITT",
+        floor_price_live: 7.79,
+        floor_price_delta: 0.01,
+        floor_price_timestamp: "week",
+        data_price: [],
+        count: [],
+        volume: [],
+        address: "",
+      },
+      isMobile: true,
     };
 
     const tree = renderer.create(<MarketCollection {...test_props} />).toJSON();
