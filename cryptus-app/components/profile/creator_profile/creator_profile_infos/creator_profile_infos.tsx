@@ -17,6 +17,7 @@ export default function CreatorProfileInfos(props: profile_props) {
         <ViewerProfilePicture />
         <div className={s.edits}>
           <EditProfileButton />
+          <EditNftsButton username={username} />
         </div>
       </div>
       <ViewerProfileName displayName={username} />

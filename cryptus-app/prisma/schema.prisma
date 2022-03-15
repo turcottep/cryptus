@@ -8,17 +8,18 @@ datasource db {
 }
 
 model User {
-  id          String   @id @default(uuid())
-  email       String   @unique
-  username    String   @unique
-  displayName String
-  nfts_order  Int[]
-  description String
-  views       Int
-  likes       Int
-  hash        String
-  nfts        Nft[]
-  wallets     Wallet[]
+  id                 String   @id @default(uuid())
+  email              String   @unique
+  username           String   @unique
+  displayName        String
+  nfts_order         Int[]
+  description        String
+  views              Int
+  likes              Int
+  hash               String
+  collections_filter String[]
+  nfts               Nft[]
+  wallets            Wallet[]
 }
 
 model Nft {
