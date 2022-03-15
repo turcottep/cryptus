@@ -7,6 +7,7 @@ export const mock_collection: nft_collection = {
   image_url: "",
   external_url: "",
   market_cap: 0,
+  address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
   nfts: [
     {
       name: "Savannah R1-R3, Sly R1",

@@ -1,9 +1,6 @@
 import get_base_url from "./get_base_url";
 
-export default async function getNftsForUser(
-  username: string,
-  absolute = true
-) {
+export default async function getNftsForUser(username: string) {
   const base_url = get_base_url();
   try {
     const res = await fetch(base_url + "/api/nfts/get_from_username", {
