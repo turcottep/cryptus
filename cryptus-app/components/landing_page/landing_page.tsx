@@ -4,9 +4,8 @@ import NavbarLandingPage from "../navbars/navbar_landing_page/navbar_landing_pag
 import { signIn } from "next-auth/client";
 import FindUserIdFromWalletAdress from "../../lib/findUserIdFromWalletAdress";
 import CreateAccountFromWalletAddress from "../../lib/createAccountFromWalletAddress";
-import router from "next/router";
 import FindUserFromUserId from "../../lib/findUserFromUserId";
-import Loading from "../utils/loading";
+import Loading from "../utils/loading/loading";
 
 export default function LandingPage() {
   const [loading, setLoading] = useState<Boolean>(false);
@@ -57,11 +56,7 @@ export default function LandingPage() {
 
   return (
     <div className="h-screen relative bg-coquille w-full">
-      {loading ? (
-        <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
-          <Loading />
-        </div>
-      ) : null}
+      {loading && <Loading />}
       <div className="h-screen justify-between px-3 md:px-10 2xl:px-20 md:mx-auto flex flex-col items-center">
         <NavbarLandingPage callback={connectMetamask} />
 

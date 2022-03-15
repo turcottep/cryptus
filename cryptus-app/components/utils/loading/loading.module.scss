@@ -1,0 +1,17 @@
+.container {
+  position: absolute;
+  top: 0px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(#fff, 0.7) !important;
+  width: 100vw;
+  height: 100%;
+  z-index: 101;
+}
+
+.containee {
+  flex: 0 0 none;
+}
