@@ -4,6 +4,7 @@ import MarketCollection from "../../components/market_overview/market_collection
 import FeatureIamTesting from "../../components/template/pagetemplate/pagetemplate";
 import collectionDictionary from "../../lib/collectionDictionary";
 import { data_raw } from "../../lib/data";
+import get_base_url from "../../lib/get_base_url";
 
 export type market_collection_props = {
   collection_name: string;
@@ -75,7 +76,8 @@ export async function getServerSideProps(context) {
   } as market_collection_props;
 
   try {
-    const res = await fetch(process.env.BASE_URL + "api/sales/", {
+    const base_url = get_base_url();
+    const res = await fetch(base_url + "/api/sales/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

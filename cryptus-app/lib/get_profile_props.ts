@@ -1,5 +1,5 @@
 import { profile_props } from "./data_types";
-import getUserByUsername from "./getUserByUsername";
+import getUserByUsername from "./get_user_by_username";
 import get_nfts_for_user from "./get_nfts_for_user";
 import calculate_networth from "./networth";
 import sortNftsIntoCollections from "./sort_nfts_into_collections";
