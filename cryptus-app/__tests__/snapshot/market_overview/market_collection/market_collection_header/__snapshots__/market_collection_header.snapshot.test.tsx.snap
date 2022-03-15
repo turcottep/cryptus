@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MarketCollectionHeader /> should display properly 1`] = `
+<div>
+  <div>
+    <a
+      href="login"
+      target="_blank"
+    >
+      <img
+        src="/icons/favorite_icon.png"
+      />
+    </a>
+    <a
+      href="login"
+      target="_blank"
+    >
+      <img
+        src="/icons/notification_icon.png"
+      />
+    </a>
+  </div>
+  <div>
+    <a
+      onClick={[Function]}
+      target="_blank"
+    >
+      <img
+        src="/icons/x_icon.png"
+      />
+    </a>
+  </div>
+</div>
+`;

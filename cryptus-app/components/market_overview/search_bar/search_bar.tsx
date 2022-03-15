@@ -6,7 +6,7 @@ import s from "./search_bar.module.scss";
 
 //internal imports
 
-export default function MarketHeader() {
+export default function SearchBar() {
   return (
     <div className={s.container}>
       <img src="magnifier.svg" className={s.magnifier} />

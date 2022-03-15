@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ContextualMenuButton /> should display properly 1`] = `
+<div
+  onClick={[Function]}
+>
+  <img
+    src="www.publicwallet.app/testuser123"
+  />
+</div>
+`;
