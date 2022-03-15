@@ -27,7 +27,11 @@ export default function NFTDetails(props: nft_details_props) {
     <div className={s.container}>
       <NftHeader />
       <NftPicture image_url={nft.image_url} description={nft.description} />
-      <NftInfo nft={props.nft} listed_price={listed_price} />
+      <NftInfo
+        nft={props.nft}
+        listed_price={listed_price}
+        estimated_price={nft.value}
+      />
       <NFTRankInCollection position={rank.position} total={rank.total} />
       <NFTProperties properties={properties} />
     </div>
