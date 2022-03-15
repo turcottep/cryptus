@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ForgotPWHeader from "./forgot_password_header";
 import { ForgotPWValuesProps } from "../forgot_password";
-import Input from "@material-tailwind/react/Input";
+import Input from "@mui/material/Input";
 
 import s from "./new_password.module.scss";
 
@@ -25,9 +25,6 @@ export default function NewPassword(props) {
           id="password"
           onChange={props.handleChange}
           placeholder="Password"
-          outline={true}
-          size="lg"
-          color="brown"
           required
         />
       </div>
@@ -37,9 +34,6 @@ export default function NewPassword(props) {
           id="confirmpassword"
           onChange={props.handleChange}
           placeholder="Confirm Password"
-          outline={true}
-          size="lg"
-          color="brown"
           required
         />
       </div>

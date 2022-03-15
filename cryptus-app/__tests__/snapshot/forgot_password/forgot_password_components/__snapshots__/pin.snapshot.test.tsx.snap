@@ -20,20 +20,21 @@ exports[`renders correctly 1`] = `
   </div>
   <div>
     <div
-      className="w-full relative h-12"
+      className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary css-a88p61-MuiInputBase-root-MuiInput-root"
+      onClick={[Function]}
+      required={true}
     >
       <input
-        className="w-full h-full text-gray-800 leading-normal shadow-none outline-none focus:outline-none focus:ring-0 focus:text-gray-800 px-3 pt-3.5 pb-2.5 mt-input-outline-brown-500 border-gray-300 mt-input-outline bg-transparent border border-1 border-gray-300 rounded-lg focus:border-2 focus:border-brown-500 undefined undefined"
+        className="MuiInput-input MuiInputBase-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
         id="PINNumber"
-        placeholder=" "
+        onAnimationStart={[Function]}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Enter 6 digit PIN number"
         required={true}
         type="pinnumber"
       />
-      <label
-        className="text-gray-400 absolute left-0 -top-1.5 w-full h-full false border-gray-300 pointer-events-none flex false leading-10 transition-all duration-300"
-      >
-        Enter 6 digit PIN number
-      </label>
     </div>
   </div>
   <button

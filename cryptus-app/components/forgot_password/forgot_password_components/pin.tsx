@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ForgotPWHeader from "./forgot_password_header";
 import { ForgotPWValuesProps } from "../forgot_password";
-import Input from "@material-tailwind/react/Input";
+import Input from "@mui/material/Input";
 
 import s from "./pin.module.scss";
 
@@ -27,9 +27,6 @@ export default function PINNumber(props) {
           type="pinnumber"
           id="PINNumber"
           placeholder="Enter 6 digit PIN number"
-          outline={true}
-          size="lg"
-          color="brown"
           required
         />
       </div>
