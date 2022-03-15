@@ -65,123 +65,13 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
   <div>
     <div>
       <div>
-        MOUTH
+        SECRET
       </div>
       <div>
-        soserious
+        se6
       </div>
       <div>
-        0.00% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        PATTERN
-      </div>
-      <div>
-        spangled
-      </div>
-      <div>
-        0.00% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        VIRGINITY
-      </div>
-      <div>
-        non-virgin
-      </div>
-      <div>
-        0.00% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        FUR
-      </div>
-      <div>
-        selkirk
-      </div>
-      <div>
-        0.00% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        EYE_COLOUR
-      </div>
-      <div>
-        sapphire
-      </div>
-      <div>
-        0.00% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        ACCENT_COLOUR
-      </div>
-      <div>
-        icy
-      </div>
-      <div>
-        0.00% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        HIGHLIGHT_COLOUR
-      </div>
-      <div>
-        coffee
-      </div>
-      <div>
-        0.00% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        COOLDOWN_TIMER
-      </div>
-      <div>
-        Catatonic (1 week)
-      </div>
-      <div>
-        0.00% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        EYE_SHAPE
-      </div>
-      <div>
-        chronic
-      </div>
-      <div>
-        0.00% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        BASE_COLOUR
-      </div>
-      <div>
-        mauveover
-      </div>
-      <div>
-        0.00% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        GENERATION
-      </div>
-      <div>
-        0
-      </div>
-      <div>
-        0.00% have this trait
+        0.66% have this trait
       </div>
     </div>
     <div>
@@ -192,18 +82,128 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         pu12
       </div>
       <div>
-        0.00% have this trait
+        0.96% have this trait
       </div>
     </div>
     <div>
       <div>
-        SECRET
+        GENERATION
       </div>
       <div>
-        se6
+        0
       </div>
       <div>
-        0.00% have this trait
+        2% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        PATTERN
+      </div>
+      <div>
+        spangled
+      </div>
+      <div>
+        4% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        COOLDOWN_TIMER
+      </div>
+      <div>
+        Catatonic (1 week)
+      </div>
+      <div>
+        4% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        EYE_SHAPE
+      </div>
+      <div>
+        chronic
+      </div>
+      <div>
+        5% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        EYE_COLOUR
+      </div>
+      <div>
+        sapphire
+      </div>
+      <div>
+        5% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        ACCENT_COLOUR
+      </div>
+      <div>
+        icy
+      </div>
+      <div>
+        6% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        FUR
+      </div>
+      <div>
+        selkirk
+      </div>
+      <div>
+        6% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        BASE_COLOUR
+      </div>
+      <div>
+        mauveover
+      </div>
+      <div>
+        7% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        HIGHLIGHT_COLOUR
+      </div>
+      <div>
+        coffee
+      </div>
+      <div>
+        9% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        MOUTH
+      </div>
+      <div>
+        soserious
+      </div>
+      <div>
+        11% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        VIRGINITY
+      </div>
+      <div>
+        non-virgin
+      </div>
+      <div>
+        49% have this trait
       </div>
     </div>
   </div>

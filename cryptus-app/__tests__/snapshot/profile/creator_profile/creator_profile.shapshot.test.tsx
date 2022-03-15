@@ -17,6 +17,7 @@ describe("<CreatorProfile />", () => {
     const collections: nft_collection[] = [
       {
         id: 1,
+        address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
         name: "CryptoKitties",
         description: "",
         image_url: "",
@@ -199,6 +200,7 @@ describe("<CreatorProfile />", () => {
       {
         id: 2,
         name: "BlockCities",
+        address: "0x2f2d5aa0efdb9ca3c9bb789693d06bebea88792f",
         description: "",
         image_url: "",
         external_url: "",
@@ -304,6 +306,12 @@ describe("<CreatorProfile />", () => {
       },
     ];
     const user = {
+      networth: 420,
+      description: "Here is a description",
+      username: "A username",
+      address: "An address",
+    };
+    const old_user = {
       id: "710e552b-2881-42de-afc5-4fd4d9ea698f",
       email: "turcotte@usherbrooke.ca",
       username: "turcotte",

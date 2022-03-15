@@ -31,11 +31,14 @@ exports[`<ViewerProfile /> ViewerProfile renders correctly 1`] = `
     </div>
     <div>
       <div>
-        turcotte
+        A username
       </div>
     </div>
     <div>
-      Je vais a MTL pour chercher un bike
+      Here is a description
+    </div>
+    <div>
+      NETWORTH:420 eth
     </div>
   </div>
   <div>
@@ -49,6 +52,9 @@ exports[`<ViewerProfile /> ViewerProfile renders correctly 1`] = `
         <div>
           CryptoKitties
         </div>
+        <div>
+          
+        </div>
       </div>
     </div>
     <div>
@@ -60,6 +66,9 @@ exports[`<ViewerProfile /> ViewerProfile renders correctly 1`] = `
         </div>
         <div>
           BlockCities
+        </div>
+        <div>
+          
         </div>
       </div>
     </div>

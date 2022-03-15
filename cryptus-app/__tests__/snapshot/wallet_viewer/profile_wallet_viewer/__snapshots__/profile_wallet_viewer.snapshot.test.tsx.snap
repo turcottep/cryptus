@@ -12,6 +12,9 @@ exports[`<ProfileWalletViewer /> should display properly 1`] = `
       <div>
         CryptoKitties
       </div>
+      <div>
+        
+      </div>
     </div>
   </div>
 </div>

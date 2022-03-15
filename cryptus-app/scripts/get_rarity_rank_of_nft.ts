@@ -169,7 +169,10 @@ async function writeDataInDB(nfts: any[], contractAdress: string) {
         // attributes: nft.Attributes,
         // rarity: Math.trunc(Number(nft.Rarity)),
         rarity_rank: Number(nft.Rarity_rank),
-        token_id: nft.Token_id,
+        token_id: JSON.stringify({
+          token_id: nft.Token_id,
+          collection: contractAdress,
+        }),
       });
     });
 
@@ -179,7 +182,7 @@ async function writeDataInDB(nfts: any[], contractAdress: string) {
         where: { contract_address: contractAdress },
       });
     }
-
+    console.log("Collection : ", CollectionRarityData);
     await prisma.collectionRarity.upsert({
       where: { contract_address: contractAdress },
       update: { contract_address: contractAdress },

@@ -19,6 +19,8 @@ model User {
   likes              Int
   hash               String
   collections_filter String[]
+  collections_list   String[]
+  networth           Float    @default(0)
   nfts               Nft[]
   wallets            Wallet[]
 }

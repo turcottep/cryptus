@@ -18,11 +18,11 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     //   }
     // }
 
-    // await main(
-    //   "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
-    //   "BoredApeYatchClub"
-    // );
-    await main("0x6fc355d4e0ee44b292e50878f49798ff755a5bbc", "DeadHeads");
+    await main(
+      "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      "BoredApeYatchClub"
+    );
+    // await main("0x6fc355d4e0ee44b292e50878f49798ff755a5bbc", "DeadHeads");
     // await main("0x78f28143902e9346526933e3c2eda2662d1cd1f7", "DeadTickets");
     // await main("0x7645eec8bb51862a5aa855c40971b2877dae81af", "LONDONGIFTbyPOB");
     const data = { deez: "yo" };

@@ -8,7 +8,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     if (req.body.token_id) {
       collection = await prisma.nftRarity.findMany({
         where: {
-          token_id: req.body.token_id,
+          token_id: JSON.stringify({
+            token_id: req.body.token_id,
+            collection: req.body.collection_address,
+          }),
           CollectionRarity: {
             contract_address: req.body.collection_address,
           },
