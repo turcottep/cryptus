@@ -66,6 +66,9 @@ const Collection = (props: { collection: nft_collection }) => {
         ) : null}
       </div>
       <div className={s.collname}>{collection.name}</div>
+      <div className={s.collname}>
+        {collection.value ? `VALUE:${collection.value} eth` : ""}
+      </div>
     </div>
   );
 };
