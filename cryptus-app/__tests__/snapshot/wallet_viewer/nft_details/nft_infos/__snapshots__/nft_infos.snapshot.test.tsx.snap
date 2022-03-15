@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NftInfo /> should display the correct NFT information 1`] = `
+<div>
+  <div>
+    <a
+      href="/market/CryptoKitties"
+    >
+      CryptoKitties
+    </a>
+    <div>
+      Savannah R1-R3, Sly R1
+    </div>
+  </div>
+  <a
+    href="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/492809"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    <div>
+      <img
+        alt="eth"
+        src="/images/eth.png"
+      />
+      <div>
+        5.00
+      </div>
+      <div />
+      <div>
+        <img
+          alt=""
+          src="/images/opensea.png"
+        />
+      </div>
+    </div>
+  </a>
+</div>
+`;

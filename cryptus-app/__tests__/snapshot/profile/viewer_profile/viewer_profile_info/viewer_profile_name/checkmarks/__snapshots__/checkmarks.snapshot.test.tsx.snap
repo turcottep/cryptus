@@ -3,7 +3,7 @@
 exports[`Checkmarks renders correctly 1`] = `
 <div>
   <img
-    src="./images/twitter_checkmark.png"
+    src="/images/twitter_checkmark.png"
   />
 </div>
 `;

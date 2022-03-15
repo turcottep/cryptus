@@ -8,12 +8,17 @@ import CollectionMarketGraph from "./collection_market_graph/collection_market_g
 import { market_collection_props } from "../../../pages/market/[address]";
 import DesktopHeader from "../../header/desktop_header/desktop_header";
 
+<<<<<<< HEAD
 export default function MarketCollection(props: {
   isMobile: boolean;
   market_collection_props: market_collection_props;
 }) {
   const { market_collection_props, isMobile } = props;
   console.log("MarketCollection props:", props);
+=======
+export default function MarketCollection(props: market_collection_props) {
+  //console.log("MarketCollection props:", props);
+>>>>>>> dev
   return (
     <div className={s.app}>
       <DesktopHeader tab="market" />

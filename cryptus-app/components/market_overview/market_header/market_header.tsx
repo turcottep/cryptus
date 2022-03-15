@@ -14,7 +14,7 @@ export default function MarketHeader() {
     month: "long",
     day: "numeric",
   });
-  console.log("day : ", day);
+  //console.log("day : ", day);
 
   return (
     <div className={s.container}>

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CollectionFloorPrice /> should display properly 1`] = `
+<div>
+  <div>
+    7.79
+     Ξ
+    <div>
+       ETH
+    </div>
+  </div>
+  <div>
+    <span>
+      0.01
+    </span>
+    Ξ (
+    <span>
+      0.13
+    </span>
+    %)
+  </div>
+</div>
+`;

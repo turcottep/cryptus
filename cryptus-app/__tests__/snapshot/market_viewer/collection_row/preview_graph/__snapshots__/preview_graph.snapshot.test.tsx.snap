@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PreviewGraph /> should display properly 1`] = `
+<div
+  id="preview_graph"
+>
+  <div>
+    <canvas
+      height={150}
+      role="img"
+      width={300}
+    />
+    <canvas
+      height={150}
+      role="img"
+      width={300}
+    />
+  </div>
+</div>
+`;

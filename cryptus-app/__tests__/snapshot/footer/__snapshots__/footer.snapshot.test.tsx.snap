@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> should display properly 1`] = `
+<div
+  id="footer"
+>
+  <a
+    href="/market"
+  >
+    <img
+      src="/icons/market_overview_icon.png"
+    />
+  </a>
+  <a>
+    <img
+      src="/icons/research_icon.png"
+    />
+  </a>
+  <a>
+    <img
+      src="/icons/notification_icon.png"
+    />
+  </a>
+  <a
+    href="/"
+  >
+    <img
+      src="/icons/profile_icon.png"
+    />
+  </a>
+</div>
+`;
