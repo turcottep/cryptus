@@ -9,10 +9,10 @@
     "test": "jest --detectOpenHandles"
   },
   "dependencies": {
-    "@emotion/react": "^11.8.1",
+    "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@metamask/detect-provider": "^1.2.0",
-    "@mui/material": "^5.5.0",
+    "@mui/material": "^5.5.1",
     "@next-auth/prisma-adapter": "^0.5.2",
     "@prisma/client": "^2.26.0",
     "@testing-library/jest-dom": "^5.16.1",
