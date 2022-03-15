@@ -7,7 +7,7 @@ import s from "./property_block.module.scss";
 
 //internal imports
 
-export default function PropretyBlock(props: {
+export default function PropertyBlock(props: {
   name: string;
   value: string;
   count: number;

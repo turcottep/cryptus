@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SortButton /> should display properly 1`] = `
+<div>
+  <img
+    src="menu.svg"
+  />
+  <div>
+    Sort
+  </div>
+</div>
+`;
