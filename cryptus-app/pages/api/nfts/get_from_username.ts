@@ -5,7 +5,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
     prisma.$connect();
     const username = req.body.username as string;
-    // console.log("trying to get from db user with username: ", username);
+    console.log("trying to get from db user with username: ", username);
 
     const user = await prisma.user.findUnique({
       include: {
@@ -15,6 +15,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         username: username,
       },
     });
+
     res.status(201);
     res.json(user.nfts);
   } catch (e) {

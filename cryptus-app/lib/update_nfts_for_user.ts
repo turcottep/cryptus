@@ -16,14 +16,13 @@ export default async function updateNftsForUser(
     count: number;
     rarity: number;
   };
-
   try {
     var data;
     //fetch nfts from opensea
     res = await fetch(
       "https://api.opensea.io/api/v1/assets?owner=" +
         address +
-        "&order_direction=asc&offset=0&limit=50",
+        "&order_direction=asc&limit=50",
       {
         headers: {
           Accept: "application/json",

@@ -6,6 +6,7 @@ export default function sortNftsIntoCollections(
   collection_filter: string[]
 ): nft_collection[] {
   const collections: { [key: string]: nft_collection } = {};
+  let i = 0;
   for (const nft of nfts) {
     // if address is not in filter, skip
     if (!collection_filter.includes(nft.collection_address)) {
@@ -14,6 +15,7 @@ export default function sortNftsIntoCollections(
         collections[collection] = {
           name: collection,
           address: nft.collection_address,
+          id: i,
           description: "",
           image_url: "",
           external_url: "",
@@ -23,6 +25,7 @@ export default function sortNftsIntoCollections(
       }
       collections[collection].nfts.push(nft);
     }
+    i++;
   }
   const sorted_collections = sortNFTsByRarityInCollection(
     Object.values(collections)
