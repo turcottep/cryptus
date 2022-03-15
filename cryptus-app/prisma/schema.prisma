@@ -18,6 +18,8 @@ model User {
   likes              Int
   hash               String
   collections_filter String[]
+  collections_list   String[]
+  networth           Float    @default(0)
   nfts               Nft[]
   wallets            Wallet[]
 }
@@ -50,13 +52,21 @@ model Wallet {
 }
 
 model CollectionRarity {
-  id               String  @id
-  contract_address String  @unique
-  nfts_rarity      String?
+  id               String      @id
+  contract_address String      @unique
+  NftRarity        NftRarity[]
 }
 
 model collectiontraitfloor {
   id               String @id @default(uuid())
   address          String @unique
   trait_floor_dict String
+}
+
+model NftRarity {
+  id               String           @id
+  rarity_rank      Int?
+  token_id         String           @unique
+  collectionID     String
+  CollectionRarity CollectionRarity @relation(fields: [collectionID], references: [id])
 }
