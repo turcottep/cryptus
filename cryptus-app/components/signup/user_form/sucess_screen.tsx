@@ -6,6 +6,7 @@ type MyProps = {
   nextStep: Function;
   handleChange: Function;
   values: any;
+  step: number;
 };
 
 export default class SucessScreen extends Component<MyProps> {

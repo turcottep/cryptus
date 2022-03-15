@@ -19,7 +19,7 @@ export default function ViewerProfile(props: {
 }) {
   const { collections, user } = props;
   const router = useRouter();
-  const { userId } = router.query;
+  //const { userId } = router.query;
 
   return (
     <div className={s.container}>

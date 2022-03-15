@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BackButton /> should display properly 1`] = `
+<a
+  onClick={[Function]}
+  target="_blank"
+>
+  <img
+    src="/icons/back_icon.png"
+  />
+</a>
+`;

@@ -10,7 +10,6 @@ import { profile_props } from "../../../../lib/data_types";
 
 export default function CreatorProfileInfos(props: profile_props) {
   const { description, username, networth } = props.user;
-  console.log("props", props);
   return (
     <div className={s.container}>
       <div className={s.row}>

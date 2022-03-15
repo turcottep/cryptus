@@ -1,7 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ViewerHeader renders correctly 1`] = `
+exports[`<ViewerHeader /> ViewerHeader renders correctly 1`] = `
 <div>
-  HEADER
+  <a
+    onClick={[Function]}
+    target="_blank"
+  >
+    <img
+      src="/icons/back_icon.png"
+    />
+  </a>
+  <div>
+    test
+  </div>
+  <div
+    onClick={[Function]}
+  >
+    <img
+      src="icons/menu_icon.png"
+    />
+  </div>
 </div>
 `;
