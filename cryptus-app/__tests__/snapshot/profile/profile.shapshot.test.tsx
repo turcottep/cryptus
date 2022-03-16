@@ -339,8 +339,11 @@ describe("<Profile />", () => {
       user: user,
       collections: collections,
     };
+    const isMobile = true;
 
-    const tree = renderer.create(<Profile {...mock_props} />).toJSON();
+    const tree = renderer
+      .create(<Profile {...mock_props} isMobile={isMobile} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

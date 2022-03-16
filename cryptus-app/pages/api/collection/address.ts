@@ -20,7 +20,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     } else {
       collection = await prisma.collectionRarity.findUnique({
         include: {
-          nfts_rarity: req.body.withNfts,
+          NftRarity: req.body.withNfts,
         },
         where: {
           contract_address: req.body.collection_address,

@@ -3,20 +3,22 @@
 exports[`<NftDetails /> should display the correct NFT information 1`] = `
 <div>
   <div>
-    <a
-      onClick={[Function]}
-      target="_blank"
-    >
-      <img
-        src="/icons/back_icon.png"
-      />
-    </a>
-    <div
-      onClick={[Function]}
-    >
-      <img
-        src="/icons/more_icon.png"
-      />
+    <div>
+      <a
+        onClick={[Function]}
+        target="_blank"
+      >
+        <img
+          src="/icons/back_icon.png"
+        />
+      </a>
+      <div
+        onClick={[Function]}
+      >
+        <img
+          src="/icons/more_icon.png"
+        />
+      </div>
     </div>
   </div>
   <div>
@@ -27,37 +29,39 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
   </div>
   <div>
     <div>
-      <a
-        href="/market/CryptoKitties"
-      >
-        CryptoKitties
-      </a>
       <div>
-        Savannah R1-R3, Sly R1
-      </div>
-    </div>
-    <a
-      href="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/492809"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      <div>
-        <img
-          alt="eth"
-          src="/images/eth.png"
-        />
+        <a
+          href="/market/CryptoKitties"
+        >
+          CryptoKitties
+        </a>
         <div>
-          5.00
+          Savannah R1-R3, Sly R1
         </div>
-        <div />
+      </div>
+      <a
+        href="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/492809"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
         <div>
           <img
-            alt=""
-            src="/images/opensea.png"
+            alt="eth"
+            src="/images/eth.png"
           />
+          <div>
+            5.00
+          </div>
+          <div />
+          <div>
+            <img
+              alt=""
+              src="/images/opensea.png"
+            />
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
   <div>
     rank: 1234567/2000000
@@ -65,35 +69,13 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
   <div>
     <div>
       <div>
-        SECRET
+        MOUTH
       </div>
       <div>
-        se6
+        soserious
       </div>
       <div>
-        0.66% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        PURRSTIGE
-      </div>
-      <div>
-        pu12
-      </div>
-      <div>
-        0.96% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        GENERATION
-      </div>
-      <div>
-        0
-      </div>
-      <div>
-        2% have this trait
+        11% have this trait
       </div>
     </div>
     <div>
@@ -109,24 +91,24 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
     </div>
     <div>
       <div>
-        COOLDOWN_TIMER
+        VIRGINITY
       </div>
       <div>
-        Catatonic (1 week)
+        non-virgin
       </div>
       <div>
-        4% have this trait
+        49% have this trait
       </div>
     </div>
     <div>
       <div>
-        EYE_SHAPE
+        FUR
       </div>
       <div>
-        chronic
+        selkirk
       </div>
       <div>
-        5% have this trait
+        6% have this trait
       </div>
     </div>
     <div>
@@ -153,13 +135,35 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
     </div>
     <div>
       <div>
-        FUR
+        HIGHLIGHT_COLOUR
       </div>
       <div>
-        selkirk
+        coffee
       </div>
       <div>
-        6% have this trait
+        9% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        COOLDOWN_TIMER
+      </div>
+      <div>
+        Catatonic (1 week)
+      </div>
+      <div>
+        4% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        EYE_SHAPE
+      </div>
+      <div>
+        chronic
+      </div>
+      <div>
+        5% have this trait
       </div>
     </div>
     <div>
@@ -175,35 +179,35 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
     </div>
     <div>
       <div>
-        HIGHLIGHT_COLOUR
+        GENERATION
       </div>
       <div>
-        coffee
+        0
       </div>
       <div>
-        9% have this trait
-      </div>
-    </div>
-    <div>
-      <div>
-        MOUTH
-      </div>
-      <div>
-        soserious
-      </div>
-      <div>
-        11% have this trait
+        2% have this trait
       </div>
     </div>
     <div>
       <div>
-        VIRGINITY
+        PURRSTIGE
       </div>
       <div>
-        non-virgin
+        pu12
       </div>
       <div>
-        49% have this trait
+        0.96% have this trait
+      </div>
+    </div>
+    <div>
+      <div>
+        SECRET
+      </div>
+      <div>
+        se6
+      </div>
+      <div>
+        0.66% have this trait
       </div>
     </div>
   </div>

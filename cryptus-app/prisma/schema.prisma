@@ -61,7 +61,7 @@ model NftRarity {
 }
 
 model CollectionRarity {
-  id               String      @id
+  id               String      @id @default(uuid())
   contract_address String      @unique
   NftRarity        NftRarity[]
 }

@@ -40,15 +40,6 @@ export default async function updateNftsForUser(
     return null;
   }
 
-  // let collection_tokens = [];
-  // Uncomment this section to generate the rarity rank for user.js mock file
-  // for (const nft of nfts_raw) {
-  //   const size = await GetCollectionTokens(nft.asset_contract.address);
-  //   console.log("size", size);
-  //   // Etherscan only allow us to do 5 calls per seconds
-  //   await new Promise((r) => setTimeout(r, 200));
-  //   collection_tokens.push(size);
-  // }
   // console.log("traits = ", nfts_raw[0]);
   const nft_clean = nfts_raw.map((nft, index: number) => {
     // Sort properties here
