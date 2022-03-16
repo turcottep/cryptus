@@ -16,9 +16,12 @@ describe("<CollectionDetails />", () => {
 
   it("should display properly", async () => {
     const mockCollection = mock_collection;
+    const isMobile = true;
 
     const tree = renderer
-      .create(<CollectionDetails collection={mockCollection} />)
+      .create(
+        <CollectionDetails collection={mockCollection} isMobile={isMobile} />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

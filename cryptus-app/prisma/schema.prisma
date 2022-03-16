@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialActions"]
 }
 
 datasource db {
@@ -51,8 +52,16 @@ model Wallet {
   User          User   @relation(fields: [userId], references: [id])
 }
 
+model NftRarity {
+  id               String           @id @default(uuid())
+  rarity_rank      Int?
+  token_id         String           @unique
+  collectionID     String
+  CollectionRarity CollectionRarity @relation(fields: [collectionID], references: [id], onDelete: Cascade)
+}
+
 model CollectionRarity {
-  id               String      @id
+  id               String      @id @default(uuid())
   contract_address String      @unique
   NftRarity        NftRarity[]
 }
@@ -61,12 +70,4 @@ model collectiontraitfloor {
   id               String @id @default(uuid())
   address          String @unique
   trait_floor_dict String
-}
-
-model NftRarity {
-  id               String           @id
-  rarity_rank      Int?
-  token_id         String           @unique
-  collectionID     String
-  CollectionRarity CollectionRarity @relation(fields: [collectionID], references: [id])
 }

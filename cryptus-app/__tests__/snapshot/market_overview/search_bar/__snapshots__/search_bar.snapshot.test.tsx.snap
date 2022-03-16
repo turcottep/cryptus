@@ -2,12 +2,14 @@
 
 exports[`<SearchBar /> should display properly 1`] = `
 <div>
-  <img
-    src="magnifier.svg"
-  />
-  <input
-    placeholder="Search"
-    type="text"
-  />
+  <div>
+    <img
+      src="magnifier.svg"
+    />
+    <input
+      placeholder="Search"
+      type="text"
+    />
+  </div>
 </div>
 `;
