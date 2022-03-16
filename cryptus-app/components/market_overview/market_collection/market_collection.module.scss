@@ -6,15 +6,24 @@
   display: flex;
   flex-direction: column;
 
-  width: min(100vw, v.$mobile);
   margin: auto;
 
   background-color: v.$bg-color;
   color: v.$text-color;
+
+  width: 100vw;
+
+  @media (max-width: v.$mobile) {
+    width: min(100vw, v.$mobile);
+  }
 }
 
 .container {
   flex: 1 1 auto;
 
   margin-top: v.$header-h;
+
+  @media (max-width: v.$mobile) {
+    width: min(100vw, v.$mobile);
+  }
 }

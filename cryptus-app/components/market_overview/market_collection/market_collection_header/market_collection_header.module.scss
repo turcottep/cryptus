@@ -1,19 +1,27 @@
 @use "/styles/variables" as v;
 
 .container {
-  flex: 1 1 auto;
+  position: sticky;
+  top: 0;
 
   display: flex;
-  position: fixed;
-  top: 0;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
   height: v.$header-h;
-  width: min(100vw, v.$mobile);
-  padding-left: 15px;
-  padding-right: 15px;
+
+  padding: 0px 8px;
+
+  background: linear-gradient(
+    rgba(v.$header-color, 1),
+    rgba(v.$header-color, 0)
+  );
+  z-index: 100;
+
+  @media (max-width: v.$mobile) {
+    width: min(100vw, v.$mobile);
+  }
 }
 
 .left_container {
