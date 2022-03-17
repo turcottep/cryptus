@@ -2,8 +2,8 @@
 
 exports[`ProfileMenuButton renders correctly 1`] = `
 <div>
-  <button>
-    ...
-  </button>
+  <img
+    src="/icons/settings_icon"
+  />
 </div>
 `;
