@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NftBuyButton /> should display properly 1`] = `
+<a
+  href="www.opensea.io/testNFT"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <div>
+    <img
+      alt="eth"
+      src="/images/eth.png"
+    />
+    <div>
+      5.00
+    </div>
+    <div />
+    <div>
+      <img
+        alt=""
+        src="/images/opensea.png"
+      />
+    </div>
+  </div>
+</a>
+`;

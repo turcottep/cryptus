@@ -1,5 +1,6 @@
 import { IncomingMessage } from "http";
 import absoluteUrl from "next-absolute-url";
+import get_base_url from "./get_base_url";
 
 export default async function getUserByUsername(
   username,
@@ -11,8 +12,8 @@ export default async function getUserByUsername(
     return null;
   }
 
-  const base_url = absoluteUrl ? process.env.BASE_URL : "/";
-  const res = await fetch(base_url + "api/users/username", {
+  const base_url = get_base_url();
+  const res = await fetch(base_url + "/api/users/username", {
     method: "POST",
     body: JSON.stringify({
       username: username,

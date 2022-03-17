@@ -18,7 +18,7 @@ export default function CollectionViewer(props: {
 
 const Nft = (props: { nft: nft }) => {
   const { nft } = props;
-  console.log("nft", nft);
+  //console.log("nft", nft);
   const router = useRouter();
   const { userId: userName, collectionId: collectionName } = router.query;
 

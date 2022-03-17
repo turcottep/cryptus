@@ -11,29 +11,31 @@ exports[`CreatorProfileInfos renders correctly 1`] = `
     </div>
     <div>
       <div>
-        <button>
+        <a
+          href="/edit_profile"
+        >
+          Edit Profile
+        </a>
+      </div>
+      <div>
+        <button
+          onClick={[Function]}
+        >
           Edit NFTs
         </button>
       </div>
-      <div>
-        <button>
-          Edit Profile
-        </button>
-      </div>
     </div>
   </div>
   <div>
     <div>
-      Turcotte
-    </div>
-    <div>
-      <img
-        src="./images/twitter_checkmark.png"
-      />
+      A username
     </div>
   </div>
   <div>
-    Je vais a MTL pour chercher un bike
+    Here is a description
+  </div>
+  <div>
+    NETWORTH:420
   </div>
 </div>
 `;

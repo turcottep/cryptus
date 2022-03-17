@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ContextualXButtonButton /> should display properly 1`] = `
+<a
+  onClick={[Function]}
+  target="_blank"
+>
+  <img
+    src="/icons/x_icon.png"
+  />
+</a>
+`;

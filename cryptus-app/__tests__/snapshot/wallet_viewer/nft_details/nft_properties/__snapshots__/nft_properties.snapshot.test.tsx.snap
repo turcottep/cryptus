@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NFTProperties /> should display properly 1`] = `
+<div>
+  <div>
+    <div>
+      MOUTH
+    </div>
+    <div>
+      soserious
+    </div>
+    <div>
+      214676% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      PATTERN
+    </div>
+    <div>
+      spangled
+    </div>
+    <div>
+      74400% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      VIRGINITY
+    </div>
+    <div>
+      non-virgin
+    </div>
+    <div>
+      980293% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      FUR
+    </div>
+    <div>
+      selkirk
+    </div>
+    <div>
+      125552% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      EYE_COLOUR
+    </div>
+    <div>
+      sapphire
+    </div>
+    <div>
+      99039% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      ACCENT_COLOUR
+    </div>
+    <div>
+      icy
+    </div>
+    <div>
+      111490% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      HIGHLIGHT_COLOUR
+    </div>
+    <div>
+      coffee
+    </div>
+    <div>
+      175517% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      COOLDOWN_TIMER
+    </div>
+    <div>
+      Catatonic (1 week)
+    </div>
+    <div>
+      75674% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      EYE_SHAPE
+    </div>
+    <div>
+      chronic
+    </div>
+    <div>
+      93145% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      BASE_COLOUR
+    </div>
+    <div>
+      mauveover
+    </div>
+    <div>
+      146133% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      GENERATION
+    </div>
+    <div>
+      0
+    </div>
+    <div>
+      36557% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      PURRSTIGE
+    </div>
+    <div>
+      pu12
+    </div>
+    <div>
+      19237% have this trait
+    </div>
+  </div>
+  <div>
+    <div>
+      SECRET
+    </div>
+    <div>
+      se6
+    </div>
+    <div>
+      13121% have this trait
+    </div>
+  </div>
+</div>
+`;

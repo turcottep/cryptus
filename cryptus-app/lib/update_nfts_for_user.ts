@@ -1,5 +1,6 @@
 import { nft } from "../lib/data_types";
 import GetCollectionTokens from "../lib/get_collection_token";
+import get_base_url from "./get_base_url";
 
 export default async function updateNftsForUser(
   username: string,
@@ -15,14 +16,13 @@ export default async function updateNftsForUser(
     count: number;
     rarity: number;
   };
-
   try {
     var data;
     //fetch nfts from opensea
     res = await fetch(
       "https://api.opensea.io/api/v1/assets?owner=" +
         address +
-        "&order_direction=asc&offset=0&limit=50",
+        "&order_direction=asc&limit=50",
       {
         headers: {
           Accept: "application/json",
@@ -40,15 +40,6 @@ export default async function updateNftsForUser(
     return null;
   }
 
-  // let collection_tokens = [];
-  // Uncomment this section to generate the rarity rank for user.js mock file
-  // for (const nft of nfts_raw) {
-  //   const size = await GetCollectionTokens(nft.asset_contract.address);
-  //   console.log("size", size);
-  //   // Etherscan only allow us to do 5 calls per seconds
-  //   await new Promise((r) => setTimeout(r, 200));
-  //   collection_tokens.push(size);
-  // }
   // console.log("traits = ", nfts_raw[0]);
   const nft_clean = nfts_raw.map((nft, index: number) => {
     // Sort properties here
@@ -82,7 +73,6 @@ export default async function updateNftsForUser(
       image_url: nft.image_url,
       description: nft.description,
       collection: nft.collection.name,
-      collection_size: 0,
       collection_address: nft.asset_contract.address,
       token_id: nft.token_id,
       external_url: nft.permalink,
@@ -114,9 +104,9 @@ export default async function updateNftsForUser(
     });
   });
 
-  const base_url = absolute ? process.env.BASE_URL : "/";
+  const base_url = get_base_url();
   try {
-    const res = await fetch(base_url + "api/nfts/update", {
+    const res = await fetch(base_url + "/api/nfts/update", {
       method: "POST",
       body: JSON.stringify({
         nfts: nft_stringified,

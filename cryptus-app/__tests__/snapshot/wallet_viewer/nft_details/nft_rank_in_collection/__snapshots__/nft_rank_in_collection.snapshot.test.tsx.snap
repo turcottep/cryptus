@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NFTRankInCollection /> should display properly 1`] = `
+<div>
+  rank: 1234/10000
+</div>
+`;

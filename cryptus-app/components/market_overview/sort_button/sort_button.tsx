@@ -9,8 +9,10 @@ import s from "./sort_button.module.scss";
 export default function SortButton() {
   return (
     <div className={s.container}>
-      <img src="menu.svg" className={s.menu} />
-      <div className={s.text}>Sort</div>
+      <div className={s.box}>
+        <img src="menu.svg" className={s.menu} />
+        <div className={s.text}>Sort</div>
+      </div>
     </div>
   );
 }

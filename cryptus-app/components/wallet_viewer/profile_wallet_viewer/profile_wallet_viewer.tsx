@@ -10,8 +10,10 @@ export default function ProfileWalletViewer(props: {
 }) {
   return (
     <div className={s.container}>
-      {props.collections.map((collection: nft_collection, i) => (
-        <Collection collection={collection} />
+      {props.collections.map((collection: nft_collection) => (
+        <div key={collection.id}>
+          <Collection collection={collection} />
+        </div>
       ))}
     </div>
   );
@@ -64,6 +66,9 @@ const Collection = (props: { collection: nft_collection }) => {
         ) : null}
       </div>
       <div className={s.collname}>{collection.name}</div>
+      <div className={s.collname}>
+        {collection.value ? `VALUE:${collection.value} eth` : ""}
+      </div>
     </div>
   );
 };

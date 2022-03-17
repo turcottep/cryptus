@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NftHeader /> should display properly 1`] = `
+<div>
+  <div>
+    <a
+      onClick={[Function]}
+      target="_blank"
+    >
+      <img
+        src="/icons/back_icon.png"
+      />
+    </a>
+    <div
+      onClick={[Function]}
+    >
+      <img
+        src="/icons/more_icon.png"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -5,9 +5,12 @@
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 0px 8px;
 
-  width: min(100vw, v.$mobile);
   background-color: v.$bg-color;
+
+  @media (max-width: v.$mobile) {
+    width: min(100vw, v.$mobile);
+  }
 }
