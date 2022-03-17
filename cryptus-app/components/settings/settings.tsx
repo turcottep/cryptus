@@ -40,9 +40,10 @@ export default function Settings() {
 
 const SettingsHeader = () => (
   <div className={s.header}>
-    <BackButton />
+    <div className={s.backButton}>
+      <BackButton />
+    </div>
     <div className={s.settingsTitle}>Settings</div>
-
     <div className={s.blankButton} />
   </div>
 );

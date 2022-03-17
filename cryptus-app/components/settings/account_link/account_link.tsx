@@ -6,14 +6,14 @@ export default function AccountLink(props: { username: string }) {
   return (
     <div className={s.container}>
       <div className={s.title}>Account link</div>
-      <div className={s.settingCol}>
+      <div
+        className={s.settingCol}
+        onClick={() => navigator.clipboard.writeText(account_link)}
+      >
         {account_link}
-        <a
-          onClick={() => navigator.clipboard.writeText(account_link)}
-          target="_blank"
-        >
+        <div className={s.iconDiv}>
           <img className={s.icon} src="/icons/copy_icon.png" />
-        </a>
+        </div>
       </div>
     </div>
   );

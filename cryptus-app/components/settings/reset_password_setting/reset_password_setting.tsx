@@ -6,7 +6,9 @@ export default function ResetPasswordSetting() {
     <div className={s.container}>
       <div className={s.settingCol}>
         Reset Password
-        <img className={s.icon} src="/icons/back_icon.png" />
+        <div className={s.iconDiv}>
+          <img className={s.icon} src="/icons/back_icon.png" />
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,9 @@ export default function UsernameSetting(props: { username: string }) {
       <div className={s.title}>Username</div>
       <div className={s.settingCol}>
         {props.username}
-        <img className={s.icon} src="/icons/back_icon.png" />
+        <div className={s.iconDiv}>
+          <img className={s.icon} src="/icons/back_icon.png" />
+        </div>
       </div>
     </div>
   );

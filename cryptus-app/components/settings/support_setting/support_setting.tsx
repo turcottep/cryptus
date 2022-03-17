@@ -6,7 +6,9 @@ export default function SupportSetting() {
     <div className={s.container}>
       <div className={s.settingCol}>
         Support
-        <img className={s.icon} src="/icons/back_icon.png" />
+        <div className={s.iconDiv}>
+          <img className={s.icon} src="/icons/back_icon.png" />
+        </div>
       </div>
     </div>
   );

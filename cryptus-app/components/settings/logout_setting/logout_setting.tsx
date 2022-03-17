@@ -7,16 +7,18 @@ export default function LogoutSetting() {
     <div className={s.container}>
       <div className={s.settingCol}>
         Log out
-        <img
-          onClick={() => {
-            signOut({
-              redirect: true,
-              callbackUrl: `${window.location.hostname}`,
-            });
-          }}
-          className={s.icon}
-          src="/icons/logout_icon.png"
-        />
+        <div className={s.iconDiv}>
+          <img
+            onClick={() => {
+              signOut({
+                redirect: true,
+                callbackUrl: `${window.location.hostname}`,
+              });
+            }}
+            className={s.icon}
+            src="/icons/logout_icon.png"
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import s from "./dark_theme_setting.module.scss";
-import Switch from "react-switch";
+import { Switch } from "@mui/material";
 
 export default function DarkThemeSetting() {
   const [isToggled, setIsToggled] = useState(false);
@@ -15,7 +15,9 @@ export default function DarkThemeSetting() {
     <div className={s.container}>
       <div className={s.settingCol}>
         Dark Theme
-        <Switch {...switchParams} />
+        <div className={s.iconDiv}>
+          <Switch {...switchParams} />
+        </div>
       </div>
     </div>
   );
