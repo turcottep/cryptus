@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NetWorth /> should display properly 1`] = `
+<div>
+  <div>
+    7.79
+  </div>
+  <div>
+    <div>
+       
+    </div>
+    <div>
+      0.01
+    </div>
+  </div>
+  <div>
+    <div
+      className="undefined "
+      onClick={[Function]}
+    >
+      1W
+    </div>
+    <div
+      className="undefined undefined"
+      onClick={[Function]}
+    >
+      1M
+    </div>
+    <div
+      className="undefined "
+      onClick={[Function]}
+    >
+      3M
+    </div>
+    <div
+      className="undefined "
+      onClick={[Function]}
+    >
+      1Y
+    </div>
+    <div
+      className="undefined "
+      onClick={[Function]}
+    >
+      ALL
+    </div>
+  </div>
+</div>
+`;

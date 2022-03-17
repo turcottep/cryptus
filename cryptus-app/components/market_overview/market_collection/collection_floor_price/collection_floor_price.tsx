@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import s from "./collection_floor_price.module.scss";
 
-export default function MarketCollectionHeader(props: {
+export default function CollectionFloorPrice(props: {
   floor_price_live: number;
   floor_price_delta: number;
   floor_price_timestamp: string;

@@ -28,9 +28,11 @@ export default function MarketCollections(props: {
 
 const MarketCollectionsHeader = () => (
   <div className={s.header}>
-    <div className={s.icon}>
-      <img src="/icons/market_icon.png" />
+    <div className={s.headerbox}>
+      <div className={s.icon}>
+        <img src="/icons/market_icon.png" />
+      </div>
+      <div className={s.label}>Market</div>
     </div>
-    <div className={s.label}>Market</div>
   </div>
 );

@@ -1,8 +1,8 @@
 @use "/styles/variables" as v;
 
 .icon {
+  flex: 0 0 none;
   display: flex;
-  flex: 1 1 auto;
 
   width: v.$icon-width;
 }
