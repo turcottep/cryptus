@@ -2,10 +2,23 @@
 
 exports[`CreatorHeader renders correctly 1`] = `
 <div>
+  <a
+    onClick={[Function]}
+    target="_blank"
+  >
+    <img
+      src="/icons/back_icon.png"
+    />
+  </a>
   <div>
-    <button>
-      ...
-    </button>
+    
+  </div>
+  <div
+    onClick={[Function]}
+  >
+    <img
+      src="/icons/more_icon.png"
+    />
   </div>
 </div>
 `;

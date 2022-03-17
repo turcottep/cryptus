@@ -10,7 +10,7 @@ module.exports = {
     "^.+\\.scss$": "jest-scss-transform",
   },
 
-  testPathIgnorePatterns: ["<rootDir>/cypress/"],
+  testPathIgnorePatterns: ["<rootDir>/cypress/", "<rootDir>/pages/api/test.ts"],
 
   // Test spec file resolution pattern
   // Matches parent folder `__tests__` and filename

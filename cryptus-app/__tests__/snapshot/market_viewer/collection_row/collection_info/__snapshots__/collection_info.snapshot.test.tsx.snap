@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CollectionInfo /> should display properly 1`] = `
+<div
+  id="collection_info"
+>
+  <div>
+    <img
+      src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
+    />
+    <div>
+      KITT
+    </div>
+  </div>
+  <div>
+    CryptoKitties
+  </div>
+</div>
+`;

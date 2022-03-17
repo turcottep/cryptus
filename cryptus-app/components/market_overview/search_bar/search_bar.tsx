@@ -6,11 +6,13 @@ import s from "./search_bar.module.scss";
 
 //internal imports
 
-export default function MarketHeader() {
+export default function SearchBar() {
   return (
     <div className={s.container}>
-      <img src="magnifier.svg" className={s.magnifier} />
-      <input type="text" className={s.searchTerm} placeholder="Search coming soon!" />
+      <div className={s.box}>
+        <img src="magnifier.svg" className={s.magnifier} />
+        <input type="text" className={s.searchTerm} placeholder="Search" />
+      </div>
     </div>
   );
 }

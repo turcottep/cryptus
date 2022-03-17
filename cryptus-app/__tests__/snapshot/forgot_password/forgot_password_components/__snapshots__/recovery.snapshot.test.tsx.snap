@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div>
+    <div>
+      <p>
+        ●
+      </p>
+      <p>
+        ●
+      </p>
+      <p>
+        ●
+      </p>
+    </div>
+    <div>
+      Enter your recovery email or phone number
+    </div>
+  </div>
+  <div>
+    <div
+      className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary css-a88p61-MuiInputBase-root-MuiInput-root"
+      onClick={[Function]}
+      required={true}
+    >
+      <input
+        className="MuiInput-input MuiInputBase-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+        id="email"
+        onAnimationStart={[Function]}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Phone number or email"
+        required={true}
+        type="email"
+      />
+    </div>
+  </div>
+  <button
+    onClick={[Function]}
+  >
+    Send recovery email/text
+  </button>
+</div>
+`;

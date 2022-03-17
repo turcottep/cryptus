@@ -1,8 +1,12 @@
 .container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   width: 100%;
-  padding: 0px 24px;
 }
 
 .image {
-  margin: auto;
+  flex: 0 0 none;
 }

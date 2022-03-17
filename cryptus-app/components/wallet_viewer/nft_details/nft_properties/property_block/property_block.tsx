@@ -7,15 +7,16 @@ import s from "./property_block.module.scss";
 
 //internal imports
 
-export default function PropretyBlock(props: {
+export default function PropertyBlock(props: {
   name: string;
   value: string;
   count: number;
   rarity: number;
+  collectionSize: number;
 }) {
-  const { name, value, rarity } = props;
+  const { name, value, count, rarity, collectionSize } = props;
 
-  const rarity_percentage = 100 * (rarity as any);
+  const rarity_percentage = 100 * ((count / collectionSize) as any);
   const rarity_clean =
     rarity_percentage > 1
       ? rarity_percentage.toFixed(0)

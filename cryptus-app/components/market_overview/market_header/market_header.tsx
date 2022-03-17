@@ -14,11 +14,13 @@ export default function MarketHeader() {
     month: "long",
     day: "numeric",
   });
-  console.log("day : ", day);
+  //console.log("day : ", day);
 
   return (
     <div className={s.container}>
-      <DateComponent date={day} />
+      <div className={s.box}>
+        <DateComponent date={day} />
+      </div>
     </div>
   );
 }

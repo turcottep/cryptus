@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NftPicture /> should display properly 1`] = `
+<div>
+  <img
+    alt="CryptoPunk #IFORGOR"
+    src="/images/cryptopunk.png"
+  />
+</div>
+`;
