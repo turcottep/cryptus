@@ -1,66 +1,68 @@
 @use "/styles/variables" as v;
 
 .container {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 
-    display: flex;
-    width: min(100vw, v.$mobile);
-    margin: auto;
-    flex-direction: column;
-  
-    background-color: v.$bg-color;
-    color: v.$text-color;
-  }
+  display: flex;
+  width: min(100vw, v.$mobile);
+  margin: auto;
+  flex-direction: column;
+
+  background-color: v.$bg-color;
+  color: v.$text-color;
+}
 
 .header {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 
-    display: flex;
-    position: fixed;
-    top: 0;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  position: fixed;
+  top: 0;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 
-    width: min(100vw, v.$mobile);
-    height: v.$header-h;
-    padding-right: 15px;
-    padding-left: 15px;
+  width: min(100vw, v.$mobile);
+  height: v.$header-h;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .settingsTitle {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 
-    display: flex;
-    font-size: v.$font-size-ml;
-}
-
-.searchBar {
-    flex: 1 1 auto;
-
-    display: flex;
-    margin-top: 70px;
-    padding: 0px 30px 0px 30px;
+  display: flex;
+  font-size: v.$font-size-ml;
 }
 
 .settingRows {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    padding: 20px 30px 0px 30px;
-    gap: 20px;
-}
-
-.signOut {
-    flex: 1 1 auto;
-
-    display: flex;
-    justify-content: center;
-    margin-top: 80%;
+  padding: 20px 30px 0px 30px;
+  gap: 20px;
 }
 
 .blankButton {
-    width: 24px;
+  width: 24px;
+}
+
+.line {
+  width: 75%;
+  border-bottom: 1px solid black;
+  align-self: center;
+}
+
+.addWallet {
+  display: flex;
+  align-self: center;
+  width: 70px;
+  box-shadow: 0 0 0 2px rgb(0 0 0 / 5%);
+  border-radius: 50%;
+}
+
+.addIcon {
+  width: 70px;
 }
