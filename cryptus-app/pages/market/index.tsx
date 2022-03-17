@@ -36,7 +36,7 @@ export default function Home(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const address = "0x1a92f7381b9f03921564a437210bb9396471050c";
   console.log("address", address);
 
