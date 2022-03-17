@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import s from "./wallet_list_display.module.scss";
 import { walletsType } from "../wallet_manager";
 import AddWalletWithCurrentAddress from "../../../lib/addWalletWithCurrentAddress";
+import DeleteWalletWithCurrentAddress from "../../../lib/deleteWalletWithCurrentAddress";
 
 export default function WalletListDisplay(props: {
   addOrDeleteAddressEvent;
@@ -51,4 +52,6 @@ const addWallet = async (currentAddress: string, address: string) => {
   AddWalletWithCurrentAddress(currentAddress, address, false);
 };
 
-const deleteWallet = async (currentAddress: string, address: string) => {};
+const deleteWallet = async (currentAddress: string, address: string) => {
+  DeleteWalletWithCurrentAddress(currentAddress, address, false);
+};

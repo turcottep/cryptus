@@ -4,7 +4,6 @@ export default async function AddWalletWithCurrentAddress(
   absolute = true
 ) {
   const base_url = absolute ? process.env.BASE_URL : "/";
-  console.log(base_url);
   const res = await fetch(base_url + "api/users/addWalletToWallets", {
     method: "POST",
     headers: {

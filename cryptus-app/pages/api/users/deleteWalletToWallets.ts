@@ -18,10 +18,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       },
       data: {
         wallets: {
-          create: {
-            address: req.body.addressToAdd,
-            external_url: req.body.external_url,
-            blockchain_id: "ETH",
+          delete: {
+            address: req.body.addressToDelete,
           },
         },
       },
