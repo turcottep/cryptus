@@ -6,9 +6,6 @@ import FindUserIdFromWalletAdress from "../../lib/findUserIdFromWalletAdress";
 import CreateAccountFromWalletAddress from "../../lib/createAccountFromWalletAddress";
 import FindUserFromUserId from "../../lib/findUserFromUserId";
 import Loading from "../utils/loading/loading";
-// import walletViewerLandingPage from "../../public/images/backgroungLandingPage.png";
-
-import s from "./landing_page.module.scss";
 
 export default function LandingPage() {
   const [loading, setLoading] = useState<Boolean>(false);
@@ -50,7 +47,7 @@ export default function LandingPage() {
           });
         }
       } catch (error) {
-        console.error(error);
+        // console.error(error);
         setLoading(false);
         // router.push("login?error=CancelMetamask");
       }
@@ -58,74 +55,56 @@ export default function LandingPage() {
   };
 
   return (
-    <div className={s.container}>
+    <div className="h-screen relative bg-coquille w-full">
       {loading && <Loading />}
-      <div className={s.row}>
-        <div className={s.header}>
-          <NavbarLandingPage callback={connectMetamask} />
-        </div>
+      <div className="h-screen justify-between px-3 md:px-10 2xl:px-20 md:mx-auto flex flex-col items-center">
+        <NavbarLandingPage callback={connectMetamask} />
 
-        <div className={s.column}>
-          <div className={s.appNameSection}>
-            <div>
-              <h1 className={s.appName}>Public Wallet</h1>
+        <div className="flex h-full justify-evenly md:justify-between flex-col w-full items-center md:flex-row">
+          <div className="flex justify-between flex-col w-full md:justify-around items-center text-center md:h-full my-4">
+            <div className="flex-shrink w-auto md:w-full">
+              <h1 className="mx-auto h-auto">
+                <img
+                  draggable="false"
+                  alt="Title:Express Yourself"
+                  className="w-full"
+                  src="title.svg"
+                />
+              </h1>
             </div>
-            <div>
-              <h3 className={s.topVP}>THE EASIEST WAY TO</h3>
-              <h3 className={s.bottomVP}>SHOW YOUR NFTS</h3>
+            <div className="text-center">
+              <p className="md:block leading-normal text-gray-600 text-2xl md:text-3xl xl:text-3xl ">
+                <span> The quickest way to show</span>
+                <br />
+                <span>your NFTs</span>
+              </p>
             </div>
-            <div className={s.clickToAction}>
+            <div className="invisible w-full md:visible md:w-1/2 lg:w-4/5 my-4">
               <button
-                className={s.clickToActionButton}
                 onClick={() => connectMetamask()}
+                className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
               >
-                TRY IT NOW!
+                Get Started!
               </button>
             </div>
           </div>
-        </div>
-
-        <div className={s.column}>
-          <div className={s.rowAppOverview}>
-            <div className={s.columnAppOverview}>
-              <img src="/images/walletViewerLandingPage.png" />
-            </div>
-            <div className={s.columnAppOverview}>
-              <img src="/images/marketOverviewLandingPage.png" />
-            </div>
+          <div className="flex-shrink w-auto md:w-full min-w-0 min-h-0">
+            <img
+              className="w-full flex-1 min-w-0 min-h-0"
+              draggable="false"
+              alt="Guide showing statue to visitors"
+              src="museum.svg"
+            />
           </div>
         </div>
-      </div>
-      <div>
-        <hr className={s.solidHr}></hr>
-      </div>
-      <div className={s.rowInfoBoxes}>
-        <div className={s.columnInfoBoxes}>
-          <div className={s.displayBoxes}>
-            Cross plateform
-            <br />
-            wallet viewer to
-            <br />
-            show your NFTs
-          </div>
-        </div>
-        <div className={s.columnInfoBoxes}>
-          <div className={s.displayBoxes}>
-            Market overview of
-            <br />
-            your faverite
-            <br />
-            collections
-          </div>
-        </div>
-        <div className={s.columnInfoBoxes}>
-          <div className={s.displayBoxes}>
-            A unique link to
-            <br />
-            share your NFTs
-            <br />
-            with others
-          </div>
+        <div className="md:hidden w-full sm:mx-0 md:w-2/5 lg:w-2/5 my-4">
+          {/* <NameForm /> */}
+          <button
+            onClick={() => connectMetamask()}
+            className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
+          >
+            Get Started!
+          </button>
         </div>
       </div>
     </div>

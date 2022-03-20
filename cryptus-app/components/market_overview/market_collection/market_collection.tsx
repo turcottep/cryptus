@@ -13,7 +13,7 @@ export default function MarketCollection(props: {
   market_collection_props: market_collection_props;
 }) {
   const { market_collection_props, isMobile } = props;
-  console.log("MarketCollection props:", props);
+  // console.log("MarketCollection props:", props);
   return (
     <div className={s.app}>
       <DesktopHeader tab="market" />
