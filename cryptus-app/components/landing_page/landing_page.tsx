@@ -88,10 +88,16 @@ export default function LandingPage() {
         <div className={s.column}>
           <div className={s.rowAppOverview}>
             <div className={s.columnAppOverview}>
-              <img src="/images/walletViewerLandingPage.png" />
+              <img
+                className={s.imgAppOverview}
+                src="/images/walletViewerLandingPage.png"
+              />
             </div>
             <div className={s.columnAppOverview}>
-              <img src="/images/marketOverviewLandingPage.png" />
+              <img
+                className={s.imgAppOverview}
+                src="/images/marketOverviewLandingPage.png"
+              />
             </div>
           </div>
         </div>
@@ -99,9 +105,10 @@ export default function LandingPage() {
       <div>
         <hr className={s.solidHr}></hr>
       </div>
-      <div className={s.rowInfoBoxes}>
-        <div className={s.columnInfoBoxes}>
-          <div className={s.displayBoxes}>
+
+      <div className={s.boxesContainer}>
+        <div className={s.displayBoxes}>
+          <div className={s.boxesText}>
             Cross plateform
             <br />
             wallet viewer to
@@ -109,8 +116,8 @@ export default function LandingPage() {
             show your NFTs
           </div>
         </div>
-        <div className={s.columnInfoBoxes}>
-          <div className={s.displayBoxes}>
+        <div className={s.displayBoxes}>
+          <div className={s.boxesText}>
             Market overview of
             <br />
             your faverite
@@ -118,8 +125,8 @@ export default function LandingPage() {
             collections
           </div>
         </div>
-        <div className={s.columnInfoBoxes}>
-          <div className={s.displayBoxes}>
+        <div className={s.displayBoxes}>
+          <div className={s.boxesText}>
             A unique link to
             <br />
             share your NFTs
