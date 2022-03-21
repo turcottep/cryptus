@@ -16,13 +16,15 @@ export default function NftInfo(props: { nft: nft; listed_price: number }) {
 
   return (
     <div className={s.container}>
-      <div className={s.left}>
-        <a className={s.collection} href={"/market/" + collection_stripped}>
-          {collection}
-        </a>
-        <div className={s.name}>{name}</div>
+      <div className={s.box}>
+        <div className={s.left}>
+          <a className={s.collection} href={"/market/" + collection_stripped}>
+            {collection}
+          </a>
+          <div className={s.name}>{name}</div>
+        </div>
+        <NftBuyButton price={listed_price} url={external_url} />
       </div>
-      <NftBuyButton price={listed_price} url={external_url} />
     </div>
   );
 }

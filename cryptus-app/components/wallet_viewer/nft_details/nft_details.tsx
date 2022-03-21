@@ -9,6 +9,7 @@ import NftInfo from "./nft_infos/nft_info";
 import NftPicture from "./nft_picture/nft_picture";
 import NFTProperties from "./nft_properties/nft_properties";
 import NFTRankInCollection from "./nft_rank_in_collection/nft_rank_in_collection";
+import DesktopHeader from "../../header/desktop_header/desktop_header";
 
 type nft_details_props = {
   nft: nft;
@@ -17,19 +18,24 @@ type nft_details_props = {
     total: number;
   };
   listed_price: number;
+  isMobile: boolean;
 };
 
 export default function NFTDetails(props: nft_details_props) {
-  const { nft, rank, listed_price } = props;
+  const { nft, rank, listed_price, isMobile } = props;
   let properties = nft.properties;
 
   return (
     <div className={s.container}>
+      {isMobile ? null : <DesktopHeader tab="profile" />}
       <NftHeader />
       <NftPicture image_url={nft.image_url} description={nft.description} />
       <NftInfo nft={props.nft} listed_price={listed_price} />
-      <NFTRankInCollection position={rank.position} total={rank.total} />
-      <NFTProperties properties={properties} />
+      {rank.position ? (
+        <NFTRankInCollection position={rank.position} total={rank.total} />
+      ) : null}
+
+      <NFTProperties properties={properties} collectionSize={rank.total} />
     </div>
   );
 }

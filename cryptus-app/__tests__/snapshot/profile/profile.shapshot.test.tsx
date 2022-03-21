@@ -19,6 +19,7 @@ describe("<Profile />", () => {
     const collections: nft_collection[] = [
       {
         id: 1,
+        address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
         name: "CryptoKitties",
         description: "",
         image_url: "",
@@ -200,6 +201,7 @@ describe("<Profile />", () => {
       },
       {
         id: 2,
+        address: "0xc6088d5794f5a568fa3bd70ef5ee2932cd389a33",
         name: "BlockCities",
         description: "",
         image_url: "",
@@ -306,6 +308,12 @@ describe("<Profile />", () => {
       },
     ];
     const user = {
+      networth: 420,
+      description: "Here is a description",
+      username: "A username",
+      address: "An address",
+    };
+    const old_user = {
       id: "710e552b-2881-42de-afc5-4fd4d9ea698f",
       email: "turcotte@usherbrooke.ca",
       username: "turcotte",
@@ -331,8 +339,11 @@ describe("<Profile />", () => {
       user: user,
       collections: collections,
     };
+    const isMobile = true;
 
-    const tree = renderer.create(<Profile {...mock_props} />).toJSON();
+    const tree = renderer
+      .create(<Profile {...mock_props} isMobile={isMobile} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

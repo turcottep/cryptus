@@ -2,6 +2,51 @@
 
 exports[`<MarketCollection /> should display properly 1`] = `
 <div>
+  <div
+    id="header"
+  >
+    <div>
+      <a
+        href="#"
+      >
+        Public Wallet
+      </a>
+    </div>
+    <div>
+      <a
+        href="/market"
+      >
+        market
+      </a>
+      <a
+        href="/market"
+      >
+        search
+      </a>
+      <div
+        onClick={[Function]}
+      >
+        profile
+      </div>
+    </div>
+    <div>
+      <a
+        href="/market"
+        target="_blank"
+      >
+        <img
+          src="/icons/notification_icon.png"
+        />
+      </a>
+      <div
+        onClick={[Function]}
+      >
+        <img
+          src="/icons/menu_icon.png"
+        />
+      </div>
+    </div>
+  </div>
   <div>
     <div>
       <a
@@ -33,82 +78,80 @@ exports[`<MarketCollection /> should display properly 1`] = `
     </div>
   </div>
   <div>
+    <img
+      src=""
+    />
     <div>
-      <img
-        src=""
-      />
+      KITT
+    </div>
+    <div>
+      CryptoKitties
+    </div>
+  </div>
+  <div>
+    <div>
+      7.79
+       Ξ
       <div>
-        KITT
-      </div>
-      <div>
-        CryptoKitties
+         ETH
       </div>
     </div>
     <div>
+      <span>
+        0.01
+      </span>
+      Ξ (
+      <span>
+        0.13
+      </span>
+      %)
+    </div>
+  </div>
+  <div>
+    <div>
       <div>
-        7.79
-         Ξ
-        <div>
-           ETH
-        </div>
-      </div>
-      <div>
-        <span>
-          0.01
-        </span>
-        Ξ (
-        <span>
-          0.13
-        </span>
-        %)
+        <canvas
+          height={150}
+          role="img"
+          width={300}
+        />
+        <canvas
+          height={150}
+          role="img"
+          width={300}
+        />
       </div>
     </div>
     <div>
-      <div>
-        <div>
-          <canvas
-            height={150}
-            role="img"
-            width={300}
-          />
-          <canvas
-            height={150}
-            role="img"
-            width={300}
-          />
-        </div>
+      <div
+        className="undefined undefined"
+        onClick={[Function]}
+      >
+        1W
       </div>
-      <div>
-        <div
-          className="undefined undefined"
-          onClick={[Function]}
-        >
-          1W
-        </div>
-        <div
-          className="undefined "
-          onClick={[Function]}
-        >
-          1M
-        </div>
-        <div
-          className="undefined "
-          onClick={[Function]}
-        >
-          3M
-        </div>
-        <div
-          className="undefined "
-          onClick={[Function]}
-        >
-          1Y
-        </div>
-        <div
-          className="undefined "
-          onClick={[Function]}
-        >
-          ALL
-        </div>
+      <div
+        className="undefined "
+        onClick={[Function]}
+      >
+        1M
+      </div>
+      <div
+        className="undefined "
+        onClick={[Function]}
+      >
+        3M
+      </div>
+      <div
+        className="undefined "
+        onClick={[Function]}
+      >
+        1Y
+      </div>
+      <div
+        className="undefined "
+        onClick={[Function]}
+      >
+        ALL
       </div>
     </div>
   </div>

@@ -8,8 +8,14 @@ import NFTProperties from "../../../../../components/wallet_viewer/nft_details/n
 describe("<NFTProperties />", () => {
   it("should display properly", async () => {
     const testProperties = mock_nft.properties;
+    const collectionSize: number = 100;
     const tree = renderer
-      .create(<NFTProperties properties={testProperties} />)
+      .create(
+        <NFTProperties
+          properties={testProperties}
+          collectionSize={collectionSize}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
