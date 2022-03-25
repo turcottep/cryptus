@@ -18,13 +18,20 @@ export default async function get_profile_props(
       },
     };
   }
+
   try {
-    let nfts = await update_nfts_for_user(
-      user_name,
-      user.wallets[0].address,
-      user.userId
-    );
-    if (!nfts) {
+    let nfts = [];
+    user.wallets.forEach(async (wallet) => {
+      let nfts_per_wallet = await update_nfts_for_user(
+        user_name,
+        wallet.address,
+        user.userId
+      );
+      nfts.push(nfts_per_wallet);
+    });
+
+    if (nfts.length === 0) {
+      console.log("getting nft from our database");
       nfts = await get_nfts_for_user(user_name);
     }
 
@@ -35,7 +42,6 @@ export default async function get_profile_props(
 
     const networth = await calculate_networth(nfts_collections);
 
-    // console.log("networth", networth);
     user.networth = networth;
 
     return {

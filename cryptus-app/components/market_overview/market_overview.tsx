@@ -35,13 +35,6 @@ export default function MarketOverview(props: market_overview_props) {
   // const [interval, setInterval] = useState(props.networth.active);
   const [newPropCollection, setnewPropCollection] = useState(props.collections);
 
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    //do backend call
-    //setloading true
-  }, []);
-
   useEffect(() => {
     updatePrice(props.networth.active);
   }, []);
@@ -89,7 +82,6 @@ export default function MarketOverview(props: market_overview_props) {
   return (
     <div className={s.container}>
       {isMobile ? null : <DesktopHeader tab="market" />}
-      {loading && <Loading />}
       <MarketHeader />
       <NetWorth
         value={props.networth.value}

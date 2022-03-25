@@ -13,6 +13,11 @@ export default function MarketCollection(props: {
   market_collection_props: market_collection_props;
 }) {
   const { market_collection_props, isMobile } = props;
+  const [value, setValue] = useState(market_collection_props);
+  useEffect(() => {
+    console.log("Changing Props");
+    setValue(market_collection_props);
+  }, [market_collection_props]);
   console.log("MarketCollection props:", props);
   return (
     <div className={s.app}>
@@ -20,19 +25,19 @@ export default function MarketCollection(props: {
       <MarketCollectionHeader />
 
       <MarketCollectionInfos
-        collection_logo={market_collection_props.collection_logo}
-        collection_name={market_collection_props.collection_name}
-        collection_ticker={market_collection_props.collection_ticker}
+        collection_logo={value.collection_logo}
+        collection_name={value.collection_name}
+        collection_ticker={value.collection_ticker}
       />
       <CollectionFloorPrice
-        floor_price_live={market_collection_props.floor_price_live}
-        floor_price_delta={market_collection_props.floor_price_delta}
-        floor_price_timestamp={market_collection_props.floor_price_timestamp}
+        floor_price_live={value.floor_price_live}
+        floor_price_delta={value.floor_price_delta}
+        floor_price_timestamp={value.floor_price_timestamp}
       />
       <CollectionMarketGraph
-        data_price={market_collection_props.data_price}
-        data_volume={market_collection_props.volume}
-        address={market_collection_props.address}
+        data_price={value.data_price}
+        data_volume={value.volume}
+        address={value.address}
       />
     </div>
   );

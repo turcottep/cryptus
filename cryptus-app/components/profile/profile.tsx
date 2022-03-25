@@ -38,7 +38,13 @@ export default function Profile(props: {
   return (
     <div className={s.container}>
       {isMobile ? null : <DesktopHeader tab="profile" />}
-      {isMobile ? isMyProfile ? <CreatorHeader /> : <ViewerHeader /> : null}
+      {isMobile ? (
+        isMyProfile ? (
+          <CreatorHeader />
+        ) : (
+          <ViewerHeader userId={user.id} />
+        )
+      ) : null}
       {isMyProfile ? <MyProfInfos {...props} /> : <ViewProfInfos {...props} />}
       <ProfileWalletViewer collections={collections} />
       {isMobile ? <Footer /> : null}

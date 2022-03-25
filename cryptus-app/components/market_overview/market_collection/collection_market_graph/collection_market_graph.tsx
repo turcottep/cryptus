@@ -13,9 +13,17 @@ export default function CollectionMarketGraph(props: {
   data_volume: number[];
   address: string;
 }) {
-  const address = props.address;
-  const [price, setPrice] = useState(props.data_price);
-  const [volume, setVolume] = useState(props.data_volume);
+  const [value, setValue] = useState(props);
+  const address = value.address;
+  const [price, setPrice] = useState(value.data_price);
+  const [volume, setVolume] = useState(value.data_volume);
+
+  useEffect(() => {
+    setValue(props);
+    setPrice(props.data_price);
+    setVolume(props.data_volume);
+  }, [props]);
+
   const callbackFunction = async (childData) => {
     let viewingmode = intervals[childData];
     if (viewingmode == "three_months") {
