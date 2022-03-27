@@ -70,6 +70,9 @@ exports[`renders correctly 1`] = `
   <div>
     <div>
       <div>
+        <img
+          src="/images/crossPlateformLogo.png"
+        />
         Cross plateform
         <br />
         wallet viewer to
@@ -79,6 +82,9 @@ exports[`renders correctly 1`] = `
     </div>
     <div>
       <div>
+        <img
+          src="/images/marketOverviewLogo.png"
+        />
         Market overview of
         <br />
         your faverite
@@ -88,12 +94,27 @@ exports[`renders correctly 1`] = `
     </div>
     <div>
       <div>
+        <img
+          src="/images/uniqueLinkLogo.png"
+        />
         A unique link to
         <br />
         share your NFTs
         <br />
         with others
       </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      <h1>
+        Contact us on:
+      </h1>
+      <a
+        href="https://twitter.com"
+      >
+        Twitter
+      </a>
     </div>
   </div>
 </div>
