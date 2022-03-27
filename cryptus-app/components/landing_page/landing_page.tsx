@@ -109,6 +109,7 @@ export default function LandingPage() {
       <div className={s.boxesContainer}>
         <div className={s.displayBoxes}>
           <div className={s.boxesText}>
+            <img className={s.boxesLogo} src="/images/crossPlateformLogo.png" />
             Cross plateform
             <br />
             wallet viewer to
@@ -118,6 +119,7 @@ export default function LandingPage() {
         </div>
         <div className={s.displayBoxes}>
           <div className={s.boxesText}>
+            <img className={s.boxesLogo} src="/images/marketOverviewLogo.png" />
             Market overview of
             <br />
             your faverite
@@ -127,12 +129,22 @@ export default function LandingPage() {
         </div>
         <div className={s.displayBoxes}>
           <div className={s.boxesText}>
+            <img className={s.boxesLogo} src="/images/uniqueLinkLogo.png" />
             A unique link to
             <br />
             share your NFTs
             <br />
             with others
           </div>
+        </div>
+      </div>
+
+      <div className={s.contactUsSection}>
+        <div className={s.contactUsText}>
+          <h1>Contact us on:</h1>
+          <a href="https://twitter.com" className={s.twitter}>
+            Twitter
+          </a>
         </div>
       </div>
     </div>
