@@ -17,14 +17,20 @@ export type collection = {
   timestamp: string;
 };
 
-export default function MarketViewer(props: { collections: collection[] }) {
+export default function MarketViewer(props: {
+  collections: collection[];
+  callback_open;
+}) {
   return (
     <div id="market_viewer" className={s.container}>
       {/* <div className={s.favorites}>
         <FavoriteCollections collections={props.collections} />
       </div> */}
       <div className={s.market}>
-        <MarketCollections collections={props.collections} />
+        <MarketCollections
+          collections={props.collections}
+          callback={props.callback_open}
+        />
       </div>
     </div>
   );

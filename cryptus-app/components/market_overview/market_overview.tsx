@@ -16,6 +16,7 @@ import { each } from "jquery";
 import Footer from "../footer/footer";
 import DesktopHeader from "../header/desktop_header/desktop_header";
 import Loading from "../utils/loading/loading";
+import MarketCollection from "./market_collection/market_collection";
 
 type market_overview_props = {
   date: string;
@@ -33,9 +34,12 @@ export default function MarketOverview(props: market_overview_props) {
   const { isMobile } = props;
   const [price, setPrice] = useState([]);
   // const [interval, setInterval] = useState(props.networth.active);
-  const [newPropCollection, setnewPropCollection] = useState(props.collections);
+  const [newPropCollection, setnewPropCollection] = useState<collection[]>(
+    props.collections
+  );
 
   const [loading, setLoading] = useState(false);
+  const [show_card, set_show_card] = useState(-1);
 
   useEffect(() => {
     //do backend call
@@ -86,10 +90,38 @@ export default function MarketOverview(props: market_overview_props) {
     updatePrice(interval);
   };
 
+  const close_card = () => {
+    console.log("close card");
+    set_show_card(-1);
+  };
+
+  const open_card = (i) => {
+    console.log("open card");
+    set_show_card(i);
+  };
+
   return (
     <div className={s.container}>
       {isMobile ? null : <DesktopHeader tab="market" />}
       {loading && <Loading />}
+      {show_card !== -1 && (
+        <MarketCollection
+          isMobile={false}
+          callback_close={close_card}
+          market_collection_props={{
+            collection_name: newPropCollection[show_card].name,
+            collection_logo: newPropCollection[show_card].logo,
+            collection_ticker: newPropCollection[show_card].ticker,
+            floor_price_live: newPropCollection[show_card].floor_price,
+            floor_price_delta: newPropCollection[show_card].floor_price_delta,
+            floor_price_timestamp: newPropCollection[show_card].timestamp,
+            data_price: newPropCollection[show_card].data_price,
+            count: [],
+            volume: newPropCollection[show_card].data_volume,
+            address: newPropCollection[show_card].address,
+          }}
+        />
+      )}
       <MarketHeader />
       <NetWorth
         value={props.networth.value}
@@ -102,7 +134,7 @@ export default function MarketOverview(props: market_overview_props) {
         <SearchBar />
         <SortButton />
       </div>
-      <MarketViewer collections={newPropCollection} />
+      <MarketViewer collections={newPropCollection} callback_open={open_card} />
       {isMobile ? <Footer /> : null}
     </div>
   );

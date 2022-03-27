@@ -7,14 +7,21 @@ import { collection } from "../market_viewer";
 // Need to add prop for collections
 export default function MarketCollections(props: {
   collections: collection[];
+  callback;
 }) {
   return (
     <div id="market_collections" className={s.container}>
       <MarketCollectionsHeader />
       <div className={s.market}>
         {props.collections ? (
-          props.collections.map((c) => (
-            <div key={c.id} className={s.collection}>
+          props.collections.map((c, i) => (
+            <div
+              key={i}
+              className={s.collection}
+              onClick={() => {
+                props.callback(i);
+              }}
+            >
               <CollectionRow collection={c} />
             </div>
           ))

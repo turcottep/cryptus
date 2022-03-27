@@ -1,29 +1,44 @@
 @use "/styles/variables" as v;
 
-.app {
-  flex: 1 1 auto;
-
-  display: flex;
-  flex-direction: column;
-
-  margin: auto;
-
-  background-color: v.$bg-color;
-  color: v.$text-color;
-
-  width: 100vw;
-
-  @media (max-width: v.$mobile) {
-    width: min(100vw, v.$mobile);
-  }
-}
-
 .container {
-  flex: 1 1 auto;
-
+  flex: 0 0 none;
+  z-index: 100;
+  width: 512px;
+  padding: 16px;
+  border-radius: 16px;
+  position: relative;
   margin-top: v.$header-h;
 
   @media (max-width: v.$mobile) {
     width: min(100vw, v.$mobile);
   }
+
+  background-color: v.$bg-color;
+  cursor: default;
+}
+
+.backdrop {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.x_button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  cursor: pointer;
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+  width: 24px;
+  height: 24px;
 }
