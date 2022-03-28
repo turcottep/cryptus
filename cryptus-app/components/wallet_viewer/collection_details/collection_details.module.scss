@@ -1,8 +1,31 @@
 @use "/styles/variables" as v;
 
 .container {
-  display: flex;
-  flex-direction: column;
+  flex: 0 0 none;
+  z-index: 100;
+  width: 512px;
+  padding: 16px;
+  border-radius: 16px;
+  position: relative;
+  margin-top: v.$header-h;
 
-  width: 100%;
+  @media (max-width: v.$mobile) {
+    width: min(100vw, v.$mobile);
+  }
+
+  background-color: v.$bg-color;
+  cursor: default;
+}
+
+.backdrop {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
