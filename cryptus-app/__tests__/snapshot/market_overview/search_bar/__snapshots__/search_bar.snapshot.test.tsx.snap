@@ -7,7 +7,7 @@ exports[`<SearchBar /> should display properly 1`] = `
       src="magnifier.svg"
     />
     <input
-      placeholder="Search"
+      placeholder="Search comming soon"
       type="text"
     />
   </div>
