@@ -29,8 +29,7 @@ export default function NftInfo(props: {
         </div>
         <NftBuyButton price={listed_price} url={external_url} />
       </div>
-      <NftBuyButton price={listed_price} url={external_url} />
-      {`Estimated price: ${props.estimated_price} eth`}
+      {`Estimated price: ${props.estimated_price} eth`}{" "}
     </div>
   );
 }
