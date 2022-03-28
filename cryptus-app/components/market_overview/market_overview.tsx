@@ -14,6 +14,8 @@ import MarketViewer, { collection } from "../market_viewer/market_viewer";
 import { intervals } from "./net_worth/time_interval/time_interval";
 import { each } from "jquery";
 import Footer from "../footer/footer";
+import DesktopHeader from "../header/desktop_header/desktop_header";
+import Loading from "../utils/loading/loading";
 
 type market_overview_props = {
   date: string;
@@ -24,12 +26,21 @@ type market_overview_props = {
     change: string;
   };
   collections: collection[];
+  isMobile: boolean;
 };
 
 export default function MarketOverview(props: market_overview_props) {
+  const { isMobile } = props;
   const [price, setPrice] = useState([]);
   // const [interval, setInterval] = useState(props.networth.active);
   const [newPropCollection, setnewPropCollection] = useState(props.collections);
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    //do backend call
+    //setloading true
+  }, []);
 
   useEffect(() => {
     updatePrice(props.networth.active);
@@ -77,6 +88,8 @@ export default function MarketOverview(props: market_overview_props) {
 
   return (
     <div className={s.container}>
+      {isMobile ? null : <DesktopHeader tab="market" />}
+      {loading && <Loading />}
       <MarketHeader />
       <NetWorth
         value={props.networth.value}
@@ -90,7 +103,7 @@ export default function MarketOverview(props: market_overview_props) {
         <SortButton />
       </div>
       <MarketViewer collections={newPropCollection} />
-      <Footer />
+      {isMobile ? <Footer /> : null}
     </div>
   );
 }

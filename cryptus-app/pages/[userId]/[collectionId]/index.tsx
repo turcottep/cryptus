@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from "react";
 
-import { nft_collection } from "../../../lib/data_types";
+import { isMobile as mobile } from "react-device-detect";
 
+import { nft_collection, profile_props } from "../../../lib/data_types";
 import CollectionDetails from "../../../components/wallet_viewer/collection_details/collection_details";
-
 import AnimatedDiv from "../../../components/utils/animated_div";
 import get_profile_props from "../../../lib/get_profile_props";
 import { get_clean_name } from "../../../lib/get_name_without_spaces";
 
-export default function post(props: { user; collection: nft_collection }) {
+export default function CollectionDetailsPage(props: {
+  user;
+  collection: nft_collection;
+}) {
   const { collection, user } = props;
-  AnimatedDiv;
+
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(mobile);
+    console.log("isMobile", isMobile);
+  }, [mobile]);
+
   return (
     <AnimatedDiv>
-      <CollectionDetails collection={collection} />
+      <CollectionDetails collection={collection} isMobile={isMobile} />
     </AnimatedDiv>
   );
 }

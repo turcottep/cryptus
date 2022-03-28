@@ -2,11 +2,13 @@
 
 exports[`<SortButton /> should display properly 1`] = `
 <div>
-  <img
-    src="menu.svg"
-  />
   <div>
-    Sort
+    <img
+      src="menu.svg"
+    />
+    <div>
+      Sort
+    </div>
   </div>
 </div>
 `;

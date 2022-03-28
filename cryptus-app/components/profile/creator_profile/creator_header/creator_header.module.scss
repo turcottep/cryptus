@@ -9,10 +9,10 @@
   align-items: center;
 
   height: v.$header-h;
-  width: min(100vw, v.$mobile);
+  max-width: min(100vw, v.$mobile);
   padding: 0px 8px;
 
-  background: linear-gradient(
+  background-color: linear-gradient(
     rgba(v.$header-color, 1),
     rgba(v.$header-color, 0)
   );

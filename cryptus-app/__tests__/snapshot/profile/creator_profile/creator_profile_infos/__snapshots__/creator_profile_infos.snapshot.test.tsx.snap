@@ -49,11 +49,11 @@ exports[`CreatorProfileInfos renders correctly 1`] = `
   </div>
   <div>
     <div>
-      turcotte
+      A username
     </div>
   </div>
   <div>
-    Je vais a MTL pour chercher un bike
+    Here is a description
   </div>
   <div>
     NETWORTH:undefined
