@@ -16,16 +16,16 @@ export default function MarketCollection(props: {
   const { market_collection_props, isMobile } = props;
   console.log("MarketCollection props:", props);
 
-  const [price, setPrice] = useState(props.data_price);
-  const [volume, setVolume] = useState(props.volume);
-  const [delta, setDelta] = useState(props.floor_price_delta);
+  const [price, setPrice] = useState(market_collection_props.data_price);
+  const [volume, setVolume] = useState(market_collection_props.volume);
+  const [delta, setDelta] = useState(market_collection_props.floor_price_delta);
 
   const callbackFunction = async (childData) => {
     let viewingmode = intervals[childData];
     if (viewingmode == "three_months") {
       viewingmode = "3month";
     }
-    const address = props.address;
+    const address = market_collection_props.address;
     console.log("new viewingmode : ", viewingmode);
     const res = await fetch("/api/sales/", {
       method: "POST",
@@ -50,20 +50,20 @@ export default function MarketCollection(props: {
       <MarketCollectionHeader />
       <div className={s.container}>
         <MarketCollectionInfos
-          collection_logo={props.collection_logo}
-          collection_name={props.collection_name}
-          collection_ticker={props.collection_ticker}
+          collection_logo={market_collection_props.collection_logo}
+          collection_name={market_collection_props.collection_name}
+          collection_ticker={market_collection_props.collection_ticker}
         />
         <CollectionFloorPrice
-          floor_price_live={props.floor_price_live}
+          floor_price_live={market_collection_props.floor_price_live}
           floor_price_delta={delta}
-          floor_price_timestamp={props.floor_price_timestamp}
+          floor_price_timestamp={market_collection_props.floor_price_timestamp}
         />
         <CollectionMarketGraph
           callback={callbackFunction}
           data_price={price}
           data_volume={volume}
-          address={props.address}
+          address={market_collection_props.address}
         />
       </div>
     </div>
