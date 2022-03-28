@@ -142,8 +142,8 @@ export default function LandingPage() {
       <div className={s.contactUsSection}>
         <div className={s.contactUsText}>
           <h1>Contact us on:</h1>
-          <a href="https://twitter.com" className={s.twitter}>
-            Twitter
+          <a href="https://twitter.com">
+            <img className={s.twitterLogo} src="/images/twitter_black.png" />
           </a>
         </div>
       </div>

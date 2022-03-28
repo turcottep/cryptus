@@ -113,7 +113,9 @@ exports[`renders correctly 1`] = `
       <a
         href="https://twitter.com"
       >
-        Twitter
+        <img
+          src="/images/twitter_black.png"
+        />
       </a>
     </div>
   </div>
