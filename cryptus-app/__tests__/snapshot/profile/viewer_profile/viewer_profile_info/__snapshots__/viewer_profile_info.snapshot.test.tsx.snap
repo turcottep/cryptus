@@ -16,5 +16,8 @@ exports[`ViewerProfileInfos renders correctly 1`] = `
   <div>
     Je vais a MTL pour chercher un bike
   </div>
+  <div>
+    NETWORTH:undefined eth
+  </div>
 </div>
 `;

@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
-import s from "./edit_profile.module.scss";
-import { Button, TextField } from "@mui/material";
+import React, { useEffect, useState } from "react";
 
 import { signIn, useSession } from "next-auth/client";
-import getUserByUsername from "../../../lib/getUserByUsername";
-import CreatorHeader from "../creator_profile/creator_header/creator_header";
-import { nft_collection, profile_props } from "../../../lib/data_types";
-import ViewerProfilePicture from "../viewer_profile/viewer_profile_infos/viewer_profile_picture/viewer_profile_picture";
 import Loading from "../../utils/loading";
+
+import getUserByUsername from "../../../lib/getUserByUsername";
+import router from "next/router";
+import CreatorHeader from "../creator_profile/creator_header/creator_header";
+import { Button, Input, TextField } from "@mui/material";
 
 const errors = {
   UniqueUsername: "This username is already in use!",
@@ -17,24 +16,11 @@ const errors = {
 
 declare let window: any;
 
-export default function EditProfile(props: {
-  collections: nft_collection[];
-  user: any;
-}) {
-  return (
-    <div className={s.container}>
-      <CreatorHeader />
-      <EditProfileInfos {...props} />
-    </div>
-  );
-}
-
-const EditProfileInfos = (props: profile_props) => {
-  const { description, username, networth } = props.user;
+export default function EditProfile() {
   const [session, sessionLoading] = useSession();
   const [loading, setLoading] = useState(false);
-  const [user_name, setUserName] = useState(username);
-  const [desc, setDesc] = useState(description);
+  const [user_name, setUserName] = useState("");
+  const [description, setDescription] = useState("");
 
   const [error, setError] = useState("");
 
@@ -51,7 +37,7 @@ const EditProfileInfos = (props: profile_props) => {
       try {
         const user = await getUserByUsername(user_id, false, false);
         console.log("user from frontend", user);
-        setDesc(user.description);
+        setDescription(user.description);
       } catch (error) {
         console.log("error", error);
       }
@@ -67,7 +53,7 @@ const EditProfileInfos = (props: profile_props) => {
     if (id == "username") {
       setUserName(value);
     } else if (id == "description") {
-      setDesc(value);
+      setDescription(value);
     }
   };
 
@@ -120,52 +106,56 @@ const EditProfileInfos = (props: profile_props) => {
   };
 
   return (
-    <div className={s.smallerContainer}>
+    <div className="flex flex-col ">
+      {/* <FormHeader title="Picture and Description" step={props.step} /> */}
+
+      {session ? <CreatorHeader /> : <div> Connect</div>}
       {loading ? (
         <div className="absolute h-full w-full text-center mx-auto my-auto z-10">
           <Loading />
         </div>
       ) : null}
-      <div className={s.row}>
-        <ViewerProfilePicture />
-        <div className={s.edits}>
-          <Button
-            className={s.button}
-            disableElevation
-            variant="contained"
+      <form id="form" className="form w-full">
+        <div className="text-xl  text-center  py-8">Edit Profile</div>
+        <div className="flex xl:text-xl bg-white flex-col mx-12 ">
+          <TextField
+            type="username"
+            id="outlined-basic"
+            onChange={handleChange}
+            label="Username"
+            defaultValue={user_name}
+            error={!!handleErrorUsername()}
             size="small"
+            required
+          />
+        </div>
+        <div className="flex xl:text-xl bg-white flex-col mx-12 mt-8">
+          <TextField
+            type="textarea"
+            id="outlined-basic"
+            onChange={handleChange}
+            // placeholder="Description"
+            label="Description"
+            defaultValue={"deez"}
+            size="small"
+            required
+          />
+        </div>
+
+        <div className="flex xl:text-xl flex-col mx-12 mt-8">
+          <Button
+            type="button"
+            variant="contained"
             onClick={() => next_step()}
+            className="text-xl text-center whitespace-nowrap bg-gray-600 text-white font-bold rounded-lg w-full px-2 py-2 mt-2"
           >
             Apply
           </Button>
         </div>
-      </div>
-      <div className={s.editName}>
-        <TextField
-          type="username"
-          id="outlined-basic"
-          onChange={handleChange}
-          label="Username"
-          defaultValue={user_name}
-          error={!!handleErrorUsername()}
-          size="small"
-          required
-        />
-      </div>
-      <div className={s.editDesc}>
-        <TextField
-          type="textarea"
-          id="outlined-basic"
-          onChange={handleChange}
-          label="Description"
-          defaultValue={desc}
-          size="small"
-          required
-        />
-      </div>
+      </form>
     </div>
   );
-};
+}
 
 async function updateUser(
   old_user_name: string,

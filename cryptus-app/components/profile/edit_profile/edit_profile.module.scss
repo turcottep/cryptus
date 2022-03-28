@@ -1,0 +1,71 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.smallerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 8px;
+
+  border-bottom: 1px solid rgba($color: v.$text-color, $alpha: 0.1);
+
+  width: 100%;
+  height: 160px; //For too long description
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.row {
+  flex-direction: row;
+  display: flex;
+
+  justify-content: space-between;
+  width: 100%;
+}
+.edits {
+  flex-direction: row;
+  display: flex;
+
+  margin-right: 0;
+  vertical-align: bottom;
+
+  gap: 10px;
+  padding-bottom: 30px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 30px;
+}
+
+.editName {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 48px;
+  margin-right: 48px;
+
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.editDesc {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 48px;
+  margin-right: 48px;
+  margin-top: 16px;
+
+  font-size: 20px;
+  line-height: 28px;
+}

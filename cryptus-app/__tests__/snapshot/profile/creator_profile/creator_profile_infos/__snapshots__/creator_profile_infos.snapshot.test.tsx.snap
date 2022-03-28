@@ -17,6 +17,13 @@ exports[`CreatorProfileInfos renders correctly 1`] = `
           Edit Profile
         </a>
       </div>
+      <div>
+        <button
+          onClick={[Function]}
+        >
+          Edit NFTs
+        </button>
+      </div>
     </div>
   </div>
   <div>
@@ -26,6 +33,9 @@ exports[`CreatorProfileInfos renders correctly 1`] = `
   </div>
   <div>
     Je vais a MTL pour chercher un bike
+  </div>
+  <div>
+    NETWORTH:undefined
   </div>
 </div>
 `;

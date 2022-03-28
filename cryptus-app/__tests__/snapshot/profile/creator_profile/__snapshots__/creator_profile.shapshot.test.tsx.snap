@@ -38,6 +38,13 @@ exports[`<CreatorProfile /> CreatorProfile renders correctly 1`] = `
             Edit Profile
           </a>
         </div>
+        <div>
+          <button
+            onClick={[Function]}
+          >
+            Edit NFTs
+          </button>
+        </div>
       </div>
     </div>
     <div>
@@ -47,6 +54,9 @@ exports[`<CreatorProfile /> CreatorProfile renders correctly 1`] = `
     </div>
     <div>
       Je vais a MTL pour chercher un bike
+    </div>
+    <div>
+      NETWORTH:undefined
     </div>
   </div>
   <div>
@@ -60,17 +70,8 @@ exports[`<CreatorProfile /> CreatorProfile renders correctly 1`] = `
         <div>
           CryptoKitties
         </div>
-      </div>
-    </div>
-    <div>
-      <div>
-        <div
-          onClick={[Function]}
-        >
-          <div />
-        </div>
         <div>
-          BlockCities
+          
         </div>
       </div>
     </div>

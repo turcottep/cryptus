@@ -30,4 +30,12 @@
   vertical-align: bottom;
 
   gap: 10px;
+  padding-bottom: 30px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 30px;
 }
