@@ -23,7 +23,12 @@ describe("<MarketCollections />", () => {
     const test_collections = [mock_collection];
 
     const tree = renderer
-      .create(<MarketCollections collections={test_collections} />)
+      .create(
+        <MarketCollections
+          collections={test_collections}
+          callback={undefined}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

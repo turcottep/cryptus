@@ -31,7 +31,12 @@ describe("<MarketViewer />", () => {
     const test_collections = [mock_collection];
 
     const tree = renderer
-      .create(<MarketViewer collections={test_collections} />)
+      .create(
+        <MarketViewer
+          collections={test_collections}
+          callback_open={undefined}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

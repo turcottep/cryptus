@@ -1,67 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CollectionDetails /> should display properly 1`] = `
-<div>
+<div
+  id="bg"
+  onClick={[Function]}
+>
   <div>
-    <a
-      onClick={[Function]}
-      target="_blank"
-    >
-      <img
-        src="/icons/back_icon.png"
-      />
-    </a>
     <div
       onClick={[Function]}
     >
-      <img
-        src="/icons/more_icon.png"
-      />
-    </div>
-  </div>
-  <div>
-    <div>
-      CryptoKitties
-    </div>
-    <div>
-      3
-    </div>
-  </div>
-  <div>
-    <div>
-      <div
-        onClick={[Function]}
+      <svg
+        className="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={3}
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <img
-          src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
+        <path
+          d="M6 18L18 6M6 6l12 12"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
+      </svg>
+    </div>
+    <div>
+      <div>
+        CryptoKitties
       </div>
       <div>
-        Savannah R1-R3, Sly R1
+        3
       </div>
     </div>
     <div>
-      <div
-        onClick={[Function]}
-      >
-        <img
-          src="https://lh3.googleusercontent.com/lklxKijfeWuWTqU9ONM4U8T7vUXn2wuZYurL6kw-z2MfV82xzWVGzss0DzOTD_4QD2c0r3RQi8ibuK0egAN0Vzyw8w"
-        />
+      <div>
+        <div
+          onClick={[Function]}
+        >
+          <img
+            src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
+          />
+        </div>
+        <div>
+          Savannah R1-R3, Sly R1
+        </div>
       </div>
       <div>
-        Couple 69 2/2
-      </div>
-    </div>
-    <div>
-      <div
-        onClick={[Function]}
-      >
-        <img
-          src="https://lh3.googleusercontent.com/kPUtxNggeG8gMYaEjGMpRZACIGqR3IF3texGniVTI7lBxk8vz3m3LUM6bENWq1tlHjtKoYjqeGB1Y3yn-Im0sPBR7Sm7Rczxr0zYdw"
-        />
+        <div
+          onClick={[Function]}
+        >
+          <img
+            src="https://lh3.googleusercontent.com/lklxKijfeWuWTqU9ONM4U8T7vUXn2wuZYurL6kw-z2MfV82xzWVGzss0DzOTD_4QD2c0r3RQi8ibuK0egAN0Vzyw8w"
+          />
+        </div>
+        <div>
+          Couple 69 2/2
+        </div>
       </div>
       <div>
-        Cyborg+Springcrocus; Caffeine
+        <div
+          onClick={[Function]}
+        >
+          <img
+            src="https://lh3.googleusercontent.com/kPUtxNggeG8gMYaEjGMpRZACIGqR3IF3texGniVTI7lBxk8vz3m3LUM6bENWq1tlHjtKoYjqeGB1Y3yn-Im0sPBR7Sm7Rczxr0zYdw"
+          />
+        </div>
+        <div>
+          Cyborg+Springcrocus; Caffeine
+        </div>
       </div>
     </div>
   </div>

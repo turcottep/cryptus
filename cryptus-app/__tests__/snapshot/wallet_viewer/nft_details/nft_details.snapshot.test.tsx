@@ -35,7 +35,9 @@ describe("<NftDetails />", () => {
       listed_price: 5,
       isMobile: true,
     };
-    const tree = renderer.create(<NftDetails {...details} />).toJSON();
+    const tree = renderer
+      .create(<NftDetails callback_close={undefined} {...details} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

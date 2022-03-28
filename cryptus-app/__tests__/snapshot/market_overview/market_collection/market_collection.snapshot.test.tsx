@@ -3,7 +3,6 @@ import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
 import { mock_collection } from "../../../../lib/mocks";
-import { market_collection_props } from "../../../../pages/market/[address]";
 import MarketCollection from "../../../../components/market_overview/market_collection/market_collection";
 
 describe("<MarketCollection />", () => {
@@ -24,7 +23,9 @@ describe("<MarketCollection />", () => {
       isMobile: true,
     };
 
-    const tree = renderer.create(<MarketCollection {...test_props} />).toJSON();
+    const tree = renderer
+      .create(<MarketCollection callback_close={undefined} {...test_props} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
