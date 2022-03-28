@@ -94,11 +94,12 @@ export async function getServerSideProps(context) {
         viewingmode,
       }),
     });
-    const { price, count, volume } = await res.json();
+    const { price, count, volume, delta } = await res.json();
 
     summary_props_mock.data_price = price;
     summary_props_mock.count = count;
     summary_props_mock.volume = volume;
+    summary_props_mock.floor_price_delta = delta;
 
     return {
       props: {

@@ -38,8 +38,7 @@ export default function MarketOverview(props: market_overview_props) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    //do backend call
-    //setloading true
+    updatePrice(props.networth.active);
   }, []);
 
   useEffect(() => {
@@ -69,16 +68,19 @@ export default function MarketOverview(props: market_overview_props) {
       }),
     });
 
-    const { prices, counts } = await res.json();
-    const newPropCollectionTemp = [];
+    const { prices, counts, delta } = await res.json();
 
-    for (let i = 0; i < props.collections.length; i++) {
-      const element = props.collections[i];
-      element.data_price = prices[i];
-      newPropCollectionTemp.push(element);
+    if (prices) {
+      const newPropCollectionTemp = [];
+
+      for (let i = 0; i < props.collections.length; i++) {
+        const element = props.collections[i];
+        element.data_price = prices[i];
+        element.floor_price_delta = delta[i];
+        newPropCollectionTemp.push(element);
+      }
+      setnewPropCollection(newPropCollectionTemp);
     }
-
-    setnewPropCollection(newPropCollectionTemp);
   };
 
   const callbackGraph = async (interval) => {
