@@ -1,12 +1,8 @@
 import React from "react";
 import Settings from "../components/settings/settings";
-import { nft, profile_props } from "../lib/data_types";
-import getMockProps from "../lib/get_mock_props";
+
 
 export default function Home({ data }) {
-  const mock_props = getMockProps() as profile_props;
-  const props = mock_props.user
-  console.log(props)
   return (
     <div className="">
       <title>Public Wallet</title>
@@ -28,7 +24,7 @@ export default function Home({ data }) {
       />
 
       <main>
-        <Settings user = {props}/>
+        <Settings />
       </main>
     </div>
   );

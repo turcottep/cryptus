@@ -1,18 +1,24 @@
 @use "/styles/variables" as v;
 
 .container {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 
-    flex-direction: column;
+  flex-direction: column;
 
-    opacity: 0.5;
-  }
+  opacity: 0.5;
+}
 
 .settingCol {
-    flex-direction: row;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    font-size: v.$font-size-m;
+  font-size: v.$font-size-m;
+}
+
+.iconDiv {
+  display: flex;
+  justify-content: center;
+  width: 48px;
 }

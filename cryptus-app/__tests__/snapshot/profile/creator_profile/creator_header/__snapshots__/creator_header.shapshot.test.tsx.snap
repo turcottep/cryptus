@@ -17,7 +17,7 @@ exports[`CreatorHeader renders correctly 1`] = `
     onClick={[Function]}
   >
     <img
-      src="/icons/more_icon.png"
+      src="/icons/settings_icon.png"
     />
   </div>
 </div>

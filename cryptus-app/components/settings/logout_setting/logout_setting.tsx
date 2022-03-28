@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { signOut } from "next-auth/client";
 import s from "./logout_setting.module.scss";
 
-
-
 export default function LogoutSetting() {
-    return (
-      <div className={s.container}>
-        <div className={s.settingCol}>
-          Log out
-          <img 
+  return (
+    <div className={s.container}>
+      <div className={s.settingCol}>
+        Log out
+        <div className={s.iconDiv}>
+          <img
             onClick={() => {
               signOut({
                 redirect: true,
@@ -17,9 +16,10 @@ export default function LogoutSetting() {
               });
             }}
             className={s.icon}
-            src="/icons/logout_icon.png" />
+            src="/icons/logout_icon.png"
+          />
         </div>
+      </div>
     </div>
-        
   );
 }

@@ -21,7 +21,7 @@ export default function CreatorHeader() {
     <div className={s.container}>
       <BackButton url={`/${username}`} />
       <ContextualPageName name={username} />
-      <ContextualMenuButton img="/icons/more_icon.png" />
+      <ContextualMenuButton img="/icons/settings_icon.png" />
     </div>
   );
 }
