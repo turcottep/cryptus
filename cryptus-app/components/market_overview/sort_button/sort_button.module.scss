@@ -2,22 +2,24 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 .container {
-  flex: 0 1 auto;
+  flex: 0 0 none;
+  display: flex;
+  width: 150px;
+}
+
+.box {
+  flex: 1 1 auto;
   gap: 4px;
-  width: 76px;
-  height: 32px;
+
   display: flex;
   align-items: center;
   flex-direction: row;
   border-radius: 16px;
   background: #ebe7e3;
 }
-.text {
-  padding: 0px 8px 0px 4px;
-  color: v.$header-color;
-}
+
 .menu {
   color: v.$header-color;
   padding-left: 8px;
-  width: 32px;
+  width: 24px;
 }

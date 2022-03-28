@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import { isMobile as mobile } from "react-device-detect";
+
 import Graph from "../../components/graph/graph";
 import MarketCollection from "../../components/market_overview/market_collection/market_collection";
 import FeatureIamTesting from "../../components/template/pagetemplate/pagetemplate";
@@ -20,6 +23,12 @@ export type market_collection_props = {
 
 export default function Home(props: market_collection_props) {
   const { data_price } = props;
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(mobile);
+    console.log("isMobile", isMobile);
+  }, [mobile]);
 
   const mock_volume = data_price
     ? data_price.map((row) => {
@@ -48,7 +57,7 @@ export default function Home(props: market_collection_props) {
       />
 
       <main>
-        <MarketCollection {...props} />
+        <MarketCollection market_collection_props={props} isMobile={isMobile} />
       </main>
     </div>
   );

@@ -14,6 +14,7 @@ type nft_details_props = {
     total: number;
   };
   listed_price: number;
+  isMobile: boolean;
 };
 
 describe("<NftDetails />", () => {
@@ -32,6 +33,7 @@ describe("<NftDetails />", () => {
         total: 2000000,
       },
       listed_price: 5,
+      isMobile: true,
     };
     const tree = renderer.create(<NftDetails {...details} />).toJSON();
     expect(tree).toMatchSnapshot();

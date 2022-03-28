@@ -18,7 +18,9 @@ export default function MarketHeader() {
 
   return (
     <div className={s.container}>
-      <DateComponent date={day} />
+      <div className={s.box}>
+        <DateComponent date={day} />
+      </div>
     </div>
   );
 }

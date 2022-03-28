@@ -2,7 +2,9 @@
 
 exports[`EditNFTsButton renders correctly 1`] = `
 <div>
-  <button>
+  <button
+    onClick={[Function]}
+  >
     Edit NFTs
   </button>
 </div>

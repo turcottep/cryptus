@@ -14,6 +14,7 @@ describe("<PropertyBlock />", () => {
           value={mock_nft.last_sale_price.toString()}
           count={1}
           rarity={mock_nft.rarity_rank}
+          collectionSize={100}
         />
       )
       .toJSON();
