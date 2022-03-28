@@ -7,7 +7,7 @@ import getUserByUsername from "../../../lib/getUserByUsername";
 import CreatorHeader from "../creator_profile/creator_header/creator_header";
 import { nft_collection, profile_props } from "../../../lib/data_types";
 import ViewerProfilePicture from "../viewer_profile/viewer_profile_infos/viewer_profile_picture/viewer_profile_picture";
-import Loading from "../../utils/loading";
+import Loading from "../../utils/loading/loading";
 
 const errors = {
   UniqueUsername: "This username is already in use!",

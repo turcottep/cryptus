@@ -19,8 +19,5 @@ exports[`ViewerProfileInfos renders correctly 1`] = `
   <div>
     NETWORTH:420 eth
   </div>
-  <div>
-    NETWORTH:undefined eth
-  </div>
 </div>
 `;

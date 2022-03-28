@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { signIn, useSession } from "next-auth/client";
-import Loading from "../../utils/loading";
+import Loading from "../../utils/loading/loading";
 
 import getUserByUsername from "../../../lib/getUserByUsername";
 import router from "next/router";
