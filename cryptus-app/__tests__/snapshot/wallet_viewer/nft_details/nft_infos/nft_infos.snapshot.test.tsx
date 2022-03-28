@@ -8,7 +8,7 @@ import NftInfo from "../../../../../components/wallet_viewer/nft_details/nft_inf
 describe("<NftInfo />", () => {
   it("should display the correct NFT information", async () => {
     const tree = renderer
-      .create(<NftInfo nft={mock_nft} listed_price={5} />)
+      .create(<NftInfo nft={mock_nft} listed_price={5} estimated_price={0} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
