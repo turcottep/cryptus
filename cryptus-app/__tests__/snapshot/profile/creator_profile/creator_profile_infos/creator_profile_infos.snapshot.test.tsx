@@ -2,6 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { profile_props, nft_collection } from "../../../../../lib/data_types";
 import CreatorProfileInfos from "../../../../../components/profile/creator_profile/creator_profile_infos/creator_profile_infos";
+import { mock_collection } from "../../../../../lib/mocks";
 
 it("CreatorProfileInfos renders correctly", () => {
   const collections: nft_collection[] = [];
@@ -27,8 +28,13 @@ it("CreatorProfileInfos renders correctly", () => {
     ],
   };
   const mock_props: profile_props = {
-    user: user,
-    collections: collections,
+    user: {
+      networth: 5,
+      description: "Whatever",
+      username: "Tester",
+      address: "test_address",
+    },
+    collections: [mock_collection],
   };
 
   const tree = renderer

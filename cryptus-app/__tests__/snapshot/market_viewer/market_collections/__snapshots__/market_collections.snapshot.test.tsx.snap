@@ -5,13 +5,11 @@ exports[`<MarketCollections /> should display properly 1`] = `
   id="market_collections"
 >
   <div>
+    <img
+      src="icons/favorite_icon.png"
+    />
     <div>
-      <img
-        src="/icons/market_icon.png"
-      />
-    </div>
-    <div>
-      Market
+      My Collections
     </div>
   </div>
   <div>

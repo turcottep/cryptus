@@ -10,11 +10,14 @@ exports[`ViewerProfileInfos renders correctly 1`] = `
   </div>
   <div>
     <div>
-      turcotte
+      Tester
     </div>
   </div>
   <div>
-    Je vais a MTL pour chercher un bike
+    Whatever
+  </div>
+  <div>
+    NETWORTH:5 eth
   </div>
 </div>
 `;

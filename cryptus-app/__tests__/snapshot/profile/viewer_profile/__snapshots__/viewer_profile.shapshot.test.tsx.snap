@@ -31,11 +31,14 @@ exports[`<ViewerProfile /> ViewerProfile renders correctly 1`] = `
     </div>
     <div>
       <div>
-        turcotte
+        Tester
       </div>
     </div>
     <div>
-      Je vais a MTL pour chercher un bike
+      Whatever
+    </div>
+    <div>
+      NETWORTH:5 eth
     </div>
   </div>
   <div>
@@ -49,17 +52,8 @@ exports[`<ViewerProfile /> ViewerProfile renders correctly 1`] = `
         <div>
           CryptoKitties
         </div>
-      </div>
-    </div>
-    <div>
-      <div>
-        <div
-          onClick={[Function]}
-        >
-          <div />
-        </div>
         <div>
-          BlockCities
+          
         </div>
       </div>
     </div>
