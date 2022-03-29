@@ -48,7 +48,11 @@ describe("<Profile />", () => {
       ],
     };
 
-    const tree = renderer.create(<Profile {...mock_props} />).toJSON();
+    const tree = renderer
+      .create(
+        <Profile collections={collections} user={user} isMobile={false} />
+      )
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

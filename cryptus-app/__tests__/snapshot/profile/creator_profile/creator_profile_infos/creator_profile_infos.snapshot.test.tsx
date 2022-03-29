@@ -45,7 +45,16 @@ it("CreatorProfileInfos renders correctly", () => {
   };
 
   const tree = renderer
-    .create(<CreatorProfileInfos {...mock_props} />)
+    .create(
+      <CreatorProfileInfos
+        profile_props={undefined}
+        callback_filter={function (new_filter: string[]): void {
+          throw new Error("Function not implemented.");
+        }}
+        initial_filter={[]}
+        {...mock_props}
+      />
+    )
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

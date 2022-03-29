@@ -3,11 +3,11 @@ import s from "./edit_profile.module.scss";
 import { Button, TextField } from "@mui/material";
 
 import { signIn, useSession } from "next-auth/client";
-import getUserByUsername from "../../../lib/getUserByUsername";
 import CreatorHeader from "../creator_profile/creator_header/creator_header";
 import { nft_collection, profile_props } from "../../../lib/data_types";
 import ViewerProfilePicture from "../viewer_profile/viewer_profile_infos/viewer_profile_picture/viewer_profile_picture";
 import Loading from "../../utils/loading/loading";
+import getUserByUsername from "../../../lib/get_user_by_username";
 
 const errors = {
   UniqueUsername: "This username is already in use!",

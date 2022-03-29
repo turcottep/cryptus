@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/client";
 import Loading from "../../utils/loading/loading";
 
-import getUserByUsername from "../../../lib/getUserByUsername";
 import router from "next/router";
 import CreatorHeader from "../creator_profile/creator_header/creator_header";
 import { Button, Input, TextField } from "@mui/material";
+import getUserByUsername from "../../../lib/get_user_by_username";
 
 const errors = {
   UniqueUsername: "This username is already in use!",

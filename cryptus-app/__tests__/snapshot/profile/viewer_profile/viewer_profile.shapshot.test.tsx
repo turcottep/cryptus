@@ -4,7 +4,6 @@ import renderer from "react-test-renderer";
 // import ViewerProfile from "../../../../components/profile/viewer_profile/viewer_profile";
 import { profile_props, nft_collection, nft } from "../../../../lib/data_types";
 
-import { mock_collection } from "../../../../lib/mocks";
 import { mockNextUseRouter } from "../../../../utils/test_util";
 import { mock_collection } from "../../../../lib/mocks";
 
