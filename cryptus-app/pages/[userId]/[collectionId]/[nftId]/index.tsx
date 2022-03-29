@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
+import { useRouter } from "next/router";
+import { isMobile as mobile } from "react-device-detect";
 import { motion, AnimatePresence } from "framer-motion";
 
 import getUserByUsername from "../../../../lib/get_user_by_username";
@@ -10,6 +11,8 @@ import sortNftsIntoCollections from "../../../../lib/sort_nfts_into_collections"
 import { profile_props, nft_collection, nft } from "../../../../lib/data_types";
 import getCollectionToken from "../../../../lib/get_collection_token";
 import getNFTListedPrice from "../../../../lib/get_nft_listed_price";
+import GetNameWithoutSpaces from "../../../../lib/get_name_without_spaces";
+import FindCollectionRarityData from "../../../../lib/findCollectionRarityData";
 
 import NFTDetails from "../../../../components/wallet_viewer/nft_details/nft_details";
 import getMockProps from "../../../../lib/get_mock_props";
@@ -20,9 +23,21 @@ import { get_clean_name } from "../../../../lib/get_name_without_spaces";
 export default function post(props: { nft: nft; rank; listed_price }) {
   const { nft, rank, listed_price } = props;
 
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(mobile);
+    console.log("isMobile", isMobile);
+  }, [mobile]);
+
   return (
     <AnimatedDiv>
-      <NFTDetails nft={nft} rank={rank} listed_price={listed_price} />
+      <NFTDetails
+        nft={nft}
+        rank={rank}
+        listed_price={listed_price}
+        isMobile={isMobile}
+      />
     </AnimatedDiv>
   );
 }
@@ -87,22 +102,19 @@ export async function getServerSideProps(context) {
       (nft) => nftName == get_clean_name(nft.name)
     );
 
-    const collectionSize: number = await getCollectionToken(
+    let rarity_rank: number = 0;
+    let collectionSize: number = await getCollectionToken(
       goodnft.collection_address
     );
 
-    // Rarity rank is calculated from it's traits and rounded the result. The equation is :sum(1/(nb_with_trait/total_count))
-    const sorted_traits = goodnft.properties.sort((a, b) => {
-      return a.count - b.count;
-    });
-    const rarity = Math.round(
-      sorted_traits
-        .map((trait) => {
-          trait.rarity = trait.count / collectionSize;
-          return 1 / trait.rarity;
-        })
-        .reduce((partialSum, a) => partialSum + a, 0)
-    );
+    // const CollectionRarityData = await FindCollectionRarityData(
+    //   goodnft.collection_address,
+    //   goodnft.token_id
+    // );
+    // // console.log("Collection data : ", CollectionRarityData);
+    // if (CollectionRarityData) {
+    //   rarity_rank = CollectionRarityData[0].rarity_rank;
+    // }
 
     const listed_price_temp = await getNFTListedPrice(
       goodnft.collection_address,
@@ -112,7 +124,7 @@ export async function getServerSideProps(context) {
     const returningProps = {
       props: {
         nft: goodnft,
-        rank: { position: rarity, total: collectionSize },
+        rank: { position: rarity_rank, total: collectionSize },
         listed_price: listed_price_temp,
       },
     };

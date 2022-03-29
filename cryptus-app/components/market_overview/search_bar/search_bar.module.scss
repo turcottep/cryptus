@@ -1,7 +1,14 @@
 @use "/styles/variables" as v;
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 .container {
+  flex: 2 1 auto;
+  display: flex;
+  width: 100%;
+}
+
+.box {
   flex: 1 1 auto;
+
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -11,7 +18,7 @@
 .magnifier {
   color: v.$header-color;
   padding: 4px;
-  width: v.$font-size-l;
+  width: v.$font-size-ml;
 }
 
 .searchButton {
@@ -26,7 +33,7 @@
 
 .searchTerm {
   background-color: rgba(0, 0, 0, 0);
-  border-right: none;
+  border: none;
   padding: v.$border-radius-s;
   height: 20px;
   border-radius: 5px 0 0 5px;

@@ -7,6 +7,12 @@ import { mock_collection } from "../../../../../lib/mocks";
 it("CreatorProfileInfos renders correctly", () => {
   const collections: nft_collection[] = [];
   const user = {
+    networth: 420,
+    description: "Here is a description",
+    username: "A username",
+    address: "An address",
+  };
+  const old_user = {
     id: "710e552b-2881-42de-afc5-4fd4d9ea698f",
     email: "turcotte@usherbrooke.ca",
     username: "turcotte",

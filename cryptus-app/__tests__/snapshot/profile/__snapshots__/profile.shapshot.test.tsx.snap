@@ -3,36 +3,57 @@
 exports[`<Profile /> Profile renders correctly 1`] = `
 <div>
   <div>
+    <a
+      onClick={[Function]}
+      target="_blank"
+    >
+      <img
+        src="/icons/back_icon.png"
+      />
+    </a>
     <div>
-      <a
-        onClick={[Function]}
-        target="_blank"
-      >
-        <img
-          src="/icons/back_icon.png"
-        />
-      </a>
-      <div>
-        test
-      </div>
-      <div
-        onClick={[Function]}
-      >
-        <img
-          src="icons/menu_icon.png"
-        />
-      </div>
+      test
+    </div>
+    <div
+      onClick={[Function]}
+    >
+      <img
+        src="icons/menu_icon.png"
+      />
+    </div>
+  </div>
+  <div>
+    <div>
+      <img
+        alt="Avatar"
+        src="./icons/icon-192x192.png"
+      />
     </div>
     <div>
       <div>
-        <img
-          alt="Avatar"
-          src="./icons/icon-192x192.png"
-        />
+        A username
       </div>
+    </div>
+    <div>
+      Here is a description
+    </div>
+    <div>
+      NETWORTH:420 eth
+    </div>
+  </div>
+  <div>
+    <div>
       <div>
+        <div
+          onClick={[Function]}
+        >
+          <div />
+        </div>
         <div>
           Tester
+        </div>
+        <div>
+          
         </div>
       </div>
       <div>
@@ -44,6 +65,11 @@ exports[`<Profile /> Profile renders correctly 1`] = `
     </div>
     <div>
       <div>
+        <div
+          onClick={[Function]}
+        >
+          <div />
+        </div>
         <div>
           <div
             onClick={[Function]}
@@ -59,34 +85,34 @@ exports[`<Profile /> Profile renders correctly 1`] = `
         </div>
       </div>
     </div>
-    <div
-      id="footer"
+  </div>
+  <div
+    id="footer"
+  >
+    <a
+      href="/market"
     >
-      <a
-        href="/market"
-      >
-        <img
-          src="/icons/market_overview_icon.png"
-        />
-      </a>
-      <a>
-        <img
-          src="/icons/research_icon.png"
-        />
-      </a>
-      <a>
-        <img
-          src="/icons/notification_icon.png"
-        />
-      </a>
-      <a
-        href="/"
-      >
-        <img
-          src="/icons/profile_icon.png"
-        />
-      </a>
-    </div>
+      <img
+        src="/icons/market_overview_icon.png"
+      />
+    </a>
+    <a>
+      <img
+        src="/icons/research_icon.png"
+      />
+    </a>
+    <a>
+      <img
+        src="/icons/notification_icon.png"
+      />
+    </a>
+    <a
+      href="/"
+    >
+      <img
+        src="/icons/profile_icon.png"
+      />
+    </a>
   </div>
 </div>
 `;

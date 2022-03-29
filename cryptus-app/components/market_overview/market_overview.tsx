@@ -26,9 +26,11 @@ type market_overview_props = {
     change: string;
   };
   collections: collection[];
+  isMobile: boolean;
 };
 
 export default function MarketOverview(props: market_overview_props) {
+  const { isMobile } = props;
   const [price, setPrice] = useState([]);
 
   const [session, status] = useSession();
@@ -43,6 +45,8 @@ export default function MarketOverview(props: market_overview_props) {
   const [newPropCollectionMarket, setnewPropCollectionMarket] = useState(
     props.collections
   );
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (session) {
@@ -124,6 +128,8 @@ export default function MarketOverview(props: market_overview_props) {
 
   return (
     <div className={s.container}>
+      {isMobile ? null : <DesktopHeader tab="market" />}
+      {loading && <Loading />}
       <MarketHeader />
       <NetWorth
         value={props.networth.value}

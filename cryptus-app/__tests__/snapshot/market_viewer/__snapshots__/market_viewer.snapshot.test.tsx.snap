@@ -92,44 +92,48 @@ exports[`<MarketViewer /> should display properly 1`] = `
               id="collection_row"
             >
               <div
-                id="collection_info"
+                id="collection_row"
               >
-                <div>
-                  <img
-                    src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
-                  />
+                <div
+                  id="collection_info"
+                >
                   <div>
-                    KITT
+                    <img
+                      src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
+                    />
+                    <div>
+                      KITT
+                    </div>
+                  </div>
+                  <div>
+                    CryptoKitties
                   </div>
                 </div>
-                <div>
-                  CryptoKitties
+                <div
+                  id="preview_graph"
+                >
+                  <div>
+                    <canvas
+                      height={150}
+                      role="img"
+                      width={300}
+                    />
+                    <canvas
+                      height={150}
+                      role="img"
+                      width={300}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div
-                id="preview_graph"
-              >
-                <div>
-                  <canvas
-                    height={150}
-                    role="img"
-                    width={300}
-                  />
-                  <canvas
-                    height={150}
-                    role="img"
-                    width={300}
-                  />
-                </div>
-              </div>
-              <div
-                id="price_info"
-              >
-                <div>
-                  7.8Ξ
-                </div>
-                <div>
-                  +0.0Ξ (0.13%)
+                <div
+                  id="price_info"
+                >
+                  <div>
+                    7.8Ξ
+                  </div>
+                  <div>
+                    +0.0Ξ (0.13%)
+                  </div>
                 </div>
               </div>
             </div>
