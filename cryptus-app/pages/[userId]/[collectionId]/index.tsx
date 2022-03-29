@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
     console.log("DEEZ");
 
     return {
-      props: { assets: null },
+      props: { assets: null, user: null },
     };
   }
 }

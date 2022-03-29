@@ -2,29 +2,29 @@ import { nft, nft_collection } from "./data_types";
 import sortNFTsByRarityInCollection from "./sort_nfts_by_rarity_in_collection";
 
 export default function sortNftsIntoCollections(
-  nfts: nft[],
-  collection_filter: string[]
+  nfts: nft[]
+  // collection_filter: string[]
 ): nft_collection[] {
   const collections: { [key: string]: nft_collection } = {};
   let i = 0;
   for (const nft of nfts) {
     // if address is not in filter, skip
-    if (!collection_filter.includes(nft.collection_address)) {
-      const collection = nft.collection;
-      if (!collections[collection]) {
-        collections[collection] = {
-          name: collection,
-          address: nft.collection_address,
-          id: i,
-          description: "",
-          image_url: "",
-          external_url: "",
-          market_cap: 0,
-          nfts: [],
-        };
-      }
-      collections[collection].nfts.push(nft);
+    // if (!collection_filter.includes(nft.collection_address)) {
+    const collection = nft.collection;
+    if (!collections[collection]) {
+      collections[collection] = {
+        name: collection,
+        address: nft.collection_address,
+        id: i,
+        description: "",
+        image_url: "",
+        external_url: "",
+        market_cap: 0,
+        nfts: [],
+      };
     }
+    collections[collection].nfts.push(nft);
+    // }
     i++;
   }
   const sorted_collections = sortNFTsByRarityInCollection(

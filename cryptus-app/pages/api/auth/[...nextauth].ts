@@ -3,7 +3,7 @@ import Providers from "next-auth/providers";
 import { sha256 } from "js-sha256";
 import FindUserIdFromWalletAdress from "../../../lib/findUserIdFromWalletAdress";
 import FindUserFromUserId from "../../../lib/findUserFromUserId";
-import getUserByUsername from "../../../lib/getUserByUsername";
+import getUserByUsername from "../../../lib/get_user_by_username";
 
 const options = {
   pages: {

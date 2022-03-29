@@ -19,7 +19,11 @@ export default function CreatorHeader() {
 
   return (
     <div className={s.container}>
-      <BackButton url={`/${username}`} />
+      <BackButton
+        callback_close={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
       <ContextualPageName name={username} />
       <ContextualMenuButton img="/icons/settings_icon.png" />
     </div>

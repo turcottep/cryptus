@@ -9,15 +9,13 @@ exports[`ViewerProfileInfos renders correctly 1`] = `
     />
   </div>
   <div>
-    <div>
-      A username
-    </div>
+    Tester
   </div>
   <div>
-    Here is a description
+    Whatever
   </div>
   <div>
-    NETWORTH:420 eth
+    NETWORTH:5 eth
   </div>
 </div>
 `;
