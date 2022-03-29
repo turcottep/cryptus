@@ -16,6 +16,8 @@ import { each } from "jquery";
 import Footer from "../footer/footer";
 import { useSession } from "next-auth/client";
 import get_user_by_username from "../../lib/get_user_by_username";
+import DesktopHeader from "../header/desktop_header/desktop_header";
+import Loading from "../utils/loading/loading";
 
 type market_overview_props = {
   date: string;

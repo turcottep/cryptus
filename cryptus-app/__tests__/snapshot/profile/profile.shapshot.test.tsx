@@ -17,7 +17,7 @@ describe("<Profile />", () => {
   });
 
   it("Profile renders correctly", () => {
-    const mock_props: profile_props = {
+    const mock_props = {
       user: {
         networth: 5,
         description: "Whatever",
@@ -25,6 +25,7 @@ describe("<Profile />", () => {
         address: "test_address",
       },
       collections: [mock_collection],
+      isMobile: true,
     };
 
     const tree = renderer.create(<Profile {...mock_props} />).toJSON();

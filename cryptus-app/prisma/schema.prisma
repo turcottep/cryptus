@@ -72,10 +72,3 @@ model collectiontraitfloor {
   trait_floor_dict String
 }
 
-model NftRarity {
-  id               String           @id
-  rarity_rank      Int?
-  token_id         String           @unique
-  collectionID     String
-  CollectionRarity CollectionRarity @relation(fields: [collectionID], references: [id])
-}

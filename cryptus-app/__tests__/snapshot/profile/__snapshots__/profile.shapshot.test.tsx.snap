@@ -31,14 +31,14 @@ exports[`<Profile /> Profile renders correctly 1`] = `
     </div>
     <div>
       <div>
-        A username
+        Tester
       </div>
     </div>
     <div>
-      Here is a description
+      Whatever
     </div>
     <div>
-      NETWORTH:420 eth
+      NETWORTH:5 eth
     </div>
   </div>
   <div>
@@ -50,38 +50,10 @@ exports[`<Profile /> Profile renders correctly 1`] = `
           <div />
         </div>
         <div>
-          Tester
+          CryptoKitties
         </div>
         <div>
           
-        </div>
-      </div>
-      <div>
-        Whatever
-      </div>
-      <div>
-        NETWORTH:5 eth
-      </div>
-    </div>
-    <div>
-      <div>
-        <div
-          onClick={[Function]}
-        >
-          <div />
-        </div>
-        <div>
-          <div
-            onClick={[Function]}
-          >
-            <div />
-          </div>
-          <div>
-            CryptoKitties
-          </div>
-          <div>
-            
-          </div>
         </div>
       </div>
     </div>
