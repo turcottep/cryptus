@@ -49,56 +49,56 @@ export default function Home() {
     console.log("isMobile", isMobile);
   }, [mobile]);
 
-  useEffect(() => {
-    setLoading(true);
-    async function getProps() {
-      const viewingmode = "alltime";
-      const collection_dict = collectionDictionary;
-      const collection = collection_dict[addressString];
-      console.log("Collection address debug:", addressString);
-      console.log("Collection debug:", collection);
-      const summary_props_mock = {
-        collection_name: collection.name,
-        collection_logo: collection.logo,
-        collection_ticker: collection.ticker,
-        floor_price_live: collection.floor_price,
-        floor_price_delta: collection.floor_price_delta,
-        floor_price_timestamp: collection.timestamp,
-        data_price: [],
-        count: null,
-        volume: null,
-        address: collection.address,
-      } as market_collection_props;
+  // useEffect(() => {
+  //   setLoading(true);
+  //   async function getProps() {
+  //     const viewingmode = "alltime";
+  //     const collection_dict = collectionDictionary;
+  //     const collection = collection_dict[addressString];
+  //     console.log("Collection address debug:", addressString);
+  //     console.log("Collection debug:", collection);
+  //     const summary_props_mock = {
+  //       collection_name: collection.name,
+  //       collection_logo: collection.logo,
+  //       collection_ticker: collection.ticker,
+  //       floor_price_live: collection.floor_price,
+  //       floor_price_delta: collection.floor_price_delta,
+  //       floor_price_timestamp: collection.timestamp,
+  //       data_price: [],
+  //       count: null,
+  //       volume: null,
+  //       address: collection.address,
+  //     } as market_collection_props;
 
-      try {
-        const res = await fetch(get_base_url() + "/api/sales/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            address: summary_props_mock.address,
-            viewingmode,
-          }),
-        });
-        const { price, count, volume } = await res.json();
+  // try {
+  //   const res = await fetch(get_base_url() + "/api/sales/", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       address: summary_props_mock.address,
+  //       viewingmode,
+  //     }),
+  //   });
+  //   const { price, count, volume } = await res.json();
 
-        summary_props_mock.data_price = price;
-        summary_props_mock.count = count;
-        summary_props_mock.volume = volume;
-        console.log(summary_props_mock);
-        setProp(summary_props_mock);
-      } catch (err) {
-        console.error(err);
-        setProp(props_empty);
-      }
-    }
+  //   summary_props_mock.data_price = price;
+  //   summary_props_mock.count = count;
+  //   summary_props_mock.volume = volume;
+  //   console.log(summary_props_mock);
+  //   setProp(summary_props_mock);
+  // } catch (err) {
+  //   console.error(err);
+  //   setProp(props_empty);
+  // }
+  // }
 
-    if (addressString) {
-      getProps();
-    }
-    setLoading(false);
-  }, [address]);
+  //   if (addressString) {
+  //     getProps();
+  //   }
+  //   setLoading(false);
+  // }, [address]);
 
   return (
     <div className="">
@@ -124,7 +124,7 @@ export default function Home() {
         {loading && <Loading />}
         {addressString ? (
           <MarketCollection
-            market_collection_props={prop}
+            market_collection_props={props_empty}
             isMobile={isMobile}
           />
         ) : (

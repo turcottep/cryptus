@@ -11,9 +11,11 @@ import get_profile_props from "../../lib/get_profile_props";
 import { profile_props } from "../../lib/data_types";
 
 export default function post() {
-  const props_empty = {
+  const props_empty: profile_props = {
     collections: [
       {
+        id: 0,
+        address: "",
         name: "",
         description: "",
         image_url: "",
@@ -32,11 +34,18 @@ export default function post() {
             last_sale_price: 0,
             last_sale_symbol: "ETH",
             rarity_rank: null,
+            properties: null,
           },
         ],
       },
     ],
-    user: { id: "", email: "", username: "", displayName: "" },
+    user: {
+      username: "",
+      description: "",
+      networth: 0,
+      address: "",
+      collections_filter: [],
+    },
   };
   const router = useRouter();
   const { userId: userName } = router.query;
@@ -55,6 +64,7 @@ export default function post() {
     setLoading(true);
     async function getProps() {
       const returningProps = await get_profile_props(userNameString);
+      console.log("returning", returningProps);
       setProp(returningProps.props);
       setLoading(false);
     }

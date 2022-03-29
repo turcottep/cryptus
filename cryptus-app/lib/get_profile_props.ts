@@ -21,6 +21,7 @@ export default async function get_profile_props(
 
   try {
     let nfts = [];
+
     user.wallets.forEach(async (wallet) => {
       let nfts_per_wallet = await update_nfts_for_user(
         user_name,
@@ -29,8 +30,7 @@ export default async function get_profile_props(
       );
       nfts.push(nfts_per_wallet);
     });
-
-    if (nfts.length === 0) {
+    if (!nfts[0]) {
       console.log("getting nft from our database");
       nfts = await get_nfts_for_user(user_name);
     }
@@ -53,7 +53,13 @@ export default async function get_profile_props(
     return {
       props: {
         collections: [],
-        user: { address: "", username: "", description: "", networth: 0 },
+        user: {
+          address: "",
+          username: "",
+          description: "",
+          networth: 0,
+          collections_filter: [],
+        },
       },
     };
   }

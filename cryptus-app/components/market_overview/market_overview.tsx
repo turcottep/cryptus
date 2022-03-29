@@ -51,10 +51,6 @@ export default function MarketOverview(props: market_overview_props) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    updatePrice(props.networth.active);
-  }, []);
-
-  useEffect(() => {
     if (session) {
       const user_name = session.user.name;
       update_for_user(user_name);

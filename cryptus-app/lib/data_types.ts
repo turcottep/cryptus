@@ -33,6 +33,7 @@ export interface profile_props {
     description?: string;
     username: string;
     address: string;
+    collections_filter: string[];
   };
   collections: nft_collection[];
 }

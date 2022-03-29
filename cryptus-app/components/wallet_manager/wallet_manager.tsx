@@ -101,7 +101,11 @@ export default function WalletManager(props: { wallets: any }) {
 const WalletManagerHeader = () => (
   <div className={s.header}>
     <div className={s.backButton}>
-      <BackButton />
+      <BackButton
+        callback_close={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
     </div>
     <div className={s.settingsTitle}>Wallet Manager</div>
 

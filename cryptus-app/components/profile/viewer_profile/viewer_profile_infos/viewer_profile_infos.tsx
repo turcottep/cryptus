@@ -5,8 +5,6 @@ import ViewerProfilePicture from "./viewer_profile_picture/viewer_profile_pictur
 import { profile_props } from "../../../../lib/data_types";
 
 export default function ViewerProfileInfos(props: profile_props) {
-  console.log("ViewerProfileInfos", props);
-
   const { username, description, networth } = props.user;
 
   return (
