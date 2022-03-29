@@ -10,7 +10,11 @@ import ContextualUserName from "../../../header/contextual_username/contextual_u
 export default function ViewerHeader(props: { userId: string }) {
   return (
     <div className={s.container}>
-      <BackButton url={`/${props.userId}`} />
+      <BackButton
+        callback_close={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
       <ContextualUserName name={props.userId} />
       <ContextualMenuButton img="icons/menu_icon.png" />
     </div>

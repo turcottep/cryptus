@@ -1,5 +1,5 @@
 import { profile_props } from "./data_types";
-import getUserByUsername from "./getUserByUsername";
+import getUserByUsername from "./get_user_by_username";
 import get_nfts_for_user from "./get_nfts_for_user";
 import calculate_networth from "./networth";
 import sortNftsIntoCollections from "./sort_nfts_into_collections";
@@ -36,8 +36,8 @@ export default async function get_profile_props(
     }
 
     const nfts_collections = sortNftsIntoCollections(
-      nfts,
-      user.collections_filter
+      nfts
+      // user.collections_filter
     );
 
     const networth = await calculate_networth(nfts_collections);
@@ -48,10 +48,13 @@ export default async function get_profile_props(
       props: { collections: nfts_collections, user: user },
     };
   } catch (error) {
-    console.log("error", error);
+    console.log("error in get_profile_props", error);
 
     return {
-      props: { collections: null, user: null },
+      props: {
+        collections: [],
+        user: { address: "", username: "", description: "", networth: 0 },
+      },
     };
   }
 }

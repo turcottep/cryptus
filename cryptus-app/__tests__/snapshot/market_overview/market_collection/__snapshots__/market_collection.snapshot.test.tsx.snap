@@ -7,7 +7,7 @@ exports[`<MarketCollection /> should display properly 1`] = `
   >
     <div>
       <a
-        href="#"
+        href="/"
       >
         Public Wallet
       </a>
@@ -78,80 +78,82 @@ exports[`<MarketCollection /> should display properly 1`] = `
     </div>
   </div>
   <div>
-    <img
-      src=""
-    />
     <div>
-      KITT
-    </div>
-    <div>
-      CryptoKitties
-    </div>
-  </div>
-  <div>
-    <div>
-      7.79
-       Ξ
+      <img
+        src=""
+      />
       <div>
-         ETH
+        KITT
+      </div>
+      <div>
+        CryptoKitties
       </div>
     </div>
-    <div>
-      <span>
-        0.01
-      </span>
-      Ξ (
-      <span>
-        0.13
-      </span>
-      %)
-    </div>
-  </div>
-  <div>
     <div>
       <div>
-        <canvas
-          height={150}
-          role="img"
-          width={300}
-        />
-        <canvas
-          height={150}
-          role="img"
-          width={300}
-        />
+        7.79
+         Ξ
+        <div>
+           ETH
+        </div>
+      </div>
+      <div>
+        <span>
+          0.01
+        </span>
+        Ξ (
+        <span>
+          0.13
+        </span>
+        %)
       </div>
     </div>
     <div>
-      <div
-        className="undefined undefined"
-        onClick={[Function]}
-      >
-        1W
+      <div>
+        <div>
+          <canvas
+            height={150}
+            role="img"
+            width={300}
+          />
+          <canvas
+            height={150}
+            role="img"
+            width={300}
+          />
+        </div>
       </div>
-      <div
-        className="undefined "
-        onClick={[Function]}
-      >
-        1M
-      </div>
-      <div
-        className="undefined "
-        onClick={[Function]}
-      >
-        3M
-      </div>
-      <div
-        className="undefined "
-        onClick={[Function]}
-      >
-        1Y
-      </div>
-      <div
-        className="undefined "
-        onClick={[Function]}
-      >
-        ALL
+      <div>
+        <div
+          className="undefined undefined"
+          onClick={[Function]}
+        >
+          1W
+        </div>
+        <div
+          className="undefined "
+          onClick={[Function]}
+        >
+          1M
+        </div>
+        <div
+          className="undefined "
+          onClick={[Function]}
+        >
+          3M
+        </div>
+        <div
+          className="undefined "
+          onClick={[Function]}
+        >
+          1Y
+        </div>
+        <div
+          className="undefined "
+          onClick={[Function]}
+        >
+          ALL
+        </div>
       </div>
     </div>
   </div>

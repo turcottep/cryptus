@@ -41,6 +41,7 @@ export default async function updateNftsForUser(
   }
 
   // console.log("traits = ", nfts_raw[0]);
+  const collections_set = new Set();
   const nft_clean = nfts_raw.map((nft, index: number) => {
     // Sort properties here
     let rarity_rank: any = 0;
@@ -68,6 +69,7 @@ export default async function updateNftsForUser(
       //     .reduce((partialSum, a) => partialSum + a, 0)
       // );
     }
+    collections_set.add(nft.asset_contract.address);
     return {
       name: nft.name ?? nft.collection.name + " #" + nft.id,
       image_url: nft.image_url,
@@ -103,6 +105,7 @@ export default async function updateNftsForUser(
       token_id: nft.token_id,
     });
   });
+  const collections_list = Array.from(collections_set);
 
   const base_url = get_base_url();
   try {
@@ -110,6 +113,7 @@ export default async function updateNftsForUser(
       method: "POST",
       body: JSON.stringify({
         nfts: nft_stringified,
+        collections_list: collections_list,
         username: username,
         userId: userId,
       }),

@@ -19,6 +19,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         username: req.body.username,
       },
       data: {
+        collections_list: req.body.collections_list as string[],
+
         nfts: {
           // add every nft in req.body.nfts
           createMany: {

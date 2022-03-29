@@ -4,6 +4,8 @@ export default async function update_collection_filter(
   username: string,
   collection_filter: string[]
 ) {
+  console.log("update_collection_filter", username, collection_filter);
+
   const base_url = get_base_url();
   let res;
   try {
@@ -18,7 +20,7 @@ export default async function update_collection_filter(
       },
     });
     const data = await res.json();
-    console.log("user", data);
+    console.log("data", data);
 
     return data;
   } catch (e) {

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { isMobile as mobile } from "react-device-detect";
 import { motion, AnimatePresence } from "framer-motion";
 
-import getUserByUsername from "../../../../lib/getUserByUsername";
+import getUserByUsername from "../../../../lib/get_user_by_username";
 import update_nfts_for_user from "../../../../lib/update_nfts_for_user";
 import get_nfts_for_user from "../../../../lib/get_nfts_for_user";
 import sortNftsIntoCollections from "../../../../lib/sort_nfts_into_collections";
