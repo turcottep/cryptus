@@ -18,7 +18,12 @@ describe("<ProfileWalletViewer />", () => {
     const mockCollections = [mock_collection];
 
     const tree = renderer
-      .create(<ProfileWalletViewer collections={mockCollections} />)
+      .create(
+        <ProfileWalletViewer
+          collections={mockCollections}
+          collections_filter={[]}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

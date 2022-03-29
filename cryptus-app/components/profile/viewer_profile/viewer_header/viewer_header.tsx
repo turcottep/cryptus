@@ -13,7 +13,11 @@ export default function ViewerHeader() {
 
   return (
     <div className={s.container}>
-      <BackButton url={`/${userId}`} />
+      <BackButton
+        callback_close={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
       <ContextualUserName name={userId.toString()} />
       <ContextualMenuButton img="icons/menu_icon.png" />
     </div>

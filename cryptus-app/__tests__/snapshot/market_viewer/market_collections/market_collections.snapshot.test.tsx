@@ -23,7 +23,13 @@ describe("<MarketCollections />", () => {
     const test_collections = [mock_collection];
 
     const tree = renderer
-      .create(<MarketCollections collections={test_collections} />)
+      .create(
+        <MarketCollections
+          name={"My Collections"}
+          icon="icons/favorite_icon.png"
+          collections={test_collections}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -2,24 +2,49 @@
 
 exports[`<Profile /> Profile renders correctly 1`] = `
 <div>
-  <div>
-    <a
-      onClick={[Function]}
-      target="_blank"
-    >
-      <img
-        src="/icons/back_icon.png"
-      />
-    </a>
+  <div
+    id="header"
+  >
     <div>
-      test
+      <a
+        href="/"
+      >
+        Public Wallet
+      </a>
     </div>
-    <div
-      onClick={[Function]}
-    >
-      <img
-        src="icons/menu_icon.png"
-      />
+    <div>
+      <a
+        href="/market"
+      >
+        market
+      </a>
+      <a
+        href="/market"
+      >
+        search
+      </a>
+      <div
+        onClick={[Function]}
+      >
+        profile
+      </div>
+    </div>
+    <div>
+      <a
+        href="/market"
+        target="_blank"
+      >
+        <img
+          src="/icons/notification_icon.png"
+        />
+      </a>
+      <div
+        onClick={[Function]}
+      >
+        <img
+          src="/icons/menu_icon.png"
+        />
+      </div>
     </div>
   </div>
   <div>
@@ -30,9 +55,7 @@ exports[`<Profile /> Profile renders correctly 1`] = `
       />
     </div>
     <div>
-      <div>
-        A username
-      </div>
+      A username
     </div>
     <div>
       Here is a description
@@ -57,49 +80,6 @@ exports[`<Profile /> Profile renders correctly 1`] = `
         </div>
       </div>
     </div>
-    <div>
-      <div>
-        <div
-          onClick={[Function]}
-        >
-          <div />
-        </div>
-        <div>
-          BlockCities
-        </div>
-        <div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    id="footer"
-  >
-    <a
-      href="/market"
-    >
-      <img
-        src="/icons/market_overview_icon.png"
-      />
-    </a>
-    <a>
-      <img
-        src="/icons/research_icon.png"
-      />
-    </a>
-    <a>
-      <img
-        src="/icons/notification_icon.png"
-      />
-    </a>
-    <a
-      href="/"
-    >
-      <img
-        src="/icons/profile_icon.png"
-      />
-    </a>
   </div>
 </div>
 `;

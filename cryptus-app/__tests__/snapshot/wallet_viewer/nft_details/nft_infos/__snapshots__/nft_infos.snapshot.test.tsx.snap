@@ -36,7 +36,7 @@ exports[`<NftInfo /> should display the correct NFT information 1`] = `
       </div>
     </a>
   </div>
-  Estimated price: 0 eth
+  Estimated price: 4 eth
    
 </div>
 `;

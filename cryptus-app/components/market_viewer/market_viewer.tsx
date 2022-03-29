@@ -17,14 +17,25 @@ export type collection = {
   timestamp: string;
 };
 
-export default function MarketViewer(props: { collections: collection[] }) {
+export default function MarketViewer(props: {
+  collections_market: collection[];
+  collections_favorite: collection[];
+}) {
   return (
     <div id="market_viewer" className={s.container}>
-      {/* <div className={s.favorites}>
-        <FavoriteCollections collections={props.collections} />
-      </div> */}
       <div className={s.market}>
-        <MarketCollections collections={props.collections} />
+        <MarketCollections
+          name={"My Collections"}
+          icon={"/icons/favorite_icon.png"}
+          collections={props.collections_favorite}
+        />
+      </div>
+      <div className={s.market}>
+        <MarketCollections
+          name={"Market"}
+          icon={"/icons/market_icon.png"}
+          collections={props.collections_market}
+        />
       </div>
     </div>
   );
