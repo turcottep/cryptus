@@ -15,8 +15,6 @@ describe("<CreatorProfile />", () => {
   });
 
   it("CreatorProfile renders correctly", () => {
-    const collections: nft_collection[] = [mock_collection];
-
     const user = {
       networth: 420,
       description: "Here is a description",
@@ -47,8 +45,13 @@ describe("<CreatorProfile />", () => {
     };
 
     const mock_props: profile_props = {
-      user: user,
-      collections: collections,
+      user: {
+        networth: 5,
+        description: "Whatever",
+        username: "Tester",
+        address: "test_address",
+      },
+      collections: [mock_collection],
     };
 
     // const tree = renderer.create(<CreatorProfile {...mock_props} />).toJSON();

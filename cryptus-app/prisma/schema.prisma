@@ -71,3 +71,4 @@ model collectiontraitfloor {
   address          String @unique
   trait_floor_dict String
 }
+

@@ -6,6 +6,7 @@ import { profile_props, nft_collection, nft } from "../../../../lib/data_types";
 
 import { mock_collection } from "../../../../lib/mocks";
 import { mockNextUseRouter } from "../../../../utils/test_util";
+import { mock_collection } from "../../../../lib/mocks";
 
 describe("<ViewerProfile />", () => {
   mockNextUseRouter({
@@ -45,11 +46,6 @@ describe("<ViewerProfile />", () => {
           userId: "710e552b-2881-42de-afc5-4fd4d9ea698f",
         },
       ],
-    };
-
-    const mock_props: profile_props = {
-      user: user,
-      collections: collections,
     };
 
     /* const useRouter = jest.spyOn(require("next/router"), "useRouter");

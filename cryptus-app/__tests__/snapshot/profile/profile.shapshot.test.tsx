@@ -48,15 +48,7 @@ describe("<Profile />", () => {
       ],
     };
 
-    const mock_props: profile_props = {
-      user: user,
-      collections: collections,
-    };
-    const isMobile = true;
-
-    const tree = renderer
-      .create(<Profile {...mock_props} isMobile={isMobile} />)
-      .toJSON();
+    const tree = renderer.create(<Profile {...mock_props} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
