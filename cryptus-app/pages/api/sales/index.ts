@@ -13,10 +13,18 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     console.log("address_cropped", address_cropped);
     // start timer
     const start = new Date().getTime();
+    const query_diff = `SELECT * FROM marketsales.${
+      address_cropped + "_differentials"
+    };`;
     const query = `SELECT * FROM marketsales.${
       address_cropped + "_" + viewing_mode
     };`;
-    const data = await prisma.$queryRaw(query);
+    const answer = await prisma.$transaction([
+      prisma.$queryRaw(query),
+      prisma.$queryRaw(query_diff),
+    ]);
+    const data = answer[0];
+    const data_diff = answer[1];
     // console.log("data : ", data);
     let price, count, volume;
     if (viewing_mode != "day" && viewing_mode != "week") {
@@ -37,7 +45,17 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       volume = null;
     }
 
-    // console.log(data);
+    let delta = 0;
+    data_diff.forEach((littleman) => {
+      if (viewing_mode == "alltime") {
+        viewing_mode = "year";
+      }
+      if (littleman.view == viewing_mode) {
+        console.log("*****", littleman.view, viewing_mode);
+        delta = parseFloat(littleman.differential);
+        console.log(delta);
+      }
+    });
 
     // end timer
     const end = new Date().getTime();
@@ -46,7 +64,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     res.status(201);
     // console.log("user: ", user);
-    res.json({ price, count, volume });
+    res.json({ price, count, volume, delta });
   } catch (e) {
     res.status(500);
     console.error("There was an error deep wond", e);

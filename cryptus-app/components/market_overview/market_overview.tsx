@@ -51,6 +51,10 @@ export default function MarketOverview(props: market_overview_props) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    updatePrice(props.networth.active);
+  }, []);
+  
+  useEffect(() => {
     if (session) {
       const user_name = session.user.name;
       update_for_user(user_name);
@@ -108,13 +112,15 @@ export default function MarketOverview(props: market_overview_props) {
       }),
     });
 
-    const { prices, counts } = await res.json();
+    const { prices, counts, delta } = await res.json();
 
     if (prices) {
       const newPropCollectionTemp = [];
+
       for (let i = 0; i < props.collections.length; i++) {
         const element = props.collections[i];
         element.data_price = prices[i];
+        element.floor_price_delta = delta[i];
         newPropCollectionTemp.push(element);
       }
       setnewPropCollection(newPropCollectionTemp);
