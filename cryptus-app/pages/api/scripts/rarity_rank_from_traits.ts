@@ -2,18 +2,25 @@ import { NextApiRequest, NextApiResponse } from "next";
 import main from "../../../scripts/get_rarity_rank_of_nft";
 import { collection100list } from "../../../lib/collectionDictionary";
 import GetNameWithoutSpaces from "../../../lib/get_name_without_spaces";
+import FindCollectionRarityData from "../../../lib/findCollectionRarityData";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
-    // for (const collection of collection100list) {
-    //   console.log("Collection names : ", collection.name);
-    //   try {
-    //     await main(collection.address, GetNameWithoutSpaces(collection.name));
-    //     // await new Promise((resolve) => setTimeout(resolve, 10000));
-    //   } catch (error) {
-    //     console.log("An error occured...");
-    //   }
-    // }
+    for (const collection of collection100list) {
+      console.log("Collection names : ", collection.name, "100");
+      try {
+        const collectionRarity = await FindCollectionRarityData(
+          collection.address
+        );
+        if (collectionRarity) {
+          await main(collection.address, GetNameWithoutSpaces(collection.name));
+        }
+
+        // await new Promise((resolve) => setTimeout(resolve, 10000));
+      } catch (error) {
+        console.log("An error occured...");
+      }
+    }
 
     await main(
       "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",

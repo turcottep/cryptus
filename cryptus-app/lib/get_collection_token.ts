@@ -39,8 +39,7 @@ async function getCollectionTokenWithEtherscan(contractaddress: string) {
 }
 
 async function getCollectionTokenWithOpensea(collectionAddress: string) {
-  // const api_url = process.env.OPENSEA_API_KEY;
-  const opensea_api_key = "e50f2020ec49494e8ab461b871309fc9";
+  const api_url = process.env.OPENSEA_API_KEY;
   let response;
   for (let i = 0; i < 1; i++) {
     try {
@@ -53,11 +52,11 @@ async function getCollectionTokenWithOpensea(collectionAddress: string) {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "X-API-KEY": opensea_api_key,
+          "X-API-KEY": api_url,
         },
       });
       const data = (await response.json()) as any;
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // await new Promise((resolve) => setTimeout(resolve, 1000));
       return Number(data.collection.stats.count + 1);
     } catch (error) {
       console.log("response", response);

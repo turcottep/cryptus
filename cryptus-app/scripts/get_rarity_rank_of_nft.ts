@@ -378,7 +378,11 @@ async function generateRarityWithOpensea(collectionAddress: string) {
 //   }
 // }
 
-async function writeDataInDB(nfts: any[], contractAdress: string) {
+async function writeDataInDB(
+  nfts: any[],
+  contractAdress: string,
+  collectionName: string = ""
+) {
   type collectionRarityCreateInput = {
     // attributes: string;
     // rarity: number;
@@ -408,8 +412,14 @@ async function writeDataInDB(nfts: any[], contractAdress: string) {
     // console.log("Collection : ", CollectionRarityData);
     await prisma.collectionRarity.upsert({
       where: { contract_address: contractAdress },
-      update: { contract_address: contractAdress },
-      create: { contract_address: contractAdress },
+      update: {
+        contract_address: contractAdress,
+        collection_name: collectionName,
+      },
+      create: {
+        contract_address: contractAdress,
+        collection_name: collectionName,
+      },
     });
     await prisma.collectionRarity.update({
       where: {
@@ -437,7 +447,7 @@ async function main(collectionAddress: string, collectionName: string = "") {
 
   const nftsWithRarity = await generateRarityWithOpensea(collectionAddress);
   if (nftsWithRarity) {
-    await writeDataInDB(nftsWithRarity, collectionAddress);
+    await writeDataInDB(nftsWithRarity, collectionAddress, collectionName);
   }
 
   // With Moralis
