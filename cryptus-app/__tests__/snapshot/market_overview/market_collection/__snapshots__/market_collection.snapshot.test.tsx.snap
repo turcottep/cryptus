@@ -7,7 +7,7 @@ exports[`<MarketCollection /> should display properly 1`] = `
   >
     <div>
       <a
-        href="#"
+        href="/"
       >
         Public Wallet
       </a>

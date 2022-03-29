@@ -24,6 +24,7 @@ describe("<Profile />", () => {
       description: "Here is a description",
       username: "A username",
       address: "An address",
+      collections_filter: [],
     };
     const old_user = {
       id: "710e552b-2881-42de-afc5-4fd4d9ea698f",
@@ -47,11 +48,13 @@ describe("<Profile />", () => {
         },
       ],
     };
+    const profile_props: profile_props = {
+      user,
+      collections,
+    };
 
     const tree = renderer
-      .create(
-        <Profile collections={collections} user={user} isMobile={false} />
-      )
+      .create(<Profile isMobile={false} {...profile_props} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
