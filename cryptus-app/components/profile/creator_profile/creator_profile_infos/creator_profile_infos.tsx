@@ -5,6 +5,7 @@ import { signIn, useSession } from "next-auth/client";
 import ViewerProfilePicture from "../../viewer_profile/viewer_profile_infos/viewer_profile_picture/viewer_profile_picture";
 import { profile_props } from "../../../../lib/data_types";
 import { TextField } from "@mui/material";
+import EditCollections from "../../../wallet_viewer/show_collections/show_collections";
 
 const errors = {
   UniqueUsername: "This username is already in use!",
@@ -14,12 +15,19 @@ const errors = {
 
 declare let window: any;
 
-export default function CreatorProfileInfos(props: profile_props) {
+export default function CreatorProfileInfos(props: {
+  profile_props: profile_props;
+  callback_filter: (new_filter: string[]) => void;
+  initial_filter: string[];
+}) {
+  const { profile_props, callback_filter } = props;
+
   const [session, sessionLoading] = useSession();
   const [loading, setLoading] = useState(false);
-  const [edit_mode, set_edit_mode] = useState(false);
-  const [user_name, setUserName] = useState(props.user.username);
-  const [desc, setDesc] = useState(props.user.description);
+  const [edit_profile, set_edit_profile] = useState(false);
+  const [edit_collections, set_edit_collections] = useState(false);
+  const [user_name, setUserName] = useState(profile_props.user.username);
+  const [desc, setDesc] = useState(profile_props.user.description);
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
 
@@ -55,7 +63,7 @@ export default function CreatorProfileInfos(props: profile_props) {
     console.log("user_name", user_name);
   };
 
-  const next_step = async () => {
+  const update_profile = async () => {
     console.log("submit");
 
     const old_user_name = session.user.name;
@@ -73,6 +81,8 @@ export default function CreatorProfileInfos(props: profile_props) {
     );
 
     if (!new_user_name.match(/^[0-9a-z]+$/)) {
+      console.log("invalid username");
+
       setError("InvalidUsername");
       return;
     }
@@ -108,52 +118,63 @@ export default function CreatorProfileInfos(props: profile_props) {
     return error ? errorMessage : null;
   };
 
-  const click_edit_mode = () => {
-    set_edit_mode(true);
-  };
-
-  const click_cancel = () => {
-    set_edit_mode(false);
-  };
-
   return (
     <div className={s.container}>
       <div className={s.row}>
         <ViewerProfilePicture />
-        {edit_mode ? (
+        {edit_profile ? (
           <div className={s.edits}>
-            <div className={s.button} onClick={click_cancel}>
+            <div
+              className={s.button}
+              onClick={() => {
+                set_edit_profile(false);
+              }}
+            >
               CANCEL
             </div>
-            <div className={s.button} onClick={() => next_step()}>
+            <div className={s.button} onClick={() => update_profile()}>
               Apply
             </div>
           </div>
         ) : (
           <div className={s.edits}>
-            <div className={s.button} onClick={click_edit_mode}>
-              Edit Profile
-            </div>
-            <div className={s.button}> Edit Nfts</div>
             <div
               className={s.button}
               onClick={() => {
-                navigator.clipboard.writeText(account_link);
-                setCopied(true);
+                set_edit_profile(true);
               }}
             >
-              {copied ? account_link : "Copy My link"}
+              Edit Profile
             </div>
-            <CopiedMessage />
+            <div
+              className={s.button}
+              onClick={() => {
+                set_edit_collections(true);
+              }}
+            >
+              Edit Nfts
+            </div>
+            <div>
+              <div
+                className={s.button}
+                onClick={() => {
+                  navigator.clipboard.writeText(account_link);
+                  setCopied(true);
+                }}
+              >
+                {copied ? account_link : "Copy My link"}
+              </div>
+              <CopiedMessage />
+            </div>
           </div>
         )}
       </div>
 
-      {edit_mode ? (
+      {edit_profile ? (
         <div className={s.editName}>
           <TextField
             type="username"
-            id="standard-basic"
+            id="standard-basic username"
             className={s.editName}
             onChange={handleChange}
             label="Username"
@@ -167,11 +188,11 @@ export default function CreatorProfileInfos(props: profile_props) {
       ) : (
         <div className={s.username}>{user_name}</div>
       )}
-      {edit_mode ? (
+      {edit_profile ? (
         <div className={s.editDesc}>
           <TextField
             type="description"
-            id="standard-basic"
+            id="standard-basic description"
             className={s.editDesc}
             onChange={handleChange}
             label="Description"
@@ -184,7 +205,17 @@ export default function CreatorProfileInfos(props: profile_props) {
       ) : (
         <div className={s.description}>{desc}</div>
       )}
-      <div>{`NETWORTH:${props.user.networth}`}</div>
+      {edit_collections && (
+        <EditCollections
+          collections={profile_props.collections}
+          initial_filter={props.initial_filter}
+          callback_close={() => {
+            set_edit_collections(false);
+          }}
+          callback_update_filter={callback_filter}
+        />
+      )}
+      <div>{`NETWORTH:${profile_props.user.networth}`}</div>
     </div>
   );
 }

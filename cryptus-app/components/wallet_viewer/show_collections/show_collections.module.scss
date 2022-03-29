@@ -1,6 +1,7 @@
 @use "/styles/variables" as v;
 
 .container {
+  position: fixed;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -8,6 +9,7 @@
   text-align: center;
   justify-content: flex-start;
   background-color: v.$header-color;
+  z-index: 30;
 
   width: 100%;
 }
@@ -50,11 +52,12 @@
 .button {
   display: flex;
   flex: 1 1 auto;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   text-align: center;
-  position: fixed;
+  // position: ab;
   bottom: 16px;
+  gap: 8px;
   font-size: v.$font-size-m;
   background-color: v.$header-color;
 }

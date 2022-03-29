@@ -9,21 +9,68 @@ import BackButton from "../../header/back_button/back_button";
 import ContextualPageName from "../../header/contextual_page_name/contextual_page_name";
 import update_collection_filter from "../../../lib/update_collection_filter";
 import { nft, nft_collection } from "../../../lib/data_types";
-
-var coll_filter: string[] = [];
+import { props } from "cypress/types/bluebird";
 
 export default function ShowCollections(props: {
   collections: nft_collection[];
+  initial_filter: string[];
+  callback_update_filter: (new_filter: string[]) => void;
+  callback_close: () => void;
 }) {
   const [session, status] = useSession();
+  const [collections_filter, set_collections_filter] = useState<string[]>(
+    props.initial_filter
+  );
   const router = useRouter();
-  const onButtonClick = (e) => {
-    update_collection_filter(session?.user?.name, coll_filter);
-    router.back();
+  const onButtonClick = () => {
+    const username = session?.user?.name;
+    console.log("who is this man", username);
+    update_collection_filter(username, collections_filter);
+
+    // reload page
+    props.callback_update_filter(collections_filter);
+    props.callback_close();
   };
+
+  const CollectionOption = (props: { collection: nft_collection }) => {
+    const { collection } = props;
+    const handleChange = (e) => {
+      if (e.currentTarget.checked == false) {
+        if (collections_filter.indexOf(collection.address) == -1) {
+          collections_filter.push(collection.address);
+        }
+      }
+      if (e.currentTarget.checked == true) {
+        const i = collections_filter.indexOf(collection.address);
+        if (i != -1) {
+          collections_filter.splice(i, 1);
+        }
+      }
+    };
+
+    const default_checked =
+      collections_filter.indexOf(collection.address) == -1;
+
+    return (
+      <div className={s.option}>
+        <CollectionLogo logo={collection.nfts[0].image_url} />
+        <CollectionName name={collection.name} />
+        <Switch defaultChecked={default_checked} onChange={handleChange} />
+      </div>
+    );
+  };
+
   return (
     <div className={s.container}>
-      <SCHeader />
+      <SCHeader callback={props.callback_close} />
+      <div className={s.button}>
+        <Button variant="outlined" size="large" onClick={props.callback_close}>
+          cancel
+        </Button>
+        <Button variant="contained" size="large" onClick={onButtonClick}>
+          Apply
+        </Button>
+      </div>
       <div className={s.collections}>
         {props.collections.map((collection: nft_collection) => (
           <div key={collection.id}>
@@ -31,45 +78,16 @@ export default function ShowCollections(props: {
           </div>
         ))}
       </div>
-      <div className={s.button}>
-        <Button variant="contained" size="large" onClick={onButtonClick}>
-          Apply
-        </Button>
-      </div>
     </div>
   );
 }
 
-const SCHeader = () => {
+const SCHeader = (props: { callback }) => {
   return (
     <div className={s.header}>
-      <BackButton />
+      <BackButton callback_close={props.callback} />
       <ContextualPageName name={"Choose which collections to display"} />
       <div className={s.empty}></div>
-    </div>
-  );
-};
-
-const CollectionOption = (props: { collection: nft_collection }) => {
-  const { collection } = props;
-  const handleChange = (e) => {
-    if (e.currentTarget.checked == false) {
-      if (coll_filter.indexOf(collection.address) == -1) {
-        coll_filter.push(collection.address);
-      }
-    }
-    if (e.currentTarget.checked == true) {
-      const i = coll_filter.indexOf(collection.address);
-      if (i != -1) {
-        coll_filter.splice(i, 1);
-      }
-    }
-  };
-  return (
-    <div className={s.option}>
-      <CollectionLogo logo={collection.image_url} />
-      <CollectionName name={collection.name} />
-      <Switch defaultChecked onChange={handleChange} />
     </div>
   );
 };
