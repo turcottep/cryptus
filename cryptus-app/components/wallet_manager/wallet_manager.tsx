@@ -6,6 +6,7 @@ import { useSession } from "next-auth/client";
 //import ContextualXButton from "../header/contextual_x_button/contextual_x_button";
 import BackButton from "../header/back_button/back_button";
 import WalletListDisplay from "./wallet_list_display/wallet_list_display";
+import Address from "../../pages/api/scripts/rarity_floor/[address]";
 
 export type walletsType = {
   id: string;
@@ -15,11 +16,12 @@ export type walletsType = {
   userId: string;
 };
 
-export default function WalletManager(props: { user: any }) {
-  const { user } = props;
+export default function WalletManager(props: { wallets: any }) {
+  const { wallets } = props;
   const addresses = [];
+  console.log(props);
   // console.log(user.wallets);
-  for (const [key, value] of Object.entries(user.wallets)) {
+  for (const [key, value] of Object.entries(wallets)) {
     addresses.push(value["address"]);
   }
   // user.wallets.foreach((wallet) => {
@@ -31,44 +33,63 @@ export default function WalletManager(props: { user: any }) {
   const [event, setEvent] = useState();
 
   useEffect(() => {
-    const addMetamaskWallet = async () => {
-      console.log("update view");
-      if (!window.ethereum) {
-        window.open("https://metamask.io/", "_blank").focus();
-        setWalletToAdd([]);
-      } else {
-        try {
-          await window.ethereum.enable();
-          let addressesToAdd = await window.ethereum.request({
-            method: "eth_requestAccounts",
-          });
-          console.log("To add", addressesToAdd);
-          console.log("Already added", addresses);
-          addressesToAdd = addressesToAdd.filter(
-            (val) => !addresses.includes(val)
-          );
-          setWalletToAdd(addressesToAdd);
-        } catch (error) {
-          console.log(error);
-          setWalletToAdd([]);
-        }
-      }
-    };
     addMetamaskWallet();
-  }, [event]);
+  }, [event, props]);
+
+  const addMetamaskWallet = async () => {
+    console.log("update view");
+    if (!window.ethereum) {
+      window.open("https://metamask.io/", "_blank").focus();
+      setWalletToAdd([]);
+    } else {
+      try {
+        await window.ethereum.enable();
+        let addressesToAdd = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        console.log("To add", addressesToAdd);
+        console.log("Already added", walletList);
+        addressesToAdd = addressesToAdd.filter(
+          (val) => !addresses.includes(val)
+        );
+        setWalletList(addresses);
+        setWalletToAdd(addressesToAdd);
+      } catch (error) {
+        console.log(error);
+        setWalletList([]);
+        setWalletToAdd([]);
+      }
+    }
+  };
+
+  const callbackFunction = async (address, adding: boolean) => {
+    let newWalletList = walletList;
+    let newWalletToAdd = walletToAdd;
+    if (adding) {
+      newWalletList.push(address);
+      newWalletToAdd = newWalletToAdd.filter((val) => val != address);
+    } else {
+      newWalletList = newWalletList.filter((val) => val != address);
+      newWalletToAdd.push(address);
+    }
+    setWalletList(newWalletList);
+    setWalletToAdd(newWalletToAdd);
+  };
 
   return (
     <div className={s.container}>
       <WalletManagerHeader />
-      <WalletListDisplay
-        addOrDeleteAddressEvent={setEvent}
-        currentAddress={walletList[0]}
-        addresses={walletList}
-        added={true}
-      />
+      <div className={s.walletList}>
+        <WalletListDisplay
+          callback={callbackFunction}
+          currentAddress={walletList[0]}
+          addresses={walletList}
+          added={true}
+        />
+      </div>
       <div className={s.line} />
       <WalletListDisplay
-        addOrDeleteAddressEvent={setEvent}
+        callback={callbackFunction}
         currentAddress={walletList[0]}
         addresses={walletToAdd}
         added={false}
@@ -79,17 +100,13 @@ export default function WalletManager(props: { user: any }) {
 
 const WalletManagerHeader = () => (
   <div className={s.header}>
-    <BackButton />
+    <div className={s.backButton}>
+      <BackButton />
+    </div>
     <div className={s.settingsTitle}>Wallet Manager</div>
 
     <div className={s.blankButton} />
   </div>
 );
-
-// const AddWallet = () => (
-//   <div className={s.addWallet} onClick={addMetamaskWallet}>
-//     <img className={s.addIcon} src="/icons/add_icon.png" />
-//   </div>
-// );
 
 declare let window: any;

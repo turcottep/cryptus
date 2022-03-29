@@ -3,9 +3,10 @@ import React, { useState, useEffect } from "react";
 import s from "./wallet_list_display.module.scss";
 import { walletsType } from "../wallet_manager";
 import AddWalletWithCurrentAddress from "../../../lib/addWalletWithCurrentAddress";
+import DeleteWalletWithCurrentAddress from "../../../lib/deleteWalletWithCurrentAddress";
 
 export default function WalletListDisplay(props: {
-  addOrDeleteAddressEvent;
+  callback: any;
   currentAddress: string;
   addresses: Array<string>;
   added: boolean;
@@ -23,27 +24,35 @@ export default function WalletListDisplay(props: {
         {!props.added ? (
           <img
             onClick={async () => {
-              await addWallet(props.currentAddress, address);
-              props.addOrDeleteAddressEvent;
+              await addWallet(props.currentAddress, address).then(
+                props.callback(address, true)
+              );
             }}
             src="/icons/add_icon.png"
             className={s.walletIcon}
           />
-        ) : (
+        ) : props.addresses.length > 1 ? (
           <img
             onClick={async () => {
-              await deleteWallet(props.currentAddress, address);
-              props.addOrDeleteAddressEvent;
+              await deleteWallet(props.currentAddress, address).then(
+                props.callback(address, false)
+              );
             }}
             src="/icons/delete_icon.png"
             className={s.walletIcon}
           />
+        ) : (
+          <img src="/icons/delete_icon.png" className={s.walletIconDisabled} />
         )}
       </div>
     </div>
   ));
   return (
-    <ul className={props.added ? s.containerAdded : s.container}>{wallets}</ul>
+    <div className={s.walletList}>
+      <ul className={props.added ? s.containerAdded : s.container}>
+        {wallets}
+      </ul>
+    </div>
   );
 }
 
@@ -51,4 +60,6 @@ const addWallet = async (currentAddress: string, address: string) => {
   AddWalletWithCurrentAddress(currentAddress, address, false);
 };
 
-const deleteWallet = async (currentAddress: string, address: string) => {};
+const deleteWallet = async (currentAddress: string, address: string) => {
+  DeleteWalletWithCurrentAddress(currentAddress, address, false);
+};

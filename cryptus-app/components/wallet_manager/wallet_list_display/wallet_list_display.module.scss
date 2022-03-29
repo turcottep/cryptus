@@ -5,6 +5,8 @@
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-left: 0px;
 
   margin-top: 70px;
 }
@@ -14,8 +16,17 @@
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-left: 0px;
 
   margin-top: 20px;
+}
+
+.walletList {
+  flex: 1 1 auto;
+
+  display: flex;
+  justify-content: center;
 }
 
 .wallet {
@@ -23,8 +34,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
   border-radius: 10px;
-  margin: 0px 20px 20px 20px;
+  margin: 0px 0px 20px 0px;
   box-shadow: 0 2px 16px 0 rgb(0 0 0 / 5%);
 }
 
@@ -44,6 +56,13 @@
   align-self: center;
   height: 32px;
   width: 32px;
+}
+
+.walletIconDisabled {
+  align-self: center;
+  height: 32px;
+  width: 32px;
+  opacity: 50%;
 }
 
 .add {
