@@ -31,6 +31,7 @@ describe("<CreatorProfile />", () => {
       views: 6000,
       likes: 400,
       hash: "4d6da51cf568dd8037650a5ae0fe1c4344cca65361f3096d4b6a926614ab59bc",
+      address: "0x0da2f3401296427d302326cdf208b79f83abc995",
       wallets: [
         {
           id: "2df3578a-21fe-451f-9be3-065749899539",

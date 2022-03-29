@@ -9,9 +9,7 @@ exports[`ViewerProfileInfos renders correctly 1`] = `
     />
   </div>
   <div>
-    <div>
-      Tester
-    </div>
+    Tester
   </div>
   <div>
     Whatever

@@ -7,14 +7,21 @@ import { nft, nft_collection } from "../../../lib/data_types";
 
 export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
+  collections_filter: string[];
 }) {
+  console.log("ProfileWalletViewer render");
+
   return (
     <div className={s.container}>
-      {props.collections.map((collection: nft_collection) => (
-        <div key={collection.id}>
-          <Collection collection={collection} />
-        </div>
-      ))}
+      {props.collections
+        .filter((collection) => {
+          return !props.collections_filter.includes(collection.address);
+        })
+        .map((collection: nft_collection) => (
+          <div key={collection.id}>
+            <Collection collection={collection} />
+          </div>
+        ))}
     </div>
   );
 }
