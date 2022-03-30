@@ -57,7 +57,7 @@ async function getCollectionTokenWithOpensea(collectionAddress: string) {
       });
       const data = (await response.json()) as any;
       // await new Promise((resolve) => setTimeout(resolve, 1000));
-      return Number(data.collection.stats.count + 1);
+      return Number(data.collection.stats.count);
     } catch (error) {
       console.log("response", response);
       console.log(error);

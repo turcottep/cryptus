@@ -69,13 +69,21 @@ async function generatetest(contract_address: string) {
 async function generateRarityWithOpensea(collectionAddress: string) {
   const opensea_api_key = "e50f2020ec49494e8ab461b871309fc9";
   const allNfts = [];
+  let oldNext = "";
   let next = "";
   let response;
+  const maxRetriesAllowed = 100;
+  let numOfRetries = 0;
+  let totalOfRetries = 0;
   const max_assets = 50;
   const totalNum = await getCollectionTokens(collectionAddress);
-  console.log("totalNum", totalNum);
   try {
-    for (let i = 0; i * max_assets < totalNum; i++) {
+    for (
+      let i = 0;
+      // i * max_assets < totalNum + totalOfRetries * max_assets;
+      allNfts.length <= totalNum && i * max_assets < 50000;
+      i++
+    ) {
       try {
         const url =
           "https://api.opensea.io/api/v1/assets?order_by=pk&order_direction=asc&asset_contract_address=" +
@@ -102,20 +110,36 @@ async function generateRarityWithOpensea(collectionAddress: string) {
             });
           }
         }
-        console.log("i*max_assets : ", i * max_assets);
+
+        console.log("i*max_assets : ", i * max_assets, "next : ", next);
         next = data.next;
-        if (next === undefined) {
-          console.log("data : ", data);
+        if (!(data.next === undefined)) {
+          oldNext = next;
         }
 
-        console.log("data next : ", data.next);
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 250));
       } catch (error) {
-        console.log("response : ", response);
-        console.log("error : ", error);
+        if (next === undefined) {
+          console.log("Next undefined, retrying");
+          next = oldNext;
+          numOfRetries++;
+          totalOfRetries++;
+          if (numOfRetries > maxRetriesAllowed || next == null) {
+            console.log("Retries exceeded or null achieved");
+            break;
+          }
+        } else {
+          numOfRetries = 0;
+        }
+        // console.log("response : ", response);
+        // console.log("error : ", error);
       }
     }
-    console.log("First in allNFTs : ", allNfts[0]);
+    console.log("numOfRetries : ", numOfRetries);
+    console.log("allNfts.length : ", allNfts.length);
+    // if (allNfts.length < totalNum) {
+    //   return null;
+    // }
     console.log("allNFTs.length : ", allNfts.length);
 
     let metadata = allNfts.map((nft) => nft.traits);
