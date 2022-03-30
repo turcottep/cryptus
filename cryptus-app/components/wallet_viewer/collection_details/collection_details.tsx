@@ -19,7 +19,7 @@ export default function CollectionDetails(props: {
   const { collection, isMobile } = props;
 
   return (
-    <Card callback_close={props.callback_close}>
+    <Card callback_close={props.callback_close} isMobile={props.isMobile}>
       <CollectionInfos name={collection.name} number={collection.nfts.length} />
       <CollectionViewer collection={collection} open_nft={props.open_nft} />
     </Card>

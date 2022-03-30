@@ -26,8 +26,10 @@ export default function Profile(props: {
 
   const [session, loading] = useSession();
   const [isMyProfile, setIsMyProfile] = useState<Boolean>(false);
-  const [show_collection, set_show_collection] = useState(0);
-  const [show_nft, set_show_nft] = useState(-1);
+  const [show_card_collection, set_show_collection] = useState(false);
+  const [card_collection_index, set_card_collection_index] = useState(0);
+  const [show_card_nft, set_show_nft] = useState(false);
+  const [card_nft_index, set_card_nft_index] = useState(0);
 
   const router = useRouter();
   const { userId } = router.query;
@@ -42,25 +44,25 @@ export default function Profile(props: {
   const close_all = () => {
     console.log("close_all");
 
-    set_show_collection(-1);
-    set_show_nft(-1);
+    set_show_collection(false);
+    set_show_nft(false);
   };
 
   const close_nft = () => {
     console.log("close_nft");
-    set_show_nft(-1);
+    set_show_nft(false);
   };
 
   const open_collection = (index: number) => {
     console.log("open_collection", index);
-    set_show_collection(index);
-    // set_show_nft(-1);
+    set_card_collection_index(index);
+    set_show_collection(true);
   };
 
   const open_nft = (index: number) => {
     console.log("open_nft", index);
-    set_show_nft(index);
-    // set_show_collection(-1);
+    set_card_nft_index(index);
+    set_show_nft(true);
   };
 
   return (
@@ -68,17 +70,17 @@ export default function Profile(props: {
       {isMobile ? null : <DesktopHeader tab="profile" />}
       {isMobile ? isMyProfile ? <CreatorHeader /> : <ViewerHeader /> : null}
       {isMyProfile ? <MyProfInfos {...props} /> : <ViewProfInfos {...props} />}
-      {show_collection !== -1 && (
+      {show_card_collection && (
         <CollectionDetails
-          collection={props.collections[show_collection]}
+          collection={props.collections[card_collection_index]}
           isMobile={isMobile}
           callback_close={close_all}
           open_nft={open_nft}
         />
       )}
-      {show_nft !== -1 && (
+      {show_card_nft && (
         <NFTDetails
-          nft={props.collections[show_collection].nfts[show_nft]}
+          nft={props.collections[card_collection_index].nfts[card_nft_index]}
           rank={{ position: 100, total: 100000 }}
           listed_price={0.01}
           isMobile={isMobile}

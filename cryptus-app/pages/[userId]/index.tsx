@@ -20,9 +20,9 @@ export default function post(props) {
   }, [mobile]);
 
   return (
-    // <AnimatedDiv>
-    <Profile collections={collections} user={user} isMobile={isMobile} />
-    // </AnimatedDiv>
+    <AnimatedDiv>
+      <Profile collections={collections} user={user} isMobile={isMobile} />
+    </AnimatedDiv>
   );
 }
 

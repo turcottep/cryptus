@@ -29,7 +29,7 @@ export default function MarketCollection(props: {
   const { market_collection_props, isMobile } = props;
   console.log("MarketCollection props:", props);
   return (
-    <Card callback_close={props.callback_close}>
+    <Card callback_close={props.callback_close} isMobile={props.isMobile}>
       <MarketCollectionInfos
         collection_logo={market_collection_props.collection_logo}
         collection_name={market_collection_props.collection_name}

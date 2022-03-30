@@ -2,7 +2,11 @@ import React from "react";
 import s from "./card.module.scss";
 
 //Need to add prop for collection
-export default function Card(props: { callback_close; children: any }) {
+export default function Card(props: {
+  isMobile: boolean;
+  callback_close;
+  children: any;
+}) {
   return (
     <div
       id="bg"
@@ -15,7 +19,7 @@ export default function Card(props: { callback_close; children: any }) {
       }}
     >
       <div className={s.container}>
-        <XButton callback={props.callback_close} />
+        {props.isMobile && <XButton callback={props.callback_close} />}
         {props.children}
       </div>
     </div>

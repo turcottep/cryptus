@@ -28,7 +28,7 @@ export default function NFTDetails(props: nft_details_props) {
   let properties = nft.properties;
 
   return (
-    <Card callback_close={props.callback_close}>
+    <Card callback_close={props.callback_close} isMobile={props.isMobile}>
       {/* {isMobile ? null : <DesktopHeader tab="profile" />}
       <NftHeader /> */}
       <NftPicture image_url={nft.image_url} description={nft.description} />

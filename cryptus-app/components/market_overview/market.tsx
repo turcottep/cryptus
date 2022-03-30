@@ -1,7 +1,7 @@
 // Importer le market_viewer et le footer (commun)
 //react and css
 import React, { useState, useEffect } from "react";
-import s from "./market_overview.module.scss";
+import s from "./market.module.scss";
 
 //external exports
 
@@ -39,7 +39,8 @@ export default function MarketOverview(props: market_overview_props) {
   );
 
   const [loading, setLoading] = useState(false);
-  const [show_card, set_show_card] = useState(-1);
+  const [show_card, set_show_card] = useState(false);
+  const [card_index, set_card_index] = useState(0);
 
   useEffect(() => {
     //do backend call
@@ -92,33 +93,34 @@ export default function MarketOverview(props: market_overview_props) {
 
   const close_card = () => {
     console.log("close card");
-    set_show_card(-1);
+    set_show_card(false);
   };
 
   const open_card = (i) => {
     console.log("open card");
-    set_show_card(i);
+    set_card_index(i);
+    set_show_card(true);
   };
 
   return (
-    <div className={s.container}>
+    <div className={show_card ? s.container_no_scroll : s.container}>
       {isMobile ? null : <DesktopHeader tab="market" />}
       {loading && <Loading />}
-      {show_card !== -1 && (
+      {show_card && (
         <MarketCollection
-          isMobile={false}
+          isMobile={isMobile}
           callback_close={close_card}
           market_collection_props={{
-            collection_name: newPropCollection[show_card].name,
-            collection_logo: newPropCollection[show_card].logo,
-            collection_ticker: newPropCollection[show_card].ticker,
-            floor_price_live: newPropCollection[show_card].floor_price,
-            floor_price_delta: newPropCollection[show_card].floor_price_delta,
-            floor_price_timestamp: newPropCollection[show_card].timestamp,
-            data_price: newPropCollection[show_card].data_price,
+            collection_name: newPropCollection[card_index].name,
+            collection_logo: newPropCollection[card_index].logo,
+            collection_ticker: newPropCollection[card_index].ticker,
+            floor_price_live: newPropCollection[card_index].floor_price,
+            floor_price_delta: newPropCollection[card_index].floor_price_delta,
+            floor_price_timestamp: newPropCollection[card_index].timestamp,
+            data_price: newPropCollection[card_index].data_price,
             count: [],
-            volume: newPropCollection[show_card].data_volume,
-            address: newPropCollection[show_card].address,
+            volume: newPropCollection[card_index].data_volume,
+            address: newPropCollection[card_index].address,
           }}
         />
       )}

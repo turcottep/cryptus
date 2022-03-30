@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { isMobile as mobile } from "react-device-detect";
 
-import MarketOverview from "../../components/market_overview/market_overview";
+import MarketOverview from "../../components/market_overview/market";
 import { intervals } from "../../components/market_overview/net_worth/time_interval/time_interval";
 import { collection } from "../../components/market_viewer/market_viewer";
 import collectionDictionary from "../../lib/collectionDictionary";
