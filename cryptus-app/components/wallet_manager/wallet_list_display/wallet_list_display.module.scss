@@ -37,12 +37,13 @@
 
   border-radius: 10px;
   margin: 0px 0px 20px 0px;
-  box-shadow: 0 2px 16px 0 rgb(0 0 0 / 5%);
+  box-shadow: 0 0 16px rgba(#000, 0.05);
 }
 
 .walletInfos {
   flex-direction: column;
   padding: 20px 0 20px 20px;
+  word-break: break-all;
 }
 
 .rowCurrency {

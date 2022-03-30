@@ -70,7 +70,7 @@ export default function Home({ data }) {
       />
 
       <main>
-        <WalletManager {...prop.user} />
+        <WalletManager user={prop.user} />
       </main>
     </div>
   );

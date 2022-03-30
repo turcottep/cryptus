@@ -16,8 +16,8 @@ export type walletsType = {
   userId: string;
 };
 
-export default function WalletManager(props: { wallets: any }) {
-  const { wallets } = props;
+export default function WalletManager(props: { user: any }) {
+  const wallets = props.user.wallets;
   const addresses = [];
   console.log(props);
   // console.log(user.wallets);

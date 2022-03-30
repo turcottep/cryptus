@@ -55,7 +55,7 @@ export default function Profile(props: {
         isMyProfile ? (
           <CreatorHeader />
         ) : (
-          <ViewerHeader {...props.user.username} />
+          <ViewerHeader userId={props.user.username} />
         )
       ) : null}
       {isMyProfile ? (

@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 import FindUserFromUserId from "../../../lib/findUserFromUserId";
-import { data } from "jquery";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {

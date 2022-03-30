@@ -4,7 +4,7 @@
   flex: 1 1 auto;
 
   display: flex;
-  width: min(100vw, v.$mobile);
+  width: 100%;
   margin: auto;
   flex-direction: column;
 
@@ -22,7 +22,7 @@
   flex-direction: row;
   justify-content: space-between;
 
-  width: min(100vw, v.$mobile);
+  width: 100%;
   height: v.$header-h;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .line {
-  width: 75%;
+  width: min(calc(100vw - 20px), calc(v.$mobile - 20px));
   border-bottom: 1px solid black;
   align-self: center;
 }
@@ -50,7 +50,7 @@
   display: flex;
   align-self: center;
   width: 70px;
-  box-shadow: 0 0 0 2px rgb(0 0 0 / 5%);
+  box-shadow: 0 0 0 2px rgba(#000, 0.05);
   border-radius: 50%;
 }
 
