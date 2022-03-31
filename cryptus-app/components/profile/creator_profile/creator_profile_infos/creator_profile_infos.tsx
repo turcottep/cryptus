@@ -21,6 +21,7 @@ export default function CreatorProfileInfos(props: {
   initial_filter: string[];
 }) {
   const { profile_props, callback_filter } = props;
+  console.log("profile_props", profile_props);
 
   const [session, sessionLoading] = useSession();
   const [loading, setLoading] = useState(false);
@@ -38,6 +39,7 @@ export default function CreatorProfileInfos(props: {
       }, 4000);
     }
   }, [copied]);
+
   const account_link = "publicwallet.app/" + user_name;
 
   const CopiedMessage = () => {

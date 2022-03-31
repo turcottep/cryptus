@@ -18,19 +18,10 @@ export default function ShowCollections(props: {
   callback_close: () => void;
 }) {
   const [session, status] = useSession();
-  const [collections_filter, set_collections_filter] = useState<string[]>(
-    props.initial_filter
-  );
+  const [collections_filter, set_collections_filter] = useState<string[]>([
+    ...props.initial_filter,
+  ]);
   const router = useRouter();
-  const onButtonClick = () => {
-    const username = session?.user?.name;
-    console.log("who is this man", username);
-    update_collection_filter(username, collections_filter);
-
-    // reload page
-    props.callback_update_filter(collections_filter);
-    props.callback_close();
-  };
 
   const CollectionOption = (props: { collection: nft_collection }) => {
     const { collection } = props;
@@ -60,14 +51,29 @@ export default function ShowCollections(props: {
     );
   };
 
+  const click_cancel = () => {
+    set_collections_filter(props.initial_filter);
+    props.callback_close();
+  };
+
+  const click_apply = () => {
+    const username = session?.user?.name;
+    console.log("who is this man", username);
+    update_collection_filter(username, collections_filter);
+
+    // reload page
+    props.callback_update_filter(collections_filter);
+    props.callback_close();
+  };
+
   return (
     <div className={s.container}>
       <SCHeader callback={props.callback_close} />
       <div className={s.button}>
-        <Button variant="outlined" size="large" onClick={props.callback_close}>
+        <Button variant="outlined" size="large" onClick={click_cancel}>
           cancel
         </Button>
-        <Button variant="contained" size="large" onClick={onButtonClick}>
+        <Button variant="contained" size="large" onClick={click_apply}>
           Apply
         </Button>
       </div>

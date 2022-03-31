@@ -31,7 +31,6 @@ export default function DesktopHeader(props: { tab: string }) {
       <div className={s.tabs}>
         {tabs.map((t, i) => {
           const isActive = t.name == tab;
-          console.log("tabs", tabs[2].name);
 
           if (name == "" && t.name == tabs[2].name) {
             return (

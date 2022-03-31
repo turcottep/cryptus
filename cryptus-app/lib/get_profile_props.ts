@@ -9,27 +9,27 @@ export default async function get_profile_props(
   user_name: string
 ): Promise<{ props: profile_props }> {
   const user = await getUserByUsername(user_name, true);
+  console.log("user", user);
 
   if (!user) {
-    return {
-      props: {
-        collections: null,
-        user: null,
-      },
-    };
+    throw new Error("User not found");
   }
 
   try {
     let nfts = [];
 
-    user.wallets.forEach(async (wallet) => {
+    for (let i = 0; i < user.wallets; i++) {
+      const wallet = user.wallets[i];
       let nfts_per_wallet = await update_nfts_for_user(
         user_name,
         wallet.address,
         user.userId
       );
       nfts.push(nfts_per_wallet);
-    });
+    }
+
+    console.log("nfts", nfts);
+
     if (!nfts[0]) {
       console.log("getting nft from our database");
       nfts = await get_nfts_for_user(user_name);

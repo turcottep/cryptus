@@ -20,7 +20,6 @@ export default async function update_collection_filter(
       },
     });
     const data = await res.json();
-    console.log("data", data);
 
     return data;
   } catch (e) {

@@ -1,0 +1,54 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  z-index: 100;
+  width: 1024px;
+  max-width: calc(100vw - 32px);
+  min-height: 512px;
+  padding: 16px;
+  border-radius: 16px;
+  position: relative;
+  margin-top: v.$header-h;
+
+  @media (max-width: v.$mobile) {
+    margin-top: 0;
+    width: min(100vw, v.$mobile);
+    min-height: 100vh;
+  }
+
+  background-color: v.$bg-color;
+  cursor: default;
+}
+
+.backdrop {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.x_button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  cursor: pointer;
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+  width: 24px;
+  height: 24px;
+}

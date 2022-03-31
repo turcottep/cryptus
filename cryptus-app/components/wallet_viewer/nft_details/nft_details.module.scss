@@ -14,3 +14,16 @@
     width: min(100vw, v.$mobile);
   }
 }
+
+.backdrop {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  background-color: rgba(#000, 0.2);
+  cursor: pointer;
+}

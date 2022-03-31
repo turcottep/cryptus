@@ -10,6 +10,7 @@ import NftPicture from "./nft_picture/nft_picture";
 import NFTProperties from "./nft_properties/nft_properties";
 import NFTRankInCollection from "./nft_rank_in_collection/nft_rank_in_collection";
 import DesktopHeader from "../../header/desktop_header/desktop_header";
+import Card from "../../utils/card/card";
 
 type nft_details_props = {
   nft: nft;
@@ -19,6 +20,7 @@ type nft_details_props = {
   };
   listed_price: number;
   isMobile: boolean;
+  callback_close;
 };
 
 export default function NFTDetails(props: nft_details_props) {
@@ -26,9 +28,9 @@ export default function NFTDetails(props: nft_details_props) {
   let properties = nft.properties;
 
   return (
-    <div className={s.container}>
-      {isMobile ? null : <DesktopHeader tab="profile" />}
-      <NftHeader />
+    <Card callback_close={props.callback_close} isMobile={props.isMobile}>
+      {/* {isMobile ? null : <DesktopHeader tab="profile" />}
+      <NftHeader /> */}
       <NftPicture image_url={nft.image_url} description={nft.description} />
       <NftInfo
         nft={props.nft}
@@ -40,6 +42,6 @@ export default function NFTDetails(props: nft_details_props) {
       ) : null}
 
       <NFTProperties properties={properties} collectionSize={rank.total} />
-    </div>
+    </Card>
   );
 }

@@ -35,6 +35,9 @@ describe("<MarketViewer />", () => {
         <MarketViewer
           collections_market={test_collections}
           collections_favorite={test_collections}
+          callback_open={function (id: string): void {
+            throw new Error("Function not implemented.");
+          }}
         />
       )
       .toJSON();
