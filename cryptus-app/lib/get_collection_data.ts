@@ -4,6 +4,7 @@ async function getCollectionData(collectionAddress: string[]) {
   const opensea_api_key = process.env.OPENSEA_API_KEY;
   let response;
   let collectionDataList = [];
+  let index: number = 2;
   for (const collection of collectionAddress) {
     const contractAddress = collection;
     try {
@@ -28,9 +29,33 @@ async function getCollectionData(collectionAddress: string[]) {
 
       const nameWithoutSpaces = GetNameWithoutSpaces(name);
 
+      // collectionDataList.push({
+      //   [nameWithoutSpaces]: {
+      //     id: "",
+      //     logo,
+      //     ticker,
+      //     name,
+      //     timestamp: "",
+      //     address,
+      //     floor_price: 0,
+      //     floor_price_delta: 0,
+      //     data_price: [],
+      //     data_volume: [],
+      //   },
+      // });
       collectionDataList.push({
-        [nameWithoutSpaces]: { ticker, logo, address, name },
+        id: index.toString(),
+        logo,
+        ticker,
+        name,
+        timestamp: "",
+        address,
+        floor_price: 0,
+        floor_price_delta: 0,
+        data_price: [],
+        data_volume: [],
       });
+      index++;
     } catch (error) {
       console.log("response", response);
       console.log(error);

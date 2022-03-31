@@ -7,7 +7,9 @@ import MarketOverview from "../../components/market_overview/market_overview";
 import { intervals } from "../../components/market_overview/net_worth/time_interval/time_interval";
 import { collection } from "../../components/market_viewer/market_viewer";
 import collectionDictionary from "../../lib/collectionDictionary";
+import { collection100list } from "../../lib/collectionDictionary";
 import address from "../api/collection/address";
+import getCollectionData from "../../lib/get_collection_data";
 
 // Import market_overwiew parent component to test here
 
@@ -64,6 +66,12 @@ export async function getStaticProps() {
     },
   };
 
+  // let addressList = [];
+  // const addressList = collection100list.map((collection) => {
+  //   return collection.address;
+  // });
+  // const collections = (await getCollectionData(addressList)) as collection[];
+
   const collections_dict = collectionDictionary;
   const collections = Object.keys(collections_dict).map((key) => {
     return collections_dict[key];
@@ -74,7 +82,7 @@ export async function getStaticProps() {
   try {
     return {
       props: {
-        collections: collections_mock,
+        collections: collections,
         mock_data: mock_data,
       },
     };
