@@ -27,6 +27,7 @@ describe("<ProfileWalletViewer />", () => {
           open_nft={function (index: number): void {
             throw new Error("Function not implemented.");
           }}
+          collections_filter={[]}
         />
       )
       .toJSON();

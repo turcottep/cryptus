@@ -20,10 +20,11 @@ export default function ProfileWalletViewer(props: {
           return !props.collections_filter.includes(collection.address);
         })
         .map((collection: nft_collection, i: number) => (
-          <div key={collection.id}>
+          <div key={i}>
             <Collection
               collection={collection}
               index={i}
+              key={i}
               open_collection={props.open_collection}
               open_nft={props.open_nft}
             />
@@ -78,14 +79,15 @@ const Collection = (props: {
           <NftL
             nft={nft}
             collectionName={collectionName}
+            key={i}
             index={i}
             open_nft={props.open_nft}
           />
         ))}
         {c ? (
           <div className={s.collection_preview_container}>
-            {c.map((nft) => (
-              <NftS nft={nft} />
+            {c.map((nft, i) => (
+              <NftS nft={nft} key={i} />
             ))}
           </div>
         ) : null}

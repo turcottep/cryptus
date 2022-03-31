@@ -17,6 +17,7 @@ import Footer from "../footer/footer";
 import DesktopHeader from "../header/desktop_header/desktop_header";
 import Loading from "../utils/loading/loading";
 import MarketCollection from "./market_collection/market_collection";
+import { useSession } from "next-auth/client";
 
 type market_overview_props = {
   date: string;
@@ -32,20 +33,47 @@ type market_overview_props = {
 
 export default function MarketOverview(props: market_overview_props) {
   const { isMobile } = props;
-  const [price, setPrice] = useState([]);
+
+  const [user_collections_list, set_user_collections_list] = useState<string[]>(
+    ["0x1a92f7381b9f03921564a437210bb9396471050c"]
+  );
+
   // const [interval, setInterval] = useState(props.networth.active);
-  const [newPropCollection, setnewPropCollection] = useState<collection[]>(
+  const [newPropCollection, setnewPropCollection] = useState(props.collections);
+  const [newPropCollectionFavorite, setnewPropCollectionFavorite] = useState(
+    []
+  );
+  const [newPropCollectionMarket, setnewPropCollectionMarket] = useState(
     props.collections
   );
 
+  const [session, status] = useSession();
+  const [username, setUsername] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [show_card, set_show_card] = useState(false);
   const [card_index, set_card_index] = useState(0);
 
   useEffect(() => {
-    //do backend call
-    //setloading true
-  }, []);
+    if (session) {
+      const user_name = session.user.name;
+      update_for_user(user_name);
+      setUsername(user_name);
+    }
+  }, [status]);
+
+  useEffect(() => {
+    const newPropCollectionFavoriteTemp = [];
+    const newPropCollectionMarketTemp = [];
+    for (const collection of newPropCollection) {
+      if (user_collections_list.includes(collection.address)) {
+        newPropCollectionFavoriteTemp.push(collection);
+      } else {
+        newPropCollectionMarketTemp.push(collection);
+      }
+    }
+    setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
+    setnewPropCollectionMarket(newPropCollectionMarketTemp);
+  }, [user_collections_list, newPropCollection]);
 
   useEffect(() => {
     updatePrice(props.networth.active);
@@ -144,4 +172,7 @@ export default function MarketOverview(props: market_overview_props) {
       {isMobile ? <Footer /> : null}
     </div>
   );
+}
+function update_for_user(user_name: string) {
+  throw new Error("Function not implemented.");
 }
