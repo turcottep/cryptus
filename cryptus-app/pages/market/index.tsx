@@ -66,11 +66,15 @@ export async function getStaticProps() {
     },
   };
 
-  // let addressList = [];
+  // // This section is the code that will be use to display all collection info in ther market overview
+  // // It will replace the collections_mock
   // const addressList = collection100list.map((collection) => {
-  //   return collection.address;
+  //   return collection.address.toLowerCase();
   // });
-  // const collections = (await getCollectionData(addressList)) as collection[];
+  // const collectionsTest = (await getCollectionData(
+  //   addressList
+  // )) as collection[];
+  // // end of section
 
   const collections_dict = collectionDictionary;
   const collections = Object.keys(collections_dict).map((key) => {
@@ -82,7 +86,7 @@ export async function getStaticProps() {
   try {
     return {
       props: {
-        collections: collections,
+        collections: collections_mock,
         mock_data: mock_data,
       },
     };

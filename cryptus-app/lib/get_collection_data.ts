@@ -1,7 +1,8 @@
 import GetNameWithoutSpaces from "./get_name_without_spaces";
 
 async function getCollectionData(collectionAddress: string[]) {
-  const opensea_api_key = process.env.OPENSEA_API_KEY;
+  // const opensea_api_key = process.env.OPENSEA_API_KEY;
+  const opensea_api_key = "3ca4d23a00934385aaaf46800ad8a1e7";
   let response;
   let collectionDataList = [];
   let index: number = 2;
@@ -29,6 +30,7 @@ async function getCollectionData(collectionAddress: string[]) {
 
       const nameWithoutSpaces = GetNameWithoutSpaces(name);
 
+      // // If the old method of giving the info is wanted
       // collectionDataList.push({
       //   [nameWithoutSpaces]: {
       //     id: "",
