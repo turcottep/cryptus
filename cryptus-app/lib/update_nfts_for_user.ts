@@ -26,7 +26,7 @@ export default async function updateNftsForUser(
       {
         headers: {
           Accept: "application/json",
-          "X-API-KEY": process.env.OPENSEA_API_KEY,
+          "X-API-KEY": process.env.NEXT_PUBLIC_OPENSEA_API_KEY,
         },
       }
     );

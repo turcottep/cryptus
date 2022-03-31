@@ -14,13 +14,16 @@ export default function MarketCollection(props: {
   market_collection_props: market_collection_props;
 }) {
   const { market_collection_props, isMobile } = props;
-  console.log("MarketCollection props:", props);
 
   const [price, setPrice] = useState(market_collection_props.data_price);
   const [volume, setVolume] = useState(market_collection_props.volume);
   const [delta, setDelta] = useState(market_collection_props.floor_price_delta);
 
-  const callbackFunction = async (childData) => {
+  useEffect(() => {
+    updatePrice(2);
+  }, []);
+
+  const updatePrice = async (childData) => {
     let viewingmode = intervals[childData];
     if (viewingmode == "three_months") {
       viewingmode = "3month";
@@ -60,7 +63,7 @@ export default function MarketCollection(props: {
           floor_price_timestamp={market_collection_props.floor_price_timestamp}
         />
         <CollectionMarketGraph
-          callback={callbackFunction}
+          callback={updatePrice}
           data_price={price}
           data_volume={volume}
           address={market_collection_props.address}

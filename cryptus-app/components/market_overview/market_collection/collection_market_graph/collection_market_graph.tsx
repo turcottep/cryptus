@@ -14,6 +14,39 @@ export default function CollectionMarketGraph(props: {
   address: string;
   callback: Function;
 }) {
+  const [value, setValue] = useState(props);
+  const address = value.address;
+  const [price, setPrice] = useState(value.data_price);
+  const [volume, setVolume] = useState(value.data_volume);
+
+  useEffect(() => {
+    setValue(props);
+    setPrice(props.data_price);
+    setVolume(props.data_volume);
+  }, [props]);
+
+  const callbackFunction = async (childData) => {
+    let viewingmode = intervals[childData];
+    if (viewingmode == "three_months") {
+      viewingmode = "3month";
+    }
+    console.log("new viewingmode : ", viewingmode);
+    const res = await fetch("/api/sales/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        address,
+        viewingmode,
+      }),
+    });
+    const { price, count, volume } = await res.json();
+    setPrice(price);
+    setVolume(volume);
+    console.log("new price !", price);
+  };
+
   return (
     <div className={s.container}>
       <div className={s.graph}>

@@ -50,6 +50,7 @@ describe("<CreatorProfile />", () => {
         description: "Whatever",
         username: "Tester",
         address: "test_address",
+        collections_filter: [],
       },
       collections: [mock_collection],
     };
