@@ -1,0 +1,77 @@
+@use "/styles/variables" as v;
+
+.containerAdded {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0px;
+
+  margin-top: 70px;
+}
+
+.container {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0px;
+
+  margin-top: 20px;
+}
+
+.walletList {
+  flex: 1 1 auto;
+
+  display: flex;
+  justify-content: center;
+}
+
+.wallet {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  border-radius: 10px;
+  margin: 0px 0px 20px 0px;
+  box-shadow: 0 0 16px rgba(#000, 0.05);
+}
+
+.walletInfos {
+  flex-direction: column;
+  padding: 20px 0 20px 20px;
+  word-break: break-all;
+}
+
+.rowCurrency {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  font-size: v.$font-size-m;
+}
+
+.walletIcon {
+  align-self: center;
+  height: 32px;
+  width: 32px;
+}
+
+.walletIconDisabled {
+  align-self: center;
+  height: 32px;
+  width: 32px;
+  opacity: 50%;
+}
+
+.add {
+  display: flex;
+  align-self: center;
+  float: right;
+}
+
+.add:hover {
+  opacity: 0.5;
+}

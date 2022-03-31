@@ -32,7 +32,11 @@ export default function NFTDetails(props: nft_details_props) {
       {/* {isMobile ? null : <DesktopHeader tab="profile" />}
       <NftHeader /> */}
       <NftPicture image_url={nft.image_url} description={nft.description} />
-      <NftInfo nft={props.nft} listed_price={listed_price} />
+      <NftInfo
+        nft={props.nft}
+        listed_price={listed_price}
+        estimated_price={nft.value}
+      />
       {rank.position ? (
         <NFTRankInCollection position={rank.position} total={rank.total} />
       ) : null}

@@ -136,7 +136,11 @@ export default function MarketOverview(props: market_overview_props) {
         <SearchBar />
         <SortButton />
       </div>
-      <MarketViewer collections={newPropCollection} callback_open={open_card} />
+      <MarketViewer
+        collections_market={newPropCollection}
+        callback_open={open_card}
+        collections_favorite={[]}
+      />
       {isMobile ? <Footer /> : null}
     </div>
   );

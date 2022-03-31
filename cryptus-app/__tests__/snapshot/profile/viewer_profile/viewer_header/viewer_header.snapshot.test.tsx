@@ -13,7 +13,7 @@ describe("<ViewerHeader />", () => {
   });
 
   it("ViewerHeader renders correctly", () => {
-    const tree = renderer.create(<ViewerHeader />).toJSON();
+    const tree = renderer.create(<ViewerHeader userId="test" />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

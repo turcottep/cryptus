@@ -9,19 +9,26 @@ export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
   open_collection: (index: number) => void;
   open_nft: (index: number) => void;
+  collections_filter: string[];
 }) {
+  console.log("ProfileWalletViewer render");
+
   return (
     <div className={s.container}>
-      {props.collections.map((collection: nft_collection, i) => (
-        <div key={collection.id}>
-          <Collection
-            collection={collection}
-            index={i}
-            open_collection={props.open_collection}
-            open_nft={props.open_nft}
-          />
-        </div>
-      ))}
+      {props.collections
+        .filter((collection) => {
+          return !props.collections_filter.includes(collection.address);
+        })
+        .map((collection: nft_collection, i: number) => (
+          <div key={collection.id}>
+            <Collection
+              collection={collection}
+              index={i}
+              open_collection={props.open_collection}
+              open_nft={props.open_nft}
+            />
+          </div>
+        ))}
     </div>
   );
 }

@@ -6,12 +6,14 @@ import { collection } from "../market_viewer";
 
 // Need to add prop for collections
 export default function MarketCollections(props: {
+  name: string;
+  icon: string;
   collections: collection[];
   callback;
 }) {
   return (
     <div id="market_collections" className={s.container}>
-      <MarketCollectionsHeader />
+      <MarketCollectionsHeader name={props.name} icon={props.icon} />
       <div className={s.market}>
         {props.collections ? (
           props.collections.map((c, i) => (
@@ -33,13 +35,10 @@ export default function MarketCollections(props: {
   );
 }
 
-const MarketCollectionsHeader = () => (
+const MarketCollectionsHeader = (props: { name: string; icon: string }) => (
   <div className={s.header}>
-    <div className={s.headerbox}>
-      <div className={s.icon}>
-        <img src="/icons/market_icon.png" />
-      </div>
-      <div className={s.label}>Market</div>
-    </div>
+    <img className={s.icon} src={props.icon} />
+
+    <div className={s.label}>{props.name}</div>
   </div>
 );

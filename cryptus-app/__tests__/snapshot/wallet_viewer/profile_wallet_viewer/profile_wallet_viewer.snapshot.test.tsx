@@ -20,7 +20,7 @@ describe("<ProfileWalletViewer />", () => {
     const tree = renderer
       .create(
         <ProfileWalletViewer
-          collections={mockCollections}
+          collections={[]}
           open_collection={function (index: number): void {
             throw new Error("Function not implemented.");
           }}

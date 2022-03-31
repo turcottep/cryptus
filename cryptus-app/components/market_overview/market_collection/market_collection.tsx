@@ -7,6 +7,7 @@ import CollectionFloorPrice from "./collection_floor_price/collection_floor_pric
 import CollectionMarketGraph from "./collection_market_graph/collection_market_graph";
 import DesktopHeader from "../../header/desktop_header/desktop_header";
 import Card from "../../utils/card/card";
+import { intervals } from "../net_worth/time_interval/time_interval";
 
 export type market_collection_props = {
   collection_name: string;
@@ -27,7 +28,39 @@ export default function MarketCollection(props: {
   callback_close;
 }) {
   const { market_collection_props, isMobile } = props;
-  console.log("MarketCollection props:", props);
+
+  const [price, setPrice] = useState(market_collection_props.data_price);
+  const [volume, setVolume] = useState(market_collection_props.volume);
+  const [delta, setDelta] = useState(market_collection_props.floor_price_delta);
+
+  useEffect(() => {
+    updatePrice(2);
+  }, []);
+
+  const updatePrice = async (childData) => {
+    let viewingmode = intervals[childData];
+    if (viewingmode == "three_months") {
+      viewingmode = "3month";
+    }
+    const address = market_collection_props.address;
+    console.log("new viewingmode : ", viewingmode);
+    const res = await fetch("/api/sales/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        address,
+        viewingmode,
+      }),
+    });
+    const { price, count, volume, delta } = await res.json();
+    setPrice(price);
+    setVolume(volume);
+    setDelta(delta);
+    console.log("new price !", price);
+  };
+
   return (
     <Card callback_close={props.callback_close} isMobile={props.isMobile}>
       <MarketCollectionInfos
@@ -44,6 +77,7 @@ export default function MarketCollection(props: {
         data_price={market_collection_props.data_price}
         data_volume={market_collection_props.volume}
         address={market_collection_props.address}
+        callback={undefined}
       />
     </Card>
   );

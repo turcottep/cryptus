@@ -58,7 +58,7 @@ export default function DesktopHeader(props: { tab: string }) {
 }
 
 const Title = () => (
-  <a href="#" className={s.title}>
+  <a href="/" className={s.title}>
     Public Wallet
   </a>
 );

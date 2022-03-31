@@ -10,32 +10,33 @@ exports[`CreatorProfileInfos renders correctly 1`] = `
       />
     </div>
     <div>
-      <div>
-        <a
-          href="/edit_profile"
-        >
-          Edit Profile
-        </a>
+      <div
+        onClick={[Function]}
+      >
+        Edit Profile
+      </div>
+      <div
+        onClick={[Function]}
+      >
+        Edit Nfts
       </div>
       <div>
-        <button
+        <div
           onClick={[Function]}
         >
-          Edit NFTs
-        </button>
+          Copy My link
+        </div>
       </div>
     </div>
   </div>
   <div>
-    <div>
-      A username
-    </div>
+    Tester
   </div>
   <div>
-    Here is a description
+    Whatever
   </div>
   <div>
-    NETWORTH:420
+    NETWORTH:5
   </div>
 </div>
 `;

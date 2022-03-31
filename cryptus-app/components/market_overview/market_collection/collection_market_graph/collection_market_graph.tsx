@@ -12,10 +12,19 @@ export default function CollectionMarketGraph(props: {
   data_price: number[];
   data_volume: number[];
   address: string;
+  callback: Function;
 }) {
-  const address = props.address;
-  const [price, setPrice] = useState(props.data_price);
-  const [volume, setVolume] = useState(props.data_volume);
+  const [value, setValue] = useState(props);
+  const address = value.address;
+  const [price, setPrice] = useState(value.data_price);
+  const [volume, setVolume] = useState(value.data_volume);
+
+  useEffect(() => {
+    setValue(props);
+    setPrice(props.data_price);
+    setVolume(props.data_volume);
+  }, [props]);
+
   const callbackFunction = async (childData) => {
     let viewingmode = intervals[childData];
     if (viewingmode == "three_months") {
@@ -41,9 +50,13 @@ export default function CollectionMarketGraph(props: {
   return (
     <div className={s.container}>
       <div className={s.graph}>
-        <Graph data_price={price} data_volume={volume} detailled={true} />
+        <Graph
+          data_price={props.data_price}
+          data_volume={props.data_volume}
+          detailled={true}
+        />
       </div>
-      <TimeInterval active={0} callback={callbackFunction} />
+      <TimeInterval active={0} callback={props.callback} />
     </div>
   );
 }

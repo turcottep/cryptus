@@ -33,8 +33,8 @@ describe("<MarketViewer />", () => {
     const tree = renderer
       .create(
         <MarketViewer
-          collections={test_collections}
-          callback_open={undefined}
+          collections_market={test_collections}
+          collections_favorite={test_collections}
         />
       )
       .toJSON();

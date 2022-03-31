@@ -11,7 +11,11 @@ export default function SearchBar() {
     <div className={s.container}>
       <div className={s.box}>
         <img src="magnifier.svg" className={s.magnifier} />
-        <input type="text" className={s.searchTerm} placeholder="Search" />
+        <input
+          type="text"
+          className={s.searchTerm}
+          placeholder="Search comming soon"
+        />
       </div>
     </div>
   );

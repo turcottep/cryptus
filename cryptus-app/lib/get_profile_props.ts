@@ -1,5 +1,5 @@
 import { profile_props } from "./data_types";
-import getUserByUsername from "./getUserByUsername";
+import getUserByUsername from "./get_user_by_username";
 import get_nfts_for_user from "./get_nfts_for_user";
 import calculate_networth from "./networth";
 import sortNftsIntoCollections from "./sort_nfts_into_collections";
@@ -18,34 +18,49 @@ export default async function get_profile_props(
       },
     };
   }
+
   try {
-    let nfts = await update_nfts_for_user(
-      user_name,
-      user.wallets[0].address,
-      user.userId
-    );
-    if (!nfts) {
+    let nfts = [];
+
+    user.wallets.forEach(async (wallet) => {
+      let nfts_per_wallet = await update_nfts_for_user(
+        user_name,
+        wallet.address,
+        user.userId
+      );
+      nfts.push(nfts_per_wallet);
+    });
+    if (!nfts[0]) {
+      console.log("getting nft from our database");
       nfts = await get_nfts_for_user(user_name);
     }
 
     const nfts_collections = sortNftsIntoCollections(
-      nfts,
-      user.collections_filter
+      nfts
+      // user.collections_filter
     );
 
     const networth = await calculate_networth(nfts_collections);
 
-    // console.log("networth", networth);
     user.networth = networth;
 
     return {
       props: { collections: nfts_collections, user: user },
     };
   } catch (error) {
-    console.log("error", error);
+    console.log("error in get_profile_props", error);
 
     return {
-      props: { collections: null, user: null },
+      props: {
+        collections: [],
+        user: {
+          address: "",
+          username: "",
+          description: "",
+          networth: 0,
+          collections_filter: [],
+        },
+      },
     };
   }
 }

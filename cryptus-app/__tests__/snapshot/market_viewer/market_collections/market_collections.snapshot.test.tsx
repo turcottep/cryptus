@@ -25,8 +25,9 @@ describe("<MarketCollections />", () => {
     const tree = renderer
       .create(
         <MarketCollections
+          name={"My Collections"}
+          icon="icons/favorite_icon.png"
           collections={test_collections}
-          callback={undefined}
         />
       )
       .toJSON();
