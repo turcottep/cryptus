@@ -78,6 +78,8 @@ export default function Profile(props: {
     console.log("update_my_collection_filter", collections_filter);
   };
 
+  console.log("isMobile", isMobile);
+
   return (
     <div className={s.container}>
       {isMobile ? null : <DesktopHeader tab="profile" />}

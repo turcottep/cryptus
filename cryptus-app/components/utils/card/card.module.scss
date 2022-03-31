@@ -2,8 +2,15 @@
 
 .container {
   flex: 0 0 none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
   z-index: 100;
   width: 1024px;
+  max-width: calc(100vw - 32px);
   min-height: 512px;
   padding: 16px;
   border-radius: 16px;
