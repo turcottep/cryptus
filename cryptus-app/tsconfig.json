@@ -24,6 +24,6 @@
     "pages/loginpage2.jsx",
     "components/user_form/UserDetails.jsx",
     "components/user_form/UserDetails.jsx"
-  ],
+, "next-config.js"  ],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
