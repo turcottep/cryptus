@@ -53,8 +53,11 @@ export default function ProfilePage() {
 
   const [isMobile, setIsMobile] = useState(true);
   const [loading, setLoading] = useState<Boolean>(false);
-  const [profile_props, set_profile_props] =
-    useState<profile_props>(props_empty);
+
+  const [user_props, set_user_props] = useState(props_empty.user);
+  const [collections_props, set_collections_props] = useState(
+    props_empty.collections
+  );
 
   useEffect(() => {
     setIsMobile(mobile);
@@ -67,7 +70,12 @@ export default function ProfilePage() {
       console.log("getting props for ", userNameString);
       const returningProps = await get_profile_props(userNameString);
       console.log("returning", returningProps);
-      set_profile_props(returningProps.props);
+      // set_profile_props(returningProps.props);
+      const new_user_props = returningProps.props.user;
+      const new_collections_props = returningProps.props.collections;
+      set_user_props(new_user_props);
+      set_collections_props(new_collections_props);
+
       setLoading(false);
     };
 
@@ -79,9 +87,10 @@ export default function ProfilePage() {
   return (
     <AnimatedDiv>
       <Profile
-        collections={profile_props.collections}
-        user={profile_props.user}
+        collections={collections_props}
+        user={user_props}
         isMobile={isMobile}
+        key={loading ? 1 : 0}
       />
     </AnimatedDiv>
   );

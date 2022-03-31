@@ -11,8 +11,6 @@ export default function ProfileWalletViewer(props: {
   open_nft: (index: number) => void;
   collections_filter: string[];
 }) {
-  console.log("ProfileWalletViewer render");
-
   return (
     <div className={s.container}>
       {props.collections

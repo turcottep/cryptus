@@ -56,7 +56,7 @@ export default function MarketOverview(props: market_overview_props) {
   useEffect(() => {
     if (session) {
       const user_name = session.user.name;
-      update_for_user(user_name);
+      // update_for_user(user_name);
       setUsername(user_name);
     }
   }, [status]);
@@ -172,7 +172,4 @@ export default function MarketOverview(props: market_overview_props) {
       {isMobile ? <Footer /> : null}
     </div>
   );
-}
-function update_for_user(user_name: string) {
-  throw new Error("Function not implemented.");
 }

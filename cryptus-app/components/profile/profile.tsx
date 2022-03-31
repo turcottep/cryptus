@@ -30,6 +30,7 @@ export default function Profile(props: {
   const [card_collection_index, set_card_collection_index] = useState(0);
   const [show_card_nft, set_show_nft] = useState(false);
   const [card_nft_index, set_card_nft_index] = useState(0);
+  const [update_collection, set_update_collection] = useState(0);
 
   const [collections_filter, setCollectionsFilter] = useState<string[]>(
     user.collections_filter
@@ -72,6 +73,7 @@ export default function Profile(props: {
   const update_my_collection_filter = (new_filter: string[]) => {
     console.log("update_my_collection_filter", new_filter);
     const temp_filter = [...new_filter];
+    set_update_collection((update_collection + 1) % 2);
     setCollectionsFilter(temp_filter);
     console.log("update_my_collection_filter", collections_filter);
   };
@@ -90,7 +92,7 @@ export default function Profile(props: {
         <MyProfInfos
           profile_props={props}
           callback_filter={update_my_collection_filter}
-          initial_filter={[]}
+          initial_filter={collections_filter}
         />
       ) : (
         <ViewProfInfos {...props} />
@@ -116,9 +118,10 @@ export default function Profile(props: {
         collections={collections}
         open_collection={open_collection}
         open_nft={open_nft}
-        collections_filter={[]}
+        collections_filter={collections_filter}
+        key={update_collection}
       />
-      {isMobile ? <Footer /> : null}
+      {isMobile && <Footer />}
     </div>
   );
 }
