@@ -16,7 +16,6 @@
 
 .container_no_scroll {
   @extend .container;
-  background-color: red;
   max-height: 100vh;
   overflow: hidden;
 }
