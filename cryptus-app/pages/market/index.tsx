@@ -1,3 +1,4 @@
+import { Router, useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 import { isMobile as mobile } from "react-device-detect";
@@ -6,6 +7,7 @@ import MarketOverview from "../../components/market_overview/market_overview";
 import { intervals } from "../../components/market_overview/net_worth/time_interval/time_interval";
 import { collection } from "../../components/market_viewer/market_viewer";
 import collectionDictionary from "../../lib/collectionDictionary";
+import address from "../api/collection/address";
 
 // Import market_overwiew parent component to test here
 
@@ -48,7 +50,7 @@ export default function Market(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const address = "0x1a92f7381b9f03921564a437210bb9396471050c";
   console.log("address", address);
 

@@ -30,6 +30,10 @@ export default function Profile(props: {
   const router = useRouter();
   const { userId } = router.query;
 
+  // useEffect(() => {
+  //   setCollectionsFilter(props.user.collections_filter);
+  // }, [props]);
+
   useEffect(() => {
     const is_my_profile = userId && userId === session?.user?.name;
     setIsMyProfile(is_my_profile);
@@ -47,7 +51,13 @@ export default function Profile(props: {
   return (
     <div className={s.container}>
       {isMobile ? null : <DesktopHeader tab="profile" />}
-      {isMobile ? isMyProfile ? <CreatorHeader /> : <ViewerHeader /> : null}
+      {isMobile ? (
+        isMyProfile ? (
+          <CreatorHeader />
+        ) : (
+          <ViewerHeader userId={props.user.username} />
+        )
+      ) : null}
       {isMyProfile ? (
         <MyProfInfos
           callback_filter={update_my_collection_filter}

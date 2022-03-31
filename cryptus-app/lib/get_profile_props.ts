@@ -8,17 +8,30 @@ import update_nfts_for_user from "./update_nfts_for_user";
 export default async function get_profile_props(
   user_name: string
 ): Promise<{ props: profile_props }> {
+  const user = await getUserByUsername(user_name, true);
+
+  if (!user) {
+    return {
+      props: {
+        collections: null,
+        user: null,
+      },
+    };
+  }
+
   try {
-    const user = await getUserByUsername(user_name, true);
-    if (!user) {
-      throw new Error("User not found");
-    }
-    let nfts = await update_nfts_for_user(
-      user_name,
-      user.wallets[0].address,
-      user.userId
-    );
-    if (!nfts) {
+    let nfts = [];
+
+    user.wallets.forEach(async (wallet) => {
+      let nfts_per_wallet = await update_nfts_for_user(
+        user_name,
+        wallet.address,
+        user.userId
+      );
+      nfts.push(nfts_per_wallet);
+    });
+    if (!nfts[0]) {
+      console.log("getting nft from our database");
       nfts = await get_nfts_for_user(user_name);
     }
 
@@ -29,7 +42,6 @@ export default async function get_profile_props(
 
     const networth = await calculate_networth(nfts_collections);
 
-    // console.log("networth", networth);
     user.networth = networth;
 
     return {
@@ -41,7 +53,13 @@ export default async function get_profile_props(
     return {
       props: {
         collections: [],
-        user: { address: "", username: "", description: "", networth: 0 },
+        user: {
+          address: "",
+          username: "",
+          description: "",
+          networth: 0,
+          collections_filter: [],
+        },
       },
     };
   }

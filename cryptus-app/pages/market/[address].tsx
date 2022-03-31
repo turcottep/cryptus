@@ -1,13 +1,11 @@
+import router, { Router } from "next/router";
 import React, { useEffect, useState } from "react";
 
 import { isMobile as mobile } from "react-device-detect";
+import { useRouter } from "next/router";
 
-import Graph from "../../components/graph/graph";
 import MarketCollection from "../../components/market_overview/market_collection/market_collection";
-import FeatureIamTesting from "../../components/template/pagetemplate/pagetemplate";
-import collectionDictionary from "../../lib/collectionDictionary";
-import { data_raw } from "../../lib/data";
-import get_base_url from "../../lib/get_base_url";
+import Loading from "../../components/utils/loading/loading";
 
 export type market_collection_props = {
   collection_name: string;
@@ -22,23 +20,32 @@ export type market_collection_props = {
   address: string;
 };
 
-export default function Home(props: market_collection_props) {
-  const { data_price } = props;
+export default function Home() {
+  const props_empty = {
+    collection_name: "",
+    collection_logo: "",
+    collection_ticker: "",
+    floor_price_live: 0.0,
+    floor_price_delta: 0.0,
+    floor_price_timestamp: "",
+    data_price: [0.0, 0.0],
+    count: [0.0, 0.0],
+    volume: [0.0, 0.0],
+    address: "",
+  } as market_collection_props;
+  const router = useRouter();
   const [isMobile, setIsMobile] = useState(true);
-
+  const [loading, setLoading] = useState<Boolean>(false);
+  const [prop, setProp] = useState(props_empty);
+  const { address } = router.query;
+  const addressString = address as string;
   useEffect(() => {
     setIsMobile(mobile);
     console.log("isMobile", isMobile);
   }, [mobile]);
 
-  const mock_volume = data_price
-    ? data_price.map((row) => {
-        return Math.random() * 100;
-      })
-    : [];
-
   return (
-    <div className="">
+    <div>
       <title>Public Wallet</title>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,71 +65,16 @@ export default function Home(props: market_collection_props) {
       />
 
       <main>
-        <MarketCollection market_collection_props={props} isMobile={isMobile} />
+        {loading && <Loading />}
+        {addressString ? (
+          <MarketCollection
+            market_collection_props={props_empty}
+            isMobile={isMobile}
+          />
+        ) : (
+          <div />
+        )}
       </main>
     </div>
   );
-}
-
-export async function getServerSideProps(context) {
-  const address =
-    context.query.address ?? "0x1a92f7381b9f03921564a437210bb9396471050c";
-  const viewingmode = "alltime";
-  console.log("address", address);
-  const collection_dict = collectionDictionary;
-  const collection = collection_dict[address];
-  const summary_props_mock = {
-    collection_name: collection.name,
-    collection_logo: collection.logo,
-    collection_ticker: collection.ticker,
-    floor_price_live: collection.floor_price,
-    floor_price_delta: collection.floor_price_delta,
-    floor_price_timestamp: collection.timestamp,
-    data_price: [],
-    count: null,
-    volume: null,
-    address: collection.address,
-  } as market_collection_props;
-
-  try {
-    const base_url = get_base_url();
-    const res = await fetch(base_url + "/api/sales/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        address: summary_props_mock.address,
-        viewingmode,
-      }),
-    });
-    const { price, count, volume, delta } = await res.json();
-
-    summary_props_mock.data_price = price;
-    summary_props_mock.count = count;
-    summary_props_mock.volume = volume;
-    summary_props_mock.floor_price_delta = delta;
-
-    return {
-      props: {
-        ...summary_props_mock,
-      },
-    };
-  } catch (err) {
-    console.error(err);
-    console.error(err);
-    console.log("DEEZ");
-
-    return {
-      props: {
-        collection_name: "",
-        collection_logo: "",
-        collection_ticker: "",
-        floor_price_live: 0,
-        floor_price_delta: 0,
-        floor_price_timestamp: "",
-        data_price: [],
-      },
-    };
-  }
 }
