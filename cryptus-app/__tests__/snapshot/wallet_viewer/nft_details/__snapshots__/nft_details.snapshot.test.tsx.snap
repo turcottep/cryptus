@@ -63,20 +63,10 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
               />
             </div>
           </div>
-        </div>
-      </a>
-    </div>
-    Estimated price: undefined eth
-     
-  </div>
-  <div>
-    rank: 1234567/2000000
-  </div>
-  <div>
-    <div>
-      <div>
-        MOUTH
+        </a>
       </div>
+      Estimated price: undefined eth
+       
     </div>
     <div>
       rank: 1234567/2000000

@@ -54,7 +54,9 @@ describe("<Profile />", () => {
     };
 
     const tree = renderer
-      .create(<Profile collections={[]} user={undefined} isMobile={false} />)
+      .create(
+        <Profile collections={collections} user={user} isMobile={false} />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
