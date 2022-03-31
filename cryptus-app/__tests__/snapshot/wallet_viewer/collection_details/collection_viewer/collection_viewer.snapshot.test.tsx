@@ -17,7 +17,14 @@ describe("<CollectionViewer />", () => {
   it("should display properly", async () => {
     const mockCollection = mock_collection;
     const tree = renderer
-      .create(<CollectionViewer collection={mockCollection} />)
+      .create(
+        <CollectionViewer
+          collection={mockCollection}
+          open_nft={function (index: number): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -1,83 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<MarketCollection /> should display properly 1`] = `
-<div>
-  <div
-    id="header"
-  >
-    <div>
-      <a
-        href="/"
-      >
-        Public Wallet
-      </a>
-    </div>
-    <div>
-      <a
-        href="/market"
-      >
-        market
-      </a>
-      <a
-        href="/market"
-      >
-        search
-      </a>
-      <div
-        onClick={[Function]}
-      >
-        profile
-      </div>
-    </div>
-    <div>
-      <a
-        href="/market"
-        target="_blank"
-      >
-        <img
-          src="/icons/notification_icon.png"
-        />
-      </a>
-      <div
-        onClick={[Function]}
-      >
-        <img
-          src="/icons/menu_icon.png"
-        />
-      </div>
-    </div>
-  </div>
+<div
+  id="bg"
+  onClick={[Function]}
+>
   <div>
-    <div>
-      <a
-        href="login"
-        target="_blank"
+    <div
+      onClick={[Function]}
+    >
+      <svg
+        className="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={3}
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <img
-          src="/icons/favorite_icon.png"
+        <path
+          d="M6 18L18 6M6 6l12 12"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
-      </a>
-      <a
-        href="login"
-        target="_blank"
-      >
-        <img
-          src="/icons/notification_icon.png"
-        />
-      </a>
+      </svg>
     </div>
-    <div>
-      <a
-        onClick={[Function]}
-        target="_blank"
-      >
-        <img
-          src="/icons/x_icon.png"
-        />
-      </a>
-    </div>
-  </div>
-  <div>
     <div>
       <img
         src=""
@@ -91,7 +37,7 @@ exports[`<MarketCollection /> should display properly 1`] = `
     </div>
     <div>
       <div>
-        7.79
+        0.05
          Ξ
         <div>
            ETH
@@ -103,7 +49,7 @@ exports[`<MarketCollection /> should display properly 1`] = `
         </span>
         Ξ (
         <span>
-          0.13
+          20.00
         </span>
         %)
       </div>

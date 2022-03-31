@@ -5,30 +5,32 @@ import s from "./collection_viewer.module.scss";
 
 export default function CollectionViewer(props: {
   collection: nft_collection;
+  open_nft: (index: number) => void;
 }) {
   const { collection } = props;
   return (
     <div className={s.container}>
       {collection.nfts.map((nft, i) => (
-        <Nft key={i} nft={nft} />
+        <Nft key={i} nft={nft} index={i} open_nft={props.open_nft} />
       ))}
     </div>
   );
 }
 
-const Nft = (props: { nft: nft }) => {
+const Nft = (props: { nft: nft; index: number; open_nft }) => {
   const { nft } = props;
   //console.log("nft", nft);
-  const router = useRouter();
-  const { userId: userName, collectionId: collectionName } = router.query;
+  // const router = useRouter();
+  // const { userId: userName, collectionId: collectionName } = router.query;
 
-  const nftName = nft.name
-    .replace(/[^0-9a-z]/gi, " ")
-    .replace(/\s/g, "")
-    .toLowerCase();
+  // const nftName = nft.name
+  //   .replace(/[^0-9a-z]/gi, " ")
+  //   .replace(/\s/g, "")
+  //   .toLowerCase();
 
   const onNftClick = () => {
-    router.push(`/${userName}/${collectionName}/${nftName}`);
+    props.open_nft(props.index);
+    // router.push(`/${userName}/${collectionName}/${nftName}`);
   };
 
   return (

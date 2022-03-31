@@ -1,7 +1,7 @@
 // Importer le market_viewer et le footer (commun)
 //react and css
 import React, { useState, useEffect } from "react";
-import s from "./market_overview.module.scss";
+import s from "./market.module.scss";
 
 //external exports
 
@@ -14,10 +14,10 @@ import MarketViewer, { collection } from "../market_viewer/market_viewer";
 import { intervals } from "./net_worth/time_interval/time_interval";
 import { each } from "jquery";
 import Footer from "../footer/footer";
-import { useSession } from "next-auth/client";
-import get_user_by_username from "../../lib/get_user_by_username";
 import DesktopHeader from "../header/desktop_header/desktop_header";
 import Loading from "../utils/loading/loading";
+import MarketCollection from "./market_collection/market_collection";
+import { useSession } from "next-auth/client";
 
 type market_overview_props = {
   date: string;
@@ -33,13 +33,12 @@ type market_overview_props = {
 
 export default function MarketOverview(props: market_overview_props) {
   const { isMobile } = props;
-  const [price, setPrice] = useState([]);
 
-  const [session, status] = useSession();
-  const [username, setUsername] = useState<string>("");
   const [user_collections_list, set_user_collections_list] = useState<string[]>(
     ["0x1a92f7381b9f03921564a437210bb9396471050c"]
   );
+
+  // const [interval, setInterval] = useState(props.networth.active);
   const [newPropCollection, setnewPropCollection] = useState(props.collections);
   const [newPropCollectionFavorite, setnewPropCollectionFavorite] = useState(
     []
@@ -48,12 +47,16 @@ export default function MarketOverview(props: market_overview_props) {
     props.collections
   );
 
+  const [session, status] = useSession();
+  const [username, setUsername] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const [show_card, set_show_card] = useState(false);
+  const [card_index, set_card_index] = useState(0);
 
   useEffect(() => {
     if (session) {
       const user_name = session.user.name;
-      update_for_user(user_name);
+      // update_for_user(user_name);
       setUsername(user_name);
     }
   }, [status]);
@@ -71,15 +74,6 @@ export default function MarketOverview(props: market_overview_props) {
     setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
     setnewPropCollectionMarket(newPropCollectionMarketTemp);
   }, [user_collections_list, newPropCollection]);
-
-  const update_for_user = async (user_name: string) => {
-    const user = await get_user_by_username(user_name);
-    const user_collections = user.collections_list;
-    console.log("user_collections", user_collections);
-    set_user_collections_list(user_collections);
-  };
-
-  // const [interval, setInterval] = useState(props.networth.active);
 
   useEffect(() => {
     updatePrice(props.networth.active);
@@ -108,31 +102,56 @@ export default function MarketOverview(props: market_overview_props) {
       }),
     });
 
-    const { prices, counts, delta } = await res.json();
+    const { prices, counts } = await res.json();
+    const newPropCollectionTemp = [];
 
-    if (prices) {
-      const newPropCollectionTemp = [];
-
-      for (let i = 0; i < props.collections.length; i++) {
-        const element = props.collections[i];
-        element.data_price = prices[i];
-        element.floor_price_delta = delta[i];
-        newPropCollectionTemp.push(element);
-      }
-      setnewPropCollection(newPropCollectionTemp);
+    for (let i = 0; i < props.collections.length; i++) {
+      const element = props.collections[i];
+      element.data_price = prices[i];
+      newPropCollectionTemp.push(element);
     }
+
+    setnewPropCollection(newPropCollectionTemp);
   };
 
   const callbackGraph = async (interval) => {
     // setInterval(interval);
-    console.log("update price");
-
     updatePrice(interval);
   };
 
+  const close_card = () => {
+    console.log("close card");
+    set_show_card(false);
+  };
+
+  const open_card = (i) => {
+    console.log("open card");
+    set_card_index(i);
+    set_show_card(true);
+  };
+
   return (
-    <div className={s.container}>
+    <div className={show_card ? s.container_no_scroll : s.container}>
       {isMobile ? null : <DesktopHeader tab="market" />}
+      {loading && <Loading />}
+      {show_card && (
+        <MarketCollection
+          isMobile={isMobile}
+          callback_close={close_card}
+          market_collection_props={{
+            collection_name: newPropCollection[card_index].name,
+            collection_logo: newPropCollection[card_index].logo,
+            collection_ticker: newPropCollection[card_index].ticker,
+            floor_price_live: newPropCollection[card_index].floor_price,
+            floor_price_delta: newPropCollection[card_index].floor_price_delta,
+            floor_price_timestamp: newPropCollection[card_index].timestamp,
+            data_price: newPropCollection[card_index].data_price,
+            count: [],
+            volume: newPropCollection[card_index].data_volume,
+            address: newPropCollection[card_index].address,
+          }}
+        />
+      )}
       <MarketHeader />
       <NetWorth
         value={props.networth.value}
@@ -146,10 +165,11 @@ export default function MarketOverview(props: market_overview_props) {
         <SortButton />
       </div>
       <MarketViewer
-        collections_market={newPropCollectionMarket}
-        collections_favorite={newPropCollectionFavorite}
+        collections_market={newPropCollection}
+        callback_open={open_card}
+        collections_favorite={[]}
       />
-      <Footer />
+      {isMobile ? <Footer /> : null}
     </div>
   );
 }

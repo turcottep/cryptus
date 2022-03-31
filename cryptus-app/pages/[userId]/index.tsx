@@ -10,7 +10,7 @@ import AnimatedDiv from "../../components/utils/animated_div";
 import get_profile_props from "../../lib/get_profile_props";
 import { profile_props } from "../../lib/data_types";
 
-export default function post() {
+export default function ProfilePage() {
   const props_empty: profile_props = {
     collections: [
       {
@@ -53,7 +53,11 @@ export default function post() {
 
   const [isMobile, setIsMobile] = useState(true);
   const [loading, setLoading] = useState<Boolean>(false);
-  const [prop, setProp] = useState<any | null>(props_empty);
+
+  const [user_props, set_user_props] = useState(props_empty.user);
+  const [collections_props, set_collections_props] = useState(
+    props_empty.collections
+  );
 
   useEffect(() => {
     setIsMobile(mobile);
@@ -62,12 +66,19 @@ export default function post() {
 
   useEffect(() => {
     setLoading(true);
-    async function getProps() {
+    const getProps = async () => {
+      console.log("getting props for ", userNameString);
       const returningProps = await get_profile_props(userNameString);
       console.log("returning", returningProps);
-      setProp(returningProps.props);
+      // set_profile_props(returningProps.props);
+      const new_user_props = returningProps.props.user;
+      const new_collections_props = returningProps.props.collections;
+      set_user_props(new_user_props);
+      set_collections_props(new_collections_props);
+
       setLoading(false);
-    }
+    };
+
     if (userNameString) {
       getProps();
     }
@@ -76,9 +87,10 @@ export default function post() {
   return (
     <AnimatedDiv>
       <Profile
-        collections={prop.collections}
-        user={prop.user}
+        collections={collections_props}
+        user={user_props}
         isMobile={isMobile}
+        key={loading ? 1 : 0}
       />
     </AnimatedDiv>
   );

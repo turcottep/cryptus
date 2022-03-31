@@ -20,7 +20,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     });
 
     res.status(201);
-    // console.log("user: ", user);
+    console.log("done updating filter in backend");
+
     res.json({});
   } catch (e) {
     res.status(500);

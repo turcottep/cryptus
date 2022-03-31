@@ -14,6 +14,12 @@
   }
 }
 
+.container_no_scroll {
+  @extend .container;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
 .container_row {
   flex: 1 1 auto;
 
