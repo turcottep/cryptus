@@ -6,7 +6,7 @@ import SortButton from "../../../../components/market_overview/sort_button/sort_
 
 describe("<SortButton />", () => {
   it("should display properly", async () => {
-    const tree = renderer.create(<SortButton />).toJSON();
+    const tree = renderer.create(<SortButton sort={"a function"} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
