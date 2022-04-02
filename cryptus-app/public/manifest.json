@@ -6,6 +6,7 @@
   "start_url": "/",
   "name": "Public Wallet",
   "short_name": "PublicWallet",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
