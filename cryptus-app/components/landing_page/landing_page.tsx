@@ -14,7 +14,7 @@ export default function LandingPage() {
   return (
     <div className={s.container}>
       {loading && <Loading />}
-      <Header session={session} setLoading={setLoading} />
+      <Header session={session} setLoading={{ setLoading }} />
       <div className={s.page1}>
         <div className={s.divisiontext}>
           <div className={s.description}>{"EASIEST WAY TO"}</div>
@@ -61,7 +61,7 @@ const Header = (props: { session: any; setLoading: any }) => {
           {!session ? (
             <div
               className={s.signinbutton}
-              onClick={() => connectMetamask(setLoading)}
+              onClick={() => connectMetamask({ setLoading })}
             >
               {"SIGN IN"}
             </div>
