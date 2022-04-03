@@ -1,11 +1,15 @@
 @use "/styles/variables" as v;
 
 .container {
+  position: sticky;
+  top: 0;
+
+  display: flex;
   width: 100%;
-  top: 0px;
+
   color: rgb(0 0 0);
   background-color: v.$bg-color;
-  // background-color: rgb(202, 202, 202);
+  z-index: 101;
 }
 
 .content {

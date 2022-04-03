@@ -1,153 +1,125 @@
 import React, { useState } from "react";
-import NameForm from "./name_form";
-import NavbarLandingPage from "../navbars/navbar_landing_page/navbar_landing_page";
-import { signIn } from "next-auth/client";
-import FindUserIdFromWalletAdress from "../../lib/findUserIdFromWalletAdress";
-import CreateAccountFromWalletAddress from "../../lib/createAccountFromWalletAddress";
-import FindUserFromUserId from "../../lib/findUserFromUserId";
-import Loading from "../utils/loading/loading";
-// import walletViewerLandingPage from "../../public/images/backgroungLandingPage.png";
-
 import s from "./landing_page.module.scss";
 
+import { signOut, useSession } from "next-auth/client";
+import connectMetamask from "../../lib/connectMetamask";
+
+import NavbarLandingPage from "../navbars/navbar_landing_page/navbar_landing_page";
+import Loading from "../utils/loading/loading";
+
 export default function LandingPage() {
-  const [loading, setLoading] = useState<Boolean>(false);
-
-  const connectMetamask = async () => {
-    // router.push("login?");
-    setLoading(true);
-    if (!window.ethereum) {
-      console.log("please donwload MetaMask");
-      window.open("https://metamask.io/", "_blank").focus();
-      setLoading(false);
-    } else {
-      try {
-        await window.ethereum.enable();
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        const wallet_address = accounts[0];
-
-        const userId = await FindUserIdFromWalletAdress(wallet_address, false);
-
-        if (!userId) {
-          //Create Account with this wallet address
-          const user = await CreateAccountFromWalletAddress(
-            wallet_address,
-            false
-          );
-          signIn("credentials", {
-            redirect: true,
-            address: wallet_address,
-            callbackUrl: `${window.location.origin}/edit_profile`,
-          });
-        } else {
-          const user = await FindUserFromUserId(userId, false, false);
-          signIn("credentials", {
-            redirect: true,
-            address: wallet_address,
-            callbackUrl: `${window.location.origin}/` + user.username,
-          });
-        }
-      } catch (error) {
-        console.error(error);
-        setLoading(false);
-        // router.push("login?error=CancelMetamask");
-      }
-    }
-  };
+  const [loading, setLoading] = useState<boolean>(false);
+  const [session, loadingSession] = useSession();
 
   return (
     <div className={s.container}>
       {loading && <Loading />}
-      <div className={s.row}>
-        <div className={s.header}>
-          <NavbarLandingPage callback={connectMetamask} />
+      <Header session={session} setLoading={setLoading} />
+      <div className={s.page1}>
+        <div className={s.divisiontext}>
+          <div className={s.description}>{"EASIEST WAY TO"}</div>
+          <div className={s.title}>{"TRACK YOUR NFTS"}</div>
+          <ButtonTryNow setLoading={setLoading} />
         </div>
-
-        <div className={s.column}>
-          <div className={s.appNameSection}>
-            <div>
-              <h1 className={s.appName}>Public Wallet</h1>
-            </div>
-            <div>
-              <h3 className={s.topVP}>THE EASIEST WAY TO</h3>
-              <h3 className={s.bottomVP}>SHOW YOUR NFTS</h3>
-            </div>
-            <div className={s.clickToAction}>
-              <button
-                className={s.clickToActionButton}
-                onClick={() => connectMetamask()}
-              >
-                TRY IT NOW!
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className={s.column}>
-          <div className={s.rowAppOverview}>
-            <div className={s.columnAppOverview}>
-              <img
-                className={s.imgAppOverview}
-                src="/images/walletViewerLandingPage.png"
-              />
-            </div>
-            <div className={s.columnAppOverview}>
-              <img
-                className={s.imgAppOverview}
-                src="/images/marketOverviewLandingPage.png"
-              />
-            </div>
-          </div>
+        <div className={s.divisionimg}>
+          <img className={s.img1} src="/images/wallet_iphone.png" />
         </div>
       </div>
-      <div>
-        <hr className={s.solidHr}></hr>
-      </div>
-
-      <div className={s.boxesContainer}>
-        <div className={s.displayBoxes}>
-          <div className={s.boxesText}>
-            <img className={s.boxesLogo} src="/images/crossPlateformLogo.png" />
-            Cross plateform
-            <br />
-            wallet viewer to
-            <br />
-            show your NFTs
-          </div>
+      <div className={s.page2}>
+        <div className={s.divisionimg}>
+          <img className={s.img1} src="/images/market_iphone.png" />
         </div>
-        <div className={s.displayBoxes}>
-          <div className={s.boxesText}>
-            <img className={s.boxesLogo} src="/images/marketOverviewLogo.png" />
-            Market overview of
-            <br />
-            your faverite
-            <br />
-            collections
-          </div>
-        </div>
-        <div className={s.displayBoxes}>
-          <div className={s.boxesText}>
-            <img className={s.boxesLogo} src="/images/uniqueLinkLogo.png" />
-            A unique link to
-            <br />
-            share your NFTs
-            <br />
-            with others
-          </div>
+        <div className={s.divisiontext}>
+          <div className={s.description}>{"WAKE UP AND CHECK YOUR"}</div>
+          <div className={s.title}>{"NETWORTH"}</div>
+          <div className={s.description}>{"IN A MATTER OF SECONDS"}</div>
         </div>
       </div>
+      <div className={s.page3}>
+        <div className={s.divisiontext}>
+          <div className={s.description}>{"SHARE THE ART YOU"}</div>
+          <div className={s.title}>{"LOVE"}</div>
+          <div className={s.description}>{"WITH THE ONES WHO"}</div>
+          <div className={s.title}>{"MATTER MOST"}</div>
+        </div>
+        <div className={s.divisionimg}>
+          <img className={s.img1} src="/images/wallet_iphone.png" />
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+}
 
-      <div className={s.contactUsSection}>
-        <div className={s.contactUsText}>
-          <h1>Contact us on:</h1>
-          <a href="https://twitter.com">
-            <img className={s.twitterLogo} src="/images/twitter_black.png" />
-          </a>
+const Header = (props: { session: any; setLoading: any }) => {
+  const { session, setLoading } = props;
+  return (
+    <div className={s.header}>
+      <div className={s.header2}>
+        <div className={s.headername}>PublicWallet</div>
+        <div className={s.signin}>
+          {!session ? (
+            <div
+              className={s.signinbutton}
+              onClick={() => connectMetamask(setLoading)}
+            >
+              {"SIGN IN"}
+            </div>
+          ) : (
+            <div className={s.signinbutton} onClick={() => signOut()}>
+              {"SIGN OUT"}
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
-}
-declare let window: any;
+};
+
+const Footer = () => {
+  return <div className={s.footer}>All Rights Reserved</div>;
+};
+
+const ButtonTryNow = (props: { setLoading: Function }) => {
+  const { setLoading } = props;
+
+  return (
+    <div className={s.buttondiv}>
+      <div className={s.button} onClick={() => connectMetamask({ setLoading })}>
+        {"TRY NOW"}
+      </div>
+    </div>
+  );
+};
+
+const BoxContainers = () => {
+  const boxContainers = [
+    {
+      text: "Cross plateform wallet viewer to show your NFTs",
+      url: "/images/crossPlateformLogo.png",
+    },
+    {
+      text: "Market overview of your faverite collections",
+      url: "/images/marketOverviewLogo.png",
+    },
+    {
+      text: " A unique link to share your NFTs with others",
+      url: "/images/uniqueLinkLogo.png",
+    },
+  ];
+
+  return (
+    <div className={s.boxesContainer}>
+      {boxContainers.map((box, index) => {
+        return (
+          <div key={index} className={s.displayBoxes}>
+            <div className={s.boxesText}>
+              <img className={s.boxesLogo} src={box.url} />
+              {box.text}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
