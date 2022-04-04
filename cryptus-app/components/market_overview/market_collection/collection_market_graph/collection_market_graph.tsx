@@ -9,6 +9,7 @@ import TimeInterval, {
 export default function CollectionMarketGraph(props: {
   data_price: number[];
   data_volume: number[];
+  price_delta: number;
   interval: intervals;
   address: string;
   callback: Function;
@@ -30,6 +31,7 @@ export default function CollectionMarketGraph(props: {
         <Graph
           data_price={props.data_price}
           data_volume={props.data_volume}
+          color={props.price_delta > 0 ? "green" : "red"}
           detailled={true}
         />
       </div>

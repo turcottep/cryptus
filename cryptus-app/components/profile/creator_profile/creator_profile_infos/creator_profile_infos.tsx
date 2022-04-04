@@ -6,6 +6,7 @@ import ViewerProfilePicture from "../../viewer_profile/viewer_profile_infos/view
 import { profile_props } from "../../../../lib/data_types";
 import { TextField } from "@mui/material";
 import EditCollections from "../../../wallet_viewer/show_collections/show_collections";
+import get_reserved_usernames from "../../../../lib/reserved_usernames";
 
 const errors = {
   UniqueUsername: "This username is already in use!",
@@ -83,8 +84,13 @@ export default function CreatorProfileInfos(props: {
 
     if (!new_user_name.match(/^[0-9a-z]+$/)) {
       console.log("invalid username");
-
       setError("InvalidUsername");
+      return;
+    }
+
+    if (get_reserved_usernames().includes(new_user_name)) {
+      console.log("reserved username");
+      setError("ReservedUsername");
       return;
     }
 

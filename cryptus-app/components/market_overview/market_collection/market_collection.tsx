@@ -52,9 +52,9 @@ export default function MarketCollection(props: {
       }),
     });
     const { price, count, volume, delta } = await res.json();
+    setDelta(delta);
     setPrice(price);
     setVolume(volume);
-    setDelta(delta);
     console.log("new price !", price);
   };
 
@@ -73,6 +73,7 @@ export default function MarketCollection(props: {
       <CollectionMarketGraph
         data_price={price}
         data_volume={volume}
+        price_delta={delta}
         interval={market_collection_props.interval}
         address={market_collection_props.address}
         callback={updatePrice}

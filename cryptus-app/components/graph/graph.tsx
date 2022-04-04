@@ -24,8 +24,6 @@ ChartJS.register(
   Legend
 );
 
-const color_graph = [53, 198, 90];
-
 const create_rgba = (color: number[], alpha: number) => {
   return `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha})`;
 };
@@ -47,6 +45,7 @@ const create_rgba = (color: number[], alpha: number) => {
 export default function Graph(props: {
   data_price: number[];
   data_volume: number[];
+  color: "green" | "red";
   detailled: boolean;
 }) {
   const { data_price, data_volume, detailled: detailled } = props;
@@ -178,6 +177,8 @@ export default function Graph(props: {
     if (!chart) {
       return;
     }
+
+    const color_graph = props.color == "green" ? [53, 198, 90] : [255, 0, 0];
 
     const chartDataLine = {
       labels,

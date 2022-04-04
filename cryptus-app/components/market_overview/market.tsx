@@ -106,12 +106,16 @@ export default function MarketOverview(props: market_overview_props) {
       }),
     });
 
-    const { prices, counts } = await res.json();
+    const { prices, counts, deltas } = await res.json();
     const newPropCollectionTemp = [];
+
+    console.log("delas : ", deltas);
 
     for (let i = 0; i < props.collections.length; i++) {
       const element = props.collections[i];
       element.data_price = prices[i];
+      element.floor_price = prices[i][prices[i].length - 1];
+      element.floor_price_delta = deltas[i];
       newPropCollectionTemp.push(element);
     }
     setLoading(false);

@@ -19,6 +19,7 @@
 
   @media (max-width: v.$mobile) {
     margin-top: 0;
+    border-radius: 0;
     width: min(100vw, v.$mobile);
     min-height: 100vh;
   }
