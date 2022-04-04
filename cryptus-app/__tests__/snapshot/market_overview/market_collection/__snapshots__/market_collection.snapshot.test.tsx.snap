@@ -71,7 +71,7 @@ exports[`<MarketCollection /> should display properly 1`] = `
       </div>
       <div>
         <div
-          className="undefined undefined"
+          className="undefined "
           onClick={[Function]}
         >
           1W
