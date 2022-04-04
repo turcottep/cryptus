@@ -7,6 +7,7 @@ import router from "next/router";
 export default function ContextualMenuButton(props: {
   img: string;
   url?: string;
+  open_settings?;
 }) {
   const { img, url } = props;
 
@@ -14,7 +15,7 @@ export default function ContextualMenuButton(props: {
     if (img == "/icons/menu_icon.png") {
       console.log("menu clicked!");
     } else {
-      router.push("./settings")
+      props.open_settings();
     }
   };
 

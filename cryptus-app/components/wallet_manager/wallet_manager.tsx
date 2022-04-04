@@ -7,6 +7,7 @@ import { useSession } from "next-auth/client";
 import BackButton from "../header/back_button/back_button";
 import WalletListDisplay from "./wallet_list_display/wallet_list_display";
 import Address from "../../pages/api/scripts/rarity_floor/[address]";
+import Card from "../utils/card/card";
 
 export type walletsType = {
   id: string;
@@ -16,17 +17,16 @@ export type walletsType = {
   userId: string;
 };
 
-export default function WalletManager(props: { user: any }) {
+export default function WalletManager(props: {
+  user: any;
+  callback_close_wallet;
+  isMobile: boolean;
+}) {
   const wallets = props.user.wallets;
   const addresses = [];
-  console.log(props);
-  // console.log(user.wallets);
   for (const [key, value] of Object.entries(wallets)) {
     addresses.push(value["address"]);
   }
-  // user.wallets.foreach((wallet) => {
-  //   addresses.push(wallet.address);
-  // });
   const [session, status] = useSession();
   const [walletList, setWalletList] = useState(addresses);
   const [walletToAdd, setWalletToAdd] = useState([]);
@@ -47,8 +47,6 @@ export default function WalletManager(props: { user: any }) {
         let addressesToAdd = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        console.log("To add", addressesToAdd);
-        console.log("Already added", walletList);
         addressesToAdd = addressesToAdd.filter(
           (val) => !addresses.includes(val)
         );
@@ -77,8 +75,10 @@ export default function WalletManager(props: { user: any }) {
   };
 
   return (
-    <div className={s.container}>
-      <WalletManagerHeader />
+    <Card
+      callback_close={props.callback_close_wallet}
+      isMobile={props.isMobile}
+    >
       <div className={s.walletList}>
         <WalletListDisplay
           callback={callbackFunction}
@@ -94,23 +94,8 @@ export default function WalletManager(props: { user: any }) {
         addresses={walletToAdd}
         added={false}
       />
-    </div>
+    </Card>
   );
 }
-
-const WalletManagerHeader = () => (
-  <div className={s.header}>
-    <div className={s.backButton}>
-      <BackButton
-        callback_close={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
-    </div>
-    <div className={s.settingsTitle}>Wallet Manager</div>
-
-    <div className={s.blankButton} />
-  </div>
-);
 
 declare let window: any;

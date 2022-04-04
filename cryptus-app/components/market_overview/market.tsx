@@ -18,6 +18,11 @@ import DesktopHeader from "../header/desktop_header/desktop_header";
 import Loading from "../utils/loading/loading";
 import MarketCollection from "./market_collection/market_collection";
 import { useSession } from "next-auth/client";
+import Settings from "../settings/settings";
+import WalletManager from "../wallet_manager/wallet_manager";
+import getUserByUsername from "../../lib/get_user_by_username";
+import { user } from "../../lib/data_types";
+import get_profile_props from "../../lib/get_profile_props";
 
 type market_overview_props = {
   date: string;
@@ -34,11 +39,16 @@ type market_overview_props = {
 export default function MarketOverview(props: market_overview_props) {
   const { isMobile } = props;
 
+  const props_user_empty: user = {
+    username: "",
+    address: "",
+    collections_filter: [],
+  };
+
   const [user_collections_list, set_user_collections_list] = useState<string[]>(
     ["0x1a92f7381b9f03921564a437210bb9396471050c"]
   );
 
-  // const [interval, setInterval] = useState(props.networth.active);
   const [newPropCollection, setnewPropCollection] = useState(props.collections);
   const [newPropCollectionFavorite, setnewPropCollectionFavorite] = useState(
     []
@@ -49,17 +59,24 @@ export default function MarketOverview(props: market_overview_props) {
 
   const [session, status] = useSession();
   const [username, setUsername] = useState<string>("");
+  const [user, setUser] = useState(props_user_empty);
   const [loading, setLoading] = useState(false);
   const [show_card, set_show_card] = useState(false);
   const [card_index, set_card_index] = useState(0);
   const [market_interval, set_market_interval] = useState(
     props.networth.active
   );
+  const [show_card_settings, set_show_settings] = useState(false);
+  const [show_card_wallet_manager, set_show_wallet_manager] = useState(false);
 
   useEffect(() => {
+    const getUser = async (username: string) => {
+      let profileProps = await get_profile_props(username);
+      setUser(profileProps.props.user);
+    };
     if (session) {
       const user_name = session.user.name;
-      // update_for_user(user_name);
+      getUser(user_name);
       setUsername(user_name);
     }
   }, [status]);
@@ -87,9 +104,6 @@ export default function MarketOverview(props: market_overview_props) {
     if (viewingmode == "three_months") {
       viewingmode = "3month";
     }
-    console.log("new viewingmode : ", viewingmode);
-
-    // setPrice(price);
     const adresses = props.collections.map((c) => {
       return c.address;
     });
@@ -118,24 +132,43 @@ export default function MarketOverview(props: market_overview_props) {
   };
 
   const callbackGraph = async (interval) => {
-    // setInterval(interval);
     updatePrice(interval);
   };
 
   const close_card = () => {
-    console.log("close card");
     set_show_card(false);
   };
 
   const open_card = (i) => {
-    console.log("open card");
     set_card_index(i);
     set_show_card(true);
   };
 
+  const close_all = () => {
+    console.log("close_all");
+
+    set_show_card(false);
+    set_show_settings(false);
+    set_show_wallet_manager(false);
+  };
+
+  const close_wallet = () => {
+    set_show_wallet_manager(false);
+  };
+
+  const open_settings = () => {
+    set_show_settings(true);
+  };
+
+  const open_wallet_manager = () => {
+    set_show_wallet_manager(true);
+  };
+
   return (
     <div className={show_card ? s.container_no_scroll : s.container}>
-      {isMobile ? null : <DesktopHeader tab="market" />}
+      {isMobile ? null : (
+        <DesktopHeader tab="market" open_settings={open_settings} />
+      )}
       {loading && <Loading />}
       {show_card && (
         <MarketCollection
@@ -154,6 +187,20 @@ export default function MarketOverview(props: market_overview_props) {
             volume: newPropCollection[card_index].data_volume,
             address: newPropCollection[card_index].address,
           }}
+        />
+      )}
+      {show_card_settings && (
+        <Settings
+          isMobile={isMobile}
+          callback_close={close_all}
+          open_wallet_manager={open_wallet_manager}
+        />
+      )}
+      {show_card_wallet_manager && (
+        <WalletManager
+          user={user}
+          callback_close_wallet={close_wallet}
+          isMobile={isMobile}
         />
       )}
       <MarketHeader />
