@@ -1,13 +1,8 @@
-import { nft } from "../lib/data_types";
-import GetCollectionTokens from "../lib/get_collection_token";
+import { nft } from "./data_types";
+import GetCollectionTokens from "./get_collection_token";
 import get_base_url from "./get_base_url";
 
-export default async function updateNftsForUser(
-  username: string,
-  address: string,
-  userId: string,
-  absolute = true
-) {
+export default async function get_nfts_for_wallet(address: string) {
   let res;
   let nfts_raw;
   type traits = {
@@ -41,7 +36,7 @@ export default async function updateNftsForUser(
   }
 
   // console.log("traits = ", nfts_raw[0]);
-  const collections_set = new Set();
+  // const collections_set = new Set();
   const nft_clean = nfts_raw.map((nft, index: number) => {
     // Sort properties here
     let rarity_rank: any = 0;
@@ -69,7 +64,7 @@ export default async function updateNftsForUser(
       //     .reduce((partialSum, a) => partialSum + a, 0)
       // );
     }
-    collections_set.add(nft.asset_contract.address);
+    // collections_set.add(nft.asset_contract.address);
     return {
       name: nft.name ?? nft.collection.name + " #" + nft.id,
       image_url: nft.image_url,
@@ -87,47 +82,6 @@ export default async function updateNftsForUser(
       rarity_rank: rarity_rank,
     } as nft;
   });
-
-  const nft_stringified = nft_clean.map((nft) => {
-    return (nft = {
-      properties: JSON.stringify(nft.properties),
-      user_id: userId,
-      collection: nft.collection,
-      collection_size: nft.collection_size,
-      collection_address: nft.collection_address,
-      last_sale_price: nft.last_sale_price,
-      last_sale_symbol: nft.last_sale_symbol,
-      rarity_rank: nft.rarity_rank,
-      image_url: nft.image_url,
-      external_url: nft.external_url,
-      description: nft.description,
-      name: nft.name,
-      token_id: nft.token_id,
-    });
-  });
-  const collections_list = Array.from(collections_set);
-
-  const base_url = get_base_url();
-  try {
-    const res = await fetch(base_url + "/api/nfts/update", {
-      method: "POST",
-      body: JSON.stringify({
-        nfts: nft_stringified,
-        collections_list: collections_list,
-        username: username,
-        userId: userId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (res.status !== 200 && res.status !== 201) {
-      throw new Error("Error updating nfts for user");
-    }
-  } catch (e) {
-    console.error("Erreur :", e);
-    return null;
-  }
 
   return nft_clean;
 }
