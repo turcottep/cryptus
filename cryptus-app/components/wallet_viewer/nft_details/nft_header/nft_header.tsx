@@ -13,11 +13,7 @@ export default function NftHeader() {
   return (
     <div className={s.container}>
       <div className={s.box}>
-        <BackButton
-          callback_close={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-        />
+        <BackButton />
         <ContextualMenuButton img="/icons/more_icon.png" />
       </div>
     </div>
