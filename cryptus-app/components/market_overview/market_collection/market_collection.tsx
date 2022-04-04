@@ -17,6 +17,7 @@ export type market_collection_props = {
   floor_price_delta: number;
   floor_price_timestamp: string;
   data_price: number[];
+  interval: intervals;
   count: number[];
   volume: number[];
   address: string;
@@ -72,6 +73,7 @@ export default function MarketCollection(props: {
       <CollectionMarketGraph
         data_price={price}
         data_volume={volume}
+        interval={market_collection_props.interval}
         address={market_collection_props.address}
         callback={updatePrice}
       />

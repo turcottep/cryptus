@@ -52,6 +52,9 @@ export default function MarketOverview(props: market_overview_props) {
   const [loading, setLoading] = useState(false);
   const [show_card, set_show_card] = useState(false);
   const [card_index, set_card_index] = useState(0);
+  const [market_interval, set_market_interval] = useState(
+    props.networth.active
+  );
 
   useEffect(() => {
     if (session) {
@@ -110,7 +113,7 @@ export default function MarketOverview(props: market_overview_props) {
       element.data_price = prices[i];
       newPropCollectionTemp.push(element);
     }
-
+    set_market_interval(interval);
     setnewPropCollection(newPropCollectionTemp);
   };
 
@@ -146,6 +149,7 @@ export default function MarketOverview(props: market_overview_props) {
             floor_price_delta: newPropCollection[card_index].floor_price_delta,
             floor_price_timestamp: newPropCollection[card_index].timestamp,
             data_price: newPropCollection[card_index].data_price,
+            interval: market_interval,
             count: [],
             volume: newPropCollection[card_index].data_volume,
             address: newPropCollection[card_index].address,

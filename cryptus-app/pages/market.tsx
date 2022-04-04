@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 
 import { isMobile as mobile } from "react-device-detect";
 
-import MarketOverview from "../../components/market_overview/market";
-import { intervals } from "../../components/market_overview/net_worth/time_interval/time_interval";
-import { collection } from "../../components/market_viewer/market_viewer";
-import collectionDictionary from "../../lib/collectionDictionary";
-import address from "../api/collection/address";
+import MarketOverview from "../components/market_overview/market";
+import { intervals } from "../components/market_overview/net_worth/time_interval/time_interval";
+import { collection } from "../components/market_viewer/market_viewer";
+import collectionDictionary from "../lib/collectionDictionary";
+import address from "./api/collection/address";
 
 // Import market_overwiew parent component to test here
 
@@ -58,7 +58,7 @@ export async function getStaticProps() {
     date: "April 20",
     networth: {
       EthCad: 4000,
-      active: intervals.week,
+      active: intervals.three_months,
       value: "1337,69 $ CAD",
       change: "420.69 $ total",
     },

@@ -5,12 +5,11 @@ import s from "./collection_market_graph.module.scss";
 import TimeInterval, {
   intervals,
 } from "../../net_worth/time_interval/time_interval";
-import { addSyntheticLeadingComment } from "typescript";
-import ForgotPassword from "../../../forgot_password/forgot_password";
 
 export default function CollectionMarketGraph(props: {
   data_price: number[];
   data_volume: number[];
+  interval: intervals;
   address: string;
   callback: Function;
 }) {
@@ -25,28 +24,6 @@ export default function CollectionMarketGraph(props: {
     setVolume(props.data_volume);
   }, [props]);
 
-  const callbackFunction = async (childData) => {
-    let viewingmode = intervals[childData];
-    if (viewingmode == "three_months") {
-      viewingmode = "3month";
-    }
-    console.log("new viewingmode : ", viewingmode);
-    const res = await fetch("/api/sales/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        address,
-        viewingmode,
-      }),
-    });
-    const { price, count, volume } = await res.json();
-    setPrice(price);
-    setVolume(volume);
-    console.log("new price !", price);
-  };
-
   return (
     <div className={s.container}>
       <div className={s.graph}>
@@ -56,7 +33,7 @@ export default function CollectionMarketGraph(props: {
           detailled={true}
         />
       </div>
-      <TimeInterval active={0} callback={props.callback} />
+      <TimeInterval active={props.interval} callback={props.callback} />
     </div>
   );
 }
