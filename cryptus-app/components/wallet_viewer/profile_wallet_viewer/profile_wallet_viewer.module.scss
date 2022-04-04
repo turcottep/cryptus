@@ -108,3 +108,18 @@ $block-color: rgb(165, 165, 165);
   height: 100%;
   border-radius: v.$border-radius-l;
 }
+
+.imglarge_loading {
+  @extend .imglarge;
+
+  animation: fadeIn 0.5s alternate-reverse ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    background-color: rgba(v.$secondary-color, 0.5);
+  }
+  100% {
+    background-color: v.$secondary-color-pale;
+  }
+}
