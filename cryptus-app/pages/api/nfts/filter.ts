@@ -6,7 +6,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
     prisma.$connect();
 
-    // console.log("nft data: ", req.body.nfts);
+    console.log("updating filter in backend");
     const username = req.body.username;
     const collection_filter = req.body.collection_filter as string[];
 
@@ -20,7 +20,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     });
 
     res.status(201);
-    // console.log("user: ", user);
+    console.log("done updating filter in backend");
+
     res.json({});
   } catch (e) {
     res.status(500);

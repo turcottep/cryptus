@@ -12,17 +12,15 @@ export default function CollectionRow(props: { collection: collection }) {
   const collection_name = GetNameWithoutSpaces(props.collection.name);
   return (
     // <a className={s.anchor} href={`/market/${props.collection.address}`}>
-    <a className={s.anchor} href={`/market/${collection_name}`}>
-      <div id="collection_row" className={s.container}>
-        <div id="collection_row" className={s.box}>
-          <CollectionInfo collection={props.collection} />
-          <PreviewGraph
-            data_price={props.collection.data_price}
-            data_volume={props.collection.data_volume}
-          />
-          <PriceInfo collection={props.collection} currency="eth" />
-        </div>
+    <div id="collection_row" className={s.container}>
+      <div id="collection_row" className={s.box}>
+        <CollectionInfo collection={props.collection} />
+        <PreviewGraph
+          data_price={props.collection.data_price}
+          data_volume={props.collection.data_volume}
+        />
+        <PriceInfo collection={props.collection} currency="eth" />
       </div>
-    </a>
+    </div>
   );
 }

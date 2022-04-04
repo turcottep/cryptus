@@ -18,7 +18,18 @@ describe("<ProfileWalletViewer />", () => {
     const mockCollections = [mock_collection];
 
     const tree = renderer
-      .create(<ProfileWalletViewer collections={mockCollections} />)
+      .create(
+        <ProfileWalletViewer
+          collections={[]}
+          open_collection={function (index: number): void {
+            throw new Error("Function not implemented.");
+          }}
+          open_nft={function (index: number): void {
+            throw new Error("Function not implemented.");
+          }}
+          collections_filter={[]}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

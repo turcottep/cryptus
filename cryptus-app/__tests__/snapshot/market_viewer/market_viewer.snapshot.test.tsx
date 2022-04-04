@@ -31,7 +31,15 @@ describe("<MarketViewer />", () => {
     const test_collections = [mock_collection];
 
     const tree = renderer
-      .create(<MarketViewer collections={test_collections} />)
+      .create(
+        <MarketViewer
+          collections_market={test_collections}
+          collections_favorite={test_collections}
+          callback_open={function (id: string): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

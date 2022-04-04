@@ -1,0 +1,97 @@
+@use "/styles/variables" as v;
+
+.container {
+  position: fixed;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  background-color: v.$header-color;
+  z-index: 30;
+
+  width: 100%;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  height: v.$header-h;
+  width: min(100vw, v.$mobile);
+  padding: 0px 8px;
+
+  z-index: 100;
+}
+
+.empty {
+  display: flex;
+  flex: 1 1 auto;
+
+  width: v.$icon-width;
+}
+
+.collections {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  background-color: v.$header-color;
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  // position: ab;
+  bottom: 16px;
+  gap: 8px;
+  font-size: v.$font-size-m;
+  background-color: v.$header-color;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  align-items: center;
+  text-align: center;
+  background-color: v.$header-color;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 100%;
+}
+
+.logo {
+  display: grid;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.name {
+  display: grid;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-items: flex-start;
+  text-align: flex-start;
+  padding: 8px 8px;
+
+  font-size: v.$font-size-m;
+  font-weight: v.$collection-name-font-weight;
+}

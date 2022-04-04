@@ -40,6 +40,8 @@
   @media (max-width: v.$mobile) {
     width: 100%;
   }
+
+  cursor: pointer;
 }
 
 .header {
@@ -74,6 +76,7 @@
   text-align: flex-start;
 
   width: 25px;
+  height: 25px;
 }
 
 .label {
