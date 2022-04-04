@@ -9,6 +9,9 @@ import { collection } from "../components/market_viewer/market_viewer";
 import collectionDictionary from "../lib/collectionDictionary";
 import address from "./api/collection/address";
 
+import getCollectionData from "../lib/get_collection_data";
+import { collection100list } from "../lib/collectionDictionary";
+
 // Import market_overwiew parent component to test here
 
 export default function Market(props) {
@@ -66,25 +69,25 @@ export async function getStaticProps() {
 
   // // This section is the code that will be use to display all collection info in ther market overview
   // // It will replace the collections_mock
-  // const addressList = collection100list.map((collection) => {
-  //   return collection.address.toLowerCase();
-  // });
-  // const collectionsTest = (await getCollectionData(
-  //   addressList
-  // )) as collection[];
+  const addressList = collection100list.map((collection) => {
+    return collection.address.toLowerCase();
+  });
+  const collectionsTest = (await getCollectionData(
+    addressList
+  )) as collection[];
   // // end of section
 
-  const collections_dict = collectionDictionary;
-  const collections = Object.keys(collections_dict).map((key) => {
-    return collections_dict[key];
-  });
+  // const collections_dict = collectionDictionary;
+  // const collections = Object.keys(collections_dict).map((key) => {
+  //   return collections_dict[key];
+  // });
 
-  const collections_mock = collections as collection[];
+  // const collections_mock = collections as collection[];
 
   try {
     return {
       props: {
-        collections: collections_mock,
+        collections: collectionsTest,
         mock_data: mock_data,
       },
     };
