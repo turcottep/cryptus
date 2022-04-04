@@ -1,3 +1,5 @@
+import GetNameWithoutSpaces from "./get_name_without_spaces";
+
 async function getCollectionData(collectionAddress: string[]) {
   const opensea_api_key = process.env.OPENSEA_API_KEY;
   let response;
@@ -6,7 +8,7 @@ async function getCollectionData(collectionAddress: string[]) {
   try {
     for (const collection of collectionAddress) {
       const contractAddress = collection;
-      // console.log(`${index} of ${collectionAddress.length}`);
+      console.log(`${index} of ${collectionAddress.length}`);
 
       try {
         const url =
@@ -28,18 +30,37 @@ async function getCollectionData(collectionAddress: string[]) {
         const address = data.assets[0].asset_contract.address;
         const name = data.assets[0].collection.name;
 
+        // If the old method of giving the info is wanted
+        const nameWithoutSpaces = GetNameWithoutSpaces(name);
         collectionDataList.push({
-          id: index.toString(),
-          logo,
-          ticker,
-          name,
-          timestamp: "",
-          address,
-          floor_price: 0,
-          floor_price_delta: 0,
-          data_price: [],
-          data_volume: [],
+          [nameWithoutSpaces]: {
+            id: index.toString(),
+            logo,
+            ticker,
+            name,
+            timestamp: "",
+            address,
+            floor_price: 0,
+            floor_price_delta: 0,
+            data_price: [],
+            data_volume: [],
+          },
         });
+        // wait 1 sec
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        // collectionDataList.push({
+        //   id: index.toString(),
+        //   logo,
+        //   ticker,
+        //   name,
+        //   timestamp: "",
+        //   address,
+        //   floor_price: 0,
+        //   floor_price_delta: 0,
+        //   data_price: [],
+        //   data_volume: [],
+        // });
         index++;
       } catch (error) {
         console.log("response in loop", response);

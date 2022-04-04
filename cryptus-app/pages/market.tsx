@@ -54,9 +54,6 @@ export default function MarketPage(props) {
 }
 
 export async function getStaticProps() {
-  const address = "0x1a92f7381b9f03921564a437210bb9396471050c";
-  console.log("address", address);
-
   const mock_data = {
     date: "April 20",
     networth: {
@@ -67,27 +64,15 @@ export async function getStaticProps() {
     },
   };
 
-  // // This section is the code that will be use to display all collection info in ther market overview
-  // // It will replace the collections_mock
-  const addressList = collection100list.map((collection) => {
-    return collection.address.toLowerCase();
-  });
-  const collectionsTest = (await getCollectionData(
-    addressList
-  )) as collection[];
-  // // end of section
-
-  // const collections_dict = collectionDictionary;
-  // const collections = Object.keys(collections_dict).map((key) => {
-  //   return collections_dict[key];
-  // });
-
-  // const collections_mock = collections as collection[];
+  const collections_dict = collectionDictionary;
+  const collections = Object.keys(collections_dict).map((key) => {
+    return collections_dict[key];
+  }) as collection[];
 
   try {
     return {
       props: {
-        collections: collectionsTest,
+        collections: collections,
         mock_data: mock_data,
       },
     };
