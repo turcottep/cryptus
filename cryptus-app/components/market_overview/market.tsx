@@ -83,6 +83,7 @@ export default function MarketOverview(props: market_overview_props) {
   }, []);
 
   const updatePrice = async (interval: intervals) => {
+    setLoading(true);
     let viewingmode = intervals[interval];
     if (viewingmode == "three_months") {
       viewingmode = "3month";
@@ -113,6 +114,7 @@ export default function MarketOverview(props: market_overview_props) {
       element.data_price = prices[i];
       newPropCollectionTemp.push(element);
     }
+    setLoading(false);
     set_market_interval(interval);
     setnewPropCollection(newPropCollectionTemp);
   };

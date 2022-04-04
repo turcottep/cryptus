@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
 import CollectionMarketGraph from "../../../../../components/market_overview/market_collection/collection_market_graph/collection_market_graph";
+import { intervals } from "../../../../../components/market_overview/net_worth/time_interval/time_interval";
 
 describe("<CollectionMarketGraph />", () => {
   it("should display properly", async () => {
@@ -32,6 +33,7 @@ describe("<CollectionMarketGraph />", () => {
           interval={undefined}
           address={test_address}
           callback={undefined}
+          interval={intervals.week}
         />
       )
       .toJSON();

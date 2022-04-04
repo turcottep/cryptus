@@ -12,11 +12,7 @@ export default function CollectionHeader() {
 
   return (
     <div className={s.container}>
-      <BackButton
-        callback_close={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
+      <BackButton />
       <ContextualMenuButton img="/icons/more_icon.png" />
     </div>
   );

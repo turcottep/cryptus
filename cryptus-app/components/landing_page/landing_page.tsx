@@ -7,6 +7,8 @@ import CreateAccountFromWalletAddress from "../../lib/createAccountFromWalletAdd
 import FindUserFromUserId from "../../lib/findUserFromUserId";
 import Loading from "../utils/loading/loading";
 
+import * as google_analytics from "../../lib/google_analytics";
+
 export default function LandingPage() {
   const [loading, setLoading] = useState<Boolean>(false);
 
@@ -46,6 +48,13 @@ export default function LandingPage() {
             callbackUrl: `${window.location.origin}/` + user.username,
           });
         }
+        // log event to google analytics
+        google_analytics.event({
+          action: "search",
+          params: {
+            search_term: "connection",
+          },
+        });
       } catch (error) {
         // console.error(error);
         setLoading(false);
