@@ -12,12 +12,16 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
   if (!new_user_name.match(/^[0-9a-z]+$/)) {
     console.log("invalid username");
-    throw new Error("InvalidUsername");
+    res.status(201);
+    res.json({});
+    return;
   }
 
   if (get_reserved_usernames().includes(new_user_name)) {
     console.log("reserved username");
-    throw new Error("ReservedUsername");
+    res.status(203);
+    res.json({});
+    return;
   }
 
   try {
@@ -36,9 +40,14 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     res.json({});
   } catch (e) {
     console.log("e", e);
-
-    res.status(500);
-    res.json({ error: e });
+    if (e.message.includes("Unique")) {
+      console.log("unique username fail");
+      res.status(202);
+      res.json({});
+    } else {
+      res.status(500);
+      res.json({ error: e });
+    }
   } finally {
     await prisma.$disconnect();
   }

@@ -11,7 +11,8 @@ import get_reserved_usernames from "../../../../lib/reserved_usernames";
 const errors = {
   UniqueUsername: "This username is already in use!",
   InvalidUsername: "Only lowercase alphanumeric characters are allowed",
-  default: "Unable to sign in.",
+  ReservedUsername: "This username is reserved",
+  default: "Unable to change username.",
 };
 
 declare let window: any;
@@ -104,6 +105,18 @@ export default function CreatorProfileInfos(props: {
       return;
     }
 
+    if (res.status == 203) {
+      setError("ReservedUsername");
+      setLoading(false);
+      return;
+    }
+
+    if (res.status != 201) {
+      setError("default");
+      setLoading(false);
+      return;
+    }
+
     console.log("sending...");
 
     await window.ethereum.enable();
@@ -187,6 +200,7 @@ export default function CreatorProfileInfos(props: {
             label="Username"
             defaultValue={user_name}
             error={!!handleErrorUsername()}
+            helperText={handleErrorUsername()}
             size="small"
             variant="standard"
             required

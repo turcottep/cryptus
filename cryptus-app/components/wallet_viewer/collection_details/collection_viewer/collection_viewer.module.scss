@@ -6,7 +6,7 @@ $gap-s: 4px;
 $block-color: rgb(165, 165, 165);
 
 .container {
-  flex: 0 0 none;
+  flex: 1 1 auto;
 
   display: flex;
   flex-direction: row;
@@ -16,9 +16,9 @@ $block-color: rgb(165, 165, 165);
   column-gap: calc($gap * 3);
   row-gap: $gap;
 
-  @media (max-width: v.$mobile) {
-    width: min(100vw, v.$mobile);
-  }
+  // @media (max-width: v.$mobile) {
+  //   width: min(100vw, v.$mobile);
+  // }
 }
 
 .collandname {
