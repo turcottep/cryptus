@@ -131,7 +131,11 @@ const NftL = (props: {
 
   return (
     <div onClick={onNftClick} className={s.nft_container}>
-      <img className={s.imglarge} src={nft.image_url} />
+      {nft.image_url ? (
+        <img className={s.imglarge} src={nft.image_url} />
+      ) : (
+        <div className={s.imglarge_loading} />
+      )}
     </div>
   );
 };

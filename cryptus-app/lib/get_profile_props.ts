@@ -3,7 +3,8 @@ import getUserByUsername from "./get_user_by_username";
 import get_nfts_for_user from "./get_nfts_for_user";
 import calculate_networth from "./networth";
 import sortNftsIntoCollections from "./sort_nfts_into_collections";
-import update_nfts_for_user from "./update_nfts_for_user";
+import get_nfts_for_wallet from "./get_nfts_for_wallet";
+import save_nfts_to_user from "./save_nfts_to_user";
 
 export default async function get_profile_props(
   user_name: string
@@ -20,19 +21,17 @@ export default async function get_profile_props(
 
     for (let i = 0; i < user.wallets; i++) {
       const wallet = user.wallets[i];
-      let nfts_per_wallet = await update_nfts_for_user(
-        user_name,
-        wallet.address,
-        user.userId
-      );
-      nfts.push(nfts_per_wallet);
+      let nfts_per_wallet = await get_nfts_for_wallet(wallet.address);
+      nfts.push(...nfts_per_wallet);
     }
 
-    console.log("nfts", nfts);
-
-    if (!nfts[0]) {
+    if (nfts.length == 0) {
       console.log("getting nft from our database");
       nfts = await get_nfts_for_user(user_name);
+    } else {
+      console.log("saving nfts to our database");
+      save_nfts_to_user(user, nfts);
+      console.log("nfts", nfts);
     }
 
     const nfts_collections = sortNftsIntoCollections(
