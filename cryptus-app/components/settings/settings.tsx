@@ -41,11 +41,7 @@ export default function Settings() {
 const SettingsHeader = () => (
   <div className={s.header}>
     <div className={s.backButton}>
-      <BackButton
-        callback_close={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
+      <BackButton />
     </div>
     <div className={s.settingsTitle}>Settings</div>
     <div className={s.blankButton} />

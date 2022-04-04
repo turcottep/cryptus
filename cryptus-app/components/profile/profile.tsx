@@ -77,7 +77,7 @@ export default function Profile(props: {
   };
 
   return (
-    <div className={s.container}>
+    <div className={s.app}>
       {isMobile ? null : <DesktopHeader tab="profile" />}
       {isMobile ? (
         isMyProfile ? (

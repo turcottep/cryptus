@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import Router, { useRouter } from "next/router";
 import s from "./back_button.module.scss";
 
-export default function BackButton(props: {
-  callback_close: (() => void) | null;
-}) {
+export default function BackButton(props: { callback_close?: () => void }) {
   const router = useRouter();
 
   const onButtonClick = () => {
