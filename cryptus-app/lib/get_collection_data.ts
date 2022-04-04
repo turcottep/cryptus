@@ -1,5 +1,3 @@
-import GetNameWithoutSpaces from "./get_name_without_spaces";
-
 async function getCollectionData(collectionAddress: string[]) {
   const opensea_api_key = process.env.OPENSEA_API_KEY;
   let response;
@@ -30,22 +28,6 @@ async function getCollectionData(collectionAddress: string[]) {
         const address = data.assets[0].asset_contract.address;
         const name = data.assets[0].collection.name;
 
-        // // If the old method of giving the info is wanted
-        // const nameWithoutSpaces = GetNameWithoutSpaces(name);
-        // collectionDataList.push({
-        //   [nameWithoutSpaces]: {
-        //     id: "",
-        //     logo,
-        //     ticker,
-        //     name,
-        //     timestamp: "",
-        //     address,
-        //     floor_price: 0,
-        //     floor_price_delta: 0,
-        //     data_price: [],
-        //     data_volume: [],
-        //   },
-        // });
         collectionDataList.push({
           id: index.toString(),
           logo,

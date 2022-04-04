@@ -30,10 +30,9 @@ describe("<CollectionMarketGraph />", () => {
         <CollectionMarketGraph
           data_price={test_price}
           data_volume={test_volume}
-          interval={undefined}
+          interval={intervals.week}
           address={test_address}
           callback={undefined}
-          interval={intervals.week}
         />
       )
       .toJSON();
