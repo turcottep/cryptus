@@ -42,8 +42,6 @@ export default function Profile(props: {
   useEffect(() => {
     const is_my_profile = userId && userId === session?.user?.name;
     setIsMyProfile(is_my_profile);
-
-    console.log("is_my_profile", is_my_profile);
   }, [loading]);
 
   const close_all = () => {
@@ -77,8 +75,6 @@ export default function Profile(props: {
     setCollectionsFilter(temp_filter);
     console.log("update_my_collection_filter", collections_filter);
   };
-
-  console.log("isMobile", isMobile);
 
   return (
     <div className={s.container}>
