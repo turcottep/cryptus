@@ -1,122 +1,131 @@
 import React, { useState } from "react";
-import NameForm from "./name_form";
+import s from "./landing_page.module.scss";
+
+import { signOut, useSession } from "next-auth/client";
+import connectMetamask from "../../lib/connectMetamask";
+
 import NavbarLandingPage from "../navbars/navbar_landing_page/navbar_landing_page";
-import { signIn } from "next-auth/client";
-import FindUserIdFromWalletAdress from "../../lib/findUserIdFromWalletAdress";
-import CreateAccountFromWalletAddress from "../../lib/createAccountFromWalletAddress";
-import FindUserFromUserId from "../../lib/findUserFromUserId";
 import Loading from "../utils/loading/loading";
 
 import * as google_analytics from "../../lib/google_analytics";
 
 export default function LandingPage() {
-  const [loading, setLoading] = useState<Boolean>(false);
-
-  const connectMetamask = async () => {
-    // router.push("login?");
-    setLoading(true);
-    if (!window.ethereum) {
-      console.log("please donwload MetaMask");
-      window.open("https://metamask.io/", "_blank").focus();
-      setLoading(false);
-    } else {
-      try {
-        await window.ethereum.enable();
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        const wallet_address = accounts[0];
-
-        const userId = await FindUserIdFromWalletAdress(wallet_address, false);
-
-        if (!userId) {
-          //Create Account with this wallet address
-          const user = await CreateAccountFromWalletAddress(
-            wallet_address,
-            false
-          );
-          signIn("credentials", {
-            redirect: true,
-            address: wallet_address,
-            callbackUrl: `${window.location.origin}/edit_profile`,
-          });
-        } else {
-          const user = await FindUserFromUserId(userId, false, false);
-          signIn("credentials", {
-            redirect: true,
-            address: wallet_address,
-            callbackUrl: `${window.location.origin}/` + user.username,
-          });
-        }
-        // log event to google analytics
-        google_analytics.event({
-          action: "search",
-          params: {
-            search_term: "connection",
-          },
-        });
-      } catch (error) {
-        // console.error(error);
-        setLoading(false);
-        // router.push("login?error=CancelMetamask");
-      }
-    }
-  };
+  const [loading, setLoading] = useState<boolean>(false);
+  const [session, loadingSession] = useSession();
 
   return (
-    <div className="h-screen relative bg-coquille w-full">
+    <div className={s.container}>
       {loading && <Loading />}
-      <div className="h-screen justify-between px-3 md:px-10 2xl:px-20 md:mx-auto flex flex-col items-center">
-        <NavbarLandingPage callback={connectMetamask} />
-
-        <div className="flex h-full justify-evenly md:justify-between flex-col w-full items-center md:flex-row">
-          <div className="flex justify-between flex-col w-full md:justify-around items-center text-center md:h-full my-4">
-            <div className="flex-shrink w-auto md:w-full">
-              <h1 className="mx-auto h-auto">
-                <img
-                  draggable="false"
-                  alt="Title:Express Yourself"
-                  className="w-full"
-                  src="title.svg"
-                />
-              </h1>
-            </div>
-            <div className="text-center">
-              <p className="md:block leading-normal text-gray-600 text-2xl md:text-3xl xl:text-3xl ">
-                <span> The quickest way to show</span>
-                <br />
-                <span>your NFTs</span>
-              </p>
-            </div>
-            <div className="invisible w-full md:visible md:w-1/2 lg:w-4/5 my-4">
-              <button
-                onClick={() => connectMetamask()}
-                className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
-              >
-                Get Started!
-              </button>
-            </div>
+      <Header session={session} setLoading={{ setLoading }} />
+      <div className={s.page1}>
+        <div className={s.divisiontext}>
+          <div className={s.logodiv}>
+            <img className={s.logo} src="/images/pw4.png" />
           </div>
-          <div className="flex-shrink w-auto md:w-full min-w-0 min-h-0">
-            <img
-              className="w-full flex-1 min-w-0 min-h-0"
-              draggable="false"
-              alt="Guide showing statue to visitors"
-              src="museum.svg"
-            />
-          </div>
+          <div className={s.description}>{"EASIEST WAY TO"}</div>
+          <div className={s.title}>{"TRACK YOUR NFTS"}</div>
+          <ButtonTryNow setLoading={setLoading} />
         </div>
-        <div className="md:hidden w-full sm:mx-0 md:w-2/5 lg:w-2/5 my-4">
-          {/* <NameForm /> */}
-          <button
-            onClick={() => connectMetamask()}
-            className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
-          >
-            Get Started!
-          </button>
+        <div className={s.divisionimg}>
+          <img className={s.img1} src="/images/wallet_iphone.png" />
+        </div>
+      </div>
+      <div className={s.page2}>
+        <div className={s.divisionimg}>
+          <img className={s.img1} src="/images/market_iphone.png" />
+        </div>
+        <div className={s.divisiontext}>
+          <div className={s.description}>{"WAKE UP AND CHECK YOUR"}</div>
+          <div className={s.title}>{"NETWORTH"}</div>
+          <div className={s.description}>{"IN A MATTER OF SECONDS"}</div>
+        </div>
+      </div>
+      <div className={s.page3}>
+        <div className={s.divisiontext}>
+          <div className={s.description}>{"SHARE THE ART YOU"}</div>
+          <div className={s.title}>{"LOVE"}</div>
+          <div className={s.description}>{"WITH THE ONES WHO"}</div>
+          <div className={s.title}>{"MATTER MOST"}</div>
+        </div>
+        <div className={s.divisionimg}>
+          <img className={s.img1} src="/images/wallet_iphone.png" />
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
+const Header = (props: { session: any; setLoading: any }) => {
+  const { session, setLoading } = props;
+  return (
+    <div className={s.header}>
+      <div className={s.header2}>
+        <div className={s.headername}>PublicWallet</div>
+        {/* <img className={s.headerlogo} src="/images/pw5.png" /> */}
+        <div className={s.signin}>
+          {!session ? (
+            <div
+              className={s.signinbutton}
+              onClick={() => connectMetamask({ setLoading })}
+            >
+              {"SIGN IN"}
+            </div>
+          ) : (
+            <div className={s.signinbutton} onClick={() => signOut()}>
+              {"SIGN OUT"}
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
-}
-declare let window: any;
+};
+
+const Footer = () => {
+  return <div className={s.footer}>All Rights Reserved</div>;
+};
+
+const ButtonTryNow = (props: { setLoading: Function }) => {
+  const { setLoading } = props;
+
+  return (
+    <div className={s.buttondiv}>
+      <div className={s.button} onClick={() => connectMetamask({ setLoading })}>
+        {"TRY NOW"}
+      </div>
+    </div>
+  );
+};
+
+const BoxContainers = () => {
+  const boxContainers = [
+    {
+      text: "Cross plateform wallet viewer to show your NFTs",
+      url: "/images/crossPlateformLogo.png",
+    },
+    {
+      text: "Market overview of your faverite collections",
+      url: "/images/marketOverviewLogo.png",
+    },
+    {
+      text: " A unique link to share your NFTs with others",
+      url: "/images/uniqueLinkLogo.png",
+    },
+  ];
+
+  return (
+    <div className={s.boxesContainer}>
+      {boxContainers.map((box, index) => {
+        return (
+          <div key={index} className={s.displayBoxes}>
+            <div className={s.boxesText}>
+              <img className={s.boxesLogo} src={box.url} />
+              {box.text}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
