@@ -9,6 +9,9 @@ import { collection } from "../components/market_viewer/market_viewer";
 import collectionDictionary from "../lib/collectionDictionary";
 import address from "./api/collection/address";
 
+import getCollectionData from "../lib/get_collection_data";
+import { collection100list } from "../lib/collectionDictionary";
+
 // Import market_overwiew parent component to test here
 
 export default function MarketPage(props) {
@@ -51,9 +54,6 @@ export default function MarketPage(props) {
 }
 
 export async function getStaticProps() {
-  const address = "0x1a92f7381b9f03921564a437210bb9396471050c";
-  console.log("address", address);
-
   const mock_data = {
     date: "April 20",
     networth: {
@@ -67,14 +67,12 @@ export async function getStaticProps() {
   const collections_dict = collectionDictionary;
   const collections = Object.keys(collections_dict).map((key) => {
     return collections_dict[key];
-  });
-
-  const collections_mock = collections as collection[];
+  }) as collection[];
 
   try {
     return {
       props: {
-        collections: collections_mock,
+        collections: collections,
         mock_data: mock_data,
       },
     };

@@ -62,7 +62,12 @@ export default function Graph(props: {
   });
 
   const ReloadGraph = () => {
-    const { data_price, data_volume, detailled: detailled } = props;
+    const { data_volume, detailled: detailled } = props;
+    let { data_price } = props;
+
+    if (data_price === undefined) {
+      data_price = [];
+    }
 
     const labels = [];
 
