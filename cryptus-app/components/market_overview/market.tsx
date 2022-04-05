@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import s from "./market.module.scss";
 
 //external exports
+import { Button, Menu, MenuItem } from "@mui/material";
 
 //internal imports
 import MarketHeader from "./market_header/market_header";
@@ -184,7 +185,12 @@ export default function MarketOverview(props: market_overview_props) {
       />
       <div className={s.container_row}>
         <SearchBar />
-        <SortButton />
+        <SortButton
+          newPropCollectionFavorite={newPropCollectionFavorite}
+          newPropCollectionMarket={newPropCollectionMarket}
+          setnewPropCollectionFavorite={setnewPropCollectionFavorite}
+          setnewPropCollectionMarket={setnewPropCollectionMarket}
+        />
       </div>
       <MarketViewer
         collections_favorite={newPropCollectionFavorite}
