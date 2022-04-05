@@ -14,8 +14,8 @@ import get_empty_profile_props from "../../lib/empty_profile_props";
 export default function ProfilePage() {
   const props_empty = get_empty_profile_props();
   const router = useRouter();
-  const { userId: userName } = router.query;
-  const userNameString = userName as string;
+  const { username } = router.query;
+  const userNameString = username as string;
 
   const [isMobile, setIsMobile] = useState(true);
   const [loading, setLoading] = useState<Boolean>(false);
@@ -35,7 +35,7 @@ export default function ProfilePage() {
     const getProps = async () => {
       console.log("getting props for ", userNameString);
       const returningProps = await get_profile_props(userNameString);
-      console.log("returning", returningProps);
+      // console.log("returning", returningProps);
       // set_profile_props(returningProps.props);
       const new_user_props = returningProps.props.user;
       const new_collections_props = returningProps.props.collections;
@@ -48,16 +48,16 @@ export default function ProfilePage() {
     if (userNameString) {
       getProps();
     }
-  }, [userName]);
+  }, [username]);
 
   return (
-    <AnimatedDiv>
-      <Profile
-        collections={collections_props}
-        user={user_props}
-        isMobile={isMobile}
-        key={loading ? 1 : 0}
-      />
-    </AnimatedDiv>
+    // <AnimatedDiv>
+    <Profile
+      collections={collections_props}
+      user={user_props}
+      isMobile={isMobile}
+      key={loading ? 1 : 0}
+    />
+    // {/* </AnimatedDiv> */}
   );
 }

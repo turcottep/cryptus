@@ -19,7 +19,11 @@ describe("<PreviewGraph />", () => {
 
     const tree = renderer
       .create(
-        <PreviewGraph data_price={test_price} data_volume={test_volume} />
+        <PreviewGraph
+          data_price={test_price}
+          data_volume={test_volume}
+          price_delta={0}
+        />
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

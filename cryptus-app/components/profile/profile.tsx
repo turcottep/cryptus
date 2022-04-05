@@ -19,7 +19,7 @@ import NFTDetails from "../wallet_viewer/nft_details/nft_details";
 
 export default function Profile(props: {
   collections: nft_collection[];
-  user: any;
+  user;
   isMobile: boolean;
 }) {
   const { collections, user, isMobile } = props;
@@ -27,21 +27,22 @@ export default function Profile(props: {
   const [isMyProfile, setIsMyProfile] = useState<Boolean>(false);
 
   const [show_card_collection, set_show_collection] = useState(false);
-  const [card_collection_index, set_card_collection_index] = useState(0);
+  const [card_collection, set_card_collection] = useState(null);
   const [show_card_nft, set_show_nft] = useState(false);
-  const [card_nft_index, set_card_nft_index] = useState(0);
+  const [card_nft, set_card_nft] = useState(null);
+
   const [update_collection, set_update_collection] = useState(0);
 
   const [collections_filter, setCollectionsFilter] = useState<string[]>(
     user.collections_filter
   );
 
-  const router = useRouter();
-  const { userId } = router.query;
-
   useEffect(() => {
-    const is_my_profile = userId && userId === session?.user?.name;
+    // console.log("username", props.user.username, session?.user?.name);
+
+    const is_my_profile = props.user.username === session?.user?.name;
     setIsMyProfile(is_my_profile);
+    // console.log("isMyProfile", is_my_profile);
   }, [loading]);
 
   const close_all = () => {
@@ -56,15 +57,19 @@ export default function Profile(props: {
     set_show_nft(false);
   };
 
-  const open_collection = (index: number) => {
-    console.log("open_collection", index);
-    set_card_collection_index(index);
+  const open_collection = (collection_name: string) => {
+    console.log("open_collection", collection_name);
+    const collection = collections.find((c) => c.name === collection_name);
+    set_card_collection(collection);
     set_show_collection(true);
   };
 
-  const open_nft = (index: number) => {
-    console.log("open_nft", index);
-    set_card_nft_index(index);
+  const open_nft = (collection_name: string, nft_token_id: string) => {
+    console.log("open_nft", collection_name, nft_token_id);
+    const collection = collections.find((c) => c.name === collection_name);
+
+    const nft = collection.nfts.find((n) => n.token_id === nft_token_id);
+    set_card_nft(nft);
     set_show_nft(true);
   };
 
@@ -97,7 +102,7 @@ export default function Profile(props: {
       )}
       {show_card_collection && (
         <CollectionDetails
-          collection={props.collections[card_collection_index]}
+          collection={card_collection}
           isMobile={isMobile}
           callback_close={close_all}
           open_nft={open_nft}
@@ -105,9 +110,7 @@ export default function Profile(props: {
       )}
       {show_card_nft && (
         <NFTDetails
-          nft={props.collections[card_collection_index].nfts[card_nft_index]}
-          rank={{ position: 100, total: 100000 }}
-          listed_price={0.01}
+          nft={card_nft}
           isMobile={isMobile}
           callback_close={close_nft}
         />

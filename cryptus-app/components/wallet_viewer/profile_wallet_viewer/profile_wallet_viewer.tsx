@@ -7,8 +7,8 @@ import { nft, nft_collection } from "../../../lib/data_types";
 
 export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
-  open_collection: (index: number) => void;
-  open_nft: (index: number) => void;
+  open_collection: (collection_name: string) => void;
+  open_nft: (collection_name: string, nft_token_id: string) => void;
   collections_filter: string[];
 }) {
   return (
@@ -21,7 +21,6 @@ export default function ProfileWalletViewer(props: {
           <div key={i}>
             <Collection
               collection={collection}
-              index={i}
               key={i}
               open_collection={props.open_collection}
               open_nft={props.open_nft}
@@ -34,7 +33,6 @@ export default function ProfileWalletViewer(props: {
 
 const Collection = (props: {
   collection: nft_collection;
-  index: number;
   open_collection;
   open_nft;
 }) => {
@@ -43,7 +41,7 @@ const Collection = (props: {
   const [a, setA] = useState([]);
   const [b, setB] = useState([]);
   const [c, setC] = useState([]);
-  const [collectionName, setCollectionName] = useState("");
+  // const [collectionName, setCollectionName] = useState("");
   const { userId } = router.query;
 
   useEffect(() => {
@@ -52,22 +50,22 @@ const Collection = (props: {
     const c =
       a.length > 3 ? (a.length > 7 ? a.slice(3, 3 + 4) : a.slice(3)) : [];
 
-    const collectionname = collection.name
-      .replace(/[^0-9a-z]/gi, " ")
-      .replace(/\s/g, "")
-      .toLowerCase();
+    // const collectionname = collection.name
+    //   .replace(/[^0-9a-z]/gi, " ")
+    //   .replace(/\s/g, "")
+    //   .toLowerCase();
 
     setA(a);
     setB(b);
     setC(c);
-    setCollectionName(collectionname);
+    // setCollectionName(collectionname);
   }, []);
 
   const onCollectionClick = () => {
     // const pushurl = `/${userId}/${collectionName}`;
     // console.log("pushurl", pushurl);
     // router.push(pushurl);
-    props.open_collection(props.index);
+    props.open_collection(props.collection.name);
   };
 
   return (
@@ -76,9 +74,8 @@ const Collection = (props: {
         {b.map((nft, i) => (
           <NftL
             nft={nft}
-            collectionName={collectionName}
+            collectionName={collection.name}
             key={i}
-            index={i}
             open_nft={props.open_nft}
           />
         ))}
@@ -98,12 +95,7 @@ const Collection = (props: {
   );
 };
 
-const NftL = (props: {
-  nft: nft;
-  collectionName: string;
-  index: number;
-  open_nft;
-}) => {
+const NftL = (props: { nft: nft; collectionName: string; open_nft }) => {
   const { nft, collectionName } = props;
   const [urlName, setUrlName] = useState("");
   const router = useRouter();
@@ -121,11 +113,11 @@ const NftL = (props: {
   const onNftClick = (e) => {
     // router.push(`${userId}/${collectionName}/${urlName}`);
     // console.log(urlName);
-    props.open_nft(props.index);
+    props.open_nft(props.collectionName, props.nft.token_id);
 
-    // e.preventDefault();
-    // e.stopPropagation();
-    // e.nativeEvent.stopImmediatePropagation();
+    e.preventDefault();
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
     // return false;
   };
 

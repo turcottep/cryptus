@@ -33,6 +33,7 @@ describe("<CollectionMarketGraph />", () => {
           interval={intervals.week}
           address={test_address}
           callback={undefined}
+          price_delta={0}
         />
       )
       .toJSON();

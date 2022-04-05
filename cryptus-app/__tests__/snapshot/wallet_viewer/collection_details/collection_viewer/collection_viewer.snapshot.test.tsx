@@ -20,7 +20,7 @@ describe("<CollectionViewer />", () => {
       .create(
         <CollectionViewer
           collection={mockCollection}
-          open_nft={function (index: number): void {
+          open_nft={function (): void {
             throw new Error("Function not implemented.");
           }}
         />

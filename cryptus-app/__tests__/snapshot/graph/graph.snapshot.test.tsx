@@ -18,7 +18,8 @@ describe("<Graph />", () => {
         79, 53, 77, 77, 26, 89, 57, 47, 37, 87, 48, 26, 65,
       ],
       detailled: true,
-    };
+      color: "green",
+    } as any;
 
     const tree = renderer.create(<Graph {...graphProps} />).toJSON();
     expect(tree).toMatchSnapshot();

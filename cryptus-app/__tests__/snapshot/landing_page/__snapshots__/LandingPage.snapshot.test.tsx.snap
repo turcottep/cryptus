@@ -4,120 +4,86 @@ exports[`renders correctly 1`] = `
 <div>
   <div>
     <div>
-      <div
-        id="header"
-      >
-        <div>
-          <div>
-            <a
-              href="/"
-              onClick={[Function]}
-              onMouseEnter={[Function]}
-            >
-              Public Wallet
-            </a>
-            <button
-              onClick={[Function]}
-            >
-              Sign In
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
       <div>
-        <div>
-          <h1>
-            Public Wallet
-          </h1>
-        </div>
-        <div>
-          <h3>
-            THE EASIEST WAY TO
-          </h3>
-          <h3>
-            SHOW YOUR NFTS
-          </h3>
-        </div>
-        <div>
-          <button
-            onClick={[Function]}
-          >
-            TRY IT NOW!
-          </button>
-        </div>
+        PublicWallet
       </div>
-    </div>
-    <div>
       <div>
-        <div>
-          <img
-            src="/images/walletViewerLandingPage.png"
-          />
-        </div>
-        <div>
-          <img
-            src="/images/marketOverviewLandingPage.png"
-          />
+        <div
+          onClick={[Function]}
+        >
+          SIGN IN
         </div>
       </div>
     </div>
   </div>
   <div>
-    <hr />
-  </div>
-  <div>
     <div>
       <div>
         <img
-          src="/images/crossPlateformLogo.png"
+          src="/images/pw4.png"
         />
-        Cross plateform
-        <br />
-        wallet viewer to
-        <br />
-        show your NFTs
+      </div>
+      <div>
+        EASIEST WAY TO
+      </div>
+      <div>
+        TRACK YOUR NFTS
+      </div>
+      <div>
+        <div
+          onClick={[Function]}
+        >
+          TRY NOW
+        </div>
       </div>
     </div>
     <div>
-      <div>
-        <img
-          src="/images/marketOverviewLogo.png"
-        />
-        Market overview of
-        <br />
-        your faverite
-        <br />
-        collections
-      </div>
-    </div>
-    <div>
-      <div>
-        <img
-          src="/images/uniqueLinkLogo.png"
-        />
-        A unique link to
-        <br />
-        share your NFTs
-        <br />
-        with others
-      </div>
+      <img
+        src="/images/wallet_iphone.png"
+      />
     </div>
   </div>
   <div>
     <div>
-      <h1>
-        Contact us on:
-      </h1>
-      <a
-        href="https://twitter.com"
-      >
-        <img
-          src="/images/twitter_black.png"
-        />
-      </a>
+      <img
+        src="/images/market_iphone.png"
+      />
     </div>
+    <div>
+      <div>
+        WAKE UP AND CHECK YOUR
+      </div>
+      <div>
+        NETWORTH
+      </div>
+      <div>
+        IN A MATTER OF SECONDS
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div>
+        SHARE THE ART YOU
+      </div>
+      <div>
+        LOVE
+      </div>
+      <div>
+        WITH THE ONES WHO
+      </div>
+      <div>
+        MATTER MOST
+      </div>
+    </div>
+    <div>
+      <img
+        src="/images/wallet_iphone.png"
+      />
+    </div>
+  </div>
+  <div>
+    All Rights Reserved
   </div>
 </div>
 `;

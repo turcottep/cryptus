@@ -18,6 +18,7 @@ export default function CollectionRow(props: { collection: collection }) {
         <PreviewGraph
           data_price={props.collection.data_price}
           data_volume={props.collection.data_volume}
+          price_delta={props.collection.floor_price_delta}
         />
         <PriceInfo collection={props.collection} currency="eth" />
       </div>

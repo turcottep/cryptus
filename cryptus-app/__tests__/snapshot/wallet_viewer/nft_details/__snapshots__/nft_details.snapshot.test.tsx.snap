@@ -26,11 +26,9 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
     </div>
     <div>
       <img
-        alt="Listen up! Savannah R1-R3, Sly R1 here. I'm here to enjoy licking doorknobs and kickboxing. When my owner isn't watching, I steal their mom jeans and hoard them in my litter box. I'm not sorry. Let's pawty!"
+        alt="nft"
         src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
       />
-    </div>
-    <div>
       <div>
         <div>
           <a
@@ -42,177 +40,175 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
             Savannah R1-R3, Sly R1
           </div>
         </div>
-        <a
-          href="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/492809"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <div>
-            <img
-              alt="eth"
-              src="/images/eth.png"
-            />
-            <div>
-              5.00
-            </div>
-            <div />
+        <div>
+          <a
+            href="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/492809"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <div>
               <img
-                alt=""
-                src="/images/opensea.png"
+                alt="eth"
+                src="/images/eth.png"
               />
+              <div>
+                 - 
+              </div>
+              <div />
+              <div>
+                <img
+                  alt=""
+                  src="/images/opensea.png"
+                />
+              </div>
             </div>
+          </a>
+          Estimated price: undefined eth
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            MOUTH
           </div>
-        </a>
-      </div>
-      Estimated price: undefined eth
-       
-    </div>
-    <div>
-      rank: 1234567/2000000
-    </div>
-    <div>
-      <div>
-        <div>
-          MOUTH
+          <div>
+            soserious
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          soserious
+          <div>
+            PATTERN
+          </div>
+          <div>
+            spangled
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          11% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          PATTERN
-        </div>
-        <div>
-          spangled
-        </div>
-        <div>
-          4% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          VIRGINITY
+          <div>
+            VIRGINITY
+          </div>
+          <div>
+            non-virgin
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          non-virgin
+          <div>
+            FUR
+          </div>
+          <div>
+            selkirk
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          49% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          FUR
-        </div>
-        <div>
-          selkirk
-        </div>
-        <div>
-          6% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          EYE_COLOUR
+          <div>
+            EYE_COLOUR
+          </div>
+          <div>
+            sapphire
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          sapphire
+          <div>
+            ACCENT_COLOUR
+          </div>
+          <div>
+            icy
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          5% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          ACCENT_COLOUR
-        </div>
-        <div>
-          icy
-        </div>
-        <div>
-          6% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          HIGHLIGHT_COLOUR
+          <div>
+            HIGHLIGHT_COLOUR
+          </div>
+          <div>
+            coffee
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          coffee
+          <div>
+            COOLDOWN_TIMER
+          </div>
+          <div>
+            Catatonic (1 week)
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          9% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          COOLDOWN_TIMER
-        </div>
-        <div>
-          Catatonic (1 week)
-        </div>
-        <div>
-          4% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          EYE_SHAPE
+          <div>
+            EYE_SHAPE
+          </div>
+          <div>
+            chronic
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          chronic
+          <div>
+            BASE_COLOUR
+          </div>
+          <div>
+            mauveover
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          5% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          BASE_COLOUR
-        </div>
-        <div>
-          mauveover
-        </div>
-        <div>
-          7% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          GENERATION
+          <div>
+            GENERATION
+          </div>
+          <div>
+            0
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          0
+          <div>
+            PURRSTIGE
+          </div>
+          <div>
+            pu12
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
         <div>
-          2% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          PURRSTIGE
-        </div>
-        <div>
-          pu12
-        </div>
-        <div>
-          0.96% have this trait
-        </div>
-      </div>
-      <div>
-        <div>
-          SECRET
-        </div>
-        <div>
-          se6
-        </div>
-        <div>
-          0.66% have this trait
+          <div>
+            SECRET
+          </div>
+          <div>
+            se6
+          </div>
+          <div>
+            NaN% have this trait
+          </div>
         </div>
       </div>
     </div>
