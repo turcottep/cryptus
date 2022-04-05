@@ -18,6 +18,7 @@ import DesktopHeader from "../header/desktop_header/desktop_header";
 import Loading from "../utils/loading/loading";
 import MarketCollection from "./market_collection/market_collection";
 import { useSession } from "next-auth/client";
+import get_user_by_username from "../../lib/get_user_by_username";
 
 type market_overview_props = {
   date: string;
@@ -35,7 +36,7 @@ export default function MarketOverview(props: market_overview_props) {
   const { isMobile } = props;
 
   const [user_collections_list, set_user_collections_list] = useState<string[]>(
-    ["0x1a92f7381b9f03921564a437210bb9396471050c"]
+    []
   );
 
   // const [interval, setInterval] = useState(props.networth.active);
@@ -52,6 +53,7 @@ export default function MarketOverview(props: market_overview_props) {
   const [loading, setLoading] = useState(false);
   const [show_card, set_show_card] = useState(false);
   const [card_index, set_card_index] = useState(0);
+  const [networth, set_networth] = useState(0);
   const [market_interval, set_market_interval] = useState(
     props.networth.active
   );
@@ -59,7 +61,7 @@ export default function MarketOverview(props: market_overview_props) {
   useEffect(() => {
     if (session) {
       const user_name = session.user.name;
-      // update_for_user(user_name);
+      update_for_user(user_name);
       setUsername(user_name);
     }
   }, [status]);
@@ -123,6 +125,16 @@ export default function MarketOverview(props: market_overview_props) {
     setnewPropCollection(newPropCollectionTemp);
   };
 
+  const update_for_user = async (username: string) => {
+    const user = await get_user_by_username(username);
+    console.log("user : ", user);
+    const user_collections = user.collections_list;
+    const networth = user.networth;
+    console.log("networth : ", networth);
+    set_user_collections_list(user_collections);
+    set_networth(networth);
+  };
+
   const callbackGraph = async (interval) => {
     // setInterval(interval);
     updatePrice(interval);
@@ -164,9 +176,9 @@ export default function MarketOverview(props: market_overview_props) {
       )}
       <MarketHeader />
       <NetWorth
-        value={props.networth.value}
-        delta={props.networth.change}
-        EthCad={props.networth.EthCad}
+        value={networth}
+        // delta={props.networth.change}
+        // EthCad={props.networth.EthCad}
         active={props.networth.active}
         callbackGraph={callbackGraph}
       />
@@ -175,9 +187,9 @@ export default function MarketOverview(props: market_overview_props) {
         <SortButton />
       </div>
       <MarketViewer
-        collections_market={newPropCollection}
+        collections_favorite={newPropCollectionFavorite}
+        collections_market={newPropCollectionMarket}
         callback_open={open_card}
-        collections_favorite={[]}
       />
       {isMobile ? <Footer /> : null}
     </div>
