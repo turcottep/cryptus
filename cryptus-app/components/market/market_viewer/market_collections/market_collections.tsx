@@ -21,7 +21,7 @@ export default function MarketCollections(props: {
               key={i}
               className={s.collection}
               onClick={() => {
-                props.callback(i);
+                props.callback(c.name);
               }}
             >
               <CollectionRow collection={c} />

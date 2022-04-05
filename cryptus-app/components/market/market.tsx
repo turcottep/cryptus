@@ -53,7 +53,7 @@ export default function MarketOverview(props: market_overview_props) {
   const [username, setUsername] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [show_card, set_show_card] = useState(false);
-  const [card_index, set_card_index] = useState(0);
+  const [card_collection, set_card_collection] = useState(null);
   const [networth, set_networth] = useState(0);
   const [market_interval, set_market_interval] = useState(
     props.networth.active
@@ -146,9 +146,12 @@ export default function MarketOverview(props: market_overview_props) {
     set_show_card(false);
   };
 
-  const open_card = (i) => {
-    console.log("open card");
-    set_card_index(i);
+  const open_card = (collection_name: string) => {
+    console.log("open card:", collection_name);
+    const collection = newPropCollection.find(
+      (c) => c.name === collection_name
+    );
+    set_card_collection(collection);
     set_show_card(true);
   };
 
@@ -161,17 +164,17 @@ export default function MarketOverview(props: market_overview_props) {
           isMobile={isMobile}
           callback_close={close_card}
           market_collection_props={{
-            collection_name: newPropCollection[card_index].name,
-            collection_logo: newPropCollection[card_index].logo,
-            collection_ticker: newPropCollection[card_index].ticker,
-            floor_price_live: newPropCollection[card_index].floor_price,
-            floor_price_delta: newPropCollection[card_index].floor_price_delta,
-            floor_price_timestamp: newPropCollection[card_index].timestamp,
-            data_price: newPropCollection[card_index].data_price,
+            collection_name: card_collection.name,
+            collection_logo: card_collection.logo,
+            collection_ticker: card_collection.ticker,
+            floor_price_live: card_collection.floor_price,
+            floor_price_delta: card_collection.floor_price_delta,
+            floor_price_timestamp: card_collection.timestamp,
+            data_price: card_collection.data_price,
             interval: market_interval,
             count: [],
-            volume: newPropCollection[card_index].data_volume,
-            address: newPropCollection[card_index].address,
+            volume: card_collection.data_volume,
+            address: card_collection.address,
           }}
         />
       )}

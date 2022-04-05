@@ -20,7 +20,11 @@ export default function CollectionRow(props: { collection: collection }) {
           data_volume={props.collection.data_volume}
           price_delta={props.collection.floor_price_delta}
         />
-        <PriceInfo collection={props.collection} currency="eth" />
+        <PriceInfo
+          collection={props.collection}
+          currency="eth"
+          prices={props.collection.data_price}
+        />
       </div>
     </div>
   );
