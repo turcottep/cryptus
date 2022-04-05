@@ -57,6 +57,7 @@ export default async function get_profile_props(
           description: "",
           networth: 0,
           collections_filter: [],
+          profile_image_url: "./icons/icon-192x192.png",
         },
       },
     };

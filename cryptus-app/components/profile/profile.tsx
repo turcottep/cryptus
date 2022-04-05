@@ -113,6 +113,8 @@ export default function Profile(props: {
           nft={card_nft}
           isMobile={isMobile}
           callback_close={close_nft}
+          isMyProfile={isMyProfile}
+          username={props.user.username}
         />
       )}
       <ProfileWalletViewer

@@ -1,6 +1,7 @@
 //react and css
 import React, { useState, useEffect } from "react";
 import s from "./nft_details.module.scss";
+import Switch from "@mui/material/Switch";
 
 import { nft } from "../../../lib/data_types";
 
@@ -17,6 +18,8 @@ type nft_details_props = {
   nft: nft;
   isMobile: boolean;
   callback_close;
+  isMyProfile: Boolean;
+  username: string;
 };
 
 export default function NFTDetails(props: nft_details_props) {
@@ -62,6 +65,10 @@ export default function NFTDetails(props: nft_details_props) {
     get_props();
   }, []);
 
+  const handleImageChange = async (e) => {
+    await updateUserProfileImageUrl(props.username, props.nft.image_url);
+  };
+
   return (
     <Card callback_close={props.callback_close} isMobile={props.isMobile}>
       <div className={s.container}>
@@ -74,6 +81,12 @@ export default function NFTDetails(props: nft_details_props) {
         {rank_position ? (
           <NFTRankInCollection position={rank_position} total={rank_total} />
         ) : null}
+        {props.isMyProfile ? (
+          <div>
+            Put as profile picture :
+            <Switch defaultChecked={false} onChange={handleImageChange} />
+          </div>
+        ) : null}
 
         <NFTProperties
           properties={props.nft.properties}
@@ -82,4 +95,21 @@ export default function NFTDetails(props: nft_details_props) {
       </div>
     </Card>
   );
+}
+
+async function updateUserProfileImageUrl(username: string, image_url: string) {
+  console.log("updateUser");
+
+  const response = await fetch("api/users/updateImageUrl", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      image_url,
+    }),
+  });
+  console.log("response edit_profile_image", response);
+  return response;
 }

@@ -41,6 +41,7 @@ it("ViewerProfileInfos renders correctly", () => {
       username: "Tester",
       address: "test_address",
       collections_filter: [],
+      profile_image_url: "./icons/icon-192x192.png",
     },
     collections: [mock_collection],
   };

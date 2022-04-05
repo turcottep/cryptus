@@ -13,6 +13,7 @@ model User {
   email              String   @unique
   username           String   @unique
   displayName        String
+  profile_image_url  String   @default("./icons/icon-192x192.png")
   nfts_order         Int[]
   description        String
   views              Int

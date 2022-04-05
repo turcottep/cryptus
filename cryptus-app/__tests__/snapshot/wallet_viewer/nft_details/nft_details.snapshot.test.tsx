@@ -35,8 +35,17 @@ describe("<NftDetails />", () => {
       listed_price: 5,
       isMobile: true,
     };
+    const isMyProfile = true;
+    const randomUser = "randomUser";
     const tree = renderer
-      .create(<NftDetails callback_close={undefined} {...details} />)
+      .create(
+        <NftDetails
+          isMyProfile={isMyProfile}
+          username={randomUser}
+          callback_close={undefined}
+          {...details}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

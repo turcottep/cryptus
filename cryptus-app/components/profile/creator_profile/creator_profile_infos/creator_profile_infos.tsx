@@ -141,7 +141,9 @@ export default function CreatorProfileInfos(props: {
   return (
     <div className={s.container}>
       <div className={s.row}>
-        <ViewerProfilePicture />
+        <ViewerProfilePicture
+          image_url={props.profile_props.user.profile_image_url}
+        />
         {edit_profile ? (
           <div className={s.edits}>
             <div
