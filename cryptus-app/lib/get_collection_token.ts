@@ -38,14 +38,21 @@ async function getCollectionTokenWithEtherscan(contractaddress: string) {
   }
 }
 
-async function getCollectionTokenWithOpensea(collectionAddress: string) {
+async function getCollectionTokenWithOpensea(
+  collectionAddress: string,
+  tokenId: string
+) {
   const api_url = process.env.NEXT_PUBLIC_OPENSEA_API_KEY;
   let response;
+  console.log("collectionAddress", collectionAddress, "tokenId", tokenId);
+
   try {
     const url =
       "https://api.opensea.io/api/v1/asset/" +
       collectionAddress +
-      "/1/?include_orders=false";
+      "/" +
+      tokenId +
+      "/?include_orders=false";
 
     response = await fetch(url, {
       method: "GET",

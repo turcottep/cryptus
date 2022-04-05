@@ -28,7 +28,8 @@ export default function NFTDetails(props: nft_details_props) {
   const get_props = async () => {
     let rarity_rank: number = 0;
     let collectionSize: number = await getCollectionTokenWithOpensea(
-      props.nft.collection_address
+      props.nft.collection_address,
+      props.nft.token_id
     );
 
     const CollectionRarityData = await FindCollectionRarityData(
