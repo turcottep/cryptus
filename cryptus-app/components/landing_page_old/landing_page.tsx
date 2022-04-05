@@ -66,7 +66,7 @@ const ButtonTryNow = (props: { loading: boolean; setLoading: Function }) => {
     <div className={s.clickToAction}>
       <button
         className={s.clickToActionButton}
-        onClick={() => connectMetamask({ loading, setLoading })}
+        onClick={() => connectMetamask(props)}
       >
         TRY IT NOW!
       </button>

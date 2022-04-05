@@ -76,7 +76,7 @@ async function generateRarityWithOpensea(collectionAddress: string) {
   let numOfRetries = 0;
   let totalOfRetries = 0;
   const max_assets = 50;
-  const totalNum = await getCollectionTokens(collectionAddress);
+  const totalNum = await getCollectionTokens(collectionAddress, "1");
   try {
     for (
       let i = 0;
