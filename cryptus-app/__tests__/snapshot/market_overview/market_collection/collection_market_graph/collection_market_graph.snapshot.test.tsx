@@ -33,7 +33,6 @@ describe("<CollectionMarketGraph />", () => {
           interval={intervals.week}
           address={test_address}
           callback={undefined}
-          interval={intervals.week}
           price_delta={0}
         />
       )
