@@ -1,6 +1,5 @@
 import React from "react";
-import Settings from "../components/settings/settings";
-
+import Settings from "../components/basic/settings/settings";
 
 export default function Home({ data }) {
   return (

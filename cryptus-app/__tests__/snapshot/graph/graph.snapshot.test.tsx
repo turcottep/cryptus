@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import Graph from "../../../components/graph/graph";
+import Graph from "../../../components/market/graph/graph";
 
 describe("<Graph />", () => {
   it("should display properly", async () => {

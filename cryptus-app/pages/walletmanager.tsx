@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import WalletManager from "../components/wallet_manager/wallet_manager";
+import WalletManager from "../components/basic/wallet_manager/wallet_manager";
 import { nft, profile_props } from "../lib/data_types";
 import getMockProps from "../lib/get_mock_props";
 import get_profile_props from "../lib/get_profile_props";
