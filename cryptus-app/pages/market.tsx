@@ -25,8 +25,19 @@ export default function MarketPage(props) {
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-      <meta name="description" content="" />
-      <meta name="keywords" content="" />
+      <meta
+        name="description"
+        content="The new way to check up on your networth in a matter of seconds. "
+      />
+      <meta
+        name="keywords"
+        content="
+        NFT Market Overview
+        ETH
+        NFT Market Price
+        NFT Market tracker
+      "
+      />
       <meta name="author" content="" />
       <meta name="theme-color" content="" />
       <meta
@@ -51,9 +62,6 @@ export default function MarketPage(props) {
 }
 
 export async function getStaticProps() {
-  const address = "0x1a92f7381b9f03921564a437210bb9396471050c";
-  console.log("address", address);
-
   const mock_data = {
     date: "April 20",
     networth: {
