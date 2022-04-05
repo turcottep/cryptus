@@ -25,8 +25,9 @@ export default function SortButton(props: {
   const [filter, setFilter] = useState("fp_d");
 
   const onItemClick = (filter) => {
-    setFilter("name_a");
+    setFilter(filter);
     setAnchorEl(null);
+    console.log("filter", filter);
   };
 
   useEffect(() => {
