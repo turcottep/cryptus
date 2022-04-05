@@ -12,12 +12,35 @@ import * as google_analytics from "../../lib/google_analytics";
 export default function LandingPage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [session, loadingSession] = useSession();
+  const [[angle_x, angle_y], set_angles] = useState<[number, number]>([0, 0]);
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  const track_mouse = (e) => {
+    // console.log(e.clientX, e.clientY);
+    const x = e.clientX;
+    const y = e.clientY;
+    const constrain = 100;
+    const box = ref.current.getBoundingClientRect();
+    // console.log("box", e.target);
+    const angle_x_temp = -(y - box.y - box.height / 2) / constrain;
+    const angle_y_temp = (x - box.x - box.width / 2) / constrain;
+    set_angles([angle_x_temp, angle_y_temp]);
+  };
+
+  const stop_track_mouse = () => {
+    set_angles([0, 0]);
+  };
 
   return (
     <div className={s.container}>
       {loading && <Loading />}
-      <Header session={session} setLoading={{ setLoading }} />
-      <div className={s.page1}>
+      <Header session={session} setLoading={setLoading} />
+      <div
+        className={s.page1}
+        ref={ref}
+        onMouseMove={track_mouse}
+        onMouseLeave={stop_track_mouse}
+      >
         <div className={s.divisiontext}>
           <div className={s.logodiv}>
             <img className={s.logo} src="/images/pw4.png" />
@@ -27,7 +50,13 @@ export default function LandingPage() {
           <ButtonTryNow setLoading={setLoading} />
         </div>
         <div className={s.divisionimg}>
-          <img className={s.img1} src="/images/wallet_iphone.png" />
+          <img
+            className={s.img1}
+            style={{
+              transform: `perspective(256px) rotateX(${angle_x}deg) rotateY(${angle_y}deg)`,
+            }}
+            src="/images/wallet_iphone.png"
+          />
         </div>
       </div>
       <div className={s.page2}>
