@@ -129,83 +129,6 @@ export default function MarketOverview(props: market_overview_props) {
     updatePrice(interval);
   };
 
-  //---------------------------------------------------
-
-  // Does not work properly yet (gets overwritten by something)
-  useEffect(() => {
-    // Fake Backend call returns collection sort filter
-    const sort_filter = "fp_d";
-    sort_market_collections(sort_filter);
-  }, []);
-
-  const sort_market_collections = (filter: string) => {
-    const newPropCollectionFavoriteTemp = [];
-    const newPropCollectionMarketTemp = [];
-    newPropCollectionFavorite.forEach((val) =>
-      newPropCollectionFavoriteTemp.push(Object.assign({}, val))
-    );
-    newPropCollectionMarket.forEach((val) =>
-      newPropCollectionMarketTemp.push(Object.assign({}, val))
-    );
-    if (filter == "name_a") {
-      newPropCollectionMarketTemp.sort((a, b) =>
-        a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
-      );
-      newPropCollectionFavoriteTemp.sort((a, b) =>
-        a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
-      );
-    } else if (filter == "name_d") {
-      newPropCollectionMarketTemp.sort((a, b) =>
-        a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
-      );
-      newPropCollectionFavoriteTemp.sort((a, b) =>
-        a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
-      );
-    } else if (filter == "fp_a") {
-      newPropCollectionMarketTemp.sort((a, b) =>
-        a.floor_price > b.floor_price ? 1 : -1
-      );
-      newPropCollectionFavoriteTemp.sort((a, b) =>
-        a.floor_price > b.floor_price ? 1 : -1
-      );
-    } else if (filter == "fp_d") {
-      newPropCollectionMarketTemp.sort((a, b) =>
-        a.floor_price < b.floor_price ? 1 : -1
-      );
-      newPropCollectionFavoriteTemp.sort((a, b) =>
-        a.floor_price < b.floor_price ? 1 : -1
-      );
-    } else if (filter == "delta_a") {
-      newPropCollectionMarketTemp.sort((a, b) =>
-        a.floor_price_delta / a.floor_price <
-        b.floor_price_delta / b.floor_price
-          ? 1
-          : -1
-      );
-      newPropCollectionFavoriteTemp.sort((a, b) =>
-        a.floor_price_delta / a.floor_price <
-        b.floor_price_delta / b.floor_price
-          ? 1
-          : -1
-      );
-    } else if (filter == "delta_d") {
-      newPropCollectionMarketTemp.sort((a, b) =>
-        a.floor_price_delta / a.floor_price >
-        b.floor_price_delta / b.floor_price
-          ? 1
-          : -1
-      );
-      newPropCollectionFavoriteTemp.sort((a, b) =>
-        a.floor_price_delta / a.floor_price >
-        b.floor_price_delta / b.floor_price
-          ? 1
-          : -1
-      );
-    }
-    setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
-    setnewPropCollectionMarket(newPropCollectionMarketTemp);
-  };
-
   return (
     <div className={s.container}>
       {isMobile ? null : <DesktopHeader tab="market" />}
@@ -220,7 +143,12 @@ export default function MarketOverview(props: market_overview_props) {
       />
       <div className={s.container_row}>
         <SearchBar />
-        <SortButton sort={sort_market_collections} />
+        <SortButton
+          newPropCollectionFavorite={newPropCollectionFavorite}
+          newPropCollectionMarket={newPropCollectionMarket}
+          setnewPropCollectionFavorite={setnewPropCollectionFavorite}
+          setnewPropCollectionMarket={setnewPropCollectionMarket}
+        />
       </div>
       <MarketViewer
         collections_market={newPropCollectionMarket}
