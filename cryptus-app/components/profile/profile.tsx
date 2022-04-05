@@ -6,16 +6,16 @@ import { useSession } from "next-auth/client";
 
 import { nft_collection, profile_props, tabs } from "../../lib/data_types";
 
-import Footer from "../footer/footer";
-import ProfileWalletViewer from "../wallet_viewer/profile_wallet_viewer/profile_wallet_viewer";
+import Footer from "../basic/footer/footer";
+import ProfileWalletViewer from "./wallet_viewer/profile_wallet_viewer/profile_wallet_viewer";
 import CreatorHeader from "./creator_profile/creator_header/creator_header";
 import MyProfInfos from "./creator_profile/creator_profile_infos/creator_profile_infos";
 import ViewerHeader from "./viewer_profile/viewer_header/viewer_header";
 import ViewProfInfos from "./viewer_profile/viewer_profile_infos/viewer_profile_infos";
 
-import DesktopHeader from "../header/desktop_header/desktop_header";
-import CollectionDetails from "../wallet_viewer/collection_details/collection_details";
-import NFTDetails from "../wallet_viewer/nft_details/nft_details";
+import DesktopHeader from "../basic/header/desktop_header/desktop_header";
+import CollectionDetails from "./wallet_viewer/collection_details/collection_details";
+import NFTDetails from "./wallet_viewer/nft_details/nft_details";
 
 export default function Profile(props: {
   collections: nft_collection[];

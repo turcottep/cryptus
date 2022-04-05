@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/client";
 import router from "next/router";
 
-import LandingPage from "../components/landing_page/landing_page";
+import LandingPage from "../components/basic/landing_page/landing_page";
 
 export default function Home() {
   const [session, loading] = useSession();

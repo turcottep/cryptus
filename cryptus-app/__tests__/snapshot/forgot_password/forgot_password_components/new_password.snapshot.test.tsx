@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import NewPassword from "../../../../components/forgot_password/forgot_password_components/new_password";
+import NewPassword from "../../../../components/basic/forgot_password/forgot_password_components/new_password";
 import { getMockProps } from "../../../../lib/mocks";
 
 type state = {

@@ -5,7 +5,7 @@ import { signIn, useSession } from "next-auth/client";
 import ViewerProfilePicture from "../../viewer_profile/viewer_profile_infos/viewer_profile_picture/viewer_profile_picture";
 import { profile_props } from "../../../../lib/data_types";
 import { TextField } from "@mui/material";
-import EditCollections from "../../../wallet_viewer/show_collections/show_collections";
+import EditCollections from "../../wallet_viewer/show_collections/show_collections";
 import get_reserved_usernames from "../../../../lib/reserved_usernames";
 
 const errors = {

@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import CollectionFloorPrice from "../../../../../components/market_overview/market_collection/collection_floor_price/collection_floor_price";
+import CollectionFloorPrice from "../../../../../components/market/market_collection/collection_floor_price/collection_floor_price";
 
 describe("<CollectionFloorPrice />", () => {
   it("should display properly", async () => {

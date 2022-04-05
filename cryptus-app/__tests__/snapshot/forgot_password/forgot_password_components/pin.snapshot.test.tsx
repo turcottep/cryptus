@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import PINNumber from "../../../../components/forgot_password/forgot_password_components/pin";
+import PINNumber from "../../../../components/basic/forgot_password/forgot_password_components/pin";
 import { getMockProps } from "../../../../lib/mocks";
 
 type state = {

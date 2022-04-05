@@ -5,7 +5,7 @@ import "@testing-library/jest-dom/extend-expect";
 import { mockNextUseRouter } from "../../../../utils/test_util";
 import { mock_nft } from "../../../../lib/mocks";
 import { nft } from "../../../../lib/data_types";
-import NftDetails from "../../../../components/wallet_viewer/nft_details/nft_details";
+import NftDetails from "../../../../components/profile/wallet_viewer/nft_details/nft_details";
 
 type nft_details_props = {
   nft: nft;

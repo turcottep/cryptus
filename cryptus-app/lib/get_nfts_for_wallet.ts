@@ -4,7 +4,7 @@ import get_base_url from "./get_base_url";
 
 export default async function get_nfts_for_wallet(address: string) {
   let res;
-  let nfts_raw;
+  let nfts_raw = [];
   type traits = {
     name: string;
     value: any;
@@ -12,23 +12,31 @@ export default async function get_nfts_for_wallet(address: string) {
     rarity: number;
   };
   try {
-    var data;
     //fetch nfts from opensea
-    res = await fetch(
-      "https://api.opensea.io/api/v1/assets?owner=" +
-        address +
-        "&order_direction=asc&limit=50",
-      {
-        headers: {
-          Accept: "application/json",
-          "X-API-KEY": process.env.NEXT_PUBLIC_OPENSEA_API_KEY,
-        },
-      }
-    );
-    // res = await fetch(wallet.external_url);
-    data = await res.json();
+    let cursor = "";
+    for (let i = 0; i < 5; i++) {
+      res = await fetch(
+        "https://api.opensea.io/api/v1/assets?owner=" +
+          address +
+          "&order_direction=desc&limit=50&cursor=" +
+          cursor,
+        {
+          headers: {
+            Accept: "application/json",
+            "X-API-KEY": process.env.NEXT_PUBLIC_OPENSEA_API_KEY,
+          },
+        }
+      );
+      // res = await fetch(wallet.external_url);
+      const data = await res.json();
+      cursor = data.next;
+      console.log("data", data);
+      const nfts_raw_temp = data.assets;
+      nfts_raw.push(...nfts_raw_temp);
+      if (!cursor) break;
+    }
 
-    nfts_raw = data.assets;
+    console.log("nfts_raw", nfts_raw.length);
   } catch (err) {
     console.error(err);
     console.log("response = ", res);

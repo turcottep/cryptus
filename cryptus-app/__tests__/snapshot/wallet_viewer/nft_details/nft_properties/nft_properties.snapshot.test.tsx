@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
 import { mock_nft } from "../../../../../lib/mocks";
-import NFTProperties from "../../../../../components/wallet_viewer/nft_details/nft_properties/nft_properties";
+import NFTProperties from "../../../../../components/profile/wallet_viewer/nft_details/nft_properties/nft_properties";
 
 describe("<NFTProperties />", () => {
   it("should display properly", async () => {

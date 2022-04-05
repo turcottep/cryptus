@@ -2,8 +2,8 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import { collection } from "../../../components/market_viewer/market_viewer";
-import MarketViewer from "../../../components/market_viewer/market_viewer";
+import { collection } from "../../../components/market/market_viewer/market_viewer";
+import MarketViewer from "../../../components/market/market_viewer/market_viewer";
 
 const mock_collection: collection = {
   id: "1",
