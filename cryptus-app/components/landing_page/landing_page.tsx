@@ -17,6 +17,9 @@ export default function LandingPage() {
       <Header session={session} setLoading={{ setLoading }} />
       <div className={s.page1}>
         <div className={s.divisiontext}>
+          <div className={s.logodiv}>
+            <img className={s.logo} src="/images/pw4.png" />
+          </div>
           <div className={s.description}>{"EASIEST WAY TO"}</div>
           <div className={s.title}>{"TRACK YOUR NFTS"}</div>
           <ButtonTryNow setLoading={setLoading} />
@@ -57,6 +60,7 @@ const Header = (props: { session: any; setLoading: any }) => {
     <div className={s.header}>
       <div className={s.header2}>
         <div className={s.headername}>PublicWallet</div>
+        {/* <img className={s.headerlogo} src="/images/pw5.png" /> */}
         <div className={s.signin}>
           {!session ? (
             <div

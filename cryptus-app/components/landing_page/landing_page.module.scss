@@ -105,6 +105,25 @@
   font-family: "Roboto-Thin";
 }
 
+.logo {
+  flex: 0 0 none;
+  height: 250px;
+}
+
+.headerlogo {
+  flex: 0 0 none;
+  height: 100%;
+}
+
+.logodiv {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .footer {
   flex: 0 0 none;
   height: calc(2 * v.$footer-h);
