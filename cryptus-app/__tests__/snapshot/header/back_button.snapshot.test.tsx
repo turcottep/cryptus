@@ -8,7 +8,7 @@ describe("<BackButton />", () => {
   it("should display properly", async () => {
     const testURL = "www.publicwallet.app/testuser123";
 
-    const tree = renderer.create(<BackButton url={testURL} />).toJSON();
+    const tree = renderer.create(<BackButton />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

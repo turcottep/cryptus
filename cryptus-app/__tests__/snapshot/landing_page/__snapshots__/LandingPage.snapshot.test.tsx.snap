@@ -1,106 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div
-  className="h-screen relative bg-coquille w-full"
->
-  <div
-    className="h-screen justify-between px-3 md:px-10 2xl:px-20 md:mx-auto flex flex-col items-center"
-  >
-    <div
-      className=" w-full top-0 text-black bg-coquille"
-      id="header"
-    >
-      <div
-        className="w-full flex flex-wrap justify-center md:justify-end h-full py-2 md:py-4"
-      >
+<div>
+  <div>
+    <div>
+      <div>
+        PublicWallet
+      </div>
+      <div>
         <div
-          className="w-full flex items-center justify-around md:items-end"
+          onClick={[Function]}
         >
-          <a
-            className="toggleColour text-gray-700 no-underline hover:no-underline font-bold text-xl lg:text-2xl"
-            href="/"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            Public Wallet
-          </a>
-          <button
-            className="bg-dirt text-white px-2 py-1 font-bold rounded-full"
-            onClick={[Function]}
-          >
-            Sign In
-          </button>
+          SIGN IN
         </div>
       </div>
     </div>
-    <div
-      className="flex h-full justify-evenly md:justify-between flex-col w-full items-center md:flex-row"
-    >
-      <div
-        className="flex justify-between flex-col w-full md:justify-around items-center text-center md:h-full my-4"
-      >
-        <div
-          className="flex-shrink w-auto md:w-full"
-        >
-          <h1
-            className="mx-auto h-auto"
-          >
-            <img
-              alt="Title:Express Yourself"
-              className="w-full"
-              draggable="false"
-              src="title.svg"
-            />
-          </h1>
-        </div>
-        <div
-          className="text-center"
-        >
-          <p
-            className="md:block leading-normal text-gray-600 text-2xl md:text-3xl xl:text-3xl "
-          >
-            <span>
-               The quickest way to show
-            </span>
-            <br />
-            <span>
-              your NFTs
-            </span>
-          </p>
-        </div>
-        <div
-          className="invisible w-full md:visible md:w-1/2 lg:w-4/5 my-4"
-        >
-          <button
-            className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
-            onClick={[Function]}
-          >
-            Get Started!
-          </button>
-        </div>
-      </div>
-      <div
-        className="flex-shrink w-auto md:w-full min-w-0 min-h-0"
-      >
+  </div>
+  <div>
+    <div>
+      <div>
         <img
-          alt="Guide showing statue to visitors"
-          className="w-full flex-1 min-w-0 min-h-0"
-          draggable="false"
-          src="museum.svg"
+          src="/images/pw4.png"
         />
       </div>
+      <div>
+        EASIEST WAY TO
+      </div>
+      <div>
+        TRACK YOUR NFTS
+      </div>
+      <div>
+        <div
+          onClick={[Function]}
+        >
+          TRY NOW
+        </div>
+      </div>
     </div>
-    <div
-      className="md:hidden w-full sm:mx-0 md:w-2/5 lg:w-2/5 my-4"
-    >
-      <button
-        className="submit md:px-4 2xl:text-xl text-center whitespace-nowrap bg-dirt text-white font-bold rounded-xl lg:rounded-l-none lg:rounded-r-xl w-full lg:w-2/5 px-2 py-2"
-        onClick={[Function]}
-      >
-        Get Started!
-      </button>
+    <div>
+      <img
+        src="/images/wallet_iphone.png"
+      />
     </div>
+  </div>
+  <div>
+    <div>
+      <img
+        src="/images/market_iphone.png"
+      />
+    </div>
+    <div>
+      <div>
+        WAKE UP AND CHECK YOUR
+      </div>
+      <div>
+        NETWORTH
+      </div>
+      <div>
+        IN A MATTER OF SECONDS
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div>
+        SHARE THE ART YOU
+      </div>
+      <div>
+        LOVE
+      </div>
+      <div>
+        WITH THE ONES WHO
+      </div>
+      <div>
+        MATTER MOST
+      </div>
+    </div>
+    <div>
+      <img
+        src="/images/wallet_iphone.png"
+      />
+    </div>
+  </div>
+  <div>
+    All Rights Reserved
   </div>
 </div>
 `;

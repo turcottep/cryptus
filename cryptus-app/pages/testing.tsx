@@ -16,7 +16,8 @@ export default function Home() {
     const collectionCall = async () => {
       try {
         const collectionSize: number = await GetCollectionTokens(
-          mock_nft.collection_address
+          mock_nft.collection_address,
+          mock_nft.token_id
         );
         setCollection_size(collectionSize);
         // Rarity rank is calculated from it's traits and rounded the result. The equation is :sum(1/(nb_with_trait/total_count))

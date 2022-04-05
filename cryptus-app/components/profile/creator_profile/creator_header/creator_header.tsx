@@ -19,7 +19,7 @@ export default function CreatorHeader() {
 
   return (
     <div className={s.container}>
-      <BackButton url={`/${username}`} />
+      <BackButton />
       <ContextualPageName name={username} />
       <ContextualMenuButton img="/icons/settings_icon.png" />
     </div>

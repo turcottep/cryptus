@@ -3,16 +3,16 @@
 exports[`<NftInfo /> should display the correct NFT information 1`] = `
 <div>
   <div>
+    <a
+      href="/market/CryptoKitties"
+    >
+      CryptoKitties
+    </a>
     <div>
-      <a
-        href="/market/CryptoKitties"
-      >
-        CryptoKitties
-      </a>
-      <div>
-        Savannah R1-R3, Sly R1
-      </div>
+      Savannah R1-R3, Sly R1
     </div>
+  </div>
+  <div>
     <a
       href="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/492809"
       rel="noopener noreferrer"
@@ -35,8 +35,7 @@ exports[`<NftInfo /> should display the correct NFT information 1`] = `
         </div>
       </div>
     </a>
+    Estimated price: 4 eth
   </div>
-  Estimated price: 4 eth
-   
 </div>
 `;

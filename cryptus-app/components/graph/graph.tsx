@@ -24,29 +24,28 @@ ChartJS.register(
   Legend
 );
 
-const color_graph = [53, 198, 90];
-
 const create_rgba = (color: number[], alpha: number) => {
   return `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha})`;
 };
 
-function createGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
-  const colorStart = create_rgba(color_graph, 0.8);
-  const colorMid = create_rgba(color_graph, 0.4);
-  const colorEnd = create_rgba(color_graph, 0.1);
+// function createGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
+//   const colorStart = create_rgba(color_graph, 0.8);
+//   const colorMid = create_rgba(color_graph, 0.4);
+//   const colorEnd = create_rgba(color_graph, 0.1);
 
-  const gradient = ctx.createLinearGradient(0, area.top, 0, area.bottom);
+//   const gradient = ctx.createLinearGradient(0, area.top, 0, area.bottom);
 
-  gradient.addColorStop(0, colorStart);
-  gradient.addColorStop(0.5, colorMid);
-  gradient.addColorStop(1, colorEnd);
+//   gradient.addColorStop(0, colorStart);
+//   gradient.addColorStop(0.5, colorMid);
+//   gradient.addColorStop(1, colorEnd);
 
-  return gradient;
-}
+//   return gradient;
+// }
 
 export default function Graph(props: {
   data_price: number[];
   data_volume: number[];
+  color: "green" | "red";
   detailled: boolean;
 }) {
   const { data_price, data_volume, detailled: detailled } = props;
@@ -56,12 +55,18 @@ export default function Graph(props: {
   });
   const [optionsBar, setoptionsBar] = useState<any>();
   const [optionsLine, setoptionsLine] = useState<any>();
+  const [key, setKey] = useState<number>(0);
   const [chartDataBar, setChartDataBar] = useState<ChartData<"bar">>({
     datasets: [],
   });
 
-  useEffect(() => {
-    const { data_price, data_volume, detailled: detailled } = props;
+  const ReloadGraph = () => {
+    const { data_volume, detailled: detailled } = props;
+    let { data_price } = props;
+
+    if (data_price === undefined) {
+      data_price = [];
+    }
 
     const labels = [];
 
@@ -178,6 +183,8 @@ export default function Graph(props: {
       return;
     }
 
+    const color_graph = props.color == "green" ? [53, 198, 90] : [255, 0, 0];
+
     const chartDataLine = {
       labels,
       datasets: [
@@ -224,6 +231,12 @@ export default function Graph(props: {
     setoptionsBar(optionsBartemp);
     setChartDataLine(chartDataLine);
     setChartDataBar(chartDataBar);
+    // setKey(key + 1);
+    // console.log("key", key);
+  };
+
+  useEffect(() => {
+    ReloadGraph();
   }, [props]);
 
   return (
@@ -232,7 +245,6 @@ export default function Graph(props: {
         className={s.chart_line}
         ref={chartRef}
         type="line"
-        key={Math.random()}
         data={chartDataLine}
         options={optionsLine}
       />
@@ -241,7 +253,6 @@ export default function Graph(props: {
           className={s.chart_bar}
           ref={chartRef}
           type="line"
-          key={Math.random()}
           data={chartDataBar}
           options={optionsBar}
         />

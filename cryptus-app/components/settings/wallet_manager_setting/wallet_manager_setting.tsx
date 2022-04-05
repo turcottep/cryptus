@@ -11,7 +11,7 @@ export default function WalletManagerSetting() {
         <div className={s.iconDiv}>
           <img
             onClick={() => {
-              router.push("/");
+              router.push("/walletmanager");
             }}
             className={s.icon}
             src="/icons/wallet_manager_icon.png"

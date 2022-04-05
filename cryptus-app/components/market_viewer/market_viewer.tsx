@@ -20,11 +20,13 @@ export type collection = {
 export default function MarketViewer(props: {
   collections_market: collection[];
   collections_favorite: collection[];
+  callback_open: (id: string) => void;
 }) {
   return (
     <div id="market_viewer" className={s.container}>
       <div className={s.market}>
         <MarketCollections
+          callback={props.callback_open}
           name={"My Collections"}
           icon={"/icons/favorite_icon.png"}
           collections={props.collections_favorite}
@@ -32,6 +34,7 @@ export default function MarketViewer(props: {
       </div>
       <div className={s.market}>
         <MarketCollections
+          callback={props.callback_open}
           name={"Market"}
           icon={"/icons/market_icon.png"}
           collections={props.collections_market}

@@ -38,4 +38,37 @@ async function getCollectionTokenWithEtherscan(contractaddress: string) {
   }
 }
 
-export default getCollectionTokenWithEtherscan;
+async function getCollectionTokenWithOpensea(
+  collectionAddress: string,
+  tokenId: string
+) {
+  const api_url = process.env.NEXT_PUBLIC_OPENSEA_API_KEY;
+  let response;
+  console.log("collectionAddress", collectionAddress, "tokenId", tokenId);
+
+  try {
+    const url =
+      "https://api.opensea.io/api/v1/asset/" +
+      collectionAddress +
+      "/" +
+      tokenId +
+      "/?include_orders=false";
+
+    response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-KEY": api_url,
+      },
+    });
+    const data = (await response.json()) as any;
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    return Number(data.collection.stats.count);
+  } catch (error) {
+    console.log("response", response);
+    console.log(error);
+    return null;
+  }
+}
+
+export default getCollectionTokenWithOpensea;

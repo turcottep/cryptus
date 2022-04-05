@@ -20,7 +20,12 @@ describe("<CollectionDetails />", () => {
 
     const tree = renderer
       .create(
-        <CollectionDetails collection={mockCollection} isMobile={isMobile} />
+        <CollectionDetails
+          collection={mockCollection}
+          isMobile={isMobile}
+          callback_close={undefined}
+          open_nft={undefined}
+        />
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

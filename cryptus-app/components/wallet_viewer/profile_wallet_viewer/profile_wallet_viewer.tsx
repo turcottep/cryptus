@@ -7,25 +7,41 @@ import { nft, nft_collection } from "../../../lib/data_types";
 
 export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
+  open_collection: (collection_name: string) => void;
+  open_nft: (collection_name: string, nft_token_id: string) => void;
+  collections_filter: string[];
 }) {
   return (
     <div className={s.container}>
-      {props.collections.map((collection: nft_collection) => (
-        <div key={collection.id}>
-          <Collection collection={collection} />
-        </div>
-      ))}
+      {props.collections
+        .filter((collection) => {
+          return !props.collections_filter.includes(collection.address);
+        })
+        .map((collection: nft_collection, i: number) => (
+          <div key={i}>
+            <Collection
+              collection={collection}
+              key={i}
+              open_collection={props.open_collection}
+              open_nft={props.open_nft}
+            />
+          </div>
+        ))}
     </div>
   );
 }
 
-const Collection = (props: { collection: nft_collection }) => {
+const Collection = (props: {
+  collection: nft_collection;
+  open_collection;
+  open_nft;
+}) => {
   const { collection } = props;
   const router = useRouter();
   const [a, setA] = useState([]);
   const [b, setB] = useState([]);
   const [c, setC] = useState([]);
-  const [collectionName, setCollectionName] = useState("");
+  // const [collectionName, setCollectionName] = useState("");
   const { userId } = router.query;
 
   useEffect(() => {
@@ -34,33 +50,39 @@ const Collection = (props: { collection: nft_collection }) => {
     const c =
       a.length > 3 ? (a.length > 7 ? a.slice(3, 3 + 4) : a.slice(3)) : [];
 
-    const collectionname = collection.name
-      .replace(/[^0-9a-z]/gi, " ")
-      .replace(/\s/g, "")
-      .toLowerCase();
+    // const collectionname = collection.name
+    //   .replace(/[^0-9a-z]/gi, " ")
+    //   .replace(/\s/g, "")
+    //   .toLowerCase();
 
     setA(a);
     setB(b);
     setC(c);
-    setCollectionName(collectionname);
+    // setCollectionName(collectionname);
   }, []);
 
-  const onCollectionClick = (e) => {
-    const pushurl = `/${userId}/${collectionName}`;
-    console.log("pushurl", pushurl);
-    router.push(pushurl);
+  const onCollectionClick = () => {
+    // const pushurl = `/${userId}/${collectionName}`;
+    // console.log("pushurl", pushurl);
+    // router.push(pushurl);
+    props.open_collection(props.collection.name);
   };
 
   return (
     <div className={s.collandname}>
       <div onClick={onCollectionClick} className={s.collection_container}>
-        {b.map((nft) => (
-          <NftL nft={nft} collectionName={collectionName} />
+        {b.map((nft, i) => (
+          <NftL
+            nft={nft}
+            collectionName={collection.name}
+            key={i}
+            open_nft={props.open_nft}
+          />
         ))}
         {c ? (
           <div className={s.collection_preview_container}>
-            {c.map((nft) => (
-              <NftS nft={nft} />
+            {c.map((nft, i) => (
+              <NftS nft={nft} key={i} />
             ))}
           </div>
         ) : null}
@@ -73,7 +95,7 @@ const Collection = (props: { collection: nft_collection }) => {
   );
 };
 
-const NftL = (props: { nft: nft; collectionName: string }) => {
+const NftL = (props: { nft: nft; collectionName: string; open_nft }) => {
   const { nft, collectionName } = props;
   const [urlName, setUrlName] = useState("");
   const router = useRouter();
@@ -89,18 +111,23 @@ const NftL = (props: { nft: nft; collectionName: string }) => {
   }, []);
 
   const onNftClick = (e) => {
-    router.push(`${userId}/${collectionName}/${urlName}`);
-    console.log(urlName);
+    // router.push(`${userId}/${collectionName}/${urlName}`);
+    // console.log(urlName);
+    props.open_nft(props.collectionName, props.nft.token_id);
 
     e.preventDefault();
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
-    return false;
+    // return false;
   };
 
   return (
     <div onClick={onNftClick} className={s.nft_container}>
-      <img className={s.imglarge} src={nft.image_url} />
+      {nft.image_url ? (
+        <img className={s.imglarge} src={nft.image_url} />
+      ) : (
+        <div className={s.imglarge_loading} />
+      )}
     </div>
   );
 };

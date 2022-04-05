@@ -7,10 +7,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background-color: v.$bg-color;
+}
 
-  @media (max-width: v.$mobile) {
-    width: min(100vw, v.$mobile);
-  }
+.image {
+  flex: 1 1 auto;
+  object-fit: contain;
+  width: 100%;
+  max-width: 512px;
 }
