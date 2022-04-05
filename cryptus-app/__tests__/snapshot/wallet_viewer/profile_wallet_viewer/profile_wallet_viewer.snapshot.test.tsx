@@ -4,7 +4,7 @@ import "@testing-library/jest-dom/extend-expect";
 
 import { mock_collection } from "../../../../lib/mocks";
 import { mockNextUseRouter } from "../../../../utils/test_util";
-import ProfileWalletViewer from "../../../../components/wallet_viewer/profile_wallet_viewer/profile_wallet_viewer";
+import ProfileWalletViewer from "../../../../components/profile/wallet_viewer/profile_wallet_viewer/profile_wallet_viewer";
 
 describe("<ProfileWalletViewer />", () => {
   mockNextUseRouter({

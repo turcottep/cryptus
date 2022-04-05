@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import FeatureIamTesting from "../components/template/pagetemplate/pagetemplate";
-import NFTDetails from "../components/wallet_viewer/nft_details/nft_details";
+import FeatureIamTesting from "../components/utils/template/pagetemplate/pagetemplate";
+import NFTDetails from "../components/profile/wallet_viewer/nft_details/nft_details";
 import { nft, profile_props } from "../lib/data_types";
 import get_mock_props from "../lib/get_mock_props";
 import GetCollectionTokens from "../lib/get_collection_token";
