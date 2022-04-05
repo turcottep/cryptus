@@ -16,10 +16,8 @@
   flex-direction: row;
   border-radius: 16px;
   background: #ebe7e3;
-}
 
-.menu {
-  color: v.$header-color;
-  padding-left: 8px;
-  width: 24px;
+  color: v.$text-color;
+  text-transform: none;
+  font-size: v.$font-size-s;
 }
