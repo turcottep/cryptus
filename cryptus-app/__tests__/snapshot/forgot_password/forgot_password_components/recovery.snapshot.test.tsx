@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Recovery from "../../../../components/forgot_password/forgot_password_components/recovery";
+import Recovery from "../../../../components/basic/forgot_password/forgot_password_components/recovery";
 import { getMockProps } from "../../../../lib/mocks";
 
 type state = {

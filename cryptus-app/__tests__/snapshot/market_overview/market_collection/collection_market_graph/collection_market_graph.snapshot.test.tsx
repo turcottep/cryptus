@@ -2,8 +2,8 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import CollectionMarketGraph from "../../../../../components/market_overview/market_collection/collection_market_graph/collection_market_graph";
-import { intervals } from "../../../../../components/market_overview/net_worth/time_interval/time_interval";
+import CollectionMarketGraph from "../../../../../components/market/market_collection/collection_market_graph/collection_market_graph";
+import { intervals } from "../../../../../components/market/net_worth/time_interval/time_interval";
 
 describe("<CollectionMarketGraph />", () => {
   it("should display properly", async () => {

@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import DateComponent from "../../../../../components/market_overview/market_header/date/date";
+import DateComponent from "../../../../../components/market/market_header/date/date";
 
 describe("<DateComponent />", () => {
   it("should display properly", async () => {
