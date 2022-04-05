@@ -15,3 +15,13 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto/Roboto-Black.ttf");
+}
+
+@font-face {
+  font-family: "Roboto-Thin";
+  src: url("/fonts/Roboto/Roboto-Thin.ttf");
+}
