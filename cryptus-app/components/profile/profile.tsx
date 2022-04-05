@@ -42,8 +42,6 @@ export default function Profile(props: {
   useEffect(() => {
     const is_my_profile = userId && userId === session?.user?.name;
     setIsMyProfile(is_my_profile);
-
-    console.log("is_my_profile", is_my_profile);
   }, [loading]);
 
   const close_all = () => {
@@ -78,10 +76,8 @@ export default function Profile(props: {
     console.log("update_my_collection_filter", collections_filter);
   };
 
-  console.log("isMobile", isMobile);
-
   return (
-    <div className={s.container}>
+    <div className={s.app}>
       {isMobile ? null : <DesktopHeader tab="profile" />}
       {isMobile ? (
         isMyProfile ? (

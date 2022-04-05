@@ -7,6 +7,8 @@ import connectMetamask from "../../lib/connectMetamask";
 import NavbarLandingPage from "../navbars/navbar_landing_page/navbar_landing_page";
 import Loading from "../utils/loading/loading";
 
+import * as google_analytics from "../../lib/google_analytics";
+
 export default function LandingPage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [session, loadingSession] = useSession();

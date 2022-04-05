@@ -21,7 +21,6 @@ export default function CreatorProfileInfos(props: {
   initial_filter: string[];
 }) {
   const { profile_props, callback_filter } = props;
-  console.log("profile_props", profile_props);
 
   const [session, sessionLoading] = useSession();
   const [loading, setLoading] = useState(false);

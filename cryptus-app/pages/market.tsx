@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { isMobile as mobile } from "react-device-detect";
 
-import MarketOverview from "../components/market_overview/market";
+import Market from "../components/market_overview/market";
 import { intervals } from "../components/market_overview/net_worth/time_interval/time_interval";
 import { collection } from "../components/market_viewer/market_viewer";
 import collectionDictionary from "../lib/collectionDictionary";
@@ -11,7 +11,7 @@ import address from "./api/collection/address";
 
 // Import market_overwiew parent component to test here
 
-export default function Market(props) {
+export default function MarketPage(props) {
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function Market(props) {
         rel="stylesheet"
       />
       <main>
-        <MarketOverview
+        <Market
           date={props.mock_data.date}
           networth={props.mock_data.networth}
           collections={props.collections}

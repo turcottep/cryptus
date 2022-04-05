@@ -4,6 +4,7 @@ import "@testing-library/jest-dom/extend-expect";
 
 import { mock_collection } from "../../../../lib/mocks";
 import MarketCollection from "../../../../components/market_overview/market_collection/market_collection";
+import { intervals } from "../../../../components/market_overview/net_worth/time_interval/time_interval";
 
 describe("<MarketCollection />", () => {
   it("should display properly", async () => {
@@ -16,6 +17,7 @@ describe("<MarketCollection />", () => {
         floor_price_delta: 0.01,
         floor_price_timestamp: "week",
         data_price: [0.01, 0.02, 0.03, 0.04, 0.05],
+        interval: intervals.week,
         count: [],
         volume: [],
         address: "",
