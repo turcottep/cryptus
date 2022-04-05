@@ -5,7 +5,7 @@ import s from "./collection_viewer.module.scss";
 
 export default function CollectionViewer(props: {
   collection: nft_collection;
-  open_nft: (index: number) => void;
+  open_nft: (collection_name: string, token_id: string) => void;
 }) {
   const { collection } = props;
   return (
@@ -29,7 +29,7 @@ const Nft = (props: { nft: nft; index: number; open_nft }) => {
   //   .toLowerCase();
 
   const onNftClick = () => {
-    props.open_nft(props.index);
+    props.open_nft(nft.collection, nft.token_id);
     // router.push(`/${userName}/${collectionName}/${nftName}`);
   };
 

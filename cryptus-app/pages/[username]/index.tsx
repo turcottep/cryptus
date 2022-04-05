@@ -51,13 +51,13 @@ export default function ProfilePage() {
   }, [username]);
 
   return (
-    <AnimatedDiv>
-      <Profile
-        collections={collections_props}
-        user={user_props}
-        isMobile={isMobile}
-        key={loading ? 1 : 0}
-      />
-    </AnimatedDiv>
+    // <AnimatedDiv>
+    <Profile
+      collections={collections_props}
+      user={user_props}
+      isMobile={isMobile}
+      key={loading ? 1 : 0}
+    />
+    // {/* </AnimatedDiv> */}
   );
 }

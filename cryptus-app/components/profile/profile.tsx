@@ -38,11 +38,11 @@ export default function Profile(props: {
   );
 
   useEffect(() => {
-    console.log("username", props.user.username, session?.user?.name);
+    // console.log("username", props.user.username, session?.user?.name);
 
     const is_my_profile = props.user.username === session?.user?.name;
     setIsMyProfile(is_my_profile);
-    console.log("isMyProfile", is_my_profile);
+    // console.log("isMyProfile", is_my_profile);
   }, [loading]);
 
   const close_all = () => {
@@ -67,7 +67,6 @@ export default function Profile(props: {
   const open_nft = (collection_name: string, nft_token_id: string) => {
     console.log("open_nft", collection_name, nft_token_id);
     const collection = collections.find((c) => c.name === collection_name);
-    console.log("collection", collection);
 
     const nft = collection.nfts.find((n) => n.token_id === nft_token_id);
     set_card_nft(nft);
