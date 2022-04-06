@@ -4,7 +4,8 @@ import s from "./collection_row.module.scss";
 import CollectionInfo from "./collection_info/collection_info";
 import PreviewGraph from "./preview_graph/preview_graph";
 import PriceInfo from "./price_info/price_info";
-import { collection } from "../market_viewer";
+import { collection } from "../../../../lib/data_types";
+
 import GetNameWithoutSpaces from "../../../../lib/get_name_without_spaces";
 
 // Need to add prop for collection

@@ -4,26 +4,26 @@ import React, { useState, useEffect } from "react";
 import s from "./market.module.scss";
 
 //external exports
-import { Button, Menu, MenuItem } from "@mui/material";
+import { useSession } from "next-auth/client";
 
 //internal imports
+import { intervals } from "./net_worth/time_interval/time_interval";
+import { collection } from "../../lib/data_types";
+
 import MarketHeader from "./market_header/market_header";
 import NetWorth from "./net_worth/net_worth";
 import SearchBar from "./search_bar/search_bar";
 import SortButton from "./sort_button/sort_button";
-import MarketViewer, { collection } from "./market_viewer/market_viewer";
-import { intervals } from "./net_worth/time_interval/time_interval";
-import { each } from "jquery";
 import Footer from "../basic/footer/footer";
 import DesktopHeader from "../basic/header/desktop_header/desktop_header";
 import Loading from "../utils/loading/loading";
 import MarketCollection from "./market_collection/market_collection";
-import { useSession } from "next-auth/client";
 import getUserByUsername from "../../lib/get_user_by_username";
 import { user } from "../../lib/data_types";
 import get_profile_props from "../../lib/get_profile_props";
 import Settings from "../basic/settings/settings";
 import WalletManager from "../basic/wallet_manager/wallet_manager";
+import MarketCollections from "./market_viewer/market_collections/market_collections";
 
 type market_overview_props = {
   date: string;
@@ -44,6 +44,7 @@ export default function MarketOverview(props: market_overview_props) {
     username: "",
     address: "",
     collections_filter: [],
+    profile_image_url: "",
   };
 
   const [user_collections_list, set_user_collections_list] = useState<string[]>(
@@ -97,49 +98,17 @@ export default function MarketOverview(props: market_overview_props) {
   }, [user_collections_list, newPropCollection]);
 
   useEffect(() => {
-    updatePrice(props.networth.active);
+    const newPropCollectionTemp = update();
   }, []);
 
-  const updatePrice = async (interval: intervals) => {
-    setLoading(true);
-    let viewingmode = intervals[interval];
-    if (viewingmode == "three_months") {
-      viewingmode = "3month";
-    }
-    const adresses = props.collections.map((c) => {
-      return c.address;
-    });
-
-    const res = await fetch("/api/sales/batch", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        adresses,
-        viewingmode,
-      }),
-    });
-
-    const { prices, counts, deltas } = await res.json();
-    const newPropCollectionTemp = [];
-
-    console.log("delas : ", deltas);
-
-    for (let i = 0; i < props.collections.length; i++) {
-      const element = props.collections[i];
-      element.data_price = prices[i];
-      element.floor_price = prices[i][prices[i].length - 1];
-      element.floor_price_delta = deltas[i];
-      newPropCollectionTemp.push(element);
-    }
-    setLoading(false);
-    set_market_interval(interval);
-    setnewPropCollection(newPropCollectionTemp);
-  };
+  const update = async (interval: intervals = props.networth.active) =>
+    await updatePrice(interval, setLoading, props.collections);
 
   const callbackGraph = async (interval) => {
-    updatePrice(interval);
+    // setInterval(interval);
+    const newPropCollectionTemp = await update(interval);
+    set_market_interval(interval);
+    setnewPropCollection(newPropCollectionTemp);
   };
 
   const close_card = () => {
@@ -170,6 +139,21 @@ export default function MarketOverview(props: market_overview_props) {
   const open_wallet_manager = () => {
     set_show_wallet_manager(true);
   };
+  const marketCollectionProps = {
+    collection_name: newPropCollection[card_index].name,
+    collection_logo: newPropCollection[card_index].logo,
+    collection_ticker: newPropCollection[card_index].ticker,
+    floor_price_live: newPropCollection[card_index].floor_price,
+    floor_price_delta: newPropCollection[card_index].floor_price_delta,
+    floor_price_timestamp: newPropCollection[card_index].timestamp,
+    data_price: newPropCollection[card_index].data_price,
+    interval: market_interval,
+    count: [],
+    volume: newPropCollection[card_index].data_volume,
+    address: newPropCollection[card_index].address,
+  };
+
+  console.log("session", session);
 
   return (
     <div className={show_card ? s.container_no_scroll : s.container}>
@@ -181,19 +165,7 @@ export default function MarketOverview(props: market_overview_props) {
         <MarketCollection
           isMobile={isMobile}
           callback_close={close_card}
-          market_collection_props={{
-            collection_name: newPropCollection[card_index].name,
-            collection_logo: newPropCollection[card_index].logo,
-            collection_ticker: newPropCollection[card_index].ticker,
-            floor_price_live: newPropCollection[card_index].floor_price,
-            floor_price_delta: newPropCollection[card_index].floor_price_delta,
-            floor_price_timestamp: newPropCollection[card_index].timestamp,
-            data_price: newPropCollection[card_index].data_price,
-            interval: market_interval,
-            count: [],
-            volume: newPropCollection[card_index].data_volume,
-            address: newPropCollection[card_index].address,
-          }}
+          market_collection_props={marketCollectionProps}
         />
       )}
       {show_card_settings && (
@@ -218,7 +190,7 @@ export default function MarketOverview(props: market_overview_props) {
         active={props.networth.active}
         callbackGraph={callbackGraph}
       />
-      <div className={s.container_row}>
+      <div className={s.search_and_sort}>
         <SearchBar />
         <SortButton
           newPropCollectionFavorite={newPropCollectionFavorite}
@@ -227,12 +199,65 @@ export default function MarketOverview(props: market_overview_props) {
           setnewPropCollectionMarket={setnewPropCollectionMarket}
         />
       </div>
-      <MarketViewer
-        collections_market={newPropCollection}
-        callback_open={open_card}
-        collections_favorite={[]}
+
+      <MarketCollections
+        callback={open_card}
+        name={"My Collections"}
+        icon={"/icons/favorite_icon.png"}
+        collections={[]}
+        connected={session ? true : false}
       />
+      <MarketCollections
+        callback={open_card}
+        name={"Market"}
+        icon={"/icons/market_icon.png"}
+        collections={newPropCollection}
+      />
+
       {isMobile ? <Footer /> : null}
     </div>
   );
 }
+
+const updatePrice = async (
+  interval: intervals,
+  setLoading: Function,
+  collections: collection[]
+) => {
+  setLoading(true);
+  let viewingmode = intervals[interval];
+  if (viewingmode == "three_months") {
+    viewingmode = "3month";
+  }
+  console.log("new viewingmode : ", viewingmode);
+
+  // setPrice(price);
+  const adresses = collections.map((c) => {
+    return c.address;
+  });
+
+  const res = await fetch("/api/sales/batch", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      adresses,
+      viewingmode,
+    }),
+  });
+
+  const { prices, counts, deltas } = await res.json();
+  const newPropCollectionTemp = [];
+
+  for (let i = 0; i < collections.length; i++) {
+    const element = collections[i];
+    element.data_price = prices[i];
+    element.floor_price = prices[i][prices[i].length - 1];
+    element.floor_price_delta = deltas[i];
+    newPropCollectionTemp.push(element);
+  }
+  setLoading(false);
+
+  return newPropCollectionTemp;
+};

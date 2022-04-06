@@ -1,6 +1,8 @@
 @use "/styles/variables" as v;
 
 .container {
+  flex: 0 0 none;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -9,11 +11,7 @@
   border-bottom: 1px solid rgba($color: v.$text-color, $alpha: 0.1);
 
   // height: 160px; //For too long description
-  padding: 0px 8px;
-
-  @media (max-width: v.$mobile) {
-    max-width: min(100vw, v.$mobile);
-  }
+  padding: 8px;
 }
 
 .row {
@@ -25,11 +23,6 @@
   justify-content: flex-start;
 
   gap: 16px;
-
-  @media (max-width: v.$mobile) {
-    width: 100%;
-    justify-content: space-between;
-  }
 }
 .edits {
   flex-direction: row;
@@ -39,15 +32,13 @@
   vertical-align: bottom;
 
   gap: 16px;
-  // padding-bottom: 30px;
 }
 
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
-  // justify-content: flex-end;
-  // align-items: flex-end;
+
   padding: 0 4px;
   height: 28px;
   background-color: v.$secondary-color-pale;
@@ -66,31 +57,11 @@
   width: 256px;
 
   margin: 8px 8px 8px 0;
-
-  // display: flex;
-  // flex-direction: column;
-
-  // margin-left: 48px;
-  // margin-right: 48px;
-
-  // font-size: 20px;
-  // line-height: 28px;
 }
 
 .editDesc {
   width: 256px;
   margin: 8px 8px 16px 0;
-
-  // height: 96px;
-  // display: flex;
-  // flex-direction: column;
-
-  // margin-left: 48px;
-  // margin-right: 48px;
-  // margin-top: 16px;
-
-  // font-size: 20px;
-  // line-height: 28px;
 }
 
 .username {

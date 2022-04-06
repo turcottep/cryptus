@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import s from "./profile.module.scss";
 
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
 
 import { nft_collection, profile_props, tabs } from "../../lib/data_types";
@@ -40,13 +39,11 @@ export default function Profile(props: {
   const [collections_filter, setCollectionsFilter] = useState<string[]>(
     user.collections_filter
   );
+  const [image_url, set_image_url] = useState(props.user.profile_image_url);
 
   useEffect(() => {
-    // console.log("username", props.user.username, session?.user?.name);
-
     const is_my_profile = props.user.username === session?.user?.name;
     setIsMyProfile(is_my_profile);
-    // console.log("isMyProfile", is_my_profile);
   }, [loading]);
 
   const close_all = () => {
@@ -94,6 +91,10 @@ export default function Profile(props: {
     setCollectionsFilter(temp_filter);
   };
 
+  const callback_profile_image_url = (new_image_url: string) => {
+    set_image_url(new_image_url);
+  };
+
   return (
     <div className={s.app}>
       {isMobile ? null : (
@@ -111,9 +112,10 @@ export default function Profile(props: {
           profile_props={props}
           callback_filter={update_my_collection_filter}
           initial_filter={collections_filter}
+          image_url={image_url}
         />
       ) : (
-        <ViewProfInfos {...props} />
+        <ViewProfInfos user={props} image_url={image_url} />
       )}
       {show_card_collection && (
         <CollectionDetails
@@ -128,6 +130,10 @@ export default function Profile(props: {
           nft={card_nft}
           isMobile={isMobile}
           callback_close={close_nft}
+          callback_profile_image_url={callback_profile_image_url}
+          isMyProfile={isMyProfile}
+          username={props.user.username}
+          profile_image_url={image_url}
         />
       )}
       {show_card_settings && (
