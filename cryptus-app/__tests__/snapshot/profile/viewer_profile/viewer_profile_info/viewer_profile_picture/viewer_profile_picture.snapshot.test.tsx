@@ -4,6 +4,9 @@ import renderer from "react-test-renderer";
 import ViewerProfilePicture from "../../../../../../components/profile/viewer_profile/viewer_profile_infos/viewer_profile_picture/viewer_profile_picture";
 
 it("ViewerProfilePicture renders correctly", () => {
-  const tree = renderer.create(<ViewerProfilePicture />).toJSON();
+  const image_url = "./icons/icon-192x192.png";
+  const tree = renderer
+    .create(<ViewerProfilePicture image_url={image_url} />)
+    .toJSON();
   expect(tree).toMatchSnapshot();
 });
