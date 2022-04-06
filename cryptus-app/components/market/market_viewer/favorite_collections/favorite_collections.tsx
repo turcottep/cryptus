@@ -2,7 +2,7 @@ import React from "react";
 import s from "./favorite_collections.module.scss";
 
 import CollectionRow from "../collection_row/collection_row";
-import { collection } from "../market_viewer";
+import { collection } from "../../../../lib/data_types";
 
 // Need to add prop for collections
 export default function FavoriteCollections(props: {

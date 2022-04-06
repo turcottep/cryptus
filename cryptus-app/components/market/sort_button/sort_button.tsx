@@ -39,6 +39,7 @@ export default function SortButton(props: {
     );
     setnewPropCollectionFavorite(a);
     setnewPropCollectionMarket(b);
+    console.log("useEffect", filter);
   }, [filter]);
 
   return (

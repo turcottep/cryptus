@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import { collection } from "../../../components/market/market_viewer/market_viewer";
+import { collection } from "../../../lib/data_types";
 import MarketViewer from "../../../components/market/market_viewer/market_viewer";
 
 const mock_collection: collection = {
