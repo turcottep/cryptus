@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import s from "./collection_info.module.scss";
 
-import { collection } from "../../market_viewer";
+import { collection } from "../../../../../lib/data_types";
 
 // Need to add prop for collection
 export default function CollectionInfo(props: { collection: collection }) {

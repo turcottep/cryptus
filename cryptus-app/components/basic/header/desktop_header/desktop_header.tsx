@@ -26,7 +26,7 @@ export default function DesktopHeader(props: { tab: string }) {
   return (
     <div id="header" className={s.container}>
       <div className={s.home}>
-        <Title />
+        <a href="/">Public Wallet</a>
       </div>
       <div className={s.tabs}>
         {tabs.map((t, i) => {
@@ -55,12 +55,6 @@ export default function DesktopHeader(props: { tab: string }) {
     </div>
   );
 }
-
-const Title = () => (
-  <a href="/" className={s.title}>
-    Public Wallet
-  </a>
-);
 
 const Tab = (props: { name: string; url: string; isActive: boolean }) =>
   props.isActive ? (

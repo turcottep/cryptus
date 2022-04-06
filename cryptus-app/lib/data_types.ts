@@ -38,6 +38,19 @@ export interface profile_props {
   collections: nft_collection[];
 }
 
+export type collection = {
+  id: string;
+  logo: string;
+  ticker: string;
+  name: string;
+  address: string;
+  floor_price: number;
+  floor_price_delta: number;
+  data_price: number[];
+  data_volume: number[];
+  timestamp: string;
+};
+
 export enum tabs {
   market = "market",
   research = "research",

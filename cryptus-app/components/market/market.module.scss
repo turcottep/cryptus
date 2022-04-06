@@ -7,8 +7,6 @@
   flex-direction: column;
   align-items: center;
 
-  width: 100vw;
-
   @media (max-width: v.$mobile) {
     width: min(100vw, v.$mobile);
   }
@@ -20,8 +18,8 @@
   overflow: hidden;
 }
 
-.container_row {
-  flex: 1 1 auto;
+.search_and_sort {
+  flex: 0 0 none;
 
   display: flex;
   flex-direction: row;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import s from "./preview_graph.module.scss";
 
-import { collection } from "../../market_viewer";
 import Graph from "../../../graph/graph";
 
 // Need to add prop for collection

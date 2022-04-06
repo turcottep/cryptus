@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import s from "./profile.module.scss";
 
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
 
 import { nft_collection, profile_props, tabs } from "../../lib/data_types";
