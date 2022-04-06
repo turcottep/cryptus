@@ -5,7 +5,6 @@ import Switch from "@mui/material/Switch";
 
 import { nft } from "../../../../lib/data_types";
 
-import NftHeader from "./nft_header/nft_header";
 import NftInfo from "./nft_infos/nft_info";
 import NFTProperties from "./nft_properties/nft_properties";
 import NFTRankInCollection from "./nft_rank_in_collection/nft_rank_in_collection";
@@ -18,13 +17,14 @@ type nft_details_props = {
   nft: nft;
   isMobile: boolean;
   callback_close;
+  callback_profile_image_url;
   isMyProfile: Boolean;
   username: string;
+  profile_image_url: string;
 };
 
 export default function NFTDetails(props: nft_details_props) {
-  // console.log("NFTDetails", props);
-
+  const callback_profile_image_url = props.callback_profile_image_url;
   const [[rank_position, rank_total], setRank] = useState([0, NaN]);
   const [listed_price, set_listed_price] = useState(0.0);
 
@@ -39,7 +39,6 @@ export default function NFTDetails(props: nft_details_props) {
       props.nft.collection_address,
       props.nft.token_id
     );
-    // console.log("Collection data : ", CollectionRarityData);
     if (CollectionRarityData.length > 0) {
       rarity_rank = CollectionRarityData[0].rarity_rank;
     }
@@ -67,7 +66,13 @@ export default function NFTDetails(props: nft_details_props) {
 
   const handleImageChange = async (e) => {
     await updateUserProfileImageUrl(props.username, props.nft.image_url);
+    callback_profile_image_url(props.nft.image_url);
   };
+  // Check if the image url is the same as the one in the database
+  let defaultState = false;
+  if (props.nft.image_url === props.profile_image_url) {
+    defaultState = true;
+  }
 
   return (
     <Card callback_close={props.callback_close} isMobile={props.isMobile}>
@@ -84,7 +89,10 @@ export default function NFTDetails(props: nft_details_props) {
         {props.isMyProfile ? (
           <div>
             Put as profile picture :
-            <Switch defaultChecked={false} onChange={handleImageChange} />
+            <Switch
+              defaultChecked={defaultState}
+              onChange={handleImageChange}
+            />
           </div>
         ) : null}
 

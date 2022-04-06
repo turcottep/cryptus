@@ -21,6 +21,7 @@ export default function CreatorProfileInfos(props: {
   profile_props: profile_props;
   callback_filter: (new_filter: string[]) => void;
   initial_filter: string[];
+  image_url: string;
 }) {
   const { profile_props, callback_filter } = props;
 
@@ -141,9 +142,7 @@ export default function CreatorProfileInfos(props: {
   return (
     <div className={s.container}>
       <div className={s.row}>
-        <ViewerProfilePicture
-          image_url={props.profile_props.user.profile_image_url}
-        />
+        <ViewerProfilePicture image_url={props.image_url} />
         {edit_profile ? (
           <div className={s.edits}>
             <div

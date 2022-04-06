@@ -46,6 +46,13 @@ it("ViewerProfileInfos renders correctly", () => {
     collections: [mock_collection],
   };
 
-  const tree = renderer.create(<ViewerProfileInfos {...mock_props} />).toJSON();
+  const tree = renderer
+    .create(
+      <ViewerProfileInfos
+        image_url={mock_props.user.profile_image_url}
+        user={mock_props}
+      />
+    )
+    .toJSON();
   expect(tree).toMatchSnapshot();
 });

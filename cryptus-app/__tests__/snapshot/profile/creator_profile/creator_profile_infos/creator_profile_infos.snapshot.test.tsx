@@ -54,6 +54,7 @@ it("CreatorProfileInfos renders correctly", () => {
           throw new Error("Function not implemented.");
         }}
         initial_filter={[]}
+        image_url={mock_props.user.profile_image_url}
         {...mock_props}
       />
     )

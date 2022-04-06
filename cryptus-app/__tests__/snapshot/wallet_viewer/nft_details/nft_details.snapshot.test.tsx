@@ -37,12 +37,15 @@ describe("<NftDetails />", () => {
     };
     const isMyProfile = true;
     const randomUser = "randomUser";
+    const randomUserImage = "./icons/icon-192x192.png";
     const tree = renderer
       .create(
         <NftDetails
           isMyProfile={isMyProfile}
           username={randomUser}
           callback_close={undefined}
+          callback_profile_image_url={randomUserImage}
+          profile_image_url={randomUserImage}
           {...details}
         />
       )
