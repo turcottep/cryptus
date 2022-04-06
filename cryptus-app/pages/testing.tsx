@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import FeatureIamTesting from "../components/template/pagetemplate/pagetemplate";
-import NFTDetails from "../components/wallet_viewer/nft_details/nft_details";
+import FeatureIamTesting from "../components/utils/template/pagetemplate/pagetemplate";
+import NFTDetails from "../components/profile/wallet_viewer/nft_details/nft_details";
 import { nft, profile_props } from "../lib/data_types";
 import get_mock_props from "../lib/get_mock_props";
 import GetCollectionTokens from "../lib/get_collection_token";
@@ -16,7 +16,8 @@ export default function Home() {
     const collectionCall = async () => {
       try {
         const collectionSize: number = await GetCollectionTokens(
-          mock_nft.collection_address
+          mock_nft.collection_address,
+          mock_nft.token_id
         );
         setCollection_size(collectionSize);
         // Rarity rank is calculated from it's traits and rounded the result. The equation is :sum(1/(nb_with_trait/total_count))

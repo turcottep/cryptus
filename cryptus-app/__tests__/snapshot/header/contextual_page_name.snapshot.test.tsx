@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import ContextualPageName from "../../../components/header/contextual_page_name/contextual_page_name";
+import ContextualPageName from "../../../components/basic/header/contextual_page_name/contextual_page_name";
 
 describe("<ContextualPageName />", () => {
   it("should display properly", async () => {

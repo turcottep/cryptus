@@ -3,15 +3,18 @@ import React, { useEffect, useState } from "react";
 
 import { isMobile as mobile } from "react-device-detect";
 
-import MarketOverview from "../components/market_overview/market";
-import { intervals } from "../components/market_overview/net_worth/time_interval/time_interval";
-import { collection } from "../components/market_viewer/market_viewer";
+import Market from "../components/market/market";
+import { intervals } from "../components/market/net_worth/time_interval/time_interval";
+import { collection } from "../components/market/market_viewer/market_viewer";
 import collectionDictionary from "../lib/collectionDictionary";
 import address from "./api/collection/address";
 
+import getCollectionData from "../lib/get_collection_data";
+import { collection100list } from "../lib/collectionDictionary";
+
 // Import market_overwiew parent component to test here
 
-export default function Market(props) {
+export default function MarketPage(props) {
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
@@ -25,8 +28,19 @@ export default function Market(props) {
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-      <meta name="description" content="" />
-      <meta name="keywords" content="" />
+      <meta
+        name="description"
+        content="The new way to check up on your networth in a matter of seconds. "
+      />
+      <meta
+        name="keywords"
+        content="
+        NFT Market Overview
+        ETH
+        NFT Market Price
+        NFT Market tracker
+      "
+      />
       <meta name="author" content="" />
       <meta name="theme-color" content="" />
       <meta
@@ -39,7 +53,7 @@ export default function Market(props) {
         rel="stylesheet"
       />
       <main>
-        <MarketOverview
+        <Market
           date={props.mock_data.date}
           networth={props.mock_data.networth}
           collections={props.collections}
@@ -51,9 +65,6 @@ export default function Market(props) {
 }
 
 export async function getStaticProps() {
-  const address = "0x1a92f7381b9f03921564a437210bb9396471050c";
-  console.log("address", address);
-
   const mock_data = {
     date: "April 20",
     networth: {
@@ -67,14 +78,12 @@ export async function getStaticProps() {
   const collections_dict = collectionDictionary;
   const collections = Object.keys(collections_dict).map((key) => {
     return collections_dict[key];
-  });
-
-  const collections_mock = collections as collection[];
+  }) as collection[];
 
   try {
     return {
       props: {
-        collections: collections_mock,
+        collections: collections,
         mock_data: mock_data,
       },
     };

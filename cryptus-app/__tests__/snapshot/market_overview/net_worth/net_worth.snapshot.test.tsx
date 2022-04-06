@@ -2,8 +2,8 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import { intervals } from "../../../../components/market_overview/net_worth/time_interval/time_interval";
-import NetWorth from "../../../../components/market_overview/net_worth/net_worth";
+import { intervals } from "../../../../components/market/net_worth/time_interval/time_interval";
+import NetWorth from "../../../../components/market/net_worth/net_worth";
 
 type net_worth_props = {
   EthCad: number;

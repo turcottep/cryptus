@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import Footer from "../../../components/footer/footer";
+import Footer from "../../../components/basic/footer/footer";
 
 describe("<Footer />", () => {
   it("should display properly", async () => {

@@ -1,0 +1,23 @@
+@use "/styles/variables" as v;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.container {
+  flex: 0 0 none;
+  display: flex;
+  width: 150px;
+}
+
+.box {
+  flex: 1 1 auto;
+  gap: 4px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 16px;
+  background: #ebe7e3;
+
+  color: v.$text-color;
+  text-transform: none;
+  font-size: v.$font-size-s;
+}

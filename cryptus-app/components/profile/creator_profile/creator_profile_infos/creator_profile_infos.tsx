@@ -5,12 +5,14 @@ import { signIn, useSession } from "next-auth/client";
 import ViewerProfilePicture from "../../viewer_profile/viewer_profile_infos/viewer_profile_picture/viewer_profile_picture";
 import { profile_props } from "../../../../lib/data_types";
 import { TextField } from "@mui/material";
-import EditCollections from "../../../wallet_viewer/show_collections/show_collections";
+import EditCollections from "../../wallet_viewer/show_collections/show_collections";
+import get_reserved_usernames from "../../../../lib/reserved_usernames";
 
 const errors = {
   UniqueUsername: "This username is already in use!",
   InvalidUsername: "Only lowercase alphanumeric characters are allowed",
-  default: "Unable to sign in.",
+  ReservedUsername: "This username is reserved",
+  default: "Unable to change username.",
 };
 
 declare let window: any;
@@ -21,7 +23,6 @@ export default function CreatorProfileInfos(props: {
   initial_filter: string[];
 }) {
   const { profile_props, callback_filter } = props;
-  console.log("profile_props", profile_props);
 
   const [session, sessionLoading] = useSession();
   const [loading, setLoading] = useState(false);
@@ -84,8 +85,13 @@ export default function CreatorProfileInfos(props: {
 
     if (!new_user_name.match(/^[0-9a-z]+$/)) {
       console.log("invalid username");
-
       setError("InvalidUsername");
+      return;
+    }
+
+    if (get_reserved_usernames().includes(new_user_name)) {
+      console.log("reserved username");
+      setError("ReservedUsername");
       return;
     }
 
@@ -95,6 +101,18 @@ export default function CreatorProfileInfos(props: {
 
     if (res.status == 202) {
       setError("UniqueUsername");
+      setLoading(false);
+      return;
+    }
+
+    if (res.status == 203) {
+      setError("ReservedUsername");
+      setLoading(false);
+      return;
+    }
+
+    if (res.status != 201) {
+      setError("default");
       setLoading(false);
       return;
     }
@@ -182,6 +200,7 @@ export default function CreatorProfileInfos(props: {
             label="Username"
             defaultValue={user_name}
             error={!!handleErrorUsername()}
+            helperText={handleErrorUsername()}
             size="small"
             variant="standard"
             required

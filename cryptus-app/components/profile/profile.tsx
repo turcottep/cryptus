@@ -6,22 +6,22 @@ import { useSession } from "next-auth/client";
 
 import { nft_collection, profile_props, tabs } from "../../lib/data_types";
 
-import Footer from "../footer/footer";
-import ProfileWalletViewer from "../wallet_viewer/profile_wallet_viewer/profile_wallet_viewer";
+import Footer from "../basic/footer/footer";
+import ProfileWalletViewer from "./wallet_viewer/profile_wallet_viewer/profile_wallet_viewer";
 import CreatorHeader from "./creator_profile/creator_header/creator_header";
 import MyProfInfos from "./creator_profile/creator_profile_infos/creator_profile_infos";
 import ViewerHeader from "./viewer_profile/viewer_header/viewer_header";
 import ViewProfInfos from "./viewer_profile/viewer_profile_infos/viewer_profile_infos";
 
-import DesktopHeader from "../header/desktop_header/desktop_header";
-import CollectionDetails from "../wallet_viewer/collection_details/collection_details";
-import NFTDetails from "../wallet_viewer/nft_details/nft_details";
-import Settings from "../settings/settings";
-import WalletManager from "../wallet_manager/wallet_manager";
+import DesktopHeader from "../basic/header/desktop_header/desktop_header";
+import CollectionDetails from "./wallet_viewer/collection_details/collection_details";
+import NFTDetails from "./wallet_viewer/nft_details/nft_details";
+import Settings from "../basic/settings/settings";
+import WalletManager from "../basic/wallet_manager/wallet_manager";
 
 export default function Profile(props: {
   collections: nft_collection[];
-  user: any;
+  user;
   isMobile: boolean;
 }) {
   const { collections, user, isMobile } = props;
@@ -29,9 +29,10 @@ export default function Profile(props: {
   const [isMyProfile, setIsMyProfile] = useState<Boolean>(false);
 
   const [show_card_collection, set_show_collection] = useState(false);
-  const [card_collection_index, set_card_collection_index] = useState(0);
+  const [card_collection, set_card_collection] = useState(null);
   const [show_card_nft, set_show_nft] = useState(false);
-  const [card_nft_index, set_card_nft_index] = useState(0);
+  const [card_nft, set_card_nft] = useState(null);
+
   const [update_collection, set_update_collection] = useState(0);
   const [show_card_settings, set_show_settings] = useState(false);
   const [show_card_wallet_manager, set_show_wallet_manager] = useState(false);
@@ -40,14 +41,12 @@ export default function Profile(props: {
     user.collections_filter
   );
 
-  const router = useRouter();
-  const { userId } = router.query;
-
   useEffect(() => {
-    const is_my_profile = userId && userId === session?.user?.name;
-    setIsMyProfile(is_my_profile);
+    // console.log("username", props.user.username, session?.user?.name);
 
-    console.log("is_my_profile", is_my_profile);
+    const is_my_profile = props.user.username === session?.user?.name;
+    setIsMyProfile(is_my_profile);
+    // console.log("isMyProfile", is_my_profile);
   }, [loading]);
 
   const close_all = () => {
@@ -65,13 +64,19 @@ export default function Profile(props: {
     set_show_wallet_manager(false);
   };
 
-  const open_collection = (index: number) => {
-    set_card_collection_index(index);
+  const open_collection = (collection_name: string) => {
+    console.log("open_collection", collection_name);
+    const collection = collections.find((c) => c.name === collection_name);
+    set_card_collection(collection);
     set_show_collection(true);
   };
 
-  const open_nft = (index: number) => {
-    set_card_nft_index(index);
+  const open_nft = (collection_name: string, nft_token_id: string) => {
+    console.log("open_nft", collection_name, nft_token_id);
+    const collection = collections.find((c) => c.name === collection_name);
+
+    const nft = collection.nfts.find((n) => n.token_id === nft_token_id);
+    set_card_nft(nft);
     set_show_nft(true);
   };
 
@@ -89,10 +94,8 @@ export default function Profile(props: {
     setCollectionsFilter(temp_filter);
   };
 
-  console.log("isMobile", isMobile);
-
   return (
-    <div className={s.container}>
+    <div className={s.app}>
       {isMobile ? null : (
         <DesktopHeader tab="profile" open_settings={open_settings} />
       )}
@@ -114,7 +117,7 @@ export default function Profile(props: {
       )}
       {show_card_collection && (
         <CollectionDetails
-          collection={props.collections[card_collection_index]}
+          collection={card_collection}
           isMobile={isMobile}
           callback_close={close_all}
           open_nft={open_nft}
@@ -122,9 +125,7 @@ export default function Profile(props: {
       )}
       {show_card_nft && (
         <NFTDetails
-          nft={props.collections[card_collection_index].nfts[card_nft_index]}
-          rank={{ position: 100, total: 100000 }}
-          listed_price={0.01}
+          nft={card_nft}
           isMobile={isMobile}
           callback_close={close_nft}
         />

@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import MarketCollectionInfos from "../../../../../components/market_overview/market_collection/market_collection_infos/market_collection_infos";
+import MarketCollectionInfos from "../../../../../components/market/market_collection/market_collection_infos/market_collection_infos";
 
 describe("<MarketCollectionInfos />", () => {
   it("should display properly", async () => {
