@@ -35,11 +35,8 @@
 }
 
 .searchBar {
-  flex: 1 1 auto;
-
   display: flex;
-  margin-top: 10px;
-  padding: 0px 30px 0px 30px;
+  margin-top: 30px;
 }
 
 .settingRows {
@@ -48,7 +45,7 @@
   display: flex;
   flex-direction: column;
 
-  padding: 30px 30px 0px 30px;
+  padding: 30px 0px 0px 0px;
   gap: 40px;
 }
 
