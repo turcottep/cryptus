@@ -19,11 +19,11 @@ import DesktopHeader from "../basic/header/desktop_header/desktop_header";
 import Loading from "../utils/loading/loading";
 import MarketCollection from "./market_collection/market_collection";
 import { useSession } from "next-auth/client";
-import Settings from "../settings/settings";
-import WalletManager from "../wallet_manager/wallet_manager";
 import getUserByUsername from "../../lib/get_user_by_username";
 import { user } from "../../lib/data_types";
 import get_profile_props from "../../lib/get_profile_props";
+import Settings from "../basic/settings/settings";
+import WalletManager from "../basic/wallet_manager/wallet_manager";
 
 type market_overview_props = {
   date: string;
