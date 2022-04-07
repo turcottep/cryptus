@@ -24,6 +24,7 @@ import get_profile_props from "../../lib/get_profile_props";
 import Settings from "../basic/settings/settings";
 import WalletManager from "../basic/wallet_manager/wallet_manager";
 import MarketCollections from "./market_viewer/market_collections/market_collections";
+import getCollectionFloorPrice from "../../lib/get_collection_floor_price";
 
 type market_overview_props = {
   date: string;
@@ -249,14 +250,21 @@ const updatePrice = async (
 
   const { prices, counts, deltas } = await res.json();
   const newPropCollectionTemp = [];
+  console.time("updatePrice");
 
   for (let i = 0; i < collections.length; i++) {
     const element = collections[i];
     element.data_price = prices[i];
     element.floor_price = prices[i][prices[i].length - 1];
+    // element.floor_price = await getCollectionFloorPrice(collections[i].address);
+    // if (element.floor_price == null) {
+    //   element.floor_price = prices[i][prices[i].length - 1];
+    // }
+    console.log("floor_price", element.floor_price, "i", i);
     element.floor_price_delta = deltas[i];
     newPropCollectionTemp.push(element);
   }
+  console.timeEnd("updatePrice");
   setLoading(false);
 
   return newPropCollectionTemp;
