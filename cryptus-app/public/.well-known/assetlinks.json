@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "app.vercel.cryptus_git_pwa_turcottep.twa",
+                     "sha256_cert_fingerprints": ["4B:DF:E2:52:FE:11:81:09:EE:9E:BE:41:64:64:D0:B7:F5:DB:2A:BB:07:01:6D:64:1F:23:4B:4A:64:19:26:28"] }
+      }
+]
