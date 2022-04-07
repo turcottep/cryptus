@@ -24,6 +24,7 @@ import get_profile_props from "../../lib/get_profile_props";
 import Settings from "../basic/settings/settings";
 import WalletManager from "../basic/wallet_manager/wallet_manager";
 import MarketCollections from "./market_viewer/market_collections/market_collections";
+import Support from "../basic/support/support";
 
 type market_overview_props = {
   date: string;
@@ -133,6 +134,10 @@ export default function MarketOverview(props: market_overview_props) {
     set_show_wallet_manager(false);
   };
 
+  const close_support = () => {
+    set_show_support(false);
+  };
+
   const open_settings = () => {
     set_show_settings(true);
   };
@@ -187,6 +192,9 @@ export default function MarketOverview(props: market_overview_props) {
           callback_close_wallet={close_wallet}
           isMobile={isMobile}
         />
+      )}
+      {show_card_support && (
+        <Support callback_close_support={close_support} isMobile={isMobile} />
       )}
       <MarketHeader />
       <NetWorth

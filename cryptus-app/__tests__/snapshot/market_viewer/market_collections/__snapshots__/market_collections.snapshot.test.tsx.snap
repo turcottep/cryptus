@@ -12,56 +12,54 @@ exports[`<MarketCollections /> should display properly 1`] = `
       My Collections
     </div>
   </div>
-  <div>
+  <div
+    onClick={[Function]}
+  >
     <div
-      onClick={[Function]}
+      id="collection_row"
     >
       <div
         id="collection_row"
       >
         <div
-          id="collection_row"
+          id="collection_info"
         >
-          <div
-            id="collection_info"
-          >
+          <div>
+            <img
+              src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
+            />
             <div>
-              <img
-                src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
-              />
-              <div>
-                KITT
-              </div>
-            </div>
-            <div>
-              CryptoKitties
+              KITT
             </div>
           </div>
-          <div
-            id="preview_graph"
-          >
-            <div>
-              <canvas
-                height={150}
-                role="img"
-                width={300}
-              />
-              <canvas
-                height={150}
-                role="img"
-                width={300}
-              />
-            </div>
+          <div>
+            CryptoKitties
           </div>
-          <div
-            id="price_info"
-          >
-            <div>
-              7.8Ξ
-            </div>
-            <div>
-              +0.0Ξ (0.13%)
-            </div>
+        </div>
+        <div
+          id="preview_graph"
+        >
+          <div>
+            <canvas
+              height={150}
+              role="img"
+              width={300}
+            />
+            <canvas
+              height={150}
+              role="img"
+              width={300}
+            />
+          </div>
+        </div>
+        <div
+          id="price_info"
+        >
+          <div>
+            7.8Ξ
+          </div>
+          <div>
+            +0.0Ξ (0.13%)
           </div>
         </div>
       </div>
