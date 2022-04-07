@@ -1,0 +1,44 @@
+@use "/styles/variables" as v;
+
+.header {
+  flex: 1 1 auto;
+
+  display: flex;
+  font-size: v.$font-size-l;
+  margin-top: 10px;
+  font-weight: bolder;
+}
+
+.text {
+  margin-top: 20px;
+  font-size: v.$font-size-m;
+}
+
+.contactsMethod {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+  font-size: v.$font-size-m;
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+  font-weight: normal;
+}
+
+.row:hover {
+  opacity: 0.5;
+}
+
+.iconDiv {
+  display: flex;
+  justify-content: center;
+  width: 48px;
+}
+
+.icon {
+  width: v.$icon-width;
+  height: v.$icon-width;
+}

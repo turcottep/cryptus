@@ -17,6 +17,7 @@ import CollectionDetails from "./wallet_viewer/collection_details/collection_det
 import NFTDetails from "./wallet_viewer/nft_details/nft_details";
 import Settings from "../basic/settings/settings";
 import WalletManager from "../basic/wallet_manager/wallet_manager";
+import Support from "../basic/support/support";
 
 export default function Profile(props: {
   collections: nft_collection[];
@@ -35,6 +36,7 @@ export default function Profile(props: {
   const [update_collection, set_update_collection] = useState(0);
   const [show_card_settings, set_show_settings] = useState(false);
   const [show_card_wallet_manager, set_show_wallet_manager] = useState(false);
+  const [show_card_support, set_show_support] = useState(false);
 
   const [collections_filter, setCollectionsFilter] = useState<string[]>(
     user.collections_filter
@@ -61,6 +63,10 @@ export default function Profile(props: {
     set_show_wallet_manager(false);
   };
 
+  const close_support = () => {
+    set_show_support(false);
+  };
+
   const open_collection = (collection_name: string) => {
     console.log("open_collection", collection_name);
     const collection = collections.find((c) => c.name === collection_name);
@@ -83,6 +89,10 @@ export default function Profile(props: {
 
   const open_settings = () => {
     set_show_settings(true);
+  };
+
+  const open_support = () => {
+    set_show_support(true);
   };
 
   const update_my_collection_filter = (new_filter: string[]) => {
@@ -141,6 +151,7 @@ export default function Profile(props: {
           isMobile={isMobile}
           callback_close={close_all}
           open_wallet_manager={open_wallet_manager}
+          open_support={open_support}
         />
       )}
       {show_card_wallet_manager && (
@@ -149,6 +160,9 @@ export default function Profile(props: {
           callback_close_wallet={close_wallet}
           isMobile={isMobile}
         />
+      )}
+      {show_card_support && (
+        <Support callback_close_support={close_support} isMobile={isMobile} />
       )}
       <ProfileWalletViewer
         collections={collections}

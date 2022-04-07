@@ -13,14 +13,10 @@ export default function WalletManagerSetting(props: {
 
   return (
     <div className={s.container}>
-      <div className={s.settingCol}>
+      <div className={s.settingCol} onClick={onWalletManagerClick}>
         Wallet Manager
         <div className={s.iconDiv}>
-          <img
-            onClick={onWalletManagerClick}
-            className={s.icon}
-            src="/icons/wallet_manager_icon.png"
-          />
+          <img className={s.icon} src="/icons/wallet_manager_icon.png" />
         </div>
       </div>
     </div>

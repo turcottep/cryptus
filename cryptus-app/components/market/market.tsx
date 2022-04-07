@@ -70,6 +70,7 @@ export default function MarketOverview(props: market_overview_props) {
   );
   const [show_card_settings, set_show_settings] = useState(false);
   const [show_card_wallet_manager, set_show_wallet_manager] = useState(false);
+  const [show_card_support, set_show_support] = useState(false);
 
   useEffect(() => {
     const getUser = async (username: string) => {
@@ -136,6 +137,10 @@ export default function MarketOverview(props: market_overview_props) {
     set_show_settings(true);
   };
 
+  const open_support = () => {
+    set_show_support(true);
+  };
+
   const open_wallet_manager = () => {
     set_show_wallet_manager(true);
   };
@@ -173,6 +178,7 @@ export default function MarketOverview(props: market_overview_props) {
           isMobile={isMobile}
           callback_close={close_all}
           open_wallet_manager={open_wallet_manager}
+          open_support={open_support}
         />
       )}
       {show_card_wallet_manager && (

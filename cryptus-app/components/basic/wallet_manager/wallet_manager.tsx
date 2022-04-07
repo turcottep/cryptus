@@ -79,21 +79,23 @@ export default function WalletManager(props: {
       callback_close={props.callback_close_wallet}
       isMobile={props.isMobile}
     >
-      <div className={s.walletList}>
+      <div className={s.container}>
+        <div className={s.walletList}>
+          <WalletListDisplay
+            callback={callbackFunction}
+            currentAddress={walletList[0]}
+            addresses={walletList}
+            added={true}
+          />
+        </div>
+        <div className={s.line} />
         <WalletListDisplay
           callback={callbackFunction}
           currentAddress={walletList[0]}
-          addresses={walletList}
-          added={true}
+          addresses={walletToAdd}
+          added={false}
         />
       </div>
-      <div className={s.line} />
-      <WalletListDisplay
-        callback={callbackFunction}
-        currentAddress={walletList[0]}
-        addresses={walletToAdd}
-        added={false}
-      />
     </Card>
   );
 }
