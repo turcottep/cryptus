@@ -16,7 +16,10 @@ exports[`renders correctly 1`] = `
       </div>
     </div>
   </div>
-  <div>
+  <div
+    onMouseLeave={[Function]}
+    onMouseMove={[Function]}
+  >
     <div>
       <div>
         <img
@@ -40,6 +43,11 @@ exports[`renders correctly 1`] = `
     <div>
       <img
         src="/images/wallet_iphone.png"
+        style={
+          Object {
+            "transform": "perspective(256px) rotateX(0deg) rotateY(0deg)",
+          }
+        }
       />
     </div>
   </div>

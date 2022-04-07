@@ -167,9 +167,10 @@ export default function MarketOverview(props: market_overview_props) {
       </div>
       <MarketCollections
         callback={open_card}
-        name={"Favorites"}
+        name={"My Collections"}
         icon={"/icons/favorite_icon.png"}
         collections={newPropCollectionFavorite}
+        connected={!!session}
       />
       <MarketCollections
         callback={open_card}
