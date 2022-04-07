@@ -20,7 +20,6 @@ import Loading from "../utils/loading/loading";
 import MarketCollection from "./market_collection/market_collection";
 import MarketCollections from "./market_viewer/market_collections/market_collections";
 import get_user_by_username from "../../lib/get_user_by_username";
-import MarketViewer from "./market_viewer/market_viewer";
 
 type market_overview_props = {
   date: string;
@@ -120,19 +119,21 @@ export default function MarketOverview(props: market_overview_props) {
     set_show_card(true);
   };
 
-  const marketCollectionProps = {
-    collection_name: card_collection.name,
-    collection_logo: card_collection.logo,
-    collection_ticker: card_collection.ticker,
-    floor_price_live: card_collection.floor_price,
-    floor_price_delta: card_collection.floor_price_delta,
-    floor_price_timestamp: card_collection.timestamp,
-    data_price: card_collection.data_price,
-    interval: market_interval,
-    count: [],
-    volume: card_collection.data_volume,
-    address: card_collection.address,
-  };
+  const marketCollectionProps = card_collection
+    ? {
+        collection_name: card_collection.name,
+        collection_logo: card_collection.logo,
+        collection_ticker: card_collection.ticker,
+        floor_price_live: card_collection.floor_price,
+        floor_price_delta: card_collection.floor_price_delta,
+        floor_price_timestamp: card_collection.timestamp,
+        data_price: card_collection.data_price,
+        interval: market_interval,
+        count: [],
+        volume: card_collection.data_volume,
+        address: card_collection.address,
+      }
+    : ({} as any);
 
   console.log("session", session);
 
@@ -164,18 +165,18 @@ export default function MarketOverview(props: market_overview_props) {
           setnewPropCollectionMarket={setnewPropCollectionMarket}
         />
       </div>
-      <MarketViewer
-        collections_favorite={newPropCollectionFavorite}
-        collections_market={newPropCollectionMarket}
-        callback_open={open_card}
+      <MarketCollections
+        callback={open_card}
+        name={"Favorites"}
+        icon={"/icons/favorite_icon.png"}
+        collections={newPropCollectionFavorite}
       />
       <MarketCollections
         callback={open_card}
         name={"Market"}
         icon={"/icons/market_icon.png"}
-        collections={newPropCollection}
+        collections={newPropCollectionMarket}
       />
-
       {isMobile ? <Footer /> : null}
     </div>
   );
