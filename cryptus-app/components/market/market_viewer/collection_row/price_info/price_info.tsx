@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import s from "./price_info.module.scss";
 
-import { collection } from "../../market_viewer";
+import { collection } from "../../../../../lib/data_types";
 import FloorPrice from "./floor_price/floor_price";
 import FloorPriceDelta from "./floor_price_delta/floor_price_delta";
 

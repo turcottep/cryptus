@@ -5,7 +5,7 @@ import { isMobile as mobile } from "react-device-detect";
 
 import Market from "../components/market/market";
 import { intervals } from "../components/market/net_worth/time_interval/time_interval";
-import { collection } from "../components/market/market_viewer/market_viewer";
+import { collection } from "../lib/data_types";
 import collectionDictionary from "../lib/collectionDictionary";
 import address from "./api/collection/address";
 
