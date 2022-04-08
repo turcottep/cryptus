@@ -14,36 +14,44 @@ import WalletManagerSetting from "./wallet_manager_setting/wallet_manager_settin
 import NotificationSetting from "./notification_setting/notification_setting";
 import DarkThemeSetting from "./dark_theme_setting/dark_theme_setting";
 import SupportSetting from "./support_setting/support_setting";
+import Card from "../../utils/card/card";
+import { isMobile } from "react-device-detect";
 
-export default function Settings() {
+type settings_props = {
+  isMobile: boolean;
+  callback_close;
+  open_wallet_manager: () => void;
+  open_support: () => void;
+};
+
+export default function Settings(props: settings_props) {
   const [session, status] = useSession();
   const username = session?.user?.name;
 
   return (
-    <div className={s.container}>
-      <SettingsHeader />
-      <div className={s.searchBar}>
-        <SearchBar />
+    <Card callback_close={props.callback_close} isMobile={props.isMobile}>
+      <div className={s.container}>
+        {isMobile ? (
+          <div className={s.searchBarMobile}>
+            <SearchBar />
+          </div>
+        ) : (
+          <div className={s.searchBar}>
+            <SearchBar />
+          </div>
+        )}
+        <div className={s.settingRows}>
+          <UsenameSetting username={username} />
+          <AccountLink username={username} />
+          <WalletManagerSetting
+            open_wallet_manager={props.open_wallet_manager}
+          />
+          <NotificationSetting />
+          <DarkThemeSetting />
+          <SupportSetting open_support={props.open_support} />
+          <LogoutSetting />
+        </div>
       </div>
-      <div className={s.settingRows}>
-        <UsenameSetting username={username} />
-        <AccountLink username={username} />
-        <WalletManagerSetting />
-        <NotificationSetting />
-        <DarkThemeSetting />
-        <SupportSetting />
-        <LogoutSetting />
-      </div>
-    </div>
+    </Card>
   );
 }
-
-const SettingsHeader = () => (
-  <div className={s.header}>
-    <div className={s.backButton}>
-      <BackButton />
-    </div>
-    <div className={s.settingsTitle}>Settings</div>
-    <div className={s.blankButton} />
-  </div>
-);

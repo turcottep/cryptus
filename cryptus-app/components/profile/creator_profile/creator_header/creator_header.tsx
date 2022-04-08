@@ -8,7 +8,7 @@ import ContextualMenuButton from "../../../basic/header/contextual_menu_button/c
 import ContextualPageName from "../../../basic/header/contextual_page_name/contextual_page_name";
 import { useSession } from "next-auth/client";
 
-export default function CreatorHeader() {
+export default function CreatorHeader(props: { open_settings: () => void }) {
   const [session, status] = useSession();
   const [username, setUsername] = useState<string>("");
   useEffect(() => {
@@ -21,7 +21,10 @@ export default function CreatorHeader() {
     <div className={s.container}>
       <BackButton />
       <ContextualPageName name={username} />
-      <ContextualMenuButton img="/icons/settings_icon.png" />
+      <ContextualMenuButton
+        img="/icons/settings_icon.png"
+        open_settings={props.open_settings}
+      />
     </div>
   );
 }

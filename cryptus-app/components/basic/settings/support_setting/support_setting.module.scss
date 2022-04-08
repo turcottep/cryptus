@@ -15,6 +15,10 @@
   font-size: v.$font-size-m;
 }
 
+.settingCol:hover {
+  opacity: 0.5;
+}
+
 .iconDiv {
   display: flex;
   justify-content: center;
@@ -25,8 +29,4 @@
   transform: scaleX(-1);
   width: v.$icon-width;
   height: v.$icon-width;
-}
-
-.icon:hover {
-  opacity: 0.5;
 }
