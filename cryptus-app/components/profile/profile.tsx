@@ -27,6 +27,7 @@ export default function Profile(props: {
   const { collections, user, isMobile } = props;
   const [session, loading] = useSession();
   const [isMyProfile, setIsMyProfile] = useState<Boolean>(false);
+  const [isloading, setLoading] = useState<boolean>(false);
 
   const [show_card_collection, set_show_collection] = useState(false);
   const [card_collection, set_card_collection] = useState(null);
@@ -108,13 +109,17 @@ export default function Profile(props: {
   return (
     <div className={s.app}>
       {isMobile ? null : (
-        <DesktopHeader tab="profile" open_settings={open_settings} />
+        <DesktopHeader
+          tab="profile"
+          open_settings={open_settings}
+          setLoading={setLoading}
+        />
       )}
       {isMobile ? (
         isMyProfile ? (
           <CreatorHeader open_settings={open_settings} />
         ) : (
-          <ViewerHeader userId={props.user.username} />
+          <ViewerHeader userId={props.user.username} setLoading={setLoading} />
         )
       ) : null}
       {isMyProfile ? (

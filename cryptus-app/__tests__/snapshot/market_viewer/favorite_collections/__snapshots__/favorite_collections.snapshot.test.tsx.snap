@@ -60,7 +60,7 @@ exports[`<FavoriteCollections /> should display properly 1`] = `
               7.8Ξ
             </div>
             <div>
-              +0.0Ξ (0.13%)
+              NaNΞ (NaN%)
             </div>
           </div>
         </div>

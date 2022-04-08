@@ -27,7 +27,6 @@ import MarketCollections from "./market_viewer/market_collections/market_collect
 import Support from "../basic/support/support";
 import get_user_by_username from "../../lib/get_user_by_username";
 
-
 type market_overview_props = {
   date: string;
   networth: {
@@ -188,7 +187,11 @@ export default function MarketOverview(props: market_overview_props) {
   return (
     <div className={show_card ? s.container_no_scroll : s.container}>
       {isMobile ? null : (
-        <DesktopHeader tab="market" open_settings={open_settings} />
+        <DesktopHeader
+          tab="market"
+          open_settings={open_settings}
+          setLoading={setLoading}
+        />
       )}
       {loading && <Loading />}
       {show_card && (

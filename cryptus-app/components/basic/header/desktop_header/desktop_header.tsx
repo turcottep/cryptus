@@ -8,6 +8,7 @@ import ContextualMenuButton from "../contextual_menu_button/contextual_menu_butt
 export default function DesktopHeader(props: {
   tab: string;
   open_settings: () => void;
+  setLoading: Function;
 }) {
   const [session, loading] = useSession();
   const [name, setName] = useState("");
@@ -58,6 +59,7 @@ export default function DesktopHeader(props: {
         <ContextualMenuButton
           img={imgUrl}
           open_settings={props.open_settings}
+          setLoading={props.setLoading}
         />
       </div>
     </div>
