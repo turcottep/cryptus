@@ -34,6 +34,10 @@ export default function MarketCollection(props: {
   const [volume, setVolume] = useState(market_collection_props.volume);
   const [delta, setDelta] = useState(market_collection_props.floor_price_delta);
 
+  useEffect(() => {
+    updatePrice(props.market_collection_props.interval);
+  }, []);
+
   const updatePrice = async (childData) => {
     let viewingmode = intervals[childData];
     if (viewingmode == "three_months") {
@@ -54,7 +58,7 @@ export default function MarketCollection(props: {
     const { price, count, volume, delta } = await res.json();
     setDelta(delta);
     setPrice(price);
-    setVolume(volume);
+    setVolume(count);
     console.log("new price !", price);
   };
 
@@ -66,8 +70,8 @@ export default function MarketCollection(props: {
         collection_ticker={market_collection_props.collection_ticker}
       />
       <CollectionFloorPrice
-        floor_price_live={price[price.length - 1]}
-        floor_price_delta={delta}
+        initial_price={price[0]}
+        current_price={price[price.length - 1]}
         floor_price_timestamp={market_collection_props.floor_price_timestamp}
       />
       <CollectionMarketGraph

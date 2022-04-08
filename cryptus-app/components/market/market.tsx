@@ -19,6 +19,7 @@ import DesktopHeader from "../basic/header/desktop_header/desktop_header";
 import Loading from "../utils/loading/loading";
 import MarketCollection from "./market_collection/market_collection";
 import MarketCollections from "./market_viewer/market_collections/market_collections";
+import get_user_by_username from "../../lib/get_user_by_username";
 
 type market_overview_props = {
   date: string;
@@ -36,7 +37,7 @@ export default function MarketOverview(props: market_overview_props) {
   const { isMobile } = props;
 
   const [user_collections_list, set_user_collections_list] = useState<string[]>(
-    ["0x1a92f7381b9f03921564a437210bb9396471050c"]
+    []
   );
 
   // const [interval, setInterval] = useState(props.networth.active);
@@ -52,7 +53,8 @@ export default function MarketOverview(props: market_overview_props) {
   const [username, setUsername] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [show_card, set_show_card] = useState(false);
-  const [card_index, set_card_index] = useState(0);
+  const [card_collection, set_card_collection] = useState(null);
+  const [networth, set_networth] = useState(0);
   const [market_interval, set_market_interval] = useState(
     props.networth.active
   );
@@ -60,7 +62,7 @@ export default function MarketOverview(props: market_overview_props) {
   useEffect(() => {
     if (session) {
       const user_name = session.user.name;
-      // update_for_user(user_name);
+      update_for_user(user_name);
       setUsername(user_name);
     }
   }, [status]);
@@ -93,30 +95,45 @@ export default function MarketOverview(props: market_overview_props) {
     setnewPropCollection(newPropCollectionTemp);
   };
 
+  const update_for_user = async (username: string) => {
+    const user = await get_user_by_username(username);
+    console.log("user : ", user);
+    const user_collections = user.collections_list;
+    const networth = user.networth;
+    console.log("networth : ", networth);
+    set_user_collections_list(user_collections);
+    set_networth(networth);
+  };
+
   const close_card = () => {
     console.log("close card");
     set_show_card(false);
   };
 
-  const open_card = (i) => {
-    console.log("open card");
-    set_card_index(i);
+  const open_card = (collection_name: string) => {
+    console.log("open card:", collection_name);
+    const collection = newPropCollection.find(
+      (c) => c.name === collection_name
+    );
+    set_card_collection(collection);
     set_show_card(true);
   };
 
-  const marketCollectionProps = {
-    collection_name: newPropCollection[card_index].name,
-    collection_logo: newPropCollection[card_index].logo,
-    collection_ticker: newPropCollection[card_index].ticker,
-    floor_price_live: newPropCollection[card_index].floor_price,
-    floor_price_delta: newPropCollection[card_index].floor_price_delta,
-    floor_price_timestamp: newPropCollection[card_index].timestamp,
-    data_price: newPropCollection[card_index].data_price,
-    interval: market_interval,
-    count: [],
-    volume: newPropCollection[card_index].data_volume,
-    address: newPropCollection[card_index].address,
-  };
+  const marketCollectionProps = card_collection
+    ? {
+        collection_name: card_collection.name,
+        collection_logo: card_collection.logo,
+        collection_ticker: card_collection.ticker,
+        floor_price_live: card_collection.floor_price,
+        floor_price_delta: card_collection.floor_price_delta,
+        floor_price_timestamp: card_collection.timestamp,
+        data_price: card_collection.data_price,
+        interval: market_interval,
+        count: [],
+        volume: card_collection.data_volume,
+        address: card_collection.address,
+      }
+    : ({} as any);
 
   console.log("session", session);
 
@@ -133,9 +150,9 @@ export default function MarketOverview(props: market_overview_props) {
       )}
       <MarketHeader />
       <NetWorth
-        value={props.networth.value}
-        delta={props.networth.change}
-        EthCad={props.networth.EthCad}
+        value={networth}
+        // delta={props.networth.change}
+        // EthCad={props.networth.EthCad}
         active={props.networth.active}
         callbackGraph={callbackGraph}
       />
@@ -148,21 +165,19 @@ export default function MarketOverview(props: market_overview_props) {
           setnewPropCollectionMarket={setnewPropCollectionMarket}
         />
       </div>
-
       <MarketCollections
         callback={open_card}
         name={"My Collections"}
         icon={"/icons/favorite_icon.png"}
-        collections={[]}
-        connected={session ? true : false}
+        collections={newPropCollectionFavorite}
+        connected={!!session}
       />
       <MarketCollections
         callback={open_card}
         name={"Market"}
         icon={"/icons/market_icon.png"}
-        collections={newPropCollection}
+        collections={newPropCollectionMarket}
       />
-
       {isMobile ? <Footer /> : null}
     </div>
   );

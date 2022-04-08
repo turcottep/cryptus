@@ -13,9 +13,9 @@ describe("<CollectionFloorPrice />", () => {
     const tree = renderer
       .create(
         <CollectionFloorPrice
-          floor_price_live={test_fp}
-          floor_price_delta={test_delta}
           floor_price_timestamp={test_timestamp}
+          initial_price={0}
+          current_price={0}
         />
       )
       .toJSON();

@@ -7,7 +7,8 @@ async function get_floors(contract_address: string) {
   let next = "";
   let response;
   const max_assets = 50;
-  for (let i = 0; i < 500; i++) {
+  let i;
+  for (i = 0; i < 500; i++) {
     try {
       const url = `https://api.opensea.io/api/v1/assets?order_by=pk&order_direction=asc&asset_contract_address=${contract_address}&limit=${max_assets}&include_orders=true&cursor=${next}`;
 
@@ -18,7 +19,14 @@ async function get_floors(contract_address: string) {
           "X-API-KEY": opensea_api_key,
         },
       });
+      if (response.status !== 200) {
+        console.error("response", response.statusText);
+        i--;
+        continue;
+      }
+
       const data = (await response.json()) as any;
+
       for (const asset of data.assets) {
         const floor = asset.sell_orders
           ? asset.sell_orders[0].base_price / 10 ** 18
@@ -60,6 +68,9 @@ async function get_floors(contract_address: string) {
       console.log(error);
     }
   }
+  if (i === 500) {
+    throw new Error("Too many assets");
+  }
 
   return [token_id_floors, trait_dict];
 }
@@ -88,7 +99,8 @@ async function get_trait_floor_for_collection(contract_address) {
         }
       })
       .filter((price) => price !== null);
-    const min_price = Math.min(...floor_prices);
+    const min_price =
+      floor_prices.length > 0 ? Math.min(...floor_prices) : null;
     trait_floor_dict[trait] = min_price;
   }
   console.log("trait_floor_dict", trait_floor_dict);

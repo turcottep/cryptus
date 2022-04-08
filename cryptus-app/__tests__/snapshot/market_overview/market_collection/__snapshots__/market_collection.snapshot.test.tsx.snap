@@ -45,11 +45,11 @@ exports[`<MarketCollection /> should display properly 1`] = `
       </div>
       <div>
         <span>
-          0.01
+          0.04
         </span>
         Ξ (
         <span>
-          20.00
+          4.00
         </span>
         %)
       </div>

@@ -3,25 +3,18 @@
 exports[`<NetWorth /> should display properly 1`] = `
 <div>
   <div>
-    7.79
+    networth: 7.79 eth
   </div>
-  <div>
-    <div>
-       
-    </div>
-    <div>
-      0.01
-    </div>
-  </div>
+  <div />
   <div>
     <div
-      className="undefined "
+      className="undefined undefined"
       onClick={[Function]}
     >
       1W
     </div>
     <div
-      className="undefined undefined"
+      className="undefined "
       onClick={[Function]}
     >
       1M
