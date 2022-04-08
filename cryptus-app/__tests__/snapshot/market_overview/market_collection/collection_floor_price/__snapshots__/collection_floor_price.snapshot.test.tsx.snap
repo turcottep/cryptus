@@ -3,7 +3,7 @@
 exports[`<CollectionFloorPrice /> should display properly 1`] = `
 <div>
   <div>
-    7.79
+    0.00
      Ξ
     <div>
        ETH
@@ -11,11 +11,11 @@ exports[`<CollectionFloorPrice /> should display properly 1`] = `
   </div>
   <div>
     <span>
-      0.01
+      0.00
     </span>
     Ξ (
     <span>
-      0.13
+      0.00
     </span>
     %)
   </div>

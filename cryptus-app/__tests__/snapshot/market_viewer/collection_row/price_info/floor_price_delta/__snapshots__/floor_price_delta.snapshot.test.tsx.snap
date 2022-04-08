@@ -2,6 +2,6 @@
 
 exports[`<FloorPriceDelta /> should display properly 1`] = `
 <div>
-  +0.0Ξ (0.13%)
+  0.0Ξ (NaN%)
 </div>
 `;

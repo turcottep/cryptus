@@ -32,7 +32,13 @@ describe("<PriceInfo />", () => {
     const test_curr = "eth";
 
     const tree = renderer
-      .create(<PriceInfo collection={test_collection} currency={test_curr} />)
+      .create(
+        <PriceInfo
+          collection={test_collection}
+          currency={test_curr}
+          prices={[0, 1]}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

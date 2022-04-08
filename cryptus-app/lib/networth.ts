@@ -45,7 +45,7 @@ export default async function calculate_networth(
         }
         floors.push(trait_floor);
       }
-      nft.value = Math.min(...floors);
+      nft.value = Math.max(...floors);
       //   console.log("name", nft.name, "nft_floor", nft.value);
 
       networth += nft.value;

@@ -9,14 +9,15 @@ import FloorPriceDelta from "./floor_price_delta/floor_price_delta";
 export default function PriceInfo(props: {
   collection: collection;
   currency: string;
+  prices: number[];
 }) {
   const { collection } = props;
   return (
     <div id="price_info" className={s.container}>
       <FloorPrice price={collection.floor_price} currency={props.currency} />
       <FloorPriceDelta
-        price={collection.floor_price}
-        delta={collection.floor_price_delta}
+        initial_price={props.prices[0]}
+        current_price={props.prices[props.prices.length - 1]}
         currency={props.currency}
       />
     </div>
