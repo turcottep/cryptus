@@ -54,6 +54,11 @@ $block-color: rgb(165, 165, 165);
   background-color: rgba($block-color, 0.1);
 }
 
+.collection_container2 {
+  @extend .collection_container;
+  padding: 0px;
+}
+
 .nft_container {
   flex: 0 0 none;
 
@@ -67,6 +72,7 @@ $block-color: rgb(165, 165, 165);
 
   border-radius: v.$border-radius-l;
   background-color: rgba($block-color, 0.1);
+  object-fit: cover;
 }
 
 .collection_preview_container {

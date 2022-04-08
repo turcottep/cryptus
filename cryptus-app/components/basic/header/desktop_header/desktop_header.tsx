@@ -50,7 +50,7 @@ export default function DesktopHeader(props: { tab: string }) {
       </div>
       <div className={s.icons}>
         <Icon img="/icons/notification_icon.png" url="/market" />
-        <ContextualMenuButton img="/icons/menu_icon.png" />
+        <ContextualMenuButton img="/icons/menu_icon.png" url="./settings" />
       </div>
     </div>
   );
