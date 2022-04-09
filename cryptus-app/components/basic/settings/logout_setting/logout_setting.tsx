@@ -5,19 +5,18 @@ import s from "./logout_setting.module.scss";
 export default function LogoutSetting() {
   return (
     <div className={s.container}>
-      <div className={s.settingCol}>
+      <div
+        className={s.settingCol}
+        onClick={() => {
+          signOut({
+            redirect: true,
+            callbackUrl: `${window.location.hostname}`,
+          });
+        }}
+      >
         Log out
         <div className={s.iconDiv}>
-          <img
-            onClick={() => {
-              signOut({
-                redirect: true,
-                callbackUrl: `${window.location.hostname}`,
-              });
-            }}
-            className={s.icon}
-            src="/icons/logout_icon.png"
-          />
+          <img className={s.icon} src="/icons/logout_icon.png" />
         </div>
       </div>
     </div>

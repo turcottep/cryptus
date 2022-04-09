@@ -13,9 +13,9 @@ describe("<FloorPriceDelta />", () => {
     const tree = renderer
       .create(
         <FloorPriceDelta
-          price={test_price}
-          delta={test_delta}
           currency={test_curr}
+          initial_price={0}
+          current_price={0}
         />
       )
       .toJSON();

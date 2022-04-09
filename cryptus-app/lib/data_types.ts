@@ -15,6 +15,15 @@ export interface nft {
   token_id: string;
 }
 
+export interface user {
+  networth?: number;
+  description?: string;
+  username: string;
+  address: string;
+  collections_filter: string[];
+  profile_image_url: string;
+}
+
 export interface nft_collection {
   id: number;
   name: string;
@@ -28,14 +37,7 @@ export interface nft_collection {
 }
 
 export interface profile_props {
-  user: {
-    networth?: number;
-    description?: string;
-    username: string;
-    address: string;
-    collections_filter: string[];
-    profile_image_url: string;
-  };
+  user: user;
   collections: nft_collection[];
 }
 

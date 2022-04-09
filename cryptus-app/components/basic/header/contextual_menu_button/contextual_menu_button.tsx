@@ -8,6 +8,7 @@ import { session, useSession } from "next-auth/client";
 export default function ContextualMenuButton(props: {
   img: string;
   url?: string;
+  open_settings?;
 }) {
   const { img, url } = props;
   const [session, loading] = useSession();
@@ -16,7 +17,7 @@ export default function ContextualMenuButton(props: {
     if (session) {
       router.push("./settings");
     } else {
-      console.log("not logged in");
+      props.open_settings();
     }
   };
 
