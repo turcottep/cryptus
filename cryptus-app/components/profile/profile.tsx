@@ -15,6 +15,7 @@ import ViewProfInfos from "./viewer_profile/viewer_profile_infos/viewer_profile_
 import DesktopHeader from "../basic/header/desktop_header/desktop_header";
 import CollectionDetails from "./wallet_viewer/collection_details/collection_details";
 import NFTDetails from "./wallet_viewer/nft_details/nft_details";
+import Loading from "../utils/loading/loading";
 import Settings from "../basic/settings/settings";
 import WalletManager from "../basic/wallet_manager/wallet_manager";
 import Support from "../basic/support/support";
@@ -139,7 +140,7 @@ export default function Profile(props: {
         <NFTDetails
           nft={card_nft}
           isMobile={isMobile}
-          callback_close={close_nft}
+          callback_close={close_all}
           callback_profile_image_url={callback_profile_image_url}
           isMyProfile={isMyProfile}
           username={props.user.username}
