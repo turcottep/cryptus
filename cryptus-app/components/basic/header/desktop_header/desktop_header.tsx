@@ -8,7 +8,7 @@ import ContextualMenuButton from "../contextual_menu_button/contextual_menu_butt
 export default function DesktopHeader(props: {
   tab: string;
   open_settings: () => void;
-  setLoading: Function;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [session, loading] = useSession();
   const [name, setName] = useState("");

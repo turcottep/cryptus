@@ -256,7 +256,7 @@ export default function MarketOverview(props: market_overview_props) {
 
 const updatePrice = async (
   interval: intervals,
-  setLoading: Function,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
   collections: collection[]
 ) => {
   setLoading(true);

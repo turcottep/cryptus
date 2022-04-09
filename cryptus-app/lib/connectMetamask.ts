@@ -3,7 +3,9 @@ import CreateAccountFromWalletAddress from "./createAccountFromWalletAddress";
 import FindUserFromUserId from "./findUserFromUserId";
 import FindUserIdFromWalletAdress from "./findUserIdFromWalletAdress";
 
-const connectMetamask = async (props: { setLoading: Function }) => {
+const connectMetamask = async (props: {
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { setLoading } = props;
   // router.push("login?");
   setLoading(true);

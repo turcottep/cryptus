@@ -7,13 +7,13 @@ export default function ContextualMenuButton(props: {
   img: string;
   url?: string;
   open_settings?;
-  setLoading?;
+  setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const { img, url } = props;
+  const { img, url, setLoading } = props;
 
   const onMenuClick = () => {
     if (img == "/icons/menu_icon.png") {
-      connectMetamask(props.setLoading);
+      connectMetamask({ setLoading });
     } else {
       props.open_settings();
     }

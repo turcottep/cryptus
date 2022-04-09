@@ -30,6 +30,10 @@ export default function LandingPage() {
     set_angles([0, 0]);
   };
 
+  /* const set_loading = (state) => {
+    setLoading(state);
+  }; */
+
   return (
     <div className={s.container}>
       {loading && <Loading />}
@@ -84,7 +88,10 @@ export default function LandingPage() {
   );
 }
 
-const Header = (props: { session: any; setLoading: any }) => {
+const Header = (props: {
+  session: any;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { session, setLoading } = props;
   return (
     <div className={s.header}>
@@ -95,7 +102,7 @@ const Header = (props: { session: any; setLoading: any }) => {
           {!session ? (
             <div
               className={s.signinbutton}
-              onClick={() => connectMetamask(setLoading)}
+              onClick={() => connectMetamask({ setLoading })}
             >
               {"SIGN IN"}
             </div>
@@ -114,7 +121,9 @@ const Footer = () => {
   return <div className={s.footer}>All Rights Reserved</div>;
 };
 
-const ButtonTryNow = (props: { setLoading: Function }) => {
+const ButtonTryNow = (props: {
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const { setLoading } = props;
 
   return (
