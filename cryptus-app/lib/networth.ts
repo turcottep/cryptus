@@ -40,12 +40,13 @@ export default async function calculate_networth(
         const key = JSON.stringify({ name: trait.name, value: trait.value });
         const trait_floor = floor_dict[key];
         if (!trait_floor) {
-          // console.error("trait_floor not found for trait", trait.trait_id);
+          console.error("trait_floor not found for trait", trait.trait_id);
           continue;
         }
         floors.push(trait_floor);
       }
-      nft.value = Math.max(...floors);
+      console.log("floors", floors);
+      nft.value = floors.length > 0 ? Math.max(...floors) : 0;
       //   console.log("name", nft.name, "nft_floor", nft.value);
 
       networth += nft.value;

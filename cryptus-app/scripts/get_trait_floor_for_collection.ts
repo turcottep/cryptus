@@ -21,7 +21,7 @@ async function get_floors(contract_address: string) {
       });
       if (response.status !== 200) {
         console.error("response", response.statusText);
-        if(response.status != 429) console.log(response)
+        if (response.status != 429) console.log(response);
         i--;
         await new Promise((resolve) => setTimeout(resolve, 10000));
         continue;
@@ -30,9 +30,13 @@ async function get_floors(contract_address: string) {
       const data = (await response.json()) as any;
 
       for (const asset of data.assets) {
+        const amount = asset.sell_orders[0].quantity
+          ? parseInt(asset.sell_orders[0].quantity)
+          : 1;
         const floor = asset.sell_orders
-          ? asset.sell_orders[0].base_price / 10 ** 18
+          ? asset.sell_orders[0].base_price / (amount * 10 ** 18)
           : null;
+
         const token_id = asset.token_id;
 
         const floor_clean = floor > 0.001 ? floor : null;
@@ -64,8 +68,8 @@ async function get_floors(contract_address: string) {
         break;
       }
       next = data.next;
-      if(!next) break;
-      await new Promise((resolve) => setTimeout(resolve,1000));
+      if (!next) break;
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     } catch (error) {
       console.log("response", response);
       console.log(error);
@@ -86,8 +90,8 @@ async function get_trait_floor_for_collection(contract_address) {
 
   const [token_id_floor, traits_dict] = await get_floors(contract_address);
 
-  console.log("token_id_floors", token_id_floor);
-  console.log("trait_dict", traits_dict);
+  // console.log("token_id_floors", token_id_floor);
+  // console.log("trait_dict", traits_dict);
 
   const trait_floor_dict = {};
   for (const trait in traits_dict) {

@@ -23,13 +23,14 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       for (let i = 0; i < user.wallets.length; i++) {
         const wallet = user.wallets[i];
         let nfts_per_wallet = await get_nfts_for_wallet(wallet.address);
-
+        // wait 1 second between each call to avoid hitting the rate limit
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         nfts.push(...nfts_per_wallet);
       }
 
       if (nfts.length > 0) {
         const nfts_collections = sortNftsIntoCollections(nfts);
-        console.log("nfts_collections", nfts_collections);
+        console.log("nfts_collections: ", nfts_collections.length);
 
         const networth = await calculate_networth(nfts_collections);
         console.log("networth", networth);

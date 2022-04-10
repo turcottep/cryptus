@@ -30,7 +30,7 @@ export default async function get_nfts_for_wallet(address: string) {
       // res = await fetch(wallet.external_url);
       const data = await res.json();
       cursor = data.next;
-      console.log("data", data);
+      // console.log("data", data);
       const nfts_raw_temp = data.assets;
       nfts_raw.push(...nfts_raw_temp);
       if (!cursor) break;
