@@ -8,11 +8,12 @@ import Loading from "../../utils/loading/loading";
 
 import * as google_analytics from "../../../lib/google_analytics";
 
-export default function LandingPage() {
+export default function LandingPage(props: { isMobile: boolean }) {
   const [loading, setLoading] = useState<boolean>(false);
   const [session, loadingSession] = useSession();
   const [[angle_x, angle_y], set_angles] = useState<[number, number]>([0, 0]);
   const ref = React.useRef<HTMLDivElement>(null);
+  console.log("isMobileprops", props.isMobile);
 
   const track_mouse = (e) => {
     // console.log(e.clientX, e.clientY);
@@ -33,7 +34,11 @@ export default function LandingPage() {
   return (
     <div className={s.container}>
       {loading && <Loading />}
-      <Header session={session} setLoading={setLoading} />
+      <Header
+        session={session}
+        setLoading={setLoading}
+        isMobile={props.isMobile}
+      />
       <div
         className={s.page1}
         ref={ref}
@@ -46,7 +51,7 @@ export default function LandingPage() {
           </div>
           <div className={s.description}>{"EASIEST WAY TO"}</div>
           <div className={s.title}>{"TRACK YOUR NFTS"}</div>
-          <ButtonTryNow setLoading={setLoading} />
+          <ButtonTryNow setLoading={setLoading} isMobile={props.isMobile} />
         </div>
         <div className={s.divisionimg}>
           <img
@@ -84,7 +89,7 @@ export default function LandingPage() {
   );
 }
 
-const Header = (props: { session: any; setLoading: any }) => {
+const Header = (props: { session: any; setLoading: any; isMobile }) => {
   const { session, setLoading } = props;
   return (
     <div className={s.header}>
@@ -95,7 +100,7 @@ const Header = (props: { session: any; setLoading: any }) => {
           {!session ? (
             <div
               className={s.signinbutton}
-              onClick={() => connectMetamask(setLoading)}
+              onClick={() => connectMetamask(setLoading, props.isMobile)}
             >
               {"SIGN IN"}
             </div>
@@ -114,12 +119,15 @@ const Footer = () => {
   return <div className={s.footer}>All Rights Reserved</div>;
 };
 
-const ButtonTryNow = (props: { setLoading: Function }) => {
+const ButtonTryNow = (props: { setLoading: Function; isMobile }) => {
   const { setLoading } = props;
 
   return (
     <div className={s.buttondiv}>
-      <div className={s.button} onClick={() => connectMetamask({ setLoading })}>
+      <div
+        className={s.button}
+        onClick={() => connectMetamask(setLoading, props.isMobile)}
+      >
         {"TRY NOW"}
       </div>
     </div>
