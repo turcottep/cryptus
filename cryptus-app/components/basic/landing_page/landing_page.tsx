@@ -13,7 +13,6 @@ export default function LandingPage(props: { isMobile: boolean }) {
   const [session, loadingSession] = useSession();
   const [[angle_x, angle_y], set_angles] = useState<[number, number]>([0, 0]);
   const ref = React.useRef<HTMLDivElement>(null);
-  console.log("isMobileprops", props.isMobile);
 
   const track_mouse = (e) => {
     // console.log(e.clientX, e.clientY);
