@@ -21,7 +21,9 @@ async function get_floors(contract_address: string) {
       });
       if (response.status !== 200) {
         console.error("response", response.statusText);
+        if(response.status != 429) console.log(response)
         i--;
+        await new Promise((resolve) => setTimeout(resolve, 10000));
         continue;
       }
 
@@ -62,7 +64,8 @@ async function get_floors(contract_address: string) {
         break;
       }
       next = data.next;
-      await new Promise((resolve) => setTimeout(resolve, 10));
+      if(!next) break;
+      await new Promise((resolve) => setTimeout(resolve,1000));
     } catch (error) {
       console.log("response", response);
       console.log(error);
