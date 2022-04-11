@@ -14,7 +14,7 @@ export default function SearchBar() {
         <input
           type="text"
           className={s.searchTerm}
-          placeholder="Search comming soon"
+          placeholder="Search coming soon"
         />
       </div>
     </div>

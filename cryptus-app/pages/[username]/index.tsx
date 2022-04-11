@@ -33,16 +33,28 @@ export default function ProfilePage() {
   useEffect(() => {
     setLoading(true);
     const getProps = async () => {
-      console.log("getting props for ", userNameString);
-      const returningProps = await get_profile_props(userNameString);
-      // console.log("returning", returningProps);
-      // set_profile_props(returningProps.props);
-      const new_user_props = returningProps.props.user;
-      const new_collections_props = returningProps.props.collections;
-      set_user_props(new_user_props);
-      set_collections_props(new_collections_props);
+      try {
+        console.log("getting props for ", userNameString);
+        const returningProps = await get_profile_props(userNameString);
+        // console.log("returning", returningProps);
+        // set_profile_props(returningProps.props);
+        const new_user_props = returningProps.props.user;
+        const new_collections_props = returningProps.props.collections;
+        set_user_props(new_user_props);
+        set_collections_props(new_collections_props);
 
-      setLoading(false);
+        setLoading(false);
+      } catch (e) {
+        console.log("error", e);
+        setLoading(false);
+        set_user_props({
+          username: "user not found",
+          address: "error",
+          profile_image_url: "error",
+          collections_filter: ["error"],
+        });
+        set_collections_props([]);
+      }
     };
 
     if (userNameString) {

@@ -12,7 +12,7 @@ export default function ViewerHeader(props: { userId: string }) {
     <div className={s.container}>
       <BackButton />
       <ContextualUserName name={props.userId} />
-      <ContextualMenuButton img="icons/menu_icon.png" />
+      {/* <ContextualMenuButton img="icons/menu_icon.png" /> */}
     </div>
   );
 }

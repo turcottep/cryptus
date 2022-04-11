@@ -4,14 +4,45 @@
   flex: 0 0 none;
 
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: nowrap;
 
   border-bottom: 1px solid rgba($color: v.$text-color, $alpha: 0.1);
 
-  // height: 160px; //For too long description
   padding: 8px;
+  margin-bottom: 16px;
+  height: 256px;
+
+  // @media (max-width: v.$mobile) {
+  //   justify-content: flex-start;
+  // }
+}
+
+.left {
+  flex: 1 1 175px;
+}
+
+.center {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+.right {
+  flex: 1 1 175px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+  gap: 8px;
 }
 
 .row {
@@ -34,25 +65,6 @@
   gap: 16px;
 }
 
-.button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 0 4px;
-  height: 28px;
-  background-color: v.$secondary-color-pale;
-  border: 2px solid v.$bg-color;
-  border-radius: 8px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.button:hover {
-  border: 2px solid v.$secondary-color;
-  transition: all 0.2s ease-in-out;
-}
-
 .editName {
   width: 256px;
 
@@ -65,10 +77,12 @@
 }
 
 .username {
-  font-size: 20px;
   line-height: 28px;
   font-weight: bold;
   padding: 8px 8px 8px 0;
+
+  font-family: Roboto-Thin;
+  font-size: 36px;
 }
 
 .description {
@@ -91,4 +105,42 @@
   to {
     opacity: 1;
   }
+}
+
+.button {
+  flex: 0 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background-color: v.$hover-color;
+
+  font-size: 18px;
+  padding: 8px;
+  font-family: "Roboto-Thin";
+  border-radius: 9px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+  height: min-content;
+  width: 88px;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  color: v.$hover-color;
+  background-color: black;
+  box-shadow: 0px 4px 24px v.$hover-color;
+  transition: all 0.2s ease-in-out;
+}
+
+.profilepicture_container {
+  flex: 0 0 auto;
+}
+
+.profilePic {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
 }

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import s from "./landing_page.module.scss";
 
-import { signOut, useSession } from "next-auth/client";
+import { useSession } from "next-auth/client";
 import connectMetamask from "../../../lib/connectMetamask";
 
 import Loading from "../../utils/loading/loading";
+import MetamaskButton2 from "../../utils/metamask/metamaskbutton2";
 
 import * as google_analytics from "../../../lib/google_analytics";
 
@@ -95,20 +96,11 @@ const Header = (props: { session: any; setLoading: any; isMobile }) => {
       <div className={s.header2}>
         <div className={s.headername}>PublicWallet</div>
         {/* <img className={s.headerlogo} src="/images/pw5.png" /> */}
-        <div className={s.signin}>
-          {!session ? (
-            <div
-              className={s.signinbutton}
-              onClick={() => connectMetamask(setLoading, props.isMobile)}
-            >
-              {"SIGN IN"}
-            </div>
-          ) : (
-            <div className={s.signinbutton} onClick={() => signOut()}>
-              {"SIGN OUT"}
-            </div>
-          )}
-        </div>
+        <MetamaskButton2
+          session={session}
+          setLoading={setLoading}
+          isMobile={props.isMobile}
+        />
       </div>
     </div>
   );
