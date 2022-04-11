@@ -8,5 +8,5 @@ import s from "./date.module.scss";
 
 export default function DateComponent(props: { date: string }) {
   const { date } = props;
-  return <div className={s.name}>{props.date}</div>;
+  return <div className={s.name}>{props.date.toUpperCase()}</div>;
 }

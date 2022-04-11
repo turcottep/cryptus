@@ -4,6 +4,7 @@ import s from "./sort_button.module.scss";
 
 //external exports
 import { Button, Menu, MenuItem, Avatar } from "@mui/material";
+import FilterListIcon from "@mui/icons-material/FilterList";
 
 //internal imports
 
@@ -46,15 +47,19 @@ export default function SortButton(props: {
     <div className={s.container}>
       <Button
         id="basic-button"
-        startIcon={<Avatar src={"menu.svg"} />}
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={(e) => setAnchorEl(e.currentTarget)}
         className={s.box}
         size="small"
+        sx={{
+          color: "grey",
+          fontWeight: "light",
+          fontSize: "14px",
+        }}
       >
-        Sort
+        <FilterListIcon />
       </Button>
       <Menu
         id="basic-menu"
@@ -88,7 +93,7 @@ export default function SortButton(props: {
   );
 }
 
-const sort_market_collections = (
+export const sort_market_collections = (
   filter: string,
   newPropCollectionFavorite,
   newPropCollectionMarket

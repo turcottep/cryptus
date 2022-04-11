@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import Graph from "../../graph/graph";
 import s from "./collection_market_graph.module.scss";
 
-import TimeInterval, {
-  intervals,
-} from "../../net_worth/time_interval/time_interval";
+import TimeInterval from "../../market_header/time_interval/time_interval";
+import { intervals } from "../../../../lib/data_types";
 
 export default function CollectionMarketGraph(props: {
   data_price: number[];

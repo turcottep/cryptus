@@ -2,18 +2,13 @@
 import React, { useState, useEffect } from "react";
 import s from "./time_interval.module.scss";
 
+import { intervals } from "../../../../lib/data_types";
+
 //external exports
 
 //internal imports
 
 //intervals enum
-export enum intervals {
-  week = 0,
-  month = 1,
-  three_months = 2,
-  year = 3,
-  alltime = 4,
-}
 
 export default function TimeInterval(props: { active: number; callback: any }) {
   const [active, setActive] = useState(props.active);
@@ -93,7 +88,7 @@ export default function TimeInterval(props: { active: number; callback: any }) {
   };
 
   return (
-    <div className={s.container_row}>
+    <div className={s.container}>
       {interval(0)}
       {interval(1)}
       {interval(2)}

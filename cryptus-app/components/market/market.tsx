@@ -7,11 +7,8 @@ import s from "./market.module.scss";
 import { useSession } from "next-auth/client";
 
 //internal imports
-import { intervals } from "./net_worth/time_interval/time_interval";
-import { collection } from "../../lib/data_types";
+import { user, intervals, collection } from "../../lib/data_types";
 
-import MarketHeader from "./market_header/market_header";
-import NetWorth from "./net_worth/net_worth";
 import SearchBar from "./search_bar/search_bar";
 import SortButton from "./sort_button/sort_button";
 import Footer from "../basic/footer/footer";
@@ -19,14 +16,15 @@ import DesktopHeader from "../basic/header/desktop_header/desktop_header";
 import Loading from "../utils/loading/loading";
 import MarketCollection from "./market_collection/market_collection";
 import getUserByUsername from "../../lib/get_user_by_username";
-import { user } from "../../lib/data_types";
+
 import get_profile_props from "../../lib/get_profile_props";
 import Settings from "../basic/settings/settings";
 import WalletManager from "../basic/wallet_manager/wallet_manager";
 import MarketCollections from "./market_viewer/market_collections/market_collections";
 import Support from "../basic/support/support";
 import get_user_by_username from "../../lib/get_user_by_username";
-
+import DateComponent from "./market_header/date/date";
+import TimeInterval from "./market_header/time_interval/time_interval";
 
 type market_overview_props = {
   date: string;
@@ -49,6 +47,13 @@ export default function MarketOverview(props: market_overview_props) {
     collections_filter: [],
     profile_image_url: "",
   };
+
+  const today = new Date();
+  // get day like August 1
+  const day = today.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+  });
 
   const [user_collections_list, set_user_collections_list] = useState<string[]>(
     []
@@ -88,22 +93,24 @@ export default function MarketOverview(props: market_overview_props) {
     }
   }, [status]);
 
-  useEffect(() => {
+  const updateUserCollections = (user_collections) => {
     const newPropCollectionFavoriteTemp = [];
     const newPropCollectionMarketTemp = [];
     for (const collection of newPropCollection) {
-      if (user_collections_list.includes(collection.address)) {
+      if (user_collections.includes(collection.name)) {
         newPropCollectionFavoriteTemp.push(collection);
       } else {
         newPropCollectionMarketTemp.push(collection);
       }
     }
+    console.log("temp", newPropCollectionFavoriteTemp, user_collections);
     setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
     setnewPropCollectionMarket(newPropCollectionMarketTemp);
-  }, [user_collections_list, newPropCollection]);
+  };
 
   useEffect(() => {
     const newPropCollectionTemp = update();
+    updateUserCollections([]);
   }, []);
 
   const update = async (interval: intervals = props.networth.active) =>
@@ -120,10 +127,12 @@ export default function MarketOverview(props: market_overview_props) {
     const user = await get_user_by_username(username);
     console.log("user : ", user);
     const user_collections = user.collections_list;
+    console.log("iuser collections : ", user_collections);
     const networth = user.networth;
     console.log("networth : ", networth);
-    set_user_collections_list(user_collections);
+    set_user_collections_list([...user_collections]);
     set_networth(networth);
+    updateUserCollections(user_collections);
   };
 
   const close_card = () => {
@@ -190,63 +199,77 @@ export default function MarketOverview(props: market_overview_props) {
       {isMobile ? null : (
         <DesktopHeader tab="market" open_settings={open_settings} />
       )}
-      {loading && <Loading />}
-      {show_card && (
-        <MarketCollection
-          isMobile={isMobile}
-          callback_close={close_card}
-          market_collection_props={marketCollectionProps}
+      <div className={s.containee}>
+        {loading && <Loading />}
+        {show_card && (
+          <MarketCollection
+            isMobile={isMobile}
+            callback_close={close_card}
+            market_collection_props={marketCollectionProps}
+          />
+        )}
+        {show_card_settings && (
+          <Settings
+            isMobile={isMobile}
+            callback_close={close_all}
+            open_wallet_manager={open_wallet_manager}
+            open_support={open_support}
+          />
+        )}
+        {show_card_wallet_manager && (
+          <WalletManager
+            user={user}
+            callback_close_wallet={close_wallet}
+            isMobile={isMobile}
+          />
+        )}
+        {show_card_support && (
+          <Support callback_close_support={close_support} isMobile={isMobile} />
+        )}
+        <div className={s.market_container}>
+          <div className={s.date_container}>
+            <div className={s.date_box}>
+              <DateComponent date={day} />
+            </div>
+          </div>
+          <div className={s.networth_container}>
+            <div className={s.networth}>{networth.toFixed(1) + "Ξ"}</div>
+            <div className={s.networth_text}>{"NETWORTH"}</div>
+          </div>
+
+          <div className={s.time_container}>
+            <div className={s.time_box}>
+              <TimeInterval
+                active={props.networth.active}
+                callback={callbackGraph}
+              />
+            </div>
+          </div>
+          <div className={s.search_and_sort}>
+            <SearchBar />
+            <SortButton
+              newPropCollectionFavorite={newPropCollectionFavorite}
+              newPropCollectionMarket={newPropCollectionMarket}
+              setnewPropCollectionFavorite={setnewPropCollectionFavorite}
+              setnewPropCollectionMarket={setnewPropCollectionMarket}
+            />
+          </div>
+        </div>
+        <MarketCollections
+          callback={open_card}
+          name={"My Collections"}
+          icon={"/icons/favorite_icon.png"}
+          collections={newPropCollectionFavorite}
+          connected={!!session}
         />
-      )}
-      {show_card_settings && (
-        <Settings
-          isMobile={isMobile}
-          callback_close={close_all}
-          open_wallet_manager={open_wallet_manager}
-          open_support={open_support}
+        <MarketCollections
+          callback={open_card}
+          name={"Market"}
+          icon={"/icons/market_icon.png"}
+          collections={newPropCollectionMarket}
         />
-      )}
-      {show_card_wallet_manager && (
-        <WalletManager
-          user={user}
-          callback_close_wallet={close_wallet}
-          isMobile={isMobile}
-        />
-      )}
-      {show_card_support && (
-        <Support callback_close_support={close_support} isMobile={isMobile} />
-      )}
-      <MarketHeader />
-      <NetWorth
-        value={networth}
-        // delta={props.networth.change}
-        // EthCad={props.networth.EthCad}
-        active={props.networth.active}
-        callbackGraph={callbackGraph}
-      />
-      <div className={s.search_and_sort}>
-        <SearchBar />
-        <SortButton
-          newPropCollectionFavorite={newPropCollectionFavorite}
-          newPropCollectionMarket={newPropCollectionMarket}
-          setnewPropCollectionFavorite={setnewPropCollectionFavorite}
-          setnewPropCollectionMarket={setnewPropCollectionMarket}
-        />
+        {isMobile ? <Footer /> : null}
       </div>
-      <MarketCollections
-        callback={open_card}
-        name={"My Collections"}
-        icon={"/icons/favorite_icon.png"}
-        collections={newPropCollectionFavorite}
-        connected={!!session}
-      />
-      <MarketCollections
-        callback={open_card}
-        name={"Market"}
-        icon={"/icons/market_icon.png"}
-        collections={newPropCollectionMarket}
-      />
-      {isMobile ? <Footer /> : null}
     </div>
   );
 }
@@ -282,13 +305,16 @@ const updatePrice = async (
   const { prices, counts, deltas } = await res.json();
   const newPropCollectionTemp = [];
 
-  for (let i = 0; i < collections.length; i++) {
-    const element = collections[i];
-    element.data_price = prices[i];
-    element.floor_price = prices[i][prices[i].length - 1];
-    element.floor_price_delta = deltas[i];
-    newPropCollectionTemp.push(element);
+  if (collections.length > 0) {
+    for (let i = 0; i < collections.length; i++) {
+      const element = collections && collections[i];
+      element.data_price = prices && prices[i];
+      element.floor_price = prices && prices[i][prices[i].length - 1];
+      element.floor_price_delta = deltas[i];
+      newPropCollectionTemp.push(element);
+    }
   }
+
   setLoading(false);
 
   return newPropCollectionTemp;

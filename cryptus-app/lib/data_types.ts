@@ -59,3 +59,11 @@ export enum tabs {
   research = "research",
   profile = "profile",
 }
+
+export enum intervals {
+  week = 0,
+  month = 1,
+  three_months = 2,
+  year = 3,
+  alltime = 4,
+}

@@ -3,7 +3,10 @@
 .container {
   flex: 2 1 auto;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   width: 100%;
+
   height: v.$font-size-xl;
 }
 
@@ -13,13 +16,14 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  border-radius: 24px;
-  background: #ebe7e3;
+  border-radius: 16px;
+  background-color: v.$secondary-color-pale;
+  height: 32px;
 }
 .magnifier {
-  color: v.$header-color;
+  color: v.$secondary-color-pale;
   padding: 4px;
-  width: v.$font-size-ml;
+  width: 24px;
 }
 
 .searchButton {
@@ -29,14 +33,15 @@
   height: v.$font-size-l;
   text-align: center;
   cursor: pointer;
-  font-size: v.$font-size-m;
+  width: 24px;
+  background-color: rebeccapurple;
 }
 
 .searchTerm {
   background-color: rgba(0, 0, 0, 0);
   border: none;
   padding: v.$border-radius-s;
-  height: 20px;
   border-radius: 5px 0 0 5px;
   outline: none;
+  font-size: v.$font-size-xs;
 }
