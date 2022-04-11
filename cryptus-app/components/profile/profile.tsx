@@ -124,6 +124,7 @@ export default function Profile(props: {
           callback_filter={update_my_collection_filter}
           initial_filter={collections_filter}
           image_url={image_url}
+          isMobile={props.isMobile}
         />
       ) : (
         <ViewProfInfos user={props} image_url={image_url} />

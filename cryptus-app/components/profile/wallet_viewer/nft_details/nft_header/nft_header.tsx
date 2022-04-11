@@ -14,7 +14,7 @@ export default function NftHeader() {
     <div className={s.container}>
       <div className={s.box}>
         <BackButton />
-        <ContextualMenuButton img="/icons/more_icon.png" />
+        {/* <ContextualMenuButton img="/icons/more_icon.png" open_settings={undefined} /> */}
       </div>
     </div>
   );

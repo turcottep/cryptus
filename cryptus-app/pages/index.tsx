@@ -1,13 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useSession } from "next-auth/client";
 import router from "next/router";
+import { isMobile as mobile } from "react-device-detect";
 
 import LandingPage from "../components/basic/landing_page/landing_page";
 
 export default function Home() {
   const [session, loading] = useSession();
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    setIsMobile(mobile);
+    console.log("isMobile", isMobile);
+  }, [mobile]);
+
   // useEffect(() => {
   //   if (session) router.push(`/${session.user.name}`);
   // }, [session]);
@@ -88,7 +96,7 @@ export default function Home() {
 
       <main>
         {/* {session && <div>Logged in as {session.user.name}</div>} */}
-        <LandingPage />
+        <LandingPage isMobile={isMobile} />
       </main>
     </div>
   );

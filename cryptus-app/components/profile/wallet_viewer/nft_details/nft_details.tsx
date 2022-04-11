@@ -87,15 +87,10 @@ export default function NFTDetails(props: nft_details_props) {
           <NFTRankInCollection position={rank_position} total={rank_total} />
         ) : null}
         {props.isMyProfile ? (
-          <div>
-            Put as profile picture :
-            <Switch
-              defaultChecked={defaultState}
-              onChange={handleImageChange}
-            />
+          <div className={s.button} onClick={handleImageChange}>
+            Set as profile picture
           </div>
         ) : null}
-
         <NFTProperties
           properties={props.nft.properties}
           collectionSize={rank_total}

@@ -1,16 +1,17 @@
 @use "/styles/variables" as v;
 
-$size: 72px;
+$size: 48px;
 $gap: 8px;
 
 .container {
   flex: 0 0 none;
 
-  width: calc($size * 2 + $gap * 3);
+  width: calc($size * 3 + $gap * 3);
   height: calc($size * 1 + $gap * 3);
 
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   white-space: nowrap;
 

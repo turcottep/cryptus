@@ -13,6 +13,7 @@ export default function CreatorProfileInfos(props: {
   callback_filter: (new_filter: string[]) => void;
   initial_filter: string[];
   image_url: string;
+  isMobile: boolean;
 }) {
   const { profile_props, callback_filter } = props;
 

@@ -7,18 +7,12 @@ import { session, useSession } from "next-auth/client";
 // because backend will need to be included in the file, and we do not want backend from all buttons in header.tsx
 export default function ContextualMenuButton(props: {
   img: string;
-  url?: string;
-  open_settings?;
+  open_settings;
 }) {
-  const { img, url } = props;
-  const [session, loading] = useSession();
+  const { img } = props;
 
   const onMenuClick = () => {
-    if (session) {
-      router.push("./settings");
-    } else {
-      props.open_settings();
-    }
+    props.open_settings();
   };
 
   return (
