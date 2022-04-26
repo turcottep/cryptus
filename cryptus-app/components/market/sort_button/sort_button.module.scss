@@ -4,20 +4,29 @@
 .container {
   flex: 0 0 none;
   display: flex;
-  width: 150px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
+// .box {
+//   flex: 1 1 auto;
+
+//   display: flex;
+//   align-items: center;
+//   flex-direction: row;
+//   border-radius: 16px;
+//   background-color: v.$secondary-color-pale;
+//   height: 32px;
+
+//   color: v.$text-color;
+//   text-transform: none;
+//   font-size: 12px;
+//   font-weight: 100 !important;
+// }
+
 .box {
-  flex: 1 1 auto;
-  gap: 4px;
+  color: rgb(0, 0, 0);
 
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  border-radius: 16px;
-  background: #ebe7e3;
-
-  color: v.$text-color;
-  text-transform: none;
-  font-size: v.$font-size-s;
+  height: 24px;
 }

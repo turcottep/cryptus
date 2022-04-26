@@ -7,7 +7,7 @@ import CollectionFloorPrice from "./collection_floor_price/collection_floor_pric
 import CollectionMarketGraph from "./collection_market_graph/collection_market_graph";
 import DesktopHeader from "../../basic/header/desktop_header/desktop_header";
 import Card from "../../utils/card/card";
-import { intervals } from "../net_worth/time_interval/time_interval";
+import { intervals } from "../../../lib/data_types";
 
 export type market_collection_props = {
   collection_name: string;

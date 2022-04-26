@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import CadEthExchangeButton from "../../../../../components/market/net_worth/cad_eth_exchange_button/cad_eth_exchange_button";
+import CadEthExchangeButton from "../../../../../components/market/market_header/cad_eth_exchange_button/cad_eth_exchange_button";
 
 describe("<CadEthExchangeButton />", () => {
   it("should display properly", async () => {

@@ -4,7 +4,7 @@ import "@testing-library/jest-dom/extend-expect";
 
 import { mock_collection } from "../../../../lib/mocks";
 import MarketCollection from "../../../../components/market/market_collection/market_collection";
-import { intervals } from "../../../../components/market/net_worth/time_interval/time_interval";
+import { intervals } from "../../../../lib/data_types";
 
 describe("<MarketCollection />", () => {
   it("should display properly", async () => {

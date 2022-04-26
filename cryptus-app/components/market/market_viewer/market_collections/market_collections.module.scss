@@ -11,7 +11,14 @@
   background-color: v.$secondary-color-pale;
 
   width: 100%;
-  gap: 2px;
+
+  gap: 8px;
+  padding: 8px;
+
+  @media (max-width: v.$mobile) {
+    gap: 2px;
+    padding: 0px;
+  }
 }
 
 .collection {
@@ -67,7 +74,10 @@
   justify-content: center;
   align-items: center;
 
+  border-radius: v.$border-radius-l;
   background-color: #fff;
+  color: rgb(113, 113, 113);
+
   width: 100%;
 }
 
