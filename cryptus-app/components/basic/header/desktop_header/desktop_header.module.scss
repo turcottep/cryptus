@@ -1,0 +1,81 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 0 0 none;
+  width: 100%;
+
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+
+  height: v.$header-h;
+
+  background: linear-gradient(
+    rgba(v.$header-color, 1),
+    rgba(v.$header-color, 0)
+  );
+  z-index: 100;
+}
+
+.home {
+  flex: 1 1 175px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 16px;
+  padding-left: 8px;
+  height: v.$header-h;
+
+  font-size: 24px;
+}
+.home:hover * {
+  color: v.$hover-color;
+}
+
+.tabs {
+  flex: 4 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.tab {
+  flex: 0 1 auto;
+  margin: 0 32px;
+  text-align: center;
+}
+.tab:hover {
+  color: v.$hover-color;
+}
+.tabactive {
+  @extend .tab;
+  color: v.$hover-color;
+}
+
+.icons {
+  flex: 1 1 175px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  align-items: center;
+  gap: 16px;
+}
+
+.icon {
+  flex: 0 0 auto;
+
+  display: flex;
+  width: 24px;
+  height: 24px;
+}
+.icon:hover {
+  opacity: 0.5;
+}

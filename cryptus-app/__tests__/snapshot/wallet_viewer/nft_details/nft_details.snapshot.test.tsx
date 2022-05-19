@@ -5,7 +5,7 @@ import "@testing-library/jest-dom/extend-expect";
 import { mockNextUseRouter } from "../../../../utils/test_util";
 import { mock_nft } from "../../../../lib/mocks";
 import { nft } from "../../../../lib/data_types";
-import NftDetails from "../../../../components/wallet_viewer/nft_details/nft_details";
+import NftDetails from "../../../../components/profile/wallet_viewer/nft_details/nft_details";
 
 type nft_details_props = {
   nft: nft;
@@ -35,8 +35,20 @@ describe("<NftDetails />", () => {
       listed_price: 5,
       isMobile: true,
     };
+    const isMyProfile = true;
+    const randomUser = "randomUser";
+    const randomUserImage = "./icons/icon-192x192.png";
     const tree = renderer
-      .create(<NftDetails callback_close={undefined} {...details} />)
+      .create(
+        <NftDetails
+          isMyProfile={isMyProfile}
+          username={randomUser}
+          callback_close={undefined}
+          callback_profile_image_url={randomUserImage}
+          profile_image_url={randomUserImage}
+          {...details}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

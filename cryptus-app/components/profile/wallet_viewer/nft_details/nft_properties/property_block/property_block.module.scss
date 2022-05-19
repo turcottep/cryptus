@@ -1,0 +1,47 @@
+@use "/styles/variables" as v;
+
+$size: 48px;
+$gap: 8px;
+
+.container {
+  flex: 0 0 none;
+
+  width: calc($size * 3 + $gap * 3);
+  height: calc($size * 1 + $gap * 3);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  white-space: nowrap;
+
+  padding: $gap;
+  overflow: hidden;
+  white-space: nowrap;
+
+  background-color: v.$primary-color-pale;
+  border: 2px solid v.$primary-color;
+  border-radius: v.$border-radius-m;
+}
+
+.name {
+  flex: none;
+  font-weight: bold;
+  color: v.$primary-color;
+  font-size: v.$font-size-xs;
+}
+
+.value {
+  display: inline-block;
+  max-width: calc(100% - 16px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rarity {
+  flex: none;
+  font-weight: bold;
+  color: v.$secondary-color;
+  font-size: v.$font-size-xs;
+}

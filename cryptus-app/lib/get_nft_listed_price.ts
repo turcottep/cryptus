@@ -3,16 +3,12 @@ export default async function getNFTListedPrice(
   token_id: string
 ) {
   const api_url = process.env.NEXT_PUBLIC_OPENSEA_API_KEY;
+  // console.log("contractaddress", contractaddress, "token_id", token_id);
 
-  const url =
-    "https://api.opensea.io/wyvern/v1/orders?asset_contract_address=" +
-    contractaddress +
-    "&bundled=false&include_bundled=false&token_id=" +
-    token_id +
-    "&side=1&limit=20&offset=0&order_by=eth_price&order_direction=asc";
+  const url = `https://api.opensea.io/api/v1/assets?token_ids=${token_id}&asset_contract_address=${contractaddress}&order_direction=desc&limit=1&include_orders=true`;
 
   try {
-    let listed_price: number = 0;
+    let listed_price = null;
 
     const options = {
       method: "GET",
@@ -24,9 +20,14 @@ export default async function getNFTListedPrice(
 
     const res = await fetch(url, options).then((response) => response.json());
 
-    if (res.orders.length > 0) {
-      listed_price = res.orders[0].base_price / 10 ** 18;
+    // console.log("res", res);
+
+    if (res.assets.length > 0) {
+      if (res.assets[0].sell_orders) {
+        listed_price = res.assets[0].sell_orders[0].price / 1000000000000000000;
+      }
     }
+
     return listed_price;
   } catch (error) {
     console.log(error);

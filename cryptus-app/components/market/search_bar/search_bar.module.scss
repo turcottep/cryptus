@@ -1,0 +1,47 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 2 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+
+  height: v.$font-size-xl;
+}
+
+.box {
+  flex: 1 1 auto;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 16px;
+  background-color: v.$secondary-color-pale;
+  height: 32px;
+}
+.magnifier {
+  color: v.$secondary-color-pale;
+  padding: 4px;
+  width: 24px;
+}
+
+.searchButton {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  height: v.$font-size-l;
+  text-align: center;
+  cursor: pointer;
+  width: 24px;
+  background-color: rebeccapurple;
+}
+
+.searchTerm {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  padding: v.$border-radius-s;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  font-size: v.$font-size-xs;
+}

@@ -2,8 +2,8 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import CollectionMarketGraph from "../../../../../components/market_overview/market_collection/collection_market_graph/collection_market_graph";
-
+import CollectionMarketGraph from "../../../../../components/market/market_collection/collection_market_graph/collection_market_graph";
+import { intervals } from "../../../../../lib/data_types";
 describe("<CollectionMarketGraph />", () => {
   it("should display properly", async () => {
     const test_price = [
@@ -29,8 +29,10 @@ describe("<CollectionMarketGraph />", () => {
         <CollectionMarketGraph
           data_price={test_price}
           data_volume={test_volume}
+          interval={intervals.week}
           address={test_address}
           callback={undefined}
+          price_delta={0}
         />
       )
       .toJSON();

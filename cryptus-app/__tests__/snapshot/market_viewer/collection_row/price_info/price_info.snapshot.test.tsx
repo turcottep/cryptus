@@ -2,8 +2,8 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import { collection } from "../../../../../components/market_viewer/market_viewer";
-import PriceInfo from "../../../../../components/market_viewer/collection_row/price_info/price_info";
+import PriceInfo from "../../../../../components/market/market_viewer/collection_row/price_info/price_info";
+import { collection } from "../../../../../lib/data_types";
 
 const mock_collection: collection = {
   id: "1",
@@ -32,7 +32,13 @@ describe("<PriceInfo />", () => {
     const test_curr = "eth";
 
     const tree = renderer
-      .create(<PriceInfo collection={test_collection} currency={test_curr} />)
+      .create(
+        <PriceInfo
+          collection={test_collection}
+          currency={test_curr}
+          prices={[0, 1]}
+        />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

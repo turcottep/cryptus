@@ -41,6 +41,7 @@ it("CreatorProfileInfos renders correctly", () => {
       username: "Tester",
       address: "test_address",
       collections_filter: [],
+      profile_image_url: "./icons/icon-192x192.png",
     },
     collections: [mock_collection],
   };
@@ -53,6 +54,7 @@ it("CreatorProfileInfos renders correctly", () => {
           throw new Error("Function not implemented.");
         }}
         initial_filter={[]}
+        image_url={mock_props.user.profile_image_url}
         {...mock_props}
       />
     )

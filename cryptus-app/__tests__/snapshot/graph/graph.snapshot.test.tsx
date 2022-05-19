@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import Graph from "../../../components/graph/graph";
+import Graph from "../../../components/market/graph/graph";
 
 describe("<Graph />", () => {
   it("should display properly", async () => {
@@ -18,7 +18,8 @@ describe("<Graph />", () => {
         79, 53, 77, 77, 26, 89, 57, 47, 37, 87, 48, 26, 65,
       ],
       detailled: true,
-    };
+      color: "green",
+    } as any;
 
     const tree = renderer.create(<Graph {...graphProps} />).toJSON();
     expect(tree).toMatchSnapshot();

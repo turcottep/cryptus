@@ -1,0 +1,70 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 10px 0 10px;
+}
+
+.header {
+  flex: 1 1 auto;
+
+  display: flex;
+  position: fixed;
+  top: 0;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: min(100vw, v.$mobile);
+  height: v.$header-h;
+}
+
+.settingsTitle {
+  flex: 1 1 auto;
+
+  display: flex;
+  font-size: v.$font-size-ml;
+  justify-content: center;
+}
+
+.searchBarMobile {
+  display: flex;
+  margin-top: 45px;
+}
+
+.searchBar {
+  display: flex;
+  margin-top: 10px;
+}
+
+.settingRows {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 30px 0px 0px 0px;
+  gap: 40px;
+}
+
+.signOut {
+  flex: 1 1 auto;
+
+  display: flex;
+  justify-content: center;
+  margin-top: 80%;
+}
+
+.blankButton {
+  width: 24px;
+  background-color: black;
+  padding-right: 12px;
+}
+
+.backButton {
+  padding-left: 12px;
+}

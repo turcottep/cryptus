@@ -4,7 +4,7 @@ import "@testing-library/jest-dom/extend-expect";
 
 import { mock_collection } from "../../../../lib/mocks";
 import { mockNextUseRouter } from "../../../../utils/test_util";
-import ProfileWalletViewer from "../../../../components/wallet_viewer/profile_wallet_viewer/profile_wallet_viewer";
+import ProfileWalletViewer from "../../../../components/profile/wallet_viewer/profile_wallet_viewer/profile_wallet_viewer";
 
 describe("<ProfileWalletViewer />", () => {
   mockNextUseRouter({
@@ -21,10 +21,10 @@ describe("<ProfileWalletViewer />", () => {
       .create(
         <ProfileWalletViewer
           collections={[]}
-          open_collection={function (index: number): void {
+          open_collection={function (): void {
             throw new Error("Function not implemented.");
           }}
-          open_nft={function (index: number): void {
+          open_nft={function (): void {
             throw new Error("Function not implemented.");
           }}
           collections_filter={[]}

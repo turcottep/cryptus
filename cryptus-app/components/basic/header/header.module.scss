@@ -1,0 +1,48 @@
+@use "/styles/variables" as v;
+
+.container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+
+  position: sticky;
+  top: 0px;
+  z-index: 90;
+
+  width: 100%;
+  height: v.$header-h;
+}
+
+.title {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  height: v.$header-h;
+}
+
+.back_icon {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  height: v.$header-h;
+}
+
+.menu_icon {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  height: v.$header-h;
+}

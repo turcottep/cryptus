@@ -25,6 +25,7 @@ describe("<Profile />", () => {
       username: "A username",
       address: "An address",
       collections_filter: [],
+      profile_image_url: "./icons/icon-192x192.png",
     };
     const old_user = {
       id: "710e552b-2881-42de-afc5-4fd4d9ea698f",

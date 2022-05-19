@@ -1,0 +1,50 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  flex-wrap: wrap;
+
+  justify-content: flex-start;
+  gap: 16px;
+
+  // margin: 8px;
+  // margin-left: 32px;
+
+  // @media (max-width: v.$mobile) {
+  //   // justify-content: space-between;
+  //   // margin-left: 8px;
+  // }
+}
+
+.left {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.right {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.collection {
+  font-weight: 500;
+  font-size: v.$font-size-xs;
+  color: v.$primary-color;
+}
+
+.name {
+  font-weight: bold;
+  font-size: v.$font-size-m;
+  color: v.$text-color;
+}

@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
+import collections_dict from "../../../lib/collectionDictionary";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
-    console.log("starting timer...");
+    console.log("starting timer for batch sales data...");
 
     prisma.$connect();
     const queries = [];
@@ -13,7 +14,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     adresses.forEach((address) => {
       const address_cropped = address.substring(1);
-      console.log("address_cropped", address_cropped);
+      // console.log("address_cropped", address_cropped);
       const query_diff = `SELECT * FROM marketsales.${
         address_cropped + "_differentials"
       };`;
@@ -25,35 +26,18 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     });
     // start timer
     const start = new Date().getTime();
-    const answer = await prisma.$transaction([
-      prisma.$queryRaw(queries[0]),
-      prisma.$queryRaw(queries[1]),
-      prisma.$queryRaw(queries[2]),
-      prisma.$queryRaw(queries[3]),
-      prisma.$queryRaw(queries[4]),
-      prisma.$queryRaw(queries[5]),
-      prisma.$queryRaw(queries[6]),
-      prisma.$queryRaw(queries[7]),
-      prisma.$queryRaw(queries[8]),
-      prisma.$queryRaw(queries[9]),
-      prisma.$queryRaw(queries_diff[0]),
-      prisma.$queryRaw(queries_diff[1]),
-      prisma.$queryRaw(queries_diff[2]),
-      prisma.$queryRaw(queries_diff[3]),
-      prisma.$queryRaw(queries_diff[4]),
-      prisma.$queryRaw(queries_diff[5]),
-      prisma.$queryRaw(queries_diff[6]),
-      prisma.$queryRaw(queries_diff[7]),
-      prisma.$queryRaw(queries_diff[8]),
-      prisma.$queryRaw(queries_diff[9]),
-    ]);
-    // console.log(answer);
-    const split_1 = answer.slice(0, 10);
-    const split_2 = answer.slice(10, 20);
-    console.log("split 1 ", split_1.length);
-    console.log("split 2 ", split_2.length);
-    // const data = await prisma.$queryRaw(query);
-    // console.log("data : ", data);
+    let query = [];
+    const collectionsCount = Object.keys(collections_dict).length;
+    for (let i = 0; i < collectionsCount; i++) {
+      query.push(prisma.$queryRaw(queries[i]));
+    }
+    for (let i = 0; i < collectionsCount; i++) {
+      query.push(prisma.$queryRaw(queries_diff[i]));
+    }
+    const answer = await prisma.$transaction([...query]);
+
+    const split_1 = answer.slice(0, collectionsCount);
+    const split_2 = answer.slice(collectionsCount, 2 * collectionsCount);
     const prices = [];
     const volumes = [];
     const counts = [];
@@ -81,16 +65,14 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       volumes.push(volume);
     });
 
-    let delta = [];
+    let deltas = [];
     split_2.forEach((element) => {
       element.forEach((littleman) => {
         if (viewing_mode == "alltime") {
           viewing_mode = "year";
         }
         if (littleman.view == viewing_mode) {
-          console.log("*****", littleman.view, viewing_mode);
-          delta.push(littleman.differential);
-          console.log(delta);
+          deltas.push(parseFloat(littleman.differential));
         }
       });
     });
@@ -102,7 +84,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     res.status(201);
     // console.log("user: ", user);
-    res.json({ prices, counts, volumes, delta });
+    res.json({ prices, counts, volumes, deltas: deltas });
   } catch (e) {
     res.status(500);
     console.error("There was an error deep wond", e);

@@ -1,0 +1,38 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 0 auto;
+
+  display: flex;
+
+  width: 100%;
+}
+
+.box {
+  flex: 1 1 auto;
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  background-color: v.$header-color;
+
+  padding: 8px;
+
+  border-radius: v.$border-radius-l;
+
+  @media (max-width: v.$mobile) {
+    border-radius: 0px;
+  }
+}
+
+.anchor {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.anchor:hover {
+  background-color: v.$secondary-color-pale;
+}

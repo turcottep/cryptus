@@ -1,16 +1,14 @@
 @use "/styles/variables" as v;
 
-.container {
+.app {
   flex: 0 0 none;
 
   display: flex;
   flex-direction: column;
 
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
+
   background-color: v.$bg-color;
   color: v.$text-color;
-
-  @media (max-width: v.$mobile) {
-    width: min(100vw, v.$mobile);
-  }
 }

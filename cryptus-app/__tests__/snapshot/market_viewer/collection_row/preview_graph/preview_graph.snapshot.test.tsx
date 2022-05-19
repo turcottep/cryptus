@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import PreviewGraph from "../../../../../components/market_viewer/collection_row/preview_graph/preview_graph";
+import PreviewGraph from "../../../../../components/market/market_viewer/collection_row/preview_graph/preview_graph";
 
 describe("<PreviewGraph />", () => {
   it("should display properly", async () => {
@@ -19,7 +19,11 @@ describe("<PreviewGraph />", () => {
 
     const tree = renderer
       .create(
-        <PreviewGraph data_price={test_price} data_volume={test_volume} />
+        <PreviewGraph
+          data_price={test_price}
+          data_volume={test_volume}
+          price_delta={0}
+        />
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

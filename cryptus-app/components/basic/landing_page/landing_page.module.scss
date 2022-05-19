@@ -1,0 +1,190 @@
+@use "/styles/variables" as v;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.header {
+  flex: 0 0 auto;
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  height: v.$header-h;
+  z-index: 100;
+  width: 100%;
+
+  background-image: linear-gradient(
+    rgba($color: v.$bg-color, $alpha: 1),
+    rgba($color: v.$bg-color, $alpha: 0)
+  );
+}
+.signin:hover {
+  text-shadow: 0px 0px 8px v.$hover-color;
+  color: v.$hover-color;
+}
+.header2 {
+  flex: 1 1 auto;
+  padding: 0px 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  width: 100%;
+
+  @media (max-width: v.$mobile) {
+    flex-direction: column;
+  }
+}
+
+.page1 {
+  @extend .page;
+
+  background-color: lightgreen;
+}
+.page2 {
+  @extend .page;
+  background-color: linen;
+}
+.page3 {
+  @extend .page;
+  background-color: greenyellow;
+}
+
+.divisionimg {
+  flex: 1 1 50%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.divisiontext {
+  flex: 1 1 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 64px;
+}
+
+.headername {
+  font-size: 32px;
+  font-weight: 200;
+}
+
+.img1 {
+  height: 75vh;
+  // background-color: aqua;
+  // transform: rotateX(10deg) rotateY(20deg);
+}
+
+.title {
+  font-size: 108px;
+  font-family: "Roboto";
+}
+.description {
+  font-size: 48px;
+  font-family: "Roboto-Thin";
+}
+
+.logo {
+  flex: 0 0 none;
+  height: 250px;
+}
+
+.headerlogo {
+  flex: 0 0 none;
+  height: 100%;
+}
+
+.logodiv {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  flex: 0 0 none;
+  height: calc(2 * v.$footer-h);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttondiv {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.button {
+  flex: 0 0 auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 300px;
+  background-color: v.$hover-color;
+
+  font-size: 54px;
+  padding: 16px;
+  font-family: "Roboto-Thin";
+  border-radius: 24px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+
+  cursor: pointer;
+}
+
+.button:hover {
+  color: v.$hover-color;
+  background-color: black;
+  box-shadow: 0px 4px 24px v.$hover-color;
+}
+
+@media (max-width: v.$mobile) {
+  .img1 {
+    height: 50vh;
+  }
+  .title {
+    font-size: 54px;
+  }
+  .description {
+    font-size: 24px;
+  }
+  .divisiontext {
+    padding: 64px 16px;
+    align-items: center;
+    text-align: center;
+  }
+}

@@ -1,0 +1,102 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: v.$mobile) {
+    width: min(100vw, v.$mobile);
+  }
+}
+
+.containee {
+  flex: 0 0 none;
+  width: 1024px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: v.$mobile) {
+    width: min(100vw, v.$mobile);
+  }
+}
+
+.container_no_scroll {
+  @extend .container;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.search_and_sort {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  width: calc(100% - 16px);
+  padding-bottom: 8px;
+
+  @media (max-width: v.$mobile) {
+    padding-bottom: 4px;
+    width: calc(100% - 8px);
+  }
+}
+
+.market_container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+.date_container {
+  flex: 0 0 none;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  @media (max-width: v.$mobile) {
+    justify-content: flex-start;
+  }
+}
+
+.date_box {
+  flex: 0 0 none;
+
+  width: max-content;
+
+  font-size: v.$font-size-m;
+  color: black;
+}
+
+.networth_container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.networth {
+  font-family: "Roboto-Thin";
+  font-size: 80px;
+}
+
+.networth_text {
+  font-size: 12px;
+  color: rgb(134, 134, 134);
+}
