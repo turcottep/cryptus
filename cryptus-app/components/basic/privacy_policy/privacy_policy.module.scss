@@ -1,0 +1,38 @@
+@use "/styles/variables" as v;
+
+.page {
+  width: 100%;
+  display: block;
+  background: #fff;
+  margin-left: 8px;
+}
+
+.header {
+  color: v.$text-color-dark;
+  padding: 16px 0;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.header .title {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.translations-content-container {
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+}
+
+.footer {
+  border-top: 1px solid #eee;
+  margin: 32px 0 0;
+  padding: 16px 0;
+}

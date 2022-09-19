@@ -23,7 +23,7 @@ export default function MarketPage(props) {
   }, [mobile]);
 
   return (
-    <div className="">
+    <div>
       <title>Public Wallet</title>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
