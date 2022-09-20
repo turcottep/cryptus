@@ -1,0 +1,4 @@
+{
+  "pre-commit": "cd cryptus-app && npm run build && npm test",
+  "preserveUnused": true
+}

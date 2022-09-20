@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WalletListDisplay /> should display properly 1`] = `
+<div>
+  <ul>
+    <div>
+      <div>
+        <div>
+          Metamask
+          <img
+            src="/images/metamask_logo.png"
+          />
+        </div>
+        <div>
+          address1
+        </div>
+      </div>
+      <div>
+        <img
+          onClick={[Function]}
+          src="/icons/delete_icon.png"
+        />
+      </div>
+    </div>
+    <div>
+      <div>
+        <div>
+          Metamask
+          <img
+            src="/images/metamask_logo.png"
+          />
+        </div>
+        <div>
+          address2
+        </div>
+      </div>
+      <div>
+        <img
+          onClick={[Function]}
+          src="/icons/delete_icon.png"
+        />
+      </div>
+    </div>
+  </ul>
+</div>
+`;

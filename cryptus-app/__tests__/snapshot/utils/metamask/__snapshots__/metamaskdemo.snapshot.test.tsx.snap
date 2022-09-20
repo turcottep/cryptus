@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> should display properly 1`] = `
+<div>
+  <p>
+    Please select your login method.
+    <br />
+    For the purpose of this demo, only MetaMask login is implemented.
+  </p>
+  <button
+    className="bg-brown px-2 py-2 font-bold text-white Login-button Login-mm"
+    onClick={[Function]}
+  >
+    Login with MetaMask
+  </button>
+  <button
+    className="Login-button Login-fb"
+    disabled={true}
+  >
+    Login with Facebook
+  </button>
+  <button
+    className="Login-button Login-email"
+    disabled={true}
+  >
+    Login with Email
+  </button>
+</div>
+`;
