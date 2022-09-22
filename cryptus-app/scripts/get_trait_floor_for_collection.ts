@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
 
 async function get_floors(contract_address: string) {
   const opensea_api_key = "e50f2020ec49494e8ab461b871309fc9";
