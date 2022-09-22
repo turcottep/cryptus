@@ -4,9 +4,6 @@ export default function Privacy() {
   return (
     <div className="page">
       <div className="header">
-        <div className="container">
-          <p className="title">Privacy Policy for PublicWallet</p>
-        </div>
       </div>
       <div className="translations-content-container">
         <div className="container">
@@ -25,15 +22,7 @@ export default function Privacy() {
             <p>
               We use Your Personal data to provide and improve the Service. By
               using the Service, You agree to the collection and use of
-              information in accordance with this Privacy Policy. This Privacy
-              Policy has been created with the help of the{" "}
-              <a
-                href="https://www.termsfeed.com/privacy-policy-generator/"
-                target="_blank"
-              >
-                TermsFeed Privacy Policy Generator
-              </a>
-              .
+              information in accordance with this Privacy Policy.
             </p>
             <h1>Interpretation and Definitions</h1>
             <h2>Interpretation</h2>
@@ -213,14 +202,7 @@ export default function Privacy() {
               Cookies can be "Persistent" or "Session" Cookies. Persistent
               Cookies remain on Your personal computer or mobile device when You
               go offline, while Session Cookies are deleted as soon as You close
-              Your web browser. You can learn more about cookies on{" "}
-              <a
-                href="https://www.termsfeed.com/blog/cookies/#What_Are_Cookies"
-                target="_blank"
-              >
-                TermsFeed website
-              </a>{" "}
-              article.
+              Your web browser.
             </p>
             <p>
               We use both Session and Persistent Cookies for the purposes set
@@ -521,20 +503,6 @@ export default function Privacy() {
               <li>By email: publicwallet.app@gmail.com</li>
             </ul>
           </div>
-        </div>
-      </div>
-
-      <div className="footer">
-        <div className="container">
-          <p>
-            Generated using{" "}
-            <a
-              href="https://www.termsfeed.com/privacy-policy-generator/"
-              target="_blank"
-            >
-              TermsFeed Privacy Policy Generator
-            </a>
-          </p>
         </div>
       </div>
     </div>
