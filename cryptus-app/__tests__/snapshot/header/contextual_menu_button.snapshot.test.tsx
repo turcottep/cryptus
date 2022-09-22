@@ -12,7 +12,7 @@ describe("<ContextualMenuButton />", () => {
     };
 
     const tree = renderer
-      .create(<ContextualMenuButton {...mockProps} />)
+      .create(<ContextualMenuButton open_settings={undefined} {...mockProps} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
