@@ -15,8 +15,11 @@ export default function NFTProperties(props: {
         return (
           <PropertyBlock
             key={index}
-            {...prop}
             collectionSize={props.collectionSize}
+            name={""}
+            value={""}
+            count={0}
+            rarity={0}
           />
         );
       })}
