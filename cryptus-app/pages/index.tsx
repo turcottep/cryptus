@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 import router from "next/router";
 import { isMobile as mobile } from "react-device-detect";
 
 import LandingPage from "../components/basic/landing_page/landing_page";
 
 export default function Home() {
-  const [session, loading] = useSession();
+  const { data: session, status: loading } = useSession();
+
   const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {

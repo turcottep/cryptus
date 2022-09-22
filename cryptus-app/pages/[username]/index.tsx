@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { isMobile as mobile } from "react-device-detect";
 import { useRouter } from "next/router";
 

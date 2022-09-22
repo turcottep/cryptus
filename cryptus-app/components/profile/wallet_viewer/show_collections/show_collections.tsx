@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 import s from "./show_collections.module.scss";
-import Switch from "@mui/material/Switch";
-import Button from "@mui/material/Button";
+// import Switch from "@mui/material/Switch";
+// import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
 
 import BackButton from "../../../basic/header/back_button/back_button";
@@ -17,7 +17,7 @@ export default function ShowCollections(props: {
   callback_update_filter: (new_filter: string[]) => void;
   callback_close: () => void;
 }) {
-  const [session, status] = useSession();
+  const { data: session, status } = useSession();
   const [collections_filter, set_collections_filter] = useState<string[]>([
     ...props.initial_filter,
   ]);
@@ -46,7 +46,7 @@ export default function ShowCollections(props: {
       <div className={s.option}>
         <CollectionLogo logo={collection.nfts[0].image_url} />
         <CollectionName name={collection.name} />
-        <Switch defaultChecked={default_checked} onChange={handleChange} />
+        {/* <Switch defaultChecked={default_checked} onChange={handleChange} /> */}
       </div>
     );
   };
@@ -70,12 +70,12 @@ export default function ShowCollections(props: {
     <div className={s.container}>
       <SCHeader callback={props.callback_close} />
       <div className={s.button}>
-        <Button variant="outlined" size="large" onClick={click_cancel}>
+        {/* <Button variant="outlined" size="large" onClick={click_cancel}>
           cancel
         </Button>
         <Button variant="contained" size="large" onClick={click_apply}>
           Apply
-        </Button>
+        </Button> */}
       </div>
       <div className={s.collections}>
         {props.collections.map((collection: nft_collection) => (

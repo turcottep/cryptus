@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import s from "./desktop_header.module.scss";
 
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 
 import ContextualMenuButton from "../contextual_menu_button/contextual_menu_button";
 
@@ -9,7 +9,7 @@ export default function DesktopHeader(props: {
   tab: string;
   open_settings: () => void;
 }) {
-  const [session, loading] = useSession();
+  const { data: session, status: loading } = useSession();
   const [name, setName] = useState("");
   const [imgUrl, setImgUrl] = useState("/icons/menu_icon.png");
   const { tab } = props;

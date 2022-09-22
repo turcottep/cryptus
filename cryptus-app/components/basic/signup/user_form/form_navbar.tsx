@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { signIn, signOut, useSession } from "next-auth/client";
+// import { signIn, signOut, useSession } from "next-auth/react";
 // import { FormValuesProps } from "../signup";
 
 // export default class FormNavBar extends Component<FormValuesProps> {

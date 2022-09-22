@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { signOut } from "next-auth/client";
+import { signOut } from "next-auth/react";
 import s from "./logout_setting.module.scss";
 
 export default function LogoutSetting() {

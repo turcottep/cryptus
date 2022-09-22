@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import FormHeader from "./form_header";
 // import { FormValuesProps } from "../signup";
-// import { signIn, useSession } from "next-auth/client";
+// import { signIn, useSession } from "next-auth/react";
 // import { Input } from "@mui/material";
 
 // const errors = {

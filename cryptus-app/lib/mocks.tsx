@@ -788,7 +788,7 @@ export function getMockProps(StepID: number) {
 }
 
 // DO NOT DELETE PLEASE THANK YOU
-/* import { signIn } from "next-auth/client";
+/* import { signIn } from "next-auth/react";
 import FindUserIdFromWalletAdress from "../lib/findUserIdFromWalletAdress";
 import CreateAccountFromWalletAddress from "../lib/createAccountFromWalletAddress";
 import FindUserFromUserId from "../lib/findUserFromUserId";

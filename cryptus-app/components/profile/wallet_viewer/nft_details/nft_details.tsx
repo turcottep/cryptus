@@ -1,7 +1,7 @@
 //react and css
 import React, { useState, useEffect } from "react";
 import s from "./nft_details.module.scss";
-import Switch from "@mui/material/Switch";
+// import Switch from "@mui/material/Switch";
 
 import { nft } from "../../../../lib/data_types";
 

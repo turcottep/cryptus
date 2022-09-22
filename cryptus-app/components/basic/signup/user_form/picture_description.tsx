@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 // import FormHeader from "./form_header";
 // import { FormValuesProps } from "../signup";
-// import { signIn } from "next-auth/client";
+// import { signIn } from "next-auth/react";
 // import Loading from "../../utils/loading";
 
 // export default class PictureDescription extends Component<FormValuesProps> {

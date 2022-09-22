@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import s from "./market.module.scss";
 
 //external exports
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 
 //internal imports
 import { user, intervals, collection } from "../../lib/data_types";
@@ -67,7 +67,7 @@ export default function MarketOverview(props: market_overview_props) {
     props.collections
   );
 
-  const [session, status] = useSession();
+  const { data: session, status } = useSession();
   const [username, setUsername] = useState<string>("");
   const [user, setUser] = useState(props_user_empty);
   const [loading, setLoading] = useState(false);

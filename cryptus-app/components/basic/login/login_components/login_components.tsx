@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import s from "./login_components.module.scss";
 
-import { signIn } from "next-auth/client";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 
 import FindUserIdFromWalletAdress from "../../../../lib/findUserIdFromWalletAdress";

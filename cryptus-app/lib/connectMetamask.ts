@@ -1,4 +1,4 @@
-import { signIn } from "next-auth/client";
+import { signIn } from "next-auth/react";
 import CreateAccountFromWalletAddress from "./createAccountFromWalletAddress";
 import FindUserFromUserId from "./findUserFromUserId";
 import FindUserIdFromWalletAdress from "./findUserIdFromWalletAdress";

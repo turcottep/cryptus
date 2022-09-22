@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import s from "./profile.module.scss";
 
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 
 import { nft_collection, profile_props, tabs } from "../../lib/data_types";
 
@@ -26,7 +26,7 @@ export default function Profile(props: {
   isMobile: boolean;
 }) {
   const { collections, user, isMobile } = props;
-  const [session, loading] = useSession();
+  const { data: session, status: loading } = useSession();
   const [isMyProfile, setIsMyProfile] = useState<Boolean>(false);
 
   const [show_card_collection, set_show_collection] = useState(false);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import s from "./wallet_manager.module.scss";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 
 //import ContextualXButton from "../header/contextual_x_button/contextual_x_button";
 import BackButton from "../header/back_button/back_button";
@@ -27,7 +27,7 @@ export default function WalletManager(props: {
   for (const [key, value] of Object.entries(wallets)) {
     addresses.push(value["address"]);
   }
-  const [session, status] = useSession();
+  const { data: session, status } = useSession();
   const [walletList, setWalletList] = useState(addresses);
   const [walletToAdd, setWalletToAdd] = useState([]);
   const [event, setEvent] = useState();

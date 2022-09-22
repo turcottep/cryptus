@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import s from "./metamask.module.scss";
 
-import { signOut } from "next-auth/client";
+import { signOut } from "next-auth/react";
 import connectMetamask from "../../../lib/connectMetamask";
 
 const MetamaskButton2 = (props: { session; setLoading; isMobile: boolean }) => {

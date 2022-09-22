@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import s from "./landing_page.module.scss";
 
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 import connectMetamask from "../../../lib/connectMetamask";
 
 import Loading from "../../utils/loading/loading";
@@ -9,9 +9,14 @@ import MetamaskButton2 from "../../utils/metamask/metamaskbutton2";
 
 import * as google_analytics from "../../../lib/google_analytics";
 
+import mixpanel from "mixpanel-browser";
+mixpanel.init("502216c60c90f9cb3d9faf87ccb82e67", { debug: true });
+mixpanel.track("Sign in");
+mixpanel.track("Try now");
+
 export default function LandingPage(props: { isMobile: boolean }) {
   const [loading, setLoading] = useState<boolean>(false);
-  const [session, loadingSession] = useSession();
+  const { data: session, status: loadingSession } = useSession();
   const [[angle_x, angle_y], set_angles] = useState<[number, number]>([0, 0]);
   const ref = React.useRef<HTMLDivElement>(null);
 

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // import s from "./login.module.scss";
 
 // //external exports
-// import { signIn } from "next-auth/client";
+// import { signIn } from "next-auth/react";
 // import router, { withRouter, NextRouter } from "next/router";
 
 // //internal imports

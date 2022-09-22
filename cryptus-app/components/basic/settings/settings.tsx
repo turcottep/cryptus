@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import s from "./settings.module.scss";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 
 //import ContextualXButton from "../header/contextual_x_button/contextual_x_button";
 import BackButton from "../header/back_button/back_button";
@@ -25,7 +25,7 @@ type settings_props = {
 };
 
 export default function Settings(props: settings_props) {
-  const [session, status] = useSession();
+  const { data: session, status } = useSession();
   const username = session?.user?.name;
 
   return (

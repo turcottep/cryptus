@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import s from "./footer.module.scss";
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 
 export default function Footer() {
-  const [session, status] = useSession();
+  const { data: session, status } = useSession();
+
   const [username, setUsername] = useState<string>("");
   useEffect(() => {
     if (session) {

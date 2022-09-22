@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { signOut } from "next-auth/client";
+import { signOut } from "next-auth/react";
 import s from "./wallet_manager_setting.module.scss";
 import router from "next/router";
 import { props } from "cypress/types/bluebird";

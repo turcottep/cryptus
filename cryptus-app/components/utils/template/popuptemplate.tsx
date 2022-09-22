@@ -1,13 +1,13 @@
 import React from "react";
 
 //external exports
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
 import GridTemplate from "./gridetemplate/gridtemplate";
 
 export default function Home() {
   return (
     <div className="">
-      <main>
+      {/* <main>
         <AnimatePresence>
           <motion.div
             key="modal"
@@ -19,7 +19,7 @@ export default function Home() {
             <GridTemplate />
           </motion.div>
         </AnimatePresence>
-      </main>
+      </main> */}
     </div>
   );
 }

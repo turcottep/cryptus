@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import s from "./creator_profile_infos.module.scss";
 
-import { signIn, useSession } from "next-auth/client";
+import { signIn, useSession } from "next-auth/react";
 import { profile_props } from "../../../../lib/data_types";
-import { TextField } from "@mui/material";
+// import { TextField } from "@mui/material";
 import EditCollections from "../../wallet_viewer/show_collections/show_collections";
 import get_reserved_usernames from "../../../../lib/reserved_usernames";
 import updateUser from "../../../../lib/update_user";
@@ -17,7 +17,7 @@ export default function CreatorProfileInfos(props: {
 }) {
   const { profile_props, callback_filter } = props;
 
-  const [session, sessionLoading] = useSession();
+  const { data: session, status: laoding } = useSession();
   const [loading, setLoading] = useState(false);
   const [edit_profile, set_edit_profile] = useState(false);
   const [edit_collections, set_edit_collections] = useState(false);
@@ -84,7 +84,7 @@ export default function CreatorProfileInfos(props: {
           <img className={s.profilePic} src={props.image_url} alt="Avatar" />
         </div>
         <div className={s.editName}>
-          <TextField
+          {/* <TextField
             type="username"
             id="standard-basic username"
             className={s.editName}
@@ -96,10 +96,10 @@ export default function CreatorProfileInfos(props: {
             size="small"
             variant="standard"
             required
-          />
+          /> */}
         </div>
         <div className={s.editDesc}>
-          <TextField
+          {/* <TextField
             type="description"
             id="standard-basic description"
             className={s.editDesc}
@@ -109,7 +109,7 @@ export default function CreatorProfileInfos(props: {
             size="medium"
             variant="standard"
             required
-          />
+          /> */}
         </div>
       </div>
       <div className={s.right}>

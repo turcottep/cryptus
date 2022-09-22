@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 // import router, { withRouter, NextRouter } from "next/router";
 // import FormNavBar from "../signup/user_form/form_navbar";
-// import { signIn } from "next-auth/client";
+// import { signIn } from "next-auth/react";
 // import Link from "next/link";
 // import Loading from "../utils/loading";
 

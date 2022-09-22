@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { signIn, signOut, useSession } from "next-auth/client";
+// import { signIn, signOut, useSession } from "next-auth/react";
 // import FormHeader from "../form_header";
 // import { FormValuesProps } from "../../signup";
 

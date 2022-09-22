@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ForgotPWHeader from "./forgot_password_header";
 import { ForgotPWValuesProps } from "../forgot_password";
-import Input from "@mui/material/Input";
+// import Input from "@mui/material/Input";
 
 import s from "./recovery.module.scss";
 
@@ -25,12 +25,12 @@ export default function Recovery(props) {
         step={props.step}
       />
       <div className={s.input}>
-        <Input
+        {/* <Input
           type="email"
           id="email"
           placeholder="Phone number or email"
           required
-        />
+        /> */}
       </div>
       <button onClick={next} className={s.button}>
         Send recovery email/text

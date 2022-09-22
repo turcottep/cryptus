@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import s from "./sort_button.module.scss";
 
 //external exports
-import { Button, Menu, MenuItem, Avatar } from "@mui/material";
-import FilterListIcon from "@mui/icons-material/FilterList";
+// import { Button, Menu, MenuItem, Avatar } from "@mui/material";
+// import FilterListIcon from "@mui/icons-material/FilterList";
 
 //internal imports
 
@@ -45,7 +45,7 @@ export default function SortButton(props: {
 
   return (
     <div className={s.container}>
-      <Button
+      {/* <Button
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
@@ -60,8 +60,8 @@ export default function SortButton(props: {
         }}
       >
         <FilterListIcon />
-      </Button>
-      <Menu
+      </Button> */}
+      {/* <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
@@ -88,7 +88,7 @@ export default function SortButton(props: {
         <MenuItem onClick={() => onItemClick("delta_d")}>
           By Change (Descending)
         </MenuItem>
-      </Menu>
+      </Menu> */}
     </div>
   );
 }
