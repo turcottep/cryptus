@@ -24,6 +24,7 @@ model User {
   profile_image_url  String   @default("./icons/icon-192x192.png")
   nfts               Nft[]
   wallets            Wallet[]
+  subscription       String  @default("")
 }
 
 model Nft {
