@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Support /> should display properly 1`] = `
+<div
+  id="bg"
+  onClick={[Function]}
+>
+  <div>
+    <div>
+      Contact Us
+    </div>
+    <div>
+      We are now in developpement of PublicWallet.app! Please contact us to give feedback or if you have an issue with our App!
+    </div>
+    <div>
+      <div>
+        Twitter
+        <a
+          href="https://twitter.com/public_wallet"
+        >
+          twitter.com/public_wallet
+          <div>
+            <img
+              src="/icons/link_icon.png"
+            />
+          </div>
+        </a>
+      </div>
+      <div>
+        Email
+        <div
+          onClick={[Function]}
+        >
+          publicwallet.app@gmail.com
+          <div>
+            <img
+              src="/icons/copy_icon.png"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

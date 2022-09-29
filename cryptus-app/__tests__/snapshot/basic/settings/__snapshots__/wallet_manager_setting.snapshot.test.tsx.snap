@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WalletManagerSetting /> should display properly 1`] = `
+<div>
+  <div
+    onClick={[Function]}
+  >
+    Wallet Manager
+    <div>
+      <img
+        src="/icons/wallet_manager_icon.png"
+      />
+    </div>
+  </div>
+</div>
+`;

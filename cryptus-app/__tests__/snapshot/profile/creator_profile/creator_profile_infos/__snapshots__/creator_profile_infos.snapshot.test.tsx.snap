@@ -2,6 +2,7 @@
 
 exports[`CreatorProfileInfos renders correctly 1`] = `
 <div>
+  <div />
   <div>
     <div>
       <img
@@ -10,33 +11,30 @@ exports[`CreatorProfileInfos renders correctly 1`] = `
       />
     </div>
     <div>
-      <div
-        onClick={[Function]}
-      >
-        Edit Profile
-      </div>
-      <div
-        onClick={[Function]}
-      >
-        Edit Nfts
-      </div>
-      <div>
-        <div
-          onClick={[Function]}
-        >
-          Copy My link
-        </div>
-      </div>
+      TESTER
+    </div>
+    <div>
+      Whatever
     </div>
   </div>
   <div>
-    Tester
-  </div>
-  <div>
-    Whatever
-  </div>
-  <div>
-    NETWORTH:5
+    <div
+      onClick={[Function]}
+    >
+      Edit Profile
+    </div>
+    <div
+      onClick={[Function]}
+    >
+      Edit Nfts
+    </div>
+    <div>
+      <div
+        onClick={[Function]}
+      >
+        Copy link
+      </div>
+    </div>
   </div>
 </div>
 `;

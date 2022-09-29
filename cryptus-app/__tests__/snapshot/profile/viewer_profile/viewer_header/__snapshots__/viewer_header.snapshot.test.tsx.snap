@@ -13,12 +13,5 @@ exports[`<ViewerHeader /> ViewerHeader renders correctly 1`] = `
   <div>
     test
   </div>
-  <div
-    onClick={[Function]}
-  >
-    <img
-      src="icons/menu_icon.png"
-    />
-  </div>
 </div>
 `;

@@ -4,7 +4,7 @@ import s from "./sort_button.module.scss";
 
 //external exports
 import { Button, Menu, MenuItem, Avatar } from "@mui/material";
-import FilterListIcon from "@mui/icons-material/FilterList";
+//import FilterListIcon from "@mui/icons-material/FilterList";
 
 //internal imports
 
@@ -57,10 +57,8 @@ export default function SortButton(props: {
           color: "grey",
           fontWeight: "light",
           fontSize: "14px",
-        }}
-      >
-        <FilterListIcon />
-      </Button>
+        }} // <FilterListIcon /> on line above </Button>
+      ></Button>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}

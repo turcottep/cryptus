@@ -2,20 +2,21 @@
 
 exports[`ViewerProfileInfos renders correctly 1`] = `
 <div>
+  <div />
   <div>
-    <img
-      alt="Avatar"
-      src="./icons/icon-192x192.png"
-    />
+    <div>
+      <img
+        alt="Avatar"
+        src="./icons/icon-192x192.png"
+      />
+    </div>
+    <div>
+      TESTER
+    </div>
+    <div>
+      Whatever
+    </div>
   </div>
-  <div>
-    Tester
-  </div>
-  <div>
-    Whatever
-  </div>
-  <div>
-    NETWORTH:5 eth
-  </div>
+  <div />
 </div>
 `;
