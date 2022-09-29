@@ -6,17 +6,21 @@ import s from "./nft_properties.module.scss";
 import PropertyBlock from "./property_block/property_block";
 
 export default function NFTProperties(props: {
-  properties: [];
+  properties: [name: string, value: any, count: number, rarity: number];
   collectionSize: number;
 }) {
   return (
     <div className={s.container}>
       {props.properties.map((prop, index) => {
+        const prop_t = prop as any;
         return (
           <PropertyBlock
             key={index}
-            {...prop}
             collectionSize={props.collectionSize}
+            name={prop_t.name}
+            value={prop_t.value}
+            count={prop_t.count}
+            rarity={prop_t.rarity}
           />
         );
       })}

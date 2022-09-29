@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MetamaskButton2 /> should display properly 1`] = `
+<div>
+  <div
+    onClick={[Function]}
+  >
+    SIGN IN
+  </div>
+</div>
+`;

@@ -49,12 +49,14 @@ it("CreatorProfileInfos renders correctly", () => {
   const tree = renderer
     .create(
       <CreatorProfileInfos
+        isMobile={false}
         profile_props={mock_props}
         callback_filter={function (new_filter: string[]): void {
           throw new Error("Function not implemented.");
         }}
         initial_filter={[]}
         image_url={mock_props.user.profile_image_url}
+        isMobile={false}
         {...mock_props}
       />
     )
