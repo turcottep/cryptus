@@ -49,6 +49,7 @@ it("CreatorProfileInfos renders correctly", () => {
   const tree = renderer
     .create(
       <CreatorProfileInfos
+        isMobile={false}
         profile_props={mock_props}
         callback_filter={function (new_filter: string[]): void {
           throw new Error("Function not implemented.");
