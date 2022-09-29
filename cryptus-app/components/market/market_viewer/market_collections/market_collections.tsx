@@ -26,9 +26,15 @@ export default function MarketCollections(props: {
     setCollections(props.collections);
   }, [props.collections]);
 
+  // useEffect(() => {
+  //   setHasMore(false);
+  //   setCurrentIndex(10);
+  // }, []);
+
   const getMoreCollections = () => {
     console.log("GetMoreCollections");
     const collections_dict = collectionDictionary;
+    var hMore = true;
     const newCollections = Object.keys(collections_dict).map((key) => {
       return collections_dict[key];
     }) as collection[];
@@ -39,43 +45,53 @@ export default function MarketCollections(props: {
         currentIndex + 10
       );
       setCurrentIndex(currentIndex + 10);
-    } else {
+    } else if (newCollections.length > currentIndex) {
       newCollectionsSliced = newCollections.slice(
         currentIndex,
         newCollections.length
       );
       setCurrentIndex(currentIndex + newCollections.length);
+    } else {
       setHasMore(false);
+      hMore = false;
     }
-    console.log(newCollectionsSliced);
-    // props.onLazyUpdate(newCollectionsSliced);
-    updatePrice(props.interval, false, props.setLoading, newCollectionsSliced);
-    setCollections((collection) => [...collection, ...newCollectionsSliced]);
+    if (hMore) {
+      updatePrice(
+        props.interval,
+        false,
+        props.setLoading,
+        newCollectionsSliced
+      );
+      setCollections((collection) => [...collection, ...newCollectionsSliced]);
+    }
   };
 
   return (
     <div id="market_collections" className={s.container}>
       <Header name={props.name} icon={props.icon} />
       {collections && collections[0] ? (
-        <InfiniteScroll
-          dataLength={collections.length}
-          next={getMoreCollections}
-          hasMore={hasMore}
-          loader={<h3> Loading...</h3>}
-          endMessage={<h4>Nothing more to show</h4>}
-        >
-          {collections.map((c, i) => (
-            <div
-              key={i}
-              className={s.collection}
-              onClick={() => {
-                props.callback(c.name);
-              }}
-            >
-              <CollectionRow collection={c} />
-            </div>
-          ))}
-        </InfiniteScroll>
+        <div className={s.infiniteScrollDiv}>
+          <InfiniteScroll
+            style={{ overflowY: "hidden" }}
+            dataLength={collections.length}
+            next={getMoreCollections}
+            hasMore={hasMore}
+            loader={<h3> Loading...</h3>}
+            endMessage={<h4>Nothing more to show</h4>}
+          >
+            {collections.map((c, i) => (
+              <div
+                key={i}
+                className={s.collection}
+                onClick={() => {
+                  props.callback(c.name);
+                }}
+              >
+                <CollectionRow collection={c} />
+              </div>
+            ))}
+          </InfiniteScroll>
+        </div>
       ) : (
         <NoCollection connected={props.connected} />
       )}

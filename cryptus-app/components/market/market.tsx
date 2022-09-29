@@ -95,18 +95,6 @@ export default function MarketOverview(props: market_overview_props) {
     }
   }, [status]);
 
-  // const updateLL = async (collections) => {
-  //   console.log("Updating because Lazy Loading");
-  //   setnewPropCollection(collections);
-  //   setnewPropCollectionMarket(collections);
-  //   if (session) {
-  //     const user = await get_user_by_username(username);
-  //     const user_collections = user.collections_list;
-  //     updateUserCollections(user_collections);
-  //   }
-  //   await updatePrice(props.networth.active, true, setLoading, collections);
-  // };
-
   const updateUserCollections = (user_collections) => {
     const newPropCollectionFavoriteTemp = [];
     const newPropCollectionMarketTemp = [];
@@ -123,8 +111,6 @@ export default function MarketOverview(props: market_overview_props) {
   };
 
   useEffect(() => {
-    console.log("In use effect");
-
     if (props.collections != null) {
       const newPropCollectionTemp = update();
       if (session) {
@@ -147,11 +133,11 @@ export default function MarketOverview(props: market_overview_props) {
 
   const update_for_user = async (username: string) => {
     const user = await get_user_by_username(username);
-    console.log("user : ", user);
+    // console.log("user : ", user);
     const user_collections = user.collections_list;
-    console.log("iuser collections : ", user_collections);
+    // console.log("iuser collections : ", user_collections);
     const networth = user.networth;
-    console.log("networth : ", networth);
+    // console.log("networth : ", networth);
     set_user_collections_list([...user_collections]);
     set_networth(networth);
     updateUserCollections(user_collections);
@@ -214,7 +200,7 @@ export default function MarketOverview(props: market_overview_props) {
       }
     : ({} as any);
 
-  console.log("session", session);
+  // console.log("session", session);
 
   return (
     <div className={show_card ? s.container_no_scroll : s.container}>
@@ -309,19 +295,19 @@ export const updatePrice = async (
   if (needLoading == true) {
     setLoading(true);
   }
-  console.log("Collections to Update: ", collections);
+  // console.log("Collections to Update: ", collections);
   let viewingmode = intervals[interval];
   if (viewingmode == "three_months") {
     viewingmode = "3month";
   }
-  console.log("new viewingmode : ", viewingmode);
+  // console.log("new viewingmode : ", viewingmode);
 
   // setPrice(price);
   const adresses = collections.map((c) => {
     return c.address;
   });
 
-  console.log("adresses ", adresses);
+  // console.log("adresses ", adresses);
   const res = await fetch("/api/sales/batch", {
     method: "POST",
     headers: {
