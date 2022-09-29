@@ -14,7 +14,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     adresses.forEach((address) => {
       const address_cropped = address.substring(1);
-      // console.log("address_cropped", address_cropped);
+      console.log("address_cropped", address_cropped);
       const query_diff = `SELECT * FROM marketsales.${
         address_cropped + "_differentials"
       };`;
@@ -34,8 +34,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     for (let i = 0; i < collectionsCount; i++) {
       query.push(prisma.$queryRaw(queries_diff[i]));
     }
+    // console.log("before answer ", query);
     const answer = await prisma.$transaction([...query]);
-
+    console.log("answer ", answer);
     const split_1 = answer.slice(0, collectionsCount);
     const split_2 = answer.slice(collectionsCount, 2 * collectionsCount);
     const prices = [];

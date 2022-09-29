@@ -59,12 +59,14 @@ export default function MarketOverview(props: market_overview_props) {
     []
   );
 
-  const [newPropCollection, setnewPropCollection] = useState(props.collections);
+  const [newPropCollection, setnewPropCollection] = useState(
+    props.collections.slice(0, 10)
+  );
   const [newPropCollectionFavorite, setnewPropCollectionFavorite] = useState(
     []
   );
   const [newPropCollectionMarket, setnewPropCollectionMarket] = useState(
-    props.collections
+    props.collections.slice(0, 10)
   );
 
   const [session, status] = useSession();
@@ -93,6 +95,18 @@ export default function MarketOverview(props: market_overview_props) {
     }
   }, [status]);
 
+  // const updateLL = async (collections) => {
+  //   console.log("Updating because Lazy Loading");
+  //   setnewPropCollection(collections);
+  //   setnewPropCollectionMarket(collections);
+  //   if (session) {
+  //     const user = await get_user_by_username(username);
+  //     const user_collections = user.collections_list;
+  //     updateUserCollections(user_collections);
+  //   }
+  //   await updatePrice(props.networth.active, true, setLoading, collections);
+  // };
+
   const updateUserCollections = (user_collections) => {
     const newPropCollectionFavoriteTemp = [];
     const newPropCollectionMarketTemp = [];
@@ -109,12 +123,20 @@ export default function MarketOverview(props: market_overview_props) {
   };
 
   useEffect(() => {
-    const newPropCollectionTemp = update();
-    updateUserCollections([]);
-  }, []);
+    console.log("In use effect");
+
+    if (props.collections != null) {
+      const newPropCollectionTemp = update();
+      if (session) {
+        update_for_user(session.user.name);
+      } else {
+        updateUserCollections([]);
+      }
+    }
+  }, [props.collections, newPropCollection]);
 
   const update = async (interval: intervals = props.networth.active) =>
-    await updatePrice(interval, setLoading, props.collections);
+    await updatePrice(interval, true, setLoading, newPropCollection);
 
   const callbackGraph = async (interval) => {
     // setInterval(interval);
@@ -256,6 +278,8 @@ export default function MarketOverview(props: market_overview_props) {
           </div>
         </div>
         <MarketCollections
+          setLoading={setLoading}
+          interval={props.networth.active}
           callback={open_card}
           name={"My Collections"}
           icon={"/icons/favorite_icon.png"}
@@ -263,6 +287,8 @@ export default function MarketOverview(props: market_overview_props) {
           connected={!!session}
         />
         <MarketCollections
+          setLoading={setLoading}
+          interval={props.networth.active}
           callback={open_card}
           name={"Market"}
           icon={"/icons/market_icon.png"}
@@ -274,12 +300,16 @@ export default function MarketOverview(props: market_overview_props) {
   );
 }
 
-const updatePrice = async (
+export const updatePrice = async (
   interval: intervals,
+  needLoading: boolean,
   setLoading: Function,
   collections: collection[]
 ) => {
-  setLoading(true);
+  if (needLoading == true) {
+    setLoading(true);
+  }
+  console.log("Collections to Update: ", collections);
   let viewingmode = intervals[interval];
   if (viewingmode == "three_months") {
     viewingmode = "3month";
@@ -291,6 +321,7 @@ const updatePrice = async (
     return c.address;
   });
 
+  console.log("adresses ", adresses);
   const res = await fetch("/api/sales/batch", {
     method: "POST",
     headers: {
@@ -315,7 +346,9 @@ const updatePrice = async (
     }
   }
 
-  setLoading(false);
-
+  if (needLoading) {
+    setLoading(false);
+  }
+  console.log("collection updated ", newPropCollectionTemp);
   return newPropCollectionTemp;
 };

@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from "react";
 import s from "./market_collections.module.scss";
 import collectionDictionary from "../../../../lib/collectionDictionary";
+import { intervals } from "../../../../lib/data_types";
 
 import CollectionRow from "../collection_row/collection_row";
 import { collection } from "../../../../lib/data_types";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { updatePrice } from "../../market";
 
 // Need to add prop for collections
 export default function MarketCollections(props: {
+  setLoading: Function;
+  interval: intervals;
   name: string;
   icon: string;
   collections: collection[];
   callback;
   connected?: boolean;
 }) {
-  const [collections, setCollections] = useState(
-    props.collections.slice(0, 10)
-  );
-  console.log("First collections ", collections);
+  const [collections, setCollections] = useState(props.collections);
   const [hasMore, setHasMore] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(10);
 
+  useEffect(() => {
+    setCollections(props.collections);
+  }, [props.collections]);
+
   const getMoreCollections = () => {
+    console.log("GetMoreCollections");
     const collections_dict = collectionDictionary;
     const newCollections = Object.keys(collections_dict).map((key) => {
       return collections_dict[key];
@@ -42,6 +48,8 @@ export default function MarketCollections(props: {
       setHasMore(false);
     }
     console.log(newCollectionsSliced);
+    // props.onLazyUpdate(newCollectionsSliced);
+    updatePrice(props.interval, false, props.setLoading, newCollectionsSliced);
     setCollections((collection) => [...collection, ...newCollectionsSliced]);
   };
 
