@@ -1,47 +1,44 @@
 @use "/styles/variables" as v;
 
 .container {
-  flex: 2 1 auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  width: 100%;
-
-  height: v.$font-size-xl;
+  justify-content: center;
+  width: 33%;
 }
 
-.box {
-  flex: 1 1 auto;
-
+.search_box {
+  flex: 2 1 auto;
   display: flex;
   align-items: center;
   flex-direction: row;
-  border-radius: 16px;
   background-color: v.$secondary-color-pale;
-  height: 32px;
+  width: 100%;
 }
 .magnifier {
   color: v.$secondary-color-pale;
-  padding: 4px;
   width: 24px;
-}
-
-.searchButton {
-  flex: 1 1 auto;
-  display: flex;
-  justify-content: center;
-  height: v.$font-size-l;
-  text-align: center;
-  cursor: pointer;
-  width: 24px;
-  background-color: rebeccapurple;
 }
 
 .searchTerm {
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  padding: v.$border-radius-s;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  font-size: v.$font-size-xs;
+  width: 100%;
+}
+
+.search_items {
+  position: absolute;
+  text-align: left;
+  border: black ridge 1px;
+  border-radius: v.$border-radius-m;
+  background-color: v.$primary-color-pale;
+  display: flex;
+  flex-direction: row;
+}
+
+.search_image {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  // put image in vertical center
+  margin: auto 5px auto 5px;
 }

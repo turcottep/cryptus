@@ -4,6 +4,7 @@ import NFTDetails from "../components/profile/wallet_viewer/nft_details/nft_deta
 import { nft, profile_props } from "../lib/data_types";
 import get_mock_props from "../lib/get_mock_props";
 import GetCollectionTokens from "../lib/get_collection_token";
+import SearchBar from "../components/market/search_bar/search_bar";
 
 export default function Home() {
   const mock_props = get_mock_props() as profile_props;
@@ -59,7 +60,9 @@ export default function Home() {
         rel="stylesheet"
       />
 
-      <main></main>
+      <main>
+        <SearchBar />
+      </main>
     </div>
   );
 }
