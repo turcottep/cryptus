@@ -26,11 +26,6 @@ export default function MarketCollections(props: {
     setCollections(props.collections);
   }, [props.collections]);
 
-  // useEffect(() => {
-  //   setHasMore(false);
-  //   setCurrentIndex(10);
-  // }, []);
-
   const getMoreCollections = () => {
     console.log("GetMoreCollections");
     const collections_dict = collectionDictionary;

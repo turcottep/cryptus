@@ -4,6 +4,7 @@ import s from "./profile_wallet_viewer.module.scss";
 import { useRouter } from "next/router";
 
 import { nft, nft_collection } from "../../../../lib/data_types";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
@@ -11,22 +12,36 @@ export default function ProfileWalletViewer(props: {
   open_nft: (collection_name: string, nft_token_id: string) => void;
   collections_filter: string[];
 }) {
+  const [collections, setCollections] = useState(props.collections);
+  const [hasMore, setHasMore] = useState(true);
+  const getMoreCollections = () => {
+    console.log("GetMoreCollections");
+  };
   return (
     <div className={s.container}>
-      {props.collections
-        .filter((collection) => {
-          return !props.collections_filter.includes(collection.address);
-        })
-        .map((collection: nft_collection, i: number) => (
-          <div key={i}>
-            <Collection
-              collection={collection}
-              key={i}
-              open_collection={props.open_collection}
-              open_nft={props.open_nft}
-            />
-          </div>
-        ))}
+      <InfiniteScroll
+        style={{ overflowY: "hidden" }}
+        dataLength={collections.length}
+        next={getMoreCollections}
+        hasMore={hasMore}
+        loader={<h3> Loading...</h3>}
+        endMessage={<h4>Nothing more to show</h4>}
+      >
+        {props.collections
+          .filter((collection) => {
+            return !props.collections_filter.includes(collection.address);
+          })
+          .map((collection: nft_collection, i: number) => (
+            <div key={i}>
+              <Collection
+                collection={collection}
+                key={i}
+                open_collection={props.open_collection}
+                open_nft={props.open_nft}
+              />
+            </div>
+          ))}
+      </InfiniteScroll>
     </div>
   );
 }
