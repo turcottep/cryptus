@@ -4,7 +4,7 @@ import s from "./search_bar.module.scss";
 import classNames from "classnames";
 import collections_dict from "../../../lib/collectionDictionary";
 
-export default function SearchBar() {
+export default function SearchBar(props: { callback }) {
   const [query, setQuery] = useState("");
   const searchBarRef = useRef();
   const [searchBarPosX, setSearchBarPosX] = useState();
@@ -74,6 +74,9 @@ export default function SearchBar() {
                   top: index * 55 + Number(searchBarPosY),
                   left: searchBarPosX,
                   width: searchBarPosWidth,
+                }}
+                onClick={() => {
+                  props.callback(collection.name);
                 }}
               >
                 <img src={collection.value.logo} className={s.search_image} />

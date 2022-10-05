@@ -81,37 +81,37 @@ export default function MarketOverview(props: market_overview_props) {
   const [show_card_wallet_manager, set_show_wallet_manager] = useState(false);
   const [show_card_support, set_show_support] = useState(false);
 
-  // useEffect(() => {
-  //   const getUser = async (username: string) => {
-  //     let profileProps = await get_profile_props(username);
-  //     setUser(profileProps.props.user);
-  //   };
-  //   if (session) {
-  //     const user_name = session.user.name;
-  //     update_for_user(user_name);
-  //     setUsername(user_name);
-  //   }
-  // }, [status]);
+  useEffect(() => {
+    const getUser = async (username: string) => {
+      let profileProps = await get_profile_props(username);
+      setUser(profileProps.props.user);
+    };
+    if (session) {
+      const user_name = session.user.name;
+      update_for_user(user_name);
+      setUsername(user_name);
+    }
+  }, [status]);
 
-  // const updateUserCollections = (user_collections) => {
-  //   const newPropCollectionFavoriteTemp = [];
-  //   const newPropCollectionMarketTemp = [];
-  //   for (const collection of newPropCollection) {
-  //     if (user_collections.includes(collection.name)) {
-  //       newPropCollectionFavoriteTemp.push(collection);
-  //     } else {
-  //       newPropCollectionMarketTemp.push(collection);
-  //     }
-  //   }
-  //   console.log("temp", newPropCollectionFavoriteTemp, user_collections);
-  //   setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
-  //   setnewPropCollectionMarket(newPropCollectionMarketTemp);
-  // };
+  const updateUserCollections = (user_collections) => {
+    const newPropCollectionFavoriteTemp = [];
+    const newPropCollectionMarketTemp = [];
+    for (const collection of newPropCollection) {
+      if (user_collections.includes(collection.name)) {
+        newPropCollectionFavoriteTemp.push(collection);
+      } else {
+        newPropCollectionMarketTemp.push(collection);
+      }
+    }
+    console.log("temp", newPropCollectionFavoriteTemp, user_collections);
+    setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
+    setnewPropCollectionMarket(newPropCollectionMarketTemp);
+  };
 
-  // useEffect(() => {
-  //   const newPropCollectionTemp = update();
-  //   updateUserCollections([]);
-  // }, []);
+  useEffect(() => {
+    const newPropCollectionTemp = update();
+    updateUserCollections([]);
+  }, []);
 
   const update = async (interval: intervals = props.networth.active) =>
     await updatePrice(interval, setLoading, props.collections);
@@ -132,7 +132,7 @@ export default function MarketOverview(props: market_overview_props) {
     console.log("networth : ", networth);
     set_user_collections_list([...user_collections]);
     set_networth(networth);
-    // updateUserCollections(user_collections);
+    updateUserCollections(user_collections);
   };
 
   const close_card = () => {
@@ -140,8 +140,6 @@ export default function MarketOverview(props: market_overview_props) {
   };
 
   const close_all = () => {
-    console.log("close_all");
-
     set_show_card(false);
     set_show_settings(false);
     set_show_wallet_manager(false);
@@ -191,8 +189,6 @@ export default function MarketOverview(props: market_overview_props) {
         address: card_collection.address,
       }
     : ({} as any);
-
-  console.log("session", session);
 
   return (
     <div className={show_card ? s.container_no_scroll : s.container}>
@@ -246,7 +242,7 @@ export default function MarketOverview(props: market_overview_props) {
             </div>
           </div>
           <div className={s.search_and_sort}>
-            <SearchBar />
+            <SearchBar callback={open_card} />
             <SortButton
               newPropCollectionFavorite={newPropCollectionFavorite}
               newPropCollectionMarket={newPropCollectionMarket}
@@ -255,7 +251,7 @@ export default function MarketOverview(props: market_overview_props) {
             />
           </div>
         </div>
-        {/* <MarketCollections
+        <MarketCollections
           callback={open_card}
           name={"My Collections"}
           icon={"/icons/favorite_icon.png"}
@@ -268,7 +264,7 @@ export default function MarketOverview(props: market_overview_props) {
           icon={"/icons/market_icon.png"}
           collections={newPropCollectionMarket}
         />
-        {isMobile ? <Footer /> : null} */}
+        {isMobile ? <Footer /> : null}
       </div>
     </div>
   );
