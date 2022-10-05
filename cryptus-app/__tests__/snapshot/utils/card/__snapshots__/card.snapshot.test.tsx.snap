@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> should display properly 1`] = `
+<div
+  id="bg"
+  onClick={[Function]}
+>
+  <div />
+</div>
+`;

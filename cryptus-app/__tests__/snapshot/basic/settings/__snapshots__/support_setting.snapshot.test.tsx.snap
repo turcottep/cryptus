@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SupportSetting /> should display properly 1`] = `
+<div>
+  <div
+    onClick={[Function]}
+  >
+    Support
+    <div>
+      <img
+        src="/icons/back_icon.png"
+      />
+    </div>
+  </div>
+</div>
+`;
