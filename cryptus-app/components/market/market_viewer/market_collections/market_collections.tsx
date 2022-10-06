@@ -8,6 +8,8 @@ import { collection } from "../../../../lib/data_types";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { updatePrice } from "../../market";
 
+import { CircularProgress } from "@mui/material";
+
 // Need to add prop for collections
 export default function MarketCollections(props: {
   setLoading: Function;
@@ -26,7 +28,7 @@ export default function MarketCollections(props: {
     setCollections(props.collections);
   }, [props.collections]);
 
-  const getMoreCollections = () => {
+  const getMoreCollections = async () => {
     console.log("GetMoreCollections");
     const collections_dict = collectionDictionary;
     var hMore = true;
@@ -57,6 +59,7 @@ export default function MarketCollections(props: {
         props.setLoading,
         newCollectionsSliced
       );
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       setCollections((collection) => [...collection, ...newCollectionsSliced]);
     }
   };
@@ -71,7 +74,7 @@ export default function MarketCollections(props: {
             dataLength={collections.length}
             next={getMoreCollections}
             hasMore={hasMore}
-            loader={<h3> Loading...</h3>}
+            loader={<CircularProgress />}
             endMessage={<h4>Nothing more to show</h4>}
           >
             {collections.map((c, i) => (

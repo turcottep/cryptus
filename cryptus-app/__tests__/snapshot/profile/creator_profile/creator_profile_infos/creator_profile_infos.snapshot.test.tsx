@@ -56,7 +56,6 @@ it("CreatorProfileInfos renders correctly", () => {
         }}
         initial_filter={[]}
         image_url={mock_props.user.profile_image_url}
-        isMobile={false}
         {...mock_props}
       />
     )

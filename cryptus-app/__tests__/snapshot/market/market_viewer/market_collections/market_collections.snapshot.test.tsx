@@ -25,6 +25,8 @@ describe("<MarketCollections />", () => {
     const tree = renderer
       .create(
         <MarketCollections
+          setLoading={() => {}}
+          interval={0}
           name={"My Collections"}
           icon="icons/favorite_icon.png"
           collections={test_collections}

@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import { nft, nft_collection } from "../../../../lib/data_types";
 import InfiniteScroll from "react-infinite-scroll-component";
 
+import get_empty_profile_props from "../../../../lib/empty_profile_props";
+
 export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
   open_collection: (collection_name: string) => void;
@@ -15,8 +17,10 @@ export default function ProfileWalletViewer(props: {
   const [collections, setCollections] = useState(props.collections);
   const [hasMore, setHasMore] = useState(true);
   const getMoreCollections = () => {
+    /* await new Promise((resolve) => setTimeout(resolve, 2000)); */
     console.log("GetMoreCollections");
   };
+  const props_empty = get_empty_profile_props();
   return (
     <div className={s.container}>
       <InfiniteScroll
@@ -24,7 +28,13 @@ export default function ProfileWalletViewer(props: {
         dataLength={collections.length}
         next={getMoreCollections}
         hasMore={hasMore}
-        loader={<h3> Loading...</h3>}
+        loader={
+          <Collection
+            collection={props_empty.collections[0]}
+            open_collection={props.open_collection}
+            open_nft={props.open_nft}
+          />
+        }
         endMessage={<h4>Nothing more to show</h4>}
       >
         {props.collections
