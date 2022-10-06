@@ -26,6 +26,7 @@
     "get-eth-price": "^1.0.0",
     "jest-css-modules-transform": "^4.3.0",
     "js-sha256": "^0.9.0",
+    "mixpanel-browser": "^2.45.0",
     "mongodb": "^3.6.3",
     "next": "^12.3.1",
     "next-absolute-url": "^1.2.2",
