@@ -242,7 +242,10 @@ export default function MarketOverview(props: market_overview_props) {
             </div>
           </div>
           <div className={s.search_and_sort}>
-            <SearchBar callback={open_card} />
+            <SearchBar
+              callback={open_card}
+              collections={newPropCollectionMarket}
+            />
             <SortButton
               newPropCollectionFavorite={newPropCollectionFavorite}
               newPropCollectionMarket={newPropCollectionMarket}
