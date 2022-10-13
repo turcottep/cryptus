@@ -2,13 +2,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import s from "./search_bar.module.scss";
 import classNames from "classnames";
+import { useRouter } from "next/router";
 
-import { collection } from "../../../lib/data_types";
+import { collection, dbUsers } from "../../../lib/data_types";
+import username from "../../../pages/api/users/username";
 
 export default function SearchBar(props: {
   callback?;
   collections?: collection[];
+  users?: dbUsers[];
 }) {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const searchBarRef = useRef();
   const [searchBarPosX, setSearchBarPosX] = useState();
@@ -30,6 +34,7 @@ export default function SearchBar(props: {
       getPosition(searchBarRef);
     });
   }, []);
+
   return (
     <div className={s.container}>
       <div className={s.search_box} ref={searchBarRef}>
@@ -43,8 +48,9 @@ export default function SearchBar(props: {
           onChange={(event) => setQuery(event.target.value)}
         />
       </div>
+
       {/* Justin says use 'reduce' instead */}
-      {props.callback
+      {props.callback && props.collections
         ? props.collections
             .filter((collection) => {
               if (query === "") {
@@ -77,6 +83,43 @@ export default function SearchBar(props: {
                     ) : (
                       <p>{collection.name}</p>
                     )}
+                  </div>
+                );
+              }
+            })
+        : null}
+
+      {props.users
+        ? props.users
+            .filter((user) => {
+              if (query === "") {
+                return null;
+              } else if (
+                user.username.toLowerCase().includes(query.toLowerCase())
+              ) {
+                return user;
+              }
+            })
+            .map((user, index) => {
+              if (index < 8) {
+                return (
+                  <div
+                    className={classNames(s.search_items)}
+                    key={user.username}
+                    style={{
+                      top: index * 55 + Number(searchBarPosY) + 2,
+                      left: 24 + Number(searchBarPosX),
+                      width: Number(searchBarPosWidth) - 26,
+                    }}
+                    onClick={() => {
+                      router.push("/" + user.username);
+                    }}
+                  >
+                    <img
+                      src={user.profile_image_url}
+                      className={s.search_image}
+                    />
+                    <p>{user.username}</p>
                   </div>
                 );
               }

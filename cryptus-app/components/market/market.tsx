@@ -7,7 +7,7 @@ import s from "./market.module.scss";
 import { useSession } from "next-auth/client";
 
 //internal imports
-import { user, intervals, collection } from "../../lib/data_types";
+import { user, intervals, collection, dbUsers } from "../../lib/data_types";
 
 import SearchBar from "./search_bar/search_bar";
 import SortButton from "./sort_button/sort_button";
@@ -25,6 +25,8 @@ import Support from "../basic/support/support";
 import get_user_by_username from "../../lib/get_user_by_username";
 import DateComponent from "./market_header/date/date";
 import TimeInterval from "./market_header/time_interval/time_interval";
+
+import findAllUsers from "../../lib/findAllUsers";
 
 type market_overview_props = {
   date: string;
@@ -81,6 +83,8 @@ export default function MarketOverview(props: market_overview_props) {
   const [show_card_wallet_manager, set_show_wallet_manager] = useState(false);
   const [show_card_support, set_show_support] = useState(false);
 
+  const [usersProfiles, setUsersProfiles] = useState<dbUsers[]>([]);
+
   useEffect(() => {
     const getUser = async (username: string) => {
       let profileProps = await get_profile_props(username);
@@ -111,6 +115,14 @@ export default function MarketOverview(props: market_overview_props) {
   useEffect(() => {
     const newPropCollectionTemp = update();
     updateUserCollections([]);
+  }, []);
+
+  useEffect(() => {
+    const getAllUsers = async () => {
+      let allUsers = await findAllUsers();
+      setUsersProfiles(allUsers);
+    };
+    getAllUsers();
   }, []);
 
   const update = async (interval: intervals = props.networth.active) =>
@@ -246,6 +258,7 @@ export default function MarketOverview(props: market_overview_props) {
               callback={open_card}
               collections={newPropCollectionMarket}
             />
+            {/* <SearchBar users={usersProfiles} /> */}
             <SortButton
               newPropCollectionFavorite={newPropCollectionFavorite}
               newPropCollectionMarket={newPropCollectionMarket}
