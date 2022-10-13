@@ -6,6 +6,7 @@ import connectMetamask from "../../../lib/connectMetamask";
 
 import Loading from "../../utils/loading/loading";
 import MetamaskButton2 from "../../utils/metamask/metamaskbutton2";
+import mixpanel from "mixpanel-browser";
 
 import * as google_analytics from "../../../lib/google_analytics";
 
@@ -113,12 +114,14 @@ const Footer = () => {
 const ButtonTryNow = (props: { setLoading: Function; isMobile }) => {
   const { setLoading } = props;
 
+  const ocm = () => {
+    mixpanel.track("Try Now");
+    connectMetamask(setLoading, props.isMobile);
+  };
+
   return (
     <div className={s.buttondiv}>
-      <div
-        className={s.button}
-        onClick={() => connectMetamask(setLoading, props.isMobile)}
-      >
+      <div className={s.button} onClick={ocm}>
         {"TRY NOW"}
       </div>
     </div>
