@@ -22,10 +22,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       const nfts = [];
       for (let i = 0; i < user.wallets.length; i++) {
         const wallet = user.wallets[i];
-        const collections = get_collections_in_wallet(wallet.address);
+        const collections_in_wallet = get_collections_in_wallet(wallet.address);
         let nfts_per_wallet = await get_nfts_for_wallet(
           wallet.address,
-          collections
+          collections_in_wallet
         );
 
         nfts.push(...nfts_per_wallet);

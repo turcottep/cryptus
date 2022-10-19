@@ -11,6 +11,8 @@ import get_nfts_for_wallet from "../../../../lib/get_nfts_for_wallet";
 import sortNftsIntoCollections from "../../../../lib/sort_nfts_into_collections";
 import useWindowSize from "../../../utils/use_window_size";
 
+import get_empty_profile_props from "../../../../lib/empty_profile_props";
+
 export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
   open_collection: (collection_name: string) => void;
@@ -65,7 +67,7 @@ export default function ProfileWalletViewer(props: {
       setCollections((collection) => [...collection, ...newCollections]);
     }
   };
-
+  const props_empty = get_empty_profile_props();
   return (
     <div className={s.container}>
       <InfiniteScroll
@@ -74,8 +76,14 @@ export default function ProfileWalletViewer(props: {
         dataLength={collections.length}
         next={getMoreCollections}
         hasMore={hasMore}
-        loader={<h3> Loading...</h3>}
-        // endMessage={<h4>Nothing more to show</h4>}
+        loader={
+          <Collection
+            collection={props_empty.collections[0]}
+            open_collection={props.open_collection}
+            open_nft={props.open_nft}
+          />
+        }
+        endMessage={<h4>Nothing more to show</h4>}
       >
         {collections
           .filter((collection) => {

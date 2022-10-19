@@ -17,9 +17,17 @@ exports[`<ProfileWalletViewer /> should display properly 1`] = `
         }
       }
     >
-      <h3>
-         Loading...
-      </h3>
+      <div>
+        <div
+          onClick={[Function]}
+        >
+          <div />
+        </div>
+        <div>
+          
+        </div>
+        <div />
+      </div>
     </div>
   </div>
 </div>
