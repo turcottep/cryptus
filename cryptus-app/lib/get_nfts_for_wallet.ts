@@ -49,6 +49,11 @@ export default async function get_nfts_for_wallet(address: string) {
     let rarity_rank: any = 0;
     let traits_sorted = [];
     let rarity = 0;
+
+    if (nft.collection.slug === "oldbabyclub") {
+      console.log("traits", nft.traits);
+    }
+
     if (nft.traits.length > 0) {
       const traits = nft.traits.map((trait) => {
         return {

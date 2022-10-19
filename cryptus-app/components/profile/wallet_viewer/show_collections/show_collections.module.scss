@@ -12,6 +12,7 @@
   margin-top: 612px;
   z-index: 100;
   // background-color: red;
+  height: 100%;
   width: 100%;
 }
 
@@ -48,6 +49,9 @@
   justify-content: flex-start;
   background-color: v.$header-color;
   width: 100%;
+
+  // max-height: 800px;
+  overflow-y: scroll;
 }
 
 .button {
