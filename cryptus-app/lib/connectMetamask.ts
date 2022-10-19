@@ -23,7 +23,8 @@ const connectMetamask = async (setLoading: Function, isMobile) => {
           )
           .focus();
       } else {
-        window.open("https://metamask.io/", "_blank").focus();
+        alert("Please download MetaMask to connect to your wallet");
+        // window.open("https://metamask.io/", "_blank").focus();
       }
       setLoading(false);
       return;
@@ -45,14 +46,14 @@ const connectMetamask = async (setLoading: Function, isMobile) => {
       signIn("credentials", {
         redirect: true,
         address: wallet_address,
-        callbackUrl: `${window.location.origin}/edit_profile`,
+        callbackUrl: `/` + user.username,
       });
     } else {
       const user = await FindUserFromUserId(userId, false, false);
       signIn("credentials", {
         redirect: true,
         address: wallet_address,
-        callbackUrl: `${window.location.origin}/` + user.username,
+        callbackUrl: `/` + user.username,
       });
     }
   } catch (error) {
