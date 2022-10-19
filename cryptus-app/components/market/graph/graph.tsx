@@ -1,7 +1,14 @@
 import React, { useRef, useEffect, useState } from "react";
 import s from "./graph.module.scss";
 
-import { ChartData, ChartArea, Filler, BarElement } from "chart.js";
+import {
+  ChartData,
+  ChartArea,
+  Filler,
+  BarElement,
+  BarController,
+  LineController,
+} from "chart.js";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,6 +21,8 @@ import {
 import { Chart } from "react-chartjs-2";
 
 ChartJS.register(
+  BarController,
+  LineController,
   CategoryScale,
   LinearScale,
   PointElement,
