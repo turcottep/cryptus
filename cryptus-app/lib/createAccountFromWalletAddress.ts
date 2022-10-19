@@ -1,11 +1,8 @@
-import get_base_url from "./get_base_url";
-
 export default async function CreateAccountFromWalletAddress(
   wallet_address,
   absolute = true
 ) {
-  const base_url = get_base_url();
-  const res = await fetch(base_url + "/api/leads/createWalletFromAddress", {
+  const res = await fetch("/api/leads/createWalletFromAddress", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -1,6 +1,5 @@
 import { nft } from "./data_types";
 import GetCollectionTokens from "./get_collection_token";
-import get_base_url from "./get_base_url";
 
 export default async function get_nfts_for_wallet(address: string) {
   let res;
