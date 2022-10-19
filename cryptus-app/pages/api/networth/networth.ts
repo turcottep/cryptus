@@ -6,6 +6,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     prisma.$connect();
     const collections = req.body.collections as string[];
 
+    // start timer
+    const start = Date.now();
+
     const collection_floors = await prisma.collectiontraitfloor.findMany({
       where: {
         address: {
@@ -13,6 +16,11 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         },
       },
     });
+
+    // end timer
+    const end = Date.now();
+    const time = end - start;
+    console.log("time", time / 1000 + "s");
 
     res.status(201);
     res.json(collection_floors);

@@ -4,6 +4,7 @@ import s from "./profile_wallet_viewer.module.scss";
 import { useRouter } from "next/router";
 
 import { nft, nft_collection } from "../../../../lib/data_types";
+import collections_dict from "../../../../lib/collectionDictionary";
 
 export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
@@ -11,11 +12,25 @@ export default function ProfileWalletViewer(props: {
   open_nft: (collection_name: string, nft_token_id: string) => void;
   collections_filter: string[];
 }) {
+  const top_collections_address_list = Object.keys(collections_dict).map(
+    (key) => collections_dict[key].address.toLowerCase()
+  );
+
+  console.log("collections", props.collections);
+
+  // console.log("index of ");
+
   return (
     <div className={s.container}>
       {props.collections
         .filter((collection) => {
           return !props.collections_filter.includes(collection.address);
+        })
+        .sort((a, b) => {
+          return (
+            top_collections_address_list.indexOf(b.address.toLowerCase()) -
+            top_collections_address_list.indexOf(a.address.toLowerCase())
+          );
         })
         .map((collection: nft_collection, i: number) => (
           <div key={i}>
@@ -65,7 +80,11 @@ const Collection = (props: {
     // const pushurl = `/${userId}/${collectionName}`;
     // console.log("pushurl", pushurl);
     // router.push(pushurl);
-    props.open_collection(props.collection.name);
+    if (props.collection.name != "") {
+      props.open_collection(props.collection.name);
+    } else {
+      console.log("collection name is empty");
+    }
   };
 
   if (collection.nfts.length == 1) {
@@ -129,7 +148,13 @@ const NftL = (props: { nft: nft; collectionName: string; open_nft }) => {
   const onNftClick = (e) => {
     // router.push(`${userId}/${collectionName}/${urlName}`);
     // console.log(urlName);
-    props.open_nft(props.collectionName, props.nft.token_id);
+    // if(props.co)
+    // console.log("collectionName", collectionName);
+    if (props.collectionName != "") {
+      props.open_nft(props.collectionName, props.nft.token_id);
+    } else {
+      console.log("collectionName is empty");
+    }
 
     e.preventDefault();
     e.stopPropagation();

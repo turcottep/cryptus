@@ -7,6 +7,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  // background-color: aqua;
 }
 
 // .box {
@@ -29,4 +31,21 @@
   color: rgb(0, 0, 0);
 
   height: 24px;
+}
+
+.sort_button_inner {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 2px 8px;
+  border-radius: 16px;
+
+  background-color: v.$secondary-color-pale;
+}
+
+.sort_icon {
+  height: 16px;
 }
