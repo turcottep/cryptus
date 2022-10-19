@@ -28,6 +28,7 @@ describe("<ProfileWalletViewer />", () => {
             throw new Error("Function not implemented.");
           }}
           collections_filter={[]}
+          wallets={[]}
         />
       )
       .toJSON();

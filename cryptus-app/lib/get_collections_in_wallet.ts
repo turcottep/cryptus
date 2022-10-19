@@ -21,13 +21,10 @@ export default async function get_collections_in_wallet(address: string) {
       );
       // res = await fetch(wallet.external_url);
       const data = await res.json();
-      if (!data.collections) break;
       console.log("Collections", data);
-      const collections_raw_temp = data.collections;
-      collections_raw.push(...collections_raw_temp);
+      if (data.length == 0) break;
+      collections_raw.push(...data);
     }
-
-    console.log("nfts_raw", collections_raw.length);
   } catch (err) {
     console.error(err);
     console.log("response = ", res);

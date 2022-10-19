@@ -45,7 +45,7 @@ export default function MarketCollections(props: {
         currentIndex,
         newCollections.length
       );
-      setCurrentIndex(currentIndex + newCollections.length);
+      setCurrentIndex(currentIndex + newCollectionsSliced.length);
     } else {
       setHasMore(false);
       hMore = false;

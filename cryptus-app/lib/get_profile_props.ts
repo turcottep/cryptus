@@ -9,7 +9,8 @@ import { time } from "console";
 import get_collections_in_wallet from "./get_collections_in_wallet";
 
 export default async function get_profile_props(
-  user_name: string
+  user_name: string,
+  nbColToFillPage: number
 ): Promise<{ props: profile_props }> {
   const user = await getUserByUsername(user_name, true);
 
@@ -19,15 +20,17 @@ export default async function get_profile_props(
 
   try {
     let nfts = [];
-    for (let i = 0; i < user.wallets.length; i++) {
-      const wallet = user.wallets[i];
-      const collections_in_wallet = get_collections_in_wallet(wallet.address);
-      let nfts_per_wallet = await get_nfts_for_wallet(
-        wallet.address,
-        collections_in_wallet
-      );
-      nfts.push(...nfts_per_wallet);
-    }
+    const wallet = user.wallets[0];
+    const collections_in_wallet = await get_collections_in_wallet(
+      wallet.address
+    );
+    if (nbColToFillPage > collections_in_wallet.length)
+      nbColToFillPage = collections_in_wallet.length;
+    let nfts_per_wallet = await get_nfts_for_wallet(
+      wallet.address,
+      collections_in_wallet.slice(0, nbColToFillPage)
+    );
+    nfts.push(...nfts_per_wallet);
 
     if (nfts.length == 0) {
       console.log("getting nft from our database");

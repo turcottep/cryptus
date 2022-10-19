@@ -16,17 +16,24 @@ export default async function get_nfts_for_wallet(
     rarity: number;
   };
   try {
-    //fetch nfts from opensea
-    let cursor = "";
+    //fetch collections from opensea
     if (collections) {
+      let asset_contract_adresses = "";
       for (var collection of collections) {
+        asset_contract_adresses =
+          asset_contract_adresses +
+          "&asset_contract_addresses=" +
+          collection.primary_asset_contracts[0].address;
+      }
+      let cursor = "";
+      for (let i = 0; i < 5; i++) {
         res = await fetch(
           "https://api.opensea.io/api/v1/assets?owner=" +
             address +
-            "&order_direction=desc&limit=50&cursor=" +
-            cursor +
-            "&collection=" +
-            collection,
+            "&order_direction=desc&limit=30" +
+            asset_contract_adresses +
+            "&cursor=" +
+            cursor,
           {
             headers: {
               Accept: "application/json",

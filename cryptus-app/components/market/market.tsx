@@ -85,7 +85,7 @@ export default function MarketOverview(props: market_overview_props) {
 
   useEffect(() => {
     const getUser = async (username: string) => {
-      let profileProps = await get_profile_props(username);
+      let profileProps = await get_profile_props(username, 10);
       setUser(profileProps.props.user);
     };
     if (session) {

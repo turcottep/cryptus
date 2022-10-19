@@ -1,3 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProfileWalletViewer /> should display properly 1`] = `<div />`;
+exports[`<ProfileWalletViewer /> should display properly 1`] = `
+<div>
+  <div
+    className="infinite-scroll-component__outerdiv"
+    style={Object {}}
+  >
+    <div
+      className="infinite-scroll-component "
+      style={
+        Object {
+          "WebkitOverflowScrolling": "touch",
+          "height": "auto",
+          "overflow": "auto",
+          "overflowY": "hidden",
+        }
+      }
+    >
+      <h3>
+         Loading...
+      </h3>
+    </div>
+  </div>
+</div>
+`;

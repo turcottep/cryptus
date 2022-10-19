@@ -170,6 +170,7 @@ export default function Profile(props: {
         collections={collections}
         open_collection={open_collection}
         open_nft={open_nft}
+        wallets={props.user.wallets}
         collections_filter={collections_filter}
         key={update_collection}
       />
