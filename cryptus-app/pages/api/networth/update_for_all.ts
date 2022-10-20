@@ -3,7 +3,6 @@ import get_nfts_for_wallet from "../../../lib/get_nfts_for_wallet";
 import calculate_networth from "../../../lib/networth";
 import prisma from "../../../lib/prisma";
 import sortNftsIntoCollections from "../../../lib/sort_nfts_into_collections";
-import sort_nfts_into_collections from "../../../lib/sort_nfts_into_collections";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {

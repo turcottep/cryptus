@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
-import FindUserFromUserId from "../../../lib/findUserFromUserId";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -9,7 +8,15 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         address: req.body.currentAddress,
       },
     });
-    const user = await FindUserFromUserId(addedWallet.userId, true, true);
+    // const user = await FindUserFromUserId(addedWallet.userId, true, true);
+    const user = await prisma.user.findUnique({
+      include: {
+        wallets: true,
+      },
+      where: {
+        id: addedWallet.userId,
+      },
+    });
 
     const newUser = await prisma.user.update({
       where: {

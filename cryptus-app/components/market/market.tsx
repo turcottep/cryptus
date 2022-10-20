@@ -70,7 +70,7 @@ export default function MarketOverview(props: market_overview_props) {
     props.collections
   );
 
-  const [session, status] = useSession();
+  const [session, status_status] = useSession();
   const [username, setUsername] = useState<string>("");
   const [user, setUser] = useState(props_user_empty);
   const [loading, setLoading] = useState(false);
@@ -94,10 +94,12 @@ export default function MarketOverview(props: market_overview_props) {
     };
     if (session) {
       const user_name = session.user.name;
+      console.log("user_name", user_name);
+
       update_for_user(user_name);
       setUsername(user_name);
     }
-  }, [status]);
+  }, [status_status]);
 
   const updateUserCollections = (user_collections) => {
     const newPropCollectionFavoriteTemp = [];

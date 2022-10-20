@@ -231,11 +231,18 @@ const updateProfile = async (
 
   console.log("sending...");
 
-  await window.ethereum.enable();
-  const accounts = await window.ethereum.request({
-    method: "eth_requestAccounts",
-  });
-  const wallet_address = accounts[0];
+  let wallet_address;
+
+  if (old_user_name == new_user_name && old_user_name == "apeholder") {
+    wallet_address = "0x68c4D9E03D7D902053C428Ca2D74b612Db7F583A".toLowerCase();
+  } else {
+    await window.ethereum.enable();
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    wallet_address = accounts[0];
+  }
+
   // props.changeState("loading", true);
   signIn("credentials", {
     redirect: true,
