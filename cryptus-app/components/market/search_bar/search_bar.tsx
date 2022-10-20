@@ -43,7 +43,11 @@ export default function SearchBar(props: {
           type="text"
           className={s.searchTerm}
           placeholder={
-            props.collections ? "Enter a collection name" : "Coming soon..."
+            props.collections
+              ? "Enter a collection name"
+              : props.users
+              ? "Enter a username"
+              : "Coming soon..."
           }
           onChange={(event) => setQuery(event.target.value)}
         />

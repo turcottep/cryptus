@@ -1,0 +1,42 @@
+@use "/styles/variables" as v;
+
+.container {
+  flex: 1 1 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 10px 0 10px;
+}
+
+.header {
+  flex: 1 1 auto;
+
+  display: flex;
+  position: fixed;
+  top: 0;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: min(100vw, v.$mobile);
+  height: v.$header-h;
+}
+
+.settingsTitle {
+  flex: 1 1 auto;
+
+  display: flex;
+  font-size: v.$font-size-ml;
+  justify-content: center;
+}
+
+.searchBarMobile {
+  display: flex;
+  margin-top: 45px;
+}
+
+.searchBar {
+  display: flex;
+  margin-top: 10px;
+}

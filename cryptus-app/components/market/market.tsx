@@ -25,6 +25,7 @@ import Support from "../basic/support/support";
 import get_user_by_username from "../../lib/get_user_by_username";
 import DateComponent from "./market_header/date/date";
 import TimeInterval from "./market_header/time_interval/time_interval";
+import SearchIcon from "../basic/header/search_icon/search_icon";
 
 import findAllUsers from "../../lib/findAllUsers";
 
@@ -82,6 +83,7 @@ export default function MarketOverview(props: market_overview_props) {
   const [show_card_settings, set_show_settings] = useState(false);
   const [show_card_wallet_manager, set_show_wallet_manager] = useState(false);
   const [show_card_support, set_show_support] = useState(false);
+  const [show_card_search, set_show_search] = useState(false);
 
   const [usersProfiles, setUsersProfiles] = useState<dbUsers[]>([]);
 
@@ -155,6 +157,11 @@ export default function MarketOverview(props: market_overview_props) {
     set_show_card(false);
     set_show_settings(false);
     set_show_wallet_manager(false);
+    set_show_search(false);
+  };
+
+  const open_search = () => {
+    set_show_search(true);
   };
 
   const close_wallet = () => {
@@ -205,7 +212,11 @@ export default function MarketOverview(props: market_overview_props) {
   return (
     <div className={show_card ? s.container_no_scroll : s.container}>
       {isMobile ? null : (
-        <DesktopHeader tab="market" open_settings={open_settings} />
+        <DesktopHeader
+          tab="market"
+          open_settings={open_settings}
+          open_search={open_search}
+        />
       )}
       <div className={s.containee}>
         {loading && <Loading />}
@@ -222,6 +233,13 @@ export default function MarketOverview(props: market_overview_props) {
             callback_close={close_all}
             open_wallet_manager={open_wallet_manager}
             open_support={open_support}
+          />
+        )}
+        {show_card_search && (
+          <SearchIcon
+            isMobile={isMobile}
+            callback_close={close_all}
+            users={usersProfiles}
           />
         )}
         {show_card_wallet_manager && (
