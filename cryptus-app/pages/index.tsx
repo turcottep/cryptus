@@ -6,6 +6,8 @@ import router from "next/router";
 import { isMobile as mobile } from "react-device-detect";
 
 import LandingPage from "../components/basic/landing_page/landing_page";
+import mixpanel from "mixpanel-browser";
+mixpanel.init("502216c60c90f9cb3d9faf87ccb82e67", { debug: true });
 
 export default function Home() {
   const [session, loading] = useSession();

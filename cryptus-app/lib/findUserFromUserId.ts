@@ -1,14 +1,11 @@
-import get_base_url from "./get_base_url";
-
 export default async function FindUserFromUserId(
   id,
   withWallets = false,
   absolute = true
 ) {
-  const base_url = get_base_url();
   let res;
   try {
-    res = await fetch(base_url + "/api/users/id", {
+    res = await fetch("/api/users/id", {
       method: "POST",
       body: JSON.stringify({
         id: id,

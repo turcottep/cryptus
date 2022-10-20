@@ -12,6 +12,7 @@ import sortNftsIntoCollections from "../../../../lib/sort_nfts_into_collections"
 import useWindowSize from "../../../utils/use_window_size";
 
 import get_empty_profile_props from "../../../../lib/empty_profile_props";
+import collections_dict from "../../../../lib/collectionDictionary";
 
 export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
@@ -41,7 +42,7 @@ export default function ProfileWalletViewer(props: {
     if (collections_in_wallet.length > currentIndex + nbColWidth) {
       collections_in_wallet_sliced = collections_in_wallet.slice(
         currentIndex,
-        currentIndex + 6
+        currentIndex + nbColWidth
       );
       setCurrentIndex(currentIndex + nbColWidth);
     } else if (collections_in_wallet.length > currentIndex) {
@@ -68,6 +69,9 @@ export default function ProfileWalletViewer(props: {
     }
   };
   const props_empty = get_empty_profile_props();
+  const top_collections_address_list = Object.keys(collections_dict).map(
+    (key) => collections_dict[key].address.toLowerCase()
+  );
   return (
     <div className={s.container}>
       <InfiniteScroll
@@ -88,6 +92,12 @@ export default function ProfileWalletViewer(props: {
         {collections
           .filter((collection) => {
             return !props.collections_filter.includes(collection.address);
+          })
+          .sort((a, b) => {
+            return (
+              top_collections_address_list.indexOf(b.address.toLowerCase()) -
+              top_collections_address_list.indexOf(a.address.toLowerCase())
+            );
           })
           .map((collection: nft_collection, i: number) => (
             <div key={i}>
@@ -138,7 +148,11 @@ const Collection = (props: {
     // const pushurl = `/${userId}/${collectionName}`;
     // console.log("pushurl", pushurl);
     // router.push(pushurl);
-    props.open_collection(props.collection.name);
+    if (props.collection.name != "") {
+      props.open_collection(props.collection.name);
+    } else {
+      console.log("collection name is empty");
+    }
   };
 
   if (collection.nfts.length == 1) {
@@ -202,7 +216,13 @@ const NftL = (props: { nft: nft; collectionName: string; open_nft }) => {
   const onNftClick = (e) => {
     // router.push(`${userId}/${collectionName}/${urlName}`);
     // console.log(urlName);
-    props.open_nft(props.collectionName, props.nft.token_id);
+    // if(props.co)
+    // console.log("collectionName", collectionName);
+    if (props.collectionName != "") {
+      props.open_nft(props.collectionName, props.nft.token_id);
+    } else {
+      console.log("collectionName is empty");
+    }
 
     e.preventDefault();
     e.stopPropagation();

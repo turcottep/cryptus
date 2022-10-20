@@ -1,7 +1,5 @@
 import { collection, nft } from "./data_types";
 import GetCollectionTokens from "./get_collection_token";
-import get_base_url from "./get_base_url";
-import { market_collection_props } from "../components/market/market_collection/market_collection";
 
 export default async function get_nfts_for_wallet(
   address: string,
@@ -65,6 +63,11 @@ export default async function get_nfts_for_wallet(
     let rarity_rank: any = 0;
     let traits_sorted = [];
     let rarity = 0;
+
+    if (nft.collection.slug === "oldbabyclub") {
+      console.log("traits", nft.traits);
+    }
+
     if (nft.traits.length > 0) {
       const traits = nft.traits.map((trait) => {
         return {

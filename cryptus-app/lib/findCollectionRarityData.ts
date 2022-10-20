@@ -1,14 +1,11 @@
-import get_base_url from "./get_base_url";
-
 export default async function FindCollectionRarityData(
   collectionAddress,
   token_id = "",
   withNfts = false
 ) {
-  const base_url = get_base_url();
   let res;
   try {
-    res = await fetch(base_url + "/api/collection/address", {
+    res = await fetch("/api/collection/address", {
       method: "POST",
       body: JSON.stringify({
         collection_address: collectionAddress,

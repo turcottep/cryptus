@@ -1,15 +1,12 @@
-import get_base_url from "./get_base_url";
-
 export default async function update_collection_filter(
   username: string,
   collection_filter: string[]
 ) {
   console.log("update_collection_filter", username, collection_filter);
 
-  const base_url = get_base_url();
   let res;
   try {
-    res = await fetch(base_url + "/api/nfts/filter", {
+    res = await fetch("/api/nfts/filter", {
       method: "POST",
       body: JSON.stringify({
         username: username,
