@@ -1,10 +1,7 @@
-import get_base_url from "./get_base_url";
-
 export default async function FindAllUsers() {
-  const base_url = get_base_url();
   let res;
   try {
-    res = await fetch(base_url + "/api/users/findAllUsers", {
+    res = await fetch("/api/users/findAllUsers", {
       method: "POST",
       body: JSON.stringify({}),
       headers: {
