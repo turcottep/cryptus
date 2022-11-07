@@ -2,47 +2,25 @@
 
 exports[`<DesktopHeader /> should display properly 1`] = `
 <div
-  id="header"
+  id="bg"
+  onClick={[Function]}
 >
   <div>
-    <a
-      href="/"
-    >
-      Public Wallet
-    </a>
-  </div>
-  <div>
-    <a
-      href="/market"
-    >
-      market
-    </a>
-    <a
-      href="/market"
-    >
-      search
-    </a>
-    <div
-      onClick={[Function]}
-    >
-      profile
-    </div>
-  </div>
-  <div>
-    <a
-      href="/market"
-      target="_blank"
-    >
-      <img
-        src="/icons/notification_icon.png"
-      />
-    </a>
-    <div
-      onClick={[Function]}
-    >
-      <img
-        src="/icons/menu_icon.png"
-      />
+    <div>
+      <div>
+        <div>
+          <div>
+            <img
+              src="magnifier.svg"
+            />
+            <input
+              onChange={[Function]}
+              placeholder="Enter a username"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

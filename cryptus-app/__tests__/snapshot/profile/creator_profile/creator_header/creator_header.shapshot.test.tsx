@@ -5,7 +5,7 @@ import CreatorHeader from "../../../../../components/profile/creator_profile/cre
 
 it("CreatorHeader renders correctly", () => {
   const tree = renderer
-    .create(<CreatorHeader open_settings={undefined} />)
+    .create(<CreatorHeader open_settings={undefined} open_search={undefined} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

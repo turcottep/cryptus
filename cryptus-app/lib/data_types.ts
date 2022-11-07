@@ -15,6 +15,23 @@ export interface nft {
   token_id: string;
 }
 
+export interface dbUsers {
+  id: string;
+  email: string;
+  username: string;
+  displayName: string;
+  nfts_order: Number[];
+  description: string;
+  views: Number;
+  likes: Number;
+  hash: string;
+  collections_filter: string[];
+  collections_list: string[];
+  networth: Number;
+  profile_image_url: string;
+  subscription: string;
+}
+
 export interface user {
   networth?: number;
   description?: string;
