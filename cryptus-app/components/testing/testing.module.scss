@@ -1,67 +1,5 @@
 @use "/styles/variables" as v;
 
-.page {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-
-  min-height: 100vh;
-  width: 100%;
-
-  background-color: v.$grey;
-
-  position: relative;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-
-  padding-top: v.$header-h;
-
-  // width: clamp(400px, 80%, 80%);
-  width: 800px;
-  @media (max-width: v.$mobile) {
-    width: min(100vw, v.$mobile);
-  }
-  min-height: 100vh;
-  background-color: rgba(124, 83, 83, 0.2);
-}
-
-.popuppage {
-  @extend .page;
-  position: absolute;
-
-  background-color: v.$lightblack;
-}
-
-.popupcontent {
-  @extend .content;
-  background-color: rgb(188, 208, 36);
-}
-
-.header {
-  position: fixed;
-  top: 0;
-
-  width: 100%;
-  height: v.$header-h;
-  background-color: v.$lightblack;
-}
-
-.headercontent {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  height: 100%;
-  padding: 0 32px;
-}
-
 .market {
   display: flex;
   flex-direction: column;
@@ -71,6 +9,7 @@
   width: 100%;
   min-height: 100vh;
   background-color: v.$lightgrey;
+  gap: 1px;
 }
 
 .collections {
@@ -81,4 +20,134 @@
   background-color: red;
   height: 100%;
   width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+
+  > div {
+    background-color: red;
+  }
+}
+
+.modifiers {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(8px, 2vw, 32px);
+
+  height: 47px;
+  background-color: lightblue;
+
+  > div {
+    background-color: red;
+  }
+}
+
+.networth {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+
+  background-color: rgb(77, 169, 200);
+
+  > div {
+    background-color: red;
+  }
+
+  .number {
+    display: grid;
+    grid-template-columns: 70px auto 70px;
+    grid-template-rows: 75px 25px;
+    grid-template-areas: ". num fiat" ". change .";
+
+    gap: 8px;
+    padding: 0 8px;
+
+    background-color: rgb(41, 88, 190);
+
+    > div {
+      background-color: rgb(203, 137, 87);
+    }
+
+    .num {
+      grid-area: num;
+      place-self: flex-end;
+    }
+    .fiat {
+      grid-area: fiat;
+      place-self: flex-end;
+    }
+    .change {
+      grid-area: change;
+      place-self: flex-start;
+    }
+  }
+
+  .graph {
+    width: clamp(350px, 90%, 700px);
+    aspect-ratio: 16/9;
+  }
+}
+
+.collections {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1px;
+
+  width: 100%;
+  background-color: rgb(178, 220, 234);
+
+  > div {
+    width: 100%;
+  }
+}
+
+.collection {
+  display: grid;
+  grid-template-columns: 70px 70px auto 70px;
+  grid-template-rows: 70px;
+  column-gap: 8px;
+  padding: 0 8px;
+
+  // place-self: center;
+
+  background-color: rgb(190, 51, 41);
+
+  > div {
+    background-color: rgb(212, 164, 128);
+  }
+
+  > div:nth-child(2) {
+    background-color: red;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 1px;
+
+    > div {
+      background-color: green;
+    }
+  }
+
+  > div:nth-child(4) {
+    background-color: red;
+    display: grid;
+    grid-template-rows: 1.5fr 1fr;
+    row-gap: 1px;
+
+    > div {
+      background-color: green;
+    }
+  }
 }

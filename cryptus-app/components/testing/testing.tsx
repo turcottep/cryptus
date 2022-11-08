@@ -1,20 +1,53 @@
 import React, { useState, useEffect } from "react";
 import s from "./testing.module.scss";
 
+import { Header, Page, Popup } from "./buildingblocks/buildingblocks";
+
 export default function Testing(props: {}) {
-  const [v, setValue] = useState(true);
+  const [v, setValue] = useState(false);
+  const collections = [1, 2, 3, 4];
 
   return (
     <Page>
       <div className={s.market}>
         <Header>
-          <div className={s.he1}>logo</div>
-          <div className={s.he1}>pages</div>
-          <div className={s.he1}>icons</div>
+          <div className={s.header}>
+            <div className={s.bla}>logo</div>
+            <div className={s.bla}>menu</div>
+            <div className={s.bla}>icons</div>
+          </div>
         </Header>
-        <div className={s.modifiers}>modifiers</div>
-        <div className={s.networth}>networth</div>
-        <div className={s.collections}>collections</div>
+        <div className={s.modifiers}>
+          <div className={s.bla}>1M</div>
+          <div className={s.bla}>filters</div>
+          <div className={s.bla}>sort</div>
+        </div>
+        <div className={s.networth}>
+          <div className={s.number}>
+            <div className={s.num}>number</div>
+            <div className={s.fiat}>fiat</div>
+            <div className={s.change}>change</div>
+          </div>
+          <div className={s.graph}>graph</div>
+        </div>
+        <div className={s.collections}>
+          {collections.map((collection) => (
+            <div key={collection}>
+              <div className={s.collection}>
+                <div className={s.bla}>image</div>
+                <div className={s.bla}>
+                  <div className={s.bla}>name</div>
+                  <div className={s.bla}>description</div>
+                </div>
+                <div className={s.graphic}>graphic</div>
+                <div className={s.bla}>
+                  <div className={s.bla}>price</div>
+                  <div className={s.bla}>change</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <Popup v={v}>
         <div className={s.collection}>
@@ -35,32 +68,3 @@ export default function Testing(props: {}) {
     </Page>
   );
 }
-
-const Header = (props: { children: React.ReactNode }) => {
-  return (
-    <div className={s.header}>
-      <div className={s.headercontent}>{props.children}</div>
-    </div>
-  );
-};
-
-const Page = (props: { children: React.ReactNode }) => {
-  return (
-    <div className={s.page}>
-      <div className={s.content}>{props.children}</div>
-    </div>
-  );
-};
-
-const Popup = (props: { children: React.ReactNode; v: boolean }) => {
-  const [visibility, setVisibility] = useState(false);
-  useEffect(() => {
-    setVisibility(props.v);
-  }, [props.v]);
-
-  return visibility ? (
-    <div className={s.popuppage}>
-      <div className={s.popupcontent}>{props.children}</div>
-    </div>
-  ) : null;
-};
