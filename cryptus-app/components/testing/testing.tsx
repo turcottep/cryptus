@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import s from "./testing.module.scss";
 
 export default function Testing(props: {}) {
-  const [v, setValue] = useState(false);
+  const [v, setValue] = useState(true);
 
   return (
     <Page>
@@ -18,12 +18,15 @@ export default function Testing(props: {}) {
       </div>
       <Popup v={v}>
         <div className={s.collection}>
-          <div className={s.header}>collection</div>
+          <div className={s.blablabla}>collection</div>
           <div className={s.price}></div>
           <div className={s.data}></div>
         </div>
       </Popup>
       <Popup v={v}>
+        <Header>
+          <div className={s.test}>dsada</div>
+        </Header>
         <div className={s.search}>
           <div className={s.input}>input</div>
           <div className={s.results}></div>
