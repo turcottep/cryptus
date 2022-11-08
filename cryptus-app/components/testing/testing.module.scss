@@ -1,0 +1,78 @@
+@use "/styles/variables" as v;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  min-height: 100vh;
+  width: 100%;
+
+  background-color: v.$grey;
+
+  position: relative;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding-top: v.$header-h;
+
+  // width: clamp(400px, 80%, 80%);
+  width: 800px;
+  @media (max-width: v.$mobile) {
+    width: min(100vw, v.$mobile);
+  }
+  min-height: 100vh;
+  background-color: rgba(124, 83, 83, 0.2);
+}
+
+.popuppage {
+  @extend .page;
+  position: absolute;
+
+  background-color: v.$lightblack;
+}
+
+.popupcontent {
+  @extend .content;
+  background-color: rgb(188, 208, 36);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+
+  width: 100%;
+  height: v.$header-h;
+  background-color: v.$lightblack;
+}
+
+.headercontent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100%;
+  padding: 0 32px;
+}
+
+.market {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+  min-height: 100vh;
+  background-color: v.$lightgrey;
+}
+
+.collections {
+  height: 10000px;
+}
