@@ -2,27 +2,62 @@ import React, { useState, useEffect } from "react";
 import s from "./testing.module.scss";
 
 import { Header, Page, Popup } from "./buildingblocks/buildingblocks";
-import Market, { Networth } from "./market/market";
+import Market, { Collections } from "./market/market";
 import Collection from "./collection/collection";
+import Search from "./search/search";
 
 export default function Testing(props: {}) {
   const [v, setV] = useState(false);
   const [c, setC] = useState(false);
-  const data = [1, 2, 3, 4, 5, 6];
+
+  const data = [
+    {
+      name: "name",
+      description: "description",
+      price: "price",
+      change: "change",
+      imgurl: "imgurl",
+      graph: "graph",
+    },
+    {
+      name: "name",
+      description: "description",
+      price: "price",
+      change: "change",
+      imgurl: "imgurl",
+      graph: "graph",
+    },
+    {
+      name: "name",
+      description: "description",
+      price: "price",
+      change: "change",
+      imgurl: "imgurl",
+      graph: "graph",
+    },
+    {
+      name: "name",
+      description: "description",
+      price: "price",
+      change: "change",
+      imgurl: "imgurl",
+      graph: "graph",
+    },
+    {
+      name: "name",
+      description: "description",
+      price: "price",
+      change: "change",
+      imgurl: "imgurl",
+      graph: "graph",
+    },
+  ];
 
   return (
     <Page>
-      <Market />
-      <Collection v={v} />
-      <Popup v={false}>
-        <Header>
-          <div className={s.test}>dsada</div>
-        </Header>
-        <div className={s.search}>
-          <div className={s.input}>input</div>
-          <div className={s.results}></div>
-        </div>
-      </Popup>
+      <Market data={data} />
+      <Search data={data} v={c} />
+      <Collection c={data[0]} v={v} />
     </Page>
   );
 }

@@ -1,0 +1,43 @@
+@use "/styles/variables" as v;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+  gap: 8px;
+
+  > div {
+    background-color: red;
+  }
+
+  .input {
+    flex: 1 1 auto;
+
+    outline: none;
+    border: none;
+    background-color: rgba(0, 0, 255, 0.231);
+  }
+
+  .icon {
+    flex: 0 0 auto;
+  }
+}
+
+.collections {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1px;
+
+  width: 100%;
+  background-color: rgb(178, 220, 234);
+
+  > div {
+    width: 100%;
+  }
+}

@@ -3,8 +3,7 @@ import s from "./market.module.scss";
 
 import { Header, Page, Popup } from "../buildingblocks/buildingblocks";
 
-export default function Market() {
-  const collections = [1, 2, 3, 4];
+export default function Market(props: { data: any }) {
   return (
     <div className={s.market}>
       <Header>
@@ -20,24 +19,7 @@ export default function Market() {
         <div className={s.bla}>sort</div>
       </div>
       <Networth />
-      <div className={s.collections}>
-        {collections.map((collection) => (
-          <div key={collection}>
-            <div className={s.collection}>
-              <div className={s.bla}>image</div>
-              <div className={s.bla}>
-                <div className={s.bla}>name</div>
-                <div className={s.bla}>description</div>
-              </div>
-              <div className={s.graphic}>graphic</div>
-              <div className={s.bla}>
-                <div className={s.bla}>price</div>
-                <div className={s.bla}>change</div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <Collections data={props.data} />
     </div>
   );
 }
@@ -51,6 +33,36 @@ export const Networth = () => {
         <div className={s.change}>change</div>
       </div>
       <div className={s.graph}>graph</div>
+    </div>
+  );
+};
+
+export const Tile = (props: { c: any }) => {
+  const { c } = props;
+  return (
+    <div key={c}>
+      <div className={s.collection}>
+        <div className={s.bla}>{c.imgurl}</div>
+        <div className={s.bla}>
+          <div className={s.bla}>{c.name}</div>
+          <div className={s.bla}>{c.description}</div>
+        </div>
+        <div className={s.graphic}>{c.graph}</div>
+        <div className={s.bla}>
+          <div className={s.bla}>{c.price}</div>
+          <div className={s.bla}>{c.change}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const Collections = (props: { data: any }) => {
+  return (
+    <div className={s.collections}>
+      {props.data.map((collection) => (
+        <Tile c={collection} />
+      ))}
     </div>
   );
 };

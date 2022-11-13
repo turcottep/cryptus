@@ -4,7 +4,8 @@ import s from "./collection.module.scss";
 import { Header, Page, Popup } from "../buildingblocks/buildingblocks";
 import { Networth } from "../market/market";
 
-export default function Collection(props: { v: boolean }) {
+export default function Collection(props: { v: boolean; c: any }) {
+  const { v, c } = props;
   const data = [
     { name: "a", value: 1 },
     { name: "b", value: 2 },
@@ -14,14 +15,14 @@ export default function Collection(props: { v: boolean }) {
     { name: "f", value: 6 },
   ];
   return (
-    <Popup v={props.v}>
+    <Popup v={v}>
       <div className={s.collection}>
         <Header>
           <div className={s.header}>
             <div className={s.tile}>
-              <div className={s.logo}>pfp</div>
-              <div className={s.name}>name</div>
-              <div className={s.keystat}>keystat</div>
+              <div className={s.logo}>{c.imgurl}</div>
+              <div className={s.name}>{c.name}</div>
+              <div className={s.keystat}>{c.description}</div>
             </div>
             <div className={s.bla}>buy</div>
 
