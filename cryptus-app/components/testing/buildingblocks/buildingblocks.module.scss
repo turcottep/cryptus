@@ -34,12 +34,14 @@
 .popuppage {
   @extend .page;
   position: absolute;
+  //TODO: make page not scrollable, but content scrollable
 
   background-color: v.$lightblack;
 }
 
 .popupcontent {
   @extend .content;
+  padding-top: 0; //TODO: fix this
   background-color: rgb(188, 208, 36);
 }
 
