@@ -6,7 +6,7 @@ import { Collections, Networth } from "../market/market";
 
 export default function Search(props: { data: any[]; v: boolean }) {
   return (
-    <Popup v={true}>
+    <Popup v={props.v}>
       <Header>
         <div className={s.header}>
           <input className={s.input} />

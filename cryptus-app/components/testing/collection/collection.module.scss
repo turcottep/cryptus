@@ -16,7 +16,7 @@
 
 .tile {
   display: grid;
-  grid-template-columns: 40px 150px;
+  grid-template-columns: 50px 150px;
   grid-template-rows: 0.75fr 0.25fr;
   grid-template-areas: "logo namee" "logo keystat";
 

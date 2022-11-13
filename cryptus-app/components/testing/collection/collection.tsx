@@ -17,18 +17,7 @@ export default function Collection(props: { v: boolean; c: any }) {
   return (
     <Popup v={v}>
       <div className={s.collection}>
-        <Header>
-          <div className={s.header}>
-            <div className={s.tile}>
-              <div className={s.logo}>{c.imgurl}</div>
-              <div className={s.name}>{c.name}</div>
-              <div className={s.keystat}>{c.description}</div>
-            </div>
-            <div className={s.bla}>buy</div>
-
-            <div className={s.bla}>X</div>
-          </div>
-        </Header>
+        <CollectionHeader c={c} />
         <Networth />
         <Stat title="Stats" data={data} />
         <Stat title="Floor" data={data} />
@@ -82,5 +71,23 @@ export const Stat = (props: {
         ))}
       </div>
     </Collapsable>
+  );
+};
+
+export const CollectionHeader = (props: { c: any }) => {
+  const { c } = props;
+  return (
+    <Header>
+      <div className={s.header}>
+        <div className={s.tile}>
+          <div className={s.logo}>{c.imgurl}</div>
+          <div className={s.name}>{c.name}</div>
+          <div className={s.keystat}>{c.description}</div>
+        </div>
+        <div className={s.bla}>buy</div>
+
+        <div className={s.bla}>X</div>
+      </div>
+    </Header>
   );
 };

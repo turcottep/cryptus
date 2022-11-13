@@ -6,18 +6,8 @@ import { Header, Page, Popup } from "../buildingblocks/buildingblocks";
 export default function Market(props: { data: any }) {
   return (
     <div className={s.market}>
-      <Header>
-        <div className={s.header}>
-          <div className={s.bla}>logo</div>
-          <div className={s.bla}>menu</div>
-          <div className={s.bla}>icons</div>
-        </div>
-      </Header>
-      <div className={s.modifiers}>
-        <div className={s.bla}>1M</div>
-        <div className={s.bla}>filters</div>
-        <div className={s.bla}>sort</div>
-      </div>
+      <AppHeader />
+      <Modifiers />
       <Networth />
       <Collections data={props.data} />
     </div>
@@ -41,7 +31,7 @@ export const Tile = (props: { c: any }) => {
   const { c } = props;
   return (
     <div key={c}>
-      <div className={s.collection}>
+      <div className={s.tile}>
         <div className={s.bla}>{c.imgurl}</div>
         <div className={s.bla}>
           <div className={s.bla}>{c.name}</div>
@@ -63,6 +53,28 @@ export const Collections = (props: { data: any }) => {
       {props.data.map((collection) => (
         <Tile c={collection} />
       ))}
+    </div>
+  );
+};
+
+export const AppHeader = () => {
+  return (
+    <Header>
+      <div className={s.header}>
+        <div className={s.bla}>logo</div>
+        <div className={s.bla}>menu</div>
+        <div className={s.bla}>icons</div>
+      </div>
+    </Header>
+  );
+};
+
+export const Modifiers = () => {
+  return (
+    <div className={s.modifiers}>
+      <div className={s.bla}>1M</div>
+      <div className={s.bla}>filters</div>
+      <div className={s.bla}>sort</div>
     </div>
   );
 };
