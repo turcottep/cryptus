@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 
 import { isMobile as mobile } from "react-device-detect";
 
-import Market from "../components/market/market";
+// import Market from "../components/market/market";
+import Market from "../components/testing/market/market";
 
 import { collection, intervals } from "../lib/data_types";
 import collectionDictionary from "../lib/collectionDictionary";
@@ -54,10 +55,10 @@ export default function MarketPage(props) {
       />
       <main>
         <Market
-          date={props.mock_data.date}
+          // date={props.mock_data.date}
           networth={props.mock_data.networth}
           collections={props.collections}
-          isMobile={isMobile}
+          // isMobile={isMobile}
         />
       </main>
     </div>
@@ -68,10 +69,11 @@ export async function getStaticProps() {
   const mock_data = {
     date: "April 20",
     networth: {
-      EthCad: 4000,
+      EthCad: 1600,
       active: intervals.three_months,
-      value: "1337,69 $ CAD",
-      change: "420.69 $ total",
+      value: 400 * 1600,
+      change: 400 - 100,
+      data_price: [100, 200, 300, 400, 200, 100, 200, 300, 400],
     },
   };
 

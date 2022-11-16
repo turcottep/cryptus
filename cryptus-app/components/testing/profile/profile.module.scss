@@ -1,0 +1,65 @@
+@use "/styles/variables" as v;
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+  min-height: 100vh;
+  background-color: v.$lightgrey;
+  gap: 1px;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(105, 153, 169);
+  width: 100%;
+
+  > div:nth-child(1) {
+    margin-left: 8px;
+  }
+  > div:nth-child(2) {
+    margin-right: 8px;
+  }
+
+  .icons {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    background-color: antiquewhite;
+  }
+
+  .tile {
+    //TODO: Use same /.tile for all tiles
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: 50px 150px;
+    grid-template-rows: 0.75fr 0.25fr;
+    grid-template-areas: "logo namee" "logo keystat";
+
+    background-color: rgb(41, 88, 190);
+
+    > div {
+      background-color: rgb(203, 137, 87);
+    }
+
+    .logo {
+      grid-area: logo;
+      place-self: center;
+    }
+    .name {
+      grid-area: namee;
+    }
+    .keystat {
+      grid-area: keystat;
+    }
+  }
+}
