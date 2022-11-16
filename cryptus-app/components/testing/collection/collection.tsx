@@ -18,7 +18,7 @@ export default function Collection(props: { v: boolean; c: any }) {
     <Popup v={v}>
       <div className={s.collection}>
         <CollectionHeader c={c} />
-        <Networth />
+        <Networth networth={undefined} />
         <Stat title="Stats" data={data} />
         <Stat title="Floor" data={data} />
         <Stat title="Last Sales" data={data} />
