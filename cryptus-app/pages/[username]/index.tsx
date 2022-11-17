@@ -34,8 +34,9 @@ export default function ProfilePage() {
     setLoading(true);
     const getProps = async () => {
       try {
-        console.log("getting props for ", userNameString);
-        const returningProps = await get_profile_props(userNameString);
+        const user_name_lower = userNameString.toLowerCase();
+        console.log("getting props for ", user_name_lower);
+        const returningProps = await get_profile_props(user_name_lower);
         // console.log("returning", returningProps);
         // set_profile_props(returningProps.props);
         const new_user_props = returningProps.props.user;
