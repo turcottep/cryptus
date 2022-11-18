@@ -7,7 +7,8 @@ exports[`<SearchBar /> should display properly 1`] = `
       src="magnifier.svg"
     />
     <input
-      placeholder="Search coming soon"
+      onChange={[Function]}
+      placeholder="Coming soon..."
       type="text"
     />
   </div>

@@ -2,17 +2,17 @@ import React from "react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
-import SearchIcon from "../../../../components/basic/header/search_icon/search_icon";
+import DesktopHeader from "../../../../components/basic/header/desktop_header/desktop_header";
 
 describe("<DesktopHeader />", () => {
   it("should display properly", async () => {
     const mockProps = {
-      isMobile: false,
-      callback_close: null,
-      users: [],
+      tab: "market",
+      open_settings: null,
+      open_search: null,
     };
 
-    const tree = renderer.create(<SearchIcon {...mockProps} />).toJSON();
+    const tree = renderer.create(<DesktopHeader {...mockProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

@@ -7,7 +7,7 @@ import s from "./market.module.scss";
 import { useSession } from "next-auth/client";
 
 //internal imports
-import { user, intervals, collection } from "../../lib/data_types";
+import { user, intervals, collection, dbUsers } from "../../lib/data_types";
 
 import SearchBar from "./search_bar/search_bar";
 import SortButton from "./sort_button/sort_button";
@@ -25,6 +25,9 @@ import Support from "../basic/support/support";
 import get_user_by_username from "../../lib/get_user_by_username";
 import DateComponent from "./market_header/date/date";
 import TimeInterval from "./market_header/time_interval/time_interval";
+import SearchIcon from "../basic/header/search_icon/search_icon";
+
+import findAllUsers from "../../lib/findAllUsers";
 
 type market_overview_props = {
   date: string;
@@ -82,6 +85,9 @@ export default function MarketOverview(props: market_overview_props) {
   const [show_card_settings, set_show_settings] = useState(false);
   const [show_card_wallet_manager, set_show_wallet_manager] = useState(false);
   const [show_card_support, set_show_support] = useState(false);
+  const [show_card_search, set_show_search] = useState(false);
+
+  const [usersProfiles, setUsersProfiles] = useState<dbUsers[]>([]);
 
   useEffect(() => {
     const getUser = async (username: string) => {
@@ -123,6 +129,14 @@ export default function MarketOverview(props: market_overview_props) {
     }
   }, [props.collections, newPropCollection]);
 
+  useEffect(() => {
+    const getAllUsers = async () => {
+      let allUsers = await findAllUsers();
+      setUsersProfiles(allUsers);
+    };
+    getAllUsers();
+  }, []);
+
   const update = async (interval: intervals = props.networth.active) =>
     await updatePrice(interval, true, setLoading, newPropCollection);
 
@@ -150,11 +164,14 @@ export default function MarketOverview(props: market_overview_props) {
   };
 
   const close_all = () => {
-    console.log("close_all");
-
     set_show_card(false);
     set_show_settings(false);
     set_show_wallet_manager(false);
+    set_show_search(false);
+  };
+
+  const open_search = () => {
+    set_show_search(true);
   };
 
   const close_wallet = () => {
@@ -202,12 +219,14 @@ export default function MarketOverview(props: market_overview_props) {
       }
     : ({} as any);
 
-  // console.log("session", session);
-
   return (
     <div className={show_card ? s.container_no_scroll : s.container}>
       {isMobile ? null : (
-        <DesktopHeader tab="market" open_settings={open_settings} />
+        <DesktopHeader
+          tab="market"
+          open_settings={open_settings}
+          open_search={open_search}
+        />
       )}
       <div className={s.containee}>
         {loading && <Loading />}
@@ -224,6 +243,13 @@ export default function MarketOverview(props: market_overview_props) {
             callback_close={close_all}
             open_wallet_manager={open_wallet_manager}
             open_support={open_support}
+          />
+        )}
+        {show_card_search && (
+          <SearchIcon
+            isMobile={isMobile}
+            callback_close={close_all}
+            users={usersProfiles}
           />
         )}
         {show_card_wallet_manager && (
@@ -256,7 +282,11 @@ export default function MarketOverview(props: market_overview_props) {
             </div>
           </div>
           <div className={s.search_and_sort}>
-            <SearchBar />
+            <SearchBar
+              callback={open_card}
+              collections={newPropCollectionMarket}
+            />
+            {/* <SearchBar users={usersProfiles} /> */}
             <SortButton
               newPropCollectionFavorite={newPropCollectionFavorite}
               newPropCollectionMarket={newPropCollectionMarket}
@@ -302,7 +332,6 @@ export const updatePrice = async (
   if (viewingmode == "three_months") {
     viewingmode = "3month";
   }
-  // console.log("new viewingmode : ", viewingmode);
 
   // setPrice(price);
   const adresses = collections.map((c) => {
