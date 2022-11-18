@@ -17,11 +17,14 @@ export default async function get_nfts_for_wallet(
     //fetch collections from opensea
     if (collections) {
       let asset_contract_adresses = "";
+
       for (var collection of collections) {
-        asset_contract_adresses =
-          asset_contract_adresses +
-          "&asset_contract_addresses=" +
-          collection.primary_asset_contracts[0].address;
+        if (collection.primary_asset_contracts[0]) {
+          asset_contract_adresses =
+            asset_contract_adresses +
+            "&asset_contract_addresses=" +
+            collection.primary_asset_contracts[0].address;
+        }
       }
       let cursor = "";
       for (let i = 0; i < 5; i++) {

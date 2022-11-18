@@ -30,6 +30,6 @@ export default async function get_collections_in_wallet(address: string) {
     console.log("response = ", res);
     return null;
   }
-
+  console.log("COLLECTIONS RAW", collections_raw);
   return collections_raw;
 }

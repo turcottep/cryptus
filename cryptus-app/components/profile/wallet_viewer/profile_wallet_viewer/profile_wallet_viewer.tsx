@@ -3,7 +3,7 @@ import s from "./profile_wallet_viewer.module.scss";
 
 import { useRouter } from "next/router";
 
-import { nft, nft_collection } from "../../../../lib/data_types";
+import { collection, nft, nft_collection } from "../../../../lib/data_types";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { walletsType } from "../../../basic/wallet_manager/wallet_manager";
 import get_collections_in_wallet from "../../../../lib/get_collections_in_wallet";
@@ -16,6 +16,7 @@ import collections_dict from "../../../../lib/collectionDictionary";
 
 export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
+  add_collections: (collections: nft_collection[]) => void;
   open_collection: (collection_name: string) => void;
   open_nft: (collection_name: string, nft_token_id: string) => void;
   collections_filter: string[];
@@ -25,11 +26,16 @@ export default function ProfileWalletViewer(props: {
   let nbColWidth = Math.ceil(size.width / 170);
   let nbColHeight = Math.ceil((size.height - 300) / 190);
   let nbColToFillPage = nbColWidth * nbColHeight;
+  const nbColAddedByFetch = 40;
 
   const [collections, setCollections] = useState(props.collections);
   const [hasMore, setHasMore] = useState(true);
   const [walletIndex, setWalletIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(nbColToFillPage);
+
+  useEffect(() => {
+    props.add_collections(collections);
+  }, [collections]);
 
   const getMoreCollections = async () => {
     console.log("GetMoreCollections");
@@ -39,12 +45,12 @@ export default function ProfileWalletViewer(props: {
       props.wallets[walletIndex].address
     );
     let collections_in_wallet_sliced = null;
-    if (collections_in_wallet.length > currentIndex + nbColWidth) {
+    if (collections_in_wallet.length > currentIndex + nbColAddedByFetch) {
       collections_in_wallet_sliced = collections_in_wallet.slice(
         currentIndex,
-        currentIndex + nbColWidth
+        currentIndex + nbColAddedByFetch
       );
-      setCurrentIndex(currentIndex + nbColWidth);
+      setCurrentIndex(currentIndex + nbColAddedByFetch);
     } else if (collections_in_wallet.length > currentIndex) {
       collections_in_wallet_sliced = collections_in_wallet.slice(
         currentIndex,

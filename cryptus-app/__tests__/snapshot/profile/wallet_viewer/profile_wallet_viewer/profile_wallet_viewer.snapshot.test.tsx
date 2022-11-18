@@ -24,6 +24,9 @@ describe("<ProfileWalletViewer />", () => {
           open_collection={function (): void {
             throw new Error("Function not implemented.");
           }}
+          add_collections={function (): void {
+            throw new Error("Function not implemented.");
+          }}
           open_nft={function (): void {
             throw new Error("Function not implemented.");
           }}
