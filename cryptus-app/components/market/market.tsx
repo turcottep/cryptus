@@ -62,12 +62,14 @@ export default function MarketOverview(props: market_overview_props) {
     []
   );
 
-  const [newPropCollection, setnewPropCollection] = useState(props.collections);
+  const [newPropCollection, setnewPropCollection] = useState(
+    props.collections.slice(0, 10)
+  );
   const [newPropCollectionFavorite, setnewPropCollectionFavorite] = useState(
     []
   );
   const [newPropCollectionMarket, setnewPropCollectionMarket] = useState(
-    props.collections
+    props.collections.slice(0, 10)
   );
 
   const [session, status_status] = useSession();
@@ -89,7 +91,7 @@ export default function MarketOverview(props: market_overview_props) {
 
   useEffect(() => {
     const getUser = async (username: string) => {
-      let profileProps = await get_profile_props(username);
+      let profileProps = await get_profile_props(username, 10);
       setUser(profileProps.props.user);
     };
     if (session) {
@@ -117,9 +119,15 @@ export default function MarketOverview(props: market_overview_props) {
   };
 
   useEffect(() => {
-    const newPropCollectionTemp = update();
-    updateUserCollections([]);
-  }, []);
+    if (props.collections != null) {
+      const newPropCollectionTemp = update();
+      if (session) {
+        update_for_user(session.user.name);
+      } else {
+        updateUserCollections([]);
+      }
+    }
+  }, [props.collections, newPropCollection]);
 
   useEffect(() => {
     const getAllUsers = async () => {
@@ -130,7 +138,7 @@ export default function MarketOverview(props: market_overview_props) {
   }, []);
 
   const update = async (interval: intervals = props.networth.active) =>
-    await updatePrice(interval, setLoading, props.collections);
+    await updatePrice(interval, true, setLoading, newPropCollection);
 
   const callbackGraph = async (interval) => {
     // setInterval(interval);
@@ -141,11 +149,11 @@ export default function MarketOverview(props: market_overview_props) {
 
   const update_for_user = async (username: string) => {
     const user = await get_user_by_username(username);
-    console.log("user : ", user);
+    // console.log("user : ", user);
     const user_collections = user.collections_list;
-    console.log("iuser collections : ", user_collections);
+    // console.log("iuser collections : ", user_collections);
     const networth = user.networth;
-    console.log("networth : ", networth);
+    // console.log("networth : ", networth);
     set_user_collections_list([...user_collections]);
     set_networth(networth);
     updateUserCollections(user_collections);
@@ -288,6 +296,8 @@ export default function MarketOverview(props: market_overview_props) {
           </div>
         </div>
         <MarketCollections
+          setLoading={setLoading}
+          interval={props.networth.active}
           callback={open_card}
           name={"My Collections"}
           icon={"/icons/favorite_icon.png"}
@@ -295,6 +305,8 @@ export default function MarketOverview(props: market_overview_props) {
           connected={!!session}
         />
         <MarketCollections
+          setLoading={setLoading}
+          interval={props.networth.active}
           callback={open_card}
           name={"Market"}
           icon={"/icons/market_icon.png"}
@@ -306,12 +318,16 @@ export default function MarketOverview(props: market_overview_props) {
   );
 }
 
-const updatePrice = async (
+export const updatePrice = async (
   interval: intervals,
+  needLoading: boolean,
   setLoading: Function,
   collections: collection[]
 ) => {
-  setLoading(true);
+  if (needLoading == true) {
+    setLoading(true);
+  }
+  // console.log("Collections to Update: ", collections);
   let viewingmode = intervals[interval];
   if (viewingmode == "three_months") {
     viewingmode = "3month";
@@ -322,6 +338,7 @@ const updatePrice = async (
     return c.address;
   });
 
+  // console.log("adresses ", adresses);
   const res = await fetch("/api/sales/batch", {
     method: "POST",
     headers: {
@@ -346,7 +363,9 @@ const updatePrice = async (
     }
   }
 
-  setLoading(false);
-
+  if (needLoading) {
+    setLoading(false);
+  }
+  console.log("collection updated ", newPropCollectionTemp);
   return newPropCollectionTemp;
 };
