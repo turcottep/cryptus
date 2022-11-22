@@ -11,17 +11,46 @@ type try_now_props = {
 };
 
 export default function TryNow(props: try_now_props) {
+  const router = useRouter();
+
+  const img_click = () => {
+    console.log("click");
+    router.push("/mcuban");
+  };
   return (
-    <div>
-      <Card callback_close={props.callback_close} isMobile={props.isMobile}>
-        <div className={s.container}>
-          {isMobile ? (
-            <div className={s.tryNowMobile}>{"Try Now Mobile"}</div>
-          ) : (
-            <div className={s.tryNow}>{"Try Now"}</div>
-          )}
+    <Card callback_close={props.callback_close} isMobile={props.isMobile}>
+      <div className={s.container}>
+        <div className={s.grid}>
+          <img
+            src="/images/JustinBieber.png"
+            className={s.image}
+            onClick={() => {
+              router.push("/justinbiebernfts");
+            }}
+          />
+          <img
+            src="/images/mcuban.png"
+            className={s.image}
+            onClick={() => {
+              router.push("/mcuban");
+            }}
+          />
+          <img
+            src="/images/snoopdogg.png"
+            className={s.image}
+            onClick={() => {
+              router.push("/snoopdogg");
+            }}
+          />
+          <img
+            src="/images/loganpaul.png"
+            className={s.image}
+            onClick={() => {
+              router.push("/logz");
+            }}
+          />
         </div>
-      </Card>
-    </div>
+      </div>
+    </Card>
   );
 }
