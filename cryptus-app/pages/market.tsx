@@ -12,8 +12,6 @@ import address from "./api/collection/address";
 import getCollectionData from "../lib/get_collection_data";
 import { collection100list } from "../lib/collectionDictionary";
 
-// Import market_overwiew parent component to test here
-
 export default function MarketPage(props) {
   const [isMobile, setIsMobile] = useState(true);
 

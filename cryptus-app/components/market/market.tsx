@@ -278,7 +278,6 @@ export default function MarketOverview(props: market_overview_props) {
               callback={open_card}
               collections={newPropCollectionMarket}
             />
-            {/* <SearchBar users={usersProfiles} /> */}
             <SortButton
               newPropCollectionFavorite={newPropCollectionFavorite}
               newPropCollectionMarket={newPropCollectionMarket}
