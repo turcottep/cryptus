@@ -1,7 +1,6 @@
 //react and css
 import React, { useState, useEffect, useRef } from "react";
 import s from "./search_bar.module.scss";
-import classNames from "classnames";
 import { useRouter } from "next/router";
 
 import { collection, dbUsers } from "../../../lib/data_types";

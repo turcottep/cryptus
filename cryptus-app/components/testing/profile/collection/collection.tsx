@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import s from "./collection.module.scss";
 
-import { Header, Page, Popup } from "../buildingblocks/buildingblocks";
-import { Networth } from "../market/market";
+import { Header, Page, Popup } from "../../buildingblocks/buildingblocks";
+import { Networth } from "../../market/market";
 
-export default function Collection(props: { v: boolean; c: any }) {
-  const { v, c } = props;
+export default function Collection(props: { v: boolean; d: any; f: any }) {
+  const { v, d } = props;
   const data = [
     { name: "a", value: 1 },
     { name: "b", value: 2 },
@@ -17,8 +17,8 @@ export default function Collection(props: { v: boolean; c: any }) {
   return (
     <Popup v={v}>
       <div className={s.collection}>
-        <CollectionHeader c={c} />
-        <Networth networth={undefined} />
+        <CollectionHeader c={d} />
+        <Networth networth={43} />
         <Stat title="Stats" data={data} />
         <Stat title="Floor" data={data} />
         <Stat title="Last Sales" data={data} />
