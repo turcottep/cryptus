@@ -1,0 +1,1817 @@
+{
+  "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d": [
+    {
+      "timestamp_raw": "2022-03-03T00:00:00+00:00",
+      "average_price": "85.5",
+      "average_usd_price": "3370.81",
+      "count": "1",
+      "volume_eth": "85.5"
+    },
+    {
+      "timestamp_raw": "2022-03-04T00:00:00+00:00",
+      "average_price": "89.07",
+      "average_usd_price": "3370.77",
+      "count": "10",
+      "volume_eth": "890.65"
+    },
+    {
+      "timestamp_raw": "2022-03-05T00:00:00+00:00",
+      "average_price": "88.33",
+      "average_usd_price": "3370.78",
+      "count": "6",
+      "volume_eth": "530.0"
+    },
+    {
+      "timestamp_raw": "2022-03-06T00:00:00+00:00",
+      "average_price": "102.67",
+      "average_usd_price": "3370.69",
+      "count": "3",
+      "volume_eth": "308.0"
+    },
+    {
+      "timestamp_raw": "2022-03-07T00:00:00+00:00",
+      "average_price": "75.98",
+      "average_usd_price": "3370.78",
+      "count": "27",
+      "volume_eth": "2051.33"
+    },
+    {
+      "timestamp_raw": "2022-03-08T00:00:00+00:00",
+      "average_price": "85.67",
+      "average_usd_price": "3370.79",
+      "count": "25",
+      "volume_eth": "2141.86"
+    },
+    {
+      "timestamp_raw": "2022-03-09T00:00:00+00:00",
+      "average_price": "78.89",
+      "average_usd_price": "3370.79",
+      "count": "10",
+      "volume_eth": "788.94"
+    },
+    {
+      "timestamp_raw": "2022-03-10T00:00:00+00:00",
+      "average_price": "74.1",
+      "average_usd_price": "3370.81",
+      "count": "2",
+      "volume_eth": "148.19"
+    },
+    {
+      "timestamp_raw": "2022-03-11T00:00:00+00:00",
+      "average_price": "76.11",
+      "average_usd_price": "3370.78",
+      "count": "12",
+      "volume_eth": "913.35"
+    },
+    {
+      "timestamp_raw": "2022-03-12T00:00:00+00:00",
+      "average_price": "87.15",
+      "average_usd_price": "3370.79",
+      "count": "34",
+      "volume_eth": "2962.95"
+    },
+    {
+      "timestamp_raw": "2022-03-13T00:00:00+00:00",
+      "average_price": "95.23",
+      "average_usd_price": "3370.8",
+      "count": "35",
+      "volume_eth": "3333.09"
+    },
+    {
+      "timestamp_raw": "2022-03-14T00:00:00+00:00",
+      "average_price": "105.62",
+      "average_usd_price": "3370.74",
+      "count": "8",
+      "volume_eth": "844.95"
+    },
+    {
+      "timestamp_raw": "2022-03-15T00:00:00+00:00",
+      "average_price": "103.83",
+      "average_usd_price": "3370.79",
+      "count": "11",
+      "volume_eth": "1142.08"
+    },
+    {
+      "timestamp_raw": "2022-03-16T00:00:00+00:00",
+      "average_price": "99.92",
+      "average_usd_price": "3370.81",
+      "count": "53",
+      "volume_eth": "5295.61"
+    },
+    {
+      "timestamp_raw": "2022-03-17T00:00:00+00:00",
+      "average_price": "106.32",
+      "average_usd_price": "3370.8",
+      "count": "140",
+      "volume_eth": "14884.5"
+    },
+    {
+      "timestamp_raw": "2022-03-18T00:00:00+00:00",
+      "average_price": "107.35",
+      "average_usd_price": "3370.8",
+      "count": "52",
+      "volume_eth": "5582.16"
+    },
+    {
+      "timestamp_raw": "2022-03-19T00:00:00+00:00",
+      "average_price": "107.88",
+      "average_usd_price": "3370.8",
+      "count": "44",
+      "volume_eth": "4746.76"
+    },
+    {
+      "timestamp_raw": "2022-03-20T00:00:00+00:00",
+      "average_price": "117.34",
+      "average_usd_price": "3370.76",
+      "count": "20",
+      "volume_eth": "2346.82"
+    },
+    {
+      "timestamp_raw": "2022-03-21T00:00:00+00:00",
+      "average_price": "107.87",
+      "average_usd_price": "3370.77",
+      "count": "13",
+      "volume_eth": "1402.26"
+    },
+    {
+      "timestamp_raw": "2022-03-22T00:00:00+00:00",
+      "average_price": "109.45",
+      "average_usd_price": "3370.8",
+      "count": "16",
+      "volume_eth": "1751.22"
+    },
+    {
+      "timestamp_raw": "2022-03-23T00:00:00+00:00",
+      "average_price": "116.6",
+      "average_usd_price": "3370.8",
+      "count": "17",
+      "volume_eth": "1982.27"
+    },
+    {
+      "timestamp_raw": "2022-03-24T00:00:00+00:00",
+      "average_price": "115.16",
+      "average_usd_price": "3370.81",
+      "count": "17",
+      "volume_eth": "1957.79"
+    },
+    {
+      "timestamp_raw": "2022-03-25T00:00:00+00:00",
+      "average_price": "115.93",
+      "average_usd_price": "3370.79",
+      "count": "19",
+      "volume_eth": "2202.61"
+    },
+    {
+      "timestamp_raw": "2022-03-26T00:00:00+00:00",
+      "average_price": "122.42",
+      "average_usd_price": "3370.76",
+      "count": "12",
+      "volume_eth": "1469.01"
+    },
+    {
+      "timestamp_raw": "2022-03-27T00:00:00+00:00",
+      "average_price": "113.65",
+      "average_usd_price": "3370.8",
+      "count": "12",
+      "volume_eth": "1363.79"
+    },
+    {
+      "timestamp_raw": "2022-03-28T00:00:00+00:00",
+      "average_price": "114.97",
+      "average_usd_price": "3156.92",
+      "count": "17",
+      "volume_eth": "1954.42"
+    },
+    {
+      "timestamp_raw": "2022-03-29T00:00:00+00:00",
+      "average_price": "110.92",
+      "average_usd_price": "3364.54",
+      "count": "11",
+      "volume_eth": "1220.14"
+    },
+    {
+      "timestamp_raw": "2022-03-30T00:00:00+00:00",
+      "average_price": "113.6",
+      "average_usd_price": "3404.8",
+      "count": "11",
+      "volume_eth": "1249.58"
+    },
+    {
+      "timestamp_raw": "2022-03-31T00:00:00+00:00",
+      "average_price": "126.23",
+      "average_usd_price": "3287.7",
+      "count": "14",
+      "volume_eth": "1767.24"
+    },
+    {
+      "timestamp_raw": "2022-04-01T00:00:00+00:00",
+      "average_price": "115.16",
+      "average_usd_price": "3462.69",
+      "count": "10",
+      "volume_eth": "1151.64"
+    },
+    {
+      "timestamp_raw": "2022-04-02T00:00:00+00:00",
+      "average_price": "142.83",
+      "average_usd_price": "3432.37",
+      "count": "4",
+      "volume_eth": "571.33"
+    },
+    {
+      "timestamp_raw": "2022-04-03T00:00:00+00:00",
+      "average_price": "115.99",
+      "average_usd_price": "3486.18",
+      "count": "6",
+      "volume_eth": "695.95"
+    }
+  ],
+  "0x60e4d786628fea6478f785a6d7e704777c86a7c6": [
+    {
+      "timestamp_raw": "2022-03-05T00:00:00+00:00",
+      "average_price": "22.69",
+      "average_usd_price": "2603.01",
+      "count": "4",
+      "volume_eth": "90.76"
+    },
+    {
+      "timestamp_raw": "2022-03-06T00:00:00+00:00",
+      "average_price": "23.5",
+      "average_usd_price": "2600.98",
+      "count": "2",
+      "volume_eth": "47.0"
+    },
+    {
+      "timestamp_raw": "2022-03-07T00:00:00+00:00",
+      "average_price": "23.99",
+      "average_usd_price": "2603.01",
+      "count": "1",
+      "volume_eth": "23.99"
+    },
+    {
+      "timestamp_raw": "2022-03-08T00:00:00+00:00",
+      "average_price": "24.69",
+      "average_usd_price": "2603.01",
+      "count": "3",
+      "volume_eth": "74.07"
+    },
+    {
+      "timestamp_raw": "2022-03-09T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-10T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-11T00:00:00+00:00",
+      "average_price": "28.0",
+      "average_usd_price": "2539.55",
+      "count": "2",
+      "volume_eth": "56.0"
+    },
+    {
+      "timestamp_raw": "2022-03-12T00:00:00+00:00",
+      "average_price": "23.0",
+      "average_usd_price": "2532.03",
+      "count": "7",
+      "volume_eth": "161.0"
+    },
+    {
+      "timestamp_raw": "2022-03-13T00:00:00+00:00",
+      "average_price": "22.69",
+      "average_usd_price": "2539.55",
+      "count": "13",
+      "volume_eth": "294.97"
+    },
+    {
+      "timestamp_raw": "2022-03-14T00:00:00+00:00",
+      "average_price": "22.63",
+      "average_usd_price": "2532.03",
+      "count": "11",
+      "volume_eth": "248.93"
+    },
+    {
+      "timestamp_raw": "2022-03-15T00:00:00+00:00",
+      "average_price": "22.9",
+      "average_usd_price": "3330.64",
+      "count": "12",
+      "volume_eth": "274.8"
+    },
+    {
+      "timestamp_raw": "2022-03-16T00:00:00+00:00",
+      "average_price": "22.63",
+      "average_usd_price": "3335.75",
+      "count": "106",
+      "volume_eth": "2398.78"
+    },
+    {
+      "timestamp_raw": "2022-03-17T00:00:00+00:00",
+      "average_price": "22.6",
+      "average_usd_price": "3330.64",
+      "count": "159",
+      "volume_eth": "3593.4"
+    },
+    {
+      "timestamp_raw": "2022-03-18T00:00:00+00:00",
+      "average_price": "22.8",
+      "average_usd_price": "3330.64",
+      "count": "44",
+      "volume_eth": "1003.2"
+    },
+    {
+      "timestamp_raw": "2022-03-19T00:00:00+00:00",
+      "average_price": "22.6",
+      "average_usd_price": "3330.64",
+      "count": "81",
+      "volume_eth": "1830.6"
+    },
+    {
+      "timestamp_raw": "2022-03-20T00:00:00+00:00",
+      "average_price": "22.69",
+      "average_usd_price": "1.0",
+      "count": "41",
+      "volume_eth": "930.29"
+    },
+    {
+      "timestamp_raw": "2022-03-21T00:00:00+00:00",
+      "average_price": "22.95",
+      "average_usd_price": "3330.64",
+      "count": "23",
+      "volume_eth": "527.85"
+    },
+    {
+      "timestamp_raw": "2022-03-22T00:00:00+00:00",
+      "average_price": "22.69",
+      "average_usd_price": "3330.64",
+      "count": "24",
+      "volume_eth": "544.56"
+    },
+    {
+      "timestamp_raw": "2022-03-23T00:00:00+00:00",
+      "average_price": "22.6",
+      "average_usd_price": "3330.64",
+      "count": "52",
+      "volume_eth": "1175.2"
+    },
+    {
+      "timestamp_raw": "2022-03-24T00:00:00+00:00",
+      "average_price": "22.79",
+      "average_usd_price": "3330.64",
+      "count": "98",
+      "volume_eth": "2233.42"
+    },
+    {
+      "timestamp_raw": "2022-03-25T00:00:00+00:00",
+      "average_price": "22.75",
+      "average_usd_price": "3330.64",
+      "count": "40",
+      "volume_eth": "910.0"
+    },
+    {
+      "timestamp_raw": "2022-03-26T00:00:00+00:00",
+      "average_price": "22.73",
+      "average_usd_price": "3330.64",
+      "count": "45",
+      "volume_eth": "1022.85"
+    },
+    {
+      "timestamp_raw": "2022-03-27T00:00:00+00:00",
+      "average_price": "22.66",
+      "average_usd_price": "3330.64",
+      "count": "43",
+      "volume_eth": "974.38"
+    },
+    {
+      "timestamp_raw": "2022-03-28T00:00:00+00:00",
+      "average_price": "22.6",
+      "average_usd_price": "1.0",
+      "count": "37",
+      "volume_eth": "836.2"
+    },
+    {
+      "timestamp_raw": "2022-03-29T00:00:00+00:00",
+      "average_price": "22.6",
+      "average_usd_price": "3330.64",
+      "count": "24",
+      "volume_eth": "542.4"
+    },
+    {
+      "timestamp_raw": "2022-03-30T00:00:00+00:00",
+      "average_price": "22.6",
+      "average_usd_price": "3403.18",
+      "count": "20",
+      "volume_eth": "452.0"
+    },
+    {
+      "timestamp_raw": "2022-03-31T00:00:00+00:00",
+      "average_price": "22.75",
+      "average_usd_price": "3287.7",
+      "count": "46",
+      "volume_eth": "1046.5"
+    },
+    {
+      "timestamp_raw": "2022-04-01T00:00:00+00:00",
+      "average_price": "23.4",
+      "average_usd_price": "3287.7",
+      "count": "40",
+      "volume_eth": "936.0"
+    },
+    {
+      "timestamp_raw": "2022-04-02T00:00:00+00:00",
+      "average_price": "22.9",
+      "average_usd_price": "3431.84",
+      "count": "39",
+      "volume_eth": "893.1"
+    },
+    {
+      "timestamp_raw": "2022-04-03T00:00:00+00:00",
+      "average_price": "22.6",
+      "average_usd_price": "3431.84",
+      "count": "30",
+      "volume_eth": "678.0"
+    },
+    {
+      "timestamp_raw": "2022-04-04T00:00:00+00:00",
+      "average_price": "23.5",
+      "average_usd_price": "3459.24",
+      "count": "51",
+      "volume_eth": "1198.5"
+    },
+    {
+      "timestamp_raw": "2022-04-05T00:00:00+00:00",
+      "average_price": "23.0",
+      "average_usd_price": "3459.24",
+      "count": "39",
+      "volume_eth": "897.0"
+    }
+  ],
+  "0x57a204aa1042f6e66dd7730813f4024114d74f37": [
+    {
+      "timestamp_raw": "2022-03-04T00:00:00+00:00",
+      "average_price": "8.71",
+      "average_usd_price": "3360.71",
+      "count": "8",
+      "volume_eth": "69.69"
+    },
+    {
+      "timestamp_raw": "2022-03-05T00:00:00+00:00",
+      "average_price": "7.14",
+      "average_usd_price": "3360.27",
+      "count": "5",
+      "volume_eth": "35.69"
+    },
+    {
+      "timestamp_raw": "2022-03-06T00:00:00+00:00",
+      "average_price": "7.36",
+      "average_usd_price": "3361.01",
+      "count": "7",
+      "volume_eth": "51.53"
+    },
+    {
+      "timestamp_raw": "2022-03-07T00:00:00+00:00",
+      "average_price": "6.33",
+      "average_usd_price": "3362.87",
+      "count": "4",
+      "volume_eth": "25.33"
+    },
+    {
+      "timestamp_raw": "2022-03-08T00:00:00+00:00",
+      "average_price": "6.0",
+      "average_usd_price": "3363.74",
+      "count": "10",
+      "volume_eth": "59.99"
+    },
+    {
+      "timestamp_raw": "2022-03-09T00:00:00+00:00",
+      "average_price": "5.98",
+      "average_usd_price": "3359.21",
+      "count": "13",
+      "volume_eth": "77.72"
+    },
+    {
+      "timestamp_raw": "2022-03-10T00:00:00+00:00",
+      "average_price": "6.82",
+      "average_usd_price": "3358.54",
+      "count": "6",
+      "volume_eth": "40.89"
+    },
+    {
+      "timestamp_raw": "2022-03-11T00:00:00+00:00",
+      "average_price": "6.44",
+      "average_usd_price": "3362.0",
+      "count": "5",
+      "volume_eth": "32.22"
+    },
+    {
+      "timestamp_raw": "2022-03-12T00:00:00+00:00",
+      "average_price": "6.49",
+      "average_usd_price": "3358.54",
+      "count": "1",
+      "volume_eth": "6.49"
+    },
+    {
+      "timestamp_raw": "2022-03-13T00:00:00+00:00",
+      "average_price": "6.31",
+      "average_usd_price": "3358.54",
+      "count": "5",
+      "volume_eth": "31.53"
+    },
+    {
+      "timestamp_raw": "2022-03-14T00:00:00+00:00",
+      "average_price": "6.87",
+      "average_usd_price": "3359.33",
+      "count": "11",
+      "volume_eth": "75.57"
+    },
+    {
+      "timestamp_raw": "2022-03-15T00:00:00+00:00",
+      "average_price": "6.7",
+      "average_usd_price": "3361.79",
+      "count": "8",
+      "volume_eth": "53.59"
+    },
+    {
+      "timestamp_raw": "2022-03-16T00:00:00+00:00",
+      "average_price": "23.8",
+      "average_usd_price": "3360.7",
+      "count": "4",
+      "volume_eth": "95.21"
+    },
+    {
+      "timestamp_raw": "2022-03-17T00:00:00+00:00",
+      "average_price": "19.78",
+      "average_usd_price": "3363.74",
+      "count": "5",
+      "volume_eth": "98.89"
+    },
+    {
+      "timestamp_raw": "2022-03-18T00:00:00+00:00",
+      "average_price": "6.58",
+      "average_usd_price": "3359.21",
+      "count": "13",
+      "volume_eth": "85.51"
+    },
+    {
+      "timestamp_raw": "2022-03-19T00:00:00+00:00",
+      "average_price": "6.54",
+      "average_usd_price": "3360.58",
+      "count": "17",
+      "volume_eth": "111.17"
+    },
+    {
+      "timestamp_raw": "2022-03-20T00:00:00+00:00",
+      "average_price": "6.42",
+      "average_usd_price": "3358.54",
+      "count": "5",
+      "volume_eth": "32.09"
+    },
+    {
+      "timestamp_raw": "2022-03-21T00:00:00+00:00",
+      "average_price": "10.71",
+      "average_usd_price": "3361.2",
+      "count": "13",
+      "volume_eth": "139.2"
+    },
+    {
+      "timestamp_raw": "2022-03-22T00:00:00+00:00",
+      "average_price": "9.87",
+      "average_usd_price": "3360.54",
+      "count": "13",
+      "volume_eth": "128.33"
+    },
+    {
+      "timestamp_raw": "2022-03-23T00:00:00+00:00",
+      "average_price": "5.83",
+      "average_usd_price": "3359.98",
+      "count": "12",
+      "volume_eth": "69.97"
+    },
+    {
+      "timestamp_raw": "2022-03-24T00:00:00+00:00",
+      "average_price": "5.36",
+      "average_usd_price": "3363.74",
+      "count": "5",
+      "volume_eth": "26.79"
+    },
+    {
+      "timestamp_raw": "2022-03-25T00:00:00+00:00",
+      "average_price": "9.1",
+      "average_usd_price": "3361.01",
+      "count": "14",
+      "volume_eth": "127.42"
+    },
+    {
+      "timestamp_raw": "2022-03-26T00:00:00+00:00",
+      "average_price": "11.27",
+      "average_usd_price": "3359.5",
+      "count": "9",
+      "volume_eth": "101.42"
+    },
+    {
+      "timestamp_raw": "2022-03-27T00:00:00+00:00",
+      "average_price": "5.51",
+      "average_usd_price": "3360.27",
+      "count": "5",
+      "volume_eth": "27.56"
+    },
+    {
+      "timestamp_raw": "2022-03-28T00:00:00+00:00",
+      "average_price": "5.9",
+      "average_usd_price": "3341.45",
+      "count": "4",
+      "volume_eth": "23.59"
+    },
+    {
+      "timestamp_raw": "2022-03-29T00:00:00+00:00",
+      "average_price": "5.07",
+      "average_usd_price": "3364.29",
+      "count": "13",
+      "volume_eth": "65.88"
+    },
+    {
+      "timestamp_raw": "2022-03-30T00:00:00+00:00",
+      "average_price": "5.54",
+      "average_usd_price": "3404.8",
+      "count": "8",
+      "volume_eth": "44.33"
+    },
+    {
+      "timestamp_raw": "2022-03-31T00:00:00+00:00",
+      "average_price": "5.28",
+      "average_usd_price": "3287.7",
+      "count": "3",
+      "volume_eth": "15.85"
+    },
+    {
+      "timestamp_raw": "2022-04-01T00:00:00+00:00",
+      "average_price": "11.59",
+      "average_usd_price": "3482.63",
+      "count": "8",
+      "volume_eth": "92.74"
+    },
+    {
+      "timestamp_raw": "2022-04-02T00:00:00+00:00",
+      "average_price": "4.84",
+      "average_usd_price": "3436.6",
+      "count": "11",
+      "volume_eth": "53.26"
+    },
+    {
+      "timestamp_raw": "2022-04-03T00:00:00+00:00",
+      "average_price": "5.2",
+      "average_usd_price": "3484.01",
+      "count": "7",
+      "volume_eth": "36.42"
+    },
+    {
+      "timestamp_raw": "2022-04-04T00:00:00+00:00",
+      "average_price": "4.75",
+      "average_usd_price": "3486.18",
+      "count": "1",
+      "volume_eth": "4.75"
+    }
+  ],
+  "0xba30e5f9bb24caa003e9f2f0497ad287fdf95623": [
+    {
+      "timestamp_raw": "2022-03-03T00:00:00+00:00",
+      "average_price": "8.7",
+      "average_usd_price": "3358.54",
+      "count": "2",
+      "volume_eth": "17.4"
+    },
+    {
+      "timestamp_raw": "2022-03-04T00:00:00+00:00",
+      "average_price": "7.03",
+      "average_usd_price": "3359.87",
+      "count": "13",
+      "volume_eth": "91.38"
+    },
+    {
+      "timestamp_raw": "2022-03-05T00:00:00+00:00",
+      "average_price": "7.37",
+      "average_usd_price": "3358.54",
+      "count": "9",
+      "volume_eth": "66.36"
+    },
+    {
+      "timestamp_raw": "2022-03-06T00:00:00+00:00",
+      "average_price": "6.48",
+      "average_usd_price": "3361.79",
+      "count": "8",
+      "volume_eth": "51.83"
+    },
+    {
+      "timestamp_raw": "2022-03-07T00:00:00+00:00",
+      "average_price": "5.84",
+      "average_usd_price": "3363.9",
+      "count": "21",
+      "volume_eth": "122.7"
+    },
+    {
+      "timestamp_raw": "2022-03-08T00:00:00+00:00",
+      "average_price": "6.0",
+      "average_usd_price": "3358.54",
+      "count": "14",
+      "volume_eth": "83.98"
+    },
+    {
+      "timestamp_raw": "2022-03-09T00:00:00+00:00",
+      "average_price": "5.87",
+      "average_usd_price": "3358.54",
+      "count": "6",
+      "volume_eth": "35.21"
+    },
+    {
+      "timestamp_raw": "2022-03-10T00:00:00+00:00",
+      "average_price": "6.87",
+      "average_usd_price": "3358.89",
+      "count": "50",
+      "volume_eth": "343.47"
+    },
+    {
+      "timestamp_raw": "2022-03-11T00:00:00+00:00",
+      "average_price": "7.33",
+      "average_usd_price": "3360.16",
+      "count": "16",
+      "volume_eth": "117.24"
+    },
+    {
+      "timestamp_raw": "2022-03-12T00:00:00+00:00",
+      "average_price": "7.56",
+      "average_usd_price": "3359.62",
+      "count": "8",
+      "volume_eth": "60.49"
+    },
+    {
+      "timestamp_raw": "2022-03-13T00:00:00+00:00",
+      "average_price": "8.1",
+      "average_usd_price": "3358.7",
+      "count": "54",
+      "volume_eth": "437.2"
+    },
+    {
+      "timestamp_raw": "2022-03-14T00:00:00+00:00",
+      "average_price": "8.37",
+      "average_usd_price": "3359.05",
+      "count": "17",
+      "volume_eth": "142.31"
+    },
+    {
+      "timestamp_raw": "2022-03-15T00:00:00+00:00",
+      "average_price": "8.93",
+      "average_usd_price": "3358.74",
+      "count": "43",
+      "volume_eth": "383.93"
+    },
+    {
+      "timestamp_raw": "2022-03-16T00:00:00+00:00",
+      "average_price": "9.87",
+      "average_usd_price": "3358.79",
+      "count": "211",
+      "volume_eth": "2082.03"
+    },
+    {
+      "timestamp_raw": "2022-03-17T00:00:00+00:00",
+      "average_price": "7.89",
+      "average_usd_price": "3358.91",
+      "count": "329",
+      "volume_eth": "2594.84"
+    },
+    {
+      "timestamp_raw": "2022-03-18T00:00:00+00:00",
+      "average_price": "8.67",
+      "average_usd_price": "3341.45",
+      "count": "196",
+      "volume_eth": "1700.07"
+    },
+    {
+      "timestamp_raw": "2022-03-19T00:00:00+00:00",
+      "average_price": "9.28",
+      "average_usd_price": "3358.64",
+      "count": "90",
+      "volume_eth": "835.49"
+    },
+    {
+      "timestamp_raw": "2022-03-20T00:00:00+00:00",
+      "average_price": "8.9",
+      "average_usd_price": "3359.0",
+      "count": "56",
+      "volume_eth": "498.47"
+    },
+    {
+      "timestamp_raw": "2022-03-21T00:00:00+00:00",
+      "average_price": "8.35",
+      "average_usd_price": "3359.0",
+      "count": "38",
+      "volume_eth": "317.12"
+    },
+    {
+      "timestamp_raw": "2022-03-22T00:00:00+00:00",
+      "average_price": "8.44",
+      "average_usd_price": "3359.62",
+      "count": "32",
+      "volume_eth": "270.05"
+    },
+    {
+      "timestamp_raw": "2022-03-23T00:00:00+00:00",
+      "average_price": "9.08",
+      "average_usd_price": "3358.69",
+      "count": "57",
+      "volume_eth": "517.54"
+    },
+    {
+      "timestamp_raw": "2022-03-24T00:00:00+00:00",
+      "average_price": "9.62",
+      "average_usd_price": "3359.03",
+      "count": "53",
+      "volume_eth": "509.76"
+    },
+    {
+      "timestamp_raw": "2022-03-25T00:00:00+00:00",
+      "average_price": "9.32",
+      "average_usd_price": "3360.14",
+      "count": "38",
+      "volume_eth": "354.31"
+    },
+    {
+      "timestamp_raw": "2022-03-26T00:00:00+00:00",
+      "average_price": "9.7",
+      "average_usd_price": "3358.82",
+      "count": "31",
+      "volume_eth": "300.7"
+    },
+    {
+      "timestamp_raw": "2022-03-27T00:00:00+00:00",
+      "average_price": "9.27",
+      "average_usd_price": "3360.46",
+      "count": "27",
+      "volume_eth": "250.22"
+    },
+    {
+      "timestamp_raw": "2022-03-28T00:00:00+00:00",
+      "average_price": "8.69",
+      "average_usd_price": "3345.51",
+      "count": "18",
+      "volume_eth": "156.37"
+    },
+    {
+      "timestamp_raw": "2022-03-29T00:00:00+00:00",
+      "average_price": "8.79",
+      "average_usd_price": "3363.31",
+      "count": "27",
+      "volume_eth": "237.24"
+    },
+    {
+      "timestamp_raw": "2022-03-30T00:00:00+00:00",
+      "average_price": "8.41",
+      "average_usd_price": "3402.69",
+      "count": "20",
+      "volume_eth": "168.17"
+    },
+    {
+      "timestamp_raw": "2022-03-31T00:00:00+00:00",
+      "average_price": "8.33",
+      "average_usd_price": "3287.7",
+      "count": "21",
+      "volume_eth": "175.02"
+    },
+    {
+      "timestamp_raw": "2022-04-01T00:00:00+00:00",
+      "average_price": "8.53",
+      "average_usd_price": "3473.94",
+      "count": "23",
+      "volume_eth": "196.25"
+    },
+    {
+      "timestamp_raw": "2022-04-02T00:00:00+00:00",
+      "average_price": "7.88",
+      "average_usd_price": "3433.86",
+      "count": "28",
+      "volume_eth": "220.54"
+    },
+    {
+      "timestamp_raw": "2022-04-03T00:00:00+00:00",
+      "average_price": "8.53",
+      "average_usd_price": "3481.55",
+      "count": "15",
+      "volume_eth": "127.95"
+    },
+    {
+      "timestamp_raw": "2022-04-04T00:00:00+00:00",
+      "average_price": "7.5",
+      "average_usd_price": "3486.18",
+      "count": "1",
+      "volume_eth": "7.5"
+    }
+  ],
+  "0x1a92f7381b9f03921564a437210bb9396471050c": [
+    {
+      "timestamp_raw": "2022-03-05T00:00:00+00:00",
+      "average_price": "10.0",
+      "average_usd_price": "2603.01",
+      "count": "1",
+      "volume_eth": "10.0"
+    },
+    {
+      "timestamp_raw": "2022-03-06T00:00:00+00:00",
+      "average_price": "9.0",
+      "average_usd_price": "2600.98",
+      "count": "4",
+      "volume_eth": "36.0"
+    },
+    {
+      "timestamp_raw": "2022-03-07T00:00:00+00:00",
+      "average_price": "9.0",
+      "average_usd_price": "2600.98",
+      "count": "3",
+      "volume_eth": "27.0"
+    },
+    {
+      "timestamp_raw": "2022-03-08T00:00:00+00:00",
+      "average_price": "9.5",
+      "average_usd_price": "2600.98",
+      "count": "2",
+      "volume_eth": "19.0"
+    },
+    {
+      "timestamp_raw": "2022-03-09T00:00:00+00:00",
+      "average_price": "8.88",
+      "average_usd_price": "2603.01",
+      "count": "3",
+      "volume_eth": "26.64"
+    },
+    {
+      "timestamp_raw": "2022-03-10T00:00:00+00:00",
+      "average_price": "10.0",
+      "average_usd_price": "2603.01",
+      "count": "4",
+      "volume_eth": "40.0"
+    },
+    {
+      "timestamp_raw": "2022-03-11T00:00:00+00:00",
+      "average_price": "9.5",
+      "average_usd_price": "2532.03",
+      "count": "4",
+      "volume_eth": "38.0"
+    },
+    {
+      "timestamp_raw": "2022-03-12T00:00:00+00:00",
+      "average_price": "8.7",
+      "average_usd_price": "2539.55",
+      "count": "6",
+      "volume_eth": "52.2"
+    },
+    {
+      "timestamp_raw": "2022-03-13T00:00:00+00:00",
+      "average_price": "8.7",
+      "average_usd_price": "2539.55",
+      "count": "3",
+      "volume_eth": "26.1"
+    },
+    {
+      "timestamp_raw": "2022-03-14T00:00:00+00:00",
+      "average_price": "8.9",
+      "average_usd_price": "2539.55",
+      "count": "1",
+      "volume_eth": "8.9"
+    },
+    {
+      "timestamp_raw": "2022-03-15T00:00:00+00:00",
+      "average_price": "10.5",
+      "average_usd_price": "3330.64",
+      "count": "3",
+      "volume_eth": "31.5"
+    },
+    {
+      "timestamp_raw": "2022-03-16T00:00:00+00:00",
+      "average_price": "9.5",
+      "average_usd_price": "3330.64",
+      "count": "3",
+      "volume_eth": "28.5"
+    },
+    {
+      "timestamp_raw": "2022-03-17T00:00:00+00:00",
+      "average_price": "9.5",
+      "average_usd_price": "3335.75",
+      "count": "2",
+      "volume_eth": "19.0"
+    },
+    {
+      "timestamp_raw": "2022-03-18T00:00:00+00:00",
+      "average_price": "9.0",
+      "average_usd_price": "3330.64",
+      "count": "3",
+      "volume_eth": "27.0"
+    },
+    {
+      "timestamp_raw": "2022-03-19T00:00:00+00:00",
+      "average_price": "8.69",
+      "average_usd_price": "3330.64",
+      "count": "161",
+      "volume_eth": "1399.09"
+    },
+    {
+      "timestamp_raw": "2022-03-20T00:00:00+00:00",
+      "average_price": "8.75",
+      "average_usd_price": "3330.64",
+      "count": "23",
+      "volume_eth": "201.25"
+    },
+    {
+      "timestamp_raw": "2022-03-21T00:00:00+00:00",
+      "average_price": "8.69",
+      "average_usd_price": "3330.64",
+      "count": "7",
+      "volume_eth": "60.83"
+    },
+    {
+      "timestamp_raw": "2022-03-22T00:00:00+00:00",
+      "average_price": "8.69",
+      "average_usd_price": "3335.75",
+      "count": "2",
+      "volume_eth": "17.38"
+    },
+    {
+      "timestamp_raw": "2022-03-23T00:00:00+00:00",
+      "average_price": "8.7",
+      "average_usd_price": "3335.75",
+      "count": "8",
+      "volume_eth": "69.6"
+    },
+    {
+      "timestamp_raw": "2022-03-24T00:00:00+00:00",
+      "average_price": "8.75",
+      "average_usd_price": "3335.75",
+      "count": "9",
+      "volume_eth": "78.75"
+    },
+    {
+      "timestamp_raw": "2022-03-25T00:00:00+00:00",
+      "average_price": "8.69",
+      "average_usd_price": "3335.75",
+      "count": "48",
+      "volume_eth": "417.12"
+    },
+    {
+      "timestamp_raw": "2022-03-26T00:00:00+00:00",
+      "average_price": "8.88",
+      "average_usd_price": "3330.64",
+      "count": "17",
+      "volume_eth": "150.96"
+    },
+    {
+      "timestamp_raw": "2022-03-27T00:00:00+00:00",
+      "average_price": "8.8",
+      "average_usd_price": "3330.64",
+      "count": "8",
+      "volume_eth": "70.4"
+    },
+    {
+      "timestamp_raw": "2022-03-28T00:00:00+00:00",
+      "average_price": "8.78",
+      "average_usd_price": "3335.75",
+      "count": "11",
+      "volume_eth": "96.58"
+    },
+    {
+      "timestamp_raw": "2022-03-29T00:00:00+00:00",
+      "average_price": "8.69",
+      "average_usd_price": "3364.29",
+      "count": "11",
+      "volume_eth": "95.59"
+    },
+    {
+      "timestamp_raw": "2022-03-30T00:00:00+00:00",
+      "average_price": "8.7",
+      "average_usd_price": "3404.8",
+      "count": "12",
+      "volume_eth": "104.4"
+    },
+    {
+      "timestamp_raw": "2022-03-31T00:00:00+00:00",
+      "average_price": "8.7",
+      "average_usd_price": "3287.7",
+      "count": "5",
+      "volume_eth": "43.5"
+    },
+    {
+      "timestamp_raw": "2022-04-01T00:00:00+00:00",
+      "average_price": "9.0",
+      "average_usd_price": "3482.13",
+      "count": "3",
+      "volume_eth": "27.0"
+    },
+    {
+      "timestamp_raw": "2022-04-02T00:00:00+00:00",
+      "average_price": "8.7",
+      "average_usd_price": "3431.84",
+      "count": "2",
+      "volume_eth": "17.4"
+    },
+    {
+      "timestamp_raw": "2022-04-03T00:00:00+00:00",
+      "average_price": "8.8",
+      "average_usd_price": "3478.6",
+      "count": "10",
+      "volume_eth": "88.0"
+    },
+    {
+      "timestamp_raw": "2022-04-04T00:00:00+00:00",
+      "average_price": "8.99",
+      "average_usd_price": "3459.24",
+      "count": "6",
+      "volume_eth": "53.94"
+    },
+    {
+      "timestamp_raw": "2022-04-05T00:00:00+00:00",
+      "average_price": "8.69",
+      "average_usd_price": "3459.24",
+      "count": "59",
+      "volume_eth": "512.71"
+    }
+  ],
+  "0x08d7c0242953446436f34b4c78fe9da38c73668d": [
+    {
+      "timestamp_raw": "2022-03-04T00:00:00+00:00",
+      "average_price": "31.0",
+      "average_usd_price": "3369.56",
+      "count": "2",
+      "volume_eth": "62.0"
+    },
+    {
+      "timestamp_raw": "2022-03-05T00:00:00+00:00",
+      "average_price": "32.67",
+      "average_usd_price": "3369.56",
+      "count": "3",
+      "volume_eth": "98.0"
+    },
+    {
+      "timestamp_raw": "2022-03-06T00:00:00+00:00",
+      "average_price": "37.38",
+      "average_usd_price": "3369.56",
+      "count": "2",
+      "volume_eth": "74.77"
+    },
+    {
+      "timestamp_raw": "2022-03-07T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-08T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-09T00:00:00+00:00",
+      "average_price": "29.74",
+      "average_usd_price": "3369.56",
+      "count": "2",
+      "volume_eth": "59.47"
+    },
+    {
+      "timestamp_raw": "2022-03-10T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-11T00:00:00+00:00",
+      "average_price": "28.5",
+      "average_usd_price": "3370.73",
+      "count": "1",
+      "volume_eth": "28.5"
+    },
+    {
+      "timestamp_raw": "2022-03-12T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-13T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-14T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-15T00:00:00+00:00",
+      "average_price": "32.0",
+      "average_usd_price": "3370.14",
+      "count": "2",
+      "volume_eth": "64.0"
+    },
+    {
+      "timestamp_raw": "2022-03-16T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-17T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-18T00:00:00+00:00",
+      "average_price": "37.66",
+      "average_usd_price": "3369.56",
+      "count": "3",
+      "volume_eth": "112.99"
+    },
+    {
+      "timestamp_raw": "2022-03-19T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-20T00:00:00+00:00",
+      "average_price": "34.7",
+      "average_usd_price": "3370.73",
+      "count": "1",
+      "volume_eth": "34.7"
+    },
+    {
+      "timestamp_raw": "2022-03-21T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-22T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-23T00:00:00+00:00",
+      "average_price": "35.0",
+      "average_usd_price": "3370.14",
+      "count": "2",
+      "volume_eth": "70.0"
+    },
+    {
+      "timestamp_raw": "2022-03-24T00:00:00+00:00",
+      "average_price": "38.5",
+      "average_usd_price": "3369.56",
+      "count": "2",
+      "volume_eth": "77.0"
+    },
+    {
+      "timestamp_raw": "2022-03-25T00:00:00+00:00",
+      "average_price": "45.3",
+      "average_usd_price": "3369.56",
+      "count": "3",
+      "volume_eth": "135.9"
+    },
+    {
+      "timestamp_raw": "2022-03-26T00:00:00+00:00",
+      "average_price": "49.32",
+      "average_usd_price": "3369.56",
+      "count": "5",
+      "volume_eth": "246.59"
+    },
+    {
+      "timestamp_raw": "2022-03-27T00:00:00+00:00",
+      "average_price": "52.99",
+      "average_usd_price": "3369.56",
+      "count": "1",
+      "volume_eth": "52.99"
+    },
+    {
+      "timestamp_raw": "2022-03-28T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-29T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-03-30T00:00:00+00:00",
+      "average_price": "50.0",
+      "average_usd_price": "3404.8",
+      "count": "1",
+      "volume_eth": "50.0"
+    },
+    {
+      "timestamp_raw": "2022-03-31T00:00:00+00:00",
+      "average_price": "47.22",
+      "average_usd_price": "3287.7",
+      "count": "2",
+      "volume_eth": "94.44"
+    },
+    {
+      "timestamp_raw": "2022-04-01T00:00:00+00:00",
+      "average_price": "NaN",
+      "average_usd_price": "NaN",
+      "count": "0",
+      "volume_eth": "NaN"
+    },
+    {
+      "timestamp_raw": "2022-04-02T00:00:00+00:00",
+      "average_price": "53.23",
+      "average_usd_price": "3431.84",
+      "count": "5",
+      "volume_eth": "266.15"
+    },
+    {
+      "timestamp_raw": "2022-04-03T00:00:00+00:00",
+      "average_price": "67.1",
+      "average_usd_price": "3486.18",
+      "count": "3",
+      "volume_eth": "201.29"
+    }
+  ],
+  "0xed5af388653567af2f388e6224dc7c4b3241c544": [
+    {
+      "timestamp_raw": "2022-03-03T00:00:00+00:00",
+      "average_price": "9.7",
+      "average_usd_price": "3370.75",
+      "count": "3",
+      "volume_eth": "29.1"
+    },
+    {
+      "timestamp_raw": "2022-03-04T00:00:00+00:00",
+      "average_price": "12.18",
+      "average_usd_price": "3370.79",
+      "count": "97",
+      "volume_eth": "1181.1"
+    },
+    {
+      "timestamp_raw": "2022-03-05T00:00:00+00:00",
+      "average_price": "12.06",
+      "average_usd_price": "3370.78",
+      "count": "24",
+      "volume_eth": "289.39"
+    },
+    {
+      "timestamp_raw": "2022-03-06T00:00:00+00:00",
+      "average_price": "12.18",
+      "average_usd_price": "3370.79",
+      "count": "26",
+      "volume_eth": "316.69"
+    },
+    {
+      "timestamp_raw": "2022-03-07T00:00:00+00:00",
+      "average_price": "10.93",
+      "average_usd_price": "3370.76",
+      "count": "41",
+      "volume_eth": "447.98"
+    },
+    {
+      "timestamp_raw": "2022-03-08T00:00:00+00:00",
+      "average_price": "10.71",
+      "average_usd_price": "3370.76",
+      "count": "30",
+      "volume_eth": "321.15"
+    },
+    {
+      "timestamp_raw": "2022-03-09T00:00:00+00:00",
+      "average_price": "9.88",
+      "average_usd_price": "3370.78",
+      "count": "21",
+      "volume_eth": "207.39"
+    },
+    {
+      "timestamp_raw": "2022-03-10T00:00:00+00:00",
+      "average_price": "11.29",
+      "average_usd_price": "3370.76",
+      "count": "38",
+      "volume_eth": "428.9"
+    },
+    {
+      "timestamp_raw": "2022-03-11T00:00:00+00:00",
+      "average_price": "10.34",
+      "average_usd_price": "3370.79",
+      "count": "27",
+      "volume_eth": "279.26"
+    },
+    {
+      "timestamp_raw": "2022-03-12T00:00:00+00:00",
+      "average_price": "10.38",
+      "average_usd_price": "3370.78",
+      "count": "38",
+      "volume_eth": "394.31"
+    },
+    {
+      "timestamp_raw": "2022-03-13T00:00:00+00:00",
+      "average_price": "11.57",
+      "average_usd_price": "3370.8",
+      "count": "49",
+      "volume_eth": "566.75"
+    },
+    {
+      "timestamp_raw": "2022-03-14T00:00:00+00:00",
+      "average_price": "14.66",
+      "average_usd_price": "3370.77",
+      "count": "18",
+      "volume_eth": "263.8"
+    },
+    {
+      "timestamp_raw": "2022-03-15T00:00:00+00:00",
+      "average_price": "11.13",
+      "average_usd_price": "3370.74",
+      "count": "23",
+      "volume_eth": "255.98"
+    },
+    {
+      "timestamp_raw": "2022-03-16T00:00:00+00:00",
+      "average_price": "15.71",
+      "average_usd_price": "3370.77",
+      "count": "26",
+      "volume_eth": "408.47"
+    },
+    {
+      "timestamp_raw": "2022-03-17T00:00:00+00:00",
+      "average_price": "11.23",
+      "average_usd_price": "3370.78",
+      "count": "61",
+      "volume_eth": "685.24"
+    },
+    {
+      "timestamp_raw": "2022-03-18T00:00:00+00:00",
+      "average_price": "14.02",
+      "average_usd_price": "3370.81",
+      "count": "201",
+      "volume_eth": "2818.29"
+    },
+    {
+      "timestamp_raw": "2022-03-19T00:00:00+00:00",
+      "average_price": "13.18",
+      "average_usd_price": "3370.8",
+      "count": "56",
+      "volume_eth": "738.3"
+    },
+    {
+      "timestamp_raw": "2022-03-20T00:00:00+00:00",
+      "average_price": "14.32",
+      "average_usd_price": "3370.49",
+      "count": "43",
+      "volume_eth": "615.63"
+    },
+    {
+      "timestamp_raw": "2022-03-21T00:00:00+00:00",
+      "average_price": "13.58",
+      "average_usd_price": "3370.78",
+      "count": "30",
+      "volume_eth": "407.3"
+    },
+    {
+      "timestamp_raw": "2022-03-22T00:00:00+00:00",
+      "average_price": "13.14",
+      "average_usd_price": "3370.74",
+      "count": "57",
+      "volume_eth": "748.74"
+    },
+    {
+      "timestamp_raw": "2022-03-23T00:00:00+00:00",
+      "average_price": "14.93",
+      "average_usd_price": "3370.8",
+      "count": "99",
+      "volume_eth": "1478.39"
+    },
+    {
+      "timestamp_raw": "2022-03-24T00:00:00+00:00",
+      "average_price": "17.66",
+      "average_usd_price": "3370.81",
+      "count": "255",
+      "volume_eth": "4502.19"
+    },
+    {
+      "timestamp_raw": "2022-03-25T00:00:00+00:00",
+      "average_price": "20.4",
+      "average_usd_price": "3370.8",
+      "count": "67",
+      "volume_eth": "1367.04"
+    },
+    {
+      "timestamp_raw": "2022-03-26T00:00:00+00:00",
+      "average_price": "19.77",
+      "average_usd_price": "3370.81",
+      "count": "108",
+      "volume_eth": "2135.04"
+    },
+    {
+      "timestamp_raw": "2022-03-27T00:00:00+00:00",
+      "average_price": "21.1",
+      "average_usd_price": "3370.8",
+      "count": "71",
+      "volume_eth": "1498.21"
+    },
+    {
+      "timestamp_raw": "2022-03-28T00:00:00+00:00",
+      "average_price": "19.99",
+      "average_usd_price": "3363.56",
+      "count": "51",
+      "volume_eth": "1019.27"
+    },
+    {
+      "timestamp_raw": "2022-03-29T00:00:00+00:00",
+      "average_price": "19.75",
+      "average_usd_price": "3363.48",
+      "count": "70",
+      "volume_eth": "1382.18"
+    },
+    {
+      "timestamp_raw": "2022-03-30T00:00:00+00:00",
+      "average_price": "29.03",
+      "average_usd_price": "3402.9",
+      "count": "64",
+      "volume_eth": "1857.81"
+    },
+    {
+      "timestamp_raw": "2022-03-31T00:00:00+00:00",
+      "average_price": "20.06",
+      "average_usd_price": "3291.6",
+      "count": "160",
+      "volume_eth": "3210.21"
+    },
+    {
+      "timestamp_raw": "2022-04-01T00:00:00+00:00",
+      "average_price": "28.21",
+      "average_usd_price": "3459.4",
+      "count": "282",
+      "volume_eth": "7955.8"
+    },
+    {
+      "timestamp_raw": "2022-04-02T00:00:00+00:00",
+      "average_price": "36.09",
+      "average_usd_price": "3434.71",
+      "count": "177",
+      "volume_eth": "6387.86"
+    },
+    {
+      "timestamp_raw": "2022-04-03T00:00:00+00:00",
+      "average_price": "34.08",
+      "average_usd_price": "3481.32",
+      "count": "60",
+      "volume_eth": "2044.95"
+    },
+    {
+      "timestamp_raw": "2022-04-04T00:00:00+00:00",
+      "average_price": "27.35",
+      "average_usd_price": "3486.18",
+      "count": "4",
+      "volume_eth": "109.39"
+    }
+  ],
+  "0x82c7a8f707110f5fbb16184a5933e9f78a34c6ab": [
+    {
+      "timestamp_raw": "2022-03-03T00:00:00+00:00",
+      "average_price": "46.02",
+      "average_usd_price": "3362.87",
+      "count": "2",
+      "volume_eth": "92.04"
+    },
+    {
+      "timestamp_raw": "2022-03-04T00:00:00+00:00",
+      "average_price": "0.28",
+      "average_usd_price": "3361.43",
+      "count": "9",
+      "volume_eth": "2.54"
+    },
+    {
+      "timestamp_raw": "2022-03-05T00:00:00+00:00",
+      "average_price": "0.26",
+      "average_usd_price": "3358.54",
+      "count": "7",
+      "volume_eth": "1.82"
+    },
+    {
+      "timestamp_raw": "2022-03-06T00:00:00+00:00",
+      "average_price": "3.14",
+      "average_usd_price": "3360.11",
+      "count": "11",
+      "volume_eth": "34.49"
+    },
+    {
+      "timestamp_raw": "2022-03-07T00:00:00+00:00",
+      "average_price": "3.28",
+      "average_usd_price": "3360.95",
+      "count": "18",
+      "volume_eth": "59.0"
+    },
+    {
+      "timestamp_raw": "2022-03-08T00:00:00+00:00",
+      "average_price": "1.45",
+      "average_usd_price": "3367.2",
+      "count": "2",
+      "volume_eth": "2.9"
+    },
+    {
+      "timestamp_raw": "2022-03-09T00:00:00+00:00",
+      "average_price": "0.29",
+      "average_usd_price": "3359.5",
+      "count": "9",
+      "volume_eth": "2.59"
+    },
+    {
+      "timestamp_raw": "2022-03-10T00:00:00+00:00",
+      "average_price": "0.85",
+      "average_usd_price": "3358.54",
+      "count": "13",
+      "volume_eth": "11.02"
+    },
+    {
+      "timestamp_raw": "2022-03-11T00:00:00+00:00",
+      "average_price": "0.57",
+      "average_usd_price": "3359.56",
+      "count": "17",
+      "volume_eth": "9.71"
+    },
+    {
+      "timestamp_raw": "2022-03-12T00:00:00+00:00",
+      "average_price": "0.88",
+      "average_usd_price": "3360.58",
+      "count": "17",
+      "volume_eth": "15.04"
+    },
+    {
+      "timestamp_raw": "2022-03-13T00:00:00+00:00",
+      "average_price": "0.41",
+      "average_usd_price": "3359.21",
+      "count": "26",
+      "volume_eth": "10.57"
+    },
+    {
+      "timestamp_raw": "2022-03-14T00:00:00+00:00",
+      "average_price": "0.76",
+      "average_usd_price": "3362.15",
+      "count": "12",
+      "volume_eth": "9.08"
+    },
+    {
+      "timestamp_raw": "2022-03-15T00:00:00+00:00",
+      "average_price": "3.56",
+      "average_usd_price": "3362.62",
+      "count": "17",
+      "volume_eth": "60.53"
+    },
+    {
+      "timestamp_raw": "2022-03-16T00:00:00+00:00",
+      "average_price": "4.51",
+      "average_usd_price": "3361.43",
+      "count": "24",
+      "volume_eth": "108.17"
+    },
+    {
+      "timestamp_raw": "2022-03-17T00:00:00+00:00",
+      "average_price": "1.51",
+      "average_usd_price": "3361.63",
+      "count": "14",
+      "volume_eth": "21.16"
+    },
+    {
+      "timestamp_raw": "2022-03-18T00:00:00+00:00",
+      "average_price": "12.27",
+      "average_usd_price": "3361.2",
+      "count": "13",
+      "volume_eth": "159.46"
+    },
+    {
+      "timestamp_raw": "2022-03-19T00:00:00+00:00",
+      "average_price": "5.7",
+      "average_usd_price": "3361.91",
+      "count": "18",
+      "volume_eth": "102.55"
+    },
+    {
+      "timestamp_raw": "2022-03-20T00:00:00+00:00",
+      "average_price": "0.39",
+      "average_usd_price": "3359.47",
+      "count": "28",
+      "volume_eth": "10.79"
+    },
+    {
+      "timestamp_raw": "2022-03-21T00:00:00+00:00",
+      "average_price": "1.72",
+      "average_usd_price": "3361.43",
+      "count": "15",
+      "volume_eth": "25.86"
+    },
+    {
+      "timestamp_raw": "2022-03-22T00:00:00+00:00",
+      "average_price": "0.28",
+      "average_usd_price": "3358.89",
+      "count": "25",
+      "volume_eth": "7.09"
+    },
+    {
+      "timestamp_raw": "2022-03-23T00:00:00+00:00",
+      "average_price": "0.36",
+      "average_usd_price": "3361.25",
+      "count": "16",
+      "volume_eth": "5.7"
+    },
+    {
+      "timestamp_raw": "2022-03-24T00:00:00+00:00",
+      "average_price": "8.58",
+      "average_usd_price": "3360.95",
+      "count": "18",
+      "volume_eth": "154.39"
+    },
+    {
+      "timestamp_raw": "2022-03-25T00:00:00+00:00",
+      "average_price": "2.25",
+      "average_usd_price": "3360.95",
+      "count": "18",
+      "volume_eth": "40.52"
+    },
+    {
+      "timestamp_raw": "2022-03-26T00:00:00+00:00",
+      "average_price": "0.53",
+      "average_usd_price": "3360.46",
+      "count": "18",
+      "volume_eth": "9.63"
+    },
+    {
+      "timestamp_raw": "2022-03-27T00:00:00+00:00",
+      "average_price": "0.94",
+      "average_usd_price": "3361.43",
+      "count": "12",
+      "volume_eth": "11.29"
+    },
+    {
+      "timestamp_raw": "2022-03-28T00:00:00+00:00",
+      "average_price": "5.68",
+      "average_usd_price": "3348.03",
+      "count": "4",
+      "volume_eth": "22.74"
+    },
+    {
+      "timestamp_raw": "2022-03-29T00:00:00+00:00",
+      "average_price": "0.72",
+      "average_usd_price": "3362.27",
+      "count": "16",
+      "volume_eth": "11.52"
+    },
+    {
+      "timestamp_raw": "2022-03-30T00:00:00+00:00",
+      "average_price": "0.68",
+      "average_usd_price": "3400.1",
+      "count": "10",
+      "volume_eth": "6.85"
+    },
+    {
+      "timestamp_raw": "2022-03-31T00:00:00+00:00",
+      "average_price": "2.0",
+      "average_usd_price": "3291.61",
+      "count": "18",
+      "volume_eth": "35.97"
+    },
+    {
+      "timestamp_raw": "2022-04-01T00:00:00+00:00",
+      "average_price": "1.37",
+      "average_usd_price": "3421.62",
+      "count": "16",
+      "volume_eth": "21.97"
+    },
+    {
+      "timestamp_raw": "2022-04-02T00:00:00+00:00",
+      "average_price": "0.33",
+      "average_usd_price": "3432.31",
+      "count": "9",
+      "volume_eth": "2.97"
+    },
+    {
+      "timestamp_raw": "2022-04-03T00:00:00+00:00",
+      "average_price": "3.14",
+      "average_usd_price": "3480.97",
+      "count": "16",
+      "volume_eth": "50.3"
+    }
+  ]
+}
