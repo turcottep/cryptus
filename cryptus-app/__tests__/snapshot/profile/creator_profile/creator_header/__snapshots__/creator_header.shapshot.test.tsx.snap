@@ -17,6 +17,13 @@ exports[`CreatorHeader renders correctly 1`] = `
     onClick={[Function]}
   >
     <img
+      src="magnifier.svg"
+    />
+  </div>
+  <div
+    onClick={[Function]}
+  >
+    <img
       src="/icons/settings_icon.png"
     />
   </div>

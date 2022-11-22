@@ -1,13 +1,11 @@
 import { nft_collection } from "./data_types";
-import get_base_url from "./get_base_url";
 
 export default async function calculate_networth(
   collections: nft_collection[]
 ) {
   const collection_addresses = Object.keys(collections);
 
-  const base_url = get_base_url();
-  const res = await fetch(base_url + "/api/networth/networth", {
+  const res = await fetch("/api/networth/networth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

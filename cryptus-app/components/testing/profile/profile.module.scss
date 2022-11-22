@@ -1,0 +1,227 @@
+@use "/styles/variables" as v;
+@use "/styles/decimals" as d;
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+  min-height: 100vh;
+  background-color: v.$lightgrey;
+  gap: 1px;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(105, 153, 169);
+  width: 100%;
+
+  > div:nth-child(1) {
+    margin-left: 8px;
+  }
+  > div:nth-child(2) {
+    margin-right: 8px;
+  }
+
+  .icons {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    background-color: antiquewhite;
+  }
+
+  .tile {
+    //TODO: Use same /.tile for all tiles
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: 50px 150px;
+    grid-template-rows: 0.75fr 0.25fr;
+    grid-template-areas: "logo namee" "logo keystat";
+    height: 80px;
+    background-color: rgb(41, 88, 190);
+
+    > div {
+      background-color: rgb(203, 137, 87);
+    }
+
+    .logo {
+      grid-area: logo;
+      place-self: center;
+
+      place-items: center;
+      display: flex;
+    }
+    .name {
+      grid-area: namee;
+    }
+    .keystat {
+      grid-area: keystat;
+    }
+  }
+}
+
+.logoimg {
+  height: 50px;
+  border-radius: 50%;
+}
+
+.collections {
+  width: calc(100% - 32px);
+  background-color: rgba(102, 51, 153, 0.237);
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+  @media (max-width: v.$mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  gap: 8px;
+
+  > div {
+    background-color: rgba(203, 137, 87, 0.351);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+}
+
+$size: 72px;
+$size-s: 36px;
+$gap: 6px;
+$gap-s: 3px;
+$block-color: rgb(165, 165, 165);
+
+.container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  column-gap: calc($gap * 3);
+  row-gap: $gap;
+}
+
+.collandname {
+  flex: 0 0 none;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-s;
+}
+
+.collname {
+  flex: 0 0 none;
+  font-size: v.$font-size-xs;
+  text-align: center;
+  width: calc($size * 2 + $gap * 3);
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.collection_container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: $gap;
+  padding: $gap;
+
+  width: calc($size * 2 + $gap * 3);
+  height: calc($size * 2 + $gap * 3);
+
+  border-radius: v.$border-radius-xl;
+  background-color: rgba($block-color, 0.1);
+}
+
+.collection_container2 {
+  @extend .collection_container;
+  padding: 0px;
+}
+
+.nft_container {
+  flex: 0 0 none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: $size;
+  height: $size;
+
+  border-radius: v.$border-radius-l;
+  background-color: rgba($block-color, 0.1);
+  object-fit: cover;
+}
+
+.collection_preview_container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $gap-s;
+
+  width: $size;
+  height: $size;
+}
+
+.nft_preview_container {
+  flex: 0 0 none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(($size - $gap-s) / 2);
+  height: calc(($size - $gap-s) / 2);
+
+  border-radius: v.$border-radius-s;
+  background-color: rgba($block-color, 0.1);
+}
+
+.imgsmall {
+  flex: 0 0 none;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: v.$border-radius-m;
+}
+
+.imglarge {
+  flex: 0 0 none;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: v.$border-radius-l;
+}
+
+.imglarge_loading {
+  @extend .imglarge;
+
+  animation: fadeIn 0.5s alternate-reverse ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    background-color: rgba(v.$secondary-color, 0.5);
+  }
+  100% {
+    background-color: v.$secondary-color-pale;
+  }
+}

@@ -10,7 +10,7 @@ export default function LogoutSetting() {
         onClick={() => {
           signOut({
             redirect: true,
-            callbackUrl: `${window.location.hostname}`,
+            callbackUrl: `/`,
           });
         }}
       >

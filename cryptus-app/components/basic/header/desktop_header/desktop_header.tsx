@@ -8,6 +8,7 @@ import ContextualMenuButton from "../contextual_menu_button/contextual_menu_butt
 export default function DesktopHeader(props: {
   tab: string;
   open_settings: () => void;
+  open_search: () => void;
 }) {
   const [session, loading] = useSession();
   const [name, setName] = useState("");
@@ -24,7 +25,7 @@ export default function DesktopHeader(props: {
 
   const tabs = [
     { name: "market", url: "/market" },
-    { name: "search", url: "/market" },
+    // { name: "search", url: "/market" },
     { name: "profile", url: `/${name}` },
   ];
 
@@ -37,7 +38,7 @@ export default function DesktopHeader(props: {
         {tabs.map((t, i) => {
           const isActive = t.name == tab;
 
-          if (name == "" && t.name == tabs[2].name) {
+          if (name == "" && t.name == tabs[1].name) {
             return (
               <Tab2
                 name={t.name}
@@ -54,6 +55,10 @@ export default function DesktopHeader(props: {
         })}
       </div>
       <div className={s.icons}>
+        <ContextualMenuButton
+          img="magnifier.svg"
+          open_settings={props.open_search}
+        />
         <Icon img="/icons/notification_icon.png" url="/market" />
         <ContextualMenuButton
           img={imgUrl}

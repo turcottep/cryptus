@@ -13,7 +13,9 @@ describe("<ViewerHeader />", () => {
   });
 
   it("ViewerHeader renders correctly", () => {
-    const tree = renderer.create(<ViewerHeader userId="test" />).toJSON();
+    const tree = renderer
+      .create(<ViewerHeader userId="test" open_search={undefined} />)
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

@@ -14,6 +14,7 @@ exports[`<SucessScreen /> should display properly 1`] = `
     className=" flex xl:text-xl flex-col mx-12 mt-28"
     onClick={[Function]}
     onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <button
       className="text-xl text-center whitespace-nowrap bg-brown text-white font-bold rounded-lg w-full px-2 py-2"

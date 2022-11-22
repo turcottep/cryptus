@@ -13,5 +13,12 @@ exports[`<ViewerHeader /> ViewerHeader renders correctly 1`] = `
   <div>
     test
   </div>
+  <div
+    onClick={[Function]}
+  >
+    <img
+      src="magnifier.svg"
+    />
+  </div>
 </div>
 `;

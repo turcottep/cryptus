@@ -12,6 +12,7 @@ export default function MarketCollections(props: {
   callback;
   connected?: boolean;
 }) {
+  // console.log(props.collections);
   return (
     <div id="market_collections" className={s.container}>
       <Header name={props.name} icon={props.icon} />

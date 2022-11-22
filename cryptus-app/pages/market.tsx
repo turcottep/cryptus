@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 
 import { isMobile as mobile } from "react-device-detect";
 
-import Market from "../components/market/market";
-
 import { collection, intervals } from "../lib/data_types";
 import collectionDictionary from "../lib/collectionDictionary";
 import address from "./api/collection/address";
@@ -13,14 +11,15 @@ import getCollectionData from "../lib/get_collection_data";
 import { collection100list } from "../lib/collectionDictionary";
 
 // Import market_overwiew parent component to test here
+import Collection from "../components/testing/market/collection/collection";
+import Search from "../components/testing/search/search";
+import Market from "../components/testing/market/market";
+import { Page } from "../components/testing/buildingblocks/buildingblocks";
+import Modifiers from "../components/testing/market/modifiers/modifiers";
 
 export default function MarketPage(props) {
-  const [isMobile, setIsMobile] = useState(true);
-
-  useEffect(() => {
-    setIsMobile(mobile);
-    console.log("isMobile", isMobile);
-  }, [mobile]);
+  const [v, setV] = useState(0); //[0: market, 1: search, 2: modifiers, 3: collection]
+  const [f, setF] = useState([(i) => setV(i), () => {}]);
 
   return (
     <div className="">
@@ -53,25 +52,32 @@ export default function MarketPage(props) {
         rel="stylesheet"
       />
       <main>
-        <Market
-          date={props.mock_data.date}
-          networth={props.mock_data.networth}
-          collections={props.collections}
-          isMobile={isMobile}
-        />
+        <Page>
+          <Market
+            networth={props.mock_data.networth}
+            collections={props.collections}
+          />
+          <Search data={props.data} v={v == 1} />
+          <Modifiers d={[]} f={f} v={v == 2} />
+          <Collection c={props.collections[0]} v={v == 3} />
+        </Page>
       </main>
     </div>
   );
 }
 
+//LIST OF ALL PAGES ORIGINATING FROM PROFILE PAGE
+//market, collection, search, modifiers
+
 export async function getStaticProps() {
   const mock_data = {
     date: "April 20",
     networth: {
-      EthCad: 4000,
+      EthCad: 1600,
       active: intervals.three_months,
-      value: "1337,69 $ CAD",
-      change: "420.69 $ total",
+      value: 400 * 1600,
+      change: 400 - 100,
+      data_price: [100, 200, 300, 400, 200, 100, 200, 300, 400],
     },
   };
 
