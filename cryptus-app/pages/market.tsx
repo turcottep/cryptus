@@ -59,7 +59,7 @@ export default function MarketPage(props) {
           />
           <Search data={props.data} v={v == 1} />
           <Modifiers d={[]} f={f} v={v == 2} />
-          <Collection c={props.data[0]} v={v == 3} />
+          <Collection c={props.collections[0]} v={v == 3} />
         </Page>
       </main>
     </div>

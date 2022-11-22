@@ -89,7 +89,7 @@ export const Networth = (props: { networth: any }) => {
   return (
     <div className={s.networth}>
       <div className={s.number}>
-        <div className={s.num}>{n}</div>
+        <div className={s.num}>{n.value}</div>
         <div className={s.fiat}>CAD$</div>
         <div className={s.change}>{n.change}</div>
       </div>
