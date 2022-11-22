@@ -36,7 +36,7 @@ export default function MarketCollection(props: {
 
   useEffect(() => {
     updatePrice(props.market_collection_props.interval);
-  }, []);
+  }, [setVolume]);
 
   const updatePrice = async (childData) => {
     let viewingmode = intervals[childData];

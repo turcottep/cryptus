@@ -42,6 +42,7 @@ export default function Profile(props: {
   const [show_card_nft, set_show_nft] = useState(false);
   const [card_nft, set_card_nft] = useState(null);
 
+  const [collections_updated, set_collections_updated] = useState(collections);
   const [update_collection, set_update_collection] = useState(0);
   const [show_card_settings, set_show_settings] = useState(false);
   const [show_card_wallet_manager, set_show_wallet_manager] = useState(false);
@@ -88,16 +89,18 @@ export default function Profile(props: {
   };
 
   const open_collection = (collection_name: string) => {
-    console.log("open_collection", collection_name);
-    const collection = collections.find((c) => c.name === collection_name);
+    const collection = collections_updated.find(
+      (c) => c.name === collection_name
+    );
     set_card_collection(collection);
     set_show_collection(true);
   };
 
   const open_nft = (collection_name: string, nft_token_id: string) => {
-    console.log("open_nft", collection_name, nft_token_id);
-    const collection = collections.find((c) => c.name === collection_name);
-
+    const collection = collections_updated.find(
+      (c) => c.name === collection_name
+    );
+    console.log(collections_updated);
     const nft = collection.nfts.find((n) => n.token_id === nft_token_id);
     set_card_nft(nft);
     set_show_nft(true);
@@ -207,9 +210,11 @@ export default function Profile(props: {
         <Support callback_close_support={close_support} isMobile={isMobile} />
       )}
       <ProfileWalletViewer
-        collections={collections}
+        collections={collections_updated}
+        add_collections={set_collections_updated}
         open_collection={open_collection}
         open_nft={open_nft}
+        wallets={props.user.wallets}
         collections_filter={collections_filter}
         key={update_collection}
       />

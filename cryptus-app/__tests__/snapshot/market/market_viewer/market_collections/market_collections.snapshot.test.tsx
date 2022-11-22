@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import "@testing-library/jest-dom/extend-expect";
 
 import MarketCollections from "../../../../../components/market/market_viewer/market_collections/market_collections";
-import { collection } from "../../../../../lib/data_types";
+import { collection, intervals } from "../../../../../lib/data_types";
 
 const mock_collection: collection = {
   id: "1",
@@ -25,6 +25,10 @@ describe("<MarketCollections />", () => {
     const tree = renderer
       .create(
         <MarketCollections
+          setLoading={function (new_filter: string[]): void {
+            throw new Error("Function not implemented.");
+          }}
+          interval={intervals.three_months}
           name={"My Collections"}
           icon="icons/favorite_icon.png"
           collections={test_collections}

@@ -12,54 +12,73 @@ exports[`<MarketCollections /> should display properly 1`] = `
       My Collections
     </div>
   </div>
-  <div
-    onClick={[Function]}
-  >
+  <div>
     <div
-      id="collection_row"
+      className="infinite-scroll-component__outerdiv"
+      style={Object {}}
     >
       <div
-        id="collection_row"
+        className="infinite-scroll-component "
+        style={
+          Object {
+            "WebkitOverflowScrolling": "touch",
+            "height": "auto",
+            "overflow": "auto",
+            "overflowY": "hidden",
+          }
+        }
       >
         <div
-          id="collection_info"
+          onClick={[Function]}
         >
-          <div>
-            <img
-              src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
-            />
-            <div>
-              KITT
+          <div
+            id="collection_row"
+          >
+            <div
+              id="collection_row"
+            >
+              <div
+                id="collection_info"
+              >
+                <div>
+                  <img
+                    src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
+                  />
+                  <div>
+                    KITT
+                  </div>
+                </div>
+                <div>
+                  CryptoKitties
+                </div>
+              </div>
+              <div
+                id="preview_graph"
+              >
+                <div>
+                  <canvas
+                    height={150}
+                    role="img"
+                    width={300}
+                  />
+                  <canvas
+                    height={150}
+                    role="img"
+                    width={300}
+                  />
+                </div>
+              </div>
+              <div
+                id="price_info"
+              >
+                <div>
+                  7.8Ξ
+                </div>
+                <div>
+                  NaNΞ (NaN%)
+                </div>
+              </div>
             </div>
-          </div>
-          <div>
-            CryptoKitties
-          </div>
-        </div>
-        <div
-          id="preview_graph"
-        >
-          <div>
-            <canvas
-              height={150}
-              role="img"
-              width={300}
-            />
-            <canvas
-              height={150}
-              role="img"
-              width={300}
-            />
-          </div>
-        </div>
-        <div
-          id="price_info"
-        >
-          <div>
-            7.8Ξ
-          </div>
-          <div>
-            NaNΞ (NaN%)
           </div>
         </div>
       </div>

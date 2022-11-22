@@ -8,6 +8,12 @@ $block-color: rgb(165, 165, 165);
 .container {
   flex: 0 0 none;
 
+  justify-content: center;
+}
+
+.containerRISC {
+  flex: 0 0 none;
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
