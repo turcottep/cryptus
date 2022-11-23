@@ -27,6 +27,7 @@ import Support from "../basic/support/support";
 import SearchIcon from "../basic/header/search_icon/search_icon";
 
 import findAllUsers from "../../lib/findAllUsers";
+import Graph from "../market/graph/graph";
 
 export default function Profile(props: {
   collections: nft_collection[];
@@ -95,6 +96,8 @@ export default function Profile(props: {
     set_update_collection((update_collection + 1) % 2);
     setCollectionsFilter(temp_filter);
   };
+
+  console.log("user", user);
 
   return (
     <div className={s.app}>
@@ -174,6 +177,18 @@ export default function Profile(props: {
         <Support
           callback_close_support={() => set_show_support(false)}
           isMobile={isMobile}
+        />
+      )}
+      {user && user.networth_history && (
+        <Graph
+          data_price={user.networth_history}
+          data_volume={null}
+          color={
+            user.networth_history[-1] > user.networth_history[0]
+              ? "green"
+              : "red"
+          }
+          detailled={true}
         />
       )}
       <ProfileWalletViewer

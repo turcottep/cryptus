@@ -38,9 +38,9 @@ export default async function get_profile_props(
       // user.collections_filter
     );
 
-    const networth = 0; //await calculate_networth(nfts_collections);
+    // const networth = 0; //await calculate_networth(nfts_collections);
 
-    user.networth = networth;
+    // user.networth = networth;
 
     return {
       props: { collections: nfts_collections, user: user },
