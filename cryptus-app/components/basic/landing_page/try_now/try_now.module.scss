@@ -1,9 +1,5 @@
 @use "/styles/variables" as v;
 
-// .center_div {
-//   margin: auto;
-// }
-
 .container {
   flex: 1 1 auto;
 
@@ -13,12 +9,22 @@
   padding: 0 10px 0 10px;
 }
 
-.settingsTitle {
-  flex: 1 1 auto;
+.title {
+  font-size: v.$font-size-l;
+  margin: auto;
+  text-align: center;
+  @media (max-width: v.$mobile) {
+    padding-top: 50px;
+  }
+}
 
-  display: flex;
-  font-size: v.$font-size-ml;
-  justify-content: center;
+.names {
+  font-size: v.$font-size-m;
+  margin: auto;
+  text-align: center;
+  @media (max-width: v.$mobile) {
+    padding-top: 50px;
+  }
 }
 
 .tryNowMobile {

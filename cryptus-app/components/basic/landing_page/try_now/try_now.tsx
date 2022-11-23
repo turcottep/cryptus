@@ -20,35 +20,50 @@ export default function TryNow(props: try_now_props) {
   return (
     <Card callback_close={props.callback_close} isMobile={props.isMobile}>
       <div className={s.container}>
+        <div className={s.title}>
+          {"Click on a celebrity to see their NFTS!"}
+        </div>
         <div className={s.grid}>
-          <img
-            src="/images/JustinBieber.png"
-            className={s.image}
-            onClick={() => {
-              router.push("/justinbiebernfts");
-            }}
-          />
-          <img
-            src="/images/mcuban.png"
-            className={s.image}
-            onClick={() => {
-              router.push("/mcuban");
-            }}
-          />
-          <img
-            src="/images/snoopdogg.png"
-            className={s.image}
-            onClick={() => {
-              router.push("/snoopdogg");
-            }}
-          />
-          <img
-            src="/images/loganpaul.png"
-            className={s.image}
-            onClick={() => {
-              router.push("/logz");
-            }}
-          />
+          <div className={s.names}>
+            <img
+              src="/images/JustinBieber.png"
+              className={s.image}
+              onClick={() => {
+                router.push("/justinbiebernfts");
+              }}
+            />
+            {"Justin Bieber"}
+          </div>
+          <div className={s.names}>
+            <img
+              src="/images/mcuban.png"
+              className={s.image}
+              onClick={() => {
+                router.push("/mcuban");
+              }}
+            />
+            {"Mark Cuban"}
+          </div>
+          <div className={s.names}>
+            <img
+              src="/images/snoopdogg.png"
+              className={s.image}
+              onClick={() => {
+                router.push("/snoopdogg");
+              }}
+            />
+            {"Snoop Dogg"}
+          </div>
+          <div className={s.names}>
+            <img
+              src="/images/loganpaul.png"
+              className={s.image}
+              onClick={() => {
+                router.push("/logz");
+              }}
+            />
+            {"Logan Paul"}
+          </div>
         </div>
       </div>
     </Card>
