@@ -1,8 +1,10 @@
 import { nft_collection } from "./data_types";
+import get_trait_floor_for_collection from "../scripts/get_trait_floor_for_collection";
 
 export default async function calculate_networth(
   collections: nft_collection[]
 ) {
+  ////////////Insert test fetch above///////////////////////////////////////////////////////////////////////////////////////////////////
   const collection_addresses = Object.keys(collections);
 
   const res = await fetch("/api/networth/networth", {
@@ -19,7 +21,6 @@ export default async function calculate_networth(
   floors.forEach((floor) => {
     floors_dict[floor.address] = JSON.parse(floor.trait_floor_dict);
   });
-  //   console.log("floors_dict", floors_dict);
 
   let networth = 0;
 

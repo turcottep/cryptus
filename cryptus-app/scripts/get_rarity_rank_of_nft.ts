@@ -465,13 +465,19 @@ async function writeDataInDB(
   }
 }
 
-async function main(collectionAddress: string, collectionName: string = "") {
+async function main(
+  collectionAddress: string,
+  collectionName: string = "",
+  test = false
+) {
   // With Opensea
   // const nftsWithRarity = await generatetest(collectionAddress);
 
   const nftsWithRarity = await generateRarityWithOpensea(collectionAddress);
-  if (nftsWithRarity) {
+  if (nftsWithRarity && test == false) {
     await writeDataInDB(nftsWithRarity, collectionAddress, collectionName);
+  } else if (test == true) {
+    return nftsWithRarity;
   }
 
   // With Moralis

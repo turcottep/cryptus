@@ -28,6 +28,7 @@ import TimeInterval from "./market_header/time_interval/time_interval";
 import SearchIcon from "../basic/header/search_icon/search_icon";
 
 import findAllUsers from "../../lib/findAllUsers";
+import calculate_networth from "../../lib/networth";
 
 type market_overview_props = {
   date: string;
@@ -145,6 +146,7 @@ export default function MarketOverview(props: market_overview_props) {
     const user_collections = user.collections_list;
     console.log("iuser collections : ", user_collections);
     const networth = user.networth;
+    //const networth = await calculate_networth(user_collections); // For fetch tests
     console.log("networth : ", networth);
     set_user_collections_list([...user_collections]);
     set_networth(networth);

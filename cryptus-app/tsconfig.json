@@ -1,12 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-      "es6"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext", "es6"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -20,6 +15,9 @@
     "jsx": "preserve",
     "incremental": true
   },
+  /* "compilerConfig": {
+    "lib": ["dom", "esnext", "es2015"]
+  }, */
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -31,8 +29,5 @@
     "components/user_form/UserDetails.jsx",
     "components/user_form/UserDetails.jsx"
   ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }
