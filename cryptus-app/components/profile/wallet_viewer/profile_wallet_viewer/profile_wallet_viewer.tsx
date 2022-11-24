@@ -32,7 +32,6 @@ export default function ProfileWalletViewer(props: {
   const [hasMore, setHasMore] = useState(true);
   const [walletIndex, setWalletIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(nbColToFillPage);
-
   useEffect(() => {
     props.add_collections(collections);
   }, [collections]);
@@ -98,12 +97,6 @@ export default function ProfileWalletViewer(props: {
         {collections
           .filter((collection) => {
             return !props.collections_filter.includes(collection.address);
-          })
-          .sort((a, b) => {
-            return (
-              top_collections_address_list.indexOf(b.address.toLowerCase()) -
-              top_collections_address_list.indexOf(a.address.toLowerCase())
-            );
           })
           .map((collection: nft_collection, i: number) => (
             <div key={i}>
