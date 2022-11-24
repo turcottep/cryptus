@@ -3,6 +3,8 @@ import s from "./modifiers.module.scss";
 
 import { Header, Page, Popup } from "../../buildingblocks/buildingblocks";
 import { Modifiers as ModifierPods } from "../../market/market";
+import SortButton from "../../../market/sort_button/sort_button";
+import TimeInterval from "../../../market/market_header/time_interval/time_interval";
 
 export default function Modifiers(props: { v: boolean; d: any; f: any }) {
   const { v, d } = props;
@@ -30,6 +32,7 @@ export default function Modifiers(props: { v: boolean; d: any; f: any }) {
           <div className={s.bla}>X</div>
         </div>
       </Header>
+
       <ModifierPods />
       <Filters d={[]} f={[]} w={w == 1} />
       <Sort d={[]} f={[]} w={w == 2} />
@@ -37,6 +40,8 @@ export default function Modifiers(props: { v: boolean; d: any; f: any }) {
     </Popup>
   );
 }
+
+//TODO: <SortButton /> is to have Jay's component here, but it should actualy be integraed
 
 export const Filters = (props: { w: any; d: any; f: any }) => {
   const { w, d, f } = props;
@@ -50,5 +55,9 @@ export const Sort = (props: { w: any; d: any; f: any }) => {
 
 export const Time = (props: { w: any; d: any; f: any }) => {
   const { w, d, f } = props;
-  return <div>Time</div>;
+  return (
+    <div>
+      <TimeInterval active={d.networth.active} callback />
+    </div>
+  );
 };

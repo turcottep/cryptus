@@ -69,7 +69,7 @@ export default function SearchBar(props: {
               if (index < 8) {
                 return (
                   <div
-                    className={classNames(s.search_items)}
+                    className={s.search_items}
                     key={collection.name}
                     style={{
                       top: index * 55 + Number(searchBarPosY) + 2,
@@ -107,7 +107,7 @@ export default function SearchBar(props: {
               if (index < 8) {
                 return (
                   <div
-                    className={classNames(s.search_items)}
+                    className={s.search_items}
                     key={user.username}
                     style={{
                       top: index * 55 + Number(searchBarPosY) + 2,

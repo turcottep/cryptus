@@ -25,14 +25,13 @@ export default function ProfilePage() {
   const [user, setUser] = useState(props_empty.user);
   const [collections, setCollections] = useState(props_empty.collections);
 
-  const [v, setV] = useState(0); //[0: profile, 1: settings, 2: search, 3: collection, 4: nft, 5: modifiers]
-
   const [filteredCollections, setFilteredCollections] = useState(
     props_empty.collections
   );
   const [selectedCollection, setSelectedCollection] = useState(null);
   const [selectedNft, setSelectedNft] = useState(null);
 
+  const [v, setV] = useState(0); //[0: profile, 1: settings, 2: search, 3: collection, 4: nft, 5: modifiers]
   const [f, setF] = useState([
     (i) => setV(i),
     (coll) => setSelectedCollection(coll),
@@ -96,11 +95,12 @@ export default function ProfilePage() {
 
   return (
     <Page key={loading ? 1 : 0}>
-      <Profile collections={collections} user={user} f={f} />
+      <Profile collections={filteredCollections} user={user} f={f} />
       <Modifiers d={user} f={f} v={v == 5} />
       <Collection d={selectedCollection} f={f} v={v == 3} />
       <Nft d={selectedNft} f={f} v={v == 4} />
       <Settings d={user} f={f} v={v == 1} />
+      <Search f={f} v={v == 2} />
     </Page>
   );
 }

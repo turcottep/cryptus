@@ -4,8 +4,12 @@ import s from "./collection.module.scss";
 import { Header, Page, Popup } from "../../buildingblocks/buildingblocks";
 import { Networth } from "../market";
 
-export default function Collection(props: { v: boolean; c: any }) {
-  const { v, c } = props;
+export default function Collection(props: {
+  v: boolean;
+  d: any;
+  f: Function[];
+}) {
+  const { v, d, f } = props;
   const data = [
     { name: "a", value: 1 },
     { name: "b", value: 2 },
@@ -17,7 +21,7 @@ export default function Collection(props: { v: boolean; c: any }) {
   return (
     <Popup v={v}>
       <div className={s.collection}>
-        <CollectionHeader c={c} />
+        <CollectionHeader d={d} />
         <Networth networth={43} />
         <Stat title="Stats" data={data} />
         <Stat title="Floor" data={data} />
@@ -74,15 +78,15 @@ export const Stat = (props: {
   );
 };
 
-export const CollectionHeader = (props: { c: any }) => {
-  const { c } = props;
+export const CollectionHeader = (props: { d: any }) => {
+  const { d } = props;
   return (
     <Header>
       <div className={s.header}>
         <div className={s.tile}>
-          <div className={s.logo}>{c.imgurl}</div>
-          <div className={s.name}>{c.name}</div>
-          <div className={s.keystat}>{c.description}</div>
+          <div className={s.logo}>{d.imgurl}</div>
+          <div className={s.name}>{d.name}</div>
+          <div className={s.keystat}>{d.description}</div>
         </div>
         <div className={s.bla}>buy</div>
 

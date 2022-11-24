@@ -6,7 +6,12 @@ import PreviewGraph from "../../market/market_viewer/collection_row/preview_grap
 import Graph from "../../market/graph/graph";
 import { collection, intervals } from "../../../lib/data_types";
 
-export default function Market(props: { networth: any; collections: any }) {
+export default function Market(props: {
+  networth: any;
+  collections: any;
+  f: Function[];
+}) {
+  const { networth, collections, f } = props;
   const [newPropCollection, setnewPropCollection] = useState(props.collections);
   const [market_interval, set_market_interval] = useState(
     props.networth.active

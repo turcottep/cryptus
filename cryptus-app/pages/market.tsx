@@ -1,16 +1,11 @@
 import { Router, useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-import { isMobile as mobile } from "react-device-detect";
-
 import { collection, intervals } from "../lib/data_types";
 import collectionDictionary from "../lib/collectionDictionary";
-import address from "./api/collection/address";
-
 import getCollectionData from "../lib/get_collection_data";
 import { collection100list } from "../lib/collectionDictionary";
 
-// Import market_overwiew parent component to test here
 import Collection from "../components/testing/market/collection/collection";
 import Search from "../components/testing/search/search";
 import Market from "../components/testing/market/market";
@@ -19,7 +14,15 @@ import Modifiers from "../components/testing/market/modifiers/modifiers";
 
 export default function MarketPage(props) {
   const [v, setV] = useState(0); //[0: market, 1: search, 2: modifiers, 3: collection]
-  const [f, setF] = useState([(i) => setV(i), () => {}]);
+  const [sortedCollections, setSortedCollections] = useState(props.collections);
+  const [selectedCollection, setSelectedCollection] = useState(
+    props.collections[0]
+  );
+  const [f, setF] = useState([
+    (i) => setV(i),
+    (colls) => setSortedCollections(colls),
+    (coll) => setSelectedCollection(coll),
+  ]);
 
   return (
     <div className="">
@@ -55,11 +58,12 @@ export default function MarketPage(props) {
         <Page>
           <Market
             networth={props.mock_data.networth}
-            collections={props.collections}
+            collections={sortedCollections}
+            f={f}
           />
-          <Search data={props.data} v={v == 1} />
-          <Modifiers d={[]} f={f} v={v == 2} />
-          <Collection c={props.collections[0]} v={v == 3} />
+          <Search coll={sortedCollections} f={f} v={v == 1} />
+          <Modifiers d={props} f={f} v={v == 2} />
+          <Collection d={selectedCollection} f={f} v={v == 3} />
         </Page>
       </main>
     </div>
