@@ -27,7 +27,7 @@ export default function SearchBar(props: {
 
   useEffect(() => {
     getPosition(searchBarRef);
-  }, []);
+  });
 
   useEffect(() => {
     window.addEventListener("resize", function () {
@@ -105,6 +105,7 @@ export default function SearchBar(props: {
               }
             })
             .map((user, index) => {
+              console.log("user", user);
               if (index < 8) {
                 return (
                   <div
