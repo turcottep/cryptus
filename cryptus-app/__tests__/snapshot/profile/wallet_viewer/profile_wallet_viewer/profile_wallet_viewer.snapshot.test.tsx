@@ -21,10 +21,13 @@ describe("<ProfileWalletViewer />", () => {
       .create(
         <ProfileWalletViewer
           collections={[]}
-          open_collection={function (): void {
+          open_collection={function (collection_name: string): void {
             throw new Error("Function not implemented.");
           }}
-          open_nft={function (): void {
+          open_nft={function (
+            collection_name: string,
+            nft_token_id: string
+          ): void {
             throw new Error("Function not implemented.");
           }}
           collections_filter={[]}

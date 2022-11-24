@@ -21,6 +21,7 @@ export type market_collection_props = {
   count: number[];
   volume: number[];
   address: string;
+  slug: string;
 };
 
 export default function MarketCollection(props: {
@@ -33,10 +34,33 @@ export default function MarketCollection(props: {
   const [price, setPrice] = useState(market_collection_props.data_price);
   const [volume, setVolume] = useState(market_collection_props.volume);
   const [delta, setDelta] = useState(market_collection_props.floor_price_delta);
+  const [stats, setStats] = useState({});
 
   useEffect(() => {
     updatePrice(props.market_collection_props.interval);
+    getStats();
   }, []);
+
+  const getStats = async () => {
+    const opensea_api_key = process.env.NEXT_PUBLIC_OPENSEA_API_KEY;
+    const slug = market_collection_props.slug;
+    console.log("slug", slug);
+
+    const response = await fetch(
+      `https://api.opensea.io/api/v1/collection/${slug}/stats`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-KEY": opensea_api_key,
+        },
+      }
+    );
+    const data = await response.json();
+    console.log("data", data);
+
+    setStats(data);
+  };
 
   const updatePrice = async (childData) => {
     let viewingmode = intervals[childData];

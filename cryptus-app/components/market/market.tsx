@@ -89,7 +89,7 @@ export default function MarketOverview(props: market_overview_props) {
 
   useEffect(() => {
     const getUser = async (username: string) => {
-      let profileProps = await get_profile_props(username);
+      let profileProps = await get_profile_props(username, 1);
       setUser(profileProps.props.user);
     };
     if (session) {
@@ -195,6 +195,8 @@ export default function MarketOverview(props: market_overview_props) {
     set_show_card(true);
   };
 
+  console.log("card_collection", card_collection);
+
   const marketCollectionProps = card_collection
     ? {
         collection_name: card_collection.name,
@@ -208,6 +210,7 @@ export default function MarketOverview(props: market_overview_props) {
         count: [],
         volume: card_collection.data_volume,
         address: card_collection.address,
+        slug: card_collection.slug,
       }
     : ({} as any);
 

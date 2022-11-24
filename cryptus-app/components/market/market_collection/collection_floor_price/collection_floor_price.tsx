@@ -7,7 +7,7 @@ export default function CollectionFloorPrice(props: {
   floor_price_timestamp: string;
 }) {
   const delta = props.current_price - props.initial_price;
-  const delta_percent = (delta * 100).toFixed(2);
+  const delta_percent = ((delta / props.initial_price) * 100).toFixed(1);
   return (
     <div className={s.container}>
       <div className={s.priceLive}>
