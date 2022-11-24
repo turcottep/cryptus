@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PriceInfo /> should display properly 1`] = `
+<div
+  id="price_info"
+>
+  <div>
+    7.8Ξ
+  </div>
+  <div>
+    +1.0Ξ (Infinity%)
+  </div>
+</div>
+`;

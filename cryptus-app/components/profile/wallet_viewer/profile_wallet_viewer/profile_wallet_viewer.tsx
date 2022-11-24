@@ -3,30 +3,119 @@ import s from "./profile_wallet_viewer.module.scss";
 
 import { useRouter } from "next/router";
 
-import { nft, nft_collection } from "../../../../lib/data_types";
+import { collection, nft, nft_collection } from "../../../../lib/data_types";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { walletsType } from "../../../basic/wallet_manager/wallet_manager";
+import get_collections_in_wallet from "../../../../lib/get_collections_in_wallet";
+import get_nfts_for_wallet from "../../../../lib/get_nfts_for_wallet";
+import sortNftsIntoCollections from "../../../../lib/sort_nfts_into_collections";
+import useWindowSize from "../../../utils/use_window_size";
+
+import get_empty_profile_props from "../../../../lib/empty_profile_props";
+import collections_dict from "../../../../lib/collectionDictionary";
 
 export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
+  add_collections: (collections: nft_collection[]) => void;
   open_collection: (collection_name: string) => void;
   open_nft: (collection_name: string, nft_token_id: string) => void;
   collections_filter: string[];
+  wallets: walletsType[];
 }) {
+  let size = useWindowSize();
+  let nbColWidth = Math.ceil(size.width / 170);
+  let nbColHeight = Math.ceil((size.height - 300) / 190);
+  let nbColToFillPage = nbColWidth * nbColHeight;
+  const nbColAddedByFetch = 40;
+
+  const [collections, setCollections] = useState(props.collections);
+  const [hasMore, setHasMore] = useState(true);
+  const [walletIndex, setWalletIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(nbColToFillPage);
+
+  useEffect(() => {
+    props.add_collections(collections);
+  }, [collections]);
+
+  const getMoreCollections = async () => {
+    console.log("GetMoreCollections");
+    console.log(collections);
+    var hMore = true;
+    let collections_in_wallet = await get_collections_in_wallet(
+      props.wallets[walletIndex].address
+    );
+    let collections_in_wallet_sliced = null;
+    if (collections_in_wallet.length > currentIndex + nbColAddedByFetch) {
+      collections_in_wallet_sliced = collections_in_wallet.slice(
+        currentIndex,
+        currentIndex + nbColAddedByFetch
+      );
+      setCurrentIndex(currentIndex + nbColAddedByFetch);
+    } else if (collections_in_wallet.length > currentIndex) {
+      collections_in_wallet_sliced = collections_in_wallet.slice(
+        currentIndex,
+        collections_in_wallet.length
+      );
+      setCurrentIndex(currentIndex + collections_in_wallet_sliced.length);
+    } else if (walletIndex + 1 < props.wallets.length) {
+      setWalletIndex(walletIndex + 1);
+      hMore = false;
+    } else {
+      setHasMore(false);
+      hMore = false;
+    }
+    if (hMore) {
+      let nfts_per_wallet = await get_nfts_for_wallet(
+        props.wallets[walletIndex].address,
+        collections_in_wallet_sliced
+      );
+      console.log("NFTS : ", nfts_per_wallet);
+      let newCollections = sortNftsIntoCollections(nfts_per_wallet);
+      setCollections((collection) => [...collection, ...newCollections]);
+    }
+  };
+  const props_empty = get_empty_profile_props();
+  const top_collections_address_list = Object.keys(collections_dict).map(
+    (key) => collections_dict[key].address.toLowerCase()
+  );
   return (
     <div className={s.container}>
-      {props.collections
-        .filter((collection) => {
-          return !props.collections_filter.includes(collection.address);
-        })
-        .map((collection: nft_collection, i: number) => (
-          <div key={i}>
-            <Collection
-              collection={collection}
-              key={i}
-              open_collection={props.open_collection}
-              open_nft={props.open_nft}
-            />
-          </div>
-        ))}
+      <InfiniteScroll
+        className={s.containerRISC}
+        style={{ overflowY: "hidden" }}
+        dataLength={collections.length}
+        next={getMoreCollections}
+        hasMore={hasMore}
+        loader={
+          <Collection
+            collection={props_empty.collections[0]}
+            open_collection={props.open_collection}
+            open_nft={props.open_nft}
+          />
+        }
+        endMessage={<h4>Nothing more to show</h4>}
+      >
+        {collections
+          .filter((collection) => {
+            return !props.collections_filter.includes(collection.address);
+          })
+          .sort((a, b) => {
+            return (
+              top_collections_address_list.indexOf(b.address.toLowerCase()) -
+              top_collections_address_list.indexOf(a.address.toLowerCase())
+            );
+          })
+          .map((collection: nft_collection, i: number) => (
+            <div key={i}>
+              <Collection
+                collection={collection}
+                key={i}
+                open_collection={props.open_collection}
+                open_nft={props.open_nft}
+              />
+            </div>
+          ))}
+      </InfiniteScroll>
     </div>
   );
 }
@@ -65,7 +154,11 @@ const Collection = (props: {
     // const pushurl = `/${userId}/${collectionName}`;
     // console.log("pushurl", pushurl);
     // router.push(pushurl);
-    props.open_collection(props.collection.name);
+    if (props.collection.name != "") {
+      props.open_collection(props.collection.name);
+    } else {
+      console.log("collection name is empty");
+    }
   };
 
   if (collection.nfts.length == 1) {
@@ -129,7 +222,13 @@ const NftL = (props: { nft: nft; collectionName: string; open_nft }) => {
   const onNftClick = (e) => {
     // router.push(`${userId}/${collectionName}/${urlName}`);
     // console.log(urlName);
-    props.open_nft(props.collectionName, props.nft.token_id);
+    // if(props.co)
+    // console.log("collectionName", collectionName);
+    if (props.collectionName != "") {
+      props.open_nft(props.collectionName, props.nft.token_id);
+    } else {
+      console.log("collectionName is empty");
+    }
 
     e.preventDefault();
     e.stopPropagation();

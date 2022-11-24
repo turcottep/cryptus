@@ -9,6 +9,9 @@
   align-items: center;
   gap: 16px;
   background-color: v.$bg-color;
+
+  max-height: 800px;
+  overflow-y: scroll;
 }
 
 .image {
@@ -29,4 +32,13 @@
   color: #fff;
   background-color: v.$primary-color;
   transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: white;
+    box-shadow: 0 0 0 2px v.$primary-color;
+    color: v.$primary-color;
+    cursor: pointer;
+  }
+
+  transition: all 0.1s linear;
 }

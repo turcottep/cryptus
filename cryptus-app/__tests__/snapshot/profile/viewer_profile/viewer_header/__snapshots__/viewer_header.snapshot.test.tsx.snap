@@ -17,7 +17,7 @@ exports[`<ViewerHeader /> ViewerHeader renders correctly 1`] = `
     onClick={[Function]}
   >
     <img
-      src="icons/menu_icon.png"
+      src="magnifier.svg"
     />
   </div>
 </div>

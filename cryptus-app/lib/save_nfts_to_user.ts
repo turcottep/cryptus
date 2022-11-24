@@ -1,5 +1,3 @@
-import get_base_url from "./get_base_url";
-
 export default async function save_nfts_to_user(user, nfts) {
   const nft_stringified = nfts.map((nft) => {
     return (nft = {
@@ -22,9 +20,8 @@ export default async function save_nfts_to_user(user, nfts) {
     new Set(nft_stringified.map((nft) => nft.collection))
   );
 
-  const base_url = get_base_url();
   try {
-    const res = await fetch(base_url + "/api/nfts/update", {
+    const res = await fetch("/api/nfts/update", {
       method: "POST",
       body: JSON.stringify({
         nfts: nft_stringified,

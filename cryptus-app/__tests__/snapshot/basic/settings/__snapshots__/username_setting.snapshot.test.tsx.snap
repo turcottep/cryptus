@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UsernameSetting /> should display properly 1`] = `
+<div>
+  <div>
+    Username
+  </div>
+  <div>
+    TristanIsTesting
+    <div>
+      <img
+        src="/icons/back_icon.png"
+      />
+    </div>
+  </div>
+</div>
+`;

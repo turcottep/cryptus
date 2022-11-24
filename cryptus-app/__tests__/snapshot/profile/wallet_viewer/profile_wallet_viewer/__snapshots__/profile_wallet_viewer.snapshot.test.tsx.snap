@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProfileWalletViewer /> should display properly 1`] = `
+<div>
+  <div
+    className="infinite-scroll-component__outerdiv"
+    style={Object {}}
+  >
+    <div
+      className="infinite-scroll-component "
+      style={
+        Object {
+          "WebkitOverflowScrolling": "touch",
+          "height": "auto",
+          "overflow": "auto",
+          "overflowY": "hidden",
+        }
+      }
+    >
+      <div>
+        <div
+          onClick={[Function]}
+        >
+          <div />
+        </div>
+        <div>
+          
+        </div>
+        <div />
+      </div>
+    </div>
+  </div>
+</div>
+`;

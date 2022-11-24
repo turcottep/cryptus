@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Settings /> should display properly 1`] = `
+<div
+  id="bg"
+  onClick={[Function]}
+>
+  <div>
+    <div>
+      <div>
+        <div>
+          <div>
+            <img
+              src="magnifier.svg"
+            />
+            <input
+              onChange={[Function]}
+              placeholder="Coming soon..."
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            Username
+          </div>
+          <div>
+            <div>
+              <img
+                src="/icons/back_icon.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            Account link
+          </div>
+          <div
+            onClick={[Function]}
+          >
+            publicwallet.app/undefined
+            <div>
+              <img
+                src="/icons/copy_icon.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            onClick={[Function]}
+          >
+            Wallet Manager
+            <div>
+              <img
+                src="/icons/wallet_manager_icon.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            Notifications
+            <div>
+              <span
+                className="MuiSwitch-root MuiSwitch-sizeMedium css-julti5-MuiSwitch-root"
+              >
+                <span
+                  className="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+                  height={24}
+                  onBlur={[Function]}
+                  onContextMenu={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={null}
+                  width={48}
+                >
+                  <input
+                    checked={false}
+                    className="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    className="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  className="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            Dark Theme
+            <div>
+              <span
+                className="MuiSwitch-root MuiSwitch-sizeMedium css-julti5-MuiSwitch-root"
+              >
+                <span
+                  className="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+                  height={24}
+                  onBlur={[Function]}
+                  onContextMenu={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={null}
+                  width={48}
+                >
+                  <input
+                    checked={false}
+                    className="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    className="MuiSwitch-thumb css-jsexje-MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  className="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+                />
+              </span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            onClick={[Function]}
+          >
+            Support
+            <div>
+              <img
+                src="/icons/back_icon.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            onClick={[Function]}
+          >
+            Log out
+            <div>
+              <img
+                src="/icons/logout_icon.png"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,8 +1,10 @@
-import { nft } from "./data_types";
+import { collection, nft } from "./data_types";
 import GetCollectionTokens from "./get_collection_token";
-import get_base_url from "./get_base_url";
 
-export default async function get_nfts_for_wallet(address: string) {
+export default async function get_nfts_for_wallet(
+  address: string,
+  collections: any
+) {
   let res;
   let nfts_raw = [];
   type traits = {
@@ -12,28 +14,42 @@ export default async function get_nfts_for_wallet(address: string) {
     rarity: number;
   };
   try {
-    //fetch nfts from opensea
-    let cursor = "";
-    for (let i = 0; i < 5; i++) {
-      res = await fetch(
-        "https://api.opensea.io/api/v1/assets?owner=" +
-          address +
-          "&order_direction=desc&limit=50&cursor=" +
-          cursor,
-        {
-          headers: {
-            Accept: "application/json",
-            "X-API-KEY": process.env.NEXT_PUBLIC_OPENSEA_API_KEY,
-          },
+    //fetch collections from opensea
+    if (collections) {
+      let asset_contract_adresses = "";
+
+      for (var collection of collections) {
+        if (collection.primary_asset_contracts[0]) {
+          asset_contract_adresses =
+            asset_contract_adresses +
+            "&asset_contract_addresses=" +
+            collection.primary_asset_contracts[0].address;
         }
-      );
-      // res = await fetch(wallet.external_url);
-      const data = await res.json();
-      cursor = data.next;
-      console.log("data", data);
-      const nfts_raw_temp = data.assets;
-      nfts_raw.push(...nfts_raw_temp);
-      if (!cursor) break;
+      }
+      let cursor = "";
+      for (let i = 0; i < 5; i++) {
+        res = await fetch(
+          "https://api.opensea.io/api/v1/assets?owner=" +
+            address +
+            "&order_direction=desc&limit=30" +
+            asset_contract_adresses +
+            "&cursor=" +
+            cursor,
+          {
+            headers: {
+              Accept: "application/json",
+              "X-API-KEY": process.env.NEXT_PUBLIC_OPENSEA_API_KEY,
+            },
+          }
+        );
+        // res = await fetch(wallet.external_url);
+        const data = await res.json();
+        cursor = data.next;
+        console.log("data", data);
+        const nfts_raw_temp = data.assets;
+        nfts_raw.push(...nfts_raw_temp);
+        if (!cursor) break;
+      }
     }
 
     console.log("nfts_raw", nfts_raw.length);
@@ -50,6 +66,11 @@ export default async function get_nfts_for_wallet(address: string) {
     let rarity_rank: any = 0;
     let traits_sorted = [];
     let rarity = 0;
+
+    if (nft.collection.slug === "oldbabyclub") {
+      console.log("traits", nft.traits);
+    }
+
     if (nft.traits.length > 0) {
       const traits = nft.traits.map((trait) => {
         return {

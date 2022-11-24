@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DesktopHeader /> should display properly 1`] = `
+<div
+  id="bg"
+  onClick={[Function]}
+>
+  <div>
+    <div>
+      <div>
+        <div>
+          <div>
+            <img
+              src="magnifier.svg"
+            />
+            <input
+              onChange={[Function]}
+              placeholder="Enter a username"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

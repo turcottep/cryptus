@@ -1,7 +1,14 @@
 import React, { useRef, useEffect, useState } from "react";
 import s from "./graph.module.scss";
 
-import { ChartData, ChartArea, Filler, BarElement } from "chart.js";
+import {
+  ChartData,
+  ChartArea,
+  Filler,
+  BarElement,
+  BarController,
+  LineController,
+} from "chart.js";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,6 +21,8 @@ import {
 import { Chart } from "react-chartjs-2";
 
 ChartJS.register(
+  BarController,
+  LineController,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -127,10 +136,12 @@ export default function Graph(props: {
             showLabelBackdrop: true,
             padding: -10,
             callback: function (value, index, values) {
+              const value_clean = value.toFixed(2);
+
               // only return half of the values
               const total_amount = values.length;
               if ((index + 1) % 2 === 0 && index < total_amount - 1) {
-                return `${value} ⧫`;
+                return `${value_clean} ⧫`;
               }
             },
           },

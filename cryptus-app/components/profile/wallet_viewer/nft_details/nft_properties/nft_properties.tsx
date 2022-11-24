@@ -6,7 +6,7 @@ import s from "./nft_properties.module.scss";
 import PropertyBlock from "./property_block/property_block";
 
 export default function NFTProperties(props: {
-  properties: [];
+  properties: [name: string, value: any, count: number, rarity: number];
   collectionSize: number;
 }) {
   return (

@@ -1,32 +1,95 @@
 import React, { useEffect, useState } from "react";
 import s from "./market_collections.module.scss";
+import collectionDictionary from "../../../../lib/collectionDictionary";
+import { intervals } from "../../../../lib/data_types";
 
 import CollectionRow from "../collection_row/collection_row";
 import { collection } from "../../../../lib/data_types";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { updatePrice } from "../../market";
+
+import { CircularProgress } from "@mui/material";
 
 // Need to add prop for collections
 export default function MarketCollections(props: {
+  setLoading: Function;
+  interval: intervals;
   name: string;
   icon: string;
   collections: collection[];
   callback;
   connected?: boolean;
 }) {
+  const [collections, setCollections] = useState(props.collections);
+  const [hasMore, setHasMore] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(10);
+
+  useEffect(() => {
+    setCollections(props.collections);
+  }, [props.collections]);
+
+  const getMoreCollections = async () => {
+    console.log("GetMoreCollections");
+    const collections_dict = collectionDictionary;
+    var hMore = true;
+    const newCollections = Object.keys(collections_dict).map((key) => {
+      return collections_dict[key];
+    }) as collection[];
+    let newCollectionsSliced = null;
+    if (newCollections.length > currentIndex + 10) {
+      newCollectionsSliced = newCollections.slice(
+        currentIndex,
+        currentIndex + 10
+      );
+      setCurrentIndex(currentIndex + 10);
+    } else if (newCollections.length > currentIndex) {
+      newCollectionsSliced = newCollections.slice(
+        currentIndex,
+        newCollections.length
+      );
+      setCurrentIndex(currentIndex + newCollectionsSliced.length);
+    } else {
+      setHasMore(false);
+      hMore = false;
+    }
+    if (hMore) {
+      updatePrice(
+        props.interval,
+        false,
+        props.setLoading,
+        newCollectionsSliced
+      );
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setCollections((collection) => [...collection, ...newCollectionsSliced]);
+    }
+  };
+
   return (
     <div id="market_collections" className={s.container}>
       <Header name={props.name} icon={props.icon} />
-      {props.collections && props.collections[0] ? (
-        props.collections.map((c, i) => (
-          <div
-            key={i}
-            className={s.collection}
-            onClick={() => {
-              props.callback(c.name);
-            }}
+      {collections && collections[0] ? (
+        <div className={s.infiniteScrollDiv}>
+          <InfiniteScroll
+            style={{ overflowY: "hidden" }}
+            dataLength={collections.length}
+            next={getMoreCollections}
+            hasMore={hasMore}
+            loader={<CircularProgress />}
+            endMessage={<h4>Nothing more to show</h4>}
           >
-            <CollectionRow collection={c} />
-          </div>
-        ))
+            {collections.map((c, i) => (
+              <div
+                key={i}
+                className={s.collection}
+                onClick={() => {
+                  props.callback(c.name);
+                }}
+              >
+                <CollectionRow collection={c} />
+              </div>
+            ))}
+          </InfiniteScroll>
+        </div>
       ) : (
         <NoCollection connected={props.connected} />
       )}

@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MarketCollections /> should display properly 1`] = `
+<div
+  id="market_collections"
+>
+  <div>
+    <img
+      src="icons/favorite_icon.png"
+    />
+    <div>
+      My Collections
+    </div>
+  </div>
+  <div>
+    <div
+      className="infinite-scroll-component__outerdiv"
+      style={Object {}}
+    >
+      <div
+        className="infinite-scroll-component "
+        style={
+          Object {
+            "WebkitOverflowScrolling": "touch",
+            "height": "auto",
+            "overflow": "auto",
+            "overflowY": "hidden",
+          }
+        }
+      >
+        <div
+          onClick={[Function]}
+        >
+          <div
+            id="collection_row"
+          >
+            <div
+              id="collection_row"
+            >
+              <div
+                id="collection_info"
+              >
+                <div>
+                  <img
+                    src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
+                  />
+                  <div>
+                    KITT
+                  </div>
+                </div>
+                <div>
+                  CryptoKitties
+                </div>
+              </div>
+              <div
+                id="preview_graph"
+              >
+                <div>
+                  <canvas
+                    height={150}
+                    role="img"
+                    width={300}
+                  />
+                  <canvas
+                    height={150}
+                    role="img"
+                    width={300}
+                  />
+                </div>
+              </div>
+              <div
+                id="price_info"
+              >
+                <div>
+                  7.8Ξ
+                </div>
+                <div>
+                  NaNΞ (NaN%)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

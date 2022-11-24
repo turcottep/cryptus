@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import get_collections_in_wallet from "../../../lib/get_collections_in_wallet";
 import get_nfts_for_wallet from "../../../lib/get_nfts_for_wallet";
 import calculate_networth from "../../../lib/networth";
 import prisma from "../../../lib/prisma";
 import sortNftsIntoCollections from "../../../lib/sort_nfts_into_collections";
-import sort_nfts_into_collections from "../../../lib/sort_nfts_into_collections";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -19,10 +19,13 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
       const user = users[i];
       const nfts = [];
-
       for (let i = 0; i < user.wallets.length; i++) {
         const wallet = user.wallets[i];
-        let nfts_per_wallet = await get_nfts_for_wallet(wallet.address);
+        const collections_in_wallet = get_collections_in_wallet(wallet.address);
+        let nfts_per_wallet = await get_nfts_for_wallet(
+          wallet.address,
+          collections_in_wallet
+        );
 
         nfts.push(...nfts_per_wallet);
       }

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AccountLink /> should display properly 1`] = `
+<div>
+  <div>
+    Account link
+  </div>
+  <div
+    onClick={[Function]}
+  >
+    publicwallet.app/TristanIsTesting
+    <div>
+      <img
+        src="/icons/copy_icon.png"
+      />
+    </div>
+  </div>
+</div>
+`;

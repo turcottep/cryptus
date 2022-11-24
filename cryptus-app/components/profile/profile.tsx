@@ -3,7 +3,12 @@ import s from "./profile.module.scss";
 
 import { useSession } from "next-auth/client";
 
-import { nft_collection, profile_props, tabs } from "../../lib/data_types";
+import {
+  nft_collection,
+  profile_props,
+  tabs,
+  dbUsers,
+} from "../../lib/data_types";
 
 import Footer from "../basic/footer/footer";
 import ProfileWalletViewer from "./wallet_viewer/profile_wallet_viewer/profile_wallet_viewer";
@@ -19,6 +24,9 @@ import Loading from "../utils/loading/loading";
 import Settings from "../basic/settings/settings";
 import WalletManager from "../basic/wallet_manager/wallet_manager";
 import Support from "../basic/support/support";
+import SearchIcon from "../basic/header/search_icon/search_icon";
+
+import findAllUsers from "../../lib/findAllUsers";
 
 export default function Profile(props: {
   collections: nft_collection[];
@@ -34,26 +42,38 @@ export default function Profile(props: {
   const [show_card_nft, set_show_nft] = useState(false);
   const [card_nft, set_card_nft] = useState(null);
 
+  const [collections_updated, set_collections_updated] = useState(collections);
   const [update_collection, set_update_collection] = useState(0);
   const [show_card_settings, set_show_settings] = useState(false);
   const [show_card_wallet_manager, set_show_wallet_manager] = useState(false);
   const [show_card_support, set_show_support] = useState(false);
+  const [show_card_search, set_show_search] = useState(false);
 
   const [collections_filter, setCollectionsFilter] = useState<string[]>(
     user.collections_filter
   );
   const [image_url, set_image_url] = useState(props.user.profile_image_url);
+  const [usersProfiles, setUsersProfiles] = useState<dbUsers[]>([]);
 
   useEffect(() => {
     const is_my_profile = props.user.username === session?.user?.name;
     setIsMyProfile(is_my_profile);
   }, [loading]);
 
+  useEffect(() => {
+    const getAllUsers = async () => {
+      let allUsers = await findAllUsers();
+      setUsersProfiles(allUsers);
+    };
+    getAllUsers();
+  }, []);
+
   const close_all = () => {
     set_show_collection(false);
     set_show_nft(false);
     set_show_settings(false);
     set_show_wallet_manager(false);
+    set_show_search(false);
   };
 
   const close_nft = () => {
@@ -69,16 +89,18 @@ export default function Profile(props: {
   };
 
   const open_collection = (collection_name: string) => {
-    console.log("open_collection", collection_name);
-    const collection = collections.find((c) => c.name === collection_name);
+    const collection = collections_updated.find(
+      (c) => c.name === collection_name
+    );
     set_card_collection(collection);
     set_show_collection(true);
   };
 
   const open_nft = (collection_name: string, nft_token_id: string) => {
-    console.log("open_nft", collection_name, nft_token_id);
-    const collection = collections.find((c) => c.name === collection_name);
-
+    const collection = collections_updated.find(
+      (c) => c.name === collection_name
+    );
+    console.log(collections_updated);
     const nft = collection.nfts.find((n) => n.token_id === nft_token_id);
     set_card_nft(nft);
     set_show_nft(true);
@@ -96,6 +118,10 @@ export default function Profile(props: {
     set_show_support(true);
   };
 
+  const open_search = () => {
+    set_show_search(true);
+  };
+
   const update_my_collection_filter = (new_filter: string[]) => {
     const temp_filter = [...new_filter];
     set_update_collection((update_collection + 1) % 2);
@@ -109,13 +135,23 @@ export default function Profile(props: {
   return (
     <div className={s.app}>
       {isMobile ? null : (
-        <DesktopHeader tab="profile" open_settings={open_settings} />
+        <DesktopHeader
+          tab="profile"
+          open_settings={open_settings}
+          open_search={open_search}
+        />
       )}
       {isMobile ? (
         isMyProfile ? (
-          <CreatorHeader open_settings={open_settings} />
+          <CreatorHeader
+            open_settings={open_settings}
+            open_search={open_search}
+          />
         ) : (
-          <ViewerHeader userId={props.user.username} />
+          <ViewerHeader
+            userId={props.user.username}
+            open_search={open_search}
+          />
         )
       ) : null}
       {isMyProfile ? (
@@ -156,6 +192,13 @@ export default function Profile(props: {
           open_support={open_support}
         />
       )}
+      {show_card_search && (
+        <SearchIcon
+          isMobile={isMobile}
+          callback_close={close_all}
+          users={usersProfiles}
+        />
+      )}
       {show_card_wallet_manager && (
         <WalletManager
           user={props.user}
@@ -167,9 +210,11 @@ export default function Profile(props: {
         <Support callback_close_support={close_support} isMobile={isMobile} />
       )}
       <ProfileWalletViewer
-        collections={collections}
+        collections={collections_updated}
+        add_collections={set_collections_updated}
         open_collection={open_collection}
         open_nft={open_nft}
+        wallets={props.user.wallets}
         collections_filter={collections_filter}
         key={update_collection}
       />
