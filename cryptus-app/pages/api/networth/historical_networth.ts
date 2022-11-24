@@ -1,11 +1,27 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 import fs from "fs";
+import { get_collection100list } from "../../../lib/collectionDictionary";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  const address = "0x052288F424Ec1a127093E29BaDC21Dd2ddb860A1".toLowerCase();
+  const test = "0x68c4d9e03d7d902053c428ca2d74b612db7f583a";
+  const test2 = "0x052288F424Ec1a127093E29BaDC21Dd2ddb860A1";
+  const address = "0x68c4d9e03d7d902053c428ca2d74b612db7f583a".toLowerCase();
 
   try {
+    const all_wallets = await prisma.wallet.findMany({});
+
+    console.log("all_wallets", all_wallets);
+
+    for (const wallet of all_wallets) {
+      const address = wallet.address.toLowerCase();
+      console.log("getting transactions for", address);
+
+      await getNetworthForAddress(address);
+      // wait 1 second
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+
     console.log("done");
 
     res.status(201);
@@ -33,7 +49,12 @@ async function getNetworthForAddress(address: string) {
     action
   );
 
-  console.log(txs);
+  // console.log(txs);
+
+  if (txs.length == 0) {
+    console.log("no transactions found for", address);
+    return;
+  }
 
   // sort txs by timestamp
   txs.sort((a, b) => {
@@ -48,8 +69,8 @@ async function getNetworthForAddress(address: string) {
   const last_day_date = new Date(parseInt(last_day) * 1000);
   const last_day_date_string = last_day_date.toISOString().split("T")[0];
 
-  console.log("first_day_date_string", first_day_date_string);
-  console.log("last_day_date_string", last_day_date_string);
+  // console.log("first_day_date_string", first_day_date_string);
+  // console.log("last_day_date_string", last_day_date_string);
 
   // generate all days from first day to last day
   const all_days = {};
@@ -62,7 +83,7 @@ async function getNetworthForAddress(address: string) {
     all_days[day_string] = day_object;
     current_day.setUTCDate(current_day.getUTCDate() + 1);
   }
-  console.log("all_days", all_days);
+  // console.log("all_days", all_days);
 
   // list of all the collections that the user owns
   const collections = [];
@@ -83,25 +104,27 @@ async function getNetworthForAddress(address: string) {
     tx_day["txs"].push(tx);
   }
 
-  console.log("all_days", all_days);
+  // console.log("all_days", all_days);
 
-  console.log("collections", collections);
+  // console.log("collections", collections);
 
-  console.log(
-    "inculdes",
-    collections.includes("0x60e4d786628fea6478f785a6d7e704777c86a7c6")
-  );
+  // console.log(
+  //   "inculdes",
+  //   collections.includes("0x60e4d786628fea6478f785a6d7e704777c86a7c6")
+  // );
 
-  console.log("getting collections from db");
+  // console.log("getting collections from db");
 
   const existing_collections = {};
+  const collections_in_db = get_collection100list();
 
   for (const collection_address of collections) {
+    // if (collections_in_db.includes(collection_address.toLowerCase())) {
     try {
       const contract_address = collection_address; //"0x60e4d786628fea6478f785a6d7e704777c86a7c6";
-      console.log("contract_address", contract_address);
+      // console.log("contract_address", contract_address);
       const address_cropped = contract_address.substring(1);
-      const viewing_mode = "month";
+      const viewing_mode = "dailyavg";
 
       const query = `SELECT * FROM marketsales.${
         address_cropped + "_" + viewing_mode
@@ -111,11 +134,12 @@ async function getNetworthForAddress(address: string) {
       existing_collections[contract_address] = answer;
     } catch (error) {
       if (error.meta.message.includes("does not exist")) {
-        console.log("collection does not exist in db");
+        // console.log("collection does not exist in db");
       } else {
         console.log(error);
       }
     }
+    // }
   }
 
   console.log("existing_collections", existing_collections);
@@ -152,7 +176,7 @@ async function getNetworthForAddress(address: string) {
     collection_dict_dict[collection_address] = collection_dict;
   }
 
-  console.log("collection_dict_dict", collection_dict_dict);
+  // console.log("collection_dict_dict", collection_dict_dict);
 
   // console.log("trading_days", trading_days);
 
@@ -160,9 +184,9 @@ async function getNetworthForAddress(address: string) {
 
   // console.log("trading_days_list", trading_days_list.length);
   // log each individual day
-  for (const day of trading_days_list) {
-    console.log("day", day["day"]);
-  }
+  // for (const day of trading_days_list) {
+  //   console.log("day", day["day"]);
+  // }
 
   const current_collections_tally = {};
   for (const collection_address in collection_dict_dict) {
@@ -216,11 +240,11 @@ async function getNetworthForAddress(address: string) {
       // console.log("day", day);
 
       if (day != undefined) {
-        console.log("day", day);
-        console.log("amount", amount);
+        // console.log("day", day);
+        // console.log("amount", amount);
 
         const price_number = parseFloat(day["average_price"]);
-        console.log("price_number", price_number);
+        // console.log("price_number", price_number);
         if (price_number != NaN) {
           networth += price_number * amount;
           console.log("networth", networth);
@@ -236,7 +260,7 @@ async function getNetworthForAddress(address: string) {
   // console.log("trading_days_list", trading_days_list);
 
   // let networth = 0;
-  console.log("networth_history", networth_history);
+  // console.log("networth_history", networth_history);
 
   // save to user
   const user_res = await prisma.wallet.findUnique({
@@ -255,6 +279,7 @@ async function getNetworthForAddress(address: string) {
     },
     data: {
       networth_history: networth_history,
+      networth: networth_history[-1],
     },
   });
 }

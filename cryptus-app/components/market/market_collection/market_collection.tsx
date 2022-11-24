@@ -71,7 +71,7 @@ export default function MarketCollection(props: {
       />
       <CollectionFloorPrice
         initial_price={price[0]}
-        current_price={price[price.length - 1]}
+        current_price={price[-1]}
         floor_price_timestamp={market_collection_props.floor_price_timestamp}
       />
       <CollectionMarketGraph

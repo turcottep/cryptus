@@ -1082,3 +1082,7 @@ export const collection100list = [
 ];
 
 export default collections_dict;
+
+export function get_collection100list() {
+  return collection100list;
+}
