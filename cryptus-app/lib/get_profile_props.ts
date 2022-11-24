@@ -20,12 +20,15 @@ export default async function get_profile_props(
 
   try {
     let nfts = [];
+    let nfts_ordered = [];
     const wallet = user.wallets[0];
     const collections_in_wallet = await get_collections_in_wallet(
       wallet.address
     );
+    if (nbColToFillPage > 50) nbColToFillPage = 50;
     if (nbColToFillPage > collections_in_wallet.length)
       nbColToFillPage = collections_in_wallet.length;
+
     let nfts_per_wallet = await get_nfts_for_wallet(
       wallet.address,
       collections_in_wallet.slice(0, nbColToFillPage)
