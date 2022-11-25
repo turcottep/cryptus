@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 import fs from "fs";
-import { get_collection100list } from "../../../lib/collectionDictionary";
+import { get_collections_list } from "../../../lib/collectionDictionary";
+// import { get_collection100list } from "../../../lib/collectionDictionary";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const test = "0x68c4d9e03d7d902053c428ca2d74b612db7f583a";
@@ -116,7 +117,7 @@ async function getNetworthForAddress(address: string) {
   // console.log("getting collections from db");
 
   const existing_collections = {};
-  const collections_in_db = get_collection100list();
+  const collections_in_db = get_collections_list();
 
   const earliest_date_init = 1619827200;
   let earliest_date = 1619827200;
