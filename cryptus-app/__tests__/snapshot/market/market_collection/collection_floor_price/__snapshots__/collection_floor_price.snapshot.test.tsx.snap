@@ -15,7 +15,7 @@ exports[`<CollectionFloorPrice /> should display properly 1`] = `
     </span>
     Ξ (
     <span>
-      0.00
+      0.0
     </span>
     %)
   </div>
