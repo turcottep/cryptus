@@ -69,7 +69,7 @@ exports[`<Settings /> should display properly 1`] = `
                 className="MuiSwitch-root MuiSwitch-sizeMedium css-julti5-MuiSwitch-root"
               >
                 <span
-                  className="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+                  className="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
                   height={24}
                   onBlur={[Function]}
                   onContextMenu={[Function]}
@@ -88,7 +88,7 @@ exports[`<Settings /> should display properly 1`] = `
                 >
                   <input
                     checked={false}
-                    className="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
+                    className="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
                     onChange={[Function]}
                     type="checkbox"
                   />
@@ -111,7 +111,7 @@ exports[`<Settings /> should display properly 1`] = `
                 className="MuiSwitch-root MuiSwitch-sizeMedium css-julti5-MuiSwitch-root"
               >
                 <span
-                  className="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+                  className="MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
                   height={24}
                   onBlur={[Function]}
                   onContextMenu={[Function]}
@@ -130,7 +130,7 @@ exports[`<Settings /> should display properly 1`] = `
                 >
                   <input
                     checked={false}
-                    className="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
+                    className="PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3"
                     onChange={[Function]}
                     type="checkbox"
                   />

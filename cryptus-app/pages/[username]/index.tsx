@@ -61,6 +61,7 @@ export default function ProfilePage() {
           address: "error",
           profile_image_url: "error",
           collections_filter: ["error"],
+          collections_list: [],
         });
         set_collections_props([]);
       }

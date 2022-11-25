@@ -34,10 +34,12 @@ export interface dbUsers {
 
 export interface user {
   networth?: number;
+  networth_history?: number[];
   description?: string;
   username: string;
   address: string;
   collections_filter: string[];
+  collections_list: string[];
   profile_image_url: string;
 }
 
