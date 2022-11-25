@@ -90,8 +90,12 @@ export default function MarketCollections(props: {
               <div
                 key={i}
                 className={s.collection}
-                onClick={() => {
+                onClick={(e) => {
+                  console.log("clicked me");
+
                   props.callback(c.name);
+                  e.stopPropagation();
+                  e.nativeEvent.stopImmediatePropagation();
                 }}
               >
                 <CollectionRow collection={c} />

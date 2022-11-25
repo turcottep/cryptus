@@ -126,7 +126,8 @@
 
   .graph {
     width: clamp(350px, 90%, 700px);
+    height: 200px;
     aspect-ratio: 16/9;
-    background-color: rgb(232, 139, 139);
+    background-color: white;
   }
 }

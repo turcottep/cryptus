@@ -30,6 +30,8 @@
   justify-content: flex-start;
   align-items: center;
   text-align: left;
+  overflow: hidden;
+  background-color: red;
 
   padding: 4px 8px;
   @media (max-width: v.$mobile) {

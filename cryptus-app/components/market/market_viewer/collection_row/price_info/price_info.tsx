@@ -16,8 +16,8 @@ export default function PriceInfo(props: {
     <div id="price_info" className={s.container}>
       <FloorPrice price={collection.floor_price} currency={props.currency} />
       <FloorPriceDelta
-        initial_price={prices[0]}
-        current_price={prices[props.prices.length - 1]}
+        initial_price={prices ? prices[0] : 0}
+        current_price={prices ? prices[props.prices.length - 1] : 0}
         currency={currency}
       />
     </div>

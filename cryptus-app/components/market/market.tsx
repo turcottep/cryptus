@@ -49,7 +49,10 @@ export default function MarketOverview(props: market_overview_props) {
     username: "",
     address: "",
     collections_filter: [],
+    collections_list: [],
     profile_image_url: "",
+    networth: 0,
+    networth_history: [0, 0, 0, 0, 0, 0, 0],
   };
 
   const today = new Date();
@@ -73,13 +76,13 @@ export default function MarketOverview(props: market_overview_props) {
     props.collections.slice(0, 10)
   );
 
-  const [session, status_status] = useSession();
-  const [username, setUsername] = useState<string>("");
+  const [session, session_status] = useSession();
   const [user, setUser] = useState(props_user_empty);
+
   const [loading, setLoading] = useState(false);
   const [show_card, set_show_card] = useState(false);
   const [card_collection, set_card_collection] = useState(null);
-  const [networth, set_networth] = useState(0);
+
   const [market_interval, set_market_interval] = useState(
     props.networth.active
   );
@@ -91,20 +94,17 @@ export default function MarketOverview(props: market_overview_props) {
   const [usersProfiles, setUsersProfiles] = useState<dbUsers[]>([]);
 
   useEffect(() => {
-    const getUser = async (username: string) => {
-      let profileProps = await get_profile_props(username, 10);
-      setUser(profileProps.props.user);
-    };
     if (session) {
       const user_name = session.user.name;
       console.log("user_name", user_name);
 
       update_for_user(user_name);
-      setUsername(user_name);
     }
-  }, [status_status]);
+  }, [session_status]);
 
   const updateUserCollections = (user_collections) => {
+    console.log("updateUserCollections", user_collections);
+
     const newPropCollectionFavoriteTemp = [];
     const newPropCollectionMarketTemp = [];
     for (const collection of newPropCollection) {
@@ -114,7 +114,7 @@ export default function MarketOverview(props: market_overview_props) {
         newPropCollectionMarketTemp.push(collection);
       }
     }
-    console.log("temp", newPropCollectionFavoriteTemp, user_collections);
+    console.log("temp", newPropCollectionFavoriteTemp);
     setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
     setnewPropCollectionMarket(newPropCollectionMarketTemp);
   };
@@ -149,14 +149,16 @@ export default function MarketOverview(props: market_overview_props) {
   };
 
   const update_for_user = async (username: string) => {
-    const user = await get_user_by_username(username);
-    // console.log("user : ", user);
+    console.log("update_for_user", username);
+
+    // const user = await get_user_by_username(username);
+    console.log("user : ", user);
     const user_collections = user.collections_list;
-    // console.log("iuser collections : ", user_collections);
+    console.log("iuser collections : ", user_collections);
     const networth = user.networth;
     // console.log("networth : ", networth);
     set_user_collections_list([...user_collections]);
-    set_networth(networth);
+    setUser(user);
     updateUserCollections(user_collections);
   };
 
@@ -239,11 +241,33 @@ export default function MarketOverview(props: market_overview_props) {
           </div>
           <div className={s.networth}>
             <div className={s.number}>
-              <div className={s.num}>{networth.toFixed(1)}</div>
+              <div className={s.num}>
+                {user ? user.networth.toFixed(1) : "-"}
+              </div>
               <div className={s.fiat}>ETH</div>
-              <div className={s.change}>{networth}</div>
+              <div className={s.change}>
+                {(
+                  (user.networth_history[user.networth_history.length - 1] -
+                    user.networth_history[0]) /
+                  (user.networth_history[0] + 0.00000001)
+                ).toFixed(2)}
+                %
+              </div>
             </div>
-            <div className={s.graph}></div>
+            <div className={s.graph}>
+              <Graph
+                data_price={user.networth_history}
+                data_volume={[]}
+                color={
+                  user.networth_history[user.networth_history.length - 1] -
+                    user.networth_history[0] >=
+                  0
+                    ? "green"
+                    : "red"
+                }
+                detailled={true}
+              />
+            </div>
           </div>
           <div className={s.time_container}>
             <div className={s.time_box}>
@@ -320,11 +344,11 @@ export default function MarketOverview(props: market_overview_props) {
       )}
     </div>
   );
-  //TODO: Change <div className={s.change}>{networth}</div> to use real % change
-  //TODO: Get real data for user (to have username) copy paste find -> user.username to find it on the page
-  //TODO: Change time interval to 1D, 1W, 1M, 3M, 1Y
+  //DONEDO: Change <div className={s.change}>{networth}</div> to use real % change # DONE
+  //DONEDO: Get real data for user (to have username) copy paste find -> user.username to find it on the page
+  //DONEDO: Change time interval to 1D, 1W, 1M, 3M, 1Y # on a pas le data 1D, c'est pas assez long
   //TODO: Fix <Collapsable/> for it not to be closed after closing a collection pop-up
-  //TODO: Add a graph of historical networth here
+  //DONEDO: Add a graph of historical networth here
 }
 export type graph = {
   collection_name: string;
