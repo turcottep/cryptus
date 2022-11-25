@@ -24,13 +24,21 @@ describe("<ProfileWalletViewer />", () => {
           open_collection={function (collection_name: string): void {
             throw new Error("Function not implemented.");
           }}
+<<<<<<< HEAD
           open_nft={function (
             collection_name: string,
             nft_token_id: string
           ): void {
+=======
+          add_collections={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+          open_nft={function (): void {
+>>>>>>> dev
             throw new Error("Function not implemented.");
           }}
           collections_filter={[]}
+          wallets={[]}
         />
       )
       .toJSON();
