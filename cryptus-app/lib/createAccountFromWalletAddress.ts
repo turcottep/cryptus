@@ -1,6 +1,7 @@
 export default async function CreateAccountFromWalletAddress(
   wallet_address,
-  absolute = true
+  absolute = true,
+  username = String(Date.now())
 ) {
   const res = await fetch("/api/leads/createWalletFromAddress", {
     method: "POST",
@@ -14,6 +15,7 @@ export default async function CreateAccountFromWalletAddress(
         wallet_address +
         "&order_direction=asc&offset=0&limit=50",
       blockchain_id: "ETH",
+      username: username,
     }),
   });
   const user = await res.json();
