@@ -11,14 +11,14 @@ export default function PriceInfo(props: {
   currency: string;
   prices: number[];
 }) {
-  const { collection } = props;
+  const { collection, prices, currency } = props;
   return (
     <div id="price_info" className={s.container}>
       <FloorPrice price={collection.floor_price} currency={props.currency} />
       <FloorPriceDelta
-        initial_price={props.prices[0]}
-        current_price={props.prices[props.prices.length - 1]}
-        currency={props.currency}
+        initial_price={prices[0]}
+        current_price={prices[props.prices.length - 1]}
+        currency={currency}
       />
     </div>
   );

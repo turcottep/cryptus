@@ -11,30 +11,30 @@
   background-color: v.$secondary-color-pale;
 
   width: 100%;
-
   gap: 8px;
-  padding: 8px;
-
-  @media (max-width: v.$mobile) {
-    gap: 2px;
-    padding: 0px;
-  }
 }
 
 .infiniteScrollDiv {
   width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .collection {
   display: flex;
-  flex: 1 1 auto;
+  flex: 0 0 none;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
   text-align: left;
 
-  width: 100%;
+  padding: 4px 8px;
+  @media (max-width: v.$mobile) {
+    padding: 1px 0;
+  }
 
   cursor: pointer;
 }
@@ -71,18 +71,22 @@
 }
 
 .nocollection_container {
-  flex: 0 0 none;
-
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  align-self: center;
 
-  border-radius: v.$border-radius-l;
+  width: calc(100% - 16px);
+
   background-color: #fff;
   color: rgb(113, 113, 113);
 
-  width: 100%;
+  border-radius: v.$border-radius-l;
+  @media (max-width: v.$mobile) {
+    border-radius: 0px;
+    background-color: v.$secondary-color-pale;
+  }
 }
 
 .nocollection_div {
@@ -92,5 +96,24 @@
   flex-direction: column;
   justify-content: center;
 
-  height: v.$header-h;
+  height: calc(v.$collection_height + 16px);
+}
+
+.collapsable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: v.$secondary-color-pale;
+  width: 100%;
+
+  > div:nth-child(1) {
+    height: 47px;
+    align-self: flex-start;
+    margin-left: 8px;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+  }
 }

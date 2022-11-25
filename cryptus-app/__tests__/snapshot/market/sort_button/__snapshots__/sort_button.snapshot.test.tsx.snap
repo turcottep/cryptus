@@ -4,7 +4,7 @@ exports[`<SortButton /> should display properly 1`] = `
 <div>
   <button
     aria-haspopup="true"
-    className="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButtonBase-root  css-8purhv-MuiButtonBase-root-MuiButton-root"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall css-8purhv-MuiButtonBase-root-MuiButton-root"
     disabled={false}
     id="basic-button"
     onBlur={[Function]}

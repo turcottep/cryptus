@@ -28,6 +28,7 @@ import TimeInterval from "./market_header/time_interval/time_interval";
 import SearchIcon from "../basic/header/search_icon/search_icon";
 
 import findAllUsers from "../../lib/findAllUsers";
+import Graph from "./graph/graph";
 
 type market_overview_props = {
   date: string;
@@ -230,49 +231,20 @@ export default function MarketOverview(props: market_overview_props) {
       )}
       <div className={s.containee}>
         {loading && <Loading />}
-        {show_card && (
-          <MarketCollection
-            isMobile={isMobile}
-            callback_close={close_card}
-            market_collection_props={marketCollectionProps}
-          />
-        )}
-        {show_card_settings && (
-          <Settings
-            isMobile={isMobile}
-            callback_close={close_all}
-            open_wallet_manager={open_wallet_manager}
-            open_support={open_support}
-          />
-        )}
-        {show_card_search && (
-          <SearchIcon
-            isMobile={isMobile}
-            callback_close={close_all}
-            users={usersProfiles}
-          />
-        )}
-        {show_card_wallet_manager && (
-          <WalletManager
-            user={user}
-            callback_close_wallet={close_wallet}
-            isMobile={isMobile}
-          />
-        )}
-        {show_card_support && (
-          <Support callback_close_support={close_support} isMobile={isMobile} />
-        )}
+
         <div className={s.market_container}>
           <div className={s.date_container}>
-            <div className={s.date_box}>
-              <DateComponent date={day} />
+            <div>{user.username}</div>
+            <div>{day}</div>
+          </div>
+          <div className={s.networth}>
+            <div className={s.number}>
+              <div className={s.num}>{networth.toFixed(1)}</div>
+              <div className={s.fiat}>ETH</div>
+              <div className={s.change}>{networth}</div>
             </div>
+            <div className={s.graph}></div>
           </div>
-          <div className={s.networth_container}>
-            <div className={s.networth}>{networth.toFixed(1) + "Ξ"}</div>
-            <div className={s.networth_text}>{"NETWORTH"}</div>
-          </div>
-
           <div className={s.time_container}>
             <div className={s.time_box}>
               <TimeInterval
@@ -314,9 +286,59 @@ export default function MarketOverview(props: market_overview_props) {
         />
         {isMobile ? <Footer /> : null}
       </div>
+      {show_card && (
+        <MarketCollection
+          isMobile={isMobile}
+          callback_close={close_card}
+          market_collection_props={marketCollectionProps}
+        />
+      )}
+      {show_card_settings && (
+        <Settings
+          isMobile={isMobile}
+          callback_close={close_all}
+          open_wallet_manager={open_wallet_manager}
+          open_support={open_support}
+        />
+      )}
+      {show_card_search && (
+        <SearchIcon
+          isMobile={isMobile}
+          callback_close={close_all}
+          users={usersProfiles}
+        />
+      )}
+      {show_card_wallet_manager && (
+        <WalletManager
+          user={user}
+          callback_close_wallet={close_wallet}
+          isMobile={isMobile}
+        />
+      )}
+      {show_card_support && (
+        <Support callback_close_support={close_support} isMobile={isMobile} />
+      )}
     </div>
   );
+  //TODO: Change <div className={s.change}>{networth}</div> to use real % change
+  //TODO: Get real data for user (to have username) copy paste find -> user.username to find it on the page
+  //TODO: Change time interval to 1D, 1W, 1M, 3M, 1Y
+  //TODO: Fix <Collapsable/> for it not to be closed after closing a collection pop-up
+  //TODO: Add a graph of historical networth here
 }
+export type graph = {
+  collection_name: string;
+  collection_logo: string;
+  collection_ticker: string;
+  floor_price_live: number;
+  floor_price_delta: number;
+  floor_price_timestamp: string;
+  data_price: number[];
+  interval: intervals;
+  count: number[];
+  volume: number[];
+  address: string;
+};
 
 export const updatePrice = async (
   interval: intervals,
