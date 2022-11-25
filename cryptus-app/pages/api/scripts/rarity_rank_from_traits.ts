@@ -1,12 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import main from "../../../scripts/get_rarity_rank_of_nft";
-import { collection100list } from "../../../lib/collectionDictionary";
 import GetNameWithoutSpaces from "../../../lib/get_name_without_spaces";
 import FindCollectionRarityData from "../../../lib/findCollectionRarityData";
+import { get_collections_list } from "../../../lib/collectionDictionary";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
-    for (const collection of collection100list) {
+    const collections = get_collections_list() as any;
+    for (const collection of collections) {
       console.log("Collection names : ", collection.name);
       try {
         const collectionRarity = await FindCollectionRarityData(
