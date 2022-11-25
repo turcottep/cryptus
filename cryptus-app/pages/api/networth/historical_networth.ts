@@ -118,6 +118,9 @@ async function getNetworthForAddress(address: string) {
   const existing_collections = {};
   const collections_in_db = get_collection100list();
 
+  const earliest_date_init = 1619827200;
+  let earliest_date = 1619827200;
+
   for (const collection_address of collections) {
     // if (collections_in_db.includes(collection_address.toLowerCase())) {
     try {
@@ -130,7 +133,14 @@ async function getNetworthForAddress(address: string) {
         address_cropped + "_" + viewing_mode
       };`;
       const answer = await prisma.$queryRaw(query);
-      console.log("answer", answer);
+      const early_date_raw = answer[0].timestamp_raw;
+      const early_date_unix = new Date(early_date_raw).getTime() / 1000;
+      // console.log("early_date_unix", early_date_unix);
+      if (early_date_unix < earliest_date) {
+        earliest_date = early_date_unix;
+      }
+
+      // console.log("answer", answer);
       existing_collections[contract_address] = answer;
     } catch (error) {
       if (error.meta.message.includes("does not exist")) {
@@ -142,29 +152,35 @@ async function getNetworthForAddress(address: string) {
     // }
   }
 
-  console.log("existing_collections", existing_collections);
+  console.log("earliest_date", earliest_date);
 
-  // save to file
-  console.log("saving to file");
-  fs.writeFileSync(
-    "existing_collections.json",
-    JSON.stringify(existing_collections, null, 2)
-  );
-  fs.writeFileSync("all_days.json", JSON.stringify(all_days, null, 2));
+  // if (earliest_date != earliest_date_init) {
+  //   throw new Error("earliest date is not the same");
+  // }
 
-  // read from file
-  console.log("reading from file");
-  const existing_collections_n = JSON.parse(
-    fs.readFileSync("existing_collections.json", "utf8")
-  );
-  const trading_days = JSON.parse(fs.readFileSync("all_days.json", "utf8"));
+  // console.log("existing_collections", existing_collections);
 
-  console.log("existing_collections_n", existing_collections_n);
+  // // save to file
+  // console.log("saving to file");
+  // fs.writeFileSync(
+  //   "existing_collections.json",
+  //   JSON.stringify(existing_collections, null, 2)
+  // );
+  // fs.writeFileSync("all_days.json", JSON.stringify(all_days, null, 2));
+
+  // // read from file
+  // console.log("reading from file");
+  // const existing_collections_n = JSON.parse(
+  //   fs.readFileSync("existing_collections.json", "utf8")
+  // );
+  // const trading_days = JSON.parse(fs.readFileSync("all_days.json", "utf8"));
+
+  // console.log("existing_collections_n", existing_collections);
 
   const collection_dict_dict = {};
-  for (const collection_address in existing_collections_n) {
+  for (const collection_address in existing_collections) {
     const collection_dict = {};
-    const collection = existing_collections_n[collection_address];
+    const collection = existing_collections[collection_address];
 
     for (const day in collection) {
       const day_object = collection[day];
@@ -180,7 +196,7 @@ async function getNetworthForAddress(address: string) {
 
   // console.log("trading_days", trading_days);
 
-  const trading_days_list = Object.values(trading_days);
+  const trading_days_list = Object.values(all_days);
 
   // console.log("trading_days_list", trading_days_list.length);
   // log each individual day
@@ -218,12 +234,12 @@ async function getNetworthForAddress(address: string) {
       }
     }
 
-    console.log(
-      "date",
-      day_string,
-      "current_collections_tally",
-      current_collections_tally
-    );
+    // console.log(
+    //   "date",
+    //   day_string,
+    //   "current_collections_tally",
+    //   current_collections_tally
+    // );
 
     // get worth of each collection
     let networth = 0;
@@ -245,9 +261,9 @@ async function getNetworthForAddress(address: string) {
 
         const price_number = parseFloat(day["average_price"]);
         // console.log("price_number", price_number);
-        if (price_number != NaN) {
+        if (price_number && price_number < 1000) {
           networth += price_number * amount;
-          console.log("networth", networth);
+          // console.log("networth", networth);
         }
       }
     }
@@ -271,7 +287,12 @@ async function getNetworthForAddress(address: string) {
       User: true,
     },
   });
-  console.log("user_res", user_res);
+  // console.log("user_res", user_res);
+
+  if (user_res == null) {
+    console.log("user not found");
+    return;
+  }
 
   const res_update = await prisma.user.update({
     where: {
