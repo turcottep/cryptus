@@ -17,6 +17,7 @@
   width: 100%;
 
   // transform: translate(0, 50%);
+  overflow-y: hidden;
 }
 
 .header {
@@ -56,6 +57,8 @@
   // max-height: 800px;
   overflow-y: scroll;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+//.collections::-webkit-scrollbar {display: none;}
 
 .button {
   display: flex;
