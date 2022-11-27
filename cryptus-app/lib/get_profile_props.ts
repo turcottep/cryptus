@@ -7,6 +7,7 @@ import get_nfts_for_wallet from "./get_nfts_for_wallet";
 import save_nfts_to_user from "./save_nfts_to_user";
 import { time } from "console";
 import get_collections_in_wallet from "./get_collections_in_wallet";
+import add_collections_to_user from "./add_collections_to_user";
 
 export default async function get_profile_props(
   user_name: string,
@@ -22,9 +23,17 @@ export default async function get_profile_props(
     let nfts = [];
     let nfts_ordered = [];
     const wallet = user.wallets[0];
-    const collections_in_wallet = await get_collections_in_wallet(
-      wallet.address
-    );
+    let collections_in_wallet = [];
+    if (user.collections_address) {
+      collections_in_wallet = user.collections_address;
+    } else {
+      collections_in_wallet = await get_collections_in_wallet(wallet.address);
+      collections_in_wallet = await add_collections_to_user(
+        collections_in_wallet,
+        user.username
+      );
+    }
+
     if (nbColToFillPage > 50) nbColToFillPage = 50;
     if (nbColToFillPage > collections_in_wallet.length)
       nbColToFillPage = collections_in_wallet.length;
