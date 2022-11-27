@@ -62,41 +62,72 @@
 
 .date_container {
   flex: 0 0 none;
+  display: flex;
   width: 100%;
 
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
+  color: black;
 
-  @media (max-width: v.$mobile) {
-    justify-content: flex-start;
+  > div:nth-child(1) {
+    padding: 8px;
+  }
+  > div:nth-child(2) {
+    padding: 8px;
   }
 }
 
-.date_box {
-  flex: 0 0 none;
-
-  width: max-content;
-
-  font-size: v.$font-size-m;
-  color: black;
-}
-
-.networth_container {
-  flex: 0 0 none;
-
+.networth {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-}
+  width: 100%;
 
-.networth {
-  font-family: "Roboto-Thin";
-  font-size: 80px;
-}
+  background-color: rgb(77, 169, 200);
 
-.networth_text {
-  font-size: 12px;
-  color: rgb(134, 134, 134);
+  > div {
+    background-color: red;
+  }
+
+  .number {
+    display: grid;
+    grid-template-columns: 70px auto 70px;
+    grid-template-rows: 100px 30px;
+    grid-template-areas: ". num fiat" ". change .";
+
+    gap: 8px;
+    padding: 0 8px;
+
+    background-color: rgb(41, 88, 190);
+
+    > div {
+      background-color: rgb(203, 137, 87);
+    }
+
+    .num {
+      grid-area: num;
+      place-self: flex-end;
+      font-size: 80px;
+    }
+    .fiat {
+      grid-area: fiat;
+      justify-self: center;
+      align-self: center;
+    }
+    .change {
+      grid-area: change;
+      justify-self: center;
+      align-self: flex-start;
+      font-size: 16px;
+    }
+  }
+
+  .graph {
+    width: clamp(350px, 90%, 700px);
+    height: 200px;
+    aspect-ratio: 16/9;
+    background-color: white;
+  }
 }

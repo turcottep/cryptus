@@ -221,6 +221,7 @@ const props_empty: profile_props = {
     networth: 0,
     address: "",
     collections_filter: [],
+    collections_list: [],
     profile_image_url: "./icons/icon-192x192.png",
   },
 };

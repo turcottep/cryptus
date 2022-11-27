@@ -19,6 +19,24 @@ export default function SearchBar(props: {
   const [searchBarPosY, setSearchBarPosY] = useState();
   const [searchBarPosWidth, setSearchBarPosWitdh] = useState();
 
+  const default_selected_users = [
+    "logz",
+    "apeholder",
+    "justinbiebernfts",
+    "snoopdogg",
+    "mcuban",
+    "lafleur1",
+  ];
+
+  const check_for_default_suggested_users = (name: string) => {
+    for (let i = 0; i < default_selected_users.length; i++) {
+      if (default_selected_users[i] === name) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   const getPosition = (ref: any) => {
     setSearchBarPosX(ref.current?.offsetLeft);
     setSearchBarPosY(ref.current?.offsetTop + ref.current?.offsetHeight);
@@ -27,7 +45,7 @@ export default function SearchBar(props: {
 
   useEffect(() => {
     getPosition(searchBarRef);
-  }, []);
+  });
 
   useEffect(() => {
     window.addEventListener("resize", function () {
@@ -40,6 +58,7 @@ export default function SearchBar(props: {
       <div className={s.search_box} ref={searchBarRef}>
         <img src="magnifier.svg" className={s.magnifier} />
         <input
+          autoFocus
           type="text"
           className={s.searchTerm}
           placeholder={
@@ -96,15 +115,21 @@ export default function SearchBar(props: {
       {props.users
         ? props.users
             .filter((user) => {
-              if (query === "") {
-                return null;
+              if (
+                query === "" &&
+                check_for_default_suggested_users(user.username)
+              ) {
+                return user;
               } else if (
+                query != "" &&
                 user.username.toLowerCase().includes(query.toLowerCase())
               ) {
                 return user;
               }
+              return null;
             })
             .map((user, index) => {
+              console.log("user", user);
               if (index < 8) {
                 return (
                   <div

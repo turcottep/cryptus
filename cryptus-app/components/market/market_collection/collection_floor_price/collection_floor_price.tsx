@@ -6,12 +6,14 @@ export default function CollectionFloorPrice(props: {
   current_price: number;
   floor_price_timestamp: string;
 }) {
-  const delta = props.current_price - props.initial_price;
-  const delta_percent = (delta * 100).toFixed(2);
+  const current_price = props.current_price ? props.current_price : 0;
+  const initial_price = props.initial_price ? props.initial_price : 0;
+  const delta = current_price - initial_price;
+  const delta_percent = ((delta / (initial_price + 0.000001)) * 100).toFixed(1);
   return (
     <div className={s.container}>
       <div className={s.priceLive}>
-        {props.current_price.toFixed(2)} Ξ<div className={s.currency}> ETH</div>
+        {current_price.toFixed(2)} Ξ<div className={s.currency}> ETH</div>
       </div>
       <div className={s.delta}>
         <span className={delta > 0 ? s.green : s.red}>{delta.toFixed(2)}</span>Ξ

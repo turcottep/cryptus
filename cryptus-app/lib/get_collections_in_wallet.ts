@@ -32,9 +32,13 @@ export default async function get_collections_in_wallet(address: string) {
     return null;
   }
   console.log("COLLECTIONS RAW", collections_raw);
-  collections_raw.sort(function (a, b) {
+  console.log("Before filter", collections_raw);
+  let collections_raw_sfw;
+  collections_raw_sfw = collections_raw.filter((coll) => coll.is_nsfw != true);
+  console.log("After filter", collections_raw_sfw);
+  collections_raw_sfw.sort(function (a, b) {
     return b.stats.total_volume - a.stats.total_volume;
   });
-  console.log("COLLECTIONS RAW", collections_raw);
-  return collections_raw;
+  console.log("COLLECTIONS RAW", collections_raw_sfw);
+  return collections_raw_sfw;
 }

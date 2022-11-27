@@ -24,6 +24,7 @@ model User {
   networth           Float    @default(0)
   profile_image_url  String   @default("./icons/icon-192x192.png")
   subscription       String   @default("")
+  networth_history   Float[]
   nfts               Nft[]
   wallets            Wallet[]
 }

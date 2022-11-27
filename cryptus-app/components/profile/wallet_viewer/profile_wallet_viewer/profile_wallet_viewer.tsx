@@ -92,7 +92,6 @@ export default function ProfileWalletViewer(props: {
             open_nft={props.open_nft}
           />
         }
-        endMessage={<h4>Nothing more to show</h4>}
       >
         {collections
           .filter((collection) => {

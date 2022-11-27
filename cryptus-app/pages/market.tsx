@@ -10,9 +10,7 @@ import collectionDictionary from "../lib/collectionDictionary";
 import address from "./api/collection/address";
 
 import getCollectionData from "../lib/get_collection_data";
-import { collection100list } from "../lib/collectionDictionary";
-
-// Import market_overwiew parent component to test here
+import get_collections_dict from "../lib/collectionDictionary";
 
 export default function MarketPage(props) {
   const [isMobile, setIsMobile] = useState(true);
@@ -75,7 +73,7 @@ export async function getStaticProps() {
     },
   };
 
-  const collections_dict = collectionDictionary;
+  const collections_dict = get_collections_dict();
   const collections = Object.keys(collections_dict).map((key) => {
     return collections_dict[key];
   }) as collection[];

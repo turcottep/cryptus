@@ -51,6 +51,7 @@ describe("<CreatorProfile />", () => {
         username: "Tester",
         address: "test_address",
         collections_filter: [],
+        collections_list: [],
         profile_image_url: "./icons/icon-192x192.png",
       },
       collections: [mock_collection],

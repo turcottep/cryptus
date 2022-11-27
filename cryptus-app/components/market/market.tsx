@@ -28,6 +28,7 @@ import TimeInterval from "./market_header/time_interval/time_interval";
 import SearchIcon from "../basic/header/search_icon/search_icon";
 
 import findAllUsers from "../../lib/findAllUsers";
+import Graph from "./graph/graph";
 
 type market_overview_props = {
   date: string;
@@ -48,7 +49,10 @@ export default function MarketOverview(props: market_overview_props) {
     username: "",
     address: "",
     collections_filter: [],
+    collections_list: [],
     profile_image_url: "",
+    networth: 0,
+    networth_history: [0, 0, 0, 0, 0, 0, 0],
   };
 
   const today = new Date();
@@ -72,13 +76,13 @@ export default function MarketOverview(props: market_overview_props) {
     props.collections.slice(0, 10)
   );
 
-  const [session, status_status] = useSession();
-  const [username, setUsername] = useState<string>("");
+  const [session, session_status] = useSession();
   const [user, setUser] = useState(props_user_empty);
+
   const [loading, setLoading] = useState(false);
   const [show_card, set_show_card] = useState(false);
   const [card_collection, set_card_collection] = useState(null);
-  const [networth, set_networth] = useState(0);
+
   const [market_interval, set_market_interval] = useState(
     props.networth.active
   );
@@ -91,7 +95,7 @@ export default function MarketOverview(props: market_overview_props) {
 
   useEffect(() => {
     const getUser = async (username: string) => {
-      let profileProps = await get_profile_props(username, 10);
+      let profileProps = await get_profile_props(username, 1);
       setUser(profileProps.props.user);
     };
     if (session) {
@@ -99,11 +103,12 @@ export default function MarketOverview(props: market_overview_props) {
       console.log("user_name", user_name);
 
       update_for_user(user_name);
-      setUsername(user_name);
     }
-  }, [status_status]);
+  }, [session_status]);
 
   const updateUserCollections = (user_collections) => {
+    console.log("updateUserCollections", user_collections);
+
     const newPropCollectionFavoriteTemp = [];
     const newPropCollectionMarketTemp = [];
     for (const collection of newPropCollection) {
@@ -113,7 +118,7 @@ export default function MarketOverview(props: market_overview_props) {
         newPropCollectionMarketTemp.push(collection);
       }
     }
-    console.log("temp", newPropCollectionFavoriteTemp, user_collections);
+    console.log("temp", newPropCollectionFavoriteTemp);
     setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
     setnewPropCollectionMarket(newPropCollectionMarketTemp);
   };
@@ -148,14 +153,16 @@ export default function MarketOverview(props: market_overview_props) {
   };
 
   const update_for_user = async (username: string) => {
-    const user = await get_user_by_username(username);
-    // console.log("user : ", user);
+    console.log("update_for_user", username);
+
+    // const user = await get_user_by_username(username);
+    console.log("user : ", user);
     const user_collections = user.collections_list;
-    // console.log("iuser collections : ", user_collections);
+    console.log("iuser collections : ", user_collections);
     const networth = user.networth;
     // console.log("networth : ", networth);
     set_user_collections_list([...user_collections]);
-    set_networth(networth);
+    setUser(user);
     updateUserCollections(user_collections);
   };
 
@@ -203,6 +210,8 @@ export default function MarketOverview(props: market_overview_props) {
     set_show_card(true);
   };
 
+  console.log("card_collection", card_collection);
+
   const marketCollectionProps = card_collection
     ? {
         collection_name: card_collection.name,
@@ -216,6 +225,7 @@ export default function MarketOverview(props: market_overview_props) {
         count: [],
         volume: card_collection.data_volume,
         address: card_collection.address,
+        slug: card_collection.slug,
       }
     : ({} as any);
 
@@ -230,49 +240,42 @@ export default function MarketOverview(props: market_overview_props) {
       )}
       <div className={s.containee}>
         {loading && <Loading />}
-        {show_card && (
-          <MarketCollection
-            isMobile={isMobile}
-            callback_close={close_card}
-            market_collection_props={marketCollectionProps}
-          />
-        )}
-        {show_card_settings && (
-          <Settings
-            isMobile={isMobile}
-            callback_close={close_all}
-            open_wallet_manager={open_wallet_manager}
-            open_support={open_support}
-          />
-        )}
-        {show_card_search && (
-          <SearchIcon
-            isMobile={isMobile}
-            callback_close={close_all}
-            users={usersProfiles}
-          />
-        )}
-        {show_card_wallet_manager && (
-          <WalletManager
-            user={user}
-            callback_close_wallet={close_wallet}
-            isMobile={isMobile}
-          />
-        )}
-        {show_card_support && (
-          <Support callback_close_support={close_support} isMobile={isMobile} />
-        )}
+
         <div className={s.market_container}>
           <div className={s.date_container}>
-            <div className={s.date_box}>
-              <DateComponent date={day} />
+            <div>{user.username}</div>
+            <div>{day}</div>
+          </div>
+          <div className={s.networth}>
+            <div className={s.number}>
+              <div className={s.num}>
+                {user ? user.networth.toFixed(1) : "-"}
+              </div>
+              <div className={s.fiat}>ETH</div>
+              <div className={s.change}>
+                {(
+                  (user.networth_history[user.networth_history.length - 1] -
+                    user.networth_history[0]) /
+                  (user.networth_history[0] + 0.00000001)
+                ).toFixed(2)}
+                %
+              </div>
+            </div>
+            <div className={s.graph}>
+              <Graph
+                data_price={user.networth_history}
+                data_volume={[]}
+                color={
+                  user.networth_history[user.networth_history.length - 1] -
+                    user.networth_history[0] >=
+                  0
+                    ? "green"
+                    : "red"
+                }
+                detailled={true}
+              />
             </div>
           </div>
-          <div className={s.networth_container}>
-            <div className={s.networth}>{networth.toFixed(1) + "Ξ"}</div>
-            <div className={s.networth_text}>{"NETWORTH"}</div>
-          </div>
-
           <div className={s.time_container}>
             <div className={s.time_box}>
               <TimeInterval
@@ -286,7 +289,6 @@ export default function MarketOverview(props: market_overview_props) {
               callback={open_card}
               collections={newPropCollectionMarket}
             />
-            {/* <SearchBar users={usersProfiles} /> */}
             <SortButton
               newPropCollectionFavorite={newPropCollectionFavorite}
               newPropCollectionMarket={newPropCollectionMarket}
@@ -314,9 +316,59 @@ export default function MarketOverview(props: market_overview_props) {
         />
         {isMobile ? <Footer /> : null}
       </div>
+      {show_card && (
+        <MarketCollection
+          isMobile={isMobile}
+          callback_close={close_card}
+          market_collection_props={marketCollectionProps}
+        />
+      )}
+      {show_card_settings && (
+        <Settings
+          isMobile={isMobile}
+          callback_close={close_all}
+          open_wallet_manager={open_wallet_manager}
+          open_support={open_support}
+        />
+      )}
+      {show_card_search && (
+        <SearchIcon
+          isMobile={isMobile}
+          callback_close={close_all}
+          users={usersProfiles}
+        />
+      )}
+      {show_card_wallet_manager && (
+        <WalletManager
+          user={user}
+          callback_close_wallet={close_wallet}
+          isMobile={isMobile}
+        />
+      )}
+      {show_card_support && (
+        <Support callback_close_support={close_support} isMobile={isMobile} />
+      )}
     </div>
   );
+  //DONEDO: Change <div className={s.change}>{networth}</div> to use real % change # DONE
+  //DONEDO: Get real data for user (to have username) copy paste find -> user.username to find it on the page
+  //DONEDO: Change time interval to 1D, 1W, 1M, 3M, 1Y # on a pas le data 1D, c'est pas assez long
+  //TODO: Fix <Collapsable/> for it not to be closed after closing a collection pop-up
+  //DONEDO: Add a graph of historical networth here
 }
+export type graph = {
+  collection_name: string;
+  collection_logo: string;
+  collection_ticker: string;
+  floor_price_live: number;
+  floor_price_delta: number;
+  floor_price_timestamp: string;
+  data_price: number[];
+  interval: intervals;
+  count: number[];
+  volume: number[];
+  address: string;
+};
 
 export const updatePrice = async (
   interval: intervals,

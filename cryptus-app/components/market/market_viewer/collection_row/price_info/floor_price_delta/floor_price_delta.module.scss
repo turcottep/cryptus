@@ -1,37 +1,29 @@
 @use "/styles/variables" as v;
 
-.green_delta {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    align-items: center;
-    text-align: left;
+.delta {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: left;
 
-    width: 100%;
-    height: 20px;
-    
-    font-size: v.$collection-name-font-size;
-    font-weight: v.$collection-name-font-weight;
+  width: 100%;
+  height: 20px;
 
-    color: v.$market-green;
+  font-size: v.$collection-name-font-size;
+  font-weight: v.$collection-name-font-weight;
 }
 
-.red_delta {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    align-items: center;
-    text-align: left;
+.delta2 {
+}
 
-    width: 100%;
-    height: 20px;
-    
-    font-size: v.$collection-name-font-size;
-    font-weight: v.$collection-name-font-weight;
-    
-    color: v.$market-red;
+.green_delta {
+  @extend .delta2;
+  color: v.$market-green;
+}
+.red_delta {
+  @extend .delta2;
+  color: v.$market-red;
 }

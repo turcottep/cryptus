@@ -21,9 +21,108 @@ export default function CreatorProfileInfos(props: {
   const [loading, setLoading] = useState(false);
   const [edit_profile, set_edit_profile] = useState(false);
   const [edit_collections, set_edit_collections] = useState(false);
+  const [old_user_name, setOldUserName] = useState(profile_props.user.username);
+  const [old_desc, setOldDesc] = useState(profile_props.user.description);
   const [user_name, setUserName] = useState(profile_props.user.username);
   const [desc, setDesc] = useState(profile_props.user.description);
   const [error, setError] = useState("");
+
+  const Cancelling = () => {
+    setUserName(old_user_name);
+    setDesc(old_desc);
+    set_edit_profile(false);
+  };
+
+  const updateProfile = async (
+    setError,
+    setLoading,
+    old_user_name,
+    new_user_name,
+    new_description
+  ) => {
+    console.log("submit");
+
+    setError("");
+    console.log(
+      "old_user_name",
+      old_user_name,
+      "new_user_name",
+      new_user_name,
+      "new_description",
+      new_description
+    );
+
+    if (!new_user_name.match(/^[0-9a-z]+$/)) {
+      console.log("invalid username");
+      setError("InvalidUsername");
+      return;
+    }
+
+    if (new_user_name.length >= 25) {
+      console.log("username too long");
+      setError("UsernameTooLong");
+      return;
+    }
+
+    if (new_description.length >= 100) {
+      console.log("description too long");
+      setError("DescriptionTooLong");
+      return;
+    }
+
+    if (get_reserved_usernames().includes(new_user_name)) {
+      console.log("reserved username");
+      setError("ReservedUsername");
+      return;
+    }
+
+    setLoading(true);
+
+    const res = await updateUser(old_user_name, new_user_name, new_description);
+
+    if (res.status == 202) {
+      setError("UniqueUsername");
+      setLoading(false);
+      return;
+    }
+
+    if (res.status == 203) {
+      setError("ReservedUsername");
+      setLoading(false);
+      return;
+    }
+
+    if (res.status != 201) {
+      setError("default");
+      setLoading(false);
+      return;
+    }
+
+    console.log("sending...");
+
+    let wallet_address;
+
+    if (old_user_name == new_user_name && old_user_name == "apeholder") {
+      wallet_address =
+        "0x68c4D9E03D7D902053C428Ca2D74b612Db7F583A".toLowerCase();
+    } else {
+      await window.ethereum.enable();
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      wallet_address = accounts[0];
+    }
+
+    setOldUserName(user_name);
+    setOldDesc(desc);
+
+    // props.changeState("loading", true);
+    signIn("credentials", {
+      redirect: true,
+      address: wallet_address,
+      callbackUrl: `${window.location.origin}/` + new_user_name,
+    });
+  };
 
   const account_link = "publicwallet.app/" + user_name;
 
@@ -113,7 +212,7 @@ export default function CreatorProfileInfos(props: {
         </div>
       </div>
       <div className={s.right}>
-        <Button t="Cancel" c={() => set_edit_profile(false)} />
+        <Button t="Cancel" c={Cancelling} />
         <Button
           t="Apply"
           c={() =>
@@ -176,85 +275,12 @@ const Button = (props: { t: string; c: any }) => {
   );
 };
 
-const updateProfile = async (
-  setError,
-  setLoading,
-  old_user_name,
-  new_user_name,
-  new_description
-) => {
-  console.log("submit");
-
-  setError("");
-  console.log(
-    "old_user_name",
-    old_user_name,
-    "new_user_name",
-    new_user_name,
-    "new_description",
-    new_description
-  );
-
-  if (!new_user_name.match(/^[0-9a-z]+$/)) {
-    console.log("invalid username");
-    setError("InvalidUsername");
-    return;
-  }
-
-  if (get_reserved_usernames().includes(new_user_name)) {
-    console.log("reserved username");
-    setError("ReservedUsername");
-    return;
-  }
-
-  setLoading(true);
-
-  const res = await updateUser(old_user_name, new_user_name, new_description);
-
-  if (res.status == 202) {
-    setError("UniqueUsername");
-    setLoading(false);
-    return;
-  }
-
-  if (res.status == 203) {
-    setError("ReservedUsername");
-    setLoading(false);
-    return;
-  }
-
-  if (res.status != 201) {
-    setError("default");
-    setLoading(false);
-    return;
-  }
-
-  console.log("sending...");
-
-  let wallet_address;
-
-  if (old_user_name == new_user_name && old_user_name == "apeholder") {
-    wallet_address = "0x68c4D9E03D7D902053C428Ca2D74b612Db7F583A".toLowerCase();
-  } else {
-    await window.ethereum.enable();
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-    wallet_address = accounts[0];
-  }
-
-  // props.changeState("loading", true);
-  signIn("credentials", {
-    redirect: true,
-    address: wallet_address,
-    callbackUrl: `${window.location.origin}/` + new_user_name,
-  });
-};
-
 const errors = {
   UniqueUsername: "This username is already in use!",
   InvalidUsername: "Only lowercase alphanumeric characters are allowed",
+  UsernameTooLong: "Username is too long",
   ReservedUsername: "This username is reserved",
+  DescriptionTooLong: "Description is too long",
   default: "Unable to change username.",
 };
 

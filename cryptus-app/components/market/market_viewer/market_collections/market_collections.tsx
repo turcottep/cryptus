@@ -23,6 +23,7 @@ export default function MarketCollections(props: {
   const [collections, setCollections] = useState(props.collections);
   const [hasMore, setHasMore] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(10);
+  const [noCollection, setNoCollection] = useState(false);
 
   useEffect(() => {
     setCollections(props.collections);
@@ -64,10 +65,18 @@ export default function MarketCollections(props: {
     }
   };
 
-  return (
-    <div id="market_collections" className={s.container}>
-      <Header name={props.name} icon={props.icon} />
-      {collections && collections[0] ? (
+  useEffect(() => {
+    console.log("collection changed", collections);
+    if (props.collections.length === 0) {
+      setNoCollection(true);
+    } else {
+      setNoCollection(false);
+    }
+  }, [props.collections]);
+
+  return !noCollection ? (
+    <Collapsable title={props.name}>
+      <div id="market_collections" className={s.container}>
         <div className={s.infiniteScrollDiv}>
           <InfiniteScroll
             style={{ overflowY: "hidden" }}
@@ -81,8 +90,12 @@ export default function MarketCollections(props: {
               <div
                 key={i}
                 className={s.collection}
-                onClick={() => {
+                onClick={(e) => {
+                  console.log("clicked me");
+
                   props.callback(c.name);
+                  e.stopPropagation();
+                  e.nativeEvent.stopImmediatePropagation();
                 }}
               >
                 <CollectionRow collection={c} />
@@ -90,10 +103,14 @@ export default function MarketCollections(props: {
             ))}
           </InfiniteScroll>
         </div>
-      ) : (
+      </div>
+    </Collapsable>
+  ) : (
+    <Collapsable title={props.name} closed>
+      <div id="market_collections" className={s.container}>
         <NoCollection connected={props.connected} />
-      )}
-    </div>
+      </div>
+    </Collapsable>
   );
 }
 
@@ -113,3 +130,28 @@ const NoCollection = (props: { connected: boolean }) => (
     </div>
   </div>
 );
+
+export const Collapsable = (props: {
+  children: React.ReactNode;
+  title: string;
+  closed?: boolean;
+}) => {
+  const [c, setC] = useState(props.closed ? true : false);
+
+  return (
+    <div
+      className={s.collapsable}
+      onClick={(e) => {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+        setC(!c);
+      }}
+    >
+      <div>
+        <div className={s.title}>{props.title}</div>
+        <div className={s.arrow}>{c ? "▼" : "▲"}</div>
+      </div>
+      {c ? null : props.children}
+    </div>
+  );
+};

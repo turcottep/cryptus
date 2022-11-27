@@ -6,38 +6,20 @@ exports[`<MarketCollection /> should display properly 1`] = `
   onClick={[Function]}
 >
   <div>
-    <div
-      onClick={[Function]}
-    >
-      <svg
-        className="h-6 w-6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={3}
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M6 18L18 6M6 6l12 12"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </div>
     <div>
       <img
         src=""
       />
       <div>
-        KITT
+        
       </div>
       <div>
-        CryptoKitties
+        
       </div>
     </div>
     <div>
       <div>
-        0.05
+        0.00
          Ξ
         <div>
            ETH
@@ -45,11 +27,11 @@ exports[`<MarketCollection /> should display properly 1`] = `
       </div>
       <div>
         <span>
-          0.04
+          0.00
         </span>
         Ξ (
         <span>
-          4.00
+          0.0
         </span>
         %)
       </div>

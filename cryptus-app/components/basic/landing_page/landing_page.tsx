@@ -7,6 +7,7 @@ import connectMetamask from "../../../lib/connectMetamask";
 import Loading from "../../utils/loading/loading";
 import MetamaskButton2 from "../../utils/metamask/metamaskbutton2";
 import mixpanel from "mixpanel-browser";
+import TryNow from "./try_now/try_now";
 
 import * as google_analytics from "../../../lib/google_analytics";
 
@@ -14,15 +15,15 @@ export default function LandingPage(props: { isMobile: boolean }) {
   const [loading, setLoading] = useState<boolean>(false);
   const [session, loadingSession] = useSession();
   const [[angle_x, angle_y], set_angles] = useState<[number, number]>([0, 0]);
+  const [show_card_try_now, set_show_card_try_now] = useState(false);
+  // console.log(show_card_try_now);
   const ref = React.useRef<HTMLDivElement>(null);
 
   const track_mouse = (e) => {
-    // console.log(e.clientX, e.clientY);
     const x = e.clientX;
     const y = e.clientY;
     const constrain = 100;
     const box = ref.current.getBoundingClientRect();
-    // console.log("box", e.target);
     const angle_x_temp = -(y - box.y - box.height / 2) / constrain;
     const angle_y_temp = (x - box.x - box.width / 2) / constrain;
     set_angles([angle_x_temp, angle_y_temp]);
@@ -32,8 +33,22 @@ export default function LandingPage(props: { isMobile: boolean }) {
     set_angles([0, 0]);
   };
 
+  const open_try_now_card = () => {
+    mixpanel.track("Try Now");
+    set_show_card_try_now(true);
+    console.log("Into open card", show_card_try_now);
+  };
+
+  const close_card_try_now = () => {
+    set_show_card_try_now(false);
+    console.log(show_card_try_now);
+  };
+
   return (
     <div className={s.container}>
+      {show_card_try_now && (
+        <TryNow isMobile={props.isMobile} callback_close={close_card_try_now} />
+      )}
       {loading && <Loading />}
       <Header
         session={session}
@@ -52,7 +67,16 @@ export default function LandingPage(props: { isMobile: boolean }) {
           </div>
           <div className={s.description}>{"EASIEST WAY TO"}</div>
           <div className={s.title}>{"TRACK YOUR NFTS"}</div>
-          <ButtonTryNow setLoading={setLoading} isMobile={props.isMobile} />
+          <div className={s.buttondiv}>
+            <div className={s.button} onClick={open_try_now_card}>
+              {"TRY NOW"}
+            </div>
+          </div>
+          {/* <ButtonTryNow
+            setLoading={setLoading}
+            isMobile={props.isMobile}
+            setShowCardTryNow={set_show_card_try_now}
+          /> */}
         </div>
         <div className={s.divisionimg}>
           <img
@@ -128,22 +152,27 @@ const Footer = () => {
   );
 };
 
-const ButtonTryNow = (props: { setLoading: Function; isMobile }) => {
-  const { setLoading } = props;
+// const ButtonTryNow = (props: {
+//   setLoading: Function;
+//   isMobile;
+//   setShowCardTryNow;
+// }) => {
+//   const { set_show_card_try_now } = props.setShowCardTryNow;
 
-  const ocm = () => {
-    mixpanel.track("Try Now");
-    connectMetamask(setLoading, props.isMobile);
-  };
+//   const ocm = () => {
+//     mixpanel.track("Try Now");
+//     set_show_card_try_now(true);
+//     // connectMetamask(setLoading, props.isMobile);
+//   };
 
-  return (
-    <div className={s.buttondiv}>
-      <div className={s.button} onClick={ocm}>
-        {"TRY NOW"}
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div className={s.buttondiv}>
+//       <div className={s.button} onClick={ocm}>
+//         {"TRY NOW"}
+//       </div>
+//     </div>
+//   );
+// };
 
 const BoxContainers = () => {
   const boxContainers = [
