@@ -32,6 +32,38 @@ export default function DesktopHeader(props: {
   return (
     <div id="header" className={s.container}>
       <div className={s.home}>
+        <a href="/">PublicWallet</a>
+      </div>
+      <div className={s.tabs}>
+        <Tab
+          name={tabs[0].name}
+          key={tabs[0].name}
+          url={tabs[0].url}
+          isActive={tabs[0].name == tab}
+        />
+        <div>⏐</div>
+        <Tab
+          name={tabs[1].name}
+          key={tabs[1].name}
+          url={tabs[1].url}
+          isActive={tabs[1].name == tab}
+        />
+      </div>
+      <div className={s.icons}>
+        <div onClick={props.open_search} className={s.icon}>
+          <img src={"magnifier.svg"} className={s.image} />
+        </div>
+        <Icon img="/icons/notification_icon.png" url="/market" />
+        <div onClick={props.open_settings} className={s.icon}>
+          <img src={imgUrl} className={s.image} />
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div id="header" className={s.container}>
+      <div className={s.home}>
         <a href="/">Public Wallet</a>
       </div>
       <div className={s.tabs}>

@@ -40,6 +40,7 @@ export default function SearchBar(props: {
       <div className={s.search_box} ref={searchBarRef}>
         <img src="magnifier.svg" className={s.magnifier} />
         <input
+          autoFocus
           type="text"
           className={s.searchTerm}
           placeholder={
