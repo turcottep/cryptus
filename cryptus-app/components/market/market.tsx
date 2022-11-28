@@ -52,7 +52,7 @@ export default function MarketOverview(props: market_overview_props) {
     collections_list: [],
     profile_image_url: "",
     networth: 0,
-    networth_history: [0, 0, 0, 0, 0, 0, 0],
+    networth_history: [0, 0],
   };
 
   const today = new Date();
@@ -66,14 +66,12 @@ export default function MarketOverview(props: market_overview_props) {
     []
   );
 
-  const [newPropCollection, setnewPropCollection] = useState(
-    props.collections.slice(0, 10)
-  );
+  const [newPropCollection, setnewPropCollection] = useState(props.collections);
   const [newPropCollectionFavorite, setnewPropCollectionFavorite] = useState(
     []
   );
   const [newPropCollectionMarket, setnewPropCollectionMarket] = useState(
-    props.collections.slice(0, 10)
+    props.collections
   );
 
   const [session, session_status] = useSession();
@@ -107,7 +105,7 @@ export default function MarketOverview(props: market_overview_props) {
   }, [session_status]);
 
   const updateUserCollections = (user_collections) => {
-    console.log("updateUserCollections", user_collections);
+    // console.log("updateUserCollections", user_collections);
 
     const newPropCollectionFavoriteTemp = [];
     const newPropCollectionMarketTemp = [];
@@ -118,7 +116,7 @@ export default function MarketOverview(props: market_overview_props) {
         newPropCollectionMarketTemp.push(collection);
       }
     }
-    console.log("temp", newPropCollectionFavoriteTemp);
+    // console.log("temp", newPropCollectionFavoriteTemp);
     setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
     setnewPropCollectionMarket(newPropCollectionMarketTemp);
   };
@@ -158,7 +156,7 @@ export default function MarketOverview(props: market_overview_props) {
     // const user = await get_user_by_username(username);
     console.log("user : ", user);
     const user_collections = user.collections_list;
-    console.log("iuser collections : ", user_collections);
+    // console.log("iuser collections : ", user_collections);
     const networth = user.networth;
     // console.log("networth : ", networth);
     set_user_collections_list([...user_collections]);
@@ -210,7 +208,7 @@ export default function MarketOverview(props: market_overview_props) {
     set_show_card(true);
   };
 
-  console.log("card_collection", card_collection);
+  // console.log("card_collection", card_collection);
 
   const marketCollectionProps = card_collection
     ? {
@@ -239,8 +237,6 @@ export default function MarketOverview(props: market_overview_props) {
         />
       )}
       <div className={s.containee}>
-        {loading && <Loading />}
-
         <div className={s.market_container}>
           <div className={s.date_container}>
             <div>{user.username}</div>
@@ -314,7 +310,7 @@ export default function MarketOverview(props: market_overview_props) {
           icon={"/icons/market_icon.png"}
           collections={newPropCollectionMarket}
         />
-        {isMobile ? <Footer /> : null}
+        {/* {isMobile ? <Footer /> : null} */}
       </div>
       {show_card && (
         <MarketCollection
@@ -401,16 +397,19 @@ export const updatePrice = async (
       viewingmode,
     }),
   });
-
-  const { prices, counts, deltas } = await res.json();
+  const res_object = await res.json();
+  // console.log("res_object ", res_object);
+  const { prices, counts, deltas } = res_object;
   const newPropCollectionTemp = [];
 
   if (collections.length > 0) {
     for (let i = 0; i < collections.length; i++) {
       const element = collections && collections[i];
+      // console.log("element ", element);
+
       element.data_price = prices && prices[i];
       element.floor_price = prices && prices[i][prices[i].length - 1];
-      element.floor_price_delta = deltas[i];
+      element.floor_price_delta = deltas && deltas[i];
       newPropCollectionTemp.push(element);
     }
   }
@@ -418,6 +417,6 @@ export const updatePrice = async (
   if (needLoading) {
     setLoading(false);
   }
-  console.log("collection updated ", newPropCollectionTemp);
+  // console.log("collection updated ", newPropCollectionTemp);
   return newPropCollectionTemp;
 };

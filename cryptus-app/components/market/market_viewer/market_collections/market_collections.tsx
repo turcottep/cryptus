@@ -66,7 +66,7 @@ export default function MarketCollections(props: {
   };
 
   useEffect(() => {
-    console.log("collection changed", collections);
+    // console.log("collection changed", collections);
     if (props.collections.length === 0) {
       setNoCollection(true);
     } else {
@@ -78,30 +78,21 @@ export default function MarketCollections(props: {
     <Collapsable title={props.name}>
       <div id="market_collections" className={s.container}>
         <div className={s.infiniteScrollDiv}>
-          <InfiniteScroll
-            style={{ overflowY: "hidden" }}
-            dataLength={collections.length}
-            next={getMoreCollections}
-            hasMore={hasMore}
-            loader={<CircularProgress />}
-            endMessage={<h4>Nothing more to show</h4>}
-          >
-            {collections.map((c, i) => (
-              <div
-                key={i}
-                className={s.collection}
-                onClick={(e) => {
-                  console.log("clicked me");
+          {collections.map((c, i) => (
+            <div
+              key={i}
+              className={s.collection}
+              onClick={(e) => {
+                console.log("clicked me");
 
-                  props.callback(c.name);
-                  e.stopPropagation();
-                  e.nativeEvent.stopImmediatePropagation();
-                }}
-              >
-                <CollectionRow collection={c} />
-              </div>
-            ))}
-          </InfiniteScroll>
+                props.callback(c.name);
+                e.stopPropagation();
+                e.nativeEvent.stopImmediatePropagation();
+              }}
+            >
+              <CollectionRow collection={c} />
+            </div>
+          ))}
         </div>
       </div>
     </Collapsable>

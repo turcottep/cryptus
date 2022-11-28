@@ -18,7 +18,9 @@ export default function PropertyBlock(props: {
 
   const rarity_percentage = 100 * ((count / collectionSize) as any);
   const rarity_clean =
-    rarity_percentage > 1
+    rarity_percentage < 0.01
+      ? "< 0.01"
+      : rarity_percentage >= 1
       ? rarity_percentage.toFixed(0)
       : rarity_percentage.toFixed(2);
 
