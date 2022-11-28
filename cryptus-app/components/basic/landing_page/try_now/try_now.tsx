@@ -13,10 +13,6 @@ type try_now_props = {
 export default function TryNow(props: try_now_props) {
   const router = useRouter();
 
-  const img_click = () => {
-    console.log("click");
-    router.push("/mcuban");
-  };
   return (
     <Card callback_close={props.callback_close} isMobile={props.isMobile}>
       <div className={s.container}>
