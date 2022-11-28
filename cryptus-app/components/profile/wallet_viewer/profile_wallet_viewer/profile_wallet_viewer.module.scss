@@ -11,6 +11,14 @@ $block-color: rgb(165, 165, 165);
   justify-content: center;
 }
 
+.loader_container {
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .containerRISC {
   flex: 0 0 none;
 

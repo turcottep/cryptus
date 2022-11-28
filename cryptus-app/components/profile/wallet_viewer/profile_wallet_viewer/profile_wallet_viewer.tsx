@@ -13,6 +13,7 @@ import useWindowSize from "../../../utils/use_window_size";
 
 import get_empty_profile_props from "../../../../lib/empty_profile_props";
 import collections_dict from "../../../../lib/collectionDictionary";
+import { CircularProgress } from "@mui/material";
 
 export default function ProfileWalletViewer(props: {
   collections: nft_collection[];
@@ -86,11 +87,9 @@ export default function ProfileWalletViewer(props: {
         next={getMoreCollections}
         hasMore={hasMore}
         loader={
-          <Collection
-            collection={props_empty.collections[0]}
-            open_collection={props.open_collection}
-            open_nft={props.open_nft}
-          />
+          <div className={s.loader_container}>
+            <CircularProgress color="primary" />
+          </div>
         }
       >
         {collections
