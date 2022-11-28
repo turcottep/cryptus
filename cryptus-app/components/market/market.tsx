@@ -310,7 +310,7 @@ export default function MarketOverview(props: market_overview_props) {
           icon={"/icons/market_icon.png"}
           collections={newPropCollectionMarket}
         />
-        {isMobile ? <Footer /> : null}
+        {/* {isMobile ? <Footer /> : null} */}
       </div>
       {show_card && (
         <MarketCollection

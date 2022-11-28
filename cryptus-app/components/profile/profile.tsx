@@ -218,7 +218,7 @@ export default function Profile(props: {
         collections_filter={collections_filter}
         key={update_collection}
       />
-      {isMobile && <Footer />}
+      {/* {isMobile && <Footer />} */}
     </div>
   );
 }
