@@ -66,7 +66,7 @@ export default function MarketCollections(props: {
   };
 
   useEffect(() => {
-    console.log("collection changed", collections);
+    // console.log("collection changed", collections);
     if (props.collections.length === 0) {
       setNoCollection(true);
     } else {
