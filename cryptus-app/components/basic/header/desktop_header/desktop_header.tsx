@@ -31,41 +31,47 @@ export default function DesktopHeader(props: {
   ];
 
   return (
-    // <div id="header" className={s.container}>
     <Header>
-      <div className={s.home}>
-        <a href="/">Public Wallet</a>
-      </div>
-      <div className={s.tabs}>
-        {tabs.map((t, i) => {
-          const isActive = t.name == tab;
+      <div id="header" className={s.container}>
+        <div className={s.home}>
+          <a href="/">Public Wallet</a>
+        </div>
+        <div className={s.tabs}>
+          {tabs.map((t, i) => {
+            const isActive = t.name == tab;
 
-          if (name == "" && t.name == tabs[1].name) {
-            return (
-              <Tab2
-                name={t.name}
-                key={t.name}
-                url={t.url}
-                isActive={isActive}
-              />
-            );
-          } else {
-            return (
-              <Tab name={t.name} key={t.name} url={t.url} isActive={isActive} />
-            );
-          }
-        })}
-      </div>
-      <div className={s.icons}>
-        <ContextualMenuButton
-          img="magnifier.svg"
-          open_settings={props.open_search}
-        />
-        <Icon img="/icons/notification_icon.png" url="/market" />
-        <ContextualMenuButton
-          img={imgUrl}
-          open_settings={props.open_settings}
-        />
+            if (name == "" && t.name == tabs[1].name) {
+              return (
+                <Tab2
+                  name={t.name}
+                  key={t.name}
+                  url={t.url}
+                  isActive={isActive}
+                />
+              );
+            } else {
+              return (
+                <Tab
+                  name={t.name}
+                  key={t.name}
+                  url={t.url}
+                  isActive={isActive}
+                />
+              );
+            }
+          })}
+        </div>
+        <div className={s.icons}>
+          <ContextualMenuButton
+            img="magnifier.svg"
+            open_settings={props.open_search}
+          />
+          <Icon img="/icons/notification_icon.png" url="/market" />
+          <ContextualMenuButton
+            img={imgUrl}
+            open_settings={props.open_settings}
+          />
+        </div>
       </div>
     </Header>
     // </div>

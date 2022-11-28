@@ -34,7 +34,7 @@ export default function MarketCollection(props: {
   const [price, setPrice] = useState(market_collection_props.data_price);
   const [volume, setVolume] = useState(market_collection_props.volume);
   const [delta, setDelta] = useState(market_collection_props.floor_price_delta);
-  const [stats, setStats] = useState({});
+  const [stats, setStats] = useState([]);
 
   useEffect(() => {
     updatePrice(props.market_collection_props.interval);
@@ -58,8 +58,21 @@ export default function MarketCollection(props: {
     );
     const data = await response.json();
     console.log("data", data);
+    const stats_list = Object.entries(data.stats).map(([key, value]) => {
+      // remove _ and capitalize all first letter
+      const key_clean = key.replace(/_/g, " ");
+      const key_clean_capitalize = key_clean
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
 
-    setStats(data);
+      // format number
+      const value_clean = (value as any).toFixed(2);
+      return { key: key_clean_capitalize, value: value_clean };
+    });
+    console.log("stats_list", stats_list);
+
+    setStats(stats_list);
   };
 
   const updatePrice = async (childData) => {
@@ -106,6 +119,18 @@ export default function MarketCollection(props: {
         address={market_collection_props.address}
         callback={updatePrice}
       />
+      <div className={s.stats}>
+        {stats.map((d) => (
+          <div
+            key={d.name}
+            className={s.stat}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={s.bla}>{d.value}</div>
+            <div className={s.bla}>{d.key}</div>
+          </div>
+        ))}
+      </div>
     </Card>
   );
 }

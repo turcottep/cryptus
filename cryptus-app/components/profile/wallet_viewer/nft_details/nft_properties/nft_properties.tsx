@@ -10,7 +10,7 @@ export default function NFTProperties(props: {
   collectionSize: number;
 }) {
   return (
-    <div className={s.container}>
+    <div className={s.stats}>
       {props.properties.map((prop, index) => {
         const prop_t = prop as any;
         return (

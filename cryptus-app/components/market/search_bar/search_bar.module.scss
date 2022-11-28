@@ -43,3 +43,18 @@
   margin: auto 5px auto 5px;
   border-radius: 50%;
 }
+
+.collections_lafleur {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1px;
+
+  width: 100%;
+  background-color: rgb(178, 220, 234);
+
+  > div {
+    width: 100%;
+  }
+}

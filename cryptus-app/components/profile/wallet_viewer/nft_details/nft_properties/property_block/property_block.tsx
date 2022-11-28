@@ -25,7 +25,7 @@ export default function PropertyBlock(props: {
       : rarity_percentage.toFixed(2);
 
   return (
-    <div className={s.container}>
+    <div className={s.stat}>
       <div className={s.name}>{props.name.toUpperCase()}</div>
       <div className={s.value}>{props.value}</div>
       <div className={s.rarity}>{`${rarity_clean}% have this trait`}</div>

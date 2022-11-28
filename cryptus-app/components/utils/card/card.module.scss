@@ -90,7 +90,7 @@
   @media (max-width: v.$mobile) {
     width: min(100vw, v.$mobile);
   }
-  min-height: 100vh;
+  min-height: calc(100vh - v.$header-h);
   background-color: rgba(124, 83, 83, 0.2);
 }
 
