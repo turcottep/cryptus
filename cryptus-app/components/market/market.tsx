@@ -52,7 +52,7 @@ export default function MarketOverview(props: market_overview_props) {
     collections_list: [],
     profile_image_url: "",
     networth: 0,
-    networth_history: [0, 0, 0, 0, 0, 0, 0],
+    networth_history: [0, 0],
   };
 
   const today = new Date();
@@ -66,14 +66,12 @@ export default function MarketOverview(props: market_overview_props) {
     []
   );
 
-  const [newPropCollection, setnewPropCollection] = useState(
-    props.collections.slice(0, 10)
-  );
+  const [newPropCollection, setnewPropCollection] = useState(props.collections);
   const [newPropCollectionFavorite, setnewPropCollectionFavorite] = useState(
     []
   );
   const [newPropCollectionMarket, setnewPropCollectionMarket] = useState(
-    props.collections.slice(0, 10)
+    props.collections
   );
 
   const [session, session_status] = useSession();
@@ -239,8 +237,6 @@ export default function MarketOverview(props: market_overview_props) {
         />
       )}
       <div className={s.containee}>
-        {loading && <Loading />}
-
         <div className={s.market_container}>
           <div className={s.date_container}>
             <div>{user.username}</div>
@@ -401,13 +397,16 @@ export const updatePrice = async (
       viewingmode,
     }),
   });
-
-  const { prices, counts, deltas } = await res.json();
+  const res_object = await res.json();
+  console.log("res_object ", res_object);
+  const { prices, counts, deltas } = res_object;
   const newPropCollectionTemp = [];
 
   if (collections.length > 0) {
     for (let i = 0; i < collections.length; i++) {
       const element = collections && collections[i];
+      console.log("element ", element);
+
       element.data_price = prices && prices[i];
       element.floor_price = prices && prices[i][prices[i].length - 1];
       element.floor_price_delta = deltas[i];

@@ -59,7 +59,6 @@ const dict_combined = {
   "0x226bf5293692610692e2c996c9875c914d2a7f73": "cyber-factory-2",
   "0x1a2f71468f656e97c2f86541e57189f59951efe7": "cryptomories",
   "0x6fc355d4e0ee44b292e50878f49798ff755a5bbc": "deadheads",
-  "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb": "cryptopunks",
   "0x60bb1e2aa1c9acafb4d34f71585d7e959f387769": "artgobblers",
   "0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258": "otherdeed",
   "0x05da517b1bf9999b7762eaefa8372341a1a47559": "kprverse",
@@ -69,7 +68,6 @@ const dict_combined = {
   "0x23581767a106ae21c074b2276d25e5c3e136a68b": "proof-moonbirds",
   "0xbbb62c4b8ed027530ce5f6663d1a2aa8a7e8cacf": "rarepass-genesis",
   "0x253ef258563e146f685e60219da56a6b75178e19": "rtfkt-x-rimowa",
-  "0x067a1eb5e383ed24b66d72aaf80d8d7db3d299a8": "sandbox",
   "0xc7e4d1dfb2ffda31f27c6047479dfa7998a07d47": "aopanda-party",
   "0x845a007d9f283614f403a24e3eb3455f720559ca": "cryptoninjapartners",
   "0x394e3d3044fc89fcdd966d3cb35ac0b32b0cda91": "renga",
@@ -127,9 +125,6 @@ const dict_combined = {
   "0xf64e6fb725f04042b5197e2529b84be4a925902c": "zenacademy",
   "0x365d87a8d31c656ed1479c0f54f19e3be9f19537": "dudulab-project-dudu",
   "0x80336ad7a747236ef41f47ed2c7641828a480baa": "chimpersnft",
-  "0x2c88aa0956bc9813505d73575f653f69ada60923": "wolf-game-land",
-  "0x09d53609a3709bbc1206b9aa8c54dc71625e31ac": "nounishcnp",
-  "0x78a3b30f90f9a39272c1cb3e558fcd1cbe5fb791": "mmmm-genesis-nft",
 };
 
 const collections_dict = {
@@ -141,7 +136,7 @@ const collections_dict = {
     name: "Bored Ape Yacht Club",
     floor_price: 65,
     floor_price_delta: 6.5,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "mutant-ape-yacht-club": {
@@ -152,7 +147,7 @@ const collections_dict = {
     name: "Mutant Ape Yacht Club",
     floor_price: 11.5,
     floor_price_delta: 1.1500000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   clonex: {
@@ -163,7 +158,7 @@ const collections_dict = {
     name: "CLONE X - X TAKASHI MURAKAMI",
     floor_price: 8.34,
     floor_price_delta: 0.8340000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   azuki: {
@@ -174,7 +169,7 @@ const collections_dict = {
     name: "Azuki",
     floor_price: 10.2,
     floor_price_delta: 1.02,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   meebits: {
@@ -185,7 +180,7 @@ const collections_dict = {
     name: "Meebits",
     floor_price: 2.822,
     floor_price_delta: 0.2822,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "cool-cats-nft": {
@@ -196,7 +191,7 @@ const collections_dict = {
     name: "Cool Cats NFT",
     floor_price: 1.989,
     floor_price_delta: 0.19890000000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "doodles-official": {
@@ -207,7 +202,7 @@ const collections_dict = {
     name: "Doodles",
     floor_price: 6.87,
     floor_price_delta: 0.687,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "bored-ape-kennel-club": {
@@ -218,7 +213,7 @@ const collections_dict = {
     name: "Bored Ape Kennel Club",
     floor_price: 4.3,
     floor_price_delta: 0.43,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "cryptoadz-by-gremplin": {
@@ -229,7 +224,7 @@ const collections_dict = {
     name: "CrypToadz by GREMPLIN",
     floor_price: 1.39,
     floor_price_delta: 0.13899999999999998,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "world-of-women-nft": {
@@ -240,7 +235,7 @@ const collections_dict = {
     name: "World of Women",
     floor_price: 1.679,
     floor_price_delta: 0.16790000000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   cyberkongz: {
@@ -251,7 +246,7 @@ const collections_dict = {
     name: "CyberKongz",
     floor_price: 13,
     floor_price_delta: 1.3,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   veefriends: {
@@ -262,7 +257,7 @@ const collections_dict = {
     name: "VeeFriends",
     floor_price: 5.75,
     floor_price_delta: 0.5750000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   curiocardswrapper: {
@@ -273,7 +268,7 @@ const collections_dict = {
     name: "My Curio Cards",
     floor_price: 0.2398247,
     floor_price_delta: 0.023982470000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   creatureworld: {
@@ -284,7 +279,7 @@ const collections_dict = {
     name: "Creature World",
     floor_price: 0.194,
     floor_price_delta: 0.0194,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "clonex-mintvial": {
@@ -295,7 +290,7 @@ const collections_dict = {
     name: "RTFKT - CloneX Mintvial",
     floor_price: 14.6,
     floor_price_delta: 1.46,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   invisiblefriends: {
@@ -306,7 +301,7 @@ const collections_dict = {
     name: "Invisible Friends",
     floor_price: 2.25,
     floor_price_delta: 0.225,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "emblem-vault": {
@@ -317,7 +312,7 @@ const collections_dict = {
     name: "Emblem Vault [Ethereum]",
     floor_price: 0.00944,
     floor_price_delta: 0.0009440000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   adidasoriginals: {
@@ -328,7 +323,7 @@ const collections_dict = {
     name: "adidas Originals Into the Metaverse",
     floor_price: 0.405,
     floor_price_delta: 0.04050000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   mfers: {
@@ -339,7 +334,7 @@ const collections_dict = {
     name: "mfers",
     floor_price: 0.98,
     floor_price_delta: 0.098,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   deadfellaz: {
@@ -350,7 +345,7 @@ const collections_dict = {
     name: "Deadfellaz",
     floor_price: 0.63,
     floor_price_delta: 0.063,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "3landers": {
@@ -361,7 +356,7 @@ const collections_dict = {
     name: "3Landers",
     floor_price: 0.1149,
     floor_price_delta: 0.01149,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   alienfrensnft: {
@@ -372,7 +367,7 @@ const collections_dict = {
     name: "alien frens",
     floor_price: 0.35,
     floor_price_delta: 0.034999999999999996,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   coolpetsnft: {
@@ -383,7 +378,7 @@ const collections_dict = {
     name: "Cool Pets NFT",
     floor_price: 0.1086,
     floor_price_delta: 0.010860000000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   guttercatgang: {
@@ -394,7 +389,7 @@ const collections_dict = {
     name: "Gutter Cat Gang",
     floor_price: 2.8,
     floor_price_delta: 0.27999999999999997,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   acclimatedmooncats: {
@@ -405,7 +400,7 @@ const collections_dict = {
     name: "MoonCats",
     floor_price: 0.2599,
     floor_price_delta: 0.025990000000000003,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "tubby-cats": {
@@ -416,7 +411,7 @@ const collections_dict = {
     name: "tubby cats",
     floor_price: 0.049,
     floor_price_delta: 0.004900000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "wolf-game-migrated": {
@@ -427,7 +422,7 @@ const collections_dict = {
     name: "WG - Archived",
     floor_price: null,
     floor_price_delta: 0,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   forgottenruneswizardscult: {
@@ -438,7 +433,7 @@ const collections_dict = {
     name: "Forgotten Runes Wizards Cult",
     floor_price: 0.85,
     floor_price_delta: 0.085,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "fvck-crystal": {
@@ -449,20 +444,20 @@ const collections_dict = {
     name: "FVCK_CRYSTAL//",
     floor_price: 0.4,
     floor_price_delta: 0.04000000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
-  braindrops: {
-    slug: "braindrops",
-    address: "0xdfde78d2baec499fe18f2be74b6c287eed9511d7",
-    ticker: "BRAIN",
-    logo: "https://i.seadn.io/gae/U7CaccqE3lrtwrT9uZNrEtrnmwwBtX5ytA4lKPWKv26_rJ4hxgt3SDQyjG1Clz2ORAMK3LWeMWhfTbVEQYw_YerRGcNd2ogqvq7ajA?w=500&auto=format",
-    name: "BrainDrops",
-    floor_price: null,
-    floor_price_delta: 0,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    data_volume: [],
-  },
+  // braindrops: {
+  //   slug: "braindrops",
+  //   address: "0xdfde78d2baec499fe18f2be74b6c287eed9511d7",
+  //   ticker: "BRAIN",
+  //   logo: "https://i.seadn.io/gae/U7CaccqE3lrtwrT9uZNrEtrnmwwBtX5ytA4lKPWKv26_rJ4hxgt3SDQyjG1Clz2ORAMK3LWeMWhfTbVEQYw_YerRGcNd2ogqvq7ajA?w=500&auto=format",
+  //   name: "BrainDrops",
+  //   floor_price: null,
+  //   floor_price_delta: 0,
+  //   data_price: [0, 0],
+  //   data_volume: [],
+  // },
   warpsound: {
     slug: "warpsound",
     address: "0xcbc67ea382f8a006d46eeeb7255876beb7d7f14d",
@@ -471,7 +466,7 @@ const collections_dict = {
     name: "WarpSound",
     floor_price: null,
     floor_price_delta: 0,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "jakes-world-editions": {
@@ -482,7 +477,7 @@ const collections_dict = {
     name: "Jake's World Editions",
     floor_price: 0.249,
     floor_price_delta: 0.024900000000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "hot-mess": {
@@ -493,7 +488,7 @@ const collections_dict = {
     name: "HOT  MESS",
     floor_price: null,
     floor_price_delta: 0,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   rareshoe: {
@@ -504,7 +499,7 @@ const collections_dict = {
     name: "Rare Shoe",
     floor_price: 0.01,
     floor_price_delta: 0.001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   pixelmap: {
@@ -515,7 +510,7 @@ const collections_dict = {
     name: "PixelMap",
     floor_price: 1.08,
     floor_price_delta: 0.10800000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   cryptocrystal: {
@@ -526,7 +521,7 @@ const collections_dict = {
     name: "CryptoCrystal",
     floor_price: 0.05,
     floor_price_delta: 0.005000000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   mekaverse: {
@@ -537,7 +532,7 @@ const collections_dict = {
     name: "MekaVerse",
     floor_price: 0.53,
     floor_price_delta: 0.053000000000000005,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   fluf: {
@@ -548,7 +543,7 @@ const collections_dict = {
     name: "FLUF World",
     floor_price: 2.33,
     floor_price_delta: 0.233,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "cryptodickbutts-s3": {
@@ -559,7 +554,7 @@ const collections_dict = {
     name: "CryptoDickbutts",
     floor_price: 2.098,
     floor_price_delta: 0.2098,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   worldwidewebbland: {
@@ -570,7 +565,7 @@ const collections_dict = {
     name: "Worldwide Webb Land",
     floor_price: 0.2999,
     floor_price_delta: 0.029990000000000003,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "rtfkt-podx": {
@@ -581,7 +576,7 @@ const collections_dict = {
     name: "RTFKT PodX",
     floor_price: 0.22,
     floor_price_delta: 0.022000000000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "rtfkt-mnlth": {
@@ -592,7 +587,7 @@ const collections_dict = {
     name: "RTFKT - MNLTH",
     floor_price: 2.28,
     floor_price_delta: 0.22799999999999998,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "bored-ape-chemistry-club": {
@@ -603,7 +598,7 @@ const collections_dict = {
     name: "Bored Ape Chemistry Club",
     floor_price: 24,
     floor_price_delta: 2.4000000000000004,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "proof-collective": {
@@ -614,7 +609,7 @@ const collections_dict = {
     name: "PROOF Collective",
     floor_price: 29.99,
     floor_price_delta: 2.999,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   onchainmonkey: {
@@ -625,7 +620,7 @@ const collections_dict = {
     name: "OnChainMonkey",
     floor_price: 0.6989,
     floor_price_delta: 0.06989,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   bvgarden: {
@@ -636,7 +631,7 @@ const collections_dict = {
     name: "BRAiN VOMiTS GARDEN",
     floor_price: 0.042,
     floor_price_delta: 0.004200000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   cryptoskulls: {
@@ -647,7 +642,7 @@ const collections_dict = {
     name: "CryptoSkulls",
     floor_price: 0.379,
     floor_price_delta: 0.0379,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   cryptomories: {
@@ -658,7 +653,7 @@ const collections_dict = {
     name: "CryptoMories",
     floor_price: 0.112,
     floor_price_delta: 0.011200000000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   deadheads: {
@@ -669,18 +664,7 @@ const collections_dict = {
     name: "DeadHeads",
     floor_price: 0.0396,
     floor_price_delta: 0.003960000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    data_volume: [],
-  },
-  cryptopunks: {
-    slug: "cryptopunks",
-    address: "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
-    ticker: "PUNK",
-    logo: "https://i.seadn.io/gae/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE?w=500&auto=format",
-    name: "CryptoPunks",
-    floor_price: null,
-    floor_price_delta: 0,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   artgobblers: {
@@ -691,7 +675,7 @@ const collections_dict = {
     name: "Art Gobblers",
     floor_price: 4.789,
     floor_price_delta: 0.4789,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   otherdeed: {
@@ -702,7 +686,7 @@ const collections_dict = {
     name: "Otherdeed for Otherside",
     floor_price: 1.14999,
     floor_price_delta: 0.11499900000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   kprverse: {
@@ -713,7 +697,7 @@ const collections_dict = {
     name: "KPR",
     floor_price: 0.28,
     floor_price_delta: 0.028000000000000004,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   valhalla: {
@@ -724,7 +708,7 @@ const collections_dict = {
     name: "Valhalla",
     floor_price: 0.615,
     floor_price_delta: 0.0615,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "friendship-bracelets-by-alexis-andre": {
@@ -735,7 +719,7 @@ const collections_dict = {
     name: "Friendship Bracelets by Alexis André",
     floor_price: 0.1579,
     floor_price_delta: 0.015790000000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "proof-moonbirds": {
@@ -746,7 +730,7 @@ const collections_dict = {
     name: "Moonbirds",
     floor_price: 8.2499,
     floor_price_delta: 0.8249900000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "rarepass-genesis": {
@@ -757,7 +741,7 @@ const collections_dict = {
     name: "RarePass: Genesis",
     floor_price: 38.5,
     floor_price_delta: 3.85,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "rtfkt-x-rimowa": {
@@ -768,7 +752,7 @@ const collections_dict = {
     name: "RTFKT x RIMOWA Meta-Artisan Collection 🌌",
     floor_price: 0.1871,
     floor_price_delta: 0.01871,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "aopanda-party": {
@@ -779,7 +763,7 @@ const collections_dict = {
     name: "Aopanda Party",
     floor_price: 1.15,
     floor_price_delta: 0.11499999999999999,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   cryptoninjapartners: {
@@ -790,7 +774,7 @@ const collections_dict = {
     name: "CryptoNinja Partners",
     floor_price: 3.14,
     floor_price_delta: 0.31400000000000006,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   renga: {
@@ -801,7 +785,7 @@ const collections_dict = {
     name: "RENGA",
     floor_price: 0.999,
     floor_price_delta: 0.0999,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "cel-mates-crime-reports": {
@@ -812,7 +796,7 @@ const collections_dict = {
     name: "Cel Mates Crime Reports",
     floor_price: 0.79,
     floor_price_delta: 0.07900000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   thepotatoz: {
@@ -823,7 +807,7 @@ const collections_dict = {
     name: "The Potatoz",
     floor_price: 1.69,
     floor_price_delta: 0.169,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "genuine-undead": {
@@ -834,7 +818,7 @@ const collections_dict = {
     name: "Genuine Undead",
     floor_price: 0.43499,
     floor_price_delta: 0.043499,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   pudgypenguins: {
@@ -845,7 +829,7 @@ const collections_dict = {
     name: "Pudgy Penguins",
     floor_price: 2.948,
     floor_price_delta: 0.2948,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "rplanet-genesis": {
@@ -856,7 +840,7 @@ const collections_dict = {
     name: "R Planet - Genesis Collection",
     floor_price: 0.0367,
     floor_price_delta: 0.0036700000000000005,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   broadside: {
@@ -867,7 +851,7 @@ const collections_dict = {
     name: "Broadside",
     floor_price: 0.089699103,
     floor_price_delta: 0.0089699103,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   decentraland: {
@@ -878,7 +862,7 @@ const collections_dict = {
     name: "Decentraland",
     floor_price: 1.41,
     floor_price_delta: 0.141,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   rareapepeyachtclub: {
@@ -889,7 +873,7 @@ const collections_dict = {
     name: "Rare Apepe YC",
     floor_price: 0.2688,
     floor_price_delta: 0.02688,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   digidaigaku: {
@@ -900,7 +884,7 @@ const collections_dict = {
     name: "DigiDaigaku Genesis",
     floor_price: 8.33,
     floor_price_delta: 0.8330000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   thememes6529: {
@@ -911,7 +895,7 @@ const collections_dict = {
     name: "The Memes by 6529",
     floor_price: 0.0735,
     floor_price_delta: 0.00735,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "homa-gang-valentine": {
@@ -922,7 +906,7 @@ const collections_dict = {
     name: "Homa Gang - Valentine",
     floor_price: 0.0784,
     floor_price_delta: 0.00784,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   goblintownwtf: {
@@ -933,7 +917,7 @@ const collections_dict = {
     name: "goblintown.wtf",
     floor_price: 0.72,
     floor_price_delta: 0.072,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "mint-pass-mexico-city-mpmx": {
@@ -944,7 +928,7 @@ const collections_dict = {
     name: "Mint Pass Mexico City  MPMX",
     floor_price: null,
     floor_price_delta: 0,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   superrare: {
@@ -955,7 +939,7 @@ const collections_dict = {
     name: "SuperRare",
     floor_price: 0.01995,
     floor_price_delta: 0.001995,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "official-v1-punks": {
@@ -966,7 +950,7 @@ const collections_dict = {
     name: "CryptoPunks V1 (wrapped)",
     floor_price: 4.38,
     floor_price_delta: 0.438,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "yugiyn-official": {
@@ -977,7 +961,7 @@ const collections_dict = {
     name: "YuGiYn",
     floor_price: 0.23876,
     floor_price_delta: 0.023876,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   terraforms: {
@@ -988,7 +972,7 @@ const collections_dict = {
     name: "Terraforms by Mathcastles",
     floor_price: 1.4189,
     floor_price_delta: 0.14189000000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   killabears: {
@@ -999,7 +983,7 @@ const collections_dict = {
     name: "KILLABEARS",
     floor_price: 1.6,
     floor_price_delta: 0.16000000000000003,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   beanzofficial: {
@@ -1010,7 +994,7 @@ const collections_dict = {
     name: "BEANZ Official",
     floor_price: 0.725,
     floor_price_delta: 0.0725,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "arbitrum-odyssey-nft": {
@@ -1021,7 +1005,7 @@ const collections_dict = {
     name: "Arbitrum Odyssey NFT",
     floor_price: 0.0145,
     floor_price_delta: 0.0014500000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "enter-the-hashverse": {
@@ -1032,7 +1016,7 @@ const collections_dict = {
     name: "Enter the Hashverse",
     floor_price: 0.113,
     floor_price_delta: 0.011300000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "veefriends-series-2": {
@@ -1043,7 +1027,7 @@ const collections_dict = {
     name: "VeeFriends Series 2",
     floor_price: 0.28,
     floor_price_delta: 0.028000000000000004,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "tokyo-alternative-girls": {
@@ -1054,7 +1038,7 @@ const collections_dict = {
     name: "Tokyo Alternative Girls",
     floor_price: 0.06,
     floor_price_delta: 0.006,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   quirkiesoriginals: {
@@ -1065,7 +1049,7 @@ const collections_dict = {
     name: "Quirkies Originals",
     floor_price: 1.35,
     floor_price_delta: 0.135,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "qql-mint-pass": {
@@ -1076,7 +1060,7 @@ const collections_dict = {
     name: "QQL Mint Pass",
     floor_price: 9.4,
     floor_price_delta: 0.9400000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "helix-founder-pass-official": {
@@ -1087,7 +1071,7 @@ const collections_dict = {
     name: "HELIX Founder Pass Official",
     floor_price: 0.35,
     floor_price_delta: 0.034999999999999996,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "10ktf": {
@@ -1098,7 +1082,7 @@ const collections_dict = {
     name: "10KTF",
     floor_price: 0.3069,
     floor_price_delta: 0.030690000000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "moonbirds-oddities": {
@@ -1109,7 +1093,7 @@ const collections_dict = {
     name: "Moonbirds Oddities",
     floor_price: 1.165,
     floor_price_delta: 0.1165,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "dogeclub-dogc": {
@@ -1120,7 +1104,7 @@ const collections_dict = {
     name: "Doge Club(DOGC)",
     floor_price: 0.0518,
     floor_price_delta: 0.005180000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   piratenation: {
@@ -1131,7 +1115,7 @@ const collections_dict = {
     name: "Pirate Nation - Founder's Pirates",
     floor_price: 0.08,
     floor_price_delta: 0.008,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "1984-worldwide": {
@@ -1142,7 +1126,7 @@ const collections_dict = {
     name: "1984 Worldwide",
     floor_price: 0.16,
     floor_price_delta: 0.016,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   everybodys: {
@@ -1153,7 +1137,7 @@ const collections_dict = {
     name: "EVERYBODYS",
     floor_price: 0.0118,
     floor_price_delta: 0.00118,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   looki: {
@@ -1164,7 +1148,7 @@ const collections_dict = {
     name: "Looki",
     floor_price: 0.7025,
     floor_price_delta: 0.07025,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "humankind-lunchboxes": {
@@ -1175,7 +1159,7 @@ const collections_dict = {
     name: "Humankind Lunchboxes",
     floor_price: 0.12687,
     floor_price_delta: 0.012687000000000002,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   rtfktmonolith: {
@@ -1186,7 +1170,7 @@ const collections_dict = {
     name: "RTFKT X NIKE MONOLITH",
     floor_price: 1.2572,
     floor_price_delta: 0.12572000000000003,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "murakami-flowers-2022-official": {
@@ -1197,7 +1181,7 @@ const collections_dict = {
     name: "Murakami.Flowers Official",
     floor_price: 0.834,
     floor_price_delta: 0.0834,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   whikolandofficial: {
@@ -1208,7 +1192,7 @@ const collections_dict = {
     name: "WHIKO",
     floor_price: 0.061,
     floor_price_delta: 0.0061,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   mypethooligan: {
@@ -1219,7 +1203,7 @@ const collections_dict = {
     name: "My Pet Hooligan",
     floor_price: 0.85,
     floor_price_delta: 0.085,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   metabountyhunters: {
@@ -1230,7 +1214,7 @@ const collections_dict = {
     name: "Meta Bounty Hunters",
     floor_price: 2.89,
     floor_price_delta: 0.28900000000000003,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "hugo-x-imaginaryones-embrace-your-emotions": {
@@ -1241,7 +1225,7 @@ const collections_dict = {
     name: "HUGO x Imaginary Ones: Embrace Your Emotions",
     floor_price: 0.5,
     floor_price_delta: 0.05,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   letswalk: {
@@ -1252,7 +1236,7 @@ const collections_dict = {
     name: "LetsWalk",
     floor_price: 1.49,
     floor_price_delta: 0.149,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "ruggenesis-nft": {
@@ -1263,7 +1247,7 @@ const collections_dict = {
     name: "Rug Radio - Genesis NFT",
     floor_price: 0.499,
     floor_price_delta: 0.0499,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "sappy-seals": {
@@ -1274,7 +1258,7 @@ const collections_dict = {
     name: "Sappy Seals",
     floor_price: 0.738,
     floor_price_delta: 0.0738,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   kitaroworldofficial: {
@@ -1285,7 +1269,7 @@ const collections_dict = {
     name: "Kitaro World Official",
     floor_price: 0.09844,
     floor_price_delta: 0.009844,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   adidascapsule: {
@@ -1296,7 +1280,7 @@ const collections_dict = {
     name: "adidas IMPOSSIBLE BOX",
     floor_price: 0.145,
     floor_price_delta: 0.014499999999999999,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   runi: {
@@ -1307,7 +1291,7 @@ const collections_dict = {
     name: "Runi",
     floor_price: 0.21,
     floor_price_delta: 0.021,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "spooky-season-poieeeyee-x-reddit-collectible-avata": {
@@ -1318,7 +1302,7 @@ const collections_dict = {
     name: "Spooky Season: poieeeyee x Reddit Collectible Avatars",
     floor_price: 0.04,
     floor_price_delta: 0.004,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   hexgo: {
@@ -1329,7 +1313,7 @@ const collections_dict = {
     name: "HEXGO",
     floor_price: 0.12,
     floor_price_delta: 0.012,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   zenacademy: {
@@ -1340,7 +1324,7 @@ const collections_dict = {
     name: "ZenAcademy",
     floor_price: 0.575,
     floor_price_delta: 0.057499999999999996,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   "dudulab-project-dudu": {
@@ -1351,7 +1335,7 @@ const collections_dict = {
     name: "DuDuLab Project",
     floor_price: 0.049,
     floor_price_delta: 0.004900000000000001,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
   chimpersnft: {
@@ -1362,7 +1346,7 @@ const collections_dict = {
     name: "Chimpers",
     floor_price: 1.43,
     floor_price_delta: 0.143,
-    data_price: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    data_price: [0, 0],
     data_volume: [],
   },
 };
