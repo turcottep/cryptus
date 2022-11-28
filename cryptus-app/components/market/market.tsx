@@ -29,6 +29,7 @@ import SearchIcon from "../basic/header/search_icon/search_icon";
 
 import findAllUsers from "../../lib/findAllUsers";
 import Graph from "./graph/graph";
+import { Page } from "../building_blocks/building_blocks";
 
 type market_overview_props = {
   date: string;
@@ -228,7 +229,8 @@ export default function MarketOverview(props: market_overview_props) {
     : ({} as any);
 
   return (
-    <div className={show_card ? s.container_no_scroll : s.container}>
+    // <div className={show_card ? s.container_no_scroll : s.container}>
+    <Page>
       {isMobile ? null : (
         <DesktopHeader
           tab="market"
@@ -344,7 +346,7 @@ export default function MarketOverview(props: market_overview_props) {
       {show_card_support && (
         <Support callback_close_support={close_support} isMobile={isMobile} />
       )}
-    </div>
+    </Page>
   );
   //DONEDO: Change <div className={s.change}>{networth}</div> to use real % change # DONE
   //DONEDO: Get real data for user (to have username) copy paste find -> user.username to find it on the page

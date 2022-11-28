@@ -54,7 +54,7 @@ export default function SearchBar(props: {
   }, []);
 
   return (
-    <div className={s.container}>
+    <div className={s.collections_lafleur}>
       {/* <div className={s.search_box} ref={searchBarRef}>
         <img src="magnifier.svg" className={s.magnifier} />
         <input
@@ -91,11 +91,11 @@ export default function SearchBar(props: {
                   <div
                     className={classNames(s.search_items)}
                     key={collection.name}
-                    style={{
-                      top: index * 55 + Number(searchBarPosY) + 2,
-                      left: 24 + Number(searchBarPosX),
-                      width: Number(searchBarPosWidth) - 26,
-                    }}
+                    // style={{
+                    //   top: index * 55 + Number(searchBarPosY) + 2,
+                    //   left: 24 + Number(searchBarPosX),
+                    //   width: Number(searchBarPosWidth) - 26,
+                    // }}
                     onClick={() => {
                       props.callback(collection.name);
                     }}

@@ -23,6 +23,7 @@
   @media (max-width: v.$mobile) {
     width: min(100vw, v.$mobile);
   }
+  background-color: v.$secondary-color-pale;
 }
 
 .container_no_scroll {

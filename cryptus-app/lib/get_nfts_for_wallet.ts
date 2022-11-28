@@ -47,9 +47,12 @@ export default async function get_nfts_for_wallet(
           nfts_raw.push(...nfts_raw_temp);
           if (!cursor) break;
         } catch (e) {
-          if (e.status == 429) {
-            await new Promise((resolve) => setTimeout(resolve, 250));
-          }
+          // if (e.status == 429) {
+          console.log("error in get_nfts_for_wallet", e);
+          console.log("retrying in 10 seconds");
+
+          await new Promise((resolve) => setTimeout(resolve, 10000));
+          // }
         }
       }
     }

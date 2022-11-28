@@ -6,7 +6,7 @@
   justify-content: flex-start;
   align-items: center;
 
-  min-height: 100vh;
+  min-height: calc(100vh - v.$header-h);
   width: 100%;
 
   background-color: v.$grey;
@@ -27,7 +27,7 @@
   @media (max-width: v.$mobile) {
     width: min(100vw, v.$mobile);
   }
-  min-height: 100vh;
+  min-height: calc(100vh - v.$header-h);
   background-color: rgba(124, 83, 83, 0.2);
 }
 
@@ -42,7 +42,10 @@
 .popupcontent {
   @extend .content;
   padding-top: 0; //TODO: fix this
-  background-color: rgb(188, 208, 36);
+  background-color: rgb(208, 36, 171);
+
+  overflow-y: scroll;
+  //   max-height: 800px !important;
 }
 
 .header {
@@ -51,6 +54,7 @@
 
   width: 100%;
   height: v.$header-h;
+  z-index: 100;
   background-color: rgb(255, 0, 0);
 }
 

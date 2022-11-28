@@ -27,6 +27,7 @@ import Support from "../basic/support/support";
 import SearchIcon from "../basic/header/search_icon/search_icon";
 
 import findAllUsers from "../../lib/findAllUsers";
+import { Page } from "../building_blocks/building_blocks";
 
 export default function Profile(props: {
   collections: nft_collection[];
@@ -133,27 +134,13 @@ export default function Profile(props: {
   };
 
   return (
-    <div className={s.app}>
-      {isMobile ? null : (
-        <DesktopHeader
-          tab="profile"
-          open_settings={open_settings}
-          open_search={open_search}
-        />
-      )}
-      {isMobile ? (
-        isMyProfile ? (
-          <CreatorHeader
-            open_settings={open_settings}
-            open_search={open_search}
-          />
-        ) : (
-          <ViewerHeader
-            userId={props.user.username}
-            open_search={open_search}
-          />
-        )
-      ) : null}
+    // <div className={s.app}>
+    <Page>
+      <DesktopHeader
+        tab="profile"
+        open_settings={open_settings}
+        open_search={open_search}
+      />
       {isMyProfile ? (
         <MyProfInfos
           profile_props={props}
@@ -220,6 +207,6 @@ export default function Profile(props: {
         key={update_collection}
       />
       {/* {isMobile && <Footer />} */}
-    </div>
+    </Page>
   );
 }
