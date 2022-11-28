@@ -15,6 +15,7 @@ import get_empty_profile_props from "../../../../lib/empty_profile_props";
 import collections_dict from "../../../../lib/collectionDictionary";
 
 export default function ProfileWalletViewer(props: {
+  collections_address: string[];
   collections: nft_collection[];
   add_collections: (collections: nft_collection[]) => void;
   open_collection: (collection_name: string) => void;
@@ -40,20 +41,17 @@ export default function ProfileWalletViewer(props: {
     console.log("GetMoreCollections");
     console.log(collections);
     var hMore = true;
-    let collections_in_wallet = await get_collections_in_wallet(
-      props.wallets[walletIndex].address
-    );
     let collections_in_wallet_sliced = null;
-    if (collections_in_wallet.length > currentIndex + nbColAddedByFetch) {
-      collections_in_wallet_sliced = collections_in_wallet.slice(
+    if (props.collections_address.length > currentIndex + nbColAddedByFetch) {
+      collections_in_wallet_sliced = props.collections_address.slice(
         currentIndex,
         currentIndex + nbColAddedByFetch
       );
       setCurrentIndex(currentIndex + nbColAddedByFetch);
-    } else if (collections_in_wallet.length > currentIndex) {
-      collections_in_wallet_sliced = collections_in_wallet.slice(
+    } else if (props.collections_address.length > currentIndex) {
+      collections_in_wallet_sliced = props.collections_address.slice(
         currentIndex,
-        collections_in_wallet.length
+        props.collections_address.length
       );
       setCurrentIndex(currentIndex + collections_in_wallet_sliced.length);
     } else if (walletIndex + 1 < props.wallets.length) {
