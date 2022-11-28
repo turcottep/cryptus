@@ -31,11 +31,14 @@ export default async function get_collections_in_wallet(address: string) {
     console.log("response = ", res);
     return null;
   }
-  console.log("COLLECTIONS RAW", collections_raw);
+  let good_collections = [];
   console.log("Before filter", collections_raw);
+  good_collections = collections_raw.filter(
+    (coll) => coll.stats.total_volume > 0.001
+  );
+  console.log("After filter", good_collections);
   let collections_raw_sfw;
-  collections_raw_sfw = collections_raw.filter((coll) => coll.is_nsfw != true);
-  console.log("After filter", collections_raw_sfw);
+  collections_raw_sfw = good_collections.filter((coll) => coll.is_nsfw != true);
   collections_raw_sfw.sort(function (a, b) {
     return b.stats.total_volume - a.stats.total_volume;
   });

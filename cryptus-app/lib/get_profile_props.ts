@@ -13,7 +13,7 @@ export default async function get_profile_props(
   user_name: string,
   nbColToFillPage: number
 ): Promise<{ props: profile_props }> {
-  const user = await getUserByUsername(user_name, true);
+  let user = await getUserByUsername(user_name, true);
 
   if (!user) {
     throw new Error("User not found");
@@ -24,14 +24,18 @@ export default async function get_profile_props(
     let nfts_ordered = [];
     const wallet = user.wallets[0];
     let collections_in_wallet = [];
-    if (user.collections_address) {
-      collections_in_wallet = user.collections_address;
-    } else {
+    collections_in_wallet = user.collections_address;
+    if (collections_in_wallet.length === 0) {
       collections_in_wallet = await get_collections_in_wallet(wallet.address);
-      collections_in_wallet = await add_collections_to_user(
-        collections_in_wallet,
-        user.username
-      );
+      let addresses = [];
+      for (var collection of collections_in_wallet) {
+        if (collection.primary_asset_contracts[0]) {
+          addresses.push(collection.primary_asset_contracts[0].address);
+        }
+      }
+      user = await add_collections_to_user(addresses, user.username);
+      collections_in_wallet = user.collections_address;
+      console.log("ALL0", collections_in_wallet);
     }
 
     if (nbColToFillPage > 50) nbColToFillPage = 50;

@@ -5,6 +5,7 @@ export default async function add_collections_to_user(
   user_collections_address,
   username
 ) {
+  console.log("Adding Col");
   const res = await fetch("/api/users/addCollectionsAddress", {
     method: "POST",
     headers: {
@@ -15,6 +16,6 @@ export default async function add_collections_to_user(
       username: username,
     }),
   });
-  const collections_address = await res.json();
-  return collections_address;
+  const user = await res.json();
+  return user;
 }

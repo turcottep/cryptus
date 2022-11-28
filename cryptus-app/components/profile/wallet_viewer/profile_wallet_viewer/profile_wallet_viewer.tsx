@@ -40,7 +40,6 @@ export default function ProfileWalletViewer(props: {
 
   const getMoreCollections = async () => {
     console.log("GetMoreCollections");
-    console.log(collections);
     var hMore = true;
     let collections_in_wallet_sliced = null;
     if (props.collections_address.length > currentIndex + nbColAddedByFetch) {
