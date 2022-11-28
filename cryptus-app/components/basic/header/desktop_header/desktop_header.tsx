@@ -4,6 +4,7 @@ import s from "./desktop_header.module.scss";
 import { useSession } from "next-auth/client";
 
 import ContextualMenuButton from "../contextual_menu_button/contextual_menu_button";
+import { Header } from "../../../building_blocks/building_blocks";
 
 export default function DesktopHeader(props: {
   tab: string;
@@ -30,7 +31,8 @@ export default function DesktopHeader(props: {
   ];
 
   return (
-    <div id="header" className={s.container}>
+    // <div id="header" className={s.container}>
+    <Header>
       <div className={s.home}>
         <a href="/">Public Wallet</a>
       </div>
@@ -65,7 +67,8 @@ export default function DesktopHeader(props: {
           open_settings={props.open_settings}
         />
       </div>
-    </div>
+    </Header>
+    // </div>
   );
 }
 

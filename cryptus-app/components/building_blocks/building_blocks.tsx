@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import s from "./buildingblocks.module.scss";
+import s from "./building_blocks.module.scss";
 
 export const Header = (props: { children: React.ReactNode }) => {
   return (
@@ -18,12 +18,7 @@ export const Page = (props: { children: React.ReactNode }) => {
 };
 
 export const Popup = (props: { children: React.ReactNode; v: boolean }) => {
-  const [visibility, setVisibility] = useState(false);
-  useEffect(() => {
-    setVisibility(props.v);
-  }, [props.v]);
-
-  return visibility ? (
+  return props.v ? (
     <div className={s.popuppage}>
       <div className={s.popupcontent}>{props.children}</div>
     </div>
