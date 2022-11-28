@@ -10,7 +10,7 @@ export default function Card(props: {
   return (
     <div
       id="bg"
-      className={s.backdrop}
+      className={s.popuppage}
       onClick={(e: any) => {
         //close if id == "bg"
         if (e.target.id === "bg") {
@@ -18,7 +18,7 @@ export default function Card(props: {
         }
       }}
     >
-      <div className={s.container}>
+      <div className={s.popupcontent}>
         {props.isMobile && <XButton callback={props.callback_close} />}
         {props.children}
       </div>
