@@ -1,4 +1,5 @@
 @use "/styles/variables" as v;
+@import "/styles/utils";
 
 .container {
   display: flex;
@@ -9,11 +10,14 @@
   height: 100%;
   width: 100%;
 
-  > div {
-    background-color: red;
-  }
+  background-color: white;
+
+  // box-shadow: 0px 50px
+  //   linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
 
   z-index: 100;
+
+  //    linear-gradient(rgba(v.$header-color, 1), rgba(v.$header-color, 0));
 }
 
 .home {
@@ -28,9 +32,10 @@
   height: v.$header-h;
 
   font-size: 24px;
+  font-weight: bold;
 }
 .home:hover * {
-  color: v.$hover-color;
+  @extend .cooltext;
 }
 
 .tabs {
@@ -39,19 +44,20 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 16px;
 }
 .tab {
   flex: 0 1 auto;
-  margin: 0 32px;
+
   text-align: center;
 }
 .tab:hover {
-  color: v.$hover-color;
+  @extend .cooltext;
+  font-weight: 400;
 }
 .tabactive {
   @extend .tab;
-  color: v.$hover-color;
+  @extend .cooltext;
 }
 
 .icons {
