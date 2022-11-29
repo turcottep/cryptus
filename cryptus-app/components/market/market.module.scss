@@ -57,9 +57,13 @@
 
 .time_container {
   display: grid;
-  grid-template-columns: 50px auto 50px;
-
+  grid-template-columns: 70px auto 70px;
+  width: 100%;
   gap: 8px;
+  padding-top: clamp(8px, 2vw, 16px);
+
+  > div {
+  }
 }
 
 .market_container {

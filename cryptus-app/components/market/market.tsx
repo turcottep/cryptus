@@ -243,54 +243,36 @@ export default function MarketOverview(props: market_overview_props) {
         open_search={open_search}
         isMobile={props.isMobile}
       />
-      <div className={s.containee}>
-        <div className={s.market_container}>
-          <div className={s.date_container}>
-            <div>{user.username}</div>
-            <div>{day}</div>
-          </div>
-          <div className={s.networth}>
-            <div className={s.number}>
-              <div className={s.num}>
-                {user ? user.networth.toFixed(1) : "-"}
-              </div>
-              <div className={s.fiat}>ETH</div>
-              <div className={s.change}>
-                {(
-                  (user.networth_history[user.networth_history.length - 1] -
-                    user.networth_history[0]) /
-                  (user.networth_history[0] + 0.00000001)
-                ).toFixed(2)}
-                %
-              </div>
-            </div>
-            <div className={s.graph}>
-              <Graph
-                data_price={user.networth_history}
-                data_volume={[]}
-                color={
-                  user.networth_history[user.networth_history.length - 1] -
-                    user.networth_history[0] >=
-                  0
-                    ? "green"
-                    : "red"
-                }
-                detailled={true}
-              />
+      <div className={s.market_container}>
+        <div className={s.date_container}>
+          <div>{user.username}</div>
+          <div>{day}</div>
+        </div>
+        <div className={s.networth}>
+          <div className={s.number}>
+            <div className={s.num}>{user ? user.networth.toFixed(1) : "-"}</div>
+            <div className={s.fiat}>ETH</div>
+            <div className={s.change}>
+              {(
+                (user.networth_history[user.networth_history.length - 1] -
+                  user.networth_history[0]) /
+                (user.networth_history[0] + 0.00000001)
+              ).toFixed(2)}
+              %
             </div>
           </div>
-          <div className={s.time_container}>
-            <div></div>
-            <TimeInterval
-              active={props.networth.active}
-              callback={callbackGraph}
-            />
-            <SortButton
-              newPropCollectionFavorite={newPropCollectionFavorite}
-              newPropCollectionMarket={newPropCollectionMarket}
-              view={intervals[market_interval]}
-              setnewPropCollectionFavorite={setnewPropCollectionFavorite}
-              setnewPropCollectionMarket={setnewPropCollectionMarket}
+          <div className={s.graph}>
+            <Graph
+              data_price={user.networth_history}
+              data_volume={[]}
+              color={
+                user.networth_history[user.networth_history.length - 1] -
+                  user.networth_history[0] >=
+                0
+                  ? "green"
+                  : "red"
+              }
+              detailled={true}
             />
           </div>
           <div>
@@ -319,25 +301,44 @@ export default function MarketOverview(props: market_overview_props) {
             )}
           </div>
         </div>
-        <MarketCollections
-          setLoading={setLoading}
-          interval={props.networth.active}
-          callback={open_card}
-          name={"My Collections"}
-          icon={"/icons/favorite_icon.png"}
-          collections={newPropCollectionFavorite}
-          connected={!!session}
-        />
-        <MarketCollections
-          setLoading={setLoading}
-          interval={props.networth.active}
-          callback={open_card}
-          name={"Market"}
-          icon={"/icons/market_icon.png"}
-          collections={newPropCollectionMarket}
-        />
-        {/* {isMobile ? <Footer /> : null} */}
+        <div className={s.time_container}>
+          <div></div>
+          <TimeInterval
+            active={props.networth.active}
+            callback={callbackGraph}
+          />
+          <SortButton
+            newPropCollectionFavorite={newPropCollectionFavorite}
+            newPropCollectionMarket={newPropCollectionMarket}
+            view={intervals[market_interval]}
+            setnewPropCollectionFavorite={setnewPropCollectionFavorite}
+            setnewPropCollectionMarket={setnewPropCollectionMarket}
+          />
+        </div>
+        <div className={s.search_and_sort}>
+          <SearchBar
+            callback={open_card}
+            collections={newPropCollectionMarket}
+          />
+        </div>
       </div>
+      <MarketCollections
+        setLoading={setLoading}
+        interval={props.networth.active}
+        callback={open_card}
+        name={"My Collections"}
+        icon={"/icons/favorite_icon.png"}
+        collections={newPropCollectionFavorite}
+        connected={!!session}
+      />
+      <MarketCollections
+        setLoading={setLoading}
+        interval={props.networth.active}
+        callback={open_card}
+        name={"Market"}
+        icon={"/icons/market_icon.png"}
+        collections={newPropCollectionMarket}
+      />
       {show_card && (
         <MarketCollection
           isMobile={isMobile}

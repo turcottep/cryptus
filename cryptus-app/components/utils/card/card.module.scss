@@ -113,4 +113,8 @@
 
   max-height: calc(100vh - v.$header-h);
   overflow-y: scroll;
+
+  > div {
+    padding-bottom: 100px;
+  }
 }
