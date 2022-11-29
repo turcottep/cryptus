@@ -22,7 +22,7 @@ export default function TryNow(props: try_now_props) {
         <div className={s.grid}>
           <div className={s.names}>
             <img
-              src="/images/JustinBieber.png"
+              src="/images/JustinBieberTryNow.png"
               className={s.image}
               onClick={() => {
                 router.push("/justinbiebernfts");
@@ -32,7 +32,7 @@ export default function TryNow(props: try_now_props) {
           </div>
           <div className={s.names}>
             <img
-              src="/images/mcuban.png"
+              src="/images/MarkCubanTryNow.png"
               className={s.image}
               onClick={() => {
                 router.push("/mcuban");
@@ -42,7 +42,7 @@ export default function TryNow(props: try_now_props) {
           </div>
           <div className={s.names}>
             <img
-              src="/images/snoopdogg.png"
+              src="/images/SnoopDoggTryNow.png"
               className={s.image}
               onClick={() => {
                 router.push("/snoopdogg");
@@ -52,7 +52,7 @@ export default function TryNow(props: try_now_props) {
           </div>
           <div className={s.names}>
             <img
-              src="/images/loganpaul.png"
+              src="/images/LoganPaulTryNow.png"
               className={s.image}
               onClick={() => {
                 router.push("/logz");
