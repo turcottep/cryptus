@@ -13,6 +13,7 @@ describe("<SortButton />", () => {
           setnewPropCollectionFavorite={undefined}
           newPropCollectionMarket={undefined}
           setnewPropCollectionMarket={undefined}
+          view={undefined}
         />
       )
       .toJSON();

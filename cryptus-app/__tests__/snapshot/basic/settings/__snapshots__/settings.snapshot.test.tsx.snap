@@ -8,7 +8,19 @@ exports[`<Settings /> should display properly 1`] = `
   <div>
     <div>
       <div>
-        <div />
+        <div>
+          <div>
+            <img
+              src="magnifier.svg"
+            />
+            <input
+              autoFocus={true}
+              onChange={[Function]}
+              placeholder="Coming soon..."
+              type="text"
+            />
+          </div>
+        </div>
       </div>
       <div>
         <div>

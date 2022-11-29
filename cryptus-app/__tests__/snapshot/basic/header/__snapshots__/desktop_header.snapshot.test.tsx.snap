@@ -6,7 +6,19 @@ exports[`<DesktopHeader /> should display properly 1`] = `
   onClick={[Function]}
 >
   <div>
-    <div />
+    <div>
+      <div>
+        <img
+          src="magnifier.svg"
+        />
+        <input
+          autoFocus={true}
+          onChange={[Function]}
+          placeholder="Enter a username"
+          type="text"
+        />
+      </div>
+    </div>
   </div>
 </div>
 `;

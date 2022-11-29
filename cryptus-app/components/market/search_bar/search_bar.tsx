@@ -55,7 +55,7 @@ export default function SearchBar(props: {
 
   return (
     <div className={s.collections_lafleur}>
-      {/* <div className={s.search_box} ref={searchBarRef}>
+      <div className={s.search_box} ref={searchBarRef}>
         <img src="magnifier.svg" className={s.magnifier} />
         <input
           autoFocus
@@ -70,7 +70,7 @@ export default function SearchBar(props: {
           }
           onChange={(event) => setQuery(event.target.value)}
         />
-      </div> */}
+      </div>
 
       {/* Justin says use 'reduce' instead */}
       {props.callback && props.collections
