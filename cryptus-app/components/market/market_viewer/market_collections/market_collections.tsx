@@ -9,6 +9,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { updatePrice } from "../../market";
 
 import { CircularProgress } from "@mui/material";
+import {
+  ArrowDownwardRounded,
+  ArrowUpwardRounded,
+  ExpandLess,
+  ExpandMore,
+} from "@mui/icons-material";
 
 // Need to add prop for collections
 export default function MarketCollections(props: {
@@ -140,7 +146,7 @@ export const Collapsable = (props: {
     >
       <div>
         <div className={s.title}>{props.title}</div>
-        <div className={s.arrow}>{c ? "▼" : "▲"}</div>
+        <div className={s.arrow}>{c ? <ExpandMore /> : <ExpandLess />}</div>
       </div>
       {c ? null : props.children}
     </div>

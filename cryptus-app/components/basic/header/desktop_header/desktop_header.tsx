@@ -6,11 +6,14 @@ import { signIn, useSession } from "next-auth/client";
 import ContextualMenuButton from "../contextual_menu_button/contextual_menu_button";
 import { Header } from "../../../building_blocks/building_blocks";
 import connectMetamask from "../../../../lib/connectMetamask";
+import { isMobile } from "react-device-detect";
+import { Search } from "@mui/icons-material";
 
 export default function DesktopHeader(props: {
   tab: string;
   open_settings: () => void;
   open_search: () => void;
+  isMobile?: boolean;
 }) {
   const [session, loading] = useSession();
   const [name, setName] = useState("");
@@ -35,47 +38,34 @@ export default function DesktopHeader(props: {
     <Header>
       <div id="header" className={s.container}>
         <div className={s.home}>
-          <a href="/">Public Wallet</a>
+          <a href="/">{isMobile ? "PW" : "PublicWallet"}</a>
         </div>
         <div className={s.tabs}>
-          {tabs.map((t, i) => {
-            const isActive = t.name == tab;
-
-            if (name == "" && t.name == tabs[1].name) {
-              return (
-                <Tab2
-                  name={t.name}
-                  key={t.name}
-                  url={t.url}
-                  isActive={isActive}
-                />
-              );
-            } else {
-              return (
-                <Tab
-                  name={t.name}
-                  key={t.name}
-                  url={t.url}
-                  isActive={isActive}
-                />
-              );
-            }
-          })}
+          <Tab
+            name={tabs[0].name}
+            key={tabs[0].name}
+            url={tabs[0].url}
+            isActive={tabs[0].name == tab}
+          />
+          <div>⏐</div>
+          <Tab
+            name={tabs[1].name}
+            key={tabs[1].name}
+            url={tabs[1].url}
+            isActive={tabs[1].name == tab}
+          />
         </div>
         <div className={s.icons}>
-          <ContextualMenuButton
-            img="magnifier.svg"
-            open_settings={props.open_search}
-          />
+          <div onClick={props.open_search} className={s.icon}>
+            <Search />
+          </div>
           <Icon img="/icons/notification_icon.png" url="/market" />
-          <ContextualMenuButton
-            img={imgUrl}
-            open_settings={props.open_settings}
-          />
+          <div onClick={props.open_settings} className={s.icon}>
+            <img src={imgUrl} className={s.image} />
+          </div>
         </div>
       </div>
     </Header>
-    // </div>
   );
 }
 

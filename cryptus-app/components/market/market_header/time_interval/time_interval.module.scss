@@ -1,8 +1,9 @@
 @use "/styles/variables" as v;
+@import "/styles/utils";
 
 .icon {
   position: relative;
-  background-color: v.$bg-color;
+
   border-radius: 50%;
   width: v.$font-size-xl;
   height: v.$font-size-xl;
@@ -14,27 +15,30 @@
   cursor: pointer;
 }
 
-.icon:hover:not(.active) {
-  background-color: v.$secondary-color-pale;
-  color: v.$text-color;
-  opacity: 1;
-  visibility: visible;
+.notactive {
+  @extend .icon;
+  background-color: white;
+  color: #93918e;
 }
 
 .active {
-  background-color: v.$secondary-color-pale;
-  color: #93918e;
+  @extend .icon;
+  @extend .cooltext;
+  scale: 1.2;
+}
+
+.icon:hover:not(.active) {
   opacity: 1;
   visibility: visible;
+  @extend .cooltext;
 }
 
 .container {
   flex: 0 0 none;
 
   display: flex;
-  margin: 4px 0px;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  background-color: v.$bg-color;
+  gap: clamp(4px, 1vw, 16px);
 }
