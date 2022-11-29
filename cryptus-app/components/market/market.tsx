@@ -232,13 +232,12 @@ export default function MarketOverview(props: market_overview_props) {
   return (
     // <div className={show_card ? s.container_no_scroll : s.container}>
     <Page>
-      {isMobile ? null : (
-        <DesktopHeader
-          tab="market"
-          open_settings={open_settings}
-          open_search={open_search}
-        />
-      )}
+      <DesktopHeader
+        tab="market"
+        open_settings={open_settings}
+        open_search={open_search}
+        isMobile={props.isMobile}
+      />
       <div className={s.containee}>
         <div className={s.market_container}>
           <div className={s.date_container}>
@@ -276,17 +275,10 @@ export default function MarketOverview(props: market_overview_props) {
             </div>
           </div>
           <div className={s.time_container}>
-            <div className={s.time_box}>
-              <TimeInterval
-                active={props.networth.active}
-                callback={callbackGraph}
-              />
-            </div>
-          </div>
-          <div className={s.search_and_sort}>
-            <SearchBar
-              callback={open_card}
-              collections={newPropCollectionMarket}
+            <div></div>
+            <TimeInterval
+              active={props.networth.active}
+              callback={callbackGraph}
             />
             <SortButton
               newPropCollectionFavorite={newPropCollectionFavorite}
@@ -294,6 +286,12 @@ export default function MarketOverview(props: market_overview_props) {
               view={intervals[market_interval]}
               setnewPropCollectionFavorite={setnewPropCollectionFavorite}
               setnewPropCollectionMarket={setnewPropCollectionMarket}
+            />
+          </div>
+          <div className={s.search_and_sort}>
+            <SearchBar
+              callback={open_card}
+              collections={newPropCollectionMarket}
             />
           </div>
         </div>

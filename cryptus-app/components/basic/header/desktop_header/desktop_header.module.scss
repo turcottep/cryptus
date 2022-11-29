@@ -28,7 +28,7 @@
   flex-wrap: nowrap;
   align-items: center;
   gap: 16px;
-  padding-left: 8px;
+
   height: v.$header-h;
 
   font-size: 24px;
@@ -44,7 +44,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: clamp(4px, 1vw, 16px);
 }
 .tab {
   flex: 0 1 auto;
@@ -58,6 +58,8 @@
 .tabactive {
   @extend .tab;
   @extend .cooltext;
+  font-weight: 400;
+  scale: 1.1;
 }
 
 .icons {
@@ -67,7 +69,7 @@
   justify-content: flex-end;
 
   align-items: center;
-  gap: 16px;
+  gap: clamp(4px, 1vw, 16px);
 }
 
 .icon {

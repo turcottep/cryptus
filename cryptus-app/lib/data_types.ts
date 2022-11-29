@@ -85,5 +85,4 @@ export enum intervals {
   month = 1,
   three_months = 2,
   year = 3,
-  alltime = 4,
 }

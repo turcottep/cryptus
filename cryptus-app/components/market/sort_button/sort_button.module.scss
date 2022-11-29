@@ -11,26 +11,20 @@
   // background-color: aqua;
 }
 
-// .box {
-//   flex: 1 1 auto;
-
-//   display: flex;
-//   align-items: center;
-//   flex-direction: row;
-//   border-radius: 16px;
-//   background-color: v.$secondary-color-pale;
-//   height: 32px;
-
-//   color: v.$text-color;
-//   text-transform: none;
-//   font-size: 12px;
-//   font-weight: 100 !important;
-// }
-
 .box {
-  color: rgb(0, 0, 0);
+  flex: 1 1 auto;
 
-  height: 24px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 16px;
+  background-color: v.$secondary-color-pale;
+  height: 32px;
+
+  color: v.$text-color;
+  text-transform: none;
+  font-size: 12px;
+  font-weight: 100 !important;
 }
 
 .sort_button_inner {
@@ -43,7 +37,7 @@
   padding: 2px 8px;
   border-radius: 16px;
 
-  background-color: v.$secondary-color-pale;
+  background-color: white;
 }
 
 .sort_icon {

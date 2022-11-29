@@ -22,9 +22,7 @@ export default function TimeInterval(props: { active: number; callback: any }) {
       case intervals.week:
         return (
           <div
-            className={
-              s.icon + " " + (active == intervals.week ? s.active : "")
-            }
+            className={active == intervals.week ? s.active : s.notactive}
             onClick={() => {
               select_interval(intervals.week);
             }}
@@ -35,9 +33,7 @@ export default function TimeInterval(props: { active: number; callback: any }) {
       case intervals.month:
         return (
           <div
-            className={
-              s.icon + " " + (active == intervals.month ? s.active : "")
-            }
+            className={active == intervals.month ? s.active : s.notactive}
             onClick={() => {
               select_interval(intervals.month);
             }}
@@ -49,7 +45,7 @@ export default function TimeInterval(props: { active: number; callback: any }) {
         return (
           <div
             className={
-              s.icon + " " + (active == intervals.three_months ? s.active : "")
+              active == intervals.three_months ? s.active : s.notactive
             }
             onClick={() => {
               select_interval(intervals.three_months);
@@ -61,9 +57,7 @@ export default function TimeInterval(props: { active: number; callback: any }) {
       case intervals.year:
         return (
           <div
-            className={
-              s.icon + " " + (active == intervals.year ? s.active : "")
-            }
+            className={active == intervals.year ? s.active : s.notactive}
             onClick={() => {
               select_interval(intervals.year);
             }}
@@ -71,19 +65,19 @@ export default function TimeInterval(props: { active: number; callback: any }) {
             1Y
           </div>
         );
-      case intervals.alltime:
-        return (
-          <div
-            className={
-              s.icon + " " + (active == intervals.alltime ? s.active : "")
-            }
-            onClick={() => {
-              select_interval(intervals.alltime);
-            }}
-          >
-            ALL
-          </div>
-        );
+      //   case intervals.alltime:
+      //     return (
+      //       <div
+      //         className={
+      //           s.icon + " " + (active == intervals.alltime ? s.active : "")
+      //         }
+      //         onClick={() => {
+      //           select_interval(intervals.alltime);
+      //         }}
+      //       >
+      //         ALL
+      //       </div>
+      //     );
     }
   };
 
