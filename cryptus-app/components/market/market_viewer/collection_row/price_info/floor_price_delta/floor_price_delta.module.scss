@@ -1,4 +1,5 @@
 @use "/styles/variables" as v;
+@import "/styles/utils";
 
 .delta {
   display: flex;
@@ -21,9 +22,9 @@
 
 .green_delta {
   @extend .delta2;
-  color: v.$market-green;
+  @extend .cooltextgreen;
 }
 .red_delta {
   @extend .delta2;
-  color: v.$market-red;
+  @extend .cooltextred;
 }

@@ -23,6 +23,11 @@
 
 .searchTerm {
   width: 100%;
+
+  textarea {
+    font-size: 16px;
+    color: red;
+  }
 }
 
 .search_items {

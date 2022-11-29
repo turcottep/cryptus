@@ -25,27 +25,29 @@
 
   // width: clamp(400px, 80%, 80%);
   width: 800px;
+  padding-bottom: 100px;
+
   @media (max-width: v.$mobile) {
     width: min(100vw, v.$mobile);
   }
   min-height: calc(100vh - v.$header-h);
 }
 
-.popuppage {
-  @extend .page;
-  position: absolute;
-  //TODO: make page not scrollable, but content scrollable
+// .popuppage {
+//   @extend .page;
+//   position: absolute;
+//   //TODO: make page not scrollable, but content scrollable
 
-  background-color: v.$lightblack;
-}
+//   background-color: v.$lightblack;
+// }
 
-.popupcontent {
-  @extend .content;
-  padding-top: 0; //TODO: fix this
+// .popupcontent {
+//   @extend .content;
+//   padding-top: 0; //TODO: fix this
+//   padding-bottom: 100px !important;
 
-  overflow-y: scroll;
-  //   max-height: 800px !important;
-}
+//   //   max-height: 800px !important;
+// }
 
 .header {
   position: fixed;
