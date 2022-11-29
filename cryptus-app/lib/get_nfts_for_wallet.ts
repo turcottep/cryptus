@@ -19,12 +19,8 @@ export default async function get_nfts_for_wallet(
       let asset_contract_adresses = "";
 
       for (var collection of collections) {
-        if (collection.primary_asset_contracts[0]) {
-          asset_contract_adresses =
-            asset_contract_adresses +
-            "&asset_contract_addresses=" +
-            collection.primary_asset_contracts[0].address;
-        }
+        asset_contract_adresses =
+          asset_contract_adresses + "&asset_contract_addresses=" + collection;
       }
       let cursor = "";
       for (let i = 0; i < 5; i++) {
@@ -61,7 +57,7 @@ export default async function get_nfts_for_wallet(
       }
     }
 
-    console.log("nfts_raw", nfts_raw.length);
+    console.log("nfts_raw", nfts_raw);
   } catch (err) {
     console.error(err);
     console.log("response = ", res);
@@ -126,8 +122,8 @@ export default async function get_nfts_for_wallet(
   console.log("NFTS", nft_cleaner);
   nft_cleaner.sort(function (a, b) {
     return (
-      collections.map((e) => e.name).indexOf(a.collection) -
-      collections.map((e) => e.name).indexOf(b.collection)
+      collections.map((e) => e).indexOf(a.collection_address) -
+      collections.map((e) => e).indexOf(b.collection_address)
     );
   });
 

@@ -63,7 +63,6 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
               </div>
             </div>
           </a>
-          Value: - eth
         </div>
       </div>
       <div

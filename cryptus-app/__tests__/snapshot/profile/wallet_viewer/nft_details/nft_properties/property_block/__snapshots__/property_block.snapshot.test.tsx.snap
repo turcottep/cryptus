@@ -9,7 +9,7 @@ exports[`<PropertyBlock /> should display all the correct properties 1`] = `
     0
   </div>
   <div>
-    1.00% have this trait
+    1% have this trait
   </div>
 </div>
 `;
