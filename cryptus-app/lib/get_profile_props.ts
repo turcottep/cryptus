@@ -47,58 +47,58 @@ export default async function get_profile_props(
           }
         }
 
-        const slug_clean = [];
-        const addresses_clean = [];
-        for (let i = 0; i < slugs.length; i++) {
-          const slug_i = slugs[i];
-          const address_i = addresses[i];
+        // const slug_clean = [];
+        // const addresses_clean = [];
+        // for (let i = 0; i < slugs.length; i++) {
+        //   const slug_i = slugs[i];
+        //   const address_i = addresses[i];
 
-          const res = await fetch(
-            "https://api.opensea.io/api/v1/collection/" + slug_i + "/stats",
-            {
-              headers: {
-                Accept: "application/json",
-                "X-API-KEY": process.env.NEXT_PUBLIC_OPENSEA_API_KEY,
-              },
-            }
-          );
+        //   const res = await fetch(
+        //     "https://api.opensea.io/api/v1/collection/" + slug_i + "/stats",
+        //     {
+        //       headers: {
+        //         Accept: "application/json",
+        //         "X-API-KEY": process.env.NEXT_PUBLIC_OPENSEA_API_KEY,
+        //       },
+        //     }
+        //   );
 
-          const data = await res.json();
-          // console.log("data", data.);
+        //   const data = await res.json();
+        //   // console.log("data", data.);
 
-          if (data.stats.floor_price > 0.01 && data.stats.total_volume > 1000) {
-            slug_clean.push(slug_i);
-            addresses_clean.push(address_i);
-            console.log("added", slug_i, address_i);
-          } else {
-            console.log(
-              "won't add collection",
-              slug_i,
-              "because of low volume"
-            );
-          }
+        //   if (data.stats.floor_price > 0.01 && data.stats.total_volume > 1000) {
+        //     slug_clean.push(slug_i);
+        //     addresses_clean.push(address_i);
+        //     console.log("added", slug_i, address_i);
+        //   } else {
+        //     console.log(
+        //       "won't add collection",
+        //       slug_i,
+        //       "because of low volume"
+        //     );
+        //   }
 
-          await new Promise((r) => setTimeout(r, 1000));
-        }
+        //   await new Promise((r) => setTimeout(r, 1000));
+        // }
 
-        user = await add_collections_to_user(
-          addresses_clean,
-          slug_clean,
-          user.username
-        );
+        // user = await add_collections_to_user(
+        //   addresses_clean,
+        //   slug_clean,
+        //   user.username
+        // );
         collections_in_wallet = user.collections_address_list;
         // console.log("ALL0", collections_in_wallet);
       } else {
         console.log("getting collections from db");
       }
 
-      // if (nbColToFillPage > 50) nbColToFillPage = 50;
-      // if (nbColToFillPage > collections_in_wallet.length)
-      //   nbColToFillPage = collections_in_wallet.length;
+      if (nbColToFillPage > 50) nbColToFillPage = 50;
+      if (nbColToFillPage > collections_in_wallet.length)
+        nbColToFillPage = collections_in_wallet.length;
 
       let nfts_per_wallet = await get_nfts_for_wallet(
         wallet.address,
-        collections_in_wallet.slice(0, 100000)
+        collections_in_wallet.slice(0, nbColToFillPage)
       );
       nfts.push(...nfts_per_wallet);
 
