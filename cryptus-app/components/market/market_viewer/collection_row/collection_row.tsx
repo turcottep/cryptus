@@ -14,9 +14,10 @@ import { CircularProgress } from "@mui/material";
 export default function CollectionRow(props: { collection: collection }) {
   // const collection_name = GetNameWithoutSpaces(props.collection.name);
   const is_loading =
-    props.collection.data_price.length === 2 &&
-    props.collection.data_price[0] === 0 &&
-    props.collection.data_price[1] === 0;
+    !props.collection.data_price ||
+    (props.collection.data_price.length === 2 &&
+      props.collection.data_price[0] === 0 &&
+      props.collection.data_price[1] === 0);
   // console.log("CollectionRow", props.collection, is_loading);
 
   // console.log("CollectionRow", props.collection);

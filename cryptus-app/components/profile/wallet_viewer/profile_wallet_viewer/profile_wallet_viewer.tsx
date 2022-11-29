@@ -91,8 +91,8 @@ export default function ProfileWalletViewer(props: {
         className={s.containerRISC}
         style={{ overflowY: "hidden" }}
         dataLength={collections.length}
-        next={getMoreCollections}
-        hasMore={hasMore}
+        next={() => {}} //{getMoreCollections}
+        hasMore={false}
         loader={
           <div className={s.loader_container}>
             <CircularProgress color="primary" />
