@@ -86,7 +86,7 @@ export default function SearchBar(props: {
               }
             })
             .map((collection, index) => {
-              if (index < 8) {
+              if (index < 24) {
                 return (
                   <div
                     className={s.search_items}
@@ -130,7 +130,7 @@ export default function SearchBar(props: {
             })
             .map((user, index) => {
               // console.log("user", user);
-              if (index < 8) {
+              if (index < 24) {
                 return (
                   <div
                     className={s.search_items}
