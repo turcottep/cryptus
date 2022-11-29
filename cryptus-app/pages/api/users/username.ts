@@ -10,6 +10,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     const user = await prisma.user.findUnique({
       include: {
         wallets: req.body.withWallets,
+        nfts: req.body.withNfts,
       },
       where: {
         username: username,

@@ -155,7 +155,7 @@ export default function MarketOverview(props: market_overview_props) {
   const update_for_user = async (username: string) => {
     console.log("update_for_user", username);
 
-    // const user = await get_user_by_username(username);
+    const user = await get_user_by_username(username);
     console.log("user : ", user);
     const user_collections = user.collections_list;
     // console.log("iuser collections : ", user_collections);

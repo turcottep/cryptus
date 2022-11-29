@@ -16,43 +16,61 @@ export default async function get_nfts_for_wallet(
   try {
     //fetch collections from opensea
     if (collections) {
-      let asset_contract_adresses = "";
+      for (let j = 0; j < collections.length; j += 50) {
+        let collections_slice = collections.slice(j, j + 50);
 
-      for (var collection of collections) {
-        asset_contract_adresses =
-          asset_contract_adresses + "&asset_contract_addresses=" + collection;
-      }
-      let cursor = "";
-      for (let i = 0; i < 5; i++) {
-        try {
-          res = await fetch(
-            "https://api.opensea.io/api/v1/assets?owner=" +
-              address +
-              "&order_direction=desc&limit=30" +
-              asset_contract_adresses +
-              "&cursor=" +
-              cursor,
-            {
-              headers: {
-                Accept: "application/json",
-                "X-API-KEY": process.env.NEXT_PUBLIC_OPENSEA_API_KEY,
-              },
-            }
-          );
-          // res = await fetch(wallet.external_url);
-          const data = await res.json();
-          cursor = data.next;
-          // console.log("data", data);
-          const nfts_raw_temp = data.assets;
-          nfts_raw.push(...nfts_raw_temp);
-          if (!cursor) break;
-        } catch (e) {
-          // if (e.status == 429) {
-          console.log("error in get_nfts_for_wallet", e);
-          console.log("retrying in 10 seconds");
+        let asset_contract_adresses = "";
 
-          await new Promise((resolve) => setTimeout(resolve, 10000));
-          // }
+        for (const collection of collections_slice) {
+          asset_contract_adresses =
+            asset_contract_adresses + "&asset_contract_addresses=" + collection;
+        }
+
+        console.log(
+          "getting the",
+          j,
+          "to ",
+          j + collections_slice.length,
+          "nfts :",
+          asset_contract_adresses
+        );
+
+        let cursor = "";
+        for (let i = 0; i < 100; i++) {
+          try {
+            res = await fetch(
+              "https://api.opensea.io/api/v1/assets?owner=" +
+                address +
+                "&order_direction=desc&limit=30" +
+                asset_contract_adresses +
+                "&cursor=" +
+                cursor,
+              {
+                headers: {
+                  Accept: "application/json",
+                  "X-API-KEY": process.env.NEXT_PUBLIC_OPENSEA_API_KEY,
+                },
+              }
+            );
+            // res = await fetch(wallet.external_url);
+            const data = await res.json();
+            cursor = data.next;
+            console.log("data", data);
+            const nfts_raw_temp = data.assets;
+            nfts_raw.push(...nfts_raw_temp);
+
+            // wait 1 second
+            await new Promise((r) => setTimeout(r, 1000));
+
+            if (!cursor) break;
+          } catch (e) {
+            // if (e.status == 429) {
+            console.log("error in get_nfts_for_wallet", e);
+            console.log("retrying in 10 seconds");
+
+            await new Promise((resolve) => setTimeout(resolve, 10000));
+            // }
+          }
         }
       }
     }

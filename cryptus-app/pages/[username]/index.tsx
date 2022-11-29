@@ -67,7 +67,7 @@ export default function ProfilePage() {
           userNameString,
           nbColToFillPage
         );
-        // console.log("returning", returningProps);
+        console.log("returning", returningProps);
         // set_profile_props(returningProps.props);
         const new_user_props = returningProps.props.user;
         const new_collections_props = returningProps.props.collections;
