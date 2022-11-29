@@ -13,6 +13,7 @@ export default function SortButton(props: {
   setnewPropCollectionFavorite;
   newPropCollectionMarket;
   setnewPropCollectionMarket;
+  view;
 }) {
   const {
     newPropCollectionFavorite,
@@ -35,6 +36,7 @@ export default function SortButton(props: {
     // Insert fake backend call here, and use setFIltter to update the state
     const [a, b] = sort_market_collections(
       filter,
+      props.view,
       newPropCollectionFavorite,
       newPropCollectionMarket
     );
@@ -111,6 +113,7 @@ export default function SortButton(props: {
 
 export const sort_market_collections = (
   filter: string,
+  view: string,
   newPropCollectionFavorite,
   newPropCollectionMarket
 ) => {
@@ -188,6 +191,17 @@ export const sort_market_collections = (
     default:
     // code block
   }
+
+  const new_name = view + "-" + filter;
+  console.log("view", view, "sort_market_collections", new_name);
+
+  for (let i = 0; i < newPropCollectionMarketTemp.length; i++) {
+    // console.log(newPropCollectionMarketTemp[i].name, i);
+
+    newPropCollectionMarketTemp[i][new_name] = i;
+  }
+
+  console.log("supposed to be", newPropCollectionMarketTemp);
 
   return [newPropCollectionFavoriteTemp, newPropCollectionMarketTemp];
 };

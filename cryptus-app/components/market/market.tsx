@@ -291,6 +291,7 @@ export default function MarketOverview(props: market_overview_props) {
             <SortButton
               newPropCollectionFavorite={newPropCollectionFavorite}
               newPropCollectionMarket={newPropCollectionMarket}
+              view={intervals[market_interval]}
               setnewPropCollectionFavorite={setnewPropCollectionFavorite}
               setnewPropCollectionMarket={setnewPropCollectionMarket}
             />

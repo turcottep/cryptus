@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import s from "./desktop_header.module.scss";
 
-import { useSession } from "next-auth/client";
+import { signIn, useSession } from "next-auth/client";
 
 import ContextualMenuButton from "../contextual_menu_button/contextual_menu_button";
 import { Header } from "../../../building_blocks/building_blocks";
+import connectMetamask from "../../../../lib/connectMetamask";
 
 export default function DesktopHeader(props: {
   tab: string;
@@ -92,7 +93,12 @@ const Tab = (props: { name: string; url: string; isActive: boolean }) =>
 const Tab2 = (props: { name: string; url: string; isActive: boolean }) => (
   <div
     onClick={() => {
-      alert("not connected!");
+      // alert("not connected!");
+      // signIn();
+      connectMetamask(
+        () => {},
+        () => {}
+      );
     }}
     className={s.tab}
   >

@@ -43,6 +43,10 @@ export default function ProfileWalletViewer(props: {
   }, [collections]);
 
   const getMoreCollections = async () => {
+    if (props.wallets == undefined) {
+      return;
+    }
+
     let hMore = true;
     let collections_in_wallet_sliced = null;
     if (
