@@ -2,6 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
+  console.log("addCollectionsAddress, req.body: ", req.body);
+
   try {
     const newUser = await prisma.user.update({
       include: {
@@ -11,7 +13,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         username: req.body.username,
       },
       data: {
-        collections_address: req.body.address,
+        collections_address_list: req.body.addresses,
+        collections_list: req.body.slugs,
       },
     });
     res.status(201);

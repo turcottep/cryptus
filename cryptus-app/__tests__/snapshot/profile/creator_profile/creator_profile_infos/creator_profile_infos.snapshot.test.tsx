@@ -42,6 +42,7 @@ it("CreatorProfileInfos renders correctly", () => {
       address: "test_address",
       collections_filter: [],
       collections_list: [],
+      collections_address_list: [],
       profile_image_url: "./icons/icon-192x192.png",
     },
     collections: [mock_collection],

@@ -40,6 +40,7 @@ export interface user {
   address: string;
   collections_filter: string[];
   collections_list: string[];
+  collections_address_list: string[];
   profile_image_url: string;
 }
 

@@ -11,6 +11,7 @@ import get_profile_props from "../../lib/get_profile_props";
 import { profile_props } from "../../lib/data_types";
 import get_empty_profile_props from "../../lib/empty_profile_props";
 import useWindowSize from "../../components/utils/use_window_size";
+import Loading from "../../components/utils/loading/loading";
 
 export default function ProfilePage() {
   const props_empty = get_empty_profile_props();
@@ -20,21 +21,42 @@ export default function ProfilePage() {
 
   const [isMobile, setIsMobile] = useState(true);
   const [loading, setLoading] = useState<Boolean>(false);
+  const [old_username, setOldUsername] = useState<string>("");
 
   const [user_props, set_user_props] = useState(props_empty.user);
   const [collections_props, set_collections_props] = useState(
     props_empty.collections
   );
 
+  console.log("reloading all...");
+
   let size = useWindowSize();
   let nbColToFillPage =
     Math.ceil(size.width / 170) * Math.ceil((size.height - 300) / 190);
-  console.log("nombre collections to fill page", nbColToFillPage);
+  // console.log("nombre collections to fill page", nbColToFillPage);
 
   useEffect(() => {
     setIsMobile(mobile);
     console.log("isMobile", isMobile);
   }, [mobile]);
+
+  useEffect(() => {
+    console.log(
+      "username changed new:",
+      username,
+      "old_username",
+      old_username
+    );
+    if (username !== old_username) {
+      console.log("username changed for real");
+
+      const userNameString = username as string;
+      set_collections_props(props_empty.collections);
+      set_user_props(props_empty.user);
+      // setLoading(true);
+      // setOldUsername(userNameString);
+    }
+  }, [username]);
 
   useEffect(() => {
     setLoading(true);
@@ -62,6 +84,7 @@ export default function ProfilePage() {
           profile_image_url: "error",
           collections_filter: ["error"],
           collections_list: [],
+          collections_address_list: [],
         });
         set_collections_props([]);
       }

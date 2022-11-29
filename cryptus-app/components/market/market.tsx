@@ -51,6 +51,7 @@ export default function MarketOverview(props: market_overview_props) {
     address: "",
     collections_filter: [],
     collections_list: [],
+    collections_address_list: [],
     profile_image_url: "",
     networth: 0,
     networth_history: [0, 0],

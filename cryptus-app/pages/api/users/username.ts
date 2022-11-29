@@ -15,8 +15,11 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         username: username,
       },
     });
-    res.status(201);
+    // console.log("user: ", user);
+
     if (!user) throw new Error("User not founde");
+
+    res.status(201);
     res.json(user);
   } catch (e) {
     res.status(500);

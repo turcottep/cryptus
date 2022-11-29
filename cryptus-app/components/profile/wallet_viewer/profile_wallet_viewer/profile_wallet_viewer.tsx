@@ -16,7 +16,7 @@ import collections_dict from "../../../../lib/collectionDictionary";
 import { CircularProgress } from "@mui/material";
 
 export default function ProfileWalletViewer(props: {
-  collections_address: string[];
+  collections_address_list: string[];
   collections: nft_collection[];
   add_collections: (collections: nft_collection[]) => void;
   open_collection: (collection_name: string) => void;
@@ -39,19 +39,21 @@ export default function ProfileWalletViewer(props: {
   }, [collections]);
 
   const getMoreCollections = async () => {
-    console.log("GetMoreCollections");
-    var hMore = true;
+    let hMore = true;
     let collections_in_wallet_sliced = null;
-    if (props.collections_address.length > currentIndex + nbColAddedByFetch) {
-      collections_in_wallet_sliced = props.collections_address.slice(
+    if (
+      props.collections_address_list.length >
+      currentIndex + nbColAddedByFetch
+    ) {
+      collections_in_wallet_sliced = props.collections_address_list.slice(
         currentIndex,
         currentIndex + nbColAddedByFetch
       );
       setCurrentIndex(currentIndex + nbColAddedByFetch);
-    } else if (props.collections_address.length > currentIndex) {
-      collections_in_wallet_sliced = props.collections_address.slice(
+    } else if (props.collections_address_list.length > currentIndex) {
+      collections_in_wallet_sliced = props.collections_address_list.slice(
         currentIndex,
-        props.collections_address.length
+        props.collections_address_list.length
       );
       setCurrentIndex(currentIndex + collections_in_wallet_sliced.length);
     } else if (walletIndex + 1 < props.wallets.length) {
@@ -66,7 +68,7 @@ export default function ProfileWalletViewer(props: {
         props.wallets[walletIndex].address,
         collections_in_wallet_sliced
       );
-      console.log("NFTS : ", nfts_per_wallet);
+      // console.log("NFTS : ", nfts_per_wallet);
       let newCollections = sortNftsIntoCollections(nfts_per_wallet);
       setCollections((collection) => [...collection, ...newCollections]);
     }

@@ -197,7 +197,7 @@ export default function Profile(props: {
         <Support callback_close_support={close_support} isMobile={isMobile} />
       )}
       <ProfileWalletViewer
-        collections_address={props.user.collections_address}
+        collections_address_list={props.user.collections_address_list}
         collections={collections_updated}
         add_collections={set_collections_updated}
         open_collection={open_collection}

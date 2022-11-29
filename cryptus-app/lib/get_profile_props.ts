@@ -15,6 +15,8 @@ export default async function get_profile_props(
 ): Promise<{ props: profile_props }> {
   let user = await getUserByUsername(user_name, true);
 
+  console.log("get_profile_props, user: ", user);
+
   if (!user) {
     throw new Error("User not found");
   }
@@ -24,18 +26,26 @@ export default async function get_profile_props(
     let nfts_ordered = [];
     const wallet = user.wallets[0];
     let collections_in_wallet = [];
-    collections_in_wallet = user.collections_address;
+    collections_in_wallet = user.collections_address_list;
     if (collections_in_wallet.length === 0) {
+      console.log(
+        "get_profile_props, collections_in_wallet.length === 0, so getting it from opensea"
+      );
+
       collections_in_wallet = await get_collections_in_wallet(wallet.address);
-      let addresses = [];
+      const addresses = [];
+      const slugs = [];
       for (var collection of collections_in_wallet) {
         if (collection.primary_asset_contracts[0]) {
           addresses.push(collection.primary_asset_contracts[0].address);
+          slugs.push(collection.slug);
         }
       }
-      user = await add_collections_to_user(addresses, user.username);
-      collections_in_wallet = user.collections_address;
-      console.log("ALL0", collections_in_wallet);
+      user = await add_collections_to_user(addresses, slugs, user.username);
+      collections_in_wallet = user.collections_address_list;
+      // console.log("ALL0", collections_in_wallet);
+    } else {
+      console.log("getting collections from db");
     }
 
     if (nbColToFillPage > 50) nbColToFillPage = 50;
@@ -48,13 +58,13 @@ export default async function get_profile_props(
     );
     nfts.push(...nfts_per_wallet);
 
-    if (nfts.length == 0) {
-      console.log("getting nft from our database");
-      nfts = await get_nfts_for_user(user_name);
-    } else {
-      console.log("saving nfts to our database");
-      save_nfts_to_user(user, nfts);
-    }
+    // if (nfts.length == 0) {
+    //   console.log("getting nft from our database");
+    //   nfts = await get_nfts_for_user(user_name);
+    // } else {
+    //   console.log("saving nfts to our database");
+    //   save_nfts_to_user(user, nfts);
+    // }
 
     const nfts_collections = sortNftsIntoCollections(
       nfts
@@ -81,6 +91,7 @@ export default async function get_profile_props(
           networth: 0,
           collections_filter: [],
           collections_list: [],
+          collections_address_list: [],
           profile_image_url: "./icons/icon-192x192.png",
         },
       },

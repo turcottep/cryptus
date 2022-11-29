@@ -20,7 +20,7 @@ describe("<ProfileWalletViewer />", () => {
     const tree = renderer
       .create(
         <ProfileWalletViewer
-          collections_address={[]}
+          collections_address_list={[]}
           collections={[]}
           open_collection={function (): void {
             throw new Error("Function not implemented.");

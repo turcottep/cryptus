@@ -42,7 +42,7 @@ export default async function get_nfts_for_wallet(
           // res = await fetch(wallet.external_url);
           const data = await res.json();
           cursor = data.next;
-          console.log("data", data);
+          // console.log("data", data);
           const nfts_raw_temp = data.assets;
           nfts_raw.push(...nfts_raw_temp);
           if (!cursor) break;
@@ -57,7 +57,7 @@ export default async function get_nfts_for_wallet(
       }
     }
 
-    console.log("nfts_raw", nfts_raw);
+    // console.log("nfts_raw", nfts_raw);
   } catch (err) {
     console.error(err);
     console.log("response = ", res);
@@ -116,10 +116,10 @@ export default async function get_nfts_for_wallet(
       rarity_rank: rarity_rank,
     } as nft;
   });
-  console.log("NFTS", nft_clean);
+  // console.log("NFTS", nft_clean);
   let nft_cleaner = [];
   nft_cleaner = nft_clean.filter((nft) => nft.image_url != null);
-  console.log("NFTS", nft_cleaner);
+  // console.log("NFTS", nft_cleaner);
   nft_cleaner.sort(function (a, b) {
     return (
       collections.map((e) => e).indexOf(a.collection_address) -

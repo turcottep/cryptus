@@ -89,7 +89,7 @@ export default function SearchBar(props: {
               if (index < 8) {
                 return (
                   <div
-                    className={classNames(s.search_items)}
+                    className={s.search_items}
                     key={collection.name}
                     // style={{
                     //   top: index * 55 + Number(searchBarPosY) + 2,
@@ -129,17 +129,17 @@ export default function SearchBar(props: {
               return null;
             })
             .map((user, index) => {
-              console.log("user", user);
+              // console.log("user", user);
               if (index < 8) {
                 return (
                   <div
-                    className={classNames(s.search_items)}
+                    className={s.search_items}
                     key={user.username}
-                    style={{
-                      top: index * 55 + Number(searchBarPosY) + 2,
-                      left: 24 + Number(searchBarPosX),
-                      width: Number(searchBarPosWidth) - 26,
-                    }}
+                    // style={{
+                    //   top: index * 55 + Number(searchBarPosY) + 2,
+                    //   left: 24 + Number(searchBarPosX),
+                    //   width: Number(searchBarPosWidth) - 26,
+                    // }}
                     onClick={() => {
                       router.push("/" + user.username);
                     }}

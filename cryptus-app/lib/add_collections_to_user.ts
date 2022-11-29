@@ -2,7 +2,8 @@ import UsernameSetting from "../components/basic/settings/username_setting/usern
 import findAllUsers from "../pages/api/users/findAllUsers";
 
 export default async function add_collections_to_user(
-  user_collections_address,
+  user_collections_addresses: string[],
+  user_collections_slugs: string[],
   username
 ) {
   console.log("Adding Col");
@@ -12,7 +13,7 @@ export default async function add_collections_to_user(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      address: user_collections_address,
+      addresses: user_collections_addresses,
       username: username,
     }),
   });
