@@ -14,6 +14,10 @@ import useWindowSize from "../../../utils/use_window_size";
 import get_empty_profile_props from "../../../../lib/empty_profile_props";
 import collections_dict from "../../../../lib/collectionDictionary";
 import { CircularProgress } from "@mui/material";
+import {
+  forbiddenCollections,
+  forbiddenWords,
+} from "../../../../lib/removeCollectionsForMegagenial";
 
 export default function ProfileWalletViewer(props: {
   collections_address_list: string[];
@@ -93,7 +97,21 @@ export default function ProfileWalletViewer(props: {
       >
         {collections
           .filter((collection) => {
-            return !props.collections_filter.includes(collection.address);
+            let forbiddenWordCondition = true;
+            forbiddenWords.forEach((word) => {
+              if (
+                collection.name
+                  .toLocaleLowerCase()
+                  .includes(word.toLocaleLowerCase())
+              ) {
+                forbiddenWordCondition = false;
+              }
+            });
+            return (
+              !props.collections_filter.includes(collection.address) &&
+              !forbiddenCollections.includes(collection.name) &&
+              forbiddenWordCondition
+            );
           })
           .map((collection: nft_collection, i: number) => (
             <div key={i}>

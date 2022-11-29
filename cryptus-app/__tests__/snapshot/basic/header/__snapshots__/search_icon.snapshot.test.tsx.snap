@@ -1,50 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<DesktopHeader /> should display properly 1`] = `
-<div
-  id="header"
->
-  <div>
-    <a
-      href="/"
-    >
-      Public Wallet
-    </a>
-  </div>
-  <div>
-    <a
-      href="/market"
-    >
-      market
-    </a>
-    <div
-      onClick={[Function]}
-    >
-      profile
-    </div>
-  </div>
+<div>
   <div>
     <div
-      onClick={[Function]}
+      id="header"
     >
-      <img
-        src="magnifier.svg"
-      />
-    </div>
-    <a
-      href="/market"
-      target="_blank"
-    >
-      <img
-        src="/icons/notification_icon.png"
-      />
-    </a>
-    <div
-      onClick={[Function]}
-    >
-      <img
-        src="/icons/menu_icon.png"
-      />
+      <div>
+        <a
+          href="/"
+        >
+          Public Wallet
+        </a>
+      </div>
+      <div>
+        <a
+          href="/market"
+        >
+          market
+        </a>
+        <div
+          onClick={[Function]}
+        >
+          profile
+        </div>
+      </div>
+      <div>
+        <div
+          onClick={[Function]}
+        >
+          <img
+            src="magnifier.svg"
+          />
+        </div>
+        <a
+          href="/market"
+          target="_blank"
+        >
+          <img
+            src="/icons/notification_icon.png"
+          />
+        </a>
+        <div
+          onClick={[Function]}
+        >
+          <img
+            src="/icons/menu_icon.png"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
