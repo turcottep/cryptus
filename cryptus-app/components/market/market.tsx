@@ -30,6 +30,8 @@ import SearchIcon from "../basic/header/search_icon/search_icon";
 import findAllUsers from "../../lib/findAllUsers";
 import Graph from "./graph/graph";
 import { Page } from "../building_blocks/building_blocks";
+import Card from "../utils/card/card";
+import { Search } from "@mui/icons-material";
 
 type market_overview_props = {
   date: string;
@@ -90,6 +92,8 @@ export default function MarketOverview(props: market_overview_props) {
   const [show_card_wallet_manager, set_show_wallet_manager] = useState(false);
   const [show_card_support, set_show_support] = useState(false);
   const [show_card_search, set_show_search] = useState(false);
+  const [show_card_collection_search, set_show_card_collection_search] =
+    useState(false);
 
   const [usersProfiles, setUsersProfiles] = useState<dbUsers[]>([]);
 
@@ -288,11 +292,30 @@ export default function MarketOverview(props: market_overview_props) {
               setnewPropCollectionMarket={setnewPropCollectionMarket}
             />
           </div>
-          <div className={s.search_and_sort}>
-            <SearchBar
-              callback={open_card}
-              collections={newPropCollectionMarket}
-            />
+          <div>
+            {show_card_collection_search ? (
+              <div className={s.search_and_sort}>
+                <Card
+                  isMobile={false}
+                  callback_close={() => {
+                    set_show_card_collection_search(false);
+                  }}
+                >
+                  <SearchBar
+                    callback={open_card}
+                    collections={newPropCollectionMarket}
+                  />
+                </Card>
+              </div>
+            ) : (
+              <div
+                onClick={() => {
+                  set_show_card_collection_search(true);
+                }}
+              >
+                <Search />
+              </div>
+            )}
           </div>
         </div>
         <MarketCollections
