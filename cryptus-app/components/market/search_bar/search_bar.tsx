@@ -19,23 +19,25 @@ export default function SearchBar(props: {
   const [searchBarPosY, setSearchBarPosY] = useState();
   const [searchBarPosWidth, setSearchBarPosWitdh] = useState();
 
-  const default_selected_users = [
-    "logz",
-    "apeholder",
-    "justinbiebernfts",
-    "snoopdogg",
-    "mcuban",
-    "lafleur1",
-  ];
+  // const default_selected_users = [
+  //   "logz",
+  //   "apeholder",
+  //   "justinbiebernfts",
+  //   "snoopdogg",
+  //   "mcuban",
+  //   "lafleur1",
+  // ];
 
-  const check_for_default_suggested_users = (name: string) => {
-    for (let i = 0; i < default_selected_users.length; i++) {
-      if (default_selected_users[i] === name) {
-        return true;
-      }
-    }
-    return false;
-  };
+  const blacklist_users = ["lafleur", "phil0rdi", "fleur", "bike", "turcotte"];
+
+  // const check_for_default_suggested_users = (name: string) => {
+  //   for (let i = 0; i < default_selected_users.length; i++) {
+  //     if (default_selected_users[i] === name) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // };
 
   const getPosition = (ref: any) => {
     setSearchBarPosX(ref.current?.offsetLeft);
@@ -117,7 +119,8 @@ export default function SearchBar(props: {
             .filter((user) => {
               if (
                 query === "" &&
-                check_for_default_suggested_users(user.username)
+                !blacklist_users.includes(user.username)
+                // check_for_default_suggested_users(user.username)
               ) {
                 return user;
               } else if (
