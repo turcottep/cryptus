@@ -151,16 +151,17 @@ export default function MarketOverview(props: market_overview_props) {
 
   const callbackGraph = async (interval) => {
     // setInterval(interval);
+    console.log("updating interval", interval);
     const newPropCollectionTemp = await update(interval);
     set_market_interval(interval);
     setnewPropCollection(newPropCollectionTemp);
   };
 
   const update_for_user = async (username: string) => {
-    console.log("update_for_user", username);
+    // console.log("update_for_user", username);
 
     const user = await get_user_by_username(username);
-    console.log("user : ", user);
+    // console.log("user : ", user);
     const user_collections = user.collections_list;
     // console.log("iuser collections : ", user_collections);
     const networth = user.networth;
