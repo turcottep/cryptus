@@ -4,6 +4,7 @@ exports[`<PropertyBlock /> should display all the correct properties 1`] = `
 <div>
   <div>
     Savannah R1-R3, Sly R1
+    :
   </div>
   <div>
     0
