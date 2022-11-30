@@ -40,6 +40,7 @@ export default function LandingPage(props: { isMobile: boolean }) {
   };
 
   const close_card_try_now = () => {
+    set_angles([0, 0]);
     set_show_card_try_now(false);
     console.log(show_card_try_now);
   };

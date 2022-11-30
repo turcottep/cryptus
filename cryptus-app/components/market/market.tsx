@@ -24,7 +24,6 @@ import MarketCollections from "./market_viewer/market_collections/market_collect
 import Support from "../basic/support/support";
 import get_user_by_username from "../../lib/get_user_by_username";
 import DateComponent from "./market_header/date/date";
-import TimeInterval from "./market_header/time_interval/time_interval";
 import SearchIcon from "../basic/header/search_icon/search_icon";
 
 import findAllUsers from "../../lib/findAllUsers";
@@ -32,6 +31,7 @@ import Graph from "./graph/graph";
 import { Page } from "../building_blocks/building_blocks";
 import Card from "../utils/card/card";
 import { Search } from "@mui/icons-material";
+import TimeInterval from "./market_header/time_interval/time_interval";
 
 type market_overview_props = {
   date: string;
@@ -151,10 +151,28 @@ export default function MarketOverview(props: market_overview_props) {
 
   const callbackGraph = async (interval) => {
     // setInterval(interval);
+
+    if (loading) {
+      console.log(
+        "callback: too fast, wait for the previous request to finish"
+      );
+      return;
+    }
+
+    setLoading(true);
+
     console.log("updating interval", interval);
+
+    for (const collection of newPropCollection) {
+      collection.data_price = [0, 0];
+    }
+    setnewPropCollection([...newPropCollection]);
+
     const newPropCollectionTemp = await update(interval);
     set_market_interval(interval);
     setnewPropCollection(newPropCollectionTemp);
+
+    setLoading(false);
   };
 
   const update_for_user = async (username: string) => {
@@ -302,10 +320,10 @@ export default function MarketOverview(props: market_overview_props) {
           </div>
         </div>
         <div className={s.time_container}>
-          <div></div>
           <TimeInterval
             active={props.networth.active}
             callback={callbackGraph}
+            loading={loading}
           />
           <SortButton
             newPropCollectionFavorite={newPropCollectionFavorite}
@@ -315,12 +333,12 @@ export default function MarketOverview(props: market_overview_props) {
             setnewPropCollectionMarket={setnewPropCollectionMarket}
           />
         </div>
-        <div className={s.search_and_sort}>
+        {/* <div className={s.search_and_sort}>
           <SearchBar
             callback={open_card}
             collections={newPropCollectionMarket}
           />
-        </div>
+        </div> */}
       </div>
       <MarketCollections
         setLoading={setLoading}

@@ -61,9 +61,6 @@
   width: 100%;
   gap: 8px;
   padding-top: clamp(8px, 2vw, 16px);
-
-  > div {
-  }
 }
 
 .market_container {
@@ -102,9 +99,6 @@
   align-items: center;
   width: 100%;
 
-  > div {
-  }
-
   .number {
     display: grid;
     grid-template-columns: 70px auto 70px;
@@ -113,9 +107,6 @@
 
     gap: 8px;
     padding: 0 8px;
-
-    > div {
-    }
 
     .num {
       grid-area: num;

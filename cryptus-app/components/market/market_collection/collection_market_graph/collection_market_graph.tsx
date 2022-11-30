@@ -34,7 +34,11 @@ export default function CollectionMarketGraph(props: {
           detailled={true}
         />
       </div>
-      <TimeInterval active={props.interval} callback={props.callback} />
+      <TimeInterval
+        active={props.interval}
+        callback={props.callback}
+        loading={false}
+      />
     </div>
   );
 }
