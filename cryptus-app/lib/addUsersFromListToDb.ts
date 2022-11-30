@@ -64,7 +64,7 @@ export const usersList = [
     wallet_adress: "0xa442ddf27063320789b59a8fdca5b849cd2cdeac",
   },
   {
-    username: "Zeneca_33",
+    username: "Zeneca33",
     wallet_adress: "0x886478d3cf9581b624cb35b5446693fc8a58b787",
   },
   {
@@ -113,10 +113,10 @@ export const usersList = [
   },
   {
     username: "VitalikButerin",
-    wallet_adress: "0xd8da6bf26964af9d7eed9e03e53415d37aa96045 ",
+    wallet_adress: "0xd8da6bf26964af9d7eed9e03e53415d37aa96045",
   },
   {
     username: "dan_opensea",
-    wallet_adress: "0x530cf036ed4fa58f7301a9c788c9806624cefd19 ",
+    wallet_adress: "0x530cf036ed4fa58f7301a9c788c9806624cefd19",
   },
 ];
