@@ -28,7 +28,16 @@ export default function SearchBar(props: {
   //   "lafleur1",
   // ];
 
-  const blacklist_users = ["lafleur", "phil0rdi", "fleur", "bike", "turcotte"];
+  const blacklist_users = [
+    "lafleur",
+    "phil0rdi",
+    "fleur",
+    "bike",
+    "turcotte",
+    "guib",
+    "bruh",
+    "bigboy20",
+  ];
 
   // const check_for_default_suggested_users = (name: string) => {
   //   for (let i = 0; i < default_selected_users.length; i++) {
@@ -119,7 +128,8 @@ export default function SearchBar(props: {
             .filter((user) => {
               if (
                 query === "" &&
-                !blacklist_users.includes(user.username)
+                !blacklist_users.includes(user.username) &&
+                !user.username.toLowerCase().includes("user")
                 // check_for_default_suggested_users(user.username)
               ) {
                 return user;

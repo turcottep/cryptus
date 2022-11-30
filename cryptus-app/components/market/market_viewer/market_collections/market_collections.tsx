@@ -35,41 +35,36 @@ export default function MarketCollections(props: {
     setCollections(props.collections);
   }, [props.collections]);
 
-  const getMoreCollections = async () => {
-    console.log("GetMoreCollections");
-    const collections_dict = collectionDictionary;
-    var hMore = true;
-    const newCollections = Object.keys(collections_dict).map((key) => {
-      return collections_dict[key];
-    }) as collection[];
-    let newCollectionsSliced = null;
-    if (newCollections.length > currentIndex + 10) {
-      newCollectionsSliced = newCollections.slice(
-        currentIndex,
-        currentIndex + 10
-      );
-      setCurrentIndex(currentIndex + 10);
-    } else if (newCollections.length > currentIndex) {
-      newCollectionsSliced = newCollections.slice(
-        currentIndex,
-        newCollections.length
-      );
-      setCurrentIndex(currentIndex + newCollectionsSliced.length);
-    } else {
-      setHasMore(false);
-      hMore = false;
-    }
-    if (hMore) {
-      updatePrice(
-        props.interval,
-        false,
-        props.setLoading,
-        newCollectionsSliced
-      );
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setCollections((collection) => [...collection, ...newCollectionsSliced]);
-    }
-  };
+  // const getMoreCollections = async () => {
+  //   console.log("GetMoreCollections");
+  //   const collections_dict = collectionDictionary;
+  //   var hMore = true;
+  //   const newCollections = Object.keys(collections_dict).map((key) => {
+  //     return collections_dict[key];
+  //   }) as collection[];
+  //   let newCollectionsSliced = null;
+  //   if (newCollections.length > currentIndex + 10) {
+  //     newCollectionsSliced = newCollections.slice(
+  //       currentIndex,
+  //       currentIndex + 10
+  //     );
+  //     setCurrentIndex(currentIndex + 10);
+  //   } else if (newCollections.length > currentIndex) {
+  //     newCollectionsSliced = newCollections.slice(
+  //       currentIndex,
+  //       newCollections.length
+  //     );
+  //     setCurrentIndex(currentIndex + newCollectionsSliced.length);
+  //   } else {
+  //     setHasMore(false);
+  //     hMore = false;
+  //   }
+  //   if (hMore) {
+  //     updatePrice(props.interval, newCollectionsSliced);
+  //     await new Promise((resolve) => setTimeout(resolve, 2000));
+  //     setCollections((collection) => [...collection, ...newCollectionsSliced]);
+  //   }
+  // };
 
   useEffect(() => {
     // console.log("collection changed", collections);

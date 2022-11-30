@@ -21,7 +21,12 @@ export default function NftInfo(props: {
   return (
     <div className={s.container}>
       <div className={s.left}>
-        <a className={s.collection} href={"/market/" + collection_stripped}>
+        <a
+          className={s.collection}
+          href={"https://opensea.io/collection/" + props.nft.collection}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {collection}
         </a>
         <div className={s.name}>{name}</div>

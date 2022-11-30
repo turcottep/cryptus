@@ -16,6 +16,7 @@ export const mock_collection: nft_collection = {
       description:
         "Listen up! Savannah R1-R3, Sly R1 here. I'm here to enjoy licking doorknobs and kickboxing. When my owner isn't watching, I steal their mom jeans and hoard them in my litter box. I'm not sorry. Let's pawty!",
       collection: "CryptoKitties",
+      collection_slug: "cryptokitties",
       collection_size: null,
       collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
       token_id: "492809",
@@ -67,6 +68,7 @@ export const mock_collection: nft_collection = {
       description:
         "G'day. My name is Couple 69 2/2. My favourite colour is green. I like to tell stories, which are often either lawful or vivacious. Are you a magician? Because whenever I look at you, everyone else disappears!",
       collection: "CryptoKitties",
+      collection_slug: "cryptokitties",
       collection_size: null,
       collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
       token_id: "739367",
@@ -126,6 +128,7 @@ export const mock_collection: nft_collection = {
       description:
         "G'day. I am Cyborg+Springcrocus; Caffeine. I'm glad you've come. I can safely say that salsa is the greatest thing since sliced bread. Don't even try to convince me otherwise. I can't imagine being with any other breeder now that I've met you!",
       collection: "CryptoKitties",
+      collection_slug: "cryptokitties",
       collection_size: null,
       collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
       token_id: "901479",
@@ -180,6 +183,7 @@ export const mock_nft: nft = {
   description:
     "Listen up! Savannah R1-R3, Sly R1 here. I'm here to enjoy licking doorknobs and kickboxing. When my owner isn't watching, I steal their mom jeans and hoard them in my litter box. I'm not sorry. Let's pawty!",
   collection: "CryptoKitties",
+  collection_slug: "cryptokitties",
   collection_size: null,
   collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
   token_id: "492809",
@@ -242,6 +246,7 @@ export const mock_wallet: nft_collection[] = [
         description:
           "Listen up! Savannah R1-R3, Sly R1 here. I'm here to enjoy licking doorknobs and kickboxing. When my owner isn't watching, I steal their mom jeans and hoard them in my litter box. I'm not sorry. Let's pawty!",
         collection: "CryptoKitties",
+        collection_slug: "cryptokitties",
         collection_size: null,
         collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
         token_id: "492809",
@@ -293,6 +298,7 @@ export const mock_wallet: nft_collection[] = [
         description:
           "G'day. My name is Couple 69 2/2. My favourite colour is green. I like to tell stories, which are often either lawful or vivacious. Are you a magician? Because whenever I look at you, everyone else disappears!",
         collection: "CryptoKitties",
+        collection_slug: "cryptokitties",
         collection_size: null,
         collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
         token_id: "739367",
@@ -352,6 +358,7 @@ export const mock_wallet: nft_collection[] = [
         description:
           "G'day. I am Cyborg+Springcrocus; Caffeine. I'm glad you've come. I can safely say that salsa is the greatest thing since sliced bread. Don't even try to convince me otherwise. I can't imagine being with any other breeder now that I've met you!",
         collection: "CryptoKitties",
+        collection_slug: "cryptokitties",
         collection_size: null,
         collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
         token_id: "901479",
@@ -414,6 +421,7 @@ export const mock_wallet: nft_collection[] = [
         description:
           "Listen up! Savannah R1-R3, Sly R1 here. I'm here to enjoy licking doorknobs and kickboxing. When my owner isn't watching, I steal their mom jeans and hoard them in my litter box. I'm not sorry. Let's pawty!",
         collection: "CryptoKitties",
+        collection_slug: "cryptokitties",
         collection_size: null,
         collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
         token_id: "492809",
@@ -465,6 +473,7 @@ export const mock_wallet: nft_collection[] = [
         description:
           "G'day. My name is Couple 69 2/2. My favourite colour is green. I like to tell stories, which are often either lawful or vivacious. Are you a magician? Because whenever I look at you, everyone else disappears!",
         collection: "CryptoKitties",
+        collection_slug: "cryptokitties",
         collection_size: null,
         collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
         token_id: "739367",
@@ -524,6 +533,7 @@ export const mock_wallet: nft_collection[] = [
         description:
           "G'day. I am Cyborg+Springcrocus; Caffeine. I'm glad you've come. I can safely say that salsa is the greatest thing since sliced bread. Don't even try to convince me otherwise. I can't imagine being with any other breeder now that I've met you!",
         collection: "CryptoKitties",
+        collection_slug: "cryptokitties",
         collection_size: null,
         collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
         token_id: "901479",
@@ -586,6 +596,7 @@ export const mock_wallet: nft_collection[] = [
         description:
           "Listen up! Savannah R1-R3, Sly R1 here. I'm here to enjoy licking doorknobs and kickboxing. When my owner isn't watching, I steal their mom jeans and hoard them in my litter box. I'm not sorry. Let's pawty!",
         collection: "CryptoKitties",
+        collection_slug: "cryptokitties",
         collection_size: null,
         collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
         token_id: "492809",
@@ -637,6 +648,7 @@ export const mock_wallet: nft_collection[] = [
         description:
           "G'day. My name is Couple 69 2/2. My favourite colour is green. I like to tell stories, which are often either lawful or vivacious. Are you a magician? Because whenever I look at you, everyone else disappears!",
         collection: "CryptoKitties",
+        collection_slug: "cryptokitties",
         collection_size: null,
         collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
         token_id: "739367",
@@ -696,6 +708,7 @@ export const mock_wallet: nft_collection[] = [
         description:
           "G'day. I am Cyborg+Springcrocus; Caffeine. I'm glad you've come. I can safely say that salsa is the greatest thing since sliced bread. Don't even try to convince me otherwise. I can't imagine being with any other breeder now that I've met you!",
         collection: "CryptoKitties",
+        collection_slug: "cryptokitties",
         collection_size: null,
         collection_address: "0x06012c8cf97bead5deae237070f9587f8e7a266d",
         token_id: "901479",
