@@ -293,38 +293,18 @@ export default function MarketOverview(props: market_overview_props) {
               detailled={true}
             />
           </div>
-          <div>
-            {show_card_collection_search ? (
-              <div className={s.search_and_sort}>
-                <Card
-                  isMobile={false}
-                  callback_close={() => {
-                    set_show_card_collection_search(false);
-                  }}
-                >
-                  <SearchBar
-                    callback={open_card}
-                    collections={newPropCollectionMarket}
-                  />
-                </Card>
-              </div>
-            ) : (
-              <div
-                onClick={() => {
-                  set_show_card_collection_search(true);
-                }}
-              >
-                <Search />
-              </div>
-            )}
-          </div>
         </div>
-        <div className={s.time_container}>
-          <TimeInterval
-            active={props.networth.active}
-            callback={callbackGraph}
-            loading={loading}
-          />
+
+        <TimeInterval active={props.networth.active} callback={callbackGraph} />
+
+        <div className={s.search_and_sort}>
+          <div
+            onClick={() => {
+              set_show_card_collection_search(true);
+            }}
+          >
+            <Search />
+          </div>
           <SortButton
             newPropCollectionFavorite={newPropCollectionFavorite}
             newPropCollectionMarket={newPropCollectionMarket}
@@ -333,12 +313,6 @@ export default function MarketOverview(props: market_overview_props) {
             setnewPropCollectionMarket={setnewPropCollectionMarket}
           />
         </div>
-        {/* <div className={s.search_and_sort}>
-          <SearchBar
-            callback={open_card}
-            collections={newPropCollectionMarket}
-          />
-        </div> */}
       </div>
       <MarketCollections
         setLoading={setLoading}
@@ -371,6 +345,19 @@ export default function MarketOverview(props: market_overview_props) {
           open_wallet_manager={open_wallet_manager}
           open_support={open_support}
         />
+      )}
+      {show_card_collection_search && (
+        <Card
+          isMobile={isMobile}
+          callback_close={() => {
+            set_show_card_collection_search(false);
+          }}
+        >
+          <SearchBar
+            callback={open_card}
+            collections={newPropCollectionMarket}
+          />
+        </Card>
       )}
       {show_card_search && (
         <SearchIcon

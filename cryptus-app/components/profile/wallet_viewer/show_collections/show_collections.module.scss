@@ -1,25 +1,5 @@
 @use "/styles/variables" as v;
 
-.container {
-  top: 0;
-  position: fixed;
-  display: flex;
-  // flex: 1 1 auto;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: flex-start;
-  background-color: v.$header-color;
-  // margin-top: 612px;
-  z-index: 100;
-  // background-color: red;
-  height: 100%;
-  width: 100%;
-
-  // transform: translate(0, 50%);
-  overflow-y: hidden;
-}
-
 .header {
   // position: fixed;
   // top: 0;
@@ -31,7 +11,6 @@
   justify-content: center;
 
   height: v.$header-h;
-  width: min(100vw, v.$mobile);
   padding: 0px 8px;
 
   z-index: 100;
@@ -51,7 +30,7 @@
   align-items: center;
   text-align: center;
   justify-content: flex-start;
-  background-color: v.$header-color;
+
   width: 100%;
 
   // max-height: 800px;
@@ -62,15 +41,16 @@
 
 .button {
   display: flex;
+
   flex: 1 1 auto;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   text-align: center;
   // position: ab;
   bottom: 16px;
   gap: 8px;
   font-size: v.$font-size-m;
-  background-color: v.$header-color;
 }
 
 .option {
@@ -78,7 +58,7 @@
   grid-template-columns: 1fr 5fr 1fr;
   align-items: center;
   text-align: center;
-  background-color: v.$header-color;
+
   padding-top: 16px;
   padding-bottom: 16px;
   width: 100%;
