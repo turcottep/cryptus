@@ -1,4 +1,5 @@
 @use "/styles/variables" as v;
+@import "/styles/utils";
 
 .container {
   text-align: center;
@@ -26,9 +27,36 @@
 }
 
 .red {
-  color: v.$market-red;
+  @extend .cooltextred;
 }
 
 .green {
-  color: v.$market-green;
+  @extend .cooltextgreen;
+}
+
+.number {
+  display: grid;
+  grid-template-columns: 70px auto 70px;
+  grid-template-rows: 100px 30px;
+  grid-template-areas: ". num fiat" ". change .";
+
+  gap: 8px;
+  padding: 0 8px;
+
+  .num {
+    grid-area: num;
+    place-self: flex-end;
+    font-size: 80px;
+  }
+  .fiat {
+    grid-area: fiat;
+    justify-self: center;
+    align-self: center;
+  }
+  .change {
+    grid-area: change;
+    justify-self: center;
+    align-self: flex-start;
+    font-size: 16px;
+  }
 }

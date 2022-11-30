@@ -101,35 +101,37 @@ export default function MarketCollection(props: {
 
   return (
     <Card callback_close={props.callback_close} isMobile={props.isMobile}>
-      <MarketCollectionInfos
-        collection_logo={market_collection_props.collection_logo}
-        collection_name={market_collection_props.collection_name}
-        collection_ticker={market_collection_props.collection_ticker}
-      />
-      <CollectionFloorPrice
-        initial_price={price[0]}
-        current_price={price[price.length - 1]}
-        floor_price_timestamp={market_collection_props.floor_price_timestamp}
-      />
-      <CollectionMarketGraph
-        data_price={price}
-        data_volume={volume}
-        price_delta={delta}
-        interval={market_collection_props.interval}
-        address={market_collection_props.address}
-        callback={updatePrice}
-      />
-      <div className={s.stats}>
-        {stats.map((d) => (
-          <div
-            key={d.name}
-            className={s.stat}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className={s.bla}>{d.value}</div>
-            <div className={s.bla}>{d.key}</div>
-          </div>
-        ))}
+      <div className={s.container}>
+        <MarketCollectionInfos
+          collection_logo={market_collection_props.collection_logo}
+          collection_name={market_collection_props.collection_name}
+          collection_ticker={market_collection_props.collection_ticker}
+        />
+        <CollectionFloorPrice
+          initial_price={price[0]}
+          current_price={price[price.length - 1]}
+          floor_price_timestamp={market_collection_props.floor_price_timestamp}
+        />
+        <CollectionMarketGraph
+          data_price={price}
+          data_volume={volume}
+          price_delta={delta}
+          interval={market_collection_props.interval}
+          address={market_collection_props.address}
+          callback={updatePrice}
+        />
+        <div className={s.stats}>
+          {stats.map((d) => (
+            <div
+              key={d.name}
+              className={s.stat}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className={s.bla}>{d.value}</div>
+              <div className={s.bla}>{d.key}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </Card>
   );

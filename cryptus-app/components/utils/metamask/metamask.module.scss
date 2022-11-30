@@ -23,4 +23,7 @@
   color: v.$hover-color;
   background-color: black;
   box-shadow: 0px 4px 24px v.$hover-color;
+  scale: 1.1;
+  cursor: pointer;
+  transition: all 0.1s linear;
 }

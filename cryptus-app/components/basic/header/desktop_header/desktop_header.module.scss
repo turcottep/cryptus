@@ -36,6 +36,9 @@
 }
 .home:hover * {
   @extend .cooltext;
+  scale: 1.1;
+  cursor: pointer;
+  transition: all 0.1s linear;
 }
 
 .tabs {
@@ -54,6 +57,9 @@
 .tab:hover {
   @extend .cooltext;
   font-weight: 400;
+  scale: 1.1;
+  cursor: pointer;
+  transition: all 0.1s linear;
 }
 .tabactive {
   @extend .tab;
@@ -82,4 +88,7 @@
 .icon:hover {
   opacity: 0.5;
   cursor: pointer;
+  scale: 1.1;
+  cursor: pointer;
+  transition: all 0.1s linear;
 }

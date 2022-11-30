@@ -184,7 +184,6 @@ const Collection = (props: {
           open_nft={props.open_nft}
         />
         <div className={s.collname}>{collection.name}</div>
-        <div className={s.collname}></div>
       </div>
     );
   }

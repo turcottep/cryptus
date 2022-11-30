@@ -1,3 +1,4 @@
+import { Close } from "@mui/icons-material";
 import React from "react";
 import s from "./card.module.scss";
 
@@ -19,7 +20,11 @@ export default function Card(props: {
       }}
     >
       <div className={s.popupcontent}>
-        {props.isMobile && <XButton callback={props.callback_close} />}
+        {props.isMobile && (
+          <div className={s.x_button} onClick={props.callback_close}>
+            <Close />
+          </div>
+        )}
         {props.children}
       </div>
     </div>
@@ -34,20 +39,7 @@ const XButton = (props: { callback }) => {
         props.callback();
       }}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={3}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M6 18L18 6M6 6l12 12"
-        />
-      </svg>
+      <Close />
     </div>
   );
 };

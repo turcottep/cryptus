@@ -30,6 +30,9 @@
 
 .row:hover {
   opacity: 0.5;
+  scale: 1.1;
+  cursor: pointer;
+  transition: all 0.1s linear;
 }
 
 .iconDiv {
