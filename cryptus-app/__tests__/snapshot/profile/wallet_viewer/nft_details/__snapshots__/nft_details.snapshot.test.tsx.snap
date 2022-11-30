@@ -6,21 +6,16 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
   onClick={[Function]}
 >
   <div>
-    <div
-      onClick={[Function]}
-    >
+    <div>
       <svg
-        className="h-6 w-6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={3}
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="CloseIcon"
+        focusable="false"
         viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M6 18L18 6M6 6l12 12"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
         />
       </svg>
     </div>
@@ -32,7 +27,9 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
       <div>
         <div>
           <a
-            href="/market/CryptoKitties"
+            href="https://opensea.io/collection/CryptoKitties"
+            rel="noopener noreferrer"
+            target="_blank"
           >
             CryptoKitties
           </a>
@@ -74,6 +71,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             mouth
+            :
           </div>
           <div>
             soserious
@@ -85,6 +83,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             pattern
+            :
           </div>
           <div>
             spangled
@@ -96,6 +95,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             virginity
+            :
           </div>
           <div>
             non-virgin
@@ -107,6 +107,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             fur
+            :
           </div>
           <div>
             selkirk
@@ -118,6 +119,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             eye_colour
+            :
           </div>
           <div>
             sapphire
@@ -129,6 +131,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             accent_colour
+            :
           </div>
           <div>
             icy
@@ -140,6 +143,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             highlight_colour
+            :
           </div>
           <div>
             coffee
@@ -151,6 +155,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             cooldown_timer
+            :
           </div>
           <div>
             Catatonic (1 week)
@@ -162,6 +167,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             eye_shape
+            :
           </div>
           <div>
             chronic
@@ -173,6 +179,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             base_colour
+            :
           </div>
           <div>
             mauveover
@@ -184,6 +191,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             generation
+            :
           </div>
           <div>
             0
@@ -195,6 +203,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             purrstige
+            :
           </div>
           <div>
             pu12
@@ -206,6 +215,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         <div>
           <div>
             secret
+            :
           </div>
           <div>
             se6

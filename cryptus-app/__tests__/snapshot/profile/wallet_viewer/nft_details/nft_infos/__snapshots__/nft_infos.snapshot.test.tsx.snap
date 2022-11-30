@@ -4,7 +4,9 @@ exports[`<NftInfo /> should display the correct NFT information 1`] = `
 <div>
   <div>
     <a
-      href="/market/CryptoKitties"
+      href="https://opensea.io/collection/CryptoKitties"
+      rel="noopener noreferrer"
+      target="_blank"
     >
       CryptoKitties
     </a>
