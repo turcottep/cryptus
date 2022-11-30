@@ -8,6 +8,7 @@ export interface nft {
   last_sale_price: number;
   last_sale_symbol: string;
   collection: string;
+  collection_slug: string;
   collection_size: number;
   collection_address: string;
   description: string;
@@ -69,6 +70,7 @@ export type collection = {
   address: string;
   floor_price: number;
   floor_price_delta: number;
+  user_owned: boolean;
   data_price: number[];
   data_volume: number[];
   timestamp: string;

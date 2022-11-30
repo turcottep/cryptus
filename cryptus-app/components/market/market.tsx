@@ -66,18 +66,6 @@ export default function MarketOverview(props: market_overview_props) {
     day: "numeric",
   });
 
-  const [user_collections_list, set_user_collections_list] = useState<string[]>(
-    []
-  );
-
-  const [newPropCollection, setnewPropCollection] = useState(props.collections);
-  const [newPropCollectionFavorite, setnewPropCollectionFavorite] = useState(
-    []
-  );
-  const [newPropCollectionMarket, setnewPropCollectionMarket] = useState(
-    props.collections
-  );
-
   const [session, session_status] = useSession();
   const [user, setUser] = useState(props_user_empty);
 
@@ -106,37 +94,37 @@ export default function MarketOverview(props: market_overview_props) {
       const user_name = session.user.name;
       console.log("user_name", user_name);
 
-      update_for_user(user_name);
+      // update_for_user(user_name);
     }
   }, [session_status]);
 
-  const updateUserCollections = (user_collections) => {
-    // console.log("updateUserCollections", user_collections);
+  // const updateUserCollections = (user_collections) => {
+  //   // console.log("updateUserCollections", user_collections);
 
-    const newPropCollectionFavoriteTemp = [];
-    const newPropCollectionMarketTemp = [];
-    for (const collection of newPropCollection) {
-      if (user_collections.includes(collection.name)) {
-        newPropCollectionFavoriteTemp.push(collection);
-      } else {
-        newPropCollectionMarketTemp.push(collection);
-      }
-    }
-    // console.log("temp", newPropCollectionFavoriteTemp);
-    setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
-    setnewPropCollectionMarket(newPropCollectionMarketTemp);
-  };
+  //   const newPropCollectionFavoriteTemp = [];
+  //   const newPropCollectionMarketTemp = [];
+  //   for (const collection of newPropCollection) {
+  //     if (user_collections.includes(collection.name)) {
+  //       newPropCollectionFavoriteTemp.push(collection);
+  //     } else {
+  //       newPropCollectionMarketTemp.push(collection);
+  //     }
+  //   }
+  //   // console.log("temp", newPropCollectionFavoriteTemp);
+  //   setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
+  //   setnewPropCollectionMarket(newPropCollectionMarketTemp);
+  // };
 
-  useEffect(() => {
-    if (props.collections != null) {
-      const newPropCollectionTemp = update();
-      if (session) {
-        update_for_user(session.user.name);
-      } else {
-        updateUserCollections([]);
-      }
-    }
-  }, [props.collections, newPropCollection]);
+  // useEffect(() => {
+  //   if (props.collections != null) {
+  //     const newPropCollectionTemp = update();
+  //     if (session) {
+  //       update_for_user(session.user.name);
+  //     } else {
+  //       updateUserCollections([]);
+  //     }
+  //   }
+  // }, [props.collections, newPropCollection]);
 
   useEffect(() => {
     const getAllUsers = async () => {
@@ -145,9 +133,6 @@ export default function MarketOverview(props: market_overview_props) {
     };
     getAllUsers();
   }, []);
-
-  const update = async (interval: intervals = props.networth.active) =>
-    await updatePrice(interval, true, setLoading, newPropCollection);
 
   const callbackGraph = async (interval) => {
     // setInterval(interval);
@@ -163,31 +148,31 @@ export default function MarketOverview(props: market_overview_props) {
 
     console.log("updating interval", interval);
 
-    for (const collection of newPropCollection) {
+    for (const collection of props.collections) {
       collection.data_price = [0, 0];
     }
-    setnewPropCollection([...newPropCollection]);
+    // setnewPropCollection([...newPropCollection]);
 
-    const newPropCollectionTemp = await update(interval);
+    await updatePrice(interval, props.collections);
     set_market_interval(interval);
-    setnewPropCollection(newPropCollectionTemp);
+    // setnewPropCollection(newPropCollectionTemp);
 
     setLoading(false);
   };
 
-  const update_for_user = async (username: string) => {
-    // console.log("update_for_user", username);
+  // const update_for_user = async (username: string) => {
+  //   // console.log("update_for_user", username);
 
-    const user = await get_user_by_username(username);
-    // console.log("user : ", user);
-    const user_collections = user.collections_list;
-    // console.log("iuser collections : ", user_collections);
-    const networth = user.networth;
-    // console.log("networth : ", networth);
-    set_user_collections_list([...user_collections]);
-    setUser(user);
-    updateUserCollections(user_collections);
-  };
+  //   const user = await get_user_by_username(username);
+  //   // console.log("user : ", user);
+  //   const user_collections = user.collections_list;
+  //   // console.log("iuser collections : ", user_collections);
+  //   const networth = user.networth;
+  //   // console.log("networth : ", networth);
+  //   set_user_collections_list([...user_collections]);
+  //   setUser(user);
+  //   updateUserCollections(user_collections);
+  // };
 
   const close_card = () => {
     set_show_card(false);
@@ -226,7 +211,7 @@ export default function MarketOverview(props: market_overview_props) {
 
   const open_card = (collection_name: string) => {
     console.log("open card:", collection_name);
-    const collection = newPropCollection.find(
+    const collection = props.collections.find(
       (c) => c.name === collection_name
     );
     set_card_collection(collection);
@@ -272,8 +257,9 @@ export default function MarketOverview(props: market_overview_props) {
             <div className={s.fiat}>ETH</div>
             <div className={s.change}>
               {(
-                (user.networth_history[user.networth_history.length - 1] -
-                  user.networth_history[0]) /
+                (100 *
+                  (user.networth_history[user.networth_history.length - 1] -
+                    user.networth_history[0])) /
                 (user.networth_history[0] + 0.00000001)
               ).toFixed(2)}
               %
@@ -309,13 +295,13 @@ export default function MarketOverview(props: market_overview_props) {
           >
             <Search />
           </div>
-          <SortButton
+          {/* <SortButton
             newPropCollectionFavorite={newPropCollectionFavorite}
             newPropCollectionMarket={newPropCollectionMarket}
             view={intervals[market_interval]}
             setnewPropCollectionFavorite={setnewPropCollectionFavorite}
             setnewPropCollectionMarket={setnewPropCollectionMarket}
-          />
+          /> */}
         </div>
       </div>
       <MarketCollections
@@ -324,7 +310,9 @@ export default function MarketOverview(props: market_overview_props) {
         callback={open_card}
         name={"My Collections"}
         icon={"/icons/favorite_icon.png"}
-        collections={newPropCollectionFavorite}
+        collections={props.collections.filter((c) => {
+          return c.user_owned;
+        })}
         connected={!!session}
       />
       <MarketCollections
@@ -333,7 +321,9 @@ export default function MarketOverview(props: market_overview_props) {
         callback={open_card}
         name={"Market"}
         icon={"/icons/market_icon.png"}
-        collections={newPropCollectionMarket}
+        collections={props.collections.filter((c) => {
+          return !c.user_owned;
+        })}
       />
       {show_card && (
         <MarketCollection
@@ -357,10 +347,7 @@ export default function MarketOverview(props: market_overview_props) {
             set_show_card_collection_search(false);
           }}
         >
-          <SearchBar
-            callback={open_card}
-            collections={newPropCollectionMarket}
-          />
+          <SearchBar callback={open_card} collections={props.collections} />
         </Card>
       )}
       {show_card_search && (
@@ -404,13 +391,8 @@ export type graph = {
 
 export const updatePrice = async (
   interval: intervals,
-  needLoading: boolean,
-  setLoading: Function,
   collections: collection[]
 ) => {
-  if (needLoading == true) {
-    setLoading(true);
-  }
   // console.log("Collections to Update: ", collections);
   let viewingmode = intervals[interval];
   if (viewingmode == "three_months") {
@@ -436,7 +418,7 @@ export const updatePrice = async (
   const res_object = await res.json();
   // console.log("res_object ", res_object);
   const { prices, counts, deltas } = res_object;
-  const newPropCollectionTemp = [];
+  // const newPropCollectionTemp = [];
 
   if (collections.length > 0) {
     for (let i = 0; i < collections.length; i++) {
@@ -446,13 +428,10 @@ export const updatePrice = async (
       element.data_price = prices && prices[i];
       element.floor_price = prices && prices[i][prices[i].length - 1];
       element.floor_price_delta = deltas && deltas[i];
-      newPropCollectionTemp.push(element);
+      // newPropCollectionTemp.push(element);
     }
   }
 
-  if (needLoading) {
-    setLoading(false);
-  }
   // console.log("collection updated ", newPropCollectionTemp);
-  return newPropCollectionTemp;
+  // return newPropCollectionTemp;
 };

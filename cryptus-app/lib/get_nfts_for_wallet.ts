@@ -122,6 +122,7 @@ export default async function get_nfts_for_wallet(
       image_url: nft.image_url,
       description: nft.description,
       collection: nft.collection.name,
+      collection_slug: nft.collection.slug,
       collection_address: nft.asset_contract.address,
       token_id: nft.token_id,
       external_url: nft.permalink,
