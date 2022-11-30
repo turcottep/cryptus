@@ -1,4 +1,4 @@
-export const forbiddenWords = ["Dick", "Booty"];
+export const forbiddenWords = ["Dick", "Booty", "fucking"];
 
 export const forbiddenCollections = [
   "TierPass",
