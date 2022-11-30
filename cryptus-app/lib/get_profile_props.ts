@@ -30,6 +30,30 @@ export default async function get_profile_props(
     let collections_in_wallet = [];
     collections_in_wallet = user.collections_address_list;
 
+    if (
+      user.profile_image_url === "./icons/icon-192x192.png" &&
+      user.nfts.length > 0
+    ) {
+      console.log("updating profile picture");
+
+      user.profile_image_url = user.nfts[0].image_url;
+
+      console.log("user.profile_image_url: ", user.profile_image_url);
+
+      const res_pfp = await fetch("/api/users/updateImageUrl", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: user.username,
+          image_url: user.profile_image_url,
+        }),
+      });
+
+      console.log("res_pfp: ", res_pfp);
+    }
+
     if (user.nfts.length === 0) {
       if (collections_in_wallet.length === 0) {
         console.log(
@@ -47,45 +71,55 @@ export default async function get_profile_props(
           }
         }
 
-        // const slug_clean = [];
-        // const addresses_clean = [];
-        // for (let i = 0; i < slugs.length; i++) {
-        //   const slug_i = slugs[i];
-        //   const address_i = addresses[i];
+        const slug_clean = [];
+        const addresses_clean = [];
+        for (let i = 0; i < slugs.length; i++) {
+          if (i >= 100) break;
 
-        //   const res = await fetch(
-        //     "https://api.opensea.io/api/v1/collection/" + slug_i + "/stats",
-        //     {
-        //       headers: {
-        //         Accept: "application/json",
-        //         "X-API-KEY": process.env.NEXT_PUBLIC_OPENSEA_API_KEY,
-        //       },
-        //     }
-        //   );
+          const slug_i = slugs[i];
+          const address_i = addresses[i];
 
-        //   const data = await res.json();
-        //   // console.log("data", data.);
+          try {
+            const res = await fetch(
+              "https://api.opensea.io/api/v1/collection/" + slug_i + "/stats",
+              {
+                headers: {
+                  Accept: "application/json",
+                  "X-API-KEY": process.env.NEXT_PUBLIC_OPENSEA_API_KEY,
+                },
+              }
+            );
 
-        //   if (data.stats.floor_price > 0.01 && data.stats.total_volume > 1000) {
-        //     slug_clean.push(slug_i);
-        //     addresses_clean.push(address_i);
-        //     console.log("added", slug_i, address_i);
-        //   } else {
-        //     console.log(
-        //       "won't add collection",
-        //       slug_i,
-        //       "because of low volume"
-        //     );
-        //   }
+            const data = await res.json();
+            // console.log("data", data.);
 
-        //   await new Promise((r) => setTimeout(r, 1000));
-        // }
+            if (
+              data.stats.floor_price > 0.01 &&
+              data.stats.total_volume > 100
+            ) {
+              slug_clean.push(slug_i);
+              addresses_clean.push(address_i);
+              console.log("added", slug_i, address_i);
+            } else {
+              console.log(
+                "won't add collection",
+                slug_i,
+                "because of low volume"
+              );
+            }
 
-        // user = await add_collections_to_user(
-        //   addresses_clean,
-        //   slug_clean,
-        //   user.username
-        // );
+            await new Promise((r) => setTimeout(r, 250));
+          } catch (e) {
+            console.log("error", e);
+            await new Promise((r) => setTimeout(r, 10000));
+          }
+        }
+
+        user = await add_collections_to_user(
+          addresses_clean,
+          slug_clean,
+          user.username
+        );
         collections_in_wallet = user.collections_address_list;
         // console.log("ALL0", collections_in_wallet);
       } else {
@@ -98,7 +132,7 @@ export default async function get_profile_props(
 
       let nfts_per_wallet = await get_nfts_for_wallet(
         wallet.address,
-        collections_in_wallet.slice(0, nbColToFillPage)
+        collections_in_wallet.slice(0, 100)
       );
       nfts.push(...nfts_per_wallet);
 

@@ -10,18 +10,18 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const address = "0x68c4d9e03d7d902053c428ca2d74b612db7f583a".toLowerCase();
 
   try {
-    const all_wallets = await prisma.wallet.findMany({});
+    // const all_wallets = await prisma.wallet.findMany({});
 
-    console.log("all_wallets", all_wallets);
+    // console.log("all_wallets", all_wallets);
 
-    for (const wallet of all_wallets) {
-      const address = wallet.address.toLowerCase();
-      console.log("getting transactions for", address);
+    // for (const wallet of all_wallets) {
+    //   const address = wallet.address.toLowerCase();
+    console.log("getting transactions for", address);
 
-      await getNetworthForAddress(address);
-      // wait 1 second
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-    }
+    await getNetworthForAddress(address);
+    //   // wait 1 second
+    //   await new Promise((resolve) => setTimeout(resolve, 1000));
+    // }
 
     console.log("done");
 
@@ -212,6 +212,7 @@ async function getNetworthForAddress(address: string) {
 
   let i = 0;
   const networth_history = [];
+  let networth_start = false;
 
   for (const day of trading_days_list) {
     // console.log("day", day);
@@ -261,7 +262,7 @@ async function getNetworthForAddress(address: string) {
         // console.log("amount", amount);
 
         const price_number = parseFloat(day["average_price"]);
-        // console.log("price_number", price_number);
+        console.log("price_number", price_number);
         if (price_number && price_number < 1000) {
           networth += price_number * amount;
           // console.log("networth", networth);
@@ -269,7 +270,14 @@ async function getNetworthForAddress(address: string) {
       }
     }
     day["networth"] = networth;
-    networth_history.push(networth);
+
+    if (networth_start == false && networth > 0) {
+      networth_start = true;
+    }
+
+    if (networth_start == true) {
+      networth_history.push(networth);
+    }
 
     i++;
   }
@@ -304,6 +312,8 @@ async function getNetworthForAddress(address: string) {
       networth: networth_history[-1],
     },
   });
+
+  console.log("res_update", res_update);
 }
 
 interface EtherScanTransaction {

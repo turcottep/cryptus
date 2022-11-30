@@ -1,4 +1,8 @@
 export default async function save_nfts_to_user(user, nfts) {
+  console.log("save_nfts_to_user, user: ", user);
+  console.log("save_nfts_to_user, nfts: ", nfts);
+  console.log("save_nfts_to_user, nfts.length: ", nfts.length);
+
   const nft_stringified = nfts.map((nft) => {
     return (nft = {
       properties: JSON.stringify(nft.properties),
