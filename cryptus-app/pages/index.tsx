@@ -72,15 +72,9 @@ export default function Home() {
         <meta name="author" content="CryptUS!" />
         <meta name="theme-color" content="#FFFDF5" />
 
-        <link rel="apple-touch-icon" href="/apple-icon.png"></link>
+        <link rel="pw4" href="/iamges/pw4.png"></link>
         <link
-          href="/icons/favicon-16x16.png"
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-        />
-        <link
-          href="/icons/favicon-32x32.png"
+          href="/images/pw4.png"
           rel="icon"
           type="image/png"
           sizes="32x32"

@@ -73,7 +73,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
       <div>
         <div>
           <div>
-            MOUTH
+            mouth
           </div>
           <div>
             soserious
@@ -84,7 +84,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            PATTERN
+            pattern
           </div>
           <div>
             spangled
@@ -95,7 +95,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            VIRGINITY
+            virginity
           </div>
           <div>
             non-virgin
@@ -106,7 +106,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            FUR
+            fur
           </div>
           <div>
             selkirk
@@ -117,7 +117,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            EYE_COLOUR
+            eye_colour
           </div>
           <div>
             sapphire
@@ -128,7 +128,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            ACCENT_COLOUR
+            accent_colour
           </div>
           <div>
             icy
@@ -139,7 +139,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            HIGHLIGHT_COLOUR
+            highlight_colour
           </div>
           <div>
             coffee
@@ -150,7 +150,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            COOLDOWN_TIMER
+            cooldown_timer
           </div>
           <div>
             Catatonic (1 week)
@@ -161,7 +161,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            EYE_SHAPE
+            eye_shape
           </div>
           <div>
             chronic
@@ -172,7 +172,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            BASE_COLOUR
+            base_colour
           </div>
           <div>
             mauveover
@@ -183,7 +183,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            GENERATION
+            generation
           </div>
           <div>
             0
@@ -194,7 +194,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            PURRSTIGE
+            purrstige
           </div>
           <div>
             pu12
@@ -205,7 +205,7 @@ exports[`<NftDetails /> should display the correct NFT information 1`] = `
         </div>
         <div>
           <div>
-            SECRET
+            secret
           </div>
           <div>
             se6
