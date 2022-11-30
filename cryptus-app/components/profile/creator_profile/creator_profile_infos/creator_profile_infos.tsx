@@ -239,7 +239,6 @@ export default function CreatorProfileInfos(props: {
     </div>
   ) : (
     <div className={s.container}>
-      <div className={s.left}></div>
       <div className={s.center}>
         <div className={s.profilepicture_container}>
           <img className={s.profilePic} src={props.image_url} alt="Avatar" />
@@ -247,7 +246,7 @@ export default function CreatorProfileInfos(props: {
         <div className={s.username}>{user_name.toUpperCase()}</div>
         <div className={s.description}>{desc}</div>
       </div>
-      <div className={s.right}>
+      <div className={s.buttons1}>
         <Button t="Edit Profile" c={() => set_edit_profile(true)} />
         <Button t="Edit Nfts" c={() => set_edit_collections(true)} />
         <CopyLinkButton />

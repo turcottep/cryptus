@@ -10,6 +10,8 @@ import ContextualPageName from "../../../basic/header/contextual_page_name/conte
 import update_collection_filter from "../../../../lib/update_collection_filter";
 import { nft, nft_collection } from "../../../../lib/data_types";
 import { props } from "cypress/types/bluebird";
+import Card from "../../../utils/card/card";
+import { isMobile } from "react-device-detect";
 
 export default function ShowCollections(props: {
   collections: nft_collection[];
@@ -67,24 +69,28 @@ export default function ShowCollections(props: {
   };
 
   return (
-    <div className={s.container}>
-      <SCHeader callback={props.callback_close} />
-      <div className={s.button}>
-        <Button variant="outlined" size="large" onClick={click_cancel}>
-          cancel
-        </Button>
-        <Button variant="contained" size="large" onClick={click_apply}>
-          Apply
-        </Button>
+    <Card isMobile={isMobile} callback_close={props.callback_close}>
+      <div className={s.bla}>
+        {/* <SCHeader callback={props.callback_close} /> */}
+        <div>Hello</div>
+
+        <div className={s.collections}>
+          {props.collections.map((collection: nft_collection) => (
+            <div key={collection.id}>
+              <CollectionOption collection={collection} />
+            </div>
+          ))}
+        </div>
+        <div className={s.button}>
+          <Button variant="outlined" size="large" onClick={click_cancel}>
+            cancel
+          </Button>
+          <Button variant="contained" size="large" onClick={click_apply}>
+            Apply
+          </Button>
+        </div>
       </div>
-      <div className={s.collections}>
-        {props.collections.map((collection: nft_collection) => (
-          <div key={collection.id}>
-            <CollectionOption collection={collection} />
-          </div>
-        ))}
-      </div>
-    </div>
+    </Card>
   );
 }
 
