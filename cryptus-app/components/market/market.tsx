@@ -295,7 +295,11 @@ export default function MarketOverview(props: market_overview_props) {
           </div>
         </div>
 
-        <TimeInterval active={props.networth.active} callback={callbackGraph} />
+        <TimeInterval
+          active={props.networth.active}
+          callback={callbackGraph}
+          loading={loading}
+        />
 
         <div className={s.search_and_sort}>
           <div
