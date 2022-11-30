@@ -48,15 +48,14 @@ $gap-s: 4px;
 $block-color: rgb(165, 165, 165);
 
 .container {
-  flex: 1 1 auto;
+  flex: 0 0 none;
 
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 
-  column-gap: calc($gap * 3);
-  row-gap: $gap;
+  gap: calc(2 * $gap);
 
   // @media (max-width: v.$mobile) {
   //   width: min(100vw, v.$mobile);
@@ -68,6 +67,7 @@ $block-color: rgb(165, 165, 165);
   display: flex;
   flex-direction: column;
   gap: $gap-s;
+  height: calc($size * 2 + $gap * 3) !important;
 }
 
 .collname {

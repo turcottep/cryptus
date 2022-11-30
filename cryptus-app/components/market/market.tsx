@@ -24,7 +24,6 @@ import MarketCollections from "./market_viewer/market_collections/market_collect
 import Support from "../basic/support/support";
 import get_user_by_username from "../../lib/get_user_by_username";
 import DateComponent from "./market_header/date/date";
-import TimeInterval from "./market_header/time_interval/time_interval";
 import SearchIcon from "../basic/header/search_icon/search_icon";
 
 import findAllUsers from "../../lib/findAllUsers";
@@ -32,6 +31,7 @@ import Graph from "./graph/graph";
 import { Page } from "../building_blocks/building_blocks";
 import Card from "../utils/card/card";
 import { Search } from "@mui/icons-material";
+import TimeInterval from "./market_header/time_interval/time_interval";
 
 type market_overview_props = {
   date: string;
@@ -151,16 +151,35 @@ export default function MarketOverview(props: market_overview_props) {
 
   const callbackGraph = async (interval) => {
     // setInterval(interval);
+
+    if (loading) {
+      console.log(
+        "callback: too fast, wait for the previous request to finish"
+      );
+      return;
+    }
+
+    setLoading(true);
+
+    console.log("updating interval", interval);
+
+    for (const collection of newPropCollection) {
+      collection.data_price = [0, 0];
+    }
+    setnewPropCollection([...newPropCollection]);
+
     const newPropCollectionTemp = await update(interval);
     set_market_interval(interval);
     setnewPropCollection(newPropCollectionTemp);
+
+    setLoading(false);
   };
 
   const update_for_user = async (username: string) => {
-    console.log("update_for_user", username);
+    // console.log("update_for_user", username);
 
     const user = await get_user_by_username(username);
-    console.log("user : ", user);
+    // console.log("user : ", user);
     const user_collections = user.collections_list;
     // console.log("iuser collections : ", user_collections);
     const networth = user.networth;
@@ -242,101 +261,80 @@ export default function MarketOverview(props: market_overview_props) {
         open_search={open_search}
         isMobile={props.isMobile}
       />
-      <div className={s.containee}>
-        <div className={s.market_container}>
-          <div className={s.date_container}>
-            <div>{user.username}</div>
-            <div>{day}</div>
-          </div>
-          <div className={s.networth}>
-            <div className={s.number}>
-              <div className={s.num}>
-                {user ? user.networth.toFixed(1) : "-"}
-              </div>
-              <div className={s.fiat}>ETH</div>
-              <div className={s.change}>
-                {(
-                  (user.networth_history[user.networth_history.length - 1] -
-                    user.networth_history[0]) /
-                  (user.networth_history[0] + 0.00000001)
-                ).toFixed(2)}
-                %
-              </div>
-            </div>
-            <div className={s.graph}>
-              <Graph
-                data_price={user.networth_history}
-                data_volume={[]}
-                color={
-                  user.networth_history[user.networth_history.length - 1] -
-                    user.networth_history[0] >=
-                  0
-                    ? "green"
-                    : "red"
-                }
-                detailled={true}
-              />
+      <div className={s.market_container}>
+        <div className={s.date_container}>
+          <div>{user.username}</div>
+          <div>{day}</div>
+        </div>
+        <div className={s.networth}>
+          <div className={s.number}>
+            <div className={s.num}>{user ? user.networth.toFixed(1) : "-"}</div>
+            <div className={s.fiat}>ETH</div>
+            <div className={s.change}>
+              {(
+                (user.networth_history[user.networth_history.length - 1] -
+                  user.networth_history[0]) /
+                (user.networth_history[0] + 0.00000001)
+              ).toFixed(2)}
+              %
             </div>
           </div>
-          <div className={s.time_container}>
-            <div></div>
-            <TimeInterval
-              active={props.networth.active}
-              callback={callbackGraph}
+          <div className={s.graph}>
+            <Graph
+              data_price={user.networth_history}
+              data_volume={[]}
+              color={
+                user.networth_history[user.networth_history.length - 1] -
+                  user.networth_history[0] >=
+                0
+                  ? "green"
+                  : "red"
+              }
+              detailled={true}
             />
-            <SortButton
-              newPropCollectionFavorite={newPropCollectionFavorite}
-              newPropCollectionMarket={newPropCollectionMarket}
-              view={intervals[market_interval]}
-              setnewPropCollectionFavorite={setnewPropCollectionFavorite}
-              setnewPropCollectionMarket={setnewPropCollectionMarket}
-            />
-          </div>
-          <div>
-            {show_card_collection_search ? (
-              <div className={s.search_and_sort}>
-                <Card
-                  isMobile={false}
-                  callback_close={() => {
-                    set_show_card_collection_search(false);
-                  }}
-                >
-                  <SearchBar
-                    callback={open_card}
-                    collections={newPropCollectionMarket}
-                  />
-                </Card>
-              </div>
-            ) : (
-              <div
-                onClick={() => {
-                  set_show_card_collection_search(true);
-                }}
-              >
-                <Search />
-              </div>
-            )}
           </div>
         </div>
-        <MarketCollections
-          setLoading={setLoading}
-          interval={props.networth.active}
-          callback={open_card}
-          name={"My Collections"}
-          icon={"/icons/favorite_icon.png"}
-          collections={newPropCollectionFavorite}
-          connected={!!session}
+
+        <TimeInterval
+          active={props.networth.active}
+          callback={callbackGraph}
+          loading={loading}
         />
-        <MarketCollections
-          setLoading={setLoading}
-          interval={props.networth.active}
-          callback={open_card}
-          name={"Market"}
-          icon={"/icons/market_icon.png"}
-          collections={newPropCollectionMarket}
-        />
-        {/* {isMobile ? <Footer /> : null} */}
+
+        <div className={s.search_and_sort}>
+          <div
+            onClick={() => {
+              set_show_card_collection_search(true);
+            }}
+          >
+            <Search />
+          </div>
+          <SortButton
+            newPropCollectionFavorite={newPropCollectionFavorite}
+            newPropCollectionMarket={newPropCollectionMarket}
+            view={intervals[market_interval]}
+            setnewPropCollectionFavorite={setnewPropCollectionFavorite}
+            setnewPropCollectionMarket={setnewPropCollectionMarket}
+          />
+        </div>
       </div>
+      <MarketCollections
+        setLoading={setLoading}
+        interval={props.networth.active}
+        callback={open_card}
+        name={"My Collections"}
+        icon={"/icons/favorite_icon.png"}
+        collections={newPropCollectionFavorite}
+        connected={!!session}
+      />
+      <MarketCollections
+        setLoading={setLoading}
+        interval={props.networth.active}
+        callback={open_card}
+        name={"Market"}
+        icon={"/icons/market_icon.png"}
+        collections={newPropCollectionMarket}
+      />
       {show_card && (
         <MarketCollection
           isMobile={isMobile}
@@ -351,6 +349,19 @@ export default function MarketOverview(props: market_overview_props) {
           open_wallet_manager={open_wallet_manager}
           open_support={open_support}
         />
+      )}
+      {show_card_collection_search && (
+        <Card
+          isMobile={isMobile}
+          callback_close={() => {
+            set_show_card_collection_search(false);
+          }}
+        >
+          <SearchBar
+            callback={open_card}
+            collections={newPropCollectionMarket}
+          />
+        </Card>
       )}
       {show_card_search && (
         <SearchIcon

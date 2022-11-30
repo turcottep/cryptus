@@ -11,7 +11,9 @@ describe("<TimeInterval />", () => {
     React.useState = jest.fn().mockReturnValueOnce([test_active, {}]);
 
     const tree = renderer
-      .create(<TimeInterval active={test_active} callback={test_cb} />)
+      .create(
+        <TimeInterval active={test_active} callback={test_cb} loading={false} />
+      )
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

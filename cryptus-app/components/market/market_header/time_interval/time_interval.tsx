@@ -10,9 +10,17 @@ import { intervals } from "../../../../lib/data_types";
 
 //intervals enum
 
-export default function TimeInterval(props: { active: number; callback: any }) {
+export default function TimeInterval(props: {
+  active: number;
+  callback: any;
+  loading: boolean;
+}) {
   const [active, setActive] = useState(props.active);
   const select_interval = (index: number) => {
+    if (props.loading) {
+      console.log("interval: too fast, loading");
+      return;
+    }
     setActive(index);
     props.callback(index);
   };

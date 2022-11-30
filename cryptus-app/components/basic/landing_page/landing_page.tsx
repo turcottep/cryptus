@@ -34,12 +34,14 @@ export default function LandingPage(props: { isMobile: boolean }) {
   };
 
   const open_try_now_card = () => {
+    set_angles([0, 0]);
     mixpanel.track("Try Now");
     set_show_card_try_now(true);
     console.log("Into open card", show_card_try_now);
   };
 
   const close_card_try_now = () => {
+    set_angles([0, 0]);
     set_show_card_try_now(false);
     console.log(show_card_try_now);
   };

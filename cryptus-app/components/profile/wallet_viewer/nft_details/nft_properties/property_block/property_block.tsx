@@ -26,7 +26,7 @@ export default function PropertyBlock(props: {
 
   return (
     <div className={s.stat}>
-      <div className={s.name}>{props.name.toUpperCase()}</div>
+      <div className={s.name}>{props.name}</div>
       <div className={s.value}>{props.value}</div>
       <div className={s.rarity}>{`${rarity_clean}% have this trait`}</div>
     </div>

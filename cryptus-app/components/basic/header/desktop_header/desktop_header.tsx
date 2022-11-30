@@ -7,7 +7,13 @@ import ContextualMenuButton from "../contextual_menu_button/contextual_menu_butt
 import { Header } from "../../../building_blocks/building_blocks";
 import connectMetamask from "../../../../lib/connectMetamask";
 import { isMobile } from "react-device-detect";
-import { Search } from "@mui/icons-material";
+import {
+  Notifications,
+  NotificationsOutlined,
+  Search,
+  Settings,
+  SettingsOutlined,
+} from "@mui/icons-material";
 
 export default function DesktopHeader(props: {
   tab: string;
@@ -59,9 +65,11 @@ export default function DesktopHeader(props: {
           <div onClick={props.open_search} className={s.icon}>
             <Search />
           </div>
-          <Icon img="/icons/notification_icon.png" url="/market" />
+          <a href={"/market"} target="_blank" className={s.icon}>
+            <NotificationsOutlined />
+          </a>
           <div onClick={props.open_settings} className={s.icon}>
-            <img src={imgUrl} className={s.image} />
+            <SettingsOutlined />
           </div>
         </div>
       </div>
@@ -79,25 +87,3 @@ const Tab = (props: { name: string; url: string; isActive: boolean }) =>
       {props.name}
     </a>
   );
-
-const Tab2 = (props: { name: string; url: string; isActive: boolean }) => (
-  <div
-    onClick={() => {
-      // alert("not connected!");
-      // signIn();
-      connectMetamask(
-        () => {},
-        () => {}
-      );
-    }}
-    className={s.tab}
-  >
-    {props.name}
-  </div>
-);
-
-const Icon = (props: { img: string; url: string }) => (
-  <a href={props.url} target="_blank" className={s.icon}>
-    <img src={props.img} />
-  </a>
-);
