@@ -34,6 +34,7 @@ export default function LandingPage(props: { isMobile: boolean }) {
   };
 
   const open_try_now_card = () => {
+    set_angles([0, 0]);
     mixpanel.track("Try Now");
     set_show_card_try_now(true);
     console.log("Into open card", show_card_try_now);
