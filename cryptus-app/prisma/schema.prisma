@@ -21,7 +21,7 @@ model User {
   collections_filter       String[]
   collections_list         String[]
   networth                 Float    @default(0)
-  profile_image_url        String   @default("./icons/icon-192x192.png")
+  profile_image_url        String   @default("./images/pw4.png")
   subscription             String   @default("")
   networth_history         Float[]
   collections_address_list String[]

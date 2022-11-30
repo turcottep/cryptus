@@ -235,7 +235,7 @@ const props_empty: profile_props = {
     collections_filter: [],
     collections_list: [],
     collections_address_list: [],
-    profile_image_url: "./icons/icon-192x192.png",
+    profile_image_url: "./images/pw4.png",
   },
 };
 

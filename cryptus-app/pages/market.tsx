@@ -39,8 +39,10 @@ export default function MarketPage(props) {
         NFT Market tracker
       "
       />
-      <meta name="author" content="" />
-      <meta name="theme-color" content="" />
+      <meta name="author" content="CryptUS!" />
+      <meta name="theme-color" content="#FFFDF5" />
+      <link rel="pw4" href="/iamges/pw4.png"></link>
+      <link href="/images/pw4.png" rel="icon" type="image/png" sizes="32x32" />
       <meta
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
         name="viewport"
@@ -50,6 +52,7 @@ export default function MarketPage(props) {
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
         rel="stylesheet"
       />
+
       <main>
         <Market
           date={props.mock_data.date}
