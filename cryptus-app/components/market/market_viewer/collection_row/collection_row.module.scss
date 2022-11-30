@@ -6,6 +6,12 @@
   display: flex;
 
   width: 100%;
+
+  &:hover {
+    scale: 1.01;
+    cursor: pointer;
+    transition: all 0.1s linear;
+  }
 }
 
 .box {
@@ -36,6 +42,9 @@
 
 .anchor:hover {
   background-color: v.$secondary-color-pale;
+  scale: 1.1;
+  cursor: pointer;
+  transition: all 0.1s linear;
 }
 
 .loading_container {

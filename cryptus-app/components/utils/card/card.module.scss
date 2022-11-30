@@ -1,4 +1,5 @@
 @use "/styles/variables" as v;
+@import "/styles/utils";
 
 // .main {
 // }
@@ -56,11 +57,17 @@
   right: 16px;
   z-index: 100;
   cursor: pointer;
+  color: v.$grey;
+  padding-bottom: 0 !important;
+
+  flex: 0 0 none;
+}
+
+.x_button:hover {
   color: red;
-  font-size: 24px;
-  font-weight: bold;
-  width: 24px;
-  height: 24px;
+  scale: 1.1;
+  cursor: pointer;
+  transition: all 0.1s linear;
 }
 
 .page {
@@ -108,7 +115,7 @@
 .popupcontent {
   @extend .content;
   padding-top: 0; //TODO: fix this
-  background-color: rgb(188, 208, 36);
+  background-color: v.$bg-color;
   cursor: default;
 
   max-height: calc(100vh - v.$header-h);

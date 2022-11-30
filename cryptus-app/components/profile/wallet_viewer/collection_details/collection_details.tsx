@@ -16,14 +16,17 @@ export default function CollectionDetails(props: {
 
   return (
     <Card callback_close={props.callback_close} isMobile={props.isMobile}>
-      <div className={s.info_container}>
-        <div className={s.label}>{collection.name}</div>
-        <div className={s.circle}>{collection.nfts.length.toString()}</div>
-      </div>
       <div className={s.container}>
-        {collection.nfts.map((nft, i) => (
-          <Nft key={i} nft={nft} index={i} open_nft={props.open_nft} />
-        ))}
+        <div className={s.info_container}>
+          <div></div>
+          <div className={s.label}>{collection.name}</div>
+          <div className={s.circle}>{collection.nfts.length.toString()}</div>
+        </div>
+        <div className={s.container}>
+          {collection.nfts.map((nft, i) => (
+            <Nft key={i} nft={nft} index={i} open_nft={props.open_nft} />
+          ))}
+        </div>
       </div>
     </Card>
   );

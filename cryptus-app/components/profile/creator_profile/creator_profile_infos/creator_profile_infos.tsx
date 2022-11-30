@@ -168,9 +168,9 @@ export default function CreatorProfileInfos(props: {
           }}
         />
 
-        {copied && (
+        {/* {copied && (
           <div className={s.copied_message}>{"Copied to clipboard!"}</div>
-        )}
+        )} */}
       </div>
     );
   };

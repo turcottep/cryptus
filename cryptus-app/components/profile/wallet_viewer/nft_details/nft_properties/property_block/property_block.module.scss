@@ -1,4 +1,5 @@
 @use "/styles/variables" as v;
+@import "/styles/utils";
 
 $size: 48px;
 $gap: 8px;
@@ -53,6 +54,9 @@ $gap: 8px;
   height: 70px;
   gap: 8px;
   place-content: center;
+  // border: 2px solid red !important;
+  // padding: 4px;
+  // border-radius: v.$border-radius-m;
 
   > div {
     height: 100%;
@@ -62,13 +66,14 @@ $gap: 8px;
     font-size: 14px;
   }
   .value {
-    font-size: 18px;
+    font-size: 20px;
     display: inline-block;
     height: 20px;
     max-width: calc(100% - 16px);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    @extend .cooltext;
   }
   .rarity {
     font-size: 12px;

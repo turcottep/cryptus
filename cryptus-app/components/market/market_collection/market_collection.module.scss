@@ -1,10 +1,17 @@
+@use "/styles/variables" as v;
+
 .stats {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 
   gap: 8px;
+  row-gap: 32px;
   padding: 8px;
   width: calc(100% - 2 * 8px);
+
+  @media (max-width: v.$mobile) {
+    grid-template-columns: 1fr 1fr;
+  }
 
   .stat {
     display: grid;
@@ -18,5 +25,18 @@
       //   width: min-content;
       height: 100%;
     }
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+
+  > div {
+    background-color: rgba(255, 0, 0, 0.078);
   }
 }

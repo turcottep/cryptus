@@ -46,9 +46,11 @@ export default function ShowCollections(props: {
 
     return (
       <div className={s.option}>
-        <CollectionLogo logo={collection.nfts[0].image_url} />
-        <CollectionName name={collection.name} />
-        <Switch defaultChecked={default_checked} onChange={handleChange} />
+        <div className={s.row}>
+          <CollectionLogo logo={collection.nfts[0].image_url} />
+          <CollectionName name={collection.name} />
+          <Switch defaultChecked={default_checked} onChange={handleChange} />
+        </div>
       </div>
     );
   };
@@ -72,14 +74,8 @@ export default function ShowCollections(props: {
     <Card isMobile={isMobile} callback_close={props.callback_close}>
       <div className={s.bla}>
         {/* <SCHeader callback={props.callback_close} /> */}
-        <div>Hello</div>
-
-        <div className={s.collections}>
-          {props.collections.map((collection: nft_collection) => (
-            <div key={collection.id}>
-              <CollectionOption collection={collection} />
-            </div>
-          ))}
+        <div className={s.header}>
+          Toggle the collections below to show/hide them on your profile
         </div>
         <div className={s.button}>
           <Button variant="outlined" size="large" onClick={click_cancel}>
@@ -88,6 +84,11 @@ export default function ShowCollections(props: {
           <Button variant="contained" size="large" onClick={click_apply}>
             Apply
           </Button>
+        </div>
+        <div className={s.collections}>
+          {props.collections.map((collection: nft_collection) => (
+            <CollectionOption key={collection.id} collection={collection} />
+          ))}
         </div>
       </div>
     </Card>
