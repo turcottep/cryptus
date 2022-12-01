@@ -1,66 +1,73 @@
 @use "/styles/variables" as v;
+@import "/styles/utils";
 
 .container {
+  flex: 0 0 none;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  padding-top: 8px;
+
+  background-color: v.$secondary-color-pale;
+
   width: 100%;
+
+  gap: 8px;
 }
 
 .search_box {
-  flex: 2 1 auto;
   display: flex;
   align-items: center;
   flex-direction: row;
-  background-color: v.$secondary-color-pale;
-  width: 100%;
-}
-.magnifier {
-  color: v.$secondary-color-pale;
-  width: 24px;
-}
 
-.searchTerm {
-  width: 100%;
+  width: calc(100% - 16px - 8px);
+  border-radius: v.$border-radius-m;
+  background-color: v.$header-color;
+  padding: 4px;
 
-  textarea {
+  input {
+    flex: 1 1 auto;
+
+    border: none;
+
+    outline: none;
+    margin: 4px;
+    padding: 8px;
     font-size: 16px;
-    color: red;
   }
 }
 
 .search_items {
   // position: absolute;
-  text-align: left;
-  border: black ridge 1px;
-  border-radius: v.$border-radius-m;
-  background-color: v.$secondary-color-pale;
   display: flex;
   flex-direction: row;
+
+  width: calc(100% - 16px);
+
+  text-align: left;
+
+  border-radius: v.$border-radius-m;
+  background-color: v.$header-color;
+  padding-top: 8px;
+  padding-bottom: 8px;
+
   cursor: pointer;
-}
 
-.search_image {
-  width: 45px;
-  height: 45px;
-  object-fit: cover;
-  margin: auto 5px auto 5px;
-  border-radius: 50%;
-}
-
-.collections_lafleur {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 1px;
-
-  width: 100%;
-  // height: 64px;
-  background-color: rgb(178, 220, 234);
-
-  > div {
-    width: 100%;
+  .search_image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin: auto 8px auto 8px;
+    border-radius: 50%;
+  }
+  .test123 {
+    font-size: 24px;
+    font-weight: 600;
+    height: min-content;
+    justify-self: flex-start;
+    padding-left: 8px;
+    align-self: center;
   }
 }
