@@ -7,7 +7,13 @@ import s from "./market.module.scss";
 import { useSession } from "next-auth/client";
 
 //internal imports
-import { user, intervals, collection, dbUsers } from "../../lib/data_types";
+import {
+  user,
+  intervals,
+  collection,
+  dbUsers,
+  interval_days,
+} from "../../lib/data_types";
 
 import SearchBar from "./search_bar/search_bar";
 import SortButton from "./sort_button/sort_button";
@@ -111,7 +117,7 @@ export default function MarketOverview(props: market_overview_props) {
     }
 
     // console.log("networth : ", user.networth);
-    // console.log("networth_history : ", user.networth_history);
+    console.log("networth_history : ", user.networth_history);
     setUser(user);
   };
 
@@ -254,15 +260,25 @@ export default function MarketOverview(props: market_overview_props) {
               {(
                 (100 *
                   (user.networth_history[user.networth_history.length - 1] -
-                    user.networth_history[0])) /
-                (user.networth_history[0] + 0.00000001)
+                    user.networth_history.slice(
+                      -interval_days[market_interval],
+                      -1
+                    )[0])) /
+                (user.networth_history.slice(
+                  -interval_days[market_interval],
+                  -1
+                )[0] +
+                  0.00000001)
               ).toFixed(2)}
               %
             </div>
           </div>
           <div className={s.graph}>
             <Graph
-              data_price={user.networth_history}
+              data_price={user.networth_history.slice(
+                -interval_days[market_interval],
+                -1
+              )}
               data_volume={[]}
               color={
                 user.networth_history[user.networth_history.length - 1] -
@@ -435,7 +451,7 @@ export const updatePrice = async (
   }
   // }
 
-  console.log("done updating price", collections);
+  // console.log("done updating price", collections);
 
   // console.log("collection updated ", newPropCollectionTemp);
   // return newPropCollectionTemp;
