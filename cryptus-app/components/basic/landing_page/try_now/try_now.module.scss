@@ -2,20 +2,26 @@
 
 .container {
   flex: 1 1 auto;
-
+  //TODO: Faire que la card arrive plus bas que le header. Jsp pourquoi ca marche pas
   display: flex;
   flex-direction: column;
+  justify-content: center;
+
+  padding: clamp(8px, 2vw, 32px);
+
+  padding-top: 0px;
+
+  > div {
+    padding-top: 0px;
+  }
 
   // padding: 0 10px 0 10px;
 }
 
 .title {
   font-size: v.$font-size-l;
-  margin: auto;
+
   text-align: center;
-  @media (max-width: v.$mobile) {
-    padding-top: 50px;
-  }
 }
 
 .names {
@@ -54,4 +60,11 @@
   height: 100%;
   align-self: center;
   border-radius: 5%;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+    scale: 1.01;
+    transition: all 0.1s linear;
+  }
 }

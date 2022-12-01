@@ -127,8 +127,8 @@ export default function MarketCollection(props: {
               className={s.stat}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className={s.bla}>{d.value}</div>
-              <div className={s.bla}>{d.key}</div>
+              <div className={s.value}>{d.value}</div>
+              <div className={s.rarity}>{d.key}</div>
             </div>
           ))}
         </div>

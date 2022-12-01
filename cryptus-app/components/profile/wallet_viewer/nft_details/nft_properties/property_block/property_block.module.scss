@@ -54,9 +54,12 @@ $gap: 8px;
   height: 70px;
   gap: 8px;
   place-content: center;
-  // border: 2px solid red !important;
-  // padding: 4px;
-  // border-radius: v.$border-radius-m;
+
+  background-color: v.$secondary-color-pale;
+  padding: 8px 0px;
+  margin-left: 8px;
+  margin-right: 8px;
+  border-radius: v.$border-radius-m;
 
   > div {
     height: 100%;
@@ -68,7 +71,11 @@ $gap: 8px;
   .value {
     font-size: 20px;
     display: inline-block;
-    height: 20px;
+    height: 25px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
     max-width: calc(100% - 16px);
     overflow: hidden;
     white-space: nowrap;

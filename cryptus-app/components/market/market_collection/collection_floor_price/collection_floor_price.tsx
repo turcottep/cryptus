@@ -18,9 +18,10 @@ export default function CollectionFloorPrice(props: {
       </div>
       <div className={s.fiat}>ETH</div>
       <div className={s.change}>
-        <span className={delta > 0 ? s.green : s.red}>{delta.toFixed(2)}</span>Ξ
-        (<span className={delta > 0 ? s.green : s.red}>{delta_percent}</span>
-        %)
+        <span className={delta > 0 ? s.green : s.red}>
+          {delta.toFixed(2)} {""}
+        </span>
+        <span className={delta > 0 ? s.green : s.red}>({delta_percent}%)</span>
       </div>
     </div>
   );

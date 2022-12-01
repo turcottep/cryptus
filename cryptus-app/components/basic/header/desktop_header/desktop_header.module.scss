@@ -62,12 +62,20 @@
   transition: all 0.1s linear;
 }
 .tabactive {
-  @extend .tab;
-  @extend .cooltext;
-  font-weight: 400;
-  scale: 1.1;
-}
+  flex: 0 1 auto;
 
+  text-align: center;
+  @extend .cooltext;
+
+  scale: 1.1;
+  &:hover {
+    @extend .cooltext;
+
+    scale: 1.1;
+    cursor: pointer;
+    transition: all 0.1s linear;
+  }
+}
 .icons {
   flex: 1 1 175px;
   display: flex;

@@ -24,9 +24,9 @@ $gap: 8px;
   }
 
   gap: 8px;
-  row-gap: 32px;
+  row-gap: 24px;
   padding: 8px;
-  width: calc(100% - 2 * 8px);
+  width: calc(100% - 2 * 16px);
 
   .stat {
     display: grid;
