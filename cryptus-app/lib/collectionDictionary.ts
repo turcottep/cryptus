@@ -135,7 +135,7 @@ const collections_dict = {
     logo: "https://i.seadn.io/gae/Ju9CkWtV-1Okvf45wo8UctR-M9He2PjILP0oOvxE89AyiPPGtrR3gysu1Zgy0hjd2xKIgjJJtWIc0ybj4Vd7wv8t3pxDGHoJBzDB?w=500&auto=format",
     name: "Bored Ape Yacht Club",
 
-    floor_price: 65,
+    floor_price: 68.97,
     floor_price_delta: 6.5,
     data_price: [0, 0],
     data_volume: [],

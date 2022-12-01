@@ -15,17 +15,17 @@ const connectMetamask = async (setLoading: Function, isMobile) => {
       console.log("please donwload MetaMask");
       console.log("isMobile", isMobile);
 
-      if (isMobile) {
-        window
-          .open(
-            "https://metamask.app.link/dapp/www.publicwallet.app/",
-            "_blank"
-          )
-          .focus();
-      } else {
-        alert("Please download MetaMask to connect to your wallet");
-        // window.open("https://metamask.io/", "_blank").focus();
-      }
+      // if (isMobile) {
+      //   // window
+      //   //   .open(
+      //   //     "https://metamask.app.link/dapp/www.publicwallet.app/",
+      //   //     "_blank"
+      //   //   )
+      //   //   .focus();
+      // } else {
+      alert("Please download MetaMask to connect to your wallet");
+      // window.open("https://metamask.io/", "_blank").focus();
+      // }
       setLoading(false);
       return;
     }

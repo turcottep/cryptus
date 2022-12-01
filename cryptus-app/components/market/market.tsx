@@ -73,6 +73,8 @@ export default function MarketOverview(props: market_overview_props) {
   const [show_card, set_show_card] = useState(false);
   const [card_collection, set_card_collection] = useState(null);
 
+  const [sorting_filter, set_sorting_filter] = useState("fp_d");
+
   const [market_interval, set_market_interval] = useState(
     props.networth.active
   );
@@ -193,6 +195,8 @@ export default function MarketOverview(props: market_overview_props) {
     );
     set_card_collection(collection);
     set_show_card(true);
+    set_show_search(false);
+    set_show_card_collection_search(false);
   };
 
   // console.log("card_collection", card_collection);
@@ -278,13 +282,12 @@ export default function MarketOverview(props: market_overview_props) {
           >
             <Search />
           </div>
-          {/* <SortButton
-            newPropCollectionFavorite={newPropCollectionFavorite}
-            newPropCollectionMarket={newPropCollectionMarket}
-            view={intervals[market_interval]}
-            setnewPropCollectionFavorite={setnewPropCollectionFavorite}
-            setnewPropCollectionMarket={setnewPropCollectionMarket}
-          /> */}
+          <SortButton
+            callback={(filter) => {
+              console.log("filter", filter);
+              set_sorting_filter(filter);
+            }}
+          />
         </div>
       </div>
       <MarketCollections
@@ -293,9 +296,13 @@ export default function MarketOverview(props: market_overview_props) {
         callback={open_card}
         name={"My Collections"}
         icon={"/icons/favorite_icon.png"}
-        collections={props.collections.filter((c) => {
-          return c.user_owned;
-        })}
+        collections={props.collections
+          .filter((c) => {
+            return c.user_owned;
+          })
+          .sort((a, b) => {
+            return sort_market_collections(a, b, sorting_filter);
+          })}
         connected={!!session}
       />
       <MarketCollections
@@ -304,9 +311,13 @@ export default function MarketOverview(props: market_overview_props) {
         callback={open_card}
         name={"Market"}
         icon={"/icons/market_icon.png"}
-        collections={props.collections.filter((c) => {
-          return !c.user_owned;
-        })}
+        collections={props.collections
+          .filter((c) => {
+            return !c.user_owned;
+          })
+          .sort((a, b) => {
+            return sort_market_collections(a, b, sorting_filter);
+          })}
       />
       {show_card && (
         <MarketCollection
@@ -409,7 +420,7 @@ export const updatePrice = async (
       // console.log("element ", element);
 
       element.data_price = prices && prices[i];
-      element.floor_price = prices && prices[i][prices[i].length - 1];
+      // element.floor_price = prices && prices[i][prices[i].length - 1];
       element.floor_price_delta = deltas && deltas[i];
       // newPropCollectionTemp.push(element);
     }
@@ -417,4 +428,72 @@ export const updatePrice = async (
 
   // console.log("collection updated ", newPropCollectionTemp);
   // return newPropCollectionTemp;
+};
+
+export const sort_market_collections = (coll_a, coll_b, filter: string) => {
+  let ans = 0;
+
+  switch (filter) {
+    case "name_a":
+      // newPropCollectionMarketTemp.sort((a, b) =>
+      ans = coll_a.name.toLowerCase() > coll_b.name.toLowerCase() ? 1 : -1;
+      // );
+      // newPropCollectionFavoriteTemp.sort((a, b) =>
+      //   a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+      // );
+      break;
+    case "name_d":
+      // newPropCollectionMarketTemp.sort((a, b) =>
+      ans = coll_a.name.toLowerCase() < coll_b.name.toLowerCase() ? 1 : -1;
+      // );
+      // newPropCollectionFavoriteTemp.sort((a, b) =>
+      //   coll_a.name.toLowerCase() < coll_b.name.toLowerCase() ? 1 : -1
+      // );
+      break;
+    case "fp_a":
+      // newPropCollectionMarketTemp.sort((a, b) =>
+      ans = coll_a.floor_price > coll_b.floor_price ? 1 : -1;
+      // );
+      // newPropCollectionFavoriteTemp.sort((a, b) =>
+      //   coll_a.floor_price > coll_b.floor_price ? 1 : -1
+      // );
+      break;
+    case "fp_d":
+      ans = coll_a.floor_price < coll_b.floor_price ? 1 : -1;
+
+      break;
+    case "delta_a":
+      ans =
+        coll_a.floor_price_delta / coll_a.floor_price >
+        coll_b.floor_price_delta / coll_b.floor_price
+          ? 1
+          : -1;
+
+      break;
+    case "delta_d":
+      ans =
+        coll_a.floor_price_delta / coll_a.floor_price <
+        coll_b.floor_price_delta / coll_b.floor_price
+          ? 1
+          : -1;
+
+      break;
+
+    default:
+    // code block
+  }
+
+  // const new_name = view + "-" + filter;
+  // console.log("view", view, "sort_market_collections", new_name);
+
+  // for (let i = 0; i < newPropCollectionMarketTemp.length; i++) {
+  //   // console.log(newPropCollectionMarketTemp[i].name, i);
+
+  //   newPropCollectionMarketTemp[i][new_name] = i;
+  // }
+
+  // console.log("supposed to be", newPropCollectionMarketTemp);
+
+  // return [newPropCollectionFavoriteTemp, newPropCollectionMarketTemp];
+  return ans;
 };

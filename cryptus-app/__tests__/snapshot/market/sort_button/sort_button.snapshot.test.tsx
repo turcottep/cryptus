@@ -7,17 +7,7 @@ import { intervals } from "../../../../lib/data_types";
 
 describe("<SortButton />", () => {
   it("should display properly", async () => {
-    const tree = renderer
-      .create(
-        <SortButton
-          newPropCollectionFavorite={undefined}
-          setnewPropCollectionFavorite={undefined}
-          newPropCollectionMarket={undefined}
-          setnewPropCollectionMarket={undefined}
-          view={intervals[0]}
-        />
-      )
-      .toJSON();
+    const tree = renderer.create(<SortButton callback={undefined} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
