@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   // justify-content: center;
+  background-color: #90ee90;
 
   width: 100%;
 }
@@ -23,8 +24,8 @@
   width: 100%;
 
   background-image: linear-gradient(
-    rgba($color: v.$bg-color, $alpha: 1),
-    rgba($color: v.$bg-color, $alpha: 0)
+    rgba($color: #90ee90, $alpha: 1),
+    rgba($color: #90ee90, $alpha: 0)
   );
 }
 .signin:hover {
@@ -104,6 +105,7 @@
 .title {
   font-size: 108px;
   font-family: "Roboto";
+  font-weight: 600;
 }
 .description {
   font-size: 48px;

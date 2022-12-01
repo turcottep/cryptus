@@ -35,10 +35,27 @@
 .search_and_sort {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-
+  width: 100%;
+  padding-top: 12px;
   align-self: flex-end;
+}
+
+.search_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: v.$grey;
+    cursor: pointer;
+  }
+
+  transition: all 0.1s linear;
 }
 
 .time_container {

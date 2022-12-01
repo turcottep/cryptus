@@ -287,6 +287,7 @@ export default function MarketOverview(props: market_overview_props) {
             onClick={() => {
               set_show_card_collection_search(true);
             }}
+            className={s.search_container}
           >
             <Search />
           </div>

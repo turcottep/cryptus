@@ -30,7 +30,7 @@
 .icon:hover:not(.active) {
   opacity: 1;
   visibility: visible;
-  @extend .cooltext;
+  // @extend .cooltext;
   scale: 1.1;
   cursor: pointer;
   transition: all 0.1s linear;
