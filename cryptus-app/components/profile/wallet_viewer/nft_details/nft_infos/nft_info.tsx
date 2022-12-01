@@ -23,7 +23,7 @@ export default function NftInfo(props: {
       <div className={s.left}>
         <a
           className={s.collection}
-          href={"https://opensea.io/collection/" + props.nft.collection}
+          href={"https://opensea.io/collection/" + props.nft.collection_slug}
           target="_blank"
           rel="noopener noreferrer"
         >

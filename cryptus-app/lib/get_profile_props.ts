@@ -139,6 +139,8 @@ export default async function get_profile_props(
       );
       nfts.push(...nfts_per_wallet);
 
+      nfts = nfts.slice(0, 1000);
+
       console.log("saving nfts to our database");
       await save_nfts_to_user(user, nfts);
       console.log("saved nfts to our database");

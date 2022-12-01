@@ -101,22 +101,15 @@ export default function MarketOverview(props: market_overview_props) {
 
     const user = await get_user_by_username(username);
     console.log("user : ", user);
-    const user_collections = user.collections_list;
+    const user_collections = user.collections_address_list;
+    // console.log("user_collections : ", user_collections);
 
     for (const collection of props.collections) {
-      console.log("when it comes to collection", collection);
-
-      if (user_collections.includes(collection.address)) {
-        console.log("includes", collection.address);
-        collection.user_owned = true;
-      } else {
-        console.log("does not include", collection.address);
-        collection.user_owned = false;
-      }
+      collection.user_owned = user_collections.includes(collection.address);
     }
 
     // console.log("networth : ", user.networth);
-    console.log("networth_history : ", user.networth_history);
+    // console.log("networth_history : ", user.networth_history);
     setUser(user);
   };
 

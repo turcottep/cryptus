@@ -1,13 +1,17 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 import fs from "fs";
-import { get_collections_list } from "../../../lib/collectionDictionary";
+import {
+  get_collections_list,
+  get_collection_address_list,
+} from "../../../lib/collectionDictionary";
 // import { get_collection100list } from "../../../lib/collectionDictionary";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const test = "0x68c4d9e03d7d902053c428ca2d74b612db7f583a";
   const test2 = "0x052288F424Ec1a127093E29BaDC21Dd2ddb860A1";
-  const address = "0x68c4d9e03d7d902053c428ca2d74b612db7f583a".toLowerCase();
+  const address = "0xE21DC18513e3e68a52F9fcDaCfD56948d43a11c6".toLowerCase();
+  console.log("address: ", address);
 
   try {
     // const all_wallets = await prisma.wallet.findMany({});
@@ -16,7 +20,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     // for (const wallet of all_wallets) {
     //   const address = wallet.address.toLowerCase();
-    console.log("getting transactions for", address);
+    console.log("getting networth for", address);
 
     await getNetworthForAddress(address);
     //   // wait 1 second
@@ -42,6 +46,8 @@ async function getNetworthForAddress(address: string) {
   const first_block = 10916166;
   const ending_block = 16018856;
   const action = "tokennfttx";
+
+  console.log("getting transactions from etherscan...");
 
   const txs = await get_transactions_from_etherscan(
     address,
@@ -117,40 +123,43 @@ async function getNetworthForAddress(address: string) {
   // console.log("getting collections from db");
 
   const existing_collections = {};
-  const collections_in_db = get_collections_list();
+  const addresses_in_db = get_collection_address_list();
+  console.log("addresses_in_db", addresses_in_db);
 
   const earliest_date_init = 1619827200;
   let earliest_date = 1619827200;
 
+  console.log("getting sales from db...");
+
   for (const collection_address of collections) {
-    // if (collections_in_db.includes(collection_address.toLowerCase())) {
-    try {
-      const contract_address = collection_address; //"0x60e4d786628fea6478f785a6d7e704777c86a7c6";
-      // console.log("contract_address", contract_address);
-      const address_cropped = contract_address.substring(1);
-      const viewing_mode = "dailyavg";
+    if (addresses_in_db.includes(collection_address.toLowerCase())) {
+      try {
+        const contract_address = collection_address; //"0x60e4d786628fea6478f785a6d7e704777c86a7c6";
+        // console.log("contract_address", contract_address);
+        const address_cropped = contract_address.substring(1);
+        const viewing_mode = "dailyavg";
 
-      const query = `SELECT * FROM marketsales.${
-        address_cropped + "_" + viewing_mode
-      };`;
-      const answer = await prisma.$queryRaw(query);
-      const early_date_raw = answer[0].timestamp_raw;
-      const early_date_unix = new Date(early_date_raw).getTime() / 1000;
-      // console.log("early_date_unix", early_date_unix);
-      if (early_date_unix < earliest_date) {
-        earliest_date = early_date_unix;
-      }
+        const query = `SELECT * FROM marketsales.${
+          address_cropped + "_" + viewing_mode
+        };`;
+        const answer = await prisma.$queryRaw(query);
+        const early_date_raw = answer[0].timestamp_raw;
+        const early_date_unix = new Date(early_date_raw).getTime() / 1000;
+        // console.log("early_date_unix", early_date_unix);
+        if (early_date_unix < earliest_date) {
+          earliest_date = early_date_unix;
+        }
 
-      // console.log("answer", answer);
-      existing_collections[contract_address] = answer;
-    } catch (error) {
-      if (error.meta.message.includes("does not exist")) {
-        // console.log("collection does not exist in db");
-      } else {
-        console.log(error);
+        // console.log("answer", answer);
+        existing_collections[contract_address] = answer;
+      } catch (error) {
+        if (error.meta.message.includes("does not exist")) {
+          // console.log("collection does not exist in db");
+        } else {
+          console.log(error);
+        }
       }
     }
-    // }
   }
 
   console.log("earliest_date", earliest_date);
@@ -177,6 +186,8 @@ async function getNetworthForAddress(address: string) {
   // const trading_days = JSON.parse(fs.readFileSync("all_days.json", "utf8"));
 
   // console.log("existing_collections_n", existing_collections);
+
+  console.log("computing networth...");
 
   const collection_dict_dict = {};
   for (const collection_address in existing_collections) {
@@ -262,7 +273,7 @@ async function getNetworthForAddress(address: string) {
         // console.log("amount", amount);
 
         const price_number = parseFloat(day["average_price"]);
-        console.log("price_number", price_number);
+        // console.log("price_number", price_number);
         if (price_number && price_number < 1000) {
           networth += price_number * amount;
           // console.log("networth", networth);
@@ -310,6 +321,10 @@ async function getNetworthForAddress(address: string) {
     data: {
       networth_history: networth_history,
       networth: networth_history[-1],
+    },
+    select: {
+      username: true,
+      networth_history: true,
     },
   });
 
