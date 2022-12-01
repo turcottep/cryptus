@@ -195,6 +195,8 @@ export default function MarketOverview(props: market_overview_props) {
     );
     set_card_collection(collection);
     set_show_card(true);
+    set_show_search(false);
+    set_show_card_collection_search(false);
   };
 
   // console.log("card_collection", card_collection);

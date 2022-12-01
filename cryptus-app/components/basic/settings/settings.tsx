@@ -8,7 +8,6 @@ import BackButton from "../header/back_button/back_button";
 import UsenameSetting from "./username_setting/username_setting";
 import AccountLink from "./account_link/account_link";
 import LogoutSetting from "./logout_setting/logout_setting";
-import SearchBar from "../../market/search_bar/search_bar";
 import WalletManagerSetting from "./wallet_manager_setting/wallet_manager_setting";
 //import ResetPasswordSetting from "./reset_password_setting/reset_password_setting";
 import NotificationSetting from "./notification_setting/notification_setting";
