@@ -83,55 +83,53 @@ export default function MarketOverview(props: market_overview_props) {
   const [show_card_collection_search, set_show_card_collection_search] =
     useState(false);
 
+  // ************************  search bar stuf
   const [usersProfiles, setUsersProfiles] = useState<dbUsers[]>([]);
-
-  useEffect(() => {
-    const getUser = async (username: string) => {
-      let profileProps = await get_profile_props(username, 1);
-      setUser(profileProps.props.user);
-    };
-    if (session) {
-      const user_name = session.user.name;
-      console.log("user_name", user_name);
-
-      // update_for_user(user_name);
-    }
-  }, [session_status]);
-
-  // const updateUserCollections = (user_collections) => {
-  //   // console.log("updateUserCollections", user_collections);
-
-  //   const newPropCollectionFavoriteTemp = [];
-  //   const newPropCollectionMarketTemp = [];
-  //   for (const collection of newPropCollection) {
-  //     if (user_collections.includes(collection.name)) {
-  //       newPropCollectionFavoriteTemp.push(collection);
-  //     } else {
-  //       newPropCollectionMarketTemp.push(collection);
-  //     }
-  //   }
-  //   // console.log("temp", newPropCollectionFavoriteTemp);
-  //   setnewPropCollectionFavorite(newPropCollectionFavoriteTemp);
-  //   setnewPropCollectionMarket(newPropCollectionMarketTemp);
-  // };
-
-  // useEffect(() => {
-  //   if (props.collections != null) {
-  //     const newPropCollectionTemp = update();
-  //     if (session) {
-  //       update_for_user(session.user.name);
-  //     } else {
-  //       updateUserCollections([]);
-  //     }
-  //   }
-  // }, [props.collections, newPropCollection]);
-
   useEffect(() => {
     const getAllUsers = async () => {
       let allUsers = await findAllUsers();
       setUsersProfiles(allUsers);
     };
     getAllUsers();
+  }, []);
+  // ************************ end search bar stuff
+
+  console.log("loading", loading);
+
+  const update_for_user = async (username: string) => {
+    // console.log("update_for_user", username);
+
+    const user = await get_user_by_username(username);
+    console.log("user : ", user);
+    const user_collections = user.collections_list;
+
+    for (const collection of props.collections) {
+      console.log("when it comes to collection", collection);
+
+      if (user_collections.includes(collection.address)) {
+        console.log("includes", collection.address);
+        collection.user_owned = true;
+      } else {
+        console.log("does not include", collection.address);
+        collection.user_owned = false;
+      }
+    }
+
+    // console.log("networth : ", user.networth);
+    console.log("networth_history : ", user.networth_history);
+    setUser(user);
+  };
+
+  useEffect(() => {
+    if (session) {
+      const user_name = session.user.name;
+      console.log("user_name", user_name);
+      update_for_user(user_name);
+    }
+  }, [session_status]);
+
+  useEffect(() => {
+    callbackGraph(market_interval);
   }, []);
 
   const callbackGraph = async (interval) => {
@@ -160,20 +158,6 @@ export default function MarketOverview(props: market_overview_props) {
     setLoading(false);
   };
 
-  // const update_for_user = async (username: string) => {
-  //   // console.log("update_for_user", username);
-
-  //   const user = await get_user_by_username(username);
-  //   // console.log("user : ", user);
-  //   const user_collections = user.collections_list;
-  //   // console.log("iuser collections : ", user_collections);
-  //   const networth = user.networth;
-  //   // console.log("networth : ", networth);
-  //   set_user_collections_list([...user_collections]);
-  //   setUser(user);
-  //   updateUserCollections(user_collections);
-  // };
-
   const close_card = () => {
     set_show_card(false);
   };
@@ -185,8 +169,8 @@ export default function MarketOverview(props: market_overview_props) {
     set_show_search(false);
   };
 
-  const open_search = () => {
-    set_show_search(true);
+  const toggle_search = () => {
+    set_show_search(!show_card_search);
   };
 
   const close_wallet = () => {
@@ -197,8 +181,8 @@ export default function MarketOverview(props: market_overview_props) {
     set_show_support(false);
   };
 
-  const open_settings = () => {
-    set_show_settings(true);
+  const toggle_settings = () => {
+    set_show_settings(!show_card_settings);
   };
 
   const open_support = () => {
@@ -242,8 +226,8 @@ export default function MarketOverview(props: market_overview_props) {
     <Page>
       <DesktopHeader
         tab="market"
-        toggle_settings={open_settings}
-        toggle_search={open_search}
+        toggle_settings={toggle_settings}
+        toggle_search={toggle_search}
         isMobile={props.isMobile}
       />
       <div className={s.market_container}>
@@ -253,7 +237,13 @@ export default function MarketOverview(props: market_overview_props) {
         </div>
         <div className={s.networth}>
           <div className={s.number}>
-            <div className={s.num}>{user ? user.networth.toFixed(1) : "-"}</div>
+            <div className={s.num}>
+              {user
+                ? user.networth_history[
+                    user.networth_history.length - 1
+                  ].toFixed(1)
+                : "-"}
+            </div>
             <div className={s.fiat}>ETH</div>
             <div className={s.change}>
               {(
