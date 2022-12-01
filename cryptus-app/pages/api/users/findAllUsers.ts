@@ -4,7 +4,14 @@ import prisma from "../../../lib/prisma";
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
     prisma.$connect();
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+      select: {
+        id: true,
+        username: true,
+        profile_image_url: true,
+      },
+    });
+    console.log("users: ", users.length);
 
     res.status(201);
     res.json(users);

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 import Card from "../../../utils/card/card";
 import { isMobile } from "react-device-detect";
+import { signIn } from "next-auth/client";
 
 type try_now_props = {
   isMobile: boolean;
@@ -25,6 +26,12 @@ export default function TryNow(props: try_now_props) {
               src="/images/celebrity/justinbieber.png"
               className={s.image}
               onClick={() => {
+                signIn("credentials", {
+                  redirect: true,
+                  address:
+                    "0xE21DC18513e3e68a52F9fcDaCfD56948d43a11c6".toLowerCase(),
+                  callbackUrl: `${window.location.origin}/justinbiebernfts`,
+                });
                 router.push("/justinbiebernfts");
               }}
             />
@@ -35,7 +42,12 @@ export default function TryNow(props: try_now_props) {
               src="/images/celebrity/mcuban.png"
               className={s.image}
               onClick={() => {
-                router.push("/mcuban");
+                signIn("credentials", {
+                  redirect: true,
+                  address:
+                    "0xa679c6154b8d4619Af9F83f0bF9a13A680e01eCf".toLowerCase(),
+                  callbackUrl: `${window.location.origin}/mcuban`,
+                });
               }}
             />
             {"Mark Cuban"}
@@ -45,7 +57,12 @@ export default function TryNow(props: try_now_props) {
               src="/images/celebrity/snoopdogg.png"
               className={s.image}
               onClick={() => {
-                router.push("/snoopdogg");
+                signIn("credentials", {
+                  redirect: true,
+                  address:
+                    "0xce90a7949bb78892f159f428d0dc23a8e3584d75".toLowerCase(),
+                  callbackUrl: `${window.location.origin}/snoopdogg`,
+                });
               }}
             />
             {"Snoop Dogg"}
@@ -55,7 +72,12 @@ export default function TryNow(props: try_now_props) {
               src="/images/celebrity/loganpaul.png"
               className={s.image}
               onClick={() => {
-                router.push("/logz");
+                signIn("credentials", {
+                  redirect: true,
+                  address:
+                    "0xfF0BD4AA3496739D5667AdC10e2b843DFAB5712b".toLowerCase(),
+                  callbackUrl: `${window.location.origin}/logz`,
+                });
               }}
             />
             {"Logan Paul"}

@@ -1363,3 +1363,7 @@ export default function get_collections_dict() {
 export function get_collections_list() {
   return Object.keys(collections_dict);
 }
+
+export function get_collection_address_list() {
+  return Object.values(collections_dict).map((c) => c.address);
+}
