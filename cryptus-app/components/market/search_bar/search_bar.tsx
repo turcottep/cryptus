@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 
 import { collection, dbUsers } from "../../../lib/data_types";
 import username from "../../../pages/api/users/username";
+import { Search } from "@mui/icons-material";
 
 export default function SearchBar(props: {
   callback?;
@@ -65,13 +66,12 @@ export default function SearchBar(props: {
   }, []);
 
   return (
-    <div className={s.collections_lafleur}>
+    <div className={s.container}>
       <div className={s.search_box} ref={searchBarRef}>
-        <img src="magnifier.svg" className={s.magnifier} />
+        <Search />
         <input
           autoFocus
           type="text"
-          className={s.searchTerm}
           placeholder={
             props.collections
               ? "Enter a collection name"
@@ -148,11 +148,6 @@ export default function SearchBar(props: {
                   <div
                     className={s.search_items}
                     key={user.username}
-                    // style={{
-                    //   top: index * 55 + Number(searchBarPosY) + 2,
-                    //   left: 24 + Number(searchBarPosX),
-                    //   width: Number(searchBarPosWidth) - 26,
-                    // }}
                     onClick={() => {
                       router.push("/" + user.username);
                     }}
@@ -161,7 +156,7 @@ export default function SearchBar(props: {
                       src={user.profile_image_url}
                       className={s.search_image}
                     />
-                    <p>{user.username}</p>
+                    <div className={s.test123}>{user.username}</div>
                   </div>
                 );
               }

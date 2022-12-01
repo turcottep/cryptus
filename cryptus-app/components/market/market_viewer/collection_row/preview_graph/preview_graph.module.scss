@@ -9,12 +9,8 @@
   align-items: center;
   text-align: left;
 
-  width: 50%;
+  width: 25%;
 
   padding: 8px 0px;
   height: v.$collection_height;
-
-  @media (max-width: v.$mobile) {
-    max-width: 150px;
-  }
 }
