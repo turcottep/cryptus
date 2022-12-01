@@ -135,7 +135,8 @@ export default function SearchBar(props: {
                 return user;
               } else if (
                 query != "" &&
-                user.username.toLowerCase().includes(query.toLowerCase())
+                user.username.toLowerCase().includes(query.toLowerCase()) &&
+                !user.username.toLowerCase().includes("user")
               ) {
                 return user;
               }
