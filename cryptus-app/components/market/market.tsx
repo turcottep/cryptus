@@ -140,14 +140,22 @@ export default function MarketOverview(props: market_overview_props) {
     setLoading(true);
 
     console.log("updating interval", interval);
+    set_market_interval(interval);
 
     for (const collection of props.collections) {
       collection.data_price = [0, 0];
     }
-    // setnewPropCollection([...newPropCollection]);
 
-    await updatePrice(interval, props.collections);
-    set_market_interval(interval);
+    // const batch_size = 20;
+
+    // for (let i = 0; i < props.collections.length; i += batch_size) {
+    //   console.log("getting data for collections", i, i + batch_size);
+
+    const collections_temp = props.collections; //.slice(i, i + batch_size);
+
+    await updatePrice(interval, collections_temp);
+    // }
+
     // setnewPropCollection(newPropCollectionTemp);
 
     setLoading(false);
@@ -393,7 +401,6 @@ export const updatePrice = async (
     viewingmode = "3month";
   }
 
-  // setPrice(price);
   const adresses = collections.map((c) => {
     return c.address;
   });
@@ -411,7 +418,7 @@ export const updatePrice = async (
   });
   const res_object = await res.json();
   // console.log("res_object ", res_object);
-  const { prices, counts, deltas } = res_object;
+  const { prices, deltas } = res_object;
   // const newPropCollectionTemp = [];
 
   if (collections.length > 0) {
@@ -425,6 +432,9 @@ export const updatePrice = async (
       // newPropCollectionTemp.push(element);
     }
   }
+  // }
+
+  console.log("done updating price", collections);
 
   // console.log("collection updated ", newPropCollectionTemp);
   // return newPropCollectionTemp;

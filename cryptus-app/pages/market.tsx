@@ -81,7 +81,7 @@ export async function getStaticProps() {
   try {
     return {
       props: {
-        collections: collections,
+        collections: collections, //.slice(0, 20),
         mock_data: mock_data,
       },
     };
