@@ -12,7 +12,7 @@ export default function DarkThemeSetting() {
     checked: isToggled,
   };
   return (
-    <div className={s.container}>
+    <div className={isToggled ? s.container_dark : s.container}>
       <div className={s.settingCol}>
         Dark Theme
         <div className={s.iconDiv}>

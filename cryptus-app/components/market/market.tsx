@@ -284,10 +284,10 @@ export default function MarketOverview(props: market_overview_props) {
 
         <div className={s.search_and_sort}>
           <div
+            className={s.search_container}
             onClick={() => {
               set_show_card_collection_search(true);
             }}
-            className={s.search_container}
           >
             <Search />
           </div>
