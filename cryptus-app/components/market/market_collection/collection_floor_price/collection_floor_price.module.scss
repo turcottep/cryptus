@@ -22,7 +22,7 @@
 
 .delta {
   font-size: v.$font-size-m;
-  font-weight: v.$collection-prices-font-weight;
+
   flex-direction: row;
 }
 
@@ -58,5 +58,6 @@
     justify-self: center;
     align-self: flex-start;
     font-size: 16px;
+    font-weight: bold;
   }
 }

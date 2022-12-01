@@ -48,15 +48,15 @@ export default function LandingPage(props: { isMobile: boolean }) {
 
   return (
     <div className={s.container}>
-      {show_card_try_now && (
-        <TryNow isMobile={props.isMobile} callback_close={close_card_try_now} />
-      )}
       {loading && <Loading />}
       <Header
         session={session}
         setLoading={setLoading}
         isMobile={props.isMobile}
       />
+      {show_card_try_now && (
+        <TryNow isMobile={props.isMobile} callback_close={close_card_try_now} />
+      )}
       <div
         className={s.page1}
         ref={ref}

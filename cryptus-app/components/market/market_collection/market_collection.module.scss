@@ -1,4 +1,5 @@
 @use "/styles/variables" as v;
+@import "/styles/utils";
 
 .stats {
   display: grid;
@@ -21,10 +22,52 @@
     gap: 8px;
     place-content: center;
 
+    background-color: v.$secondary-color-pale;
+    padding: 8px 0px;
+    margin-left: 8px;
+    margin-right: 8px;
+    border-radius: v.$border-radius-m;
+
     > div {
-      //   width: min-content;
       height: 100%;
     }
+
+    .name {
+      font-size: 14px;
+    }
+    .value {
+      font-size: 20px;
+      display: inline-block;
+      height: 25px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+
+      max-width: calc(100% - 16px);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      @extend .cooltext;
+    }
+    .rarity {
+      font-size: 12px;
+      color: v.$grey;
+    }
+  }
+
+  .stat2 {
+    display: grid;
+    grid-template-rows: 0.75fr 0.25fr 0.25fr;
+    place-items: center;
+    height: 70px;
+    gap: 8px;
+    place-content: center;
+
+    background-color: v.$secondary-color-pale;
+    padding: 8px 0px;
+    margin-left: 8px;
+    margin-right: 8px;
+    border-radius: v.$border-radius-m;
   }
 }
 
@@ -35,8 +78,4 @@
   align-items: center;
   gap: 16px;
   padding-top: 16px;
-
-  > div {
-    background-color: rgba(255, 0, 0, 0.078);
-  }
 }
