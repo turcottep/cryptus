@@ -111,16 +111,16 @@ export default function Profile(props: {
     set_show_wallet_manager(true);
   };
 
-  const open_settings = () => {
-    set_show_settings(true);
+  const toggle_settings = () => {
+    set_show_settings(!show_card_settings);
   };
 
   const open_support = () => {
     set_show_support(true);
   };
 
-  const open_search = () => {
-    set_show_search(true);
+  const toggle_search = () => {
+    set_show_search(!show_card_search);
   };
 
   const update_my_collection_filter = (new_filter: string[]) => {
@@ -138,8 +138,8 @@ export default function Profile(props: {
     <Page>
       <DesktopHeader
         tab="profile"
-        open_settings={open_settings}
-        open_search={open_search}
+        toggle_settings={toggle_settings}
+        toggle_search={toggle_search}
       />
       {isMyProfile ? (
         <MyProfInfos

@@ -242,8 +242,8 @@ export default function MarketOverview(props: market_overview_props) {
     <Page>
       <DesktopHeader
         tab="market"
-        open_settings={open_settings}
-        open_search={open_search}
+        toggle_settings={open_settings}
+        toggle_search={open_search}
         isMobile={props.isMobile}
       />
       <div className={s.market_container}>

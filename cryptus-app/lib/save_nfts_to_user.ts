@@ -3,7 +3,7 @@ export default async function save_nfts_to_user(user, nfts) {
   console.log("save_nfts_to_user, nfts: ", nfts);
   console.log("save_nfts_to_user, nfts.length: ", nfts.length);
 
-  const nft_stringified = nfts.map((nft) => {
+  const nfts_obj = nfts.map((nft) => {
     return (nft = {
       properties: JSON.stringify(nft.properties),
       user_id: user.userId,
@@ -20,15 +20,18 @@ export default async function save_nfts_to_user(user, nfts) {
       token_id: nft.token_id,
     });
   });
+
   const collections_list = Array.from(
-    new Set(nft_stringified.map((nft) => nft.collection))
+    new Set(nfts_obj.map((nft) => nft.collection))
   );
+
+  const nfts_stringified = JSON.stringify(nfts_obj);
 
   try {
     const res = await fetch("/api/nfts/update", {
       method: "POST",
       body: JSON.stringify({
-        nfts: nft_stringified,
+        user_nfts_string: nfts_stringified,
         collections_list: collections_list,
         username: user.username,
         userId: user.userId,

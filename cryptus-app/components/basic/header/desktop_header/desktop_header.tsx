@@ -17,8 +17,8 @@ import {
 
 export default function DesktopHeader(props: {
   tab: string;
-  open_settings: () => void;
-  open_search: () => void;
+  toggle_settings: () => void;
+  toggle_search: () => void;
   isMobile?: boolean;
 }) {
   const [session, loading] = useSession();
@@ -62,13 +62,13 @@ export default function DesktopHeader(props: {
           />
         </div>
         <div className={s.icons}>
-          <div onClick={props.open_search} className={s.icon}>
+          <div onClick={props.toggle_search} className={s.icon}>
             <Search />
           </div>
           <a href={"/market"} target="_blank" className={s.icon}>
             <NotificationsOutlined />
           </a>
-          <div onClick={props.open_settings} className={s.icon}>
+          <div onClick={props.toggle_settings} className={s.icon}>
             <SettingsOutlined />
           </div>
         </div>

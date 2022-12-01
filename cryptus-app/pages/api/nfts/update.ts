@@ -8,11 +8,11 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     // console.log("nft data: ", req.body.nfts);
 
-    await prisma.nft.deleteMany({
-      where: {
-        userId: req.body.userId,
-      },
-    });
+    // await prisma.nft.deleteMany({
+    //   where: {
+    //     userId: req.body.userId,
+    //   },
+    // });
 
     const user = await prisma.user.update({
       where: {
@@ -20,13 +20,14 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       },
       data: {
         collections_list: req.body.collections_list as string[],
+        user_nfts_string: req.body.user_nfts_string as string,
 
-        nfts: {
-          // add every nft in req.body.nfts
-          createMany: {
-            data: req.body.nfts,
-          },
-        },
+        // nfts: {
+        //   // add every nft in req.body.nfts
+        //   createMany: {
+        //     data: req.body.nfts,
+        //   },
+        // },
       },
     });
 

@@ -31,15 +31,6 @@ export default function Settings(props: settings_props) {
   return (
     <Card callback_close={props.callback_close} isMobile={props.isMobile}>
       <div className={s.container}>
-        {isMobile ? (
-          <div className={s.searchBarMobile}>
-            <SearchBar />
-          </div>
-        ) : (
-          <div className={s.searchBar}>
-            <SearchBar />
-          </div>
-        )}
         <div className={s.settingRows}>
           <UsenameSetting username={username} />
           <AccountLink username={username} />

@@ -20,6 +20,7 @@ model User {
   hash                     String
   collections_filter       String[]
   collections_list         String[]
+  user_nfts_string         String   @default("[]")
   networth                 Float    @default(0)
   profile_image_url        String   @default("./icons/icon-192x192.png")
   subscription             String   @default("")

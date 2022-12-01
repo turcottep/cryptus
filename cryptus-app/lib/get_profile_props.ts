@@ -30,13 +30,16 @@ export default async function get_profile_props(
     let collections_in_wallet = [];
     collections_in_wallet = user.collections_address_list;
 
+    const user_nfts = JSON.parse(user.user_nfts_string);
+    console.log("get_profile_props, user_nfts: ", user_nfts);
+
     if (
       user.profile_image_url === "./icons/icon-192x192.png" &&
-      user.nfts.length > 0
+      user_nfts.length > 0
     ) {
       console.log("updating profile picture");
 
-      user.profile_image_url = user.nfts[0].image_url;
+      user.profile_image_url = user_nfts[0].image_url;
 
       console.log("user.profile_image_url: ", user.profile_image_url);
 
@@ -54,7 +57,7 @@ export default async function get_profile_props(
       console.log("res_pfp: ", res_pfp);
     }
 
-    if (user.nfts.length === 0) {
+    if (user_nfts.length === 0) {
       if (collections_in_wallet.length === 0) {
         console.log(
           "get_profile_props, collections_in_wallet.length === 0, so getting it from opensea"
@@ -141,9 +144,9 @@ export default async function get_profile_props(
       console.log("saved nfts to our database");
     } else {
       console.log("using nfts from our database");
-      console.log("user.nfts", user.nfts);
+      console.log("user_nfts", user_nfts);
 
-      nfts = user.nfts.map((nft) => {
+      nfts = user_nfts.map((nft) => {
         return {
           ...nft,
           properties: JSON.parse(nft.properties),
