@@ -71,8 +71,9 @@ export default function MarketCollection(props: {
       return { key: key_clean_capitalize, value: value_clean };
     });
     console.log("stats_list", stats_list);
+    const stats_list_reverse = stats_list.reverse();
 
-    setStats(stats_list);
+    setStats(stats_list_reverse);
   };
 
   const updatePrice = async (childData) => {
