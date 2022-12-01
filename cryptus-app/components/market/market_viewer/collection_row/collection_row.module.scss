@@ -16,13 +16,10 @@
 
 .box {
   flex: 1 1 auto;
-  position: relative;
   display: flex;
-
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  text-align: center;
-  justify-content: space-between;
   background-color: v.$header-color;
 
   padding: 8px;
@@ -32,6 +29,74 @@
   @media (max-width: v.$mobile) {
     border-radius: 0px;
   }
+
+  > div {
+  }
+  gap: 8px;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 50px 150px;
+  grid-template-rows: 50px 25px;
+  grid-template-areas: "logo ticker" "name name";
+  row-gap: 4px;
+
+  // > div {
+  //   background-color: lightblue;
+  // }
+  .logo {
+    grid-area: logo;
+
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .ticker {
+    grid-area: ticker;
+
+    font-size: 24px;
+    font-weight: 600;
+    height: min-content;
+    justify-self: flex-start;
+    padding-left: 8px;
+    align-self: center;
+  }
+
+  .name {
+    grid-area: name;
+    text-align: start;
+
+    font-size: 16px;
+    font-weight: 400;
+    color: v.$secondary-color;
+    display: inline-block;
+    width: 200px;
+    height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.graph {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+
+  width: 200px;
+  @media (max-width: v.$mobile) {
+    width: 50px;
+  }
+
+  padding: 8px 0px;
+  height: v.$collection_height;
 }
 
 .anchor {
@@ -53,3 +118,41 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+// .tile {
+//   display: grid;
+//   grid-template-columns: 200px auto 100px;
+//   grid-template-rows: 70px;
+//   column-gap: 8px;
+//   padding: 0 8px;
+
+//   // place-self: center;
+
+//   background-color: rgb(190, 51, 41);
+
+//   > div {
+//     background-color: rgb(212, 164, 128);
+//   }
+
+//   > div:nth-child(2) {
+//     background-color: red;
+//     display: grid;
+//     grid-template-rows: 1fr 1fr;
+//     row-gap: 1px;
+
+//     > div {
+//       background-color: green;
+//     }
+//   }
+
+//   > div:nth-child(4) {
+//     background-color: red;
+//     display: grid;
+//     grid-template-rows: 1.5fr 1fr;
+//     row-gap: 1px;
+
+//     > div {
+//       background-color: green;
+//     }
+//   }
+// }

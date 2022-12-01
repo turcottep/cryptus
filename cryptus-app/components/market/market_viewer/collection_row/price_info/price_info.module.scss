@@ -1,108 +1,76 @@
 @use "/styles/variables" as v;
-
-.container {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  text-align: right;
-
-  // width: 100px;
-  // width: 100%;
-  height: v.$collection_height;
-  position: sticky;
-}
+@import "/styles/utils";
 
 .number {
   display: grid;
-  grid-template-columns: 70px auto 70px;
-  grid-template-rows: 75px 25px;
-  grid-template-areas: ". num fiat" ". change .";
+  grid-template-columns: 90px;
+  grid-template-rows: 50px 25px;
 
   gap: 8px;
-  padding: 0 8px;
-
-  background-color: rgb(41, 88, 190);
 
   > div {
-    background-color: rgb(203, 137, 87);
   }
 
   .num {
-    grid-area: num;
-    place-self: flex-end;
+    font-size: 24px;
+    justify-self: center;
+    align-self: flex-end;
   }
-  .fiat {
-    grid-area: fiat;
-    place-self: flex-end;
-  }
+
   .change {
-    grid-area: change;
-    place-self: flex-start;
+    font-size: 12px;
+    justify-self: center;
+    align-self: flex-start;
+  }
+
+  .green_delta {
+    @extend .change;
+    @extend .cooltextgreen;
+  }
+  .red_delta {
+    @extend .change;
+    @extend .cooltextred;
   }
 }
 
-.tile {
-  display: grid;
-  grid-template-columns: 70px 70px auto 70px;
-  grid-template-rows: 70px;
-  column-gap: 8px;
-  padding: 0 8px;
+// .delta {
+//   display: flex;
+//   flex: 1 1 auto;
+//   flex-direction: row;
+//   flex-wrap: nowrap;
+//   justify-content: flex-end;
+//   align-items: center;
+//   text-align: left;
 
-  // place-self: center;
+//   width: 100%;
+//   height: 20px;
 
-  background-color: rgb(190, 51, 41);
+//   font-size: v.$collection-name-font-size;
+//   font-weight: v.$collection-name-font-weight;
+// }
 
-  > div {
-    background-color: rgb(212, 164, 128);
-  }
+// .tile2 {
+//   display: grid;
+//   grid-template-columns: 50px 150px;
+//   grid-template-rows: 0.75fr 0.25fr;
+//   grid-template-areas: "logo namee" "logo keystat";
 
-  > div:nth-child(2) {
-    background-color: red;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    row-gap: 1px;
+//   gap: 8px;
 
-    > div {
-      background-color: green;
-    }
-  }
+//   background-color: rgb(41, 88, 190);
 
-  > div:nth-child(4) {
-    background-color: red;
-    display: grid;
-    grid-template-rows: 1.5fr 1fr;
-    row-gap: 1px;
+//   > div {
+//     background-color: rgb(203, 137, 87);
+//   }
 
-    > div {
-      background-color: green;
-    }
-  }
-}
-
-.tile2 {
-  display: grid;
-  grid-template-columns: 50px 150px;
-  grid-template-rows: 0.75fr 0.25fr;
-  grid-template-areas: "logo namee" "logo keystat";
-
-  gap: 8px;
-
-  background-color: rgb(41, 88, 190);
-
-  > div {
-    background-color: rgb(203, 137, 87);
-  }
-
-  .logo {
-    grid-area: logo;
-    place-self: center;
-  }
-  .name {
-    grid-area: namee;
-  }
-  .keystat {
-    grid-area: keystat;
-  }
-}
+//   .logo {
+//     grid-area: logo;
+//     place-self: center;
+//   }
+//   .name {
+//     grid-area: namee;
+//   }
+//   .keystat {
+//     grid-area: keystat;
+//   }
+// }

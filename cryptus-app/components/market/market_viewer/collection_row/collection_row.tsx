@@ -9,40 +9,48 @@ import { collection } from "../../../../lib/data_types";
 import GetNameWithoutSpaces from "../../../../lib/get_name_without_spaces";
 import Loading from "../../../utils/loading/loading";
 import { CircularProgress } from "@mui/material";
+import Graph from "../../graph/graph";
 
-// Need to add prop for collection
 export default function CollectionRow(props: { collection: collection }) {
-  // const collection_name = GetNameWithoutSpaces(props.collection.name);
   const is_loading =
     !props.collection.data_price ||
     (props.collection.data_price.length === 2 &&
       props.collection.data_price[0] === 0 &&
       props.collection.data_price[1] === 0);
-  // console.log("CollectionRow", props.collection, is_loading);
 
+  // const collection_name = GetNameWithoutSpaces(props.collection.name);
+  // console.log("CollectionRow", props.collection, is_loading);
   // console.log("CollectionRow", props.collection);
+
+  const { collection } = props;
 
   return (
     // <a className={s.anchor} href={`/market/${props.collection.address}`}>
     <div id="collection_row" className={s.container}>
       <div id="collection_row" className={s.box}>
-        {is_loading && (
-          <div className={s.loading_container}>
-            <CircularProgress color="primary" />
-          </div>
-        )}
-        <CollectionInfo collection={props.collection} />
-        <PreviewGraph
-          data_price={props.collection.data_price}
-          data_volume={props.collection.data_volume}
-          price_delta={props.collection.floor_price_delta}
-        />
-
+        <div id="collection_info" className={s.info}>
+          <img className={s.logo} src={collection.logo} />
+          <div className={s.ticker}>{collection.ticker}</div>
+          <div className={s.name}>{collection.name}</div>
+        </div>
+        <div id="preview_graph" className={s.graph}>
+          <Graph
+            data_price={props.collection.data_price}
+            data_volume={props.collection.data_volume}
+            color={props.collection.floor_price_delta > 0 ? "green" : "red"}
+            detailled={false}
+          />
+        </div>
         <PriceInfo
           collection={props.collection}
           currency="eth"
           prices={props.collection.data_price}
         />
+        {is_loading && (
+          <div className={s.loading_container}>
+            <CircularProgress color="primary" />
+          </div>
+        )}
       </div>
     </div>
   );
