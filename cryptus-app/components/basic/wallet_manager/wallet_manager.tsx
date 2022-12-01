@@ -39,7 +39,9 @@ export default function WalletManager(props: {
   const addMetamaskWallet = async () => {
     console.log("update view");
     if (!window.ethereum) {
-      window.open("https://metamask.io/", "_blank").focus();
+      // window.open("https://metamask.io/", "_blank").focus();
+      alert("Please download MetaMask to connect to your wallet");
+
       setWalletToAdd([]);
     } else {
       try {
