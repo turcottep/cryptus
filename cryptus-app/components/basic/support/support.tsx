@@ -19,7 +19,12 @@ export default function Support(props: {
       <div className={s.contactsMethod}>
         <div>
           Twitter
-          <a href="https://twitter.com/public_wallet" className={s.row}>
+          <a
+            href="https://twitter.com/public_wallet"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={s.row}
+          >
             twitter.com/public_wallet
             <div className={s.iconDiv}>
               <img className={s.icon} src="/icons/link_icon.png" />

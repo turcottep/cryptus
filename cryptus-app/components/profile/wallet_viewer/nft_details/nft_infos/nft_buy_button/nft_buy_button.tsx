@@ -15,7 +15,7 @@ export default function NftBuyButton(props: { price: number; url: string }) {
       <div className={s.container}>
         <img className={s.eth} src="/images/eth.png" alt="eth" />
         <div className={s.price}>{price_clean}</div>
-        <div className={s.line} />
+        {/* <div className={s.line} /> */}
         <div className={s.opensea}>
           <img src="/images/opensea.png" alt="" className={s.img1} />
         </div>

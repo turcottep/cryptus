@@ -7,7 +7,13 @@ import s from "./market.module.scss";
 import { useSession } from "next-auth/client";
 
 //internal imports
-import { user, intervals, collection, dbUsers } from "../../lib/data_types";
+import {
+  user,
+  intervals,
+  collection,
+  dbUsers,
+  interval_days,
+} from "../../lib/data_types";
 
 import SearchBar from "./search_bar/search_bar";
 import SortButton from "./sort_button/sort_button";
@@ -111,7 +117,7 @@ export default function MarketOverview(props: market_overview_props) {
     }
 
     // console.log("networth : ", user.networth);
-    // console.log("networth_history : ", user.networth_history);
+    console.log("networth_history : ", user.networth_history);
     setUser(user);
   };
 
@@ -140,14 +146,22 @@ export default function MarketOverview(props: market_overview_props) {
     setLoading(true);
 
     console.log("updating interval", interval);
+    set_market_interval(interval);
 
     for (const collection of props.collections) {
       collection.data_price = [0, 0];
     }
-    // setnewPropCollection([...newPropCollection]);
 
-    await updatePrice(interval, props.collections);
-    set_market_interval(interval);
+    // const batch_size = 20;
+
+    // for (let i = 0; i < props.collections.length; i += batch_size) {
+    //   console.log("getting data for collections", i, i + batch_size);
+
+    const collections_temp = props.collections; //.slice(i, i + batch_size);
+
+    await updatePrice(interval, collections_temp);
+    // }
+
     // setnewPropCollection(newPropCollectionTemp);
 
     setLoading(false);
@@ -246,15 +260,25 @@ export default function MarketOverview(props: market_overview_props) {
               {(
                 (100 *
                   (user.networth_history[user.networth_history.length - 1] -
-                    user.networth_history[0])) /
-                (user.networth_history[0] + 0.00000001)
+                    user.networth_history.slice(
+                      -interval_days[market_interval],
+                      -1
+                    )[0])) /
+                (user.networth_history.slice(
+                  -interval_days[market_interval],
+                  -1
+                )[0] +
+                  0.00000001)
               ).toFixed(2)}
               %
             </div>
           </div>
           <div className={s.graph}>
             <Graph
-              data_price={user.networth_history}
+              data_price={user.networth_history.slice(
+                -interval_days[market_interval],
+                -1
+              )}
               data_volume={[]}
               color={
                 user.networth_history[user.networth_history.length - 1] -
@@ -276,6 +300,7 @@ export default function MarketOverview(props: market_overview_props) {
 
         <div className={s.search_and_sort}>
           <div
+            className={s.search_container}
             onClick={() => {
               set_show_card_collection_search(true);
             }}
@@ -393,7 +418,6 @@ export const updatePrice = async (
     viewingmode = "3month";
   }
 
-  // setPrice(price);
   const adresses = collections.map((c) => {
     return c.address;
   });
@@ -411,7 +435,7 @@ export const updatePrice = async (
   });
   const res_object = await res.json();
   // console.log("res_object ", res_object);
-  const { prices, counts, deltas } = res_object;
+  const { prices, deltas } = res_object;
   // const newPropCollectionTemp = [];
 
   if (collections.length > 0) {
@@ -425,6 +449,9 @@ export const updatePrice = async (
       // newPropCollectionTemp.push(element);
     }
   }
+  // }
+
+  // console.log("done updating price", collections);
 
   // console.log("collection updated ", newPropCollectionTemp);
   // return newPropCollectionTemp;

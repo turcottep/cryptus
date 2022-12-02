@@ -17,14 +17,20 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       const query_diff = `SELECT * FROM marketsales.${
         address_cropped + "_differentials"
       };`;
-      const query = `SELECT * FROM marketsales.${
+      let col_name = "";
+      if (viewing_mode != "day" && viewing_mode != "week") {
+        col_name = "average_price";
+      } else {
+        col_name = "total_price";
+      }
+
+      const query = `SELECT ${col_name} FROM marketsales.${
         address_cropped + "_" + viewing_mode
       };`;
       queries.push(query);
       queries_diff.push(query_diff);
     });
     // start timer
-    const start = new Date().getTime();
     let query = [];
     const collectionsCount = adresses.length;
     for (let i = 0; i < collectionsCount; i++) {
@@ -34,7 +40,14 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       query.push(prisma.$queryRaw(queries_diff[i]));
     }
     // console.log("before answer ", query);
+
+    const start = new Date().getTime();
     const answer = await prisma.$transaction([...query]);
+    // end timer
+    const end = new Date().getTime();
+    const time = end - start;
+    console.log(`Time taken: ${time}ms`);
+
     // console.log("answer ", answer);
     const split_1 = answer.slice(0, collectionsCount);
     const split_2 = answer.slice(collectionsCount, 2 * collectionsCount);
@@ -47,12 +60,14 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         price = data.map((row) => {
           return parseFloat(row.average_price);
         });
-        count = data.map((row) => {
-          return parseFloat(row.count);
-        });
-        volume = data.map((row) => {
-          return parseFloat(row.volume_eth);
-        });
+        // count = data.map((row) => {
+        //   return parseFloat(row.count);
+        // });
+        // volume = data.map((row) => {
+        //   return parseFloat(row.volume_eth);
+        // });
+        count = null;
+        volume = null;
       } else {
         price = data.map((row) => {
           return parseFloat(row.total_price);
@@ -77,14 +92,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       });
     });
 
-    // end timer
-    const end = new Date().getTime();
-    const time = end - start;
-    console.log(`Time taken: ${time}ms`);
-
     res.status(201);
     // console.log("user: ", user);
-    res.json({ prices, counts, volumes, deltas: deltas });
+    res.json({ prices, deltas: deltas });
   } catch (e) {
     res.status(500);
     console.error("There was an error deep wond", e);

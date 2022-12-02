@@ -128,7 +128,11 @@ export default function MarketCollection(props: {
               className={s.stat}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className={s.value}>{d.value}</div>
+              <div className={s.value}>
+                {d.value >= 1
+                  ? parseFloat(d.value).toFixed(0)
+                  : parseFloat(d.value).toFixed(2)}
+              </div>
               <div className={s.rarity}>{d.key}</div>
             </div>
           ))}

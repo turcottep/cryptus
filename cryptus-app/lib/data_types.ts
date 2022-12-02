@@ -88,3 +88,5 @@ export enum intervals {
   three_months = 2,
   year = 3,
 }
+
+export const interval_days = [7, 30, 90, 365];
