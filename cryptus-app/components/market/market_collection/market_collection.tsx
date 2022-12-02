@@ -129,7 +129,7 @@ export default function MarketCollection(props: {
               onClick={(e) => e.stopPropagation()}
             >
               <div className={s.value}>
-                {d.value >= 1
+                {Math.abs(d.value) >= 1
                   ? parseFloat(d.value).toFixed(0)
                   : parseFloat(d.value).toFixed(2)}
               </div>
