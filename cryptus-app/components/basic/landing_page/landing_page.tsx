@@ -10,6 +10,7 @@ import mixpanel from "mixpanel-browser";
 import TryNow from "./try_now/try_now";
 
 import * as google_analytics from "../../../lib/google_analytics";
+import { isMobile } from "react-device-detect";
 
 export default function LandingPage(props: { isMobile: boolean }) {
   const [loading, setLoading] = useState<boolean>(false);
@@ -80,15 +81,19 @@ export default function LandingPage(props: { isMobile: boolean }) {
             setShowCardTryNow={set_show_card_try_now}
           /> */}
         </div>
-        <div className={s.divisionimg}>
-          <img
-            className={s.img1}
-            style={{
-              transform: `perspective(256px) rotateX(${angle_x}deg) rotateY(${angle_y}deg)`,
-            }}
-            src="/images/wallet_iphone.png"
-          />
-        </div>
+        {isMobile ? (
+          <></>
+        ) : (
+          <div className={s.divisionimg}>
+            <img
+              className={s.img1}
+              style={{
+                transform: `perspective(256px) rotateX(${angle_x}deg) rotateY(${angle_y}deg)`,
+              }}
+              src="/images/wallet_iphone.png"
+            />
+          </div>
+        )}
       </div>
       <div className={s.page2}>
         <div className={s.divisionimg}>
