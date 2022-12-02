@@ -1,4 +1,33 @@
 @use "/styles/variables" as v;
+@import "/styles/utils";
+
+// .button {
+//   flex: 0 0 auto;
+
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+
+//   background-color: v.$hover-color;
+
+//   font-size: 24px;
+//   padding: 8px;
+//   font-family: "Roboto-Thin";
+//   border-radius: 12px;
+//   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+
+//   cursor: pointer;
+// }
+
+// .button:hover {
+//   color: v.$hover-color;
+//   background-color: black;
+//   box-shadow: 0px 4px 24px v.$hover-color;
+//   scale: 1.1;
+//   cursor: pointer;
+//   transition: all 0.1s linear;
+// }
 
 .button {
   flex: 0 0 auto;
@@ -8,21 +37,26 @@
   justify-content: center;
   align-items: center;
 
-  background-color: v.$hover-color;
+  background-image: linear-gradient(to right, #f27121, #8a2387);
+  // @extend .cooltext;
 
   font-size: 24px;
-  padding: 8px;
-  font-family: "Roboto-Thin";
-  border-radius: 12px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 12px 16px;
+
+  border-radius: 9px;
+
+  height: min-content;
+  color: white;
+
+  box-shadow: 0px 4px 24px #f27121;
 
   cursor: pointer;
 }
 
 .button:hover {
-  color: v.$hover-color;
   background-color: black;
-  box-shadow: 0px 4px 24px v.$hover-color;
+
+  transition: all 0.2s ease-in-out;
   scale: 1.1;
   cursor: pointer;
   transition: all 0.1s linear;
