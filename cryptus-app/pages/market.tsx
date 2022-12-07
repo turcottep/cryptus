@@ -11,6 +11,7 @@ import address from "./api/collection/address";
 
 import getCollectionData from "../lib/get_collection_data";
 import get_collections_dict from "../lib/collectionDictionary";
+import Head from "next/head";
 
 export default function MarketPage(props) {
   const [isMobile, setIsMobile] = useState(true);
@@ -21,44 +22,81 @@ export default function MarketPage(props) {
   }, [mobile]);
 
   return (
-    <div className="">
-      <title>Public Wallet</title>
-      <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-      <meta
-        name="description"
-        content="The new way to check up on your networth in a matter of seconds. "
-      />
-      <meta
-        name="keywords"
-        content="
-        NFT Market Overview
-        ETH
-        NFT Market Price
-        NFT Market tracker
-      "
-      />
-      <meta name="author" content="" />
-      <meta name="theme-color" content="" />
-      <meta
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-        name="viewport"
-      />
-
-      <link
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
-        rel="stylesheet"
-      />
-      <main>
-        <Market
-          date={props.mock_data.date}
-          networth={props.mock_data.networth}
-          collections={props.collections}
-          isMobile={isMobile}
+    <main>
+      <Head>
+        <title>Market</title>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable='yes', maximum-scale=5.0"
         />
-      </main>
-    </div>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          content="Esiest way to track your NFTs. 
+            The new way to check up on your networth in a matter of seconds. 
+            Share your holdings with the ones who matter the most."
+        />
+        <meta
+          name="keywords"
+          content="NFT Market Overview
+            ETH
+            ECR-
+            Eutereum wallet
+            NFT Market Price
+            NFT Market tracker
+            NFT wallet viewer
+            metamask
+            Show NFT
+            app for nft
+            check my nft
+            PublicWallet 
+            public wallet
+            NFT Viewer
+            NFT wallet
+            Blockchain wallet
+            profile links
+            NFT links
+            NFT marketplace
+          
+            metamask public address
+            public wallet address
+            public crypto wallet
+            gary vee public wallet
+            wallet public key
+            crypto wallet public address
+            public wallet address metamask
+            "
+        />
+        <meta name="author" content="CryptUS!" />
+        <meta name="theme-color" content="#FFFDF5" />
+
+        <link rel="apple-touch-icon" href="/apple-icon.png"></link>
+        <link
+          href="/icons/favicon-16x16.png"
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+        />
+        <link
+          href="/icons/favicon-32x32.png"
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+        />
+        <link rel="manifest" href="/manifest.json" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
+          rel="stylesheet"
+        />
+      </Head>
+      <Market
+        date={props.mock_data.date}
+        networth={props.mock_data.networth}
+        collections={props.collections}
+        isMobile={isMobile}
+      />
+    </main>
   );
 }
 

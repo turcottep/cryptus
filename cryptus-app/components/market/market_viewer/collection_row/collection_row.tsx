@@ -29,7 +29,7 @@ export default function CollectionRow(props: { collection: collection }) {
     <div id="collection_row" className={s.container}>
       <div id="collection_row" className={s.box}>
         <div id="collection_info" className={s.info}>
-          <img className={s.logo} src={collection.logo} />
+          <img className={s.logo} src={collection.logo} alt={collection.name} />
           <div className={s.ticker}>{collection.ticker}</div>
           <div className={s.name}>{collection.name}</div>
         </div>

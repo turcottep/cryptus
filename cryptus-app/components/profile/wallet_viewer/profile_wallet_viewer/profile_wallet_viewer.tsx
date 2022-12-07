@@ -250,7 +250,7 @@ const NftL = (props: { nft: nft; collectionName: string; open_nft }) => {
   return (
     <div onClick={onNftClick} className={s.nft_container}>
       {nft.image_url ? (
-        <img className={s.imglarge} src={nft.image_url} />
+        <img className={s.imglarge} src={nft.image_url} alt={nft.name} />
       ) : (
         <div className={s.imglarge_loading} />
       )}
@@ -287,7 +287,7 @@ const NftXl = (props: { nft: nft; collectionName: string; open_nft }) => {
   return (
     <div onClick={onNftClick} className={s.collection_container2}>
       {nft.image_url ? (
-        <img className={s.imglarge} src={nft.image_url} />
+        <img className={s.imglarge} src={nft.image_url} alt={nft.name} />
       ) : (
         <div className={s.imglarge_loading} />
       )}
@@ -300,7 +300,7 @@ const NftS = (props: { nft: nft }) => {
 
   return (
     <div onClick={(e) => {}} className={s.nft_preview_container}>
-      <img className={s.imgsmall} src={nft.image_url} />
+      <img className={s.imgsmall} src={nft.image_url} alt={nft.name} />
     </div>
   );
 };

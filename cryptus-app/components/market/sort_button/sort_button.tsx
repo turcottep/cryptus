@@ -52,6 +52,7 @@ export default function SortButton(props: {
     <div className={s.container}>
       <Button
         id="basic-button"
+        aria-label="sort"
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}

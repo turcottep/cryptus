@@ -65,7 +65,11 @@ export default function LandingPage(props: { isMobile: boolean }) {
       >
         <div className={s.divisiontext}>
           <div className={s.logodiv}>
-            <img className={s.logo} src="/images/pw4.png" />
+            <img
+              className={s.logo}
+              src="/images/pw4.png"
+              alt={"public wallet logo"}
+            />
           </div>
           <div className={s.description}>{"EASIEST WAY TO"}</div>
           <div className={s.title}>{"TRACK YOUR NFTS"}</div>
@@ -87,12 +91,17 @@ export default function LandingPage(props: { isMobile: boolean }) {
               transform: `perspective(256px) rotateX(${angle_x}deg) rotateY(${angle_y}deg)`,
             }}
             src="/images/wallet_iphone.png"
+            alt={"preview of profile on an iphone"}
           />
         </div>
       </div>
       <div className={s.page2}>
         <div className={s.divisionimg}>
-          <img className={s.img1} src="/images/market_iphone.png" />
+          <img
+            className={s.img1}
+            src="/images/market_iphone.png"
+            alt={"preview of market on an iphone"}
+          />
         </div>
         <div className={s.divisiontext}>
           <div className={s.description}>{"WAKE UP AND CHECK YOUR"}</div>
@@ -108,7 +117,11 @@ export default function LandingPage(props: { isMobile: boolean }) {
           <div className={s.title}>{"MATTER MOST"}</div>
         </div>
         <div className={s.divisionimg}>
-          <img className={s.img1} src="/images/wallet_iphone.png" />
+          <img
+            className={s.img1}
+            src="/images/wallet_iphone.png"
+            alt={"preview of profile on an iphone"}
+          />
         </div>
       </div>
       <Footer />

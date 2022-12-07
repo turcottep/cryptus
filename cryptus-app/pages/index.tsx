@@ -32,6 +32,7 @@ export default function Home() {
           content="width=device-width, initial-scale=1.0, user-scalable='yes', maximum-scale=5.0"
         />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta lang="en" />
         <meta
           name="description"
           content="Esiest way to track your NFTs. 
@@ -84,10 +85,6 @@ export default function Home() {
           rel="icon"
           type="image/png"
           sizes="32x32"
-        />
-        <meta
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-          name="viewport"
         />
         <link rel="manifest" href="/manifest.json" />
         <link
