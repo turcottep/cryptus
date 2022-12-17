@@ -17,6 +17,8 @@ exports[`<Support /> should display properly 1`] = `
         Twitter
         <a
           href="https://twitter.com/public_wallet"
+          rel="noopener noreferrer"
+          target="_blank"
         >
           twitter.com/public_wallet
           <div>

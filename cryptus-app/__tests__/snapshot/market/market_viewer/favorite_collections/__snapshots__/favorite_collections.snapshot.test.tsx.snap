@@ -25,13 +25,12 @@ exports[`<FavoriteCollections /> should display properly 1`] = `
           <div
             id="collection_info"
           >
+            <img
+              alt="CryptoKitties"
+              src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
+            />
             <div>
-              <img
-                src="https://lh3.googleusercontent.com/j2tpXbSVHCzhtM2betJkxxlug7Y2i7yC9fyPPiJCTIBqxpU4VxsGk7Osw04lt8TetpSOp2uamKE_Ppy1fC_2cr8"
-              />
-              <div>
-                KITT
-              </div>
+              KITT
             </div>
             <div>
               CryptoKitties
@@ -57,10 +56,10 @@ exports[`<FavoriteCollections /> should display properly 1`] = `
             id="price_info"
           >
             <div>
-              7.8Ξ
+              7.8 Ξ
             </div>
             <div>
-              NaNΞ (NaN%)
+              NaN꠵ (NaN%)
             </div>
           </div>
         </div>
