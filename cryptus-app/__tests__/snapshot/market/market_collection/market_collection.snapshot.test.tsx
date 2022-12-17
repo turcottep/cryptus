@@ -21,31 +21,13 @@ describe("<MarketCollection />", () => {
         count: [],
         volume: [],
         address: "",
+        slug: "",
       },
       isMobile: true,
     };
 
     const tree = renderer
-      .create(
-        <MarketCollection
-          isMobile={false}
-          market_collection_props={{
-            collection_name: "",
-            collection_logo: "",
-            collection_ticker: "",
-            floor_price_live: 0,
-            floor_price_delta: 0,
-            floor_price_timestamp: "",
-            data_price: [],
-            interval: intervals.week,
-            count: [],
-            volume: [],
-            address: "",
-            slug: "",
-          }}
-          callback_close={undefined}
-        />
-      )
+      .create(<MarketCollection callback_close={undefined} {...test_props} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

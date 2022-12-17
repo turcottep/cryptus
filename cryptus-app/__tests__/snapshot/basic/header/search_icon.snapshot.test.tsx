@@ -8,8 +8,8 @@ describe("<DesktopHeader />", () => {
   it("should display properly", async () => {
     const mockProps = {
       tab: "market",
-      toggle_search: null,
-      toggle_settings: null,
+      toggle_settings: () => {},
+      toggle_search: () => {},
     };
 
     const tree = renderer.create(<DesktopHeader {...mockProps} />).toJSON();

@@ -14,7 +14,6 @@ exports[`<NftBuyButton /> should display properly 1`] = `
     <div>
       5.00
     </div>
-    <div />
     <div>
       <img
         alt=""

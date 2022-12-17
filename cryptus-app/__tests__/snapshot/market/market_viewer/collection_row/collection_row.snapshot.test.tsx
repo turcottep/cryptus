@@ -15,8 +15,8 @@ const mock_collection: collection = {
   address: "",
   data_price: [],
   data_volume: [],
-  user_owned: false,
   timestamp: "week",
+  user_owned: false,
 };
 
 describe("<CollectionRow />", () => {

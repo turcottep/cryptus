@@ -22,10 +22,10 @@ describe("<ProfileWalletViewer />", () => {
         <ProfileWalletViewer
           collections_address_list={[]}
           collections={[]}
-          open_collection={function (): void {
+          add_collections={function (): void {
             throw new Error("Function not implemented.");
           }}
-          add_collections={function (): void {
+          open_collection={function (): void {
             throw new Error("Function not implemented.");
           }}
           open_nft={function (): void {

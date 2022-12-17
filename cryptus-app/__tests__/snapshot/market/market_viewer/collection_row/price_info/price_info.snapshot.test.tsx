@@ -23,8 +23,8 @@ const mock_collection: collection = {
     100, 47, 46, 36, 53, 29, 86, 46, 83, 88, 87, 15, 79, 59, 7, 12, 20, 79, 53,
     77, 77, 26, 89, 57, 47, 37, 87, 48, 26, 65,
   ],
-  user_owned: false,
   timestamp: "week",
+  user_owned: false,
 };
 
 describe("<PriceInfo />", () => {

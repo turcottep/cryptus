@@ -5,10 +5,10 @@ exports[`<PriceInfo /> should display properly 1`] = `
   id="price_info"
 >
   <div>
-    7.8Ξ
+    7.8 Ξ
   </div>
   <div>
-    +1.0Ξ (Infinity%)
+    + 1.0꠵ (Infinity%)
   </div>
 </div>
 `;
